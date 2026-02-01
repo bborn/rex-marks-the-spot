@@ -309,18 +309,22 @@ def create_procedural_forest(num_trees=50, area_size=20):
 
 ### Immediate (This Task)
 - [x] Research complete
-- [ ] Create proof-of-concept script
-- [ ] Test headless rendering locally
+- [x] Create proof-of-concept script
+- [x] Test headless rendering locally
 
-### Short-term
+### Short-term (Completed in Pipeline Build)
+- [x] Build automated rendering pipeline (`scripts/render/`)
+- [x] Implement vision feedback loop for scene validation (`scripts/validate/`)
+- [x] Create modular Blender automation library (`scripts/blender/`)
+- [x] Document pipeline usage (`docs/pipeline-guide.md`)
 - [ ] Install BlenderMCP and test Claude Desktop integration
 - [ ] Create base scene template for the movie
 - [ ] Define character asset requirements
 
 ### Medium-term
-- [ ] Build automated rendering pipeline
-- [ ] Implement vision feedback loop for scene validation
 - [ ] Create procedural environment generators
+- [ ] Add character rigging automation
+- [ ] Build asset library management
 
 ---
 
