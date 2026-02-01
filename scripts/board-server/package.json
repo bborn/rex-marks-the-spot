@@ -1,0 +1,16 @@
+{
+  "name": "taskyou-board-server",
+  "version": "1.0.0",
+  "description": "Real-time API server for TaskYou board widget",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["taskyou", "board", "api"],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
