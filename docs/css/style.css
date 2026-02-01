@@ -1096,3 +1096,33 @@ img {
 .mb-md { margin-bottom: var(--space-md); }
 .mt-xl { margin-top: var(--space-xl); }
 .mb-xl { margin-bottom: var(--space-xl); }
+
+/* ==========================================================================
+   TaskYou Board Section
+   ========================================================================== */
+
+.taskboard-section {
+    padding: var(--space-3xl) 0;
+}
+
+.taskboard-section h2 {
+    text-align: center;
+}
+
+.taskboard-section .section-subtitle {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2xl);
+}
+
+/* CSS variables for the TaskYou board widget */
+#taskyou-board {
+    --color-surface: var(--color-bg-secondary);
+    --color-background: var(--color-bg);
+    --color-text: var(--color-text);
+    --color-text-muted: var(--color-text-muted);
+    --color-border: var(--color-border);
+    --color-primary: var(--color-primary);
+    --color-secondary: var(--color-secondary);
+    --color-accent: var(--color-accent);
+}
