@@ -39,6 +39,138 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+/**
+ * Secret filtering patterns - these will be redacted from all API responses
+ * SECURITY: Add new patterns here as needed
+ */
+const SECRET_PATTERNS = [
+    // OpenAI / Anthropic / AI API keys
+    /sk-[a-zA-Z0-9]{20,}/g,                          // OpenAI keys (sk-...)
+    /sk-ant-[a-zA-Z0-9-]{20,}/g,                     // Anthropic keys
+    /sk-proj-[a-zA-Z0-9-]{20,}/g,                    // OpenAI project keys
+    /AIza[a-zA-Z0-9_-]{35}/g,                        // Google API keys
+    /xai-[a-zA-Z0-9]{20,}/g,                         // xAI/Grok keys
+
+    // AWS credentials
+    /AKIA[A-Z0-9]{16}/g,                             // AWS Access Key ID
+    /(?:aws_secret_access_key|AWS_SECRET_ACCESS_KEY)\s*[=:]\s*[a-zA-Z0-9/+=]{40}/gi,  // AWS Secret with context
+
+    // Bearer tokens
+    /Bearer\s+[a-zA-Z0-9._-]{20,}/gi,                // Bearer tokens
+
+    // Generic token patterns in URLs/params
+    /token=[a-zA-Z0-9._-]{16,}/gi,                   // token= parameters
+    /api_key=[a-zA-Z0-9._-]{16,}/gi,                 // api_key= parameters
+    /apikey=[a-zA-Z0-9._-]{16,}/gi,                  // apikey= parameters
+    /access_token=[a-zA-Z0-9._-]{16,}/gi,            // access_token= parameters
+    /secret=[a-zA-Z0-9._-]{16,}/gi,                  // secret= parameters
+
+    // Password patterns
+    /password=[^\s&"']+/gi,                          // password= in URLs/strings
+    /passwd=[^\s&"']+/gi,                            // passwd= in URLs/strings
+    /pwd=[^\s&"']+/gi,                               // pwd= in URLs/strings
+
+    // Database connection strings
+    /mongodb(\+srv)?:\/\/[^\s"']+/gi,                // MongoDB URLs
+    /postgres(ql)?:\/\/[^\s"']+/gi,                  // PostgreSQL URLs
+    /mysql:\/\/[^\s"']+/gi,                          // MySQL URLs
+    /redis:\/\/[^\s"']+/gi,                          // Redis URLs
+
+    // SSH/RSA private keys (partial match for log lines)
+    /-----BEGIN\s+(RSA\s+)?PRIVATE\s+KEY-----/g,     // Private key headers
+    /-----BEGIN\s+OPENSSH\s+PRIVATE\s+KEY-----/g,   // OpenSSH key headers
+
+    // GitHub/GitLab tokens
+    /ghp_[a-zA-Z0-9]{36}/g,                          // GitHub personal access tokens
+    /gho_[a-zA-Z0-9]{36}/g,                          // GitHub OAuth tokens
+    /ghs_[a-zA-Z0-9]{36}/g,                          // GitHub server-to-server tokens
+    /ghu_[a-zA-Z0-9]{36}/g,                          // GitHub user-to-server tokens
+    /glpat-[a-zA-Z0-9_-]{20,}/g,                     // GitLab personal access tokens
+
+    // npm tokens
+    /npm_[a-zA-Z0-9]{36}/g,                          // npm tokens
+
+    // Stripe keys
+    /sk_live_[a-zA-Z0-9]{24,}/g,                     // Stripe live secret
+    /sk_test_[a-zA-Z0-9]{24,}/g,                     // Stripe test secret
+    /rk_live_[a-zA-Z0-9]{24,}/g,                     // Stripe restricted key
+    /rk_test_[a-zA-Z0-9]{24,}/g,                     // Stripe restricted test
+
+    // Slack tokens
+    /xox[baprs]-[a-zA-Z0-9-]{10,}/g,                 // Slack tokens
+
+    // Discord tokens
+    /[MN][A-Za-z\d]{23,}\.[\w-]{6}\.[\w-]{27}/g,    // Discord bot tokens
+
+    // Twilio
+    /SK[a-f0-9]{32}/g,                               // Twilio API keys
+
+    // SendGrid
+    /SG\.[a-zA-Z0-9_-]{22}\.[a-zA-Z0-9_-]{43}/g,    // SendGrid API keys
+
+    // Environment variable exports with secrets
+    /export\s+[A-Z_]*(?:KEY|TOKEN|SECRET|PASSWORD|CREDENTIAL|AUTH)[A-Z_]*=[^\s]+/gi,
+
+    // JWT tokens (simplified - captures most JWTs)
+    /eyJ[a-zA-Z0-9_-]{10,}\.eyJ[a-zA-Z0-9_-]{10,}\.[a-zA-Z0-9_-]{10,}/g,
+
+    // Heroku API key / API keys that look like UUIDs (only with context)
+    /(?:api[_-]?key|apikey|secret|token)\s*[=:]\s*[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi,
+];
+
+/**
+ * Redact secrets from a string
+ */
+function redactSecrets(str) {
+    if (typeof str !== 'string') return str;
+
+    let result = str;
+    for (const pattern of SECRET_PATTERNS) {
+        // Reset lastIndex for global patterns
+        pattern.lastIndex = 0;
+        result = result.replace(pattern, '[REDACTED]');
+    }
+    return result;
+}
+
+/**
+ * Recursively redact secrets from any value (object, array, string)
+ */
+function redactSecretsDeep(value) {
+    if (typeof value === 'string') {
+        return redactSecrets(value);
+    }
+
+    if (Array.isArray(value)) {
+        return value.map(item => redactSecretsDeep(item));
+    }
+
+    if (value !== null && typeof value === 'object') {
+        const result = {};
+        for (const key of Object.keys(value)) {
+            result[key] = redactSecretsDeep(value[key]);
+        }
+        return result;
+    }
+
+    return value;
+}
+
+/**
+ * Middleware to filter secrets from all JSON responses
+ * SECURITY: This wraps res.json() to sanitize all outgoing data
+ */
+app.use((req, res, next) => {
+    const originalJson = res.json.bind(res);
+
+    res.json = function(data) {
+        const sanitizedData = redactSecretsDeep(data);
+        return originalJson(sanitizedData);
+    };
+
+    next();
+});
+
 // Cache for board data (to prevent excessive ty calls)
 let boardCache = {
     data: null,
