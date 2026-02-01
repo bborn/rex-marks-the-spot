@@ -671,9 +671,17 @@
 
         try {
             const response = await fetch(`${API_BASE_URL}/api/task/${taskId}/output?lines=${OUTPUT_LINES}`);
-            if (!response.ok) throw new Error('Failed to fetch output');
-
             const data = await response.json();
+            
+            if (!response.ok) {
+                // Handle tasks that aren't running yet
+                if (data.message && data.message.includes('not running')) {
+                    outputEl.innerHTML = '<div class="taskyou-output-empty">Task hasn't started yet. Check back when it's processing!</div>';
+                    return;
+                }
+                throw new Error(data.message || 'Failed to fetch output');
+            }
+
             const output = data.output ? data.output.trim() : '';
 
             if (output) {
@@ -685,7 +693,7 @@
             }
         } catch (error) {
             console.error('Failed to load task output:', error);
-            outputEl.innerHTML = '<div class="taskyou-output-empty">Failed to load output</div>';
+            outputEl.innerHTML = '<div class="taskyou-output-empty">Unable to load output</div>';
         }
     }
 
