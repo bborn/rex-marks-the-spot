@@ -1,0 +1,10 @@
+# Ignore all renders (large binary files)
+*.png
+*.jpg
+*.jpeg
+*.exr
+*.tiff
+*.tif
+
+# Keep this gitignore
+!.gitignore
