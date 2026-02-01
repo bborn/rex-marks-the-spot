@@ -63,6 +63,11 @@
                         <h3><span class="tech-icon">📝</span> Git</h3>
                         <p>Version control for everything — code, scripts, documentation. Our task-based branching strategy keeps parallel work organized.</p>
                     </div>
+
+                    <div class="tech-card">
+                        <h3><span class="tech-icon">📋</span> TaskYou</h3>
+                        <p>AI orchestration system that manages production tasks, runs Claude agents in isolated worktrees, and turns completed work into reviewable pull requests.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -147,6 +152,43 @@
                         <li>Multiple output formats (PNG, JPG, EXR)</li>
                         <li>Configurable quality presets</li>
                         <li>Batch processing for sequences</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>TaskYou: AI Orchestration</h2>
+                    <p>Our production is managed by TaskYou, a task orchestration system that coordinates Claude agents working on the film.</p>
+
+                    <h3>How It Works</h3>
+                    <pre><code>Task Created → Git Worktree → Claude Agent → Pull Request → Human Review → Merge
+       ↑                                                              │
+       └───────────────── Remote Monitoring ──────────────────────────┘</code></pre>
+
+                    <h4>Isolated Git Worktrees</h4>
+                    <p>Each task runs in its own isolated git worktree. This means multiple agents can work on different parts of the production simultaneously without conflicts. When an agent completes its work, the changes exist in a clean branch ready for review.</p>
+
+                    <h4>Tasks Become Pull Requests</h4>
+                    <p>Every completed task automatically generates a pull request. This gives us:</p>
+                    <ul>
+                        <li>Full visibility into what changed and why</li>
+                        <li>Code review workflow for quality assurance</li>
+                        <li>Easy rollback if something doesn't work</li>
+                        <li>Complete audit trail of production decisions</li>
+                    </ul>
+
+                    <h4>Remote Monitoring & Approval</h4>
+                    <p>We can monitor agent progress remotely and approve or reject their work from anywhere. The human-in-the-loop ensures that AI assistance doesn't mean AI autonomy — every significant change gets human review before becoming part of the production.</p>
+
+                    <h3>Benefits for Film Production</h3>
+                    <ul>
+                        <li><strong>Parallelization:</strong> Multiple scenes can be developed simultaneously</li>
+                        <li><strong>Reproducibility:</strong> Every change is tracked and reversible</li>
+                        <li><strong>Quality gates:</strong> Nothing ships without human approval</li>
+                        <li><strong>Async collaboration:</strong> Work progresses even when humans aren't actively directing</li>
                     </ul>
                 </div>
             </div>
