@@ -191,6 +191,15 @@ img {
     color: var(--color-text);
 }
 
+.nav-links a.nav-highlight {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.nav-links a.nav-highlight:hover {
+    color: var(--color-text);
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
