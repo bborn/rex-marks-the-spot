@@ -676,7 +676,7 @@
             if (!response.ok) {
                 // Handle tasks that aren't running yet
                 if (data.message && data.message.includes('not running')) {
-                    outputEl.innerHTML = '<div class="taskyou-output-empty">Task hasn't started yet. Check back when it's processing!</div>';
+                    outputEl.innerHTML = '<div class="taskyou-output-empty">Task has not started yet. Check back when it is processing!</div>';
                     return;
                 }
                 throw new Error(data.message || 'Failed to fetch output');
