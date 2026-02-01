@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairy Dinosaur Date Night - Act 2 Storyboard</title>
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --bg-medium: #16213e;
+            --accent: #0096ff;
+            --text-light: #eaeaea;
+            --text-muted: #888;
+            --scene-investigation: #4a6fa5;
+            --scene-cave: #4a4a4a;
+            --scene-car: #1C1C1C;
+            --scene-montage: #8B4513;
+            --scene-station: #2F4F4F;
+            --scene-jurassic: #228B22;
+            --scene-chase: #DC143C;
+            --scene-portal: #0096FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--bg-medium);
+            padding: 1.5rem 2rem;
+            border-bottom: 3px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .view-toggle button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .scene-nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .scene-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-medium);
+            border: 2px solid transparent;
+            border-radius: 6px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .scene-btn:hover {
+            border-color: var(--accent);
+        }
+
+        .scene-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .scene-btn[data-vfx="true"]::after {
+            content: " VFX";
+            font-size: 0.7rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Grid View */
+        .panels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .panel-card {
+            background: var(--bg-medium);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .panel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 150, 255, 0.2);
+        }
+
+        .panel-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .panel-info {
+            padding: 1rem;
+        }
+
+        .panel-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .panel-info .scene-tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+
+        .panel-info .description {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Sequence View */
+        .panels-sequence {
+            display: none;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .panels-sequence.active {
+            display: flex;
+        }
+
+        .panels-grid.active {
+            display: grid;
+        }
+
+        .panels-grid:not(.active) {
+            display: none;
+        }
+
+        .sequence-panel {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .sequence-panel:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .sequence-panel img {
+            width: 60%;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .sequence-info {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .sequence-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sequence-info .description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .sequence-info .dialogue {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .lightbox-nav:hover {
+            opacity: 0.8;
+        }
+
+        .lightbox-nav.prev {
+            left: 2rem;
+        }
+
+        .lightbox-nav.next {
+            right: 2rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-info {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-dark);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        /* Scene section headers */
+        .scene-header {
+            grid-column: 1 / -1;
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--bg-medium), transparent);
+            border-left: 4px solid var(--accent);
+            margin: 1rem 0;
+        }
+
+        .scene-header h2 {
+            font-size: 1.4rem;
+        }
+
+        .scene-header .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .panels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sequence-panel {
+                flex-direction: column !important;
+            }
+
+            .sequence-panel img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Fairy Dinosaur Date Night - <span>Act 2</span> Storyboard</h1>
+            <div class="controls">
+                <div class="view-toggle">
+                    <button class="active" data-view="grid">Grid</button>
+                    <button data-view="sequence">Sequence</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="scene-nav">
+        <button class="scene-btn active" data-scene="all">All Scenes</button>
+        <button class="scene-btn" data-scene="11">11: House Morning</button>
+        <button class="scene-btn" data-scene="12">12: Jenny Interview</button>
+        <button class="scene-btn" data-scene="13">13: Kids Breakfast</button>
+        <button class="scene-btn" data-scene="14" data-vfx="true">14: Cave Connection</button>
+        <button class="scene-btn" data-scene="15" data-vfx="true">15: Police Car Kids</button>
+        <button class="scene-btn" data-scene="16" data-vfx="true">16: Cave Intercut</button>
+        <button class="scene-btn" data-scene="17" data-vfx="true">17: Car Frustration</button>
+        <button class="scene-btn" data-scene="18" data-vfx="true">18: Cave Tunnel</button>
+        <button class="scene-btn" data-scene="19">19: Montage</button>
+        <button class="scene-btn" data-scene="20" data-vfx="true">20: Police Station</button>
+        <button class="scene-btn" data-scene="21">21: Jurassic Tree</button>
+        <button class="scene-btn" data-scene="22" data-vfx="true">22: Station Escape</button>
+        <button class="scene-btn" data-scene="23" data-vfx="true">23: Car Chase</button>
+        <button class="scene-btn" data-scene="24" data-vfx="true">24: Tree Wake</button>
+        <button class="scene-btn" data-scene="25" data-vfx="true">25: Portal Jump</button>
+    </nav>
+
+    <main>
+        <div class="panels-grid active" id="gridView">
+            <!-- Scene 11: House Morning -->
+            <div class="scene-header" data-scene="11">
+                <h2>Scene 11: EXT. HOUSE - MORNING</h2>
+                <p class="meta">Duration: 0:15 | Panels: 3 | Investigation aftermath</p>
+            </div>
+            <div class="panel-card" data-scene="11" data-index="0">
+                <img src="scene-11-panel-01.png" alt="Scene 11, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 11</span>
+                    <h3>Panel 11A - Wide Establishing</h3>
+                    <p class="description">House exterior morning, police cars in driveway, yellow tape, investigation underway</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="11" data-index="1">
+                <img src="scene-11-panel-02.png" alt="Scene 11, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 11</span>
+                    <h3>Panel 11B - Official on Phone</h3>
+                    <p class="description">Detective coordinating investigation, on phone with notepad</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="11" data-index="2">
+                <img src="scene-11-panel-03.png" alt="Scene 11, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 11</span>
+                    <h3>Panel 11C - Nosy Neighbor</h3>
+                    <p class="description">Neighbor in bathrobe gawking at police activity, comedy beat</p>
+                </div>
+            </div>
+
+            <!-- Scene 12: Jenny Interview -->
+            <div class="scene-header" data-scene="12">
+                <h2>Scene 12: INT. HOUSE - MORNING</h2>
+                <p class="meta">Duration: 1:15 | Panels: 4 | Detective interviews babysitter</p>
+            </div>
+            <div class="panel-card" data-scene="12" data-index="3">
+                <img src="scene-12-panel-01.png" alt="Scene 12, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 12</span>
+                    <h3>Panel 12A - Interview Setup</h3>
+                    <p class="description">McNattin and Jenny at dining table, interview in progress</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="12" data-index="4">
+                <img src="scene-12-panel-02.png" alt="Scene 12, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 12</span>
+                    <h3>Panel 12B - Jenny's Testimony</h3>
+                    <p class="description">Jenny's face recalling details, nervous but earnest</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="12" data-index="5">
+                <img src="scene-12-panel-03.png" alt="Scene 12, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 12</span>
+                    <h3>Panel 12C - McNattin's Interest</h3>
+                    <p class="description">Detective's face, interest piqued, suspicion forming</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="12" data-index="6">
+                <img src="scene-12-panel-04.png" alt="Scene 12, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 12</span>
+                    <h3>Panel 12D - Notepad Insert</h3>
+                    <p class="description">McNattin's notepad with "hesitated to promise" underlined</p>
+                </div>
+            </div>
+
+            <!-- Scene 13: Kids Breakfast -->
+            <div class="scene-header" data-scene="13">
+                <h2>Scene 13: INT. HOUSE - DAY</h2>
+                <p class="meta">Duration: 2:30 | Panels: 7 | Kids interviewed at breakfast</p>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="7">
+                <img src="scene-13-panel-01.png" alt="Scene 13, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13A - Breakfast Table</h3>
+                    <p class="description">Kitchen with kids at table, social worker interviewing, cereal chaos</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="8">
+                <img src="scene-13-panel-02.png" alt="Scene 13, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13B - Leo Eating Messy</h3>
+                    <p class="description">Leo's face, cereal everywhere, completely unbothered</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="9">
+                <img src="scene-13-panel-03.png" alt="Scene 13, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13C - Mia Serious</h3>
+                    <p class="description">Mia's face, more serious than her age, intuition showing</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="10">
+                <img src="scene-13-panel-04.png" alt="Scene 13, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13D - Leo "Poof!"</h3>
+                    <p class="description">Leo demonstrating explosion, knocking over cereal, comedy</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="11">
+                <img src="scene-13-panel-05.png" alt="Scene 13, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13E - Social Worker Overwhelmed</h3>
+                    <p class="description">Social worker watching cereal spread, out of depth</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="12">
+                <img src="scene-13-panel-06.png" alt="Scene 13, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13F - Kids Explain Together</h3>
+                    <p class="description">Siblings working together to tell their story</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="13" data-index="13">
+                <img src="scene-13-panel-07.png" alt="Scene 13, Panel 7">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-investigation)">Scene 13</span>
+                    <h3>Panel 13G - McNattin Takes Phone</h3>
+                    <p class="description">Phone being taken as evidence, connection to parents taken away</p>
+                </div>
+            </div>
+
+            <!-- Scene 14: Cave Connection -->
+            <div class="scene-header" data-scene="14">
+                <h2>Scene 14: INT. JURASSIC CAVE - DAY</h2>
+                <p class="meta">Duration: 1:00 | Panels: 5 | VFX: Phone effects | Parents discover phone connection</p>
+            </div>
+            <div class="panel-card" data-scene="14" data-index="14">
+                <img src="scene-14-panel-01.png" alt="Scene 14, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 14</span>
+                    <h3>Panel 14A - Cave Interior</h3>
+                    <p class="description">Cave with parents huddled, T-Rex shadow at entrance</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="14" data-index="15">
+                <img src="scene-14-panel-02.png" alt="Scene 14, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 14</span>
+                    <h3>Panel 14B - Phone Screen</h3>
+                    <p class="description">Nina's phone frozen and glitched, faint blue glow</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="14" data-index="16">
+                <img src="scene-14-panel-03.png" alt="Scene 14, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 14</span>
+                    <h3>Panel 14C - Battery 65%</h3>
+                    <p class="description">Battery indicator introducing the ticking clock</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="14" data-index="17">
+                <img src="scene-14-panel-04.png" alt="Scene 14, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 14</span>
+                    <h3>Panel 14D - Nina Inspects</h3>
+                    <p class="description">Nina piecing together the portal connection theory</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="14" data-index="18">
+                <img src="scene-14-panel-05.png" alt="Scene 14, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 14</span>
+                    <h3>Panel 14E - Nina Calls Out</h3>
+                    <p class="description">Nina calling desperately to her children through phone</p>
+                </div>
+            </div>
+
+            <!-- Scene 15: Police Car Kids -->
+            <div class="scene-header" data-scene="15">
+                <h2>Scene 15: INT. CAR - DAY</h2>
+                <p class="meta">Duration: 0:15 | Panels: 3 | VFX: Phone effects | Kids hear parents' voices</p>
+            </div>
+            <div class="panel-card" data-scene="15" data-index="19">
+                <img src="scene-15-panel-01.png" alt="Scene 15, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 15</span>
+                    <h3>Panel 15A - Kids in Back Seat</h3>
+                    <p class="description">Kids behind police car barrier, phone on passenger seat</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="15" data-index="20">
+                <img src="scene-15-panel-02.png" alt="Scene 15, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 15</span>
+                    <h3>Panel 15B - Phone Crackling</h3>
+                    <p class="description">Phone on seat with faint static and glow</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="15" data-index="21">
+                <img src="scene-15-panel-03.png" alt="Scene 15, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 15</span>
+                    <h3>Panel 15C - Kids Notice</h3>
+                    <p class="description">Kids recognizing their mother's voice through static</p>
+                </div>
+            </div>
+
+            <!-- Scene 16: Cave Intercut -->
+            <div class="scene-header" data-scene="16">
+                <h2>Scene 16: INT. JURASSIC CAVE - DAY</h2>
+                <p class="meta">Duration: 0:30 | Panels: 3 | VFX: Phone effects | Nina calls, Gabe finds exit</p>
+            </div>
+            <div class="panel-card" data-scene="16" data-index="22">
+                <img src="scene-16-panel-01.png" alt="Scene 16, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 16</span>
+                    <h3>Panel 16A - Nina Calling Louder</h3>
+                    <p class="description">Nina on knees calling desperately into phone</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="16" data-index="23">
+                <img src="scene-16-panel-02.png" alt="Scene 16, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 16</span>
+                    <h3>Panel 16B - Gabe Finds Exit</h3>
+                    <p class="description">Gabe finding tunnel with light at end</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="16" data-index="24">
+                <img src="scene-16-panel-03.png" alt="Scene 16, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 16</span>
+                    <h3>Panel 16C - Decision</h3>
+                    <p class="description">Quick decision moment, move toward exit with phone</p>
+                </div>
+            </div>
+
+            <!-- Scene 17: Car Frustration -->
+            <div class="scene-header" data-scene="17">
+                <h2>Scene 17: INT. CAR - DAY</h2>
+                <p class="meta">Duration: 0:20 | Panels: 4 | VFX: Phone effects | Kids desperately try to reach phone</p>
+            </div>
+            <div class="panel-card" data-scene="17" data-index="25">
+                <img src="scene-17-panel-01.png" alt="Scene 17, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 17</span>
+                    <h3>Panel 17A - Kids Scream</h3>
+                    <p class="description">Kids pressing against barrier, screaming for mom</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="17" data-index="26">
+                <img src="scene-17-panel-02.png" alt="Scene 17, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 17</span>
+                    <h3>Panel 17B - Barrier Close-up</h3>
+                    <p class="description">Small hands pressed against barrier, phone visible beyond</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="17" data-index="27">
+                <img src="scene-17-panel-03.png" alt="Scene 17, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 17</span>
+                    <h3>Panel 17C - McNattin Enters</h3>
+                    <p class="description">Detective entering car, unaware of the drama</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="17" data-index="28">
+                <img src="scene-17-panel-04.png" alt="Scene 17, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-car)">Scene 17</span>
+                    <h3>Panel 17D - Engine Starts</h3>
+                    <p class="description">Engine drowns out phone, connection lost, kids defeated</p>
+                </div>
+            </div>
+
+            <!-- Scene 18: Cave Tunnel -->
+            <div class="scene-header" data-scene="18">
+                <h2>Scene 18: INT. JURASSIC CAVE TUNNEL - DAY</h2>
+                <p class="meta">Duration: 0:30 | Panels: 3 | VFX: Signal bars | Parents crawling, signal weakening</p>
+            </div>
+            <div class="panel-card" data-scene="18" data-index="29">
+                <img src="scene-18-panel-01.png" alt="Scene 18, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 18</span>
+                    <h3>Panel 18A - Parents in Tunnel</h3>
+                    <p class="description">Parents moving through narrow tunnel, phone held like torch</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="18" data-index="30">
+                <img src="scene-18-panel-02.png" alt="Scene 18, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 18</span>
+                    <h3>Panel 18B - Signal Dropping</h3>
+                    <p class="description">Phone signal bars dropping, hope fading</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="18" data-index="31">
+                <img src="scene-18-panel-03.png" alt="Scene 18, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-cave)">Scene 18</span>
+                    <h3>Panel 18C - Hope Fading</h3>
+                    <p class="description">Nina devastated, signal gone, but exit light ahead</p>
+                </div>
+            </div>
+
+            <!-- Scene 19: Montage -->
+            <div class="scene-header" data-scene="19">
+                <h2>Scene 19: MONTAGE</h2>
+                <p class="meta">Duration: 1:00 | Panels: 6 | Time passage, parallel struggles</p>
+            </div>
+            <div class="panel-card" data-scene="19" data-index="32">
+                <img src="scene-19-panel-01.png" alt="Scene 19, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-montage)">Scene 19</span>
+                    <h3>Panel 19A - Cave Journey</h3>
+                    <p class="description">Parents exiting cave into Jurassic jungle</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="19" data-index="33">
+                <img src="scene-19-panel-02.png" alt="Scene 19, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-montage)">Scene 19</span>
+                    <h3>Panel 19B - Kids Processed</h3>
+                    <p class="description">Kids in institutional settings, being processed</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="19" data-index="34">
+                <img src="scene-19-panel-03.png" alt="Scene 19, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-montage)">Scene 19</span>
+                    <h3>Panel 19C - Jurassic Jungle</h3>
+                    <p class="description">Epic shot, parents tiny in massive prehistoric landscape</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="19" data-index="35">
+                <img src="scene-19-panel-04.png" alt="Scene 19, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-montage)">Scene 19</span>
+                    <h3>Panel 19D - Leo's Snack Backpack</h3>
+                    <p class="description">Setup shot: Leo's backpack with colorful snacks</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="19" data-index="36">
+                <img src="scene-19-panel-05.png" alt="Scene 19, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-montage)">Scene 19</span>
+                    <h3>Panel 19E - Jurassic Sunset</h3>
+                    <p class="description">Stunning sunset, parent silhouettes on ridge</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="19" data-index="37">
+                <img src="scene-19-panel-06.png" alt="Scene 19, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-montage)">Scene 19</span>
+                    <h3>Panel 19F - Modern Night</h3>
+                    <p class="description">Police station at night, kids being settled, Ruben glimpse</p>
+                </div>
+            </div>
+
+            <!-- Scene 20: Police Station -->
+            <div class="scene-header" data-scene="20">
+                <h2>Scene 20: INT. POLICE STATION - NIGHT</h2>
+                <p class="meta">Duration: 4:00 | Panels: 11 | VFX: Wings, magic | Fairy Godfather revealed</p>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="38">
+                <img src="scene-20-panel-01.png" alt="Scene 20, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20A - Conference Room</h3>
+                    <p class="description">Kids in makeshift sleeping area, alert, planning</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="39">
+                <img src="scene-20-panel-02.png" alt="Scene 20, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20B - McNattin Leads Kids</h3>
+                    <p class="description">Detective settling kids for the night</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="40">
+                <img src="scene-20-panel-03.png" alt="Scene 20, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20C - Ruben Appears</h3>
+                    <p class="description">Janitor appears with mop, something off about him</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="41">
+                <img src="scene-20-panel-04.png" alt="Scene 20, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20D - Ruben Winks</h3>
+                    <p class="description">Knowing wink, magical sparkle in tired eyes</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="42">
+                <img src="scene-20-panel-05.png" alt="Scene 20, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20E - Ruben Explains</h3>
+                    <p class="description">Fairy godfather crouching to explain to kids</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="43">
+                <img src="scene-20-panel-06.png" alt="Scene 20, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20F - Wings Revealed</h3>
+                    <p class="description">Droopy iridescent wings peeking from coveralls</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="44">
+                <img src="scene-20-panel-07.png" alt="Scene 20, Panel 7">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20G - Kids React</h3>
+                    <p class="description">Pure wonder on kids' faces, belief activated</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="45">
+                <img src="scene-20-panel-08.png" alt="Scene 20, Panel 8">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20H - Mop Demonstration</h3>
+                    <p class="description">Weak magic demo with mop wand, pencil barely levitates</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="46">
+                <img src="scene-20-panel-09.png" alt="Scene 20, Panel 9">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20I - Doorstop Metaphor</h3>
+                    <p class="description">Mop propping door, explaining phone/portal connection</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="47">
+                <img src="scene-20-panel-10.png" alt="Scene 20, Panel 10">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20J - McNattin Returns</h3>
+                    <p class="description">Almost caught! Wings hidden, kids overselling innocence</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="20" data-index="48">
+                <img src="scene-20-panel-11.png" alt="Scene 20, Panel 11">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 20</span>
+                    <h3>Panel 20K - Planning</h3>
+                    <p class="description">Kids in sleeping bags, eyes open, determined, plan made</p>
+                </div>
+            </div>
+
+            <!-- Scene 21: Jurassic Tree -->
+            <div class="scene-header" data-scene="21">
+                <h2>Scene 21: EXT. JURASSIC - NIGHT</h2>
+                <p class="meta">Duration: 2:30 | Panels: 8 | Most emotional scene of Act 2</p>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="49">
+                <img src="scene-21-panel-01.png" alt="Scene 21, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21A - Giant Tree</h3>
+                    <p class="description">Massive prehistoric tree, parents on branch high up</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="50">
+                <img src="scene-21-panel-02.png" alt="Scene 21, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21B - Ruined Shoes</h3>
+                    <p class="description">Nina removing destroyed heels, blisters visible</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="51">
+                <img src="scene-21-panel-03.png" alt="Scene 21, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21C - Settling on Branch</h3>
+                    <p class="description">Parents finding comfortable spots for the night</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="52">
+                <img src="scene-21-panel-04.png" alt="Scene 21, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21D - Nina's Confession</h3>
+                    <p class="description">Nina vulnerable, confessing she hates galas</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="53">
+                <img src="scene-21-panel-05.png" alt="Scene 21, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21E - Nina Breaks Down</h3>
+                    <p class="description">Nina fully crying, fear of never seeing children</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="54">
+                <img src="scene-21-panel-06.png" alt="Scene 21, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21F - Night Sky</h3>
+                    <p class="description">Beautiful Jurassic night sky through trees, breathing room</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="55">
+                <img src="scene-21-panel-07.png" alt="Scene 21, Panel 7">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21G - Gabe Comforts</h3>
+                    <p class="description">Gabe holding Nina, promising to be different</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="21" data-index="56">
+                <img src="scene-21-panel-08.png" alt="Scene 21, Panel 8">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 21</span>
+                    <h3>Panel 21H - Battery Countdown</h3>
+                    <p class="description">Phone battery at 50%, ticking clock reminder</p>
+                </div>
+            </div>
+
+            <!-- Scene 22: Station Escape -->
+            <div class="scene-header" data-scene="22">
+                <h2>Scene 22: INT. POLICE STATION - NIGHT</h2>
+                <p class="meta">Duration: 4:00 | Panels: 14 | VFX: Magic effects | Slapstick escape comedy</p>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="57">
+                <img src="scene-22-panel-01.png" alt="Scene 22, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22A - Ruben Sneaks</h3>
+                    <p class="description">Ruben pushing squeaky mop bucket, comedic stealth</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="58">
+                <img src="scene-22-panel-02.png" alt="Scene 22, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22B - Magic Misfire #1</h3>
+                    <p class="description">Wheel disappears instead of being oiled</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="59">
+                <img src="scene-22-panel-03.png" alt="Scene 22, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22C - Chair Spell</h3>
+                    <p class="description">Chair barely moves with weak magic</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="60">
+                <img src="scene-22-panel-04.png" alt="Scene 22, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22D - Ceiling Hole</h3>
+                    <p class="description">Magic overcompensates, blasts hole in ceiling</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="61">
+                <img src="scene-22-panel-05.png" alt="Scene 22, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22E - Through Glass</h3>
+                    <p class="description">Ruben's POV of kids through window</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="62">
+                <img src="scene-22-panel-06.png" alt="Scene 22, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22F - Kids Wake</h3>
+                    <p class="description">Kids "waking up", ready to help</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="63">
+                <img src="scene-22-panel-07.png" alt="Scene 22, Panel 7">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22G - Chair Ram</h3>
+                    <p class="description">Kids use rolling chair as battering ram</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="64">
+                <img src="scene-22-panel-08.png" alt="Scene 22, Panel 8">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22H - McNattin Sleeping</h3>
+                    <p class="description">Detective asleep at desk, oblivious to chaos</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="65">
+                <img src="scene-22-panel-09.png" alt="Scene 22, Panel 9">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22I - Cabinet Locked</h3>
+                    <p class="description">Evidence cabinet with phone inside, locked</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="66">
+                <img src="scene-22-panel-10.png" alt="Scene 22, Panel 10">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22J - Magic Misfire #2</h3>
+                    <p class="description">Spell curves toward McNattin instead of cabinet</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="67">
+                <img src="scene-22-panel-11.png" alt="Scene 22, Panel 11">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22K - Freeze Spell</h3>
+                    <p class="description">McNattin frozen mid-yawn, successful spell!</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="68">
+                <img src="scene-22-panel-12.png" alt="Scene 22, Panel 12">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22L - Leo Pokes</h3>
+                    <p class="description">Leo poking frozen detective, comedy gold</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="69">
+                <img src="scene-22-panel-13.png" alt="Scene 22, Panel 13">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22M - Grab Phone</h3>
+                    <p class="description">Retrieving phone from evidence cabinet, triumph</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="22" data-index="70">
+                <img src="scene-22-panel-14.png" alt="Scene 22, Panel 14">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-station)">Scene 22</span>
+                    <h3>Panel 22N - Elevator Escape</h3>
+                    <p class="description">Group rushing to elevator, escape achieved</p>
+                </div>
+            </div>
+
+            <!-- Scene 23: Car Chase -->
+            <div class="scene-header" data-scene="23">
+                <h2>Scene 23: EXT. STREETS - NIGHT</h2>
+                <p class="meta">Duration: 2:00 | Panels: 8 | VFX: Magic effects | Kids driving, comedy chase</p>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="71">
+                <img src="scene-23-panel-01.png" alt="Scene 23, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23A - Exit Station</h3>
+                    <p class="description">Group bursting out into parking lot</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="72">
+                <img src="scene-23-panel-02.png" alt="Scene 23, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23B - Phone Signal</h3>
+                    <p class="description">Mia using phone as compass to portal</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="73">
+                <img src="scene-23-panel-03.png" alt="Scene 23, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23C - Jump in Car</h3>
+                    <p class="description">Piling into police car, kids in driver area</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="74">
+                <img src="scene-23-panel-04.png" alt="Scene 23, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23D - Mia Drives</h3>
+                    <p class="description">Absurd image: Mia driving, Leo on lap helping</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="75">
+                <img src="scene-23-panel-05.png" alt="Scene 23, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23E - Mop Starts Car</h3>
+                    <p class="description">Magic starting ignition with mop wand</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="76">
+                <img src="scene-23-panel-06.png" alt="Scene 23, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23F - Car Chase</h3>
+                    <p class="description">Comedy chase through night streets</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="77">
+                <img src="scene-23-panel-07.png" alt="Scene 23, Panel 7">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23G - Signal Improving</h3>
+                    <p class="description">Phone signal bars increasing, getting closer</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="23" data-index="78">
+                <img src="scene-23-panel-08.png" alt="Scene 23, Panel 8">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-chase)">Scene 23</span>
+                    <h3>Panel 23H - Parents' Voices</h3>
+                    <p class="description">Emotional payoff: hearing parents clearly</p>
+                </div>
+            </div>
+
+            <!-- Scene 24: Tree Wake -->
+            <div class="scene-header" data-scene="24">
+                <h2>Scene 24: EXT. JURASSIC - TREE - NIGHT/DAWN</h2>
+                <p class="meta">Duration: 0:45 | Panels: 3 | VFX: Phone effects | Parents hear children</p>
+            </div>
+            <div class="panel-card" data-scene="24" data-index="79">
+                <img src="scene-24-panel-01.png" alt="Scene 24, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 24</span>
+                    <h3>Panel 24A - Gabe Wakes</h3>
+                    <p class="description">Gabe waking to sound of phone crackling</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="24" data-index="80">
+                <img src="scene-24-panel-02.png" alt="Scene 24, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 24</span>
+                    <h3>Panel 24B - Phone Voices</h3>
+                    <p class="description">Kids' voices coming through phone clearly</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="24" data-index="81">
+                <img src="scene-24-panel-03.png" alt="Scene 24, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-jurassic)">Scene 24</span>
+                    <h3>Panel 24C - Parents Elated</h3>
+                    <p class="description">Both parents clutching phone, tears of joy, dawn breaking</p>
+                </div>
+            </div>
+
+            <!-- Scene 25: Portal Jump -->
+            <div class="scene-header" data-scene="25">
+                <h2>Scene 25: EXT. STREETS - NIGHT</h2>
+                <p class="meta">Duration: 2:00 | Panels: 7 | VFX: Time Warp Portal | ACT 2 CLIMAX</p>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="82">
+                <img src="scene-25-panel-01.png" alt="Scene 25, Panel 1">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25A - Car Crashes</h3>
+                    <p class="description">Chase ends, car stopped, must continue on foot</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="83">
+                <img src="scene-25-panel-02.png" alt="Scene 25, Panel 2">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25B - Continue on Foot</h3>
+                    <p class="description">Running toward portal, phone as guide</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="84">
+                <img src="scene-25-panel-03.png" alt="Scene 25, Panel 3">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25C - Phone Conversation</h3>
+                    <p class="description">Clear conversation with parents while running</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="85">
+                <img src="scene-25-panel-04.png" alt="Scene 25, Panel 4">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25D - Leo's Report</h3>
+                    <p class="description">"I DROVE A POLICE CAR!" - comedy in tension</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="86">
+                <img src="scene-25-panel-05.png" alt="Scene 25, Panel 5">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25E - Time Warp Spotted</h3>
+                    <p class="description">The portal visible ahead, bright blue swirling</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="87">
+                <img src="scene-25-panel-06.png" alt="Scene 25, Panel 6">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25F - Phone Stashed</h3>
+                    <p class="description">Phone hidden in bushes - the doorstop must stay</p>
+                </div>
+            </div>
+            <div class="panel-card" data-scene="25" data-index="88">
+                <img src="scene-25-panel-07.png" alt="Scene 25, Panel 7">
+                <div class="panel-info">
+                    <span class="scene-tag" style="background: var(--scene-portal)">Scene 25</span>
+                    <h3>Panel 25G - THE JUMP</h3>
+                    <p class="description">CLIMAX: All three leaping into portal, heroic silhouettes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sequence View (populated by JS) -->
+        <div class="panels-sequence" id="sequenceView"></div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-nav prev">&larr;</button>
+        <img src="" alt="Panel">
+        <button class="lightbox-nav next">&rarr;</button>
+        <div class="lightbox-info">
+            <h3></h3>
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="fill" style="width: 0%"></div>
+    </div>
+
+    <script>
+        // Panel data for sequence view and lightbox
+        const panels = Array.from(document.querySelectorAll('.panel-card'));
+        let currentIndex = 0;
+
+        // View Toggle
+        const viewButtons = document.querySelectorAll('.view-toggle button');
+        const gridView = document.getElementById('gridView');
+        const sequenceView = document.getElementById('sequenceView');
+
+        viewButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                viewButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                if (btn.dataset.view === 'grid') {
+                    gridView.classList.add('active');
+                    sequenceView.classList.remove('active');
+                } else {
+                    gridView.classList.remove('active');
+                    sequenceView.classList.add('active');
+                    populateSequenceView();
+                }
+            });
+        });
+
+        // Scene Navigation
+        const sceneButtons = document.querySelectorAll('.scene-btn');
+        const allCards = document.querySelectorAll('.panel-card, .scene-header');
+
+        sceneButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sceneButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const scene = btn.dataset.scene;
+                allCards.forEach(card => {
+                    if (scene === 'all' || card.dataset.scene === scene) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxInfo = lightbox.querySelector('.lightbox-info');
+        const progressFill = document.querySelector('.progress-bar .fill');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+        }
+
+        function updateLightbox() {
+            const card = panels[currentIndex];
+            const img = card.querySelector('img');
+            const title = card.querySelector('h3').textContent;
+            const desc = card.querySelector('.description').textContent;
+
+            lightboxImg.src = img.src;
+            lightboxInfo.querySelector('h3').textContent = title;
+            lightboxInfo.querySelector('p').textContent = desc;
+
+            progressFill.style.width = ((currentIndex + 1) / panels.length * 100) + '%';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function nextPanel() {
+            currentIndex = (currentIndex + 1) % panels.length;
+            updateLightbox();
+        }
+
+        function prevPanel() {
+            currentIndex = (currentIndex - 1 + panels.length) % panels.length;
+            updateLightbox();
+        }
+
+        panels.forEach((card, index) => {
+            card.addEventListener('click', () => openLightbox(index));
+        });
+
+        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.prev').addEventListener('click', prevPanel);
+        lightbox.querySelector('.next').addEventListener('click', nextPanel);
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextPanel();
+            if (e.key === 'ArrowLeft') prevPanel();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Populate Sequence View
+        function populateSequenceView() {
+            if (sequenceView.children.length > 0) return;
+
+            panels.forEach((card, index) => {
+                const img = card.querySelector('img');
+                const title = card.querySelector('h3').textContent;
+                const desc = card.querySelector('.description').textContent;
+
+                const panel = document.createElement('div');
+                panel.className = 'sequence-panel';
+                panel.innerHTML = `
+                    <img src="${img.src}" alt="${title}">
+                    <div class="sequence-info">
+                        <h3>${title}</h3>
+                        <p class="description">${desc}</p>
+                    </div>
+                `;
+                panel.querySelector('img').addEventListener('click', () => openLightbox(index));
+                sequenceView.appendChild(panel);
+            });
+        }
+    </script>
+</body>
+</html>
