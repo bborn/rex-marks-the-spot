@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the Scenes - Rex Marks The Spot</title>
+    <meta name="description" content="How we're using AI to assist in creating 'Fairy Dinosaur Date Night' - our process, tools, and philosophy.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="behind-the-scenes.html" class="active">Behind the Scenes</a></li>
+                <li><a href="characters.html">Characters</a></li>
+                <li><a href="tech.html">Tech Deep-Dives</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Behind the Scenes</h1>
+                <p>How we're using AI to assist in creating an animated film — our process, tools, and philosophy.</p>
+            </div>
+        </section>
+
+        <section class="bts-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Our Philosophy</h2>
+                    <p>We believe AI is a tool, not a replacement for human creativity. Every decision in this film goes through human judgment. AI helps us work faster, explore more options, and handle tedious tasks — but the creative vision remains human.</p>
+                    <p>We're also committed to transparency. The AI-assisted filmmaking space is full of hype and misleading claims. We want to show what's actually possible: the wins, the failures, and the messy middle ground.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bts-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Our Production Pipeline</h2>
+                    <p>Here's how a scene goes from concept to render in our workflow:</p>
+
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Script & Scene Description</h3>
+                                <p>We write the screenplay and break it down into detailed scene descriptions. AI assists with dialogue polish and consistency checking, but story decisions are human-made.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Shot Planning</h3>
+                                <p>Each scene gets broken into shots with camera angles, movements, and timing. This is traditional filmmaking craft — AI doesn't replace the eye of a director.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Blender Scene Generation</h3>
+                                <p>Our LLM-Blender pipeline generates initial scene setups from descriptions. This gives us a starting point to iterate from, rather than building from scratch.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Validation & Iteration</h3>
+                                <p>We review renders against our intent. If something's off, we either adjust manually or feed corrections back through the pipeline. Multiple passes are normal.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Polish & Final Render</h3>
+                                <p>Once scenes are structurally correct, we add the finishing touches that require human judgment: timing tweaks, emotional beats, visual details that sell the moment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bts-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>What AI Does (and Doesn't Do)</h2>
+
+                    <h3>AI Handles:</h3>
+                    <ul>
+                        <li>Initial scene setup and layout</li>
+                        <li>Code generation for Blender scripting</li>
+                        <li>Iteration on technical parameters</li>
+                        <li>Consistency checking across scenes</li>
+                        <li>Documentation and organization</li>
+                        <li>Rapid prototyping and exploration</li>
+                    </ul>
+
+                    <h3>Humans Handle:</h3>
+                    <ul>
+                        <li>Story and character decisions</li>
+                        <li>Emotional beats and timing</li>
+                        <li>Creative direction and vision</li>
+                        <li>Quality assessment and approval</li>
+                        <li>Voice and performance direction</li>
+                        <li>Final artistic judgment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="bts-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Tools We Use</h2>
+
+                    <h3>Blender</h3>
+                    <p>Our primary 3D animation tool. It's open-source, powerful, and has an excellent Python API that makes automation possible.</p>
+
+                    <h3>Claude</h3>
+                    <p>Our AI assistant for code generation, writing assistance, and pipeline orchestration. We use it through Claude Code for seamless development workflows.</p>
+
+                    <h3>Python</h3>
+                    <p>The glue that connects everything. Our automation scripts, Blender integration, and validation tools are all Python-based.</p>
+
+                    <h3>Git</h3>
+                    <p>Version control for everything — screenplay, documentation, code, and assets. Every change is tracked and reversible.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bts-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Challenges We Face</h2>
+
+                    <p>We're not going to pretend this is easy. Here are real challenges we're working through:</p>
+
+                    <h3>The Semantic Gap</h3>
+                    <p>Translating artistic intent into precise technical instructions is hard. "Make it feel more ominous" doesn't map directly to render settings.</p>
+
+                    <h3>Iteration Speed</h3>
+                    <p>Even with automation, render times add up. Finding the balance between quality and iteration speed is an ongoing challenge.</p>
+
+                    <h3>Consistency</h3>
+                    <p>Ensuring characters look the same across hundreds of shots requires careful asset management and validation.</p>
+
+                    <h3>The Uncanny Valley</h3>
+                    <p>AI-generated elements can feel "off" in subtle ways. Human review is essential for catching these issues.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bts-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Follow Our Progress</h2>
+                    <p>We document our journey in detail on our <a href="blog/index.html">production blog</a>. For technical deep-dives into specific tools and techniques, check out our <a href="tech.html">tech section</a>.</p>
+                    <p>Have questions about our process? We'd love to hear from you.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="behind-the-scenes.html">Behind the Scenes</a>
+                    <a href="characters.html">Characters</a>
+                    <a href="tech.html">Tech</a>
+                </nav>
+                <p class="footer-copyright">© 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
