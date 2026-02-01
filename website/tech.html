@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Deep-Dives - Rex Marks The Spot</title>
+    <meta name="description" content="Technical deep-dives into the tools and techniques we're building for AI-assisted filmmaking.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
+                <li><a href="characters.html">Characters</a></li>
+                <li><a href="tech.html" class="active">Tech Deep-Dives</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Tech Deep-Dives</h1>
+                <p>Detailed breakdowns of the tools, techniques, and automation we're building for AI-assisted animation production.</p>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <h2>Our Tech Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3><span class="tech-icon">🎬</span> Blender</h3>
+                        <p>Open-source 3D creation suite. We use it for modeling, animation, lighting, and rendering. Its Python API (bpy) enables our automation pipeline.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><span class="tech-icon">🐍</span> Python</h3>
+                        <p>The backbone of our automation. Python connects Blender to our AI systems, handles validation loops, and manages the rendering pipeline.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><span class="tech-icon">🤖</span> Claude</h3>
+                        <p>Our AI assistant for code generation, script writing, and pipeline orchestration. We use Claude Code for development and automation tasks.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><span class="tech-icon">📝</span> Git</h3>
+                        <p>Version control for everything — code, scripts, documentation. Our task-based branching strategy keeps parallel work organized.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Blender + LLM Integration</h2>
+                    <p>The core of our technical innovation is connecting language models to Blender for automated scene generation. Here's how it works:</p>
+
+                    <h3>Architecture Overview</h3>
+                    <pre><code>Scene Description → LLM → Blender Python Code → Render → Validation
+        ↑                                                         │
+        └─────────────── Feedback Loop ────────────────────────────┘</code></pre>
+
+                    <h3>Key Components</h3>
+
+                    <h4>1. Scene Parser</h4>
+                    <p>Converts natural language scene descriptions into structured data that the LLM can reason about. Handles locations, characters, props, lighting, and camera requirements.</p>
+
+                    <h4>2. Code Generator</h4>
+                    <p>The LLM generates Python code using Blender's bpy API. This code creates geometry, sets up cameras and lights, and configures render settings.</p>
+
+                    <h4>3. Headless Renderer</h4>
+                    <p>Blender runs without a GUI, executing generated scripts and producing renders. This enables batch processing and CI/CD integration.</p>
+
+                    <h4>4. Validation Loop</h4>
+                    <p>Renders are analyzed against the original intent. Discrepancies trigger corrective iterations until quality thresholds are met.</p>
+
+                    <p><a href="blog/posts/blender-llm-integration-research.html">Read our full research post →</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Proof of Concept Scripts</h2>
+                    <p>We've built two proof-of-concept scripts that demonstrate our approach:</p>
+
+                    <h3>poc_create_scene.py</h3>
+                    <p>Demonstrates basic scene creation from text descriptions. Capabilities:</p>
+                    <ul>
+                        <li>Parse scene requirements from structured input</li>
+                        <li>Generate Blender Python code for scene setup</li>
+                        <li>Create basic geometry and lighting</li>
+                        <li>Export renders in multiple formats</li>
+                    </ul>
+
+                    <h3>poc_validation_loop.py</h3>
+                    <p>Implements the feedback loop that checks renders against intent:</p>
+                    <ul>
+                        <li>Render current scene state</li>
+                        <li>Compare output against requirements</li>
+                        <li>Generate corrective instructions</li>
+                        <li>Iterate until quality threshold is met</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Pipeline Architecture</h2>
+
+                    <h3>Task Management</h3>
+                    <p>We use a task-based branching strategy where each unit of work gets its own branch. This allows parallel development and clean integration:</p>
+                    <ul>
+                        <li><code>task/5-storyboard-act-1</code></li>
+                        <li><code>task/6-website-production-blog-setup</code></li>
+                        <li><code>task/7-build-blender-automation-pipeline</code></li>
+                    </ul>
+
+                    <h3>Orchestration</h3>
+                    <p>Claude Code acts as our orchestration layer, managing task execution, coordinating between systems, and handling the feedback loops that make iteration possible.</p>
+
+                    <h3>Rendering Pipeline</h3>
+                    <p>Our rendering pipeline supports:</p>
+                    <ul>
+                        <li>Headless rendering for automation</li>
+                        <li>Multiple output formats (PNG, JPG, EXR)</li>
+                        <li>Configurable quality presets</li>
+                        <li>Batch processing for sequences</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Challenges & Open Questions</h2>
+
+                    <h3>The Semantic Gap</h3>
+                    <p>Translating "make it look more dramatic" into specific Blender operations is non-trivial. We're building a vocabulary of operations that bridges natural language and technical parameters.</p>
+
+                    <h3>State Management</h3>
+                    <p>Blender scenes have complex state. Ensuring the LLM understands current scene state before modifications requires careful context management and potentially scene serialization.</p>
+
+                    <h3>Quality Assessment</h3>
+                    <p>How do you programmatically determine if a render is "good enough"? This is an active area of research. We're exploring vision models for automated quality checking.</p>
+
+                    <h3>Iteration Speed</h3>
+                    <p>Even simple renders take time. We're experimenting with preview renders, proxy geometry, and selective re-rendering to speed up the feedback loop.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="bts-content">
+                    <h2>Roadmap</h2>
+                    <p>What we're working on next:</p>
+                    <ol>
+                        <li><strong>Asset library integration:</strong> Connect to character and environment assets</li>
+                        <li><strong>Animation support:</strong> Extend beyond static scenes to animated sequences</li>
+                        <li><strong>Vision-based validation:</strong> Use multimodal models for quality checking</li>
+                        <li><strong>Batch processing:</strong> Generate multiple shots in parallel</li>
+                        <li><strong>Version control for scenes:</strong> Track scene changes like code</li>
+                    </ol>
+                    <p>Follow the <a href="blog/index.html">blog</a> for updates as we build these systems.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="behind-the-scenes.html">Behind the Scenes</a>
+                    <a href="characters.html">Characters</a>
+                    <a href="tech.html">Tech</a>
+                </nav>
+                <p class="footer-copyright">© 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
