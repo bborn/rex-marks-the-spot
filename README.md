@@ -20,7 +20,13 @@ rex-marks-the-spot/
 │   ├── scenes/          # Blender scene files
 │   └── renders/         # Rendered output
 ├── scripts/             # Automation & pipeline scripts
+│   ├── blender/         # Blender Python modules (scene, objects, etc.)
+│   ├── render/          # Headless render pipeline
+│   ├── validate/        # Vision validation with Claude
+│   └── pipeline.py      # Main orchestration script
+├── renders/             # Rendered output files
 └── docs/                # Production documentation
+    └── pipeline-guide.md # Pipeline usage guide
 ```
 
 ## Production Pipeline
