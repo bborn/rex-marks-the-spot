@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairy Dinosaur Date Night - Act 1 Storyboard</title>
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --bg-medium: #16213e;
+            --accent: #0096ff;
+            --text-light: #eaeaea;
+            --text-muted: #888;
+            --scene-home: #FFE4B5;
+            --scene-storm: #2F4F4F;
+            --scene-car: #1C1C1C;
+            --scene-warp: #0096FF;
+            --scene-jurassic: #228B22;
+            --scene-cave: #4a4a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--bg-medium);
+            padding: 1.5rem 2rem;
+            border-bottom: 3px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .view-toggle button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .scene-nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .scene-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-medium);
+            border: 2px solid transparent;
+            border-radius: 6px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .scene-btn:hover {
+            border-color: var(--accent);
+        }
+
+        .scene-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .scene-btn[data-vfx="true"]::after {
+            content: " VFX";
+            font-size: 0.7rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Grid View */
+        .panels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .panel-card {
+            background: var(--bg-medium);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .panel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 150, 255, 0.2);
+        }
+
+        .panel-card img,
+        .panel-card object {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .panel-info {
+            padding: 1rem;
+        }
+
+        .panel-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .scene-indicator {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: var(--accent);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Sequence View */
+        .panels-sequence {
+            display: none;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .panels-sequence.active {
+            display: flex;
+        }
+
+        .panels-grid.active {
+            display: grid;
+        }
+
+        .panels-grid:not(.active) {
+            display: none;
+        }
+
+        .scene-section {
+            background: var(--bg-medium);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .scene-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .scene-header h2 {
+            font-size: 1.3rem;
+        }
+
+        .scene-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .scene-panels {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1.5rem;
+            scroll-snap-type: x mandatory;
+        }
+
+        .scene-panels .panel-card {
+            flex: 0 0 450px;
+            scroll-snap-align: start;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 95vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img,
+        .lightbox-content object {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        .lightbox-info {
+            position: absolute;
+            bottom: -3rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav.prev { left: -70px; }
+        .lightbox-nav.next { right: -70px; }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--bg-medium);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* VFX badge */
+        .vfx-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .panels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scene-panels .panel-card {
+                flex: 0 0 90%;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><span>Fairy Dinosaur Date Night</span> - Act 1 Storyboard</h1>
+            <div class="controls">
+                <div class="view-toggle">
+                    <button id="grid-view" class="active">Grid</button>
+                    <button id="sequence-view">Sequence</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="scene-nav" id="scene-nav">
+        <!-- Generated by JS -->
+    </nav>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-info">
+            <span id="panel-count">56 panels</span>
+            <span id="runtime">~12 minutes runtime</span>
+        </div>
+    </div>
+
+    <main>
+        <div class="panels-grid active" id="panels-grid">
+            <!-- Generated by JS -->
+        </div>
+
+        <div class="panels-sequence" id="panels-sequence">
+            <!-- Generated by JS -->
+        </div>
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">&larr;</button>
+        <div class="lightbox-content">
+            <object id="lightbox-image" type="image/svg+xml"></object>
+            <div class="lightbox-info" id="lightbox-info"></div>
+        </div>
+        <button class="lightbox-nav next" onclick="navigateLightbox(1)">&rarr;</button>
+    </div>
+
+    <script>
+        // Panel data
+        const scenes = [
+            {
+                num: 1,
+                title: "INT. HOME - EVENING",
+                duration: "3:30",
+                complexity: 2,
+                vfx: false,
+                panels: [
+                    { shot: "Wide Establishing", desc: "Living room, storm outside, kids on couch" },
+                    { shot: "Medium - Leo", desc: "Leo in dinosaur pajamas hugging toy" },
+                    { shot: "Tracking - Nina", desc: "Nina putting on earrings, multitasking" },
+                    { shot: "Two-Shot", desc: "Gabe and Nina, overlapping dialogue" },
+                    { shot: "Insert - Jenny", desc: "Jenny absorbed in phone" },
+                    { shot: "Close-up - TV", desc: "TV flickering with static (foreshadowing)" },
+                    { shot: "OTS - Kids", desc: "Kids watching TV, parents in background" },
+                    { shot: "Close-up - Mia", desc: "Mia looking up, concerned - 'Promise?'" },
+                    { shot: "Close-up - Gabe", desc: "Gabe hesitates, Nina glares, he promises" },
+                ]
+            },
+            {
+                num: 2,
+                title: "EXT. HOUSE - NIGHT",
+                duration: "0:15",
+                complexity: 3,
+                vfx: false,
+                panels: [
+                    { shot: "Wide - Exterior", desc: "House exterior, storm, lightning" },
+                    { shot: "Tracking", desc: "Parents rush through rain to car" },
+                    { shot: "Low Angle - Sky", desc: "Lightning cracks across sky" },
+                ]
+            },
+            {
+                num: 3,
+                title: "INT. CAR - NIGHT",
+                duration: "0:45",
+                complexity: 2,
+                vfx: false,
+                panels: [
+                    { shot: "Two-Shot - Driving", desc: "Gabe driving, Nina searching for phone" },
+                    { shot: "Insert - Phone", desc: "Phone showing 'Calling Nina Cell'" },
+                    { shot: "POV - Windshield", desc: "Rain-obscured road through windshield" },
+                    { shot: "Close-up - Nina", desc: "Nina concerned, 'Be nicer to her'" },
+                ]
+            },
+            {
+                num: 4,
+                title: "INT. HOUSE - MONTAGE",
+                duration: "0:45",
+                complexity: 2,
+                vfx: false,
+                panels: [
+                    { shot: "Wide - Living Room", desc: "Peaceful living room, kids watching TV" },
+                    { shot: "Insert - Jenny", desc: "Jenny texting, completely absorbed" },
+                    { shot: "Insert - Phone", desc: "Nina's phone buzzing under cushion" },
+                ]
+            },
+            {
+                num: 5,
+                title: "EXT. ROAD - TIME WARP",
+                duration: "0:20",
+                complexity: 5,
+                vfx: true,
+                panels: [
+                    { shot: "POV - Time Warp", desc: "TIME WARP opens ahead of car" },
+                    { shot: "Interior - Terror", desc: "Terror reaction, blue light flooding car" },
+                    { shot: "Wide - Portal", desc: "Car enters massive blue portal" },
+                    { shot: "Close-up - Vortex", desc: "Car consumed by swirling vortex" },
+                ]
+            },
+            {
+                num: 6,
+                title: "INT. HOUSE - SIMULTANEOUSLY",
+                duration: "0:20",
+                complexity: 3,
+                vfx: false,
+                panels: [
+                    { shot: "Wide - TV Explodes", desc: "TV explodes with static/sparks" },
+                    { shot: "Reaction - All Three", desc: "Jenny, Mia, Leo all startled" },
+                    { shot: "Low Light", desc: "Room dark, eerie atmosphere" },
+                    { shot: "Insert - Phone Glow", desc: "Nina's phone glowing supernatural blue" },
+                ]
+            },
+            {
+                num: 7,
+                title: "INT. CAR - JURASSIC DAY",
+                duration: "1:30",
+                complexity: 3,
+                vfx: false,
+                panels: [
+                    { shot: "Close-up - Nina Wakes", desc: "Nina wakes, confused, daylight" },
+                    { shot: "POV - Trashed Car", desc: "Chaos inside crashed car" },
+                    { shot: "Insert - Toy Dinosaur", desc: "Toy T-Rex on dashboard (irony)" },
+                    { shot: "Two-Shot", desc: "Nina rouses unconscious Gabe" },
+                    { shot: "POV - Window", desc: "Lush prehistoric vegetation outside" },
+                    { shot: "Wide - Swamp Reveal", desc: "Full Jurassic swamp reveal (wonder)" },
+                ]
+            },
+            {
+                num: 8,
+                title: "EXT. JURASSIC SWAMP - T-REX",
+                duration: "2:00",
+                complexity: 5,
+                vfx: true,
+                panels: [
+                    { shot: "Wide - Parents Emerge", desc: "Formal couple exits crashed car" },
+                    { shot: "POV - Exotic Plants", desc: "Exploring prehistoric vegetation" },
+                    { shot: "Medium - Weird Creature", desc: "Time warp and Jetplane glimpsed" },
+                    { shot: "Close-up - Ground", desc: "Ground rumbles, water ripples" },
+                    { shot: "Reaction - Creature Flees", desc: "Weird creature flees in terror" },
+                    { shot: "Wide - T-REX APPEARS", desc: "HERO SHOT - T-Rex reveal" },
+                    { shot: "Close-up - T-Rex Head", desc: "Terrifying T-Rex head detail" },
+                    { shot: "Low Angle", desc: "T-Rex SMASHES the car" },
+                    { shot: "Tracking - Flee", desc: "Parents flee into jungle" },
+                ]
+            },
+            {
+                num: 9,
+                title: "EXT. JURASSIC BRUSH - CHASE",
+                duration: "1:00",
+                complexity: 5,
+                vfx: true,
+                panels: [
+                    { shot: "Steadicam - Chase", desc: "Chase through giant ferns" },
+                    { shot: "POV - Looking Back", desc: "T-Rex much closer than expected" },
+                    { shot: "Wide - Destruction", desc: "T-Rex crashes through jungle" },
+                    { shot: "Medium - New Threat", desc: "Second dinosaur blocks path" },
+                    { shot: "Two-Shot - Running", desc: "Running and arguing (comedy)" },
+                    { shot: "POV - Cave Spotted", desc: "Cave entrance - salvation" },
+                    { shot: "Tracking - Slide In", desc: "Slide into cave, T-Rex arrives" },
+                ]
+            },
+            {
+                num: 10,
+                title: "INT. CAVE - EMOTIONAL CLIMAX",
+                duration: "1:30",
+                complexity: 4,
+                vfx: false,
+                panels: [
+                    { shot: "Wide - Cave Interior", desc: "T-Rex head at entrance, can't fit" },
+                    { shot: "Insert - Claws", desc: "T-Rex claws scraping at entrance" },
+                    { shot: "Two-Shot - Huddle", desc: "Parents huddle together, terror/relief" },
+                    { shot: "Wide - Sound Design", desc: "Reacting to dinosaur battle outside" },
+                    { shot: "Close-up - Nina", desc: "Fear transforms to determination" },
+                    { shot: "Two-Shot - Realization", desc: "Both realize they left the KIDS" },
+                    { shot: "Insert - Phone", desc: "Phone in Nina's hand - END ACT 1" },
+                ]
+            }
+        ];
+
+        let currentLightboxIndex = 0;
+        let allPanels = [];
+
+        // Initialize
+        function init() {
+            generateSceneNav();
+            generatePanels();
+            buildAllPanelsList();
+            setupEventListeners();
+        }
+
+        function generateSceneNav() {
+            const nav = document.getElementById('scene-nav');
+            scenes.forEach((scene, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'scene-btn';
+                btn.dataset.scene = scene.num;
+                btn.dataset.vfx = scene.vfx;
+                btn.textContent = `Scene ${scene.num}: ${scene.title.split(' - ')[0]}`;
+                btn.onclick = () => scrollToScene(scene.num);
+                nav.appendChild(btn);
+            });
+        }
+
+        function generatePanels() {
+            const gridContainer = document.getElementById('panels-grid');
+            const sequenceContainer = document.getElementById('panels-sequence');
+
+            scenes.forEach(scene => {
+                // Sequence view - scene section
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'scene-section';
+                sectionDiv.id = `scene-${scene.num}`;
+                sectionDiv.innerHTML = `
+                    <div class="scene-header">
+                        <h2>
+                            <span class="scene-indicator">Scene ${scene.num}</span>
+                            ${scene.title}
+                            ${scene.vfx ? '<span class="vfx-badge">MAJOR VFX</span>' : ''}
+                        </h2>
+                        <div class="scene-meta">
+                            <span>Duration: ${scene.duration}</span>
+                            <span>Panels: ${scene.panels.length}</span>
+                            <span>Complexity: ${scene.complexity}/5</span>
+                        </div>
+                    </div>
+                    <div class="scene-panels" id="scene-${scene.num}-panels"></div>
+                `;
+                sequenceContainer.appendChild(sectionDiv);
+
+                const scenePanelsDiv = document.getElementById(`scene-${scene.num}-panels`);
+
+                scene.panels.forEach((panel, panelIdx) => {
+                    const panelNum = panelIdx + 1;
+                    const filename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}.svg`;
+
+                    const cardHtml = `
+                        <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
+                            <object data="${filename}" type="image/svg+xml"></object>
+                            <div class="panel-info">
+                                <h3>${panel.shot}</h3>
+                                <p>${panel.desc}</p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Add to grid
+                    gridContainer.innerHTML += cardHtml;
+
+                    // Add to sequence
+                    scenePanelsDiv.innerHTML += cardHtml;
+                });
+            });
+        }
+
+        function buildAllPanelsList() {
+            scenes.forEach(scene => {
+                scene.panels.forEach((panel, idx) => {
+                    allPanels.push({
+                        scene: scene.num,
+                        panel: idx + 1,
+                        file: `scene-${String(scene.num).padStart(2, '0')}-panel-${String(idx + 1).padStart(2, '0')}.svg`,
+                        shot: panel.shot,
+                        desc: panel.desc,
+                        sceneTitle: scene.title
+                    });
+                });
+            });
+        }
+
+        function setupEventListeners() {
+            // View toggles
+            document.getElementById('grid-view').onclick = () => setView('grid');
+            document.getElementById('sequence-view').onclick = () => setView('sequence');
+
+            // Panel clicks
+            document.addEventListener('click', (e) => {
+                const card = e.target.closest('.panel-card');
+                if (card) {
+                    openLightbox(card.dataset.file);
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (document.getElementById('lightbox').classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                    if (e.key === 'ArrowRight') navigateLightbox(1);
+                    if (e.key === 'Escape') closeLightbox();
+                }
+            });
+        }
+
+        function setView(view) {
+            const gridBtn = document.getElementById('grid-view');
+            const seqBtn = document.getElementById('sequence-view');
+            const gridDiv = document.getElementById('panels-grid');
+            const seqDiv = document.getElementById('panels-sequence');
+
+            if (view === 'grid') {
+                gridBtn.classList.add('active');
+                seqBtn.classList.remove('active');
+                gridDiv.classList.add('active');
+                seqDiv.classList.remove('active');
+            } else {
+                gridBtn.classList.remove('active');
+                seqBtn.classList.add('active');
+                gridDiv.classList.remove('active');
+                seqDiv.classList.add('active');
+            }
+        }
+
+        function scrollToScene(num) {
+            const section = document.getElementById(`scene-${num}`);
+            if (section) {
+                setView('sequence');
+                setTimeout(() => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+
+        function openLightbox(file) {
+            currentLightboxIndex = allPanels.findIndex(p => p.file === file);
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(direction) {
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex < 0) currentLightboxIndex = allPanels.length - 1;
+            if (currentLightboxIndex >= allPanels.length) currentLightboxIndex = 0;
+            updateLightbox();
+        }
+
+        function updateLightbox() {
+            const panel = allPanels[currentLightboxIndex];
+            document.getElementById('lightbox-image').data = panel.file;
+            document.getElementById('lightbox-info').innerHTML = `
+                <strong>Scene ${panel.scene}: ${panel.sceneTitle}</strong> - Panel ${panel.panel}<br>
+                ${panel.shot}: ${panel.desc}<br>
+                <small>${currentLightboxIndex + 1} of ${allPanels.length}</small>
+            `;
+
+            // Update progress
+            const progress = ((currentLightboxIndex + 1) / allPanels.length) * 100;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+        }
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
