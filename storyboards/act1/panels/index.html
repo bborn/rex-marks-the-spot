@@ -268,6 +268,12 @@
             object-fit: contain;
         }
 
+        #lightbox-image-png {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
         .lightbox-info {
             position: absolute;
             bottom: -3rem;
@@ -406,7 +412,8 @@
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
         <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">&larr;</button>
         <div class="lightbox-content">
-            <object id="lightbox-image" type="image/svg+xml"></object>
+            <img id="lightbox-image-png" style="display: none;">
+            <object id="lightbox-image-svg" type="image/svg+xml"></object>
             <div class="lightbox-info" id="lightbox-info"></div>
         </div>
         <button class="lightbox-nav next" onclick="navigateLightbox(1)">&rarr;</button>
@@ -617,9 +624,20 @@
 
                 scene.panels.forEach((panel, panelIdx) => {
                     const panelNum = panelIdx + 1;
-                    const filename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}.svg`;
+                    const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}`;
+                    // Use PNG for Scene 1 (generated images), SVG placeholders for others
+                    const ext = scene.num === 1 ? 'png' : 'svg';
+                    const filename = `${baseFilename}.${ext}`;
 
-                    const cardHtml = `
+                    const cardHtml = ext === 'png' ? `
+                        <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
+                            <img src="${filename}" alt="Scene ${scene.num} Panel ${panelNum}">
+                            <div class="panel-info">
+                                <h3>${panel.shot}</h3>
+                                <p>${panel.desc}</p>
+                            </div>
+                        </div>
+                    ` : `
                         <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
                             <object data="${filename}" type="image/svg+xml"></object>
                             <div class="panel-info">
@@ -641,10 +659,13 @@
         function buildAllPanelsList() {
             scenes.forEach(scene => {
                 scene.panels.forEach((panel, idx) => {
+                    const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(idx + 1).padStart(2, '0')}`;
+                    const ext = scene.num === 1 ? 'png' : 'svg';
                     allPanels.push({
                         scene: scene.num,
                         panel: idx + 1,
-                        file: `scene-${String(scene.num).padStart(2, '0')}-panel-${String(idx + 1).padStart(2, '0')}.svg`,
+                        file: `${baseFilename}.${ext}`,
+                        isPng: ext === 'png',
                         shot: panel.shot,
                         desc: panel.desc,
                         sceneTitle: scene.title
@@ -726,7 +747,19 @@
 
         function updateLightbox() {
             const panel = allPanels[currentLightboxIndex];
-            document.getElementById('lightbox-image').data = panel.file;
+            const pngEl = document.getElementById('lightbox-image-png');
+            const svgEl = document.getElementById('lightbox-image-svg');
+
+            if (panel.isPng) {
+                pngEl.src = panel.file;
+                pngEl.style.display = 'block';
+                svgEl.style.display = 'none';
+            } else {
+                svgEl.data = panel.file;
+                svgEl.style.display = 'block';
+                pngEl.style.display = 'none';
+            }
+
             document.getElementById('lightbox-info').innerHTML = `
                 <strong>Scene ${panel.scene}: ${panel.sceneTitle}</strong> - Panel ${panel.panel}<br>
                 ${panel.shot}: ${panel.desc}<br>
