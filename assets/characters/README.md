@@ -15,12 +15,38 @@ This directory contains complete character design documentation for all six main
 | **Ruben** | Fairy godfather | Droopy wings (changing with emotion), wild gray hair, worn fairy clothes |
 | **Jetplane** | Dinosaur companion | Teal scales, big amber eyes, ear-frills, rainbow farts |
 
+## Quick Start: Generate Concept Art
+
+### Automated Generation (Recommended)
+
+```bash
+# Set your API key
+export OPENAI_API_KEY="your-key-here"
+
+# Generate all character concept art
+python scripts/generate_concept_art.py --all
+
+# Generate for a specific character
+python scripts/generate_concept_art.py --character jetplane
+
+# Preview prompts without generating
+python scripts/generate_concept_art.py --all --dry-run
+```
+
+See **[GENERATION-WORKFLOW.md](GENERATION-WORKFLOW.md)** for detailed instructions.
+
+Track progress in **[IMAGE-MANIFEST.md](IMAGE-MANIFEST.md)** (75 images total).
+
+---
+
 ## Directory Structure
 
 ```
 assets/characters/
 ├── README.md                    # This file
 ├── AI-IMAGE-GENERATION-GUIDE.md # Master guide for AI image generation
+├── GENERATION-WORKFLOW.md       # Step-by-step generation workflow
+├── IMAGE-MANIFEST.md            # Deliverables checklist (75 images)
 │
 ├── mia/
 │   ├── turnaround.md           # 3D modeling reference
