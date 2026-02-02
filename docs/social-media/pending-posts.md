@@ -41,14 +41,20 @@ Right: New sketch-focused approach
 
 ### Suggested Images
 
-**Before (current 3D rendered style):**
+**Ready-to-post comparison images:**
+- `docs/social-media/images/storyboard-style-comparison-1.png` (family living room scene)
+- `docs/social-media/images/storyboard-style-comparison-2.png` (kids in shelter scene)
+
+**Individual files (if needed):**
+
+Before (current 3D rendered style):
 - `storyboards/act1/panels/scene-01-panel-01.png`
 - `storyboards/act2/panels/scene-20-panel-01.png`
 
-**After (pencil sketch style):**
+After (pencil sketch style):
 - `storyboards/sketches/scene-01-panel-01-sketch.png`
 - `storyboards/sketches/scene-20-panel-01-sketch.png`
-- `storyboards/sketches/scene-01-panel-04-sketch.png` (bonus comparison)
+- `storyboards/sketches/scene-01-panel-04-sketch.png` (bonus)
 
 ---
 
