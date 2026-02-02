@@ -45,3 +45,8 @@
 *.otf filter=lfs diff=lfs merge=lfs -text
 *.woff filter=lfs diff=lfs merge=lfs -text
 *.woff2 filter=lfs diff=lfs merge=lfs -text
+
+
+
+# EXCEPTION: docs/images served by GitHub Pages (no LFS support)
+docs/images/** -filter -diff -merge binary
