@@ -49,24 +49,15 @@
             <div class="post-content">
                 <div class="container">
                     <div class="post-body">
-                        <p>One of the core technical challenges of this project is connecting language models to Blender in a way that's actually useful for animation production. This post documents our research, architecture decisions, and early proof-of-concept work.</p>
+                        <p>I need Blender to do what I say. That's the problem I'm solving.</p>
 
-                        <h2>The Problem</h2>
+                        <p>Normally, making a 3D scene means clicking around for hours. Set up objects. Position the camera. Tweak the lights. Render. Hate it. Do it again.</p>
 
-                        <p>Traditional 3D animation is labor-intensive. Even with modern tools, creating a single scene requires:</p>
+                        <p>I want to describe what I want and have it appear. So I'm connecting Claude to Blender.</p>
 
-                        <ul>
-                            <li>Setting up the scene (objects, cameras, lights)</li>
-                            <li>Positioning and animating elements</li>
-                            <li>Iterating based on feedback</li>
-                            <li>Rendering and reviewing</li>
-                        </ul>
+                        <h2>How It Works</h2>
 
-                        <p>Each iteration cycle can take hours or days. We wanted to explore whether AI could help compress this cycle — not by replacing the artist, but by handling the tedious setup work and enabling faster iteration.</p>
-
-                        <h2>Our Architecture</h2>
-
-                        <p>After exploring several approaches, we settled on what we call the "Validation Loop" architecture:</p>
+                        <p>The basic idea:</p>
 
                         <pre><code>┌─────────────────────────────────────────────────────────────┐
 │                    Orchestration Layer                       │
@@ -86,94 +77,43 @@
 │                  Python API / bpy module                     │
 └─────────────────────────────────────────────────────────────┘</code></pre>
 
-                        <h3>Key Components</h3>
+                        <p>I describe a scene. Claude writes Python code. Blender runs it headless (no GUI). I get a render. If it's wrong, Claude looks at the image and tries again.</p>
 
-                        <p><strong>1. Scene Descriptions:</strong> Natural language descriptions of what the scene should contain and how it should look.</p>
+                        <p>That's the theory anyway.</p>
 
-                        <p><strong>2. Blender Script Generation:</strong> The LLM generates Python code that uses Blender's bpy API to create the scene.</p>
+                        <h2>What I've Built So Far</h2>
 
-                        <p><strong>3. Headless Rendering:</strong> Blender runs without a GUI, executing the script and producing a render.</p>
+                        <p>Two scripts to test if this actually works:</p>
 
-                        <p><strong>4. Validation Loop:</strong> The render is analyzed (potentially by vision models) and compared against the original intent. If it doesn't match, we iterate.</p>
+                        <p><strong>poc_create_scene.py</strong> — Takes a description, generates Blender Python code, creates the scene, spits out a render.</p>
 
-                        <h2>Proof of Concept</h2>
+                        <p><strong>poc_validation_loop.py</strong> — Renders, checks if it looks right, fixes what's wrong, repeats until it's decent.</p>
 
-                        <p>We built two proof-of-concept scripts to test this architecture:</p>
+                        <h2>What's Hard</h2>
 
-                        <h3>poc_create_scene.py</h3>
+                        <p><strong>Vague words don't translate to code.</strong> "Make it more dramatic" means nothing to Blender. I'm trying to build a vocabulary that bridges fuzzy creative direction and specific operations. It's slow going.</p>
 
-                        <p>This script demonstrates basic scene creation from text descriptions. It can:</p>
+                        <p><strong>Blender has tons of state.</strong> The AI needs to know what's already in the scene before it can change anything. Getting that context right is tricky.</p>
 
-                        <ul>
-                            <li>Parse scene requirements from structured input</li>
-                            <li>Generate appropriate Blender Python code</li>
-                            <li>Create basic geometry and lighting setups</li>
-                            <li>Export renders in various formats</li>
-                        </ul>
+                        <p><strong>Rendering takes forever.</strong> Even a simple scene is several seconds. The feedback loop only works if you can iterate fast. I'm using preview renders and simpler geometry to speed things up.</p>
 
-                        <h3>poc_validation_loop.py</h3>
+                        <p><strong>How do you know when it's good enough?</strong> I don't have a great answer yet. Right now it's mostly me looking at it and deciding.</p>
 
-                        <p>This implements the feedback loop that checks renders against intent:</p>
+                        <h2>What's Actually Working</h2>
 
-                        <ul>
-                            <li>Renders the current scene state</li>
-                            <li>Compares output against requirements</li>
-                            <li>Generates corrective instructions if needed</li>
-                            <li>Iterates until quality threshold is met</li>
-                        </ul>
+                        <p>Some stuff does work:</p>
 
-                        <h2>Challenges We've Encountered</h2>
+                        <p>Basic scene setup from descriptions — works pretty well. Camera positioning from shot descriptions — surprisingly good. Simple lighting from mood descriptions — decent. The feedback loop improving results over passes — yes, it helps.</p>
 
-                        <h3>1. The Semantic Gap</h3>
+                        <h2>What's Next</h2>
 
-                        <p>Translating "make it look more dramatic" into specific Blender operations is hard. Natural language is ambiguous; 3D software is precise. We're working on building a vocabulary of operations that bridges this gap.</p>
+                        <p>Hook up my actual character and environment assets. Figure out animation (right now it's just static scenes). Better quality checking. Running multiple shots at once.</p>
 
-                        <h3>2. State Management</h3>
+                        <h2>Stuff I Don't Know Yet</h2>
 
-                        <p>Blender scenes have complex state. Ensuring the LLM understands the current scene state before making modifications requires careful context management.</p>
+                        <p>How much cinematography knowledge should I bake in? How specific do scene descriptions need to be? What do I do when the creative direction is intentionally vague? When do I just give up and do it manually?</p>
 
-                        <h3>3. Render Time</h3>
-
-                        <p>Even simple renders take time. The validation loop only works if we can iterate quickly enough. We're exploring preview renders and proxy geometry to speed things up.</p>
-
-                        <h3>4. Quality Threshold</h3>
-
-                        <p>How do you programmatically determine if a render is "good enough"? This is an open research question we're still exploring.</p>
-
-                        <h2>What's Working</h2>
-
-                        <p>Despite the challenges, we've had some wins:</p>
-
-                        <ul>
-                            <li><strong>Basic scene setup:</strong> Creating scenes from descriptions works reliably</li>
-                            <li><strong>Camera positioning:</strong> The LLM can translate shot descriptions into camera placements</li>
-                            <li><strong>Lighting:</strong> Simple lighting setups from mood descriptions are working</li>
-                            <li><strong>Iteration:</strong> The feedback loop does improve results over multiple passes</li>
-                        </ul>
-
-                        <h2>Next Steps</h2>
-
-                        <p>Our roadmap for the Blender integration:</p>
-
-                        <ol>
-                            <li><strong>Asset library integration:</strong> Connect to our character and environment assets</li>
-                            <li><strong>Animation support:</strong> Extend beyond static scenes to animated sequences</li>
-                            <li><strong>Better validation:</strong> Implement vision-based quality checking</li>
-                            <li><strong>Batch processing:</strong> Generate multiple shots in parallel</li>
-                        </ol>
-
-                        <h2>Open Questions</h2>
-
-                        <p>Some things we're still figuring out:</p>
-
-                        <ul>
-                            <li>How much should the LLM "know" about cinematography principles?</li>
-                            <li>What's the right level of abstraction for scene descriptions?</li>
-                            <li>How do we handle creative direction that's intentionally vague?</li>
-                            <li>When should the human step in vs. let the system iterate?</li>
-                        </ul>
-
-                        <p>We'll share more as we learn. If you're working on similar problems, we'd love to hear about your approach.</p>
+                        <p>Still figuring it out. I'll post more when I learn more.</p>
                     </div>
 
                     <nav class="post-nav">
