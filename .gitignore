@@ -1,2 +1,32 @@
+# Task worktrees
 .task-worktrees
+
+# Python
 .venv/
+__pycache__/
+*.pyc
+
+# Blender backup files (autosaves)
+*.blend1
+*.blend2
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary render outputs (keep final renders in renders/)
+tmp/
+temp/
+
+# Node modules (for website)
+node_modules/
+
+# Environment files
+.env
+.env.local
