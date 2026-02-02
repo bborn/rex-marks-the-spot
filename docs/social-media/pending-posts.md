@@ -46,7 +46,9 @@ Right: New sketch-focused approach
 - `storyboards/act2/panels/scene-20-panel-01.png`
 
 **After (pencil sketch style):**
-> **ACTION NEEDED:** Generate pencil sketch versions of the same scenes to create the comparison. These don't exist yet and need to be created before this post can go live.
+- `storyboards/sketches/scene-01-panel-01-sketch.png`
+- `storyboards/sketches/scene-20-panel-01-sketch.png`
+- `storyboards/sketches/scene-01-panel-04-sketch.png` (bonus comparison)
 
 ---
 
@@ -198,7 +200,7 @@ AI helps us make more. Human creativity decides what to make.
 
 ## Publishing Checklist
 
-- [ ] Create pencil sketch storyboard versions for Post 1 comparison
+- [x] Create pencil sketch storyboard versions for Post 1 comparison
 - [ ] Take website screenshots for Post 3
 - [ ] Verify all image file paths still exist
 - [ ] Schedule posts according to content calendar (see `docs/social-media-strategy.md`)
