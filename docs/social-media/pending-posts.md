@@ -148,11 +148,10 @@ Link in bio.
 
 ### Suggested Images
 
-- Screenshot of the homepage (`docs/index.html` rendered in browser)
-- Screenshot of the storyboard browser (`docs/storyboards/act1/panels/` in browser)
-- Screenshot of the characters page (`docs/characters.html` in browser)
-
-> **Note:** Use browser screenshots showing actual website at rexmarksthespot.com for authenticity.
+**Ready-to-post screenshots:**
+- `docs/social-media/images/website-homepage.png` (main landing page)
+- `docs/social-media/images/website-storyboards.png` (storyboard browser with panels)
+- `docs/social-media/images/website-characters.png` (character profiles with 3D models)
 
 ---
 
@@ -207,7 +206,7 @@ AI helps us make more. Human creativity decides what to make.
 ## Publishing Checklist
 
 - [x] Create pencil sketch storyboard versions for Post 1 comparison
-- [ ] Take website screenshots for Post 3
+- [x] Take website screenshots for Post 3
 - [ ] Verify all image file paths still exist
 - [ ] Schedule posts according to content calendar (see `docs/social-media-strategy.md`)
 - [ ] Cross-post to both platforms
