@@ -89,6 +89,53 @@ This is the "Fairy Dinosaur Date Night" animated movie production project.
 - Jurassic swamp/jungle
 - Cave hideout
 
+## AI 3D Character Generation
+
+**DO NOT** manually model characters in Blender - use AI generation tools instead.
+
+### Recommended Pipeline (Priority Order)
+
+1. **Tripo AI** (https://www.tripo3d.ai) - Primary tool
+   - Best for animation-ready characters with auto-rigging
+   - Clean quad topology, $12/mo
+   - Use text-to-3D or image-to-3D with storyboard frames
+
+2. **Meshy** (https://www.meshy.ai) - Secondary/iteration
+   - Good for quick variations
+   - 500+ preset animations included
+   - Blender plugin available
+
+3. **Hyper3D Rodin** - Hero characters (enable in BlenderMCP)
+   - Premium quality for main cast
+   - T-Pose output for rigging
+   - Enable: BlenderMCP panel > "Use Hyper3D Rodin 3D model generation"
+
+### BlenderMCP AI Integrations
+
+Enable these in the BlenderMCP panel (View3D > Sidebar > BlenderMCP):
+
+- **Hyper3D Rodin**: Check "Use Hyper3D Rodin 3D model generation"
+- **Hunyuan3D**: Check "Use Tencent Hunyuan 3D model generation"
+- **Sketchfab**: Check "Use assets from Sketchfab" + add API key
+
+### Character Generation Workflow
+
+1. Generate concept art/storyboard showing character design
+2. Use AI tool (Tripo/Meshy/Rodin) to create 3D model from image
+3. Export as FBX/GLB with rigging
+4. Import to Blender for scene integration
+5. Apply animations from library or create custom
+
+### Quality Standards
+
+- Characters must match Pixar-like stylized aesthetic from storyboards
+- Must have clean topology suitable for rigging/animation
+- Must export with PBR materials (Diffuse, Roughness, Metallic, Normal)
+
+**See:** `docs/research/3d-model-generation.md` for full tool comparison
+
+---
+
 ## Rendering Pipeline
 
 - **Interactive development**: Use BlenderMCP for scene building

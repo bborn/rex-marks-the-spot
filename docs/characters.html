@@ -24,7 +24,7 @@
             </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="storyboards/act1/panels/" class="nav-highlight">Storyboards</a></li>
+                <li><a href="storyboards/" class="nav-highlight">Storyboards</a></li>
                 <li><a href="blog/index.html">Blog</a></li>
                 <li><a href="behind-the-scenes.html">Behind the Scenes</a></li>
                 <li><a href="characters.html" class="active">Characters</a></li>
@@ -38,15 +38,66 @@
         <section class="page-header">
             <div class="container">
                 <h1>Characters</h1>
-                <p>Meet the cast of "Fairy Dinosaur Date Night" — concept art and final designs will be revealed as they're approved.</p>
+                <p>Meet the cast of "Fairy Dinosaur Date Night" — featuring our actual 3D character models created in Blender.</p>
             </div>
         </section>
 
         <section class="bts-section">
             <div class="container">
+                <style>
+                    .characters-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                        gap: 2rem;
+                    }
+                    .character-card {
+                        background: var(--bg-secondary, #1a1a2e);
+                        border-radius: 16px;
+                        overflow: hidden;
+                        border: 1px solid var(--border-color, #333);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .character-card:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    }
+                    .character-image {
+                        width: 100%;
+                        aspect-ratio: 1;
+                        background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                    }
+                    .character-image img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    .character-info {
+                        padding: 1.5rem;
+                    }
+                    .character-info h3 {
+                        font-size: 1.4rem;
+                        margin-bottom: 0.25rem;
+                    }
+                    .character-role {
+                        color: var(--accent-primary, #6366f1);
+                        font-weight: 500;
+                        margin-bottom: 0.75rem;
+                    }
+                    .character-info > p:last-child {
+                        color: var(--text-muted, #888);
+                        font-size: 0.9rem;
+                        line-height: 1.6;
+                    }
+                </style>
                 <div class="characters-grid">
                     <article class="character-card">
-                        <div class="character-image">👧</div>
+                        <div class="character-image">
+                            <img src="images/characters/mia-preview.png" alt="Mia - 3D character model">
+                        </div>
                         <div class="character-info">
                             <h3>Mia</h3>
                             <p class="character-role">The Determined Sister</p>
@@ -55,7 +106,9 @@
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">👦</div>
+                        <div class="character-image">
+                            <img src="images/characters/leo-preview.png" alt="Leo - 3D character model">
+                        </div>
                         <div class="character-info">
                             <h3>Leo</h3>
                             <p class="character-role">The Observant Brother</p>
@@ -64,7 +117,9 @@
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">🧚‍♂️</div>
+                        <div class="character-image">
+                            <img src="images/characters/ruben-preview.png" alt="Ruben - 3D character model">
+                        </div>
                         <div class="character-info">
                             <h3>Ruben</h3>
                             <p class="character-role">The Depressed Fairy Godfather</p>
@@ -73,7 +128,9 @@
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">🦕</div>
+                        <div class="character-image">
+                            <img src="images/characters/jetplane-preview.png" alt="Jetplane - 3D character model">
+                        </div>
                         <div class="character-info">
                             <h3>Jetplane</h3>
                             <p class="character-role">The Magical Dinosaur</p>
@@ -82,7 +139,9 @@
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">👨</div>
+                        <div class="character-image">
+                            <img src="images/characters/gabe-preview.png" alt="Gabe - 3D character model">
+                        </div>
                         <div class="character-info">
                             <h3>Gabe</h3>
                             <p class="character-role">The Inventive Dad</p>
@@ -91,7 +150,9 @@
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">👩</div>
+                        <div class="character-image">
+                            <img src="images/characters/nina-preview.png" alt="Nina - 3D character model">
+                        </div>
                         <div class="character-info">
                             <h3>Nina</h3>
                             <p class="character-role">The Practical Mom</p>
@@ -105,16 +166,16 @@
         <section class="bts-section">
             <div class="container">
                 <div class="bts-content">
-                    <h2>Character Design Process</h2>
-                    <p>We're still in the early stages of character design. Our process involves:</p>
+                    <h2>3D Character Models</h2>
+                    <p>All six main characters have been modeled in Blender with a stylized, low-poly aesthetic that gives the film its unique visual identity. Each character was designed with these principles:</p>
                     <ul>
-                        <li><strong>Personality first:</strong> Understanding who each character is before deciding how they look</li>
-                        <li><strong>Silhouette testing:</strong> Ensuring each character is recognizable from their outline alone</li>
-                        <li><strong>Expression sheets:</strong> Exploring the range of emotions each character needs to convey</li>
-                        <li><strong>Color studies:</strong> Finding palettes that reflect personality and work in various lighting</li>
-                        <li><strong>3D modeling:</strong> Translating 2D concepts into Blender-ready assets</li>
+                        <li><strong>Personality-driven design:</strong> Each character's appearance reflects their role and personality</li>
+                        <li><strong>Distinctive silhouettes:</strong> Every character is recognizable from their outline alone</li>
+                        <li><strong>Consistent style:</strong> A cohesive low-poly aesthetic across the entire cast</li>
+                        <li><strong>Animation-ready:</strong> Models structured for efficient rigging and animation</li>
+                        <li><strong>Color storytelling:</strong> Palettes that reflect each character's emotional journey</li>
                     </ul>
-                    <p>As designs are approved, we'll share concept art, development sketches, and final 3D models here. Follow the <a href="blog/index.html">blog</a> for updates.</p>
+                    <p>The magical characters (Ruben and Jetplane) feature special elements like fairy wings and the dinosaur's unique design. Follow the <a href="blog/index.html">blog</a> for updates on animation progress.</p>
                 </div>
             </div>
         </section>
@@ -144,7 +205,7 @@
                 </div>
                 <nav class="footer-nav">
                     <a href="index.html">Home</a>
-                    <a href="storyboards/act1/panels/">Storyboards</a>
+                    <a href="storyboards/">Storyboards</a>
                     <a href="blog/index.html">Blog</a>
                     <a href="behind-the-scenes.html">Behind the Scenes</a>
                     <a href="characters.html">Characters</a>

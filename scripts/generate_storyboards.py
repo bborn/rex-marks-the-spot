@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Generate storyboard images using Gemini API."""
+"""Generate storyboard images using Gemini API.
+
+STYLE: Rough sketch storyboards - like Pixar thumbnail boards.
+Simple, loose pencil sketches focusing on composition and staging.
+Black and white or grayscale. NOT detailed final renders.
+"""
 
 import base64
 import os
@@ -14,90 +19,99 @@ from google.genai import types
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 # Output directory
-OUTPUT_DIR = Path(__file__).parent.parent / "storyboards" / "act1" / "panels"
+OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "storyboards" / "act1" / "panels"
 
-# Scene 1 prompts (9 panels)
+# Rough sketch style prefix - applied to all prompts
+SKETCH_STYLE = """Rough pencil sketch storyboard panel, black and white,
+loose gestural lines, animation production thumbnail style,
+simple shapes for characters, focus on composition and staging,
+hand-drawn look with visible sketch lines, NOT rendered or polished,
+professional storyboard artist style like Pixar pre-production thumbnails,
+grayscale with hatching for shadows, 16:9 aspect ratio"""
+
+# Scene 1 prompts (9 panels) - ROUGH SKETCH STYLE
 SCENE_1_PANELS = [
     {
         "filename": "scene-01-panel-01.png",
-        "prompt": """Storyboard panel, wide establishing shot, warm suburban living room,
-Pixar animation style, cozy domestic chaos,
-TV on left side flickering, couch center-left with two children,
-kitchen visible in background, windows showing storm clouds darkening,
-warm amber interior lighting, lightning flash through window,
-dinosaur toys scattered on floor, family home atmosphere,
-cinematic composition 16:9"""
+        "prompt": f"""{SKETCH_STYLE},
+WIDE ESTABLISHING SHOT - living room interior,
+TV screen left (simple rectangle), couch center with two small child figures,
+kitchen area sketched in background right, window showing storm clouds,
+dinosaur toy shapes scattered on floor, cozy family home feel,
+arrow indicating lightning flash through window"""
     },
     {
         "filename": "scene-01-panel-02.png",
-        "prompt": """Storyboard panel, medium shot, cute 5-year-old boy on couch,
-Pixar animation style, wearing green dinosaur pajamas,
-sitting cross-legged hugging plush T-Rex toy,
-multiple plastic dinosaur toys around him,
-TV glow on face, content expression watching cartoons,
-warm domestic lighting, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+MEDIUM SHOT - small boy figure on couch,
+simple child shape wearing pajamas with dinosaur pattern indicated,
+sitting cross-legged hugging round plush toy shape,
+smaller toy shapes around him, TV glow indicated with light hatching,
+content relaxed posture, watching off-screen"""
     },
     {
         "filename": "scene-01-panel-03.png",
-        "prompt": """Storyboard panel, medium tracking shot, elegant mother late 30s,
-Pixar animation style, walking through house putting on earrings,
-wearing elegant black cocktail dress, multitasking,
-moving from living room toward front door,
-checking purse while walking, frantic but graceful movement,
-warm domestic lighting, motion blur indicating movement,
-16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+TRACKING SHOT - woman figure walking through house,
+elegant dress shape indicated, hands at ears (putting on earrings),
+motion lines showing movement left to right,
+purse in hand, rushing body language,
+interior doorway and furniture shapes in background"""
     },
     {
         "filename": "scene-01-panel-04.png",
-        "prompt": """Storyboard panel, two-shot medium, married couple in formal wear,
-Pixar animation style, husband in black tuxedo checking watch impatiently,
-wife in black dress still putting together her look,
-overlapping conversation energy, comedy timing,
-children visible on couch in background, babysitter absorbed in phone,
-warm interior lighting, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+TWO-SHOT MEDIUM - couple in formal wear,
+man figure right checking watch (impatient gesture),
+woman figure left still getting ready,
+children on couch in background (simple shapes),
+teen figure in chair looking at phone rectangle,
+comedy staging, overlapping conversation energy"""
     },
     {
         "filename": "scene-01-panel-05.png",
-        "prompt": """Storyboard panel, close-up insert, teenage babysitter blonde ponytail,
-Pixar animation style, head tilted down looking at phone screen,
-texting completely absorbed, oblivious expression,
-phone glow illuminating face, background soft focus,
-cheerful but disconnected, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+CLOSE-UP INSERT - teenage girl looking at phone,
+ponytail hairstyle indicated, head tilted down,
+phone rectangle glowing in hands,
+completely absorbed expression, oblivious posture,
+background indicated with minimal lines"""
     },
     {
         "filename": "scene-01-panel-06.png",
-        "prompt": """Storyboard panel, close-up, TV screen filling frame,
-Pixar animation style, cartoon interrupted by static lines,
-horizontal scan lines rolling through, blue electrical flicker,
-lightning flash reflected in screen, ominous foreshadowing,
-static distortion effect, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+CLOSE-UP - TV screen filling frame,
+static lines drawn across screen rectangle,
+zigzag lines indicating electrical interference,
+ominous mood, foreshadowing element,
+simple TV frame edges visible"""
     },
     {
         "filename": "scene-01-panel-07.png",
-        "prompt": """Storyboard panel, over-the-shoulder shot from behind children,
-Pixar animation style, boy in dinosaur pajamas and girl in pajamas,
-backs of heads visible, looking at TV and parents in background,
-parents still preparing to leave in background,
-contrast between children's calm and parents' chaos,
-TV glow on silhouettes, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+OVER-SHOULDER SHOT - behind two children on couch,
+backs of heads in foreground (boy and girl shapes),
+TV rectangle visible ahead, parents figures in background,
+parents still rushing around, children calm watching,
+contrast in energy levels indicated through pose"""
     },
     {
         "filename": "scene-01-panel-08.png",
-        "prompt": """Storyboard panel, close-up emotional, 8-year-old girl face,
-Pixar animation style, big expressive brown eyes looking up,
-earnest concerned expression, need for reassurance,
-TV flickering reflected in eyes, slight worry,
-lightning flash briefly illuminating, vulnerable moment,
-slow push composition, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+CLOSE-UP - young girl's face,
+big expressive eyes looking up (off-screen to parents),
+worried/concerned expression, eyebrows raised,
+simple face with emotional read clear,
+vulnerability shown in posture and expression"""
     },
     {
         "filename": "scene-01-panel-09.png",
-        "prompt": """Storyboard panel, close-up to two-shot, father with glasses showing conflict,
-Pixar animation style, mother entering frame with sharp glare,
-husband uncomfortable, wife's "don't you dare" expression,
-tension then relief when he finally promises,
-rectangular glasses, stubble, black tuxedo,
-dramatic family moment, 16:9 cinematic composition"""
+        "prompt": f"""{SKETCH_STYLE},
+CLOSE-UP TO TWO-SHOT - father with glasses,
+man figure showing hesitation/conflict in expression,
+woman figure entering frame with stern look,
+tension between them visible in body language,
+dramatic family moment, glasses indicated on father"""
     },
 ]
 
