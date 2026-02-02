@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storyboards - Fairy Dinosaur Date Night</title>
+    <meta name="description" content="Browse all storyboard panels from Fairy Dinosaur Date Night - Acts 1, 2, and 3.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .storyboard-hero {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+
+        .storyboard-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .storyboard-hero p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .acts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .act-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .act-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .act-card.coming-soon {
+            opacity: 0.6;
+        }
+
+        .act-card.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .act-thumbnail {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .act-thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2px;
+            height: 100%;
+        }
+
+        .act-thumbnail-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .act-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .act-badge {
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .act-badge.complete {
+            background: var(--accent-secondary);
+        }
+
+        .act-badge.in-progress {
+            background: var(--accent-tertiary);
+        }
+
+        .act-badge.planned {
+            background: var(--text-muted);
+        }
+
+        .act-content {
+            padding: 1.5rem;
+        }
+
+        .act-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .act-content h3 {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .act-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .act-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .act-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-muted);
+        }
+
+        .act-stats .icon {
+            font-size: 1rem;
+        }
+
+        .act-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .act-cta:hover {
+            background: var(--accent-hover);
+            transform: translateX(4px);
+        }
+
+        .act-card.coming-soon .act-cta {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .act-card.coming-soon .act-cta:hover {
+            transform: none;
+        }
+
+        /* Featured Panels Section */
+        .featured-section {
+            background: var(--bg-secondary);
+            padding: 4rem 2rem;
+        }
+
+        .featured-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-section > p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .featured-panel {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .featured-panel:hover {
+            transform: scale(1.02);
+        }
+
+        .featured-panel img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .featured-panel .panel-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            font-size: 0.85rem;
+        }
+
+        .featured-panel .panel-label strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Scene Breakdown */
+        .breakdown-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .breakdown-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .breakdown-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .breakdown-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .breakdown-tab:hover,
+        .breakdown-tab.active {
+            border-color: var(--accent-primary);
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .breakdown-content {
+            display: none;
+        }
+
+        .breakdown-content.active {
+            display: block;
+        }
+
+        .scene-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .scene-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .scene-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            min-width: 3rem;
+        }
+
+        .scene-details {
+            flex: 1;
+        }
+
+        .scene-details h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .scene-details p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .scene-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .vfx-tag {
+            background: #ff6b6b;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .acts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                gap: 2rem;
+            }
+
+            .storyboard-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../storyboards/" class="nav-highlight active">Storyboards</a></li>
+                <li><a href="../blog/index.html">Blog</a></li>
+                <li><a href="../behind-the-scenes.html">Behind the Scenes</a></li>
+                <li><a href="../characters.html">Characters</a></li>
+                <li><a href="../tech.html">Tech Deep-Dives</a></li>
+                <li><a href="../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="storyboard-hero">
+            <h1>Storyboards</h1>
+            <p>Visual previews for every scene in "Fairy Dinosaur Date Night" - from the cozy family home to the prehistoric Jurassic adventure.</p>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Acts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">31</div>
+                    <div class="stat-label">Scenes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">145+</div>
+                    <div class="stat-label">Panels</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">~30</div>
+                    <div class="stat-label">Minutes Runtime</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="acts-grid">
+            <!-- Act 1 -->
+            <article class="act-card">
+                <div class="act-thumbnail">
+                    <div class="act-thumbnail-grid">
+                        <img src="act1/panels/scene-01-panel-01.png" alt="Scene 1">
+                        <img src="act1/panels/scene-01-panel-03.png" alt="Scene 1">
+                        <img src="act1/panels/scene-01-panel-05.png" alt="Scene 1">
+                        <img src="act1/panels/scene-01-panel-07.png" alt="Scene 1">
+                        <img src="act1/panels/scene-01-panel-08.png" alt="Scene 1">
+                        <img src="act1/panels/scene-01-panel-09.png" alt="Scene 1">
+                    </div>
+                    <div class="act-overlay">
+                        <span class="act-badge in-progress">In Progress</span>
+                    </div>
+                </div>
+                <div class="act-content">
+                    <h2>Act 1: The Setup</h2>
+                    <h3>Scenes 1-10 | ~12 minutes</h3>
+                    <p>A stormy night, a date night gone wrong, and parents trapped in the Jurassic era. The adventure begins when a time warp opens on a suburban road.</p>
+                    <div class="act-stats">
+                        <span><span class="icon">🎬</span> 10 Scenes</span>
+                        <span><span class="icon">🖼️</span> 56 Panels</span>
+                        <span><span class="icon">✨</span> 3 VFX Scenes</span>
+                    </div>
+                    <a href="act1/panels/" class="act-cta">
+                        View Act 1 <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Act 2 -->
+            <article class="act-card">
+                <div class="act-thumbnail">
+                    <div class="act-thumbnail-grid">
+                        <img src="act2/panels/scene-20-panel-03.png" alt="Ruben appears">
+                        <img src="act2/panels/scene-20-panel-06.png" alt="Wings revealed">
+                        <img src="act2/panels/scene-22-panel-11.png" alt="Freeze spell">
+                        <img src="act2/panels/scene-23-panel-04.png" alt="Mia drives">
+                        <img src="act2/panels/scene-25-panel-05.png" alt="Time warp">
+                        <img src="act2/panels/scene-25-panel-07.png" alt="The jump">
+                    </div>
+                    <div class="act-overlay">
+                        <span class="act-badge complete">Complete</span>
+                    </div>
+                </div>
+                <div class="act-content">
+                    <h2>Act 2: The Quest</h2>
+                    <h3>Scenes 11-25 | ~21 minutes</h3>
+                    <p>The kids discover their parents are missing and meet Ruben, a depressed fairy godfather. A magical escape from the police station leads to the portal.</p>
+                    <div class="act-stats">
+                        <span><span class="icon">🎬</span> 15 Scenes</span>
+                        <span><span class="icon">🖼️</span> 89 Panels</span>
+                        <span><span class="icon">✨</span> 9 VFX Scenes</span>
+                    </div>
+                    <a href="act2/panels/" class="act-cta">
+                        View Act 2 <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Act 3 -->
+            <article class="act-card coming-soon">
+                <div class="act-thumbnail">
+                    <div class="act-thumbnail-grid" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="grid-column: 1/-1; grid-row: 1/-1; text-align: center; padding: 2rem;">
+                            <div style="font-size: 3rem; margin-bottom: 0.5rem;">🦕✨</div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">Coming Soon</div>
+                        </div>
+                    </div>
+                    <div class="act-overlay">
+                        <span class="act-badge planned">Planned</span>
+                    </div>
+                </div>
+                <div class="act-content">
+                    <h2>Act 3: The Resolution</h2>
+                    <h3>Scenes 26-31 | ~8 minutes</h3>
+                    <p>The kids arrive in the Jurassic era, meet Jetplane the magic dinosaur, and race against time to rescue their parents before the phone battery dies.</p>
+                    <div class="act-stats">
+                        <span><span class="icon">🎬</span> 6 Scenes</span>
+                        <span><span class="icon">🖼️</span> ~40 Panels</span>
+                        <span><span class="icon">✨</span> 4 VFX Scenes</span>
+                    </div>
+                    <span class="act-cta">
+                        Coming Soon
+                    </span>
+                </div>
+            </article>
+        </section>
+
+        <!-- Featured Panels -->
+        <section class="featured-section">
+            <h2>Featured Panels</h2>
+            <p>Highlights from the storyboard collection</p>
+
+            <div class="featured-grid">
+                <div class="featured-panel" onclick="window.location.href='act1/panels/'">
+                    <img src="act1/panels/scene-01-panel-01.png" alt="Opening scene">
+                    <div class="panel-label">
+                        <strong>Act 1, Scene 1</strong>
+                        Living room, storm outside
+                    </div>
+                </div>
+                <div class="featured-panel" onclick="window.location.href='act2/panels/'">
+                    <img src="act2/panels/scene-20-panel-06.png" alt="Ruben's wings">
+                    <div class="panel-label">
+                        <strong>Act 2, Scene 20</strong>
+                        Wings revealed - the fairy godfather
+                    </div>
+                </div>
+                <div class="featured-panel" onclick="window.location.href='act2/panels/'">
+                    <img src="act2/panels/scene-21-panel-01.png" alt="Giant tree">
+                    <div class="panel-label">
+                        <strong>Act 2, Scene 21</strong>
+                        Massive prehistoric tree
+                    </div>
+                </div>
+                <div class="featured-panel" onclick="window.location.href='act2/panels/'">
+                    <img src="act2/panels/scene-23-panel-04.png" alt="Mia driving">
+                    <div class="panel-label">
+                        <strong>Act 2, Scene 23</strong>
+                        Mia drives the police car
+                    </div>
+                </div>
+                <div class="featured-panel" onclick="window.location.href='act2/panels/'">
+                    <img src="act2/panels/scene-25-panel-07.png" alt="Portal jump">
+                    <div class="panel-label">
+                        <strong>Act 2, Scene 25</strong>
+                        The portal jump - Act 2 climax
+                    </div>
+                </div>
+                <div class="featured-panel" onclick="window.location.href='act2/panels/'">
+                    <img src="act2/panels/scene-19-panel-05.png" alt="Jurassic sunset">
+                    <div class="panel-label">
+                        <strong>Act 2, Scene 19</strong>
+                        Stunning Jurassic sunset
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene Breakdown -->
+        <section class="breakdown-section">
+            <h2>Scene Breakdown</h2>
+
+            <div class="breakdown-tabs">
+                <button class="breakdown-tab active" data-act="1">Act 1</button>
+                <button class="breakdown-tab" data-act="2">Act 2</button>
+                <button class="breakdown-tab" data-act="3">Act 3</button>
+            </div>
+
+            <div class="breakdown-content active" data-act="1">
+                <div class="scene-list">
+                    <div class="scene-item">
+                        <span class="scene-number">01</span>
+                        <div class="scene-details">
+                            <h4>INT. HOME - EVENING</h4>
+                            <p>Living room, storm outside, parents preparing for date night</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>9 panels</span>
+                            <span>3:30</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">02</span>
+                        <div class="scene-details">
+                            <h4>EXT. HOUSE - NIGHT</h4>
+                            <p>House exterior, storm, lightning</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>3 panels</span>
+                            <span>0:15</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">03</span>
+                        <div class="scene-details">
+                            <h4>INT. CAR - NIGHT</h4>
+                            <p>Parents driving through storm</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>4 panels</span>
+                            <span>0:45</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">04</span>
+                        <div class="scene-details">
+                            <h4>INT. HOUSE - MONTAGE</h4>
+                            <p>Kids watching TV, Nina's phone under cushion</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>3 panels</span>
+                            <span>0:45</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">05</span>
+                        <div class="scene-details">
+                            <h4>EXT. ROAD - TIME WARP</h4>
+                            <p>Portal opens, car enters vortex</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>4 panels</span>
+                            <span>0:20</span>
+                            <span class="vfx-tag">MAJOR VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">06</span>
+                        <div class="scene-details">
+                            <h4>INT. HOUSE - SIMULTANEOUSLY</h4>
+                            <p>TV explodes, supernatural phone glow</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>4 panels</span>
+                            <span>0:20</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">07</span>
+                        <div class="scene-details">
+                            <h4>INT. CAR - JURASSIC DAY</h4>
+                            <p>Parents wake in crashed car, Jurassic world revealed</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>6 panels</span>
+                            <span>1:30</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">08</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC SWAMP - T-REX</h4>
+                            <p>T-Rex reveal, car destroyed, parents flee</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>9 panels</span>
+                            <span>2:00</span>
+                            <span class="vfx-tag">MAJOR VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">09</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC BRUSH - CHASE</h4>
+                            <p>Epic chase through jungle, cave escape</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>7 panels</span>
+                            <span>1:00</span>
+                            <span class="vfx-tag">MAJOR VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">10</span>
+                        <div class="scene-details">
+                            <h4>INT. CAVE - EMOTIONAL CLIMAX</h4>
+                            <p>Parents realize they left the kids</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>7 panels</span>
+                            <span>1:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="breakdown-content" data-act="2">
+                <div class="scene-list">
+                    <div class="scene-item">
+                        <span class="scene-number">11</span>
+                        <div class="scene-details">
+                            <h4>EXT. HOUSE - MORNING</h4>
+                            <p>Police investigation, yellow tape</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>3 panels</span>
+                            <span>0:15</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">12</span>
+                        <div class="scene-details">
+                            <h4>INT. HOUSE - MORNING</h4>
+                            <p>Detective interviews babysitter</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>4 panels</span>
+                            <span>1:15</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">13</span>
+                        <div class="scene-details">
+                            <h4>INT. HOUSE - DAY</h4>
+                            <p>Kids interviewed at breakfast, phone taken</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>7 panels</span>
+                            <span>2:30</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">14</span>
+                        <div class="scene-details">
+                            <h4>INT. JURASSIC CAVE - DAY</h4>
+                            <p>Parents discover phone connection</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>5 panels</span>
+                            <span>1:00</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">15</span>
+                        <div class="scene-details">
+                            <h4>INT. CAR - DAY</h4>
+                            <p>Kids hear parents' voices through static</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>3 panels</span>
+                            <span>0:15</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">16-18</span>
+                        <div class="scene-details">
+                            <h4>INTERCUT SEQUENCE</h4>
+                            <p>Parallel phone conversations, connection lost</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>10 panels</span>
+                            <span>1:20</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">19</span>
+                        <div class="scene-details">
+                            <h4>MONTAGE</h4>
+                            <p>Time passage, parallel struggles, Jurassic sunset</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>6 panels</span>
+                            <span>1:00</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">20</span>
+                        <div class="scene-details">
+                            <h4>INT. POLICE STATION - NIGHT</h4>
+                            <p>Ruben the fairy godfather revealed, wings and magic</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>11 panels</span>
+                            <span>4:00</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">21</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - NIGHT</h4>
+                            <p>Most emotional scene - parents on giant tree, confession</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>8 panels</span>
+                            <span>2:30</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">22</span>
+                        <div class="scene-details">
+                            <h4>INT. POLICE STATION - NIGHT</h4>
+                            <p>Slapstick escape comedy, magic misfires</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>14 panels</span>
+                            <span>4:00</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">23</span>
+                        <div class="scene-details">
+                            <h4>EXT. STREETS - NIGHT</h4>
+                            <p>Kids driving police car, comedy chase</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>8 panels</span>
+                            <span>2:00</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">24</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - DAWN</h4>
+                            <p>Parents hear children through phone</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>3 panels</span>
+                            <span>0:45</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">25</span>
+                        <div class="scene-details">
+                            <h4>EXT. STREETS - NIGHT</h4>
+                            <p>ACT 2 CLIMAX - Portal jump, heroic silhouettes</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>7 panels</span>
+                            <span>2:00</span>
+                            <span class="vfx-tag">MAJOR VFX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="breakdown-content" data-act="3">
+                <div class="scene-list">
+                    <div class="scene-item">
+                        <span class="scene-number">26</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - DAY</h4>
+                            <p>Kids arrive in prehistoric world, wonder and fear</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>~8 panels</span>
+                            <span>1:30</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">27</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - DAY</h4>
+                            <p>Meet Jetplane the magic dinosaur</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>~10 panels</span>
+                            <span>2:00</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">28</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - DAY</h4>
+                            <p>Search for parents, phone battery dying</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>~6 panels</span>
+                            <span>1:30</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">29</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - DAY</h4>
+                            <p>Reunion with parents, emotional payoff</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>~8 panels</span>
+                            <span>2:00</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">30</span>
+                        <div class="scene-details">
+                            <h4>EXT. JURASSIC - DAY</h4>
+                            <p>Jetplane's color-fart portal magic, return home</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>~6 panels</span>
+                            <span>1:00</span>
+                            <span class="vfx-tag">MAJOR VFX</span>
+                        </div>
+                    </div>
+                    <div class="scene-item">
+                        <span class="scene-number">31</span>
+                        <div class="scene-details">
+                            <h4>INT. HOME - EVENING</h4>
+                            <p>Family reunited, Ruben's redemption, happy ending</p>
+                        </div>
+                        <div class="scene-meta">
+                            <span>~6 panels</span>
+                            <span>1:30</span>
+                            <span class="vfx-tag">VFX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <nav class="footer-nav">
+                    <a href="../index.html">Home</a>
+                    <a href="../storyboards/">Storyboards</a>
+                    <a href="../blog/index.html">Blog</a>
+                    <a href="../behind-the-scenes.html">Behind the Scenes</a>
+                    <a href="../characters.html">Characters</a>
+                    <a href="../tech.html">Tech</a>
+                    <a href="../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Scene breakdown tabs
+        const tabs = document.querySelectorAll('.breakdown-tab');
+        const contents = document.querySelectorAll('.breakdown-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.querySelector(`.breakdown-content[data-act="${tab.dataset.act}"]`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
