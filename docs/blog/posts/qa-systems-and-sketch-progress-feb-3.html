@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storyboards Go Sketch: Embracing Industry-Standard Practices - Rex Marks The Spot</title>
-    <meta name="description" content="We've regenerated our storyboards in rough pencil sketch style, matching how professional studios like Pixar approach pre-production.">
+    <title>Building QA for AI: When Your Robot Needs a Report Card - Rex Marks The Spot</title>
+    <meta name="description" content="Creating quality assurance systems for AI-generated assets, continuing Act 2 storyboard regeneration, and fixing the remote task queue.">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,9 +37,9 @@
             <header class="post-header">
                 <div class="container">
                     <span class="post-category">Production</span>
-                    <h1>Storyboards Go Sketch: Embracing Industry-Standard Practices</h1>
+                    <h1>Building QA for AI: When Your Robot Needs a Report Card</h1>
                     <div class="post-author">
-                        <time datetime="2026-02-02">February 2, 2026</time>
+                        <time datetime="2026-02-03">February 3, 2026</time>
                     </div>
                 </div>
             </header>
@@ -47,56 +47,82 @@
             <div class="post-content">
                 <div class="container">
                     <div class="post-body">
-                        <p>I redid all the Act 1 storyboards. Made them worse on purpose.</p>
+                        <p>Spent today giving my AI a report card.</p>
 
-                        <p>Let me explain.</p>
+                        <p>Not literally. But close.</p>
 
-                        <h2>Pretty Pictures Were the Problem</h2>
+                        <h2>The Problem With "Good Enough"</h2>
 
-                        <p>My first storyboards looked good. Full color. Detailed renders. Impressive.</p>
+                        <p>When you generate hundreds of storyboard panels, you develop a dangerous habit: glancing at each one and thinking "yeah, that works."</p>
 
-                        <p>But that was the problem. Look at Pixar's storyboards sometime. They're messy. Rough pencil sketches. Sometimes barely legible.</p>
+                        <p>It doesn't work. Or rather, it works until you string 56 panels together and realize panel 23 has a completely different art style than panel 24, and somewhere around panel 38, the main character grew an extra finger.</p>
 
-                        <p>Why? Because storyboards aren't supposed to look good. They're supposed to show if the scene works. Pretty pictures hide bad storytelling. You look at a beautiful frame and don't notice the shot doesn't make sense.</p>
+                        <p>AI doesn't have standards. You have to give it standards.</p>
 
-                        <p>Also: the nicer something looks, the harder it is to throw away. Rough sketches are easy to kill.</p>
+                        <h2>The QA System</h2>
 
-                        <h2>What I Changed</h2>
+                        <p>Built a proper quality assurance pipeline for AI-generated assets. Two parts: automated validation and human review checklists.</p>
 
-                        <p>Regenerated all Act 1 panels as rough pencil sketches. Black and white. Loose lines. They look like what they are: planning documents.</p>
+                        <p>The automated stuff catches the obvious problems. Wrong aspect ratio? Rejected. File corrupted? Gone. Missing from the expected sequence? Flagged.</p>
 
-                        <p>Also added character model previews to the storyboard viewer. Now I can see how the 3D characters relate to the 2D planning.</p>
+                        <p>The human review is where it gets interesting. Each storyboard panel now gets scored on five dimensions:</p>
 
-                        <h2>Jetplane Exists Now</h2>
+                        <ul>
+                            <li><strong>Style consistency</strong> - Does it match the rest of the act?</li>
+                            <li><strong>Character recognition</strong> - Can you tell who's who?</li>
+                            <li><strong>Action clarity</strong> - Is the story beat readable?</li>
+                            <li><strong>Composition</strong> - Does the frame work visually?</li>
+                            <li><strong>Technical quality</strong> - Line work, detail, rendering</li>
+                        </ul>
 
-                        <p>Got preview renders of Jetplane, the color-farting dinosaur. Rotund. Friendly. Big amber eyes. Seeing him in 3D helps me figure out how he'll actually move around.</p>
+                        <p>Scale of 1-5. Simple. But now every panel has a score, and I can sort by quality and fix the worst offenders first.</p>
 
-                        <h2>AI 3D Generation Research</h2>
+                        <h2>What I Found</h2>
 
-                        <p>Tested Meshy.ai, Tripo3D, Hyper3D Rodin. Text-to-3D and image-to-3D tools.</p>
+                        <p>Ran the first 30 panels of Act 1 through the system. Average score: 4.69 out of 5. Sounds great.</p>
 
-                        <p>Verdict: useful for background props and environmental stuff. Not ready for main characters that need to look consistent across hundreds of shots.</p>
+                        <p>But one panel scored 2.0. A TV static shot that made no sense in context. Another couple panels were too busy to read clearly.</p>
 
-                        <p>Main cast stays hand-crafted. Background vegetation and minor creatures? AI might save time there.</p>
+                        <p>Without the scoring system, I would have scrolled past them. Now they're on a fix list.</p>
 
-                        <h2>Next</h2>
+                        <p>The portal sequence scored 5.0 across all four panels. Scene 2 exteriors hit 4.93. The rough early sketches from Scene 1 dragged the average down.</p>
 
-                        <p>Regenerating Act 2 and Act 3 in sketch style too. Then all three acts match.</p>
+                        <p>Patterns emerge when you measure things.</p>
 
-                        <p>Funny thing: I'm using AI to make intentionally rough-looking images. But that's the point. The tool serves the process. Sometimes the best thing AI can do is get out of the way of the story.</p>
+                        <h2>Act 2 Storyboards Continue</h2>
 
-                        <h2>Honestly</h2>
+                        <p>Still regenerating Act 2 in sketch style. This takes longer than you'd think. Each panel needs a prompt, the generation takes a few seconds, then I check it, and often regenerate.</p>
 
-                        <p>This feels better. The polished storyboards felt like they had to prove something. Had to justify using AI by looking impressive.</p>
+                        <p>The new QA system helps here too. I'm not just eyeballing anymore. Each panel gets the same scrutiny.</p>
 
-                        <p>The sketches don't carry that weight. They're just planning documents.</p>
+                        <h2>Infrastructure Pain</h2>
 
-                        <p>That's what I need right now.</p>
+                        <p>Also spent time fixing the remote task queue. Not glamorous work. But when you're running generation jobs across multiple machines, the queue is the nervous system.</p>
+
+                        <p>It was dropping tasks. Now it doesn't.</p>
+
+                        <p>Sometimes the most important work is the most boring to describe.</p>
+
+                        <h2>Honest Reflection</h2>
+
+                        <p>Here's what I'm learning: AI makes creation faster, but it doesn't make quality control faster. If anything, you need more QA because you can generate more stuff.</p>
+
+                        <p>The bottleneck isn't generation anymore. It's taste. It's standards. It's having clear criteria for what "good" means.</p>
+
+                        <p>That's why I built the scoring system. Not to automate judgment, but to force myself to be explicit about what I'm judging.</p>
+
+                        <p>What does a 5 look like? What does a 3 mean? If I can't articulate that, I don't actually know what I want.</p>
+
+                        <h2>Tomorrow</h2>
+
+                        <p>More Act 2 panels. More QA reviews. The goal is to have all three acts in consistent sketch style by end of week.</p>
+
+                        <p>Then we can actually see if the story flows.</p>
                     </div>
 
                     <nav class="post-nav">
-                        <a href="the-screenplay-is-done.html">&larr; Previous: The Screenplay is Done</a>
-                        <a href="qa-systems-and-sketch-progress-feb-3.html">Next: Building QA for AI &rarr;</a>
+                        <a href="storyboards-go-sketch-feb-2.html">&larr; Previous: Storyboards Go Sketch</a>
+                        <span></span>
                     </nav>
                 </div>
             </div>
