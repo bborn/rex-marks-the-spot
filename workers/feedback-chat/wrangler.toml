@@ -1,0 +1,16 @@
+name = "feedback-chat"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# KV Namespace binding - will be created during setup
+[[kv_namespaces]]
+binding = "FEEDBACK_KV"
+id = "YOUR_KV_NAMESPACE_ID"  # Replace after creating KV namespace
+
+# Workers AI binding
+[ai]
+binding = "AI"
+
+# CORS settings for the chat widget
+[vars]
+ALLOWED_ORIGINS = "https://rexmarksthespot.com,http://localhost:8000"
