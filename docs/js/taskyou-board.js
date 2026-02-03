@@ -669,14 +669,33 @@
         const outputEl = document.getElementById('taskyou-output-content');
         if (!outputEl) return;
 
+        // Determine task status from cached board data
+        let taskStatus = 'unknown';
+        if (lastBoardData && lastBoardData.columns) {
+            for (const col of lastBoardData.columns) {
+                if (col.tasks && col.tasks.find(t => t.id === taskId)) {
+                    taskStatus = col.status;
+                    break;
+                }
+            }
+        }
+
         try {
             const response = await fetch(`${API_BASE_URL}/api/task/${taskId}/output?lines=${OUTPUT_LINES}`);
             const data = await response.json();
             
             if (!response.ok) {
-                // Handle tasks that aren't running yet
+                // Handle tasks that aren't running yet or have finished
                 if (data.message && data.message.includes('not running')) {
-                    outputEl.innerHTML = '<div class="taskyou-output-empty">Task has not started yet. Check back when it is processing!</div>';
+                    if (taskStatus === 'done') {
+                        outputEl.innerHTML = '<div class="taskyou-output-empty">Task completed successfully. Output is no longer streaming.</div>';
+                        // No need to keep polling for a completed task that isn't running
+                        stopOutputRefresh();
+                    } else if (taskStatus === 'queued' || taskStatus === 'backlog') {
+                        outputEl.innerHTML = '<div class="taskyou-output-empty">Task has not started yet. Check back when it is processing!</div>';
+                    } else {
+                        outputEl.innerHTML = '<div class="taskyou-output-empty">Task is not currently running.</div>';
+                    }
                     return;
                 }
                 throw new Error(data.message || 'Failed to fetch output');

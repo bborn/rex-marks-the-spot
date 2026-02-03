@@ -49,4 +49,6 @@
 
 
 # EXCEPTION: docs/images served by GitHub Pages (no LFS support)
-docs/** -filter -diff -merge binary
+# Exclude from LFS but allow text diffs for code
+docs/** -filter=lfs
+docs/images/** binary
