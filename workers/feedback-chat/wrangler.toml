@@ -5,7 +5,7 @@ compatibility_date = "2024-01-01"
 # KV Namespace binding - will be created during setup
 [[kv_namespaces]]
 binding = "FEEDBACK_KV"
-id = "YOUR_KV_NAMESPACE_ID"  # Replace after creating KV namespace
+id = "0395e22b0115433ba5d31aacfce5b4e5"  # Replace after creating KV namespace
 
 # Workers AI binding
 [ai]

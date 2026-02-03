@@ -3,12 +3,12 @@
  * Embeddable chat widget for visitor feedback and AI assistance
  */
 
-(function() {
+(function () {
   'use strict';
 
   // Configuration - update this URL after deploying the worker
   const CONFIG = {
-    apiUrl: 'https://feedback-chat.YOUR_SUBDOMAIN.workers.dev',
+    apiUrl: 'https://feedback-chat.bruno-bornsztein.workers.dev',
     // apiUrl: 'http://localhost:8787', // Uncomment for local dev
   };
 
