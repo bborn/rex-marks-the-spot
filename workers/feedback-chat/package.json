@@ -1,0 +1,14 @@
+{
+  "name": "feedback-chat",
+  "version": "1.0.0",
+  "description": "LLM feedback chat for Rex Marks The Spot",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "create-kv": "wrangler kv:namespace create FEEDBACK_KV"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
