@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production - Rex Marks The Spot</title>
+    <meta name="description" content="Explore the production of Fairy Dinosaur Date Night - videos, storyboards, characters, environments, and audio.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Production Page Styles */
+        .production-hero {
+            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+            padding: 5rem 0 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .production-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .production-hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            color: var(--color-text);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .quick-link:hover {
+            background: var(--color-bg-elevated);
+            border-color: var(--color-primary);
+            color: var(--color-primary-light);
+            transform: translateY(-2px);
+        }
+
+        .quick-link-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Section Styling */
+        .production-section {
+            padding: 4rem 0;
+        }
+
+        .production-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-normal);
+        }
+
+        .video-card:hover {
+            border-color: var(--color-border-light);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+            background: #000;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .video-card-content {
+            padding: 1.5rem;
+        }
+
+        .video-card h3 {
+            font-size: 1.125rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .video-card p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Asset Cards Grid */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .asset-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .asset-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .asset-card-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .asset-card h3 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .asset-card p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .asset-card-meta {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Audio Grid */
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .audio-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-fast);
+        }
+
+        .audio-card:hover {
+            border-color: var(--color-border-light);
+        }
+
+        .audio-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .audio-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .audio-card h3 {
+            font-size: 1rem;
+            margin: 0 0 0.25rem;
+        }
+
+        .audio-card p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .audio-card audio {
+            width: 100%;
+            height: 40px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Voice Section */
+        .voice-section {
+            margin-top: 3rem;
+        }
+
+        .voice-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .character-voice-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .character-voice-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .character-voice-header img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-border);
+        }
+
+        .character-voice-header h4 {
+            font-size: 1.1rem;
+            margin: 0 0 0.25rem;
+        }
+
+        .character-voice-header span {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .voice-samples-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .voice-sample-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .voice-sample-item label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            min-width: 70px;
+        }
+
+        .voice-sample-item audio {
+            flex: 1;
+            height: 32px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .production-hero {
+                padding: 3rem 0 2.5rem;
+            }
+
+            .production-hero p {
+                font-size: 1.1rem;
+            }
+
+            .quick-links {
+                gap: 0.75rem;
+            }
+
+            .quick-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .production-section {
+                padding: 3rem 0;
+            }
+
+            .video-grid,
+            .asset-grid,
+            .audio-grid,
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .asset-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="production.html" class="active">Production</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="production-hero">
+            <div class="container">
+                <h1>Production</h1>
+                <p>Explore the visual and audio assets of Fairy Dinosaur Date Night as we bring this story to life</p>
+
+                <div class="quick-links">
+                    <a href="#videos" class="quick-link">
+                        <span class="quick-link-icon">🎬</span>
+                        Videos
+                    </a>
+                    <a href="#assets" class="quick-link">
+                        <span class="quick-link-icon">🎨</span>
+                        Assets
+                    </a>
+                    <a href="#audio" class="quick-link">
+                        <span class="quick-link-icon">🎵</span>
+                        Audio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="videos" class="production-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Animation Renders</h2>
+                    <p>Test animations and scene renders from our Blender pipeline</p>
+                </div>
+
+                <div class="video-grid">
+                    <div class="video-card">
+                        <video controls preload="metadata">
+                            <source src="media/video/test_animation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-card-content">
+                            <h3>Test Animation</h3>
+                            <p>First test of the Blender animation pipeline with basic character movement</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <video controls preload="metadata">
+                            <source src="media/video/scene01_home_evening.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-card-content">
+                            <h3>Scene 01: Home Evening</h3>
+                            <p>Opening scene establishing the Bornsztein family home</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Production Assets Section -->
+        <section id="assets" class="production-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Production Assets</h2>
+                    <p>Character designs, environments, and storyboards for the film</p>
+                </div>
+
+                <div class="asset-grid">
+                    <a href="storyboards/" class="asset-card">
+                        <span class="asset-card-icon">📖</span>
+                        <h3>Storyboards</h3>
+                        <p>Visual shot-by-shot breakdown of every scene in the film with AI-generated panel images</p>
+                        <div class="asset-card-meta">145+ panels across 31 scenes</div>
+                    </a>
+
+                    <a href="characters.html" class="asset-card">
+                        <span class="asset-card-icon">👥</span>
+                        <h3>Characters</h3>
+                        <p>Meet the Bornsztein family, Ruben the fairy godfather, and Jetplane the dinosaur</p>
+                        <div class="asset-card-meta">6 main characters</div>
+                    </a>
+
+                    <a href="environments.html" class="asset-card">
+                        <span class="asset-card-icon">🌴</span>
+                        <h3>Environments</h3>
+                        <p>From the cozy family home to the prehistoric Jurassic swamp and cave hideout</p>
+                        <div class="asset-card-meta">4 key locations</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio Section -->
+        <section id="audio" class="production-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Movie Score</h2>
+                    <p>AI-synthesized musical themes for the film</p>
+                </div>
+
+                <div class="audio-grid">
+                    <div class="audio-card">
+                        <div class="audio-card-header">
+                            <span class="audio-icon">🎼</span>
+                            <div>
+                                <h3>Main Theme</h3>
+                                <p>The primary musical theme representing family adventure and magic</p>
+                            </div>
+                        </div>
+                        <audio controls preload="metadata">
+                            <source src="media/audio/music/main_theme.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="audio-card-header">
+                            <span class="audio-icon">🎸</span>
+                            <div>
+                                <h3>Adventure Music</h3>
+                                <p>Upbeat theme for action sequences in the Jurassic era</p>
+                            </div>
+                        </div>
+                        <audio controls preload="metadata">
+                            <source src="media/audio/music/adventure_music.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="audio-card-header">
+                            <span class="audio-icon">🎻</span>
+                            <div>
+                                <h3>Emotional Moment</h3>
+                                <p>Gentle, touching theme for the family reunion scenes</p>
+                            </div>
+                        </div>
+                        <audio controls preload="metadata">
+                            <source src="media/audio/music/emotional_moment.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Voice Samples -->
+                <div class="voice-section">
+                    <h3>Character Voices</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">AI-generated voice samples using ElevenLabs</p>
+
+                    <div class="character-grid">
+                        <!-- Gabe -->
+                        <div class="character-voice-card">
+                            <div class="character-voice-header">
+                                <img src="images/characters/gabe-preview.png" alt="Gabe">
+                                <div>
+                                    <h4>Gabe</h4>
+                                    <span>Dad</span>
+                                </div>
+                            </div>
+                            <div class="voice-samples-list">
+                                <div class="voice-sample-item">
+                                    <label>Sample 1</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/gabe/gabe_01.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 2</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/gabe/gabe_02.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 3</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/gabe/gabe_03.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nina -->
+                        <div class="character-voice-card">
+                            <div class="character-voice-header">
+                                <img src="images/characters/nina-preview.png" alt="Nina">
+                                <div>
+                                    <h4>Nina</h4>
+                                    <span>Mom</span>
+                                </div>
+                            </div>
+                            <div class="voice-samples-list">
+                                <div class="voice-sample-item">
+                                    <label>Sample 1</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/nina/nina_01.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 2</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/nina/nina_02.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 3</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/nina/nina_03.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mia -->
+                        <div class="character-voice-card">
+                            <div class="character-voice-header">
+                                <img src="images/characters/mia-preview.png" alt="Mia">
+                                <div>
+                                    <h4>Mia</h4>
+                                    <span>Daughter</span>
+                                </div>
+                            </div>
+                            <div class="voice-samples-list">
+                                <div class="voice-sample-item">
+                                    <label>Sample 1</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/mia/mia_01.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 2</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/mia/mia_02.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 3</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/mia/mia_03.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Leo -->
+                        <div class="character-voice-card">
+                            <div class="character-voice-header">
+                                <img src="images/characters/leo-preview.png" alt="Leo">
+                                <div>
+                                    <h4>Leo</h4>
+                                    <span>Son</span>
+                                </div>
+                            </div>
+                            <div class="voice-samples-list">
+                                <div class="voice-sample-item">
+                                    <label>Sample 1</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/leo/leo_01.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 2</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/leo/leo_02.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 3</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/leo/leo_03.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ruben -->
+                        <div class="character-voice-card">
+                            <div class="character-voice-header">
+                                <img src="images/characters/ruben-preview.png" alt="Ruben">
+                                <div>
+                                    <h4>Ruben</h4>
+                                    <span>Fairy Godfather</span>
+                                </div>
+                            </div>
+                            <div class="voice-samples-list">
+                                <div class="voice-sample-item">
+                                    <label>Sample 1</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/ruben/ruben_01.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 2</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/ruben/ruben_02.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="voice-sample-item">
+                                    <label>Sample 3</label>
+                                    <audio controls preload="metadata">
+                                        <source src="media/audio/voices/ruben/ruben_03.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="production.html">Production</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="about.html">About</a>
+                    <a href="links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

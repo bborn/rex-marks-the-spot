@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Rex Marks The Spot</title>
+    <meta name="description" content="How we're using AI to assist in creating 'Fairy Dinosaur Date Night' - our process, tools, and philosophy.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* About Page Styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+            padding: 5rem 0 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            padding: 4rem 0;
+        }
+
+        .about-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .about-content {
+            max-width: 800px;
+        }
+
+        .about-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h3 {
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        .about-content p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        .about-content ul {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .about-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Workflow Steps */
+        .workflow-steps {
+            margin-top: 2rem;
+        }
+
+        .workflow-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .step-content h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .column {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .column h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--color-primary-light);
+        }
+
+        .column ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .column li {
+            font-size: 0.95rem;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .tool-card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .tool-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Tech Link Card */
+        .tech-link-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-elevated) 100%);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--color-border);
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-normal);
+        }
+
+        .tech-link-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .tech-link-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .tech-link-content h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .tech-link-content p {
+            margin: 0;
+            color: var(--color-text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 3rem 0 2.5rem;
+            }
+
+            .about-section {
+                padding: 3rem 0;
+            }
+
+            .workflow-step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-link-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="production.html">Production</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="about-hero">
+            <div class="container">
+                <h1>About This Project</h1>
+                <p>How we're using AI to assist in creating an animated film - our process, tools, and philosophy</p>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Our Philosophy</h2>
+                    <p>We believe AI is a tool, not a replacement for human creativity. Every decision in this film goes through human judgment. AI helps us work faster, explore more options, and handle tedious tasks - but the creative vision remains human.</p>
+                    <p>We're also committed to transparency. The AI-assisted filmmaking space is full of hype and misleading claims. We want to show what's actually possible: the wins, the failures, and the messy middle ground.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Production Pipeline -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Our Production Pipeline</h2>
+                    <p>Here's how a scene goes from concept to render in our workflow:</p>
+
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Script & Scene Description</h3>
+                                <p>Bruno wrote the screenplay years ago. We break it down into detailed text-based scene descriptions for production. Story and creative decisions were entirely human-made.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Shot Planning</h3>
+                                <p>Each scene gets broken into shots with camera angles, movements, and timing. This is traditional filmmaking craft - AI doesn't replace the eye of a director.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Blender Scene Generation</h3>
+                                <p>Our LLM-Blender pipeline generates initial scene setups from descriptions. This gives us a starting point to iterate from, rather than building from scratch.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Validation & Iteration</h3>
+                                <p>We review renders against our intent. If something's off, we either adjust manually or feed corrections back through the pipeline. Multiple passes are normal.</p>
+                            </div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Polish & Final Render</h3>
+                                <p>Once scenes are structurally correct, we add the finishing touches that require human judgment: timing tweaks, emotional beats, visual details that sell the moment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What AI Does -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>What AI Does (and Doesn't Do)</h2>
+
+                    <div class="two-column">
+                        <div class="column">
+                            <h3>AI Handles</h3>
+                            <ul>
+                                <li>Initial scene setup and layout</li>
+                                <li>Code generation for Blender scripting</li>
+                                <li>Iteration on technical parameters</li>
+                                <li>Consistency checking across scenes</li>
+                                <li>Documentation and organization</li>
+                                <li>Rapid prototyping and exploration</li>
+                            </ul>
+                        </div>
+
+                        <div class="column">
+                            <h3>Humans Handle</h3>
+                            <ul>
+                                <li>Story and character decisions</li>
+                                <li>Emotional beats and timing</li>
+                                <li>Creative direction and vision</li>
+                                <li>Quality assessment and approval</li>
+                                <li>Voice and performance direction</li>
+                                <li>Final artistic judgment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Tools We Use</h2>
+
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <h3>Blender</h3>
+                            <p>Open-source 3D animation tool with excellent Python API for automation</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h3>Claude</h3>
+                            <p>AI assistant for code generation, writing, and pipeline orchestration</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h3>Python</h3>
+                            <p>The glue connecting everything - automation, Blender integration, validation</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h3>Git</h3>
+                            <p>Version control for screenplay, documentation, code, and assets</p>
+                        </div>
+                    </div>
+
+                    <a href="tech.html" class="tech-link-card">
+                        <span class="tech-link-icon">🔧</span>
+                        <div class="tech-link-content">
+                            <h3>Tech Deep-Dives</h3>
+                            <p>Detailed breakdowns of our Blender + LLM integration, headless rendering pipeline, and automation architecture</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Challenges We Face</h2>
+                    <p>We're not going to pretend this is easy. Here are real challenges we're working through:</p>
+
+                    <h3>The Semantic Gap</h3>
+                    <p>Translating artistic intent into precise technical instructions is hard. "Make it feel more ominous" doesn't map directly to render settings.</p>
+
+                    <h3>Iteration Speed</h3>
+                    <p>Even with automation, render times add up. Finding the balance between quality and iteration speed is an ongoing challenge.</p>
+
+                    <h3>Consistency</h3>
+                    <p>Ensuring characters look the same across hundreds of shots requires careful asset management and validation.</p>
+
+                    <h3>The Uncanny Valley</h3>
+                    <p>AI-generated elements can feel "off" in subtle ways. Human review is essential for catching these issues.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Follow Progress -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Follow Our Progress</h2>
+                    <p>We document our journey in detail on our <a href="blog/index.html">production blog</a>. Check out our <a href="production.html">production page</a> to see videos, audio, and asset work in progress.</p>
+                    <p>Have questions about our process? We'd love to hear from you.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="production.html">Production</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="about.html">About</a>
+                    <a href="links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
