@@ -560,7 +560,7 @@
     } catch (error) {
       console.error('Chat error:', error);
       typingDiv.remove();
-      addMessage('Sorry, I couldn\'t connect. Please try again later.', 'bot');
+      addMessage(`Sorry, I couldn't connect. Error: ${error.message || 'Unknown error'}. Please try again later.`, 'bot');
     }
 
     input.disabled = false;

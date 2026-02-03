@@ -225,10 +225,10 @@ async function handleFeedbackDelete(id, env, corsHeaders) {
  */
 function getCorsHeaders(request, env) {
   const origin = request.headers.get('Origin') || '';
-  const allowedOrigins = (env.ALLOWED_ORIGINS || '').split(',');
+  const allowedOrigins = (env.ALLOWED_ORIGINS || '').split(',').map(o => o.trim());
 
   // Allow localhost for development
-  const isAllowed = allowedOrigins.some(o => origin.startsWith(o.trim())) ||
+  const isAllowed = allowedOrigins.includes(origin) ||
                     origin.includes('localhost') ||
                     origin.includes('127.0.0.1');
 
