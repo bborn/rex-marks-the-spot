@@ -1,0 +1,64 @@
+name: Auto-label Visual Asset PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'assets/**/*.png'
+      - 'assets/**/*.jpg'
+      - 'assets/**/*.jpeg'
+      - 'docs/storyboards/**/*.png'
+      - 'storyboards/**/*.png'
+      - 'renders/**/*.png'
+
+jobs:
+  label-visual-assets:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add QA review label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['needs-qa-review', 'visual-assets']
+            })
+
+      - name: Add comment requesting QA review
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `## 🎨 Visual Assets Detected
+
+            This PR contains image files and requires QA review before merging.
+
+            **QA Reviewer:** Please review against the standards in:
+            - \`production/quality-assurance/QA-SYSTEM.md\`
+            - \`production/quality-assurance/VISUAL-STYLE-GUIDE.md\`
+
+            **PR Author:** Ensure you've completed the self-check in the PR template.
+
+            ---
+
+            <details>
+            <summary>Quick Style Checklist</summary>
+
+            - [ ] Pixar/DreamWorks 3D animated style (NOT realistic)
+            - [ ] Characters match reference designs
+            - [ ] Minimum 1024px resolution
+            - [ ] Correct aspect ratio
+            - [ ] Consistent with existing approved assets
+            - [ ] Family-friendly content
+
+            </details>`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            })

@@ -1,0 +1,38 @@
+# GitHub Labels for QA System
+# Apply with: gh label create "name" --description "desc" --color "hex"
+
+- name: needs-qa-review
+  description: Visual assets require QA review before merge
+  color: 'ff9800'
+
+- name: qa-approved
+  description: Visual assets have passed QA review
+  color: '4caf50'
+
+- name: qa-changes-requested
+  description: QA review has requested changes
+  color: 'f44336'
+
+- name: visual-assets
+  description: PR contains visual assets (images)
+  color: '9c27b0'
+
+- name: storyboard
+  description: Contains storyboard panels
+  color: '2196f3'
+
+- name: character-art
+  description: Contains character concept art
+  color: 'e91e63'
+
+- name: environment-art
+  description: Contains environment/background art
+  color: '009688'
+
+- name: style-drift
+  description: QA identified style inconsistency
+  color: 'ff5722'
+
+- name: escalate-to-director
+  description: Requires Director (human) review
+  color: '673ab7'
