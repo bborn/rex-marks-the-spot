@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Concepts - Rex Marks The Spot</title>
+    <meta name="description" content="Explore character concept art for 'Fairy Dinosaur Date Night' - vote on your favorite designs.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Character Concepts Gallery Styles */
+        .gallery-hero {
+            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+            padding: 4rem 0 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .gallery-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gallery-hero p {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Director Controls */
+        .director-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .director-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .director-toggle:hover {
+            border-color: var(--color-primary);
+        }
+
+        .director-toggle.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .director-toggle input {
+            display: none;
+        }
+
+        .director-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--color-accent);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: var(--radius-xl);
+        }
+
+        /* Character Section */
+        .character-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .character-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .character-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .character-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .character-section-header h2 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .character-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--color-bg-elevated);
+            border-radius: var(--radius-xl);
+            color: var(--color-text-muted);
+        }
+
+        .selected-badge {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        /* Concept Grid */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .concept-card {
+            background: var(--color-bg-card);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            position: relative;
+        }
+
+        .concept-card:hover {
+            border-color: var(--color-border-light);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .concept-card.selected {
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .concept-card.selected::before {
+            content: 'Selected';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-secondary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-xl);
+            z-index: 10;
+        }
+
+        .concept-image {
+            aspect-ratio: 1;
+            background: var(--color-bg-elevated);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .concept-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+
+        .concept-card:hover .concept-image img {
+            transform: scale(1.05);
+        }
+
+        .concept-placeholder {
+            color: var(--color-text-muted);
+            font-size: 3rem;
+        }
+
+        .concept-info {
+            padding: 1rem 1.25rem;
+        }
+
+        .concept-info h3 {
+            font-size: 1rem;
+            margin: 0 0 0.25rem;
+        }
+
+        .concept-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin: 0 0 0.75rem;
+        }
+
+        /* Vote Button */
+        .vote-btn {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: none;
+        }
+
+        .director-mode .vote-btn {
+            display: block;
+        }
+
+        .vote-btn:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .concept-card.selected .vote-btn {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .concept-card.selected .vote-btn:hover {
+            background: #059669;
+            border-color: #059669;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--radius-lg);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Stats Summary */
+        .stats-summary {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .director-mode .stats-summary {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary-light);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Export Button */
+        .export-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .export-btn:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        /* Coming Soon Placeholder */
+        .coming-soon {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--color-text-muted);
+        }
+
+        .coming-soon-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-hero {
+                padding: 3rem 0 2rem;
+            }
+
+            .character-section {
+                padding: 2rem 0;
+            }
+
+            .character-section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .concept-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="production.html" class="active">Production</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-hero">
+            <div class="container">
+                <h1>Character Concepts</h1>
+                <p>Explore concept art for the characters of "Fairy Dinosaur Date Night". As we generate new designs, they'll appear here for review and selection.</p>
+
+                <div class="director-controls">
+                    <label class="director-toggle" id="directorToggle">
+                        <input type="checkbox" id="directorMode">
+                        <span>Director Mode</span>
+                    </label>
+                    <span class="director-badge" id="directorBadge" style="display: none;">
+                        Voting Enabled
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <div id="gallery-content">
+            <!-- Mia Section -->
+            <section class="character-section" data-character="mia">
+                <div class="container">
+                    <div class="character-section-header">
+                        <h2>
+                            Mia
+                            <span class="character-badge">The Determined Sister</span>
+                        </h2>
+                        <span class="character-badge selected-badge" data-selected-count="mia" style="display: none;">0 Selected</span>
+                    </div>
+
+                    <div class="stats-summary" data-stats="mia">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="total">1</div>
+                                <div class="stat-label">Concepts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="selected">0</div>
+                                <div class="stat-label">Selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-grid">
+                        <article class="concept-card" data-concept-id="mia-preview-1">
+                            <div class="concept-image" onclick="openLightbox('images/characters/mia-preview.png', 'Mia - Preview Concept')">
+                                <img src="images/characters/mia-preview.png" alt="Mia character concept" loading="lazy">
+                            </div>
+                            <div class="concept-info">
+                                <h3>Mia - Preview</h3>
+                                <p class="concept-meta">Initial character design</p>
+                                <button class="vote-btn" onclick="toggleSelection('mia-preview-1')">Select Design</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leo Section -->
+            <section class="character-section" data-character="leo">
+                <div class="container">
+                    <div class="character-section-header">
+                        <h2>
+                            Leo
+                            <span class="character-badge">The Observant Brother</span>
+                        </h2>
+                        <span class="character-badge selected-badge" data-selected-count="leo" style="display: none;">0 Selected</span>
+                    </div>
+
+                    <div class="stats-summary" data-stats="leo">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="total">1</div>
+                                <div class="stat-label">Concepts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="selected">0</div>
+                                <div class="stat-label">Selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-grid">
+                        <article class="concept-card" data-concept-id="leo-preview-1">
+                            <div class="concept-image" onclick="openLightbox('images/characters/leo-preview.png', 'Leo - Preview Concept')">
+                                <img src="images/characters/leo-preview.png" alt="Leo character concept" loading="lazy">
+                            </div>
+                            <div class="concept-info">
+                                <h3>Leo - Preview</h3>
+                                <p class="concept-meta">Initial character design</p>
+                                <button class="vote-btn" onclick="toggleSelection('leo-preview-1')">Select Design</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ruben Section -->
+            <section class="character-section" data-character="ruben">
+                <div class="container">
+                    <div class="character-section-header">
+                        <h2>
+                            Ruben
+                            <span class="character-badge">The Depressed Fairy Godfather</span>
+                        </h2>
+                        <span class="character-badge selected-badge" data-selected-count="ruben" style="display: none;">0 Selected</span>
+                    </div>
+
+                    <div class="stats-summary" data-stats="ruben">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="total">1</div>
+                                <div class="stat-label">Concepts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="selected">0</div>
+                                <div class="stat-label">Selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-grid">
+                        <article class="concept-card" data-concept-id="ruben-preview-1">
+                            <div class="concept-image" onclick="openLightbox('images/characters/ruben-preview.png', 'Ruben - Preview Concept')">
+                                <img src="images/characters/ruben-preview.png" alt="Ruben character concept" loading="lazy">
+                            </div>
+                            <div class="concept-info">
+                                <h3>Ruben - Preview</h3>
+                                <p class="concept-meta">Initial character design</p>
+                                <button class="vote-btn" onclick="toggleSelection('ruben-preview-1')">Select Design</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jetplane Section -->
+            <section class="character-section" data-character="jetplane">
+                <div class="container">
+                    <div class="character-section-header">
+                        <h2>
+                            Jetplane
+                            <span class="character-badge">The Magical Dinosaur</span>
+                        </h2>
+                        <span class="character-badge selected-badge" data-selected-count="jetplane" style="display: none;">0 Selected</span>
+                    </div>
+
+                    <div class="stats-summary" data-stats="jetplane">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="total">1</div>
+                                <div class="stat-label">Concepts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="selected">0</div>
+                                <div class="stat-label">Selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-grid">
+                        <article class="concept-card" data-concept-id="jetplane-preview-1">
+                            <div class="concept-image" onclick="openLightbox('images/characters/jetplane-preview.png', 'Jetplane - Preview Concept')">
+                                <img src="images/characters/jetplane-preview.png" alt="Jetplane character concept" loading="lazy">
+                            </div>
+                            <div class="concept-info">
+                                <h3>Jetplane - Preview</h3>
+                                <p class="concept-meta">Initial character design</p>
+                                <button class="vote-btn" onclick="toggleSelection('jetplane-preview-1')">Select Design</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gabe Section -->
+            <section class="character-section" data-character="gabe">
+                <div class="container">
+                    <div class="character-section-header">
+                        <h2>
+                            Gabe
+                            <span class="character-badge">The Inventive Dad</span>
+                        </h2>
+                        <span class="character-badge selected-badge" data-selected-count="gabe" style="display: none;">0 Selected</span>
+                    </div>
+
+                    <div class="stats-summary" data-stats="gabe">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="total">1</div>
+                                <div class="stat-label">Concepts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="selected">0</div>
+                                <div class="stat-label">Selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-grid">
+                        <article class="concept-card" data-concept-id="gabe-preview-1">
+                            <div class="concept-image" onclick="openLightbox('images/characters/gabe-preview.png', 'Gabe - Preview Concept')">
+                                <img src="images/characters/gabe-preview.png" alt="Gabe character concept" loading="lazy">
+                            </div>
+                            <div class="concept-info">
+                                <h3>Gabe - Preview</h3>
+                                <p class="concept-meta">Initial character design</p>
+                                <button class="vote-btn" onclick="toggleSelection('gabe-preview-1')">Select Design</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nina Section -->
+            <section class="character-section" data-character="nina">
+                <div class="container">
+                    <div class="character-section-header">
+                        <h2>
+                            Nina
+                            <span class="character-badge">The Practical Mom</span>
+                        </h2>
+                        <span class="character-badge selected-badge" data-selected-count="nina" style="display: none;">0 Selected</span>
+                    </div>
+
+                    <div class="stats-summary" data-stats="nina">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="total">1</div>
+                                <div class="stat-label">Concepts</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" data-stat="selected">0</div>
+                                <div class="stat-label">Selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-grid">
+                        <article class="concept-card" data-concept-id="nina-preview-1">
+                            <div class="concept-image" onclick="openLightbox('images/characters/nina-preview.png', 'Nina - Preview Concept')">
+                                <img src="images/characters/nina-preview.png" alt="Nina character concept" loading="lazy">
+                            </div>
+                            <div class="concept-info">
+                                <h3>Nina - Preview</h3>
+                                <p class="concept-meta">Initial character design</p>
+                                <button class="vote-btn" onclick="toggleSelection('nina-preview-1')">Select Design</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Export Section (Director Mode Only) -->
+        <section class="bts-section" id="exportSection" style="display: none;">
+            <div class="container">
+                <div class="bts-content" style="text-align: center;">
+                    <h2>Export Selections</h2>
+                    <p style="color: var(--color-text-muted);">Download your character selections as JSON for the production team.</p>
+                    <button class="export-btn" onclick="exportSelections()">Export Selected Concepts</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img src="" alt="" id="lightboxImage">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="production.html">Production</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="about.html">About</a>
+                    <a href="links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Character Concepts Gallery - Director Voting System
+        const STORAGE_KEY = 'rex-character-selections';
+
+        // Load selections from localStorage
+        function loadSelections() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                return stored ? JSON.parse(stored) : {};
+            } catch (e) {
+                console.error('Error loading selections:', e);
+                return {};
+            }
+        }
+
+        // Save selections to localStorage
+        function saveSelections(selections) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(selections));
+            } catch (e) {
+                console.error('Error saving selections:', e);
+            }
+        }
+
+        // Toggle selection for a concept
+        function toggleSelection(conceptId) {
+            const selections = loadSelections();
+            const card = document.querySelector(`[data-concept-id="${conceptId}"]`);
+
+            if (selections[conceptId]) {
+                delete selections[conceptId];
+                card.classList.remove('selected');
+                card.querySelector('.vote-btn').textContent = 'Select Design';
+            } else {
+                selections[conceptId] = {
+                    id: conceptId,
+                    selectedAt: new Date().toISOString()
+                };
+                card.classList.add('selected');
+                card.querySelector('.vote-btn').textContent = 'Deselect';
+            }
+
+            saveSelections(selections);
+            updateStats();
+        }
+
+        // Update stats display
+        function updateStats() {
+            const selections = loadSelections();
+            const characters = ['mia', 'leo', 'ruben', 'jetplane', 'gabe', 'nina'];
+
+            characters.forEach(char => {
+                const selectedCount = Object.keys(selections).filter(id => id.startsWith(char)).length;
+
+                // Update selected count badge
+                const badge = document.querySelector(`[data-selected-count="${char}"]`);
+                if (badge) {
+                    badge.textContent = `${selectedCount} Selected`;
+                    badge.style.display = selectedCount > 0 ? 'inline-block' : 'none';
+                }
+
+                // Update stats in summary
+                const stats = document.querySelector(`[data-stats="${char}"]`);
+                if (stats) {
+                    const selectedStat = stats.querySelector('[data-stat="selected"]');
+                    if (selectedStat) {
+                        selectedStat.textContent = selectedCount;
+                    }
+                }
+            });
+        }
+
+        // Apply stored selections on page load
+        function applyStoredSelections() {
+            const selections = loadSelections();
+
+            Object.keys(selections).forEach(conceptId => {
+                const card = document.querySelector(`[data-concept-id="${conceptId}"]`);
+                if (card) {
+                    card.classList.add('selected');
+                    const btn = card.querySelector('.vote-btn');
+                    if (btn) btn.textContent = 'Deselect';
+                }
+            });
+
+            updateStats();
+        }
+
+        // Director mode toggle
+        function setupDirectorMode() {
+            const toggle = document.getElementById('directorToggle');
+            const checkbox = document.getElementById('directorMode');
+            const badge = document.getElementById('directorBadge');
+            const gallery = document.getElementById('gallery-content');
+            const exportSection = document.getElementById('exportSection');
+
+            // Check if director mode was previously enabled
+            const wasEnabled = localStorage.getItem('rex-director-mode') === 'true';
+            if (wasEnabled) {
+                checkbox.checked = true;
+                toggle.classList.add('active');
+                badge.style.display = 'inline-flex';
+                gallery.classList.add('director-mode');
+                exportSection.style.display = 'block';
+            }
+
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    toggle.classList.add('active');
+                    badge.style.display = 'inline-flex';
+                    gallery.classList.add('director-mode');
+                    exportSection.style.display = 'block';
+                    localStorage.setItem('rex-director-mode', 'true');
+                } else {
+                    toggle.classList.remove('active');
+                    badge.style.display = 'none';
+                    gallery.classList.remove('director-mode');
+                    exportSection.style.display = 'none';
+                    localStorage.setItem('rex-director-mode', 'false');
+                }
+            });
+        }
+
+        // Lightbox functions
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImage');
+            const cap = document.getElementById('lightboxCaption');
+
+            img.src = src;
+            img.alt = caption;
+            cap.textContent = caption;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target !== document.getElementById('lightbox')) return;
+
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Export selections
+        function exportSelections() {
+            const selections = loadSelections();
+            const data = {
+                exportedAt: new Date().toISOString(),
+                selections: selections
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `character-selections-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupDirectorMode();
+            applyStoredSelections();
+        });
+    </script>
+</body>
+</html>
