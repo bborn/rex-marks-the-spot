@@ -8,6 +8,15 @@
       "env": {
         "PATH": "/home/rex/.local/bin:/usr/local/bin:/usr/bin:/bin"
       }
+    },
+    "workflow": {
+      "args": [
+        "mcp-server",
+        "--task-id",
+        "68"
+      ],
+      "command": "/home/rex/.local/bin/ty",
+      "type": "stdio"
     }
   }
 }
