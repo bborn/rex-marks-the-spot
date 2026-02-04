@@ -141,3 +141,65 @@ Enable these in the BlenderMCP panel (View3D > Sidebar > BlenderMCP):
 - **Interactive development**: Use BlenderMCP for scene building
 - **Production rendering**: Use headless Blender with Python scripts in `scripts/`
 - **Validation**: Rendered images can be analyzed for scene validation
+
+---
+
+## Project Workflow & Reporting Structure
+
+This project uses a hierarchical workflow with AI agents coordinated through TaskYou.
+
+### The Team
+
+- **Bruno (Director)** - Final creative authority. Makes decisions on direction, approves major work, provides feedback on quality and tone.
+- **Assistant Director (Claude on Bruno's machine)** - Coordinates agents, monitors task progress, escalates decisions to Bruno, keeps things moving.
+- **Remote Agents (Claude instances on task server)** - Execute individual tasks. Report back via PRs, commits, and task status updates.
+
+### How It Works
+
+1. **Tasks are created** on the remote TaskYou instance (ssh rex)
+2. **Remote agents execute tasks** in isolated git worktrees
+3. **Agents create PRs** when work is complete
+4. **Assistant Director monitors** progress, approves routine work, unblocks stuck agents
+5. **Director reviews** creative output, provides feedback, makes final calls
+
+### Assistant Director Operating Guide
+
+**Using TaskYou CLI on remote server:**
+```bash
+ssh rex "su - rex -c 'cd /home/rex/rex-marks-the-spot && ty <command>'"
+```
+
+Key commands:
+- `ty list` - See all tasks
+- `ty sessions` - See running agent sessions
+- `ty output <id>` - See task output (what Claude sees)
+- `ty input <id> <text>` - Send text input to a task
+- `ty input <id> --enter` - Send Enter key
+- `ty input <id> <number>` - Select menu option (but may need --enter after)
+- `ty execute <id>` - Start a task
+- `ty close <id>` - Close a task
+- `ty retry <id>` - Retry a failed/stuck task
+- `ty create` - Create new task
+
+**Important operational notes:**
+- `ty input` sends text but often needs `--enter` separately to submit
+- When a task shows a numbered menu, send the number then `--enter`
+- Don't assume sessions are "stale" just because `ty output` is empty - check with Bruno
+- Don't auto-approve Bash commands - make informed decisions
+- `workflow_get_project_context` MCP tool is safe to approve (read-only)
+- Rate limits: Gemini image gen needs ~8 sec delays between requests
+- Model for image gen: `gemini-2.0-flash-exp-image-generation`
+
+### Communication
+
+- Remote agents should **create clear PR descriptions** explaining what they did
+- If an agent is stuck or needs a decision, it should **update the task with questions**
+- The Assistant Director checks in regularly and **escalates to Bruno** when needed
+- Bruno's feedback (on storyboards, blog posts, etc.) should inform future work
+
+### Quality Control
+
+- Run QA validation on generated assets before committing
+- Check existing feedback before regenerating content
+- Don't merge work that doesn't meet quality standards
+- When QA flags issues, create follow-up tasks to fix them
