@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailer Storyboard - Fairy Dinosaur Date Night</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #0066ff;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #00d4ff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+        }
+        .header .stats {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .controls .play-btn {
+            background: #0066ff;
+            color: white;
+        }
+        .controls .play-btn:hover {
+            background: #0052cc;
+        }
+        .controls .grid-btn {
+            background: #333;
+            color: white;
+        }
+        .controls .grid-btn:hover {
+            background: #444;
+        }
+
+        /* Section styling */
+        .section {
+            padding: 2rem;
+            border-bottom: 1px solid #222;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .section-number {
+            background: #0066ff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            flex: 1;
+        }
+        .section-duration {
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+
+        /* Panel grid */
+        .panels {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        .panel {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,102,255,0.2);
+        }
+        .panel img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+        }
+        .panel-info {
+            padding: 1rem;
+        }
+        .panel-number {
+            font-size: 0.8rem;
+            color: #0066ff;
+            margin-bottom: 0.25rem;
+        }
+        .panel-description {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+        .panel-duration {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .panel.title-card {
+            border: 2px solid #0066ff;
+        }
+        .panel.title-card .panel-number {
+            color: #00d4ff;
+        }
+
+        /* Slideshow mode */
+        .slideshow-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .slideshow-overlay.active {
+            display: flex;
+        }
+        .slideshow-img {
+            max-width: 95%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        .slideshow-info {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .slideshow-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .slideshow-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 1rem;
+        }
+        .slideshow-nav.prev { left: 20px; }
+        .slideshow-nav.next { right: 20px; }
+        .progress-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+        .progress-dot.active {
+            background: #0066ff;
+        }
+        .progress-dot.title-dot {
+            background: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>FAIRY DINOSAUR DATE NIGHT</h1>
+        <div class="subtitle">Teaser Trailer Storyboard</div>
+        <div class="stats">30 Panels | ~75 seconds | Best Moments from All 3 Acts</div>
+    </div>
+
+    <div class="controls">
+        <button class="play-btn" onclick="startSlideshow()">Play Slideshow</button>
+    </div>
+
+    <!-- OPENING HOOK -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">1</div>
+            <div class="section-title">Opening Hook</div>
+            <div class="section-duration">8 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="0">
+                <img src="trailer-001-family-home.png" alt="Panel 001">
+                <div class="panel-info">
+                    <div class="panel-number">001</div>
+                    <div class="panel-description">Wide shot: Cozy living room, kids watching TV, storm outside</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="1">
+                <img src="trailer-002-parents-leaving.png" alt="Panel 002">
+                <div class="panel-info">
+                    <div class="panel-number">002</div>
+                    <div class="panel-description">Parents in formal wear rushing to leave</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="2">
+                <img src="trailer-003-promise.png" alt="Panel 003">
+                <div class="panel-info">
+                    <div class="panel-number">003 - HOOK</div>
+                    <div class="panel-description">Mia's face - "Promise?"</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TITLE CARD 1 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number" style="background:#00d4ff">T</div>
+            <div class="section-title">Title Card</div>
+            <div class="section-duration">2 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel title-card" data-index="3">
+                <img src="trailer-title-01-this-summer.png" alt="Title: This Summer">
+                <div class="panel-info">
+                    <div class="panel-number">TITLE</div>
+                    <div class="panel-description">"THIS SUMMER"</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INCITING INCIDENT -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">2</div>
+            <div class="section-title">Inciting Incident</div>
+            <div class="section-duration">7 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="4">
+                <img src="trailer-004-storm-drive.png" alt="Panel 004">
+                <div class="panel-info">
+                    <div class="panel-number">004</div>
+                    <div class="panel-description">Car driving through intense storm</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="5">
+                <img src="trailer-005-timewarp.png" alt="Panel 005">
+                <div class="panel-info">
+                    <div class="panel-number">005 - HERO SHOT</div>
+                    <div class="panel-description">Massive blue time warp portal appears</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="6">
+                <img src="trailer-006-crash-into-portal.png" alt="Panel 006">
+                <div class="panel-info">
+                    <div class="panel-number">006</div>
+                    <div class="panel-description">Car crashes into vortex</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MYSTERY/STAKES -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">3</div>
+            <div class="section-title">Mystery & Stakes</div>
+            <div class="section-duration">7 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="7">
+                <img src="trailer-007-tv-explodes.png" alt="Panel 007">
+                <div class="panel-info">
+                    <div class="panel-number">007</div>
+                    <div class="panel-description">TV explodes, lights go out</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="8">
+                <img src="trailer-008-parents-missing.png" alt="Panel 008">
+                <div class="panel-info">
+                    <div class="panel-number">008</div>
+                    <div class="panel-description">Kids with social worker - parents missing</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="9">
+                <img src="trailer-009-jurassic-wake.png" alt="Panel 009">
+                <div class="panel-info">
+                    <div class="panel-number">009 - REVEAL</div>
+                    <div class="panel-description">Parents wake in prehistoric jungle</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- T-REX REVEAL -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">4</div>
+            <div class="section-title">T-Rex Reveal</div>
+            <div class="section-duration">5 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="10">
+                <img src="trailer-010-jurassic-beauty.png" alt="Panel 010">
+                <div class="panel-info">
+                    <div class="panel-number">010</div>
+                    <div class="panel-description">Lush Jurassic landscape - dangerous beauty</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="11">
+                <img src="trailer-011-trex-reveal.png" alt="Panel 011">
+                <div class="panel-info">
+                    <div class="panel-number">011 - MONEY SHOT</div>
+                    <div class="panel-description">T-Rex emerges, parents flee</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TITLE CARD 2 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number" style="background:#00d4ff">T</div>
+            <div class="section-title">Title Card</div>
+            <div class="section-duration">2 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel title-card" data-index="12">
+                <img src="trailer-title-02-one-family.png" alt="Title: One Family">
+                <div class="panel-info">
+                    <div class="panel-number">TITLE</div>
+                    <div class="panel-description">"ONE FAMILY"</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEROES RISE -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">5</div>
+            <div class="section-title">Heroes Rise</div>
+            <div class="section-duration">9 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="13">
+                <img src="trailer-012-ruben-reveal.png" alt="Panel 012">
+                <div class="panel-info">
+                    <div class="panel-number">012</div>
+                    <div class="panel-description">Ruben reveals: "I'm your fairy godfather"</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="14">
+                <img src="trailer-013-kids-determined.png" alt="Panel 013">
+                <div class="panel-info">
+                    <div class="panel-number">013</div>
+                    <div class="panel-description">Kids ready for adventure</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="15">
+                <img src="trailer-014-steal-police-car.png" alt="Panel 014">
+                <div class="panel-info">
+                    <div class="panel-number">014 - COMEDY</div>
+                    <div class="panel-description">Kids driving police car!</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="16">
+                <img src="trailer-015-portal-jump.png" alt="Panel 015">
+                <div class="panel-info">
+                    <div class="panel-number">015</div>
+                    <div class="panel-description">Jumping into the time warp</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADVENTURE MONTAGE -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">6</div>
+            <div class="section-title">Adventure Montage</div>
+            <div class="section-duration">11 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="17">
+                <img src="trailer-016-meet-jetplane.png" alt="Panel 016">
+                <div class="panel-info">
+                    <div class="panel-number">016</div>
+                    <div class="panel-description">Leo meets Jetplane - instant bond</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="18">
+                <img src="trailer-017-colored-farts.png" alt="Panel 017">
+                <div class="panel-info">
+                    <div class="panel-number">017 - COMEDY</div>
+                    <div class="panel-description">Jetplane's colored farts!</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="19">
+                <img src="trailer-018-parents-see-signal.png" alt="Panel 018">
+                <div class="panel-info">
+                    <div class="panel-number">018</div>
+                    <div class="panel-description">Parents see the signal - hope restored</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="20">
+                <img src="trailer-019-canyon-bridge.png" alt="Panel 019">
+                <div class="panel-info">
+                    <div class="panel-number">019</div>
+                    <div class="panel-description">Magical crayon bridge spans canyon</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="21">
+                <img src="trailer-020-leo-falls.png" alt="Panel 020">
+                <div class="panel-info">
+                    <div class="panel-number">020 - DANGER</div>
+                    <div class="panel-description">Leo falls from bridge!</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TITLE CARD 3 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number" style="background:#00d4ff">T</div>
+            <div class="section-title">Title Card</div>
+            <div class="section-duration">2 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel title-card" data-index="22">
+                <img src="trailer-title-03-anywhere.png" alt="Title: Will Go Anywhere">
+                <div class="panel-info">
+                    <div class="panel-number">TITLE</div>
+                    <div class="panel-description">"WILL GO ANYWHERE"</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIMAX TEASE -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">7</div>
+            <div class="section-title">Climax Tease</div>
+            <div class="section-duration">9 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="23">
+                <img src="trailer-021-trex-blocks-path.png" alt="Panel 021">
+                <div class="panel-info">
+                    <div class="panel-number">021</div>
+                    <div class="panel-description">T-Rex blocks the portal escape</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="24">
+                <img src="trailer-022-ruben-magic.png" alt="Panel 022">
+                <div class="panel-info">
+                    <div class="panel-number">022</div>
+                    <div class="panel-description">Ruben casts his biggest spell</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="25">
+                <img src="trailer-023-giant-jetplane.png" alt="Panel 023">
+                <div class="panel-info">
+                    <div class="panel-number">023 - EPIC</div>
+                    <div class="panel-description">Giant Jetplane vs T-Rex!</div>
+                    <div class="panel-duration">3s</div>
+                </div>
+            </div>
+            <div class="panel" data-index="26">
+                <img src="trailer-024-family-reunion.png" alt="Panel 024">
+                <div class="panel-info">
+                    <div class="panel-number">024 - EMOTIONAL</div>
+                    <div class="panel-description">Family reunion hug</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMEDY BUTTON -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number">8</div>
+            <div class="section-title">Comedy Button</div>
+            <div class="section-duration">2 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel" data-index="27">
+                <img src="trailer-025-comedy-beat.png" alt="Panel 025">
+                <div class="panel-info">
+                    <div class="panel-number">025 - LAUGH</div>
+                    <div class="panel-description">Leo: "He farts colors!"</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL TITLE CARDS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-number" style="background:#00d4ff">T</div>
+            <div class="section-title">Title Cards</div>
+            <div class="section-duration">6 seconds</div>
+        </div>
+        <div class="panels">
+            <div class="panel title-card" data-index="28">
+                <img src="trailer-title-04-logo.png" alt="Title: Logo">
+                <div class="panel-info">
+                    <div class="panel-number">LOGO</div>
+                    <div class="panel-description">FAIRY DINOSAUR DATE NIGHT</div>
+                    <div class="panel-duration">4s</div>
+                </div>
+            </div>
+            <div class="panel title-card" data-index="29">
+                <img src="trailer-title-05-coming-soon.png" alt="Title: Coming Soon">
+                <div class="panel-info">
+                    <div class="panel-number">END</div>
+                    <div class="panel-description">COMING SOON</div>
+                    <div class="panel-duration">2s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDESHOW OVERLAY -->
+    <div class="slideshow-overlay" id="slideshow">
+        <button class="slideshow-close" onclick="closeSlideshow()">&times;</button>
+        <button class="slideshow-nav prev" onclick="prevSlide()">&#8249;</button>
+        <button class="slideshow-nav next" onclick="nextSlide()">&#8250;</button>
+        <img class="slideshow-img" id="slideshow-img" src="" alt="">
+        <div class="slideshow-info">
+            <div id="slideshow-title"></div>
+            <div id="slideshow-desc"></div>
+        </div>
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <script>
+        const panels = [
+            { src: 'trailer-001-family-home.png', title: '001', desc: 'Cozy living room, kids watching TV', duration: 3000 },
+            { src: 'trailer-002-parents-leaving.png', title: '002', desc: 'Parents rushing to leave', duration: 2000 },
+            { src: 'trailer-003-promise.png', title: '003 - HOOK', desc: 'Mia: "Promise?"', duration: 3000 },
+            { src: 'trailer-title-01-this-summer.png', title: 'TITLE', desc: 'THIS SUMMER', duration: 2000, isTitle: true },
+            { src: 'trailer-004-storm-drive.png', title: '004', desc: 'Car in storm', duration: 2000 },
+            { src: 'trailer-005-timewarp.png', title: '005 - HERO', desc: 'Time warp portal appears', duration: 3000 },
+            { src: 'trailer-006-crash-into-portal.png', title: '006', desc: 'Car crashes into vortex', duration: 2000 },
+            { src: 'trailer-007-tv-explodes.png', title: '007', desc: 'TV explodes', duration: 2000 },
+            { src: 'trailer-008-parents-missing.png', title: '008', desc: 'Parents missing', duration: 2000 },
+            { src: 'trailer-009-jurassic-wake.png', title: '009 - REVEAL', desc: 'Parents wake in Jurassic', duration: 3000 },
+            { src: 'trailer-010-jurassic-beauty.png', title: '010', desc: 'Jurassic landscape', duration: 2000 },
+            { src: 'trailer-011-trex-reveal.png', title: '011 - MONEY SHOT', desc: 'T-Rex emerges!', duration: 3000 },
+            { src: 'trailer-title-02-one-family.png', title: 'TITLE', desc: 'ONE FAMILY', duration: 2000, isTitle: true },
+            { src: 'trailer-012-ruben-reveal.png', title: '012', desc: 'Fairy godfather reveal', duration: 3000 },
+            { src: 'trailer-013-kids-determined.png', title: '013', desc: 'Kids ready for adventure', duration: 2000 },
+            { src: 'trailer-014-steal-police-car.png', title: '014 - COMEDY', desc: 'Kids driving police car!', duration: 2000 },
+            { src: 'trailer-015-portal-jump.png', title: '015', desc: 'Jumping into portal', duration: 2000 },
+            { src: 'trailer-016-meet-jetplane.png', title: '016', desc: 'Leo meets Jetplane', duration: 3000 },
+            { src: 'trailer-017-colored-farts.png', title: '017 - COMEDY', desc: 'Colored farts!', duration: 2000 },
+            { src: 'trailer-018-parents-see-signal.png', title: '018', desc: 'Parents see signal', duration: 2000 },
+            { src: 'trailer-019-canyon-bridge.png', title: '019', desc: 'Crayon bridge', duration: 2000 },
+            { src: 'trailer-020-leo-falls.png', title: '020 - DANGER', desc: 'Leo falls!', duration: 2000 },
+            { src: 'trailer-title-03-anywhere.png', title: 'TITLE', desc: 'WILL GO ANYWHERE', duration: 2000, isTitle: true },
+            { src: 'trailer-021-trex-blocks-path.png', title: '021', desc: 'T-Rex blocks escape', duration: 2000 },
+            { src: 'trailer-022-ruben-magic.png', title: '022', desc: 'Ruben casts spell', duration: 2000 },
+            { src: 'trailer-023-giant-jetplane.png', title: '023 - EPIC', desc: 'Giant Jetplane!', duration: 3000 },
+            { src: 'trailer-024-family-reunion.png', title: '024 - EMOTIONAL', desc: 'Family reunion', duration: 2000 },
+            { src: 'trailer-025-comedy-beat.png', title: '025 - LAUGH', desc: '"He farts colors!"', duration: 2000 },
+            { src: 'trailer-title-04-logo.png', title: 'LOGO', desc: 'FAIRY DINOSAUR DATE NIGHT', duration: 4000, isTitle: true },
+            { src: 'trailer-title-05-coming-soon.png', title: 'END', desc: 'COMING SOON', duration: 2000, isTitle: true }
+        ];
+
+        let currentSlide = 0;
+        let autoplayInterval = null;
+
+        function buildProgressBar() {
+            const bar = document.getElementById('progress-bar');
+            bar.innerHTML = panels.map((p, i) =>
+                `<div class="progress-dot ${p.isTitle ? 'title-dot' : ''}" onclick="goToSlide(${i})"></div>`
+            ).join('');
+        }
+
+        function updateSlide() {
+            const panel = panels[currentSlide];
+            document.getElementById('slideshow-img').src = panel.src;
+            document.getElementById('slideshow-title').textContent = panel.title;
+            document.getElementById('slideshow-desc').textContent = panel.desc;
+
+            document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function startSlideshow() {
+            document.getElementById('slideshow').classList.add('active');
+            buildProgressBar();
+            currentSlide = 0;
+            updateSlide();
+            startAutoplay();
+        }
+
+        function closeSlideshow() {
+            document.getElementById('slideshow').classList.remove('active');
+            stopAutoplay();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % panels.length;
+            updateSlide();
+            resetAutoplay();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + panels.length) % panels.length;
+            updateSlide();
+            resetAutoplay();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+            resetAutoplay();
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setTimeout(() => {
+                nextSlide();
+                if (currentSlide < panels.length - 1) {
+                    startAutoplay();
+                }
+            }, panels[currentSlide].duration);
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearTimeout(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        function resetAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('slideshow').classList.contains('active')) return;
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'Escape') closeSlideshow();
+        });
+
+        // Click on panels to open slideshow
+        document.querySelectorAll('.panel').forEach(panel => {
+            panel.addEventListener('click', () => {
+                const index = parseInt(panel.dataset.index);
+                document.getElementById('slideshow').classList.add('active');
+                buildProgressBar();
+                currentSlide = index;
+                updateSlide();
+                startAutoplay();
+            });
+        });
+    </script>
+</body>
+</html>
