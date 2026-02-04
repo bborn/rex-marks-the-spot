@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Concepts - Rex Marks The Spot</title>
+    <meta name="description" content="Character concept art for 'Fairy Dinosaur Date Night' - exploring designs for our cast.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .gallery-header {
+            padding: 3rem 0 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .gallery-header h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 0.75rem;
+        }
+        .gallery-header p {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .character-section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .character-section:last-of-type {
+            border-bottom: none;
+        }
+        .character-section h2 {
+            margin-bottom: 0.25rem;
+        }
+        .character-section .role {
+            color: var(--color-primary-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .concept-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .concept-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .concept-card.selected {
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 2px var(--color-secondary);
+        }
+
+        .concept-image {
+            aspect-ratio: 1;
+            background: var(--color-bg-elevated);
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .concept-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+        .concept-card:hover .concept-image img {
+            transform: scale(1.03);
+        }
+
+        .concept-info {
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .concept-info span {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+        .selected-badge {
+            background: var(--color-secondary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--radius-lg);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .empty-message {
+            padding: 2rem;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 640px) {
+            .concept-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="production.html" class="active">Production</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-header">
+            <div class="container">
+                <h1>Character Concepts</h1>
+                <p>Exploring different designs for each character. Selected designs are marked and will be used for final production.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Mia -->
+            <section class="character-section">
+                <h2>Mia</h2>
+                <p class="role">The Determined Sister</p>
+                <div class="concept-grid">
+                    <article class="concept-card selected">
+                        <div class="concept-image" onclick="openLightbox('images/characters/mia-preview.png', 'Mia - Current Design')">
+                            <img src="images/characters/mia-preview.png" alt="Mia character concept" loading="lazy">
+                        </div>
+                        <div class="concept-info">
+                            <span>v1 - Low-poly</span>
+                            <span class="selected-badge">Selected</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Leo -->
+            <section class="character-section">
+                <h2>Leo</h2>
+                <p class="role">The Observant Brother</p>
+                <div class="concept-grid">
+                    <article class="concept-card selected">
+                        <div class="concept-image" onclick="openLightbox('images/characters/leo-preview.png', 'Leo - Current Design')">
+                            <img src="images/characters/leo-preview.png" alt="Leo character concept" loading="lazy">
+                        </div>
+                        <div class="concept-info">
+                            <span>v1 - Low-poly</span>
+                            <span class="selected-badge">Selected</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Ruben -->
+            <section class="character-section">
+                <h2>Ruben</h2>
+                <p class="role">The Depressed Fairy Godfather</p>
+                <div class="concept-grid">
+                    <article class="concept-card selected">
+                        <div class="concept-image" onclick="openLightbox('images/characters/ruben-preview.png', 'Ruben - Current Design')">
+                            <img src="images/characters/ruben-preview.png" alt="Ruben character concept" loading="lazy">
+                        </div>
+                        <div class="concept-info">
+                            <span>v1 - Low-poly</span>
+                            <span class="selected-badge">Selected</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Jetplane -->
+            <section class="character-section">
+                <h2>Jetplane</h2>
+                <p class="role">The Magical Dinosaur</p>
+                <div class="concept-grid">
+                    <article class="concept-card selected">
+                        <div class="concept-image" onclick="openLightbox('images/characters/jetplane-preview.png', 'Jetplane - Current Design')">
+                            <img src="images/characters/jetplane-preview.png" alt="Jetplane character concept" loading="lazy">
+                        </div>
+                        <div class="concept-info">
+                            <span>v1 - Low-poly</span>
+                            <span class="selected-badge">Selected</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Gabe -->
+            <section class="character-section">
+                <h2>Gabe</h2>
+                <p class="role">The Inventive Dad</p>
+                <div class="concept-grid">
+                    <article class="concept-card selected">
+                        <div class="concept-image" onclick="openLightbox('images/characters/gabe-preview.png', 'Gabe - Current Design')">
+                            <img src="images/characters/gabe-preview.png" alt="Gabe character concept" loading="lazy">
+                        </div>
+                        <div class="concept-info">
+                            <span>v1 - Low-poly</span>
+                            <span class="selected-badge">Selected</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Nina -->
+            <section class="character-section">
+                <h2>Nina</h2>
+                <p class="role">The Practical Mom</p>
+                <div class="concept-grid">
+                    <article class="concept-card selected">
+                        <div class="concept-image" onclick="openLightbox('images/characters/nina-preview.png', 'Nina - Current Design')">
+                            <img src="images/characters/nina-preview.png" alt="Nina character concept" loading="lazy">
+                        </div>
+                        <div class="concept-info">
+                            <span>v1 - Low-poly</span>
+                            <span class="selected-badge">Selected</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="" id="lightboxImage" onclick="event.stopPropagation()">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="production.html">Production</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="about.html">About</a>
+                    <a href="links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImage').src = src;
+            document.getElementById('lightboxCaption').textContent = caption;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
