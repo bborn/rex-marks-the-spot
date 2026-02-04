@@ -1,48 +1,116 @@
-name: Deploy to Cloudflare Pages
+name: PR Image Preview
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
 jobs:
-  deploy:
+  preview:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true
+          fetch-depth: 0
 
       - name: Checkout LFS objects
         run: git lfs pull
 
-      - name: Remove large files (Pages 25MB limit)
-        run: find docs -type f -size +25M -delete
+      - name: Get changed images
+        id: images
+        run: |
+          # Get list of added/modified image files
+          IMAGES=$(git diff --name-only --diff-filter=AM origin/main...HEAD | grep -E '\.(png|jpg|jpeg|gif|webp|svg)$' || true)
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$IMAGES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "count=$(echo "$IMAGES" | grep -c . || echo 0)" >> $GITHUB_OUTPUT
 
-      - name: Deploy to Cloudflare Pages
+      - name: Build gallery
+        if: steps.images.outputs.count != '0'
+        run: |
+          mkdir -p preview
+
+          # Copy changed images to preview folder
+          while IFS= read -r file; do
+            if [ -n "$file" ] && [ -f "$file" ]; then
+              mkdir -p "preview/$(dirname "$file")"
+              cp "$file" "preview/$file"
+            fi
+          done <<< "${{ steps.images.outputs.files }}"
+
+          # Generate simple gallery HTML
+          cat > preview/index.html << 'HTMLEOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>PR #${{ github.event.pull_request.number }} - Image Preview</title>
+            <style>
+              * { box-sizing: border-box; }
+              body { font-family: system-ui; background: #111; color: #eee; margin: 0; padding: 20px; }
+              h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+              .meta { color: #888; margin-bottom: 2rem; }
+              .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+              .card { background: #222; border-radius: 8px; overflow: hidden; }
+              .card img { width: 100%; height: auto; display: block; cursor: pointer; }
+              .card .path { padding: 10px; font-size: 12px; color: #888; word-break: break-all; }
+              .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100; padding: 20px; }
+              .modal.active { display: flex; align-items: center; justify-content: center; }
+              .modal img { max-width: 95vw; max-height: 95vh; object-fit: contain; }
+              .modal .close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 2rem; cursor: pointer; }
+            </style>
+          </head>
+          <body>
+            <h1>${{ github.event.pull_request.title }}</h1>
+            <p class="meta">PR #${{ github.event.pull_request.number }} · ${{ steps.images.outputs.count }} images</p>
+            <div class="grid" id="grid"></div>
+            <div class="modal" id="modal" onclick="this.classList.remove('active')">
+              <span class="close">&times;</span>
+              <img id="modalImg">
+            </div>
+            <script>
+              const images = `${{ steps.images.outputs.files }}`.trim().split('\n').filter(Boolean);
+              const grid = document.getElementById('grid');
+              images.forEach(path => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<img src="${path}" loading="lazy" onclick="openModal(this.src)"><div class="path">${path}</div>`;
+                grid.appendChild(card);
+              });
+              function openModal(src) {
+                document.getElementById('modalImg').src = src;
+                document.getElementById('modal').classList.add('active');
+              }
+            </script>
+          </body>
+          </html>
+          HTMLEOF
+
+      - name: Deploy preview
+        if: steps.images.outputs.count != '0'
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy docs --project-name=rex-marks-the-spot --branch=${{ github.head_ref || github.ref_name }}
+          command: pages deploy preview --project-name=rex-marks-the-spot --branch=${{ github.head_ref }}
 
-      - name: Comment PR with preview URL
-        if: github.event_name == 'pull_request'
+      - name: Comment PR
+        if: steps.images.outputs.count != '0'
         uses: actions/github-script@v7
         with:
           script: |
-            const deploymentUrl = '${{ steps.deploy.outputs.deployment-url }}';
-            if (deploymentUrl) {
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: `## Preview Deployment\n\n:rocket: Preview available at: ${deploymentUrl}\n\nView images directly on this preview deployment.`
-              });
-            }
+            const url = '${{ steps.deploy.outputs.deployment-url }}';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🖼️ Image Preview\n\n**${{ steps.images.outputs.count }} images** ready for review:\n\n👉 ${url}\n\nClick any image to view full size.`
+            });
+
+      - name: No images
+        if: steps.images.outputs.count == '0'
+        run: echo "No image files changed in this PR"
