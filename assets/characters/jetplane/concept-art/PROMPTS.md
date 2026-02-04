@@ -12,7 +12,7 @@ Adorable dinosaur companion, chicken-puppy-lizard hybrid, farts rainbow colors, 
 Pixar 3D animation style creature design, adorable dinosaur named Jetplane,
 chicken-puppy-lizard hybrid creature, round huggable body shape,
 soft teal-green scales, cream-colored belly, warm orange fluffy neck ruff,
-HUGE amber puppy-like eyes with multiple catchlights,
+HUGE bright YELLOW puppy-like eyes with multiple catchlights,
 soft coral-pink floppy ear-frills that express emotion,
 small cute T-Rex style arms, stubby legs with pink toe beans,
 expressive tail with orange fluffy tuft at end,
@@ -24,7 +24,7 @@ professional character concept art, this is the merchandising star
 ```
 Character model sheet, 360-degree turnaround, Pixar animation style,
 adorable teal dinosaur creature, cat-sized (small form),
-round body, big amber eyes, coral ear-frills, orange neck ruff,
+round body, big yellow eyes, coral ear-frills, orange neck ruff,
 cream belly, stubby legs, fluffy tail tuft,
 front view, side view, back view, three-quarter view, top view,
 bottom view showing pink toe beans,
@@ -49,7 +49,7 @@ professional animation reference
 ### Prompt 4: Core Emotions
 ```
 Character expression sheet, 8 expressions, Pixar 3D animation style,
-adorable teal dinosaur with big amber eyes and pink ear-frills,
+adorable teal dinosaur with big yellow eyes and pink ear-frills,
 showing: pure joy with wagging tail, terrified with flat ears,
 brave despite fear with raised tail, curious head tilt,
 sad droopy with watery eyes, loving nuzzle expression,
@@ -201,5 +201,5 @@ showing how character translates to merchandise
 - Should pass "plush toy test" - every frame looks huggable
 - Silhouette should be instantly recognizable
 - This character will sell merchandise - prioritize appeal
-- Colors: teal body, cream belly, orange ruff/tail, coral ears, amber eyes
+- Colors: teal body, cream belly, orange ruff/tail, coral ears, yellow eyes
 - Reference: Stitch, Toothless, Baby Yoda level of cute creature design

@@ -32,8 +32,8 @@
 ### Eyes
 | Element | Color Name | Hex Code | RGB | Usage |
 |---------|------------|----------|-----|-------|
-| Iris | Warm Amber | #FFB300 | 255, 179, 0 | Main eye color |
-| Iris Ring | Deep Amber | #FF8F00 | 255, 143, 0 | Outer definition |
+| Iris | Bright Yellow | #FFEB3B | 255, 235, 59 | Main eye color (per script) |
+| Iris Ring | Golden Yellow | #FDD835 | 253, 216, 53 | Outer definition |
 | Pupil | Black | #1A1A1A | 26, 26, 26 | Large, round |
 | Sclera | Soft White | #FFFEF5 | 255, 254, 245 | Eye whites |
 | Catchlight 1 | Pure White | #FFFFFF | 255, 255, 255 | Main sparkle |
@@ -130,7 +130,7 @@ When Jetplane eats mixed candy or needs full rainbow:
 
 ### Brave/Heroic
 - Body saturated and warm
-- Eyes intense amber
+- Eyes intense yellow
 - Overall slight golden glow
 
 ---

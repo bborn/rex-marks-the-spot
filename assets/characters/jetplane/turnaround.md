@@ -30,7 +30,7 @@ Jetplane has TWO size modes:
 
 ### Facial Features
 - **Head shape**: Round with slight snout
-- **Eyes**: HUGE, puppy-like, amber/golden with visible emotions
+- **Eyes**: HUGE, puppy-like, bright YELLOW with visible emotions (per script)
 - **Pupils**: Large and round (not reptilian slits - too scary)
 - **Nose**: Small, rounded snout with two nostril dots
 - **Mouth**: Usually closed with slight smile; can open wide for expressions
