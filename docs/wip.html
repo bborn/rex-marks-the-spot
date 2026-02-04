@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work in Progress - Rex Marks The Spot</title>
+    <meta name="description" content="See what's currently being worked on for Fairy Dinosaur Date Night.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .wip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .wip-card {
+            background: var(--card-bg, #1a1a2e);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color, #2a2a4e);
+        }
+        .wip-card h3 {
+            padding: 1rem 1.5rem;
+            margin: 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-color, #2a2a4e);
+        }
+        .wip-card h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .wip-card h3 a:hover {
+            color: var(--accent-color, #6c63ff);
+        }
+        .wip-card .meta {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted, #888);
+        }
+        .wip-card iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            background: #111;
+        }
+        .wip-card .preview-link {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            background: var(--accent-color, #6c63ff);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .wip-card .preview-link:hover {
+            opacity: 0.9;
+        }
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-muted, #888);
+        }
+        .no-previews {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-muted, #888);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="production.html">Production</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="wip.html" class="active">WIP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Work in Progress</h1>
+                <p>Live previews of assets currently being reviewed. These are pulled directly from open pull requests.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div id="wip-content" class="loading">
+                Loading previews...
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">Making a movie with AI. We'll see how it goes.</p>
+                <nav class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="production.html">Production</a>
+                    <a href="blog/index.html">Blog</a>
+                    <a href="about.html">About</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        async function loadPreviews() {
+            const container = document.getElementById('wip-content');
+
+            try {
+                // Fetch open PRs
+                const prsRes = await fetch('https://api.github.com/repos/bborn/rex-marks-the-spot/pulls?state=open&per_page=20');
+                const prs = await prsRes.json();
+
+                if (!prs.length) {
+                    container.innerHTML = '<div class="no-previews">No work in progress right now. Check back soon!</div>';
+                    return;
+                }
+
+                const previews = [];
+
+                // Get preview URLs from comments
+                for (const pr of prs) {
+                    const commentsRes = await fetch(pr.comments_url);
+                    const comments = await commentsRes.json();
+
+                    // Find the latest preview comment
+                    const previewComment = comments.reverse().find(c =>
+                        c.body && c.body.includes('Image Preview') && c.body.includes('pages.dev')
+                    );
+
+                    if (previewComment) {
+                        const urlMatch = previewComment.body.match(/https:\/\/[a-z0-9]+\.rex-marks-the-spot\.pages\.dev/);
+                        if (urlMatch) {
+                            previews.push({
+                                title: pr.title,
+                                number: pr.number,
+                                url: pr.html_url,
+                                previewUrl: urlMatch[0],
+                                updatedAt: new Date(pr.updated_at).toLocaleDateString()
+                            });
+                        }
+                    }
+                }
+
+                if (!previews.length) {
+                    container.innerHTML = '<div class="no-previews">No image previews available yet. PRs are being processed.</div>';
+                    return;
+                }
+
+                container.innerHTML = '<div class="wip-grid">' + previews.map(p => `
+                    <div class="wip-card">
+                        <h3><a href="${p.url}" target="_blank">${p.title}</a></h3>
+                        <div class="meta">PR #${p.number} · Updated ${p.updatedAt}</div>
+                        <iframe src="${p.previewUrl}" loading="lazy"></iframe>
+                        <a href="${p.previewUrl}" target="_blank" class="preview-link">Open Full Preview →</a>
+                    </div>
+                `).join('') + '</div>';
+
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = '<div class="no-previews">Failed to load previews. Try refreshing.</div>';
+            }
+        }
+
+        loadPreviews();
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
