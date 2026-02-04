@@ -14,3 +14,7 @@ binding = "AI"
 # CORS settings for the chat widget
 [vars]
 ALLOWED_ORIGINS = "https://rexmarksthespot.com,https://www.rexmarksthespot.com,http://localhost:8000"
+
+# Director authentication token (set via wrangler secret)
+# Run: wrangler secret put DIRECTOR_TOKEN
+# The token should be a secure random string
