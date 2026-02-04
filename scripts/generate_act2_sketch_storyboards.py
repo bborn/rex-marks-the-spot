@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Regenerate Act 2 storyboard images in pencil sketch style.
-Uses gemini-2.5-flash-preview-04-17 for image generation.
+Uses gemini-2.5-flash-image for image generation.
 """
 
 import os
@@ -741,9 +741,9 @@ def generate_image(prompt: str, filename: str, force: bool = False) -> bool:
     print(f"  Prompt: {prompt[:80]}...")
 
     try:
-        # Use Gemini 2.5 Flash Preview with image generation
+        # Use Gemini 2.5 Flash Image with native image generation
         response = client.models.generate_content(
-            model="gemini-2.5-flash-preview-04-17",
+            model="gemini-2.0-flash-exp-image-generation",
             contents=f"Generate an image: {prompt}",
             config=types.GenerateContentConfig(
                 response_modalities=["IMAGE", "TEXT"],
@@ -771,7 +771,7 @@ def main():
     """Generate Act 2 storyboard panels in pencil sketch style."""
     print("=" * 60)
     print("Generating Act 2 Storyboard Panels - PENCIL SKETCH STYLE")
-    print("Using model: gemini-2.5-flash-preview-04-17")
+    print("Using model: gemini-2.5-flash-image")
     print("=" * 60)
     print(f"Output directory: {OUTPUT_DIR}")
     print(f"Total panels: {len(ACT2_SKETCH_PANELS)}")
@@ -814,7 +814,7 @@ def main():
 
         # Small delay between requests to avoid rate limiting
         if i < end_idx:
-            time.sleep(2)
+            time.sleep(8)
 
     print("\n" + "=" * 60)
     print(f"Complete: {success_count}/{total} images generated")
