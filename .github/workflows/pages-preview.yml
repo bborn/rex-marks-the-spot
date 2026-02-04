@@ -1,0 +1,48 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Checkout LFS objects
+        run: git lfs pull
+
+      - name: Remove large files (Pages 25MB limit)
+        run: find docs -type f -size +25M -delete
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy docs --project-name=rex-marks-the-spot --branch=${{ github.head_ref || github.ref_name }}
+
+      - name: Comment PR with preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deploymentUrl = '${{ steps.deploy.outputs.deployment-url }}';
+            if (deploymentUrl) {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## Preview Deployment\n\n:rocket: Preview available at: ${deploymentUrl}\n\nView images directly on this preview deployment.`
+              });
+            }
