@@ -21,6 +21,9 @@ jobs:
       - name: Checkout LFS objects
         run: git lfs pull
 
+      - name: Remove large files (Pages 25MB limit)
+        run: find docs -type f -size +25M -delete
+
       - name: Deploy to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@v3
