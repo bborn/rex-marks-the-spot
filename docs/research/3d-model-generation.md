@@ -34,30 +34,45 @@ Current Blender-based character modeling produces primitive blob shapes (see Jet
 
 ---
 
-### 2. Tripo AI (tripo3d.ai)
+### 2. Tripo AI (tripo3d.ai) ⭐ PRIMARY RECOMMENDATION
 **Website:** https://www.tripo3d.ai
 
 | Aspect | Details |
 |--------|---------|
-| **Quality** | Clean topology, 40M+ models generated |
-| **Animation** | One-click universal rigging, animation-ready |
-| **Export** | GLB, FBX, OBJ, USD, STL |
-| **Blender** | Compatible exports |
-| **Cost** | ~$12/month (300 free credits) |
-| **Speed** | Seconds to generate |
+| **Quality** | Clean quad topology, 40M+ models generated |
+| **Animation** | One-click universal rigging for humans/quadrupeds/stylized |
+| **Export** | GLB, FBX, OBJ, USD, STL (with skeleton data) |
+| **Blender** | Official plugin + MCP integration available |
+| **Cost** | $15.90/mo Pro (3,000 credits), ~$0.21/model |
+| **Speed** | ~10 seconds to generate |
+
+**Model Versions:**
+- v2.5: Balanced performance, quad mesh support
+- v3.0: Sculpture-level precision (newest)
 
 **Pros:**
 - #1 ranked for text-to-3D for games (2025-2026)
 - Clean quad-based topology ideal for rigging
-- Integrated retopology and universal rigging
+- **Universal auto-rigging** - handles humanoids, quadrupeds, stylized, mechanical
 - Full pipeline in one tool (50% faster than multi-tool workflow)
+- **Official Blender plugin** (v0.7.7) for direct generation
+- **MCP server available** for Claude/Cursor integration
 - API available for automation
 
 **Cons:**
-- Less established than Meshy
-- May need texture refinement
+- Web app and API credits are separate (don't transfer)
+- May add unnecessary mesh detail on very stylized/chibi characters
+- Texture may need refinement for production
 
-**BEST FOR:** Character animation workflows
+**Rigging Details:**
+- Supports: humanoids, quadrupeds, stylized characters, mechanical creatures
+- Input: OBJ, FBX, GLB
+- Output: FBX/GLB with skeleton and weights
+- Compatible with: Mixamo, Unity, Unreal, Blender, Maya
+
+**BEST FOR:** Character animation workflows, game-ready assets
+
+**See:** [Detailed Tripo AI Research](./tripo-ai-research.md)
 
 ---
 
@@ -191,15 +206,15 @@ Current Blender-based character modeling produces primitive blob shapes (see Jet
 
 ## Comparison Matrix
 
-| Tool | Quality | Rigging | Animation | Blender | Cost | Recommendation |
-|------|---------|---------|-----------|---------|------|----------------|
-| **Tripo AI** | High | Auto | Library | Export | $12/mo | **PRIMARY** |
-| **Meshy** | Good | Auto | 500+ presets | Plugin | $16/mo | **SECONDARY** |
-| **Hyper3D Rodin** | Premium | T-Pose | Coming Soon | MCP | $99+/mo | Hero chars |
-| **Hunyuan3D** | High | Improved | Via Studio | MCP | Open source | Technical option |
-| Copilot 3D | Variable | None | None | Manual | Free | Not recommended |
-| Shap-E | Low | None | None | Manual | Free | Not recommended |
-| Fast3D | Variable | None | None | Manual | Credits | Not recommended |
+| Tool | Quality | Rigging | Animation | Blender | Cost | Cost/Model | Recommendation |
+|------|---------|---------|-----------|---------|------|------------|----------------|
+| **Tripo AI** | High | Universal Auto | Ready | Plugin+MCP | $15.90/mo | ~$0.21 | **PRIMARY** |
+| **Meshy** | Good | Auto (humanoid) | 500+ presets | Plugin | $20/mo | ~$0.40 | **SECONDARY** |
+| **Hyper3D Rodin** | Premium | T-Pose only | Coming Soon | MCP | $99+/mo | ~$1.00+ | Hero chars |
+| **Hunyuan3D** | High | Improved | Via Studio | MCP | Open source | Free | Technical option |
+| Copilot 3D | Variable | None | None | Manual | Free | Free | Not recommended |
+| Shap-E | Low | None | None | Manual | Free | Free | Not recommended |
+| Fast3D | Variable | None | None | Manual | Credits | Variable | Not recommended |
 
 ---
 
@@ -239,42 +254,80 @@ The project already has these integrations configured in BlenderMCP that can be 
 3. **Sketchfab** - Enable with API key in BlenderMCP panel
 4. **Poly Haven** - Already available for textures/HDRIs/models
 
-### External Tools (require separate workflow)
+### Tripo AI Integration (RECOMMENDED)
 
-1. **Tripo AI** - Generate on web/API, export to Blender
-2. **Meshy** - Use Blender plugin or web interface
+**Option 1: Blender Plugin**
+- Repository: [VAST-AI-Research/tripo-3d-for-blender](https://github.com/VAST-AI-Research/tripo-3d-for-blender)
+- Version: v0.7.7 (actively maintained)
+- Features: Text-to-3D, Image-to-3D, Multi-view, Progress tracking
+- Requirement: Tripo API key
+
+**Option 2: MCP Server**
+- Repository: [VAST-AI-Research/tripo-mcp](https://github.com/VAST-AI-Research/tripo-mcp)
+- Status: Alpha (v0.1.2)
+- Works with: Claude Desktop, Cursor
+- Can run alongside existing BlenderMCP
+
+**Option 3: Direct API**
+- Documentation: https://platform.tripo3d.ai/docs
+- Use for: Batch processing, automation pipelines
+
+### Other External Tools
+
+1. **Meshy** - Use Blender plugin or web interface
 
 ---
 
 ## Immediate Action Items
 
-1. **Enable Hyper3D Rodin in BlenderMCP** - for testing with existing pipeline
-2. **Sign up for Tripo AI** - $12/mo for primary character generation
-3. **Test regenerate Jetplane** - using Tripo or Hyper3D to compare quality
-4. **Consider Meshy** - if more animation presets needed
+1. **Sign up for Tripo AI (free tier)** - Test with 300 credits first
+   - Create account at https://studio.tripo3d.ai
+   - Get API key from https://platform.tripo3d.ai
+2. **Install Tripo Blender Plugin** - v0.7.7 from GitHub
+   - Download: https://github.com/VAST-AI-Research/tripo-3d-for-blender
+   - Enter API key in plugin panel
+3. **Test with existing storyboard frames** - Generate Jetplane from concept art
+4. **Upgrade to Professional ($15.90/mo)** if tests successful
+5. **Enable Hyper3D Rodin in BlenderMCP** - for hero character comparison
+6. **Consider Meshy** - only if Tripo rigging doesn't meet needs
 
 ---
 
 ## Cost Analysis (Monthly)
 
-| Scenario | Tools | Cost |
-|----------|-------|------|
-| Budget | Tripo AI only | $12/mo |
-| Balanced | Tripo + Meshy | $28/mo |
-| Premium | Tripo + Rodin | $111+/mo |
-| Full Pipeline | All three | $127+/mo |
+| Scenario | Tools | Cost | Models/Month |
+|----------|-------|------|--------------|
+| Budget | Tripo AI Pro only | $15.90/mo | ~75 HD models |
+| Balanced | Tripo Pro + Meshy Pro | $35.90/mo | ~125 models total |
+| Premium | Tripo Pro + Rodin | $114.90+/mo | 75 regular + 4-5 hero |
+| Full Pipeline | All three | $134.90+/mo | Maximum flexibility |
 
-**Recommendation:** Start with Tripo AI ($12/mo) and evaluate before adding others.
+**Recommendation:** Start with Tripo AI Professional ($15.90/mo) for primary character generation. The 3,000 credits (~75 HD models) should cover our character needs. Use Rodin only for the 4 hero characters if premium quality is needed.
 
 ---
 
 ## References
 
+### Tripo AI (Primary)
+- [Tripo AI Website](https://www.tripo3d.ai)
+- [Tripo AI API](https://www.tripo3d.ai/api)
+- [Tripo Pricing](https://www.tripo3d.ai/pricing)
+- [Tripo Auto-Rigging](https://www.tripo3d.ai/features/ai-auto-rigging)
+- [Tripo Blender Plugin](https://github.com/VAST-AI-Research/tripo-3d-for-blender)
+- [Tripo MCP Server](https://github.com/VAST-AI-Research/tripo-mcp)
+- [Detailed Tripo Research](./tripo-ai-research.md)
+
+### Other Tools
 - [Meshy AI](https://www.meshy.ai)
-- [Tripo AI](https://www.tripo3d.ai)
 - [Hyper3D Rodin](https://hyper3d.ai)
 - [Hunyuan3D GitHub](https://github.com/Tencent-Hunyuan/Hunyuan3D-2)
 - [Microsoft Copilot 3D](https://copilot.microsoft.com/labs/experiments/3d-generations)
 - [OpenAI Shap-E](https://github.com/openai/shap-e)
 - [Fast3D.io](https://fast3d.io)
+
+### Integration
 - [BlenderMCP](https://github.com/ahujasid/blender-mcp)
+
+### Comparison Sources
+- [3D AI Price Comparison (Sloyd)](https://www.sloyd.ai/blog/3d-ai-price-comparison)
+- [AI 3D Generators Review 2025](https://cyber-fox.net/blog/ai-3d-generators-review-in-2025/)

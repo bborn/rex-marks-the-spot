@@ -49,9 +49,11 @@
                     <div class="post-body">
                         <p>I need Blender to do what I say. That's the problem I'm solving.</p>
 
-                        <p>Normally, making a 3D scene means clicking around for hours. Set up objects. Position the camera. Tweak the lights. Render. Hate it. Do it again.</p>
+                        <p>Normally, making a 3D scene means clicking around for hours. Set up objects. Position the camera. Tweak the lights. Render. Hate it. Move the light two inches. Render again. Hate it slightly less. Repeat for eternity.</p>
 
                         <p>I want to describe what I want and have it appear. So I'm connecting Claude to Blender.</p>
+
+                        <p>Does this sound insane? It felt insane when I started.</p>
 
                         <h2>How It Works</h2>
 
@@ -77,7 +79,7 @@
 
                         <p>I describe a scene. Claude writes Python code. Blender runs it headless (no GUI). I get a render. If it's wrong, Claude looks at the image and tries again.</p>
 
-                        <p>That's the theory anyway.</p>
+                        <p>That's the theory anyway. Reality is messier.</p>
 
                         <h2>What I've Built So Far</h2>
 
@@ -85,33 +87,37 @@
 
                         <p><strong>poc_create_scene.py</strong> — Takes a description, generates Blender Python code, creates the scene, spits out a render.</p>
 
-                        <p><strong>poc_validation_loop.py</strong> — Renders, checks if it looks right, fixes what's wrong, repeats until it's decent.</p>
+                        <p><strong>poc_validation_loop.py</strong> — Renders, checks if it looks right, fixes what's wrong, repeats until it's decent. Or until I give up.</p>
 
                         <h2>What's Hard</h2>
 
-                        <p><strong>Vague words don't translate to code.</strong> "Make it more dramatic" means nothing to Blender. I'm trying to build a vocabulary that bridges fuzzy creative direction and specific operations. It's slow going.</p>
+                        <p><strong>Vague words don't translate to code.</strong> "Make it more dramatic" means nothing to Blender. I'm trying to build a vocabulary that bridges fuzzy creative direction and specific operations. It's slow going. Sometimes I spend an hour trying to explain what "moody" means in terms of light falloff and color temperature.</p>
 
-                        <p><strong>Blender has tons of state.</strong> The AI needs to know what's already in the scene before it can change anything. Getting that context right is tricky.</p>
+                        <p><strong>Blender has tons of state.</strong> The AI needs to know what's already in the scene before it can change anything. Getting that context right is tricky. Sometimes it adds a second camera instead of moving the first one. Sometimes it deletes everything and starts over. Neither is ideal.</p>
 
-                        <p><strong>Rendering takes forever.</strong> Even a simple scene is several seconds. The feedback loop only works if you can iterate fast. I'm using preview renders and simpler geometry to speed things up.</p>
+                        <p><strong>Rendering takes forever.</strong> Even a simple scene is several seconds. A complex one? Minutes. The feedback loop only works if you can iterate fast. I'm using preview renders and simpler geometry to speed things up. Still not fast enough.</p>
 
-                        <p><strong>How do you know when it's good enough?</strong> I don't have a great answer yet. Right now it's mostly me looking at it and deciding.</p>
+                        <p><strong>How do you know when it's good enough?</strong> I don't have a great answer yet. Right now it's mostly me looking at it and deciding. Which kind of defeats the purpose of automation. But I don't have a better idea.</p>
 
                         <h2>What's Actually Working</h2>
 
                         <p>Some stuff does work:</p>
 
-                        <p>Basic scene setup from descriptions — works pretty well. Camera positioning from shot descriptions — surprisingly good. Simple lighting from mood descriptions — decent. The feedback loop improving results over passes — yes, it helps.</p>
+                        <p>Basic scene setup from descriptions — works pretty well. "Put a table in the center with two chairs" actually works. Camera positioning from shot descriptions — surprisingly good. "Medium shot from the character's left" lands it close enough. Simple lighting from mood descriptions — decent. "Warm evening light from the window" gets you 70% of the way there.</p>
+
+                        <p>The feedback loop improving results over passes — yes, it helps. But it's also slow and expensive.</p>
 
                         <h2>What's Next</h2>
 
                         <p>Hook up my actual character and environment assets. Figure out animation (right now it's just static scenes). Better quality checking. Running multiple shots at once.</p>
 
+                        <p>Also: figure out if this is actually faster than just doing it manually. The jury's still out.</p>
+
                         <h2>Stuff I Don't Know Yet</h2>
 
                         <p>How much cinematography knowledge should I bake in? How specific do scene descriptions need to be? What do I do when the creative direction is intentionally vague? When do I just give up and do it manually?</p>
 
-                        <p>Still figuring it out. I'll post more when I learn more.</p>
+                        <p>Still figuring it out. I'll post more when I learn more. Or when I give up and admit this was a terrible idea.</p>
                     </div>
 
                     <nav class="post-nav">
@@ -130,12 +136,12 @@
                     <span class="logo-icon">🦖</span>
                     <span>Rex Marks The Spot</span>
                 </div>
-                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <p class="footer-tagline">Making a movie with AI. We'll see how it goes.</p>
                 <div class="footer-social">
                     <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
-                    <a href="../../links.html" title="Twitter/X (Coming Soon)">
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X @rex_the_movie">
                         <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                     <a href="../../links.html" title="Instagram (Coming Soon)">

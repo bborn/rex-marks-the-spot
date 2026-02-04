@@ -626,7 +626,7 @@
                     const panelNum = panelIdx + 1;
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}`;
                     // Use PNG for Scene 1 (generated images), SVG placeholders for others
-                    const ext = scene.num === 1 ? 'png' : 'svg';
+                    const ext = "png";
                     const filename = `${baseFilename}.${ext}`;
 
                     const cardHtml = ext === 'png' ? `
@@ -660,7 +660,7 @@
             scenes.forEach(scene => {
                 scene.panels.forEach((panel, idx) => {
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(idx + 1).padStart(2, '0')}`;
-                    const ext = scene.num === 1 ? 'png' : 'svg';
+                    const ext = "png";
                     allPanels.push({
                         scene: scene.num,
                         panel: idx + 1,
