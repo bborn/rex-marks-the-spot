@@ -14,8 +14,8 @@ appears 50s years old, wild unkempt silvery gray hair going everywhere,
 tired blue-gray eyes with heavy dark bags underneath,
 long drawn face that was once handsome, prominent nose,
 perpetual stubble, world-weary cynical expression,
-iridescent fairy wings drooping sadly behind him,
-faded purple vest over wrinkled cream shirt,
+dusty purple iridescent fairy wings drooping sadly behind him,
+faded blue janitor coveralls (one-piece work uniform) with barely visible magic symbols,
 professional character concept art, white background
 ```
 
@@ -23,10 +23,10 @@ professional character concept art, white background
 ```
 Character model sheet, 360-degree turnaround, Pixar animation style,
 fairy godfather character, 5'9" but hunched posture,
-silvery wild hair, sad droopy translucent fairy wings,
-faded purple moth-eaten vest, wrinkled half-untucked shirt,
-worn baggy trousers, scuffed pointed curled fairy shoes,
-holding dented magic wand with tape-wrapped handle,
+silvery wild hair, sad droopy dusty purple translucent fairy wings,
+faded blue janitor coveralls (one-piece work uniform) with magic symbols,
+scuffed pointed curled fairy shoes,
+holding traditional string mop as magic wand,
 front view, side view, back view, three-quarter view,
 professional animation studio quality
 ```
@@ -98,10 +98,10 @@ consistent character throughout, professional quality
 ```
 Character costume detail sheet, Pixar 3D animation style,
 fairy godfather's worn outfit pieces:
-faded purple vest with moth holes and dusty gold lining,
-wrinkled dingy white shirt with mystery stains,
-baggy worn blue-gray trousers, scuffed curled-toe fairy shoes,
-dented star-tipped wand with tape repairs,
+faded blue janitor coveralls (one-piece work uniform) with barely visible magic symbols,
+coveralls slightly too big, worn patches at elbows and knees,
+scuffed curled-toe fairy shoes,
+traditional string mop as magic wand with wooden handle,
 stopped pocket watch, once fine now worn,
 professional costume reference showing decay of grandeur
 ```

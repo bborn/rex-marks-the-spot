@@ -63,29 +63,19 @@
 
 ## Costume Colors
 
-### Faded Fairy Formal
+### Janitor Coveralls (One-Piece Work Uniform)
+Ruben wears faded blue janitor coveralls with barely visible magic symbols.
 
-#### Jacket/Vest
+#### Coveralls
 | Element | Color Name | Hex Code | RGB | Usage |
 |---------|------------|----------|-----|-------|
-| Base | Faded Purple | #6B5B7B | 107, 91, 123 | Main color |
-| Original (Flashback) | Rich Purple | #7C3AED | 124, 58, 237 | What it was |
-| Moth Holes | Dark | #4B3B5B | 75, 59, 91 | Damage |
-| Lining | Dusty Gold | #B8A060 | 184, 160, 96 | Interior |
-
-#### Shirt
-| Element | Color Name | Hex Code | RGB | Usage |
-|---------|------------|----------|-----|-------|
-| Base | Dingy White | #E8E0D8 | 232, 224, 216 | Main color |
-| Stains | Various | #D0C8B8 | 208, 200, 184 | Coffee/mystery |
-| Shadow | Wrinkle Gray | #C8C0B0 | 200, 192, 176 | Folds |
-
-#### Trousers
-| Element | Color Name | Hex Code | RGB | Usage |
-|---------|------------|----------|-----|-------|
-| Base | Faded Blue-Gray | #5B6B7B | 91, 107, 123 | Main color |
-| Worn Areas | Lighter | #7B8B9B | 123, 139, 155 | Knees, seat |
-| Shadow | Darker | #4B5B6B | 75, 91, 107 | Folds |
+| Base | Faded Blue | #5B6B7B | 91, 107, 123 | Main color |
+| Original (Flashback) | Rich Blue | #3B5998 | 59, 89, 152 | What it was |
+| Worn Areas | Lighter Blue | #7B8B9B | 123, 139, 155 | Elbows, knees |
+| Shadow | Darker Blue | #4B5B6B | 75, 91, 107 | Folds, creases |
+| Magic Symbols | Faded Gold | #B8A060 | 184, 160, 96 | Barely visible |
+| Stains | Various | #4A5A6A | 74, 90, 106 | Work wear |
+| Patches | Mismatched | #6B7B8B | 107, 123, 139 | Repairs |
 
 #### Pointed Shoes
 | Element | Color Name | Hex Code | RGB | Usage |
