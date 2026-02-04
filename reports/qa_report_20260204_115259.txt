@@ -1,0 +1,104 @@
+======================================================================
+STORYBOARD QA VALIDATION REPORT
+======================================================================
+
+Generated: 2026-02-04 11:52:59
+Storyboards directory: /home/rex/rex-marks-the-spot/.task-worktrees/76-qa-validation-on-all-storyboard-panels/storyboards
+
+----------------------------------------------------------------------
+SUMMARY
+----------------------------------------------------------------------
+Total panels analyzed: 457
+Panels passing: 385 (84.2%)
+Panels with issues: 72
+Average quality score: 91.8/100
+
+----------------------------------------------------------------------
+BREAKDOWN BY ACT
+----------------------------------------------------------------------
+  ACT1: 9 panels, 3 with issues, avg quality: 95.0
+  ACT2: 89 panels, 37 with issues, avg quality: 92.6
+  ACT3: 359 panels, 32 with issues, avg quality: 91.5
+
+----------------------------------------------------------------------
+ISSUES DETECTED
+----------------------------------------------------------------------
+
+### Images too bright/washed out (1)
+  - act3/panels/scene-34-panel-04.png (quality: 65)
+
+### Unusual aspect ratio (71)
+  - act1/panels/scene-01-panel-01.png (quality: 85)
+  - act1/panels/scene-01-panel-07.png (quality: 90)
+  - act1/panels/scene-01-panel-08.png (quality: 90)
+  - act2/panels/scene-11-panel-01.png (quality: 90)
+  - act2/panels/scene-13-panel-02.png (quality: 90)
+  - act2/panels/scene-13-panel-03.png (quality: 85)
+  - act2/panels/scene-14-panel-01.png (quality: 85)
+  - act2/panels/scene-14-panel-03.png (quality: 80)
+  - act2/panels/scene-14-panel-04.png (quality: 75)
+  - act2/panels/scene-16-panel-01.png (quality: 75)
+  ... and 61 more
+
+----------------------------------------------------------------------
+LOWEST QUALITY PANELS (Bottom 20)
+----------------------------------------------------------------------
+  act3/panels/scene-34-panel-04.png
+    Quality: 65/100 | Issues: too_bright
+  act2/panels/scene-14-panel-04.png
+    Quality: 75/100 | Issues: aspect_ratio
+  act2/panels/scene-16-panel-01.png
+    Quality: 75/100 | Issues: aspect_ratio
+  act2/panels/scene-14-panel-03.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act2/panels/scene-16-panel-03.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act2/panels/scene-21-panel-02.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act2/panels/scene-21-panel-04.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-26-panel-08.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-27-panel-32.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-28-panel-04.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-28-panel-11.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-28-panel-18.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-29-panel-08.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-32-panel-10.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-32-panel-11.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-32-panel-27.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-32-panel-54.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-32-panel-61.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-33-panel-13.png
+    Quality: 80/100 | Issues: aspect_ratio
+  act3/panels/scene-33-panel-15.png
+    Quality: 80/100 | Issues: aspect_ratio
+
+----------------------------------------------------------------------
+SCENES NEEDING ATTENTION
+----------------------------------------------------------------------
+  scene-16: 3/3 panels with issues, avg quality: 80.0
+  scene-21: 4/8 panels with issues, avg quality: 86.9
+  scene-14: 3/5 panels with issues, avg quality: 87.0
+  scene-29: 1/8 panels with issues, avg quality: 90.0
+  scene-28: 3/24 panels with issues, avg quality: 90.6
+  scene-32: 6/62 panels with issues, avg quality: 90.7
+  scene-27: 4/45 panels with issues, avg quality: 90.8
+  scene-33: 12/77 panels with issues, avg quality: 90.8
+  scene-18: 1/3 panels with issues, avg quality: 91.7
+  scene-36: 1/45 panels with issues, avg quality: 92.1
+  scene-22: 7/14 panels with issues, avg quality: 92.1
+  scene-37: 1/19 panels with issues, avg quality: 92.4
+  scene-17: 2/4 panels with issues, avg quality: 92.5
+  scene-19: 4/6 panels with issues, avg quality: 92.5
+  scene-34: 2/9 panels with issues, avg quality: 92.8
