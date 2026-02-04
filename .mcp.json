@@ -1,11 +1,22 @@
 {
   "mcpServers": {
     "blender": {
+      "args": [
+        "blender-mcp"
+      ],
       "command": "uvx",
-      "args": ["blender-mcp"],
       "env": {
         "PATH": "/home/rex/.local/bin:/usr/local/bin:/usr/bin:/bin"
       }
+    },
+    "workflow": {
+      "args": [
+        "mcp-server",
+        "--task-id",
+        "65"
+      ],
+      "command": "/home/rex/.local/bin/ty",
+      "type": "stdio"
     }
   }
 }

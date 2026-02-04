@@ -369,6 +369,399 @@
                 display: none;
             }
         }
+
+        /* Feedback System Styles */
+        .feedback-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            z-index: 10;
+        }
+
+        .feedback-badge.has-director {
+            background: #ff6b6b;
+        }
+
+        .feedback-badge svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .panel-card {
+            position: relative;
+        }
+
+        /* Lightbox Feedback Panel */
+        .lightbox-feedback {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 380px;
+            height: 100%;
+            background: var(--bg-medium);
+            border-left: 2px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1002;
+        }
+
+        .lightbox-feedback.active {
+            transform: translateX(0);
+        }
+
+        .lightbox.active .lightbox-content {
+            margin-right: 0;
+            transition: margin-right 0.3s ease;
+        }
+
+        .lightbox.active.feedback-open .lightbox-content {
+            margin-right: 380px;
+        }
+
+        .feedback-header {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-header h3 {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feedback-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 1003;
+        }
+
+        .feedback-toggle:hover {
+            background: #0077cc;
+        }
+
+        .feedback-comments {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .comment {
+            background: var(--bg-dark);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .comment.director {
+            border-left: 3px solid #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comment-author.director {
+            color: #ff6b6b;
+        }
+
+        .director-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        .comment-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .comment-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .comment-status {
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        .status-badge.noted {
+            background: #f0ad4e;
+            color: #000;
+        }
+
+        .status-badge.addressed {
+            background: #5cb85c;
+            color: white;
+        }
+
+        .feedback-form {
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .feedback-form input[type="text"] {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-form input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .feedback-form button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .feedback-form button:hover {
+            background: #0077cc;
+        }
+
+        .feedback-form button:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .feedback-form .form-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .no-comments {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+        }
+
+        .loading-comments {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+        }
+
+        .feedback-error {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .feedback-success {
+            background: rgba(92, 184, 92, 0.2);
+            color: #5cb85c;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        /* Director Login Modal */
+        .director-login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .director-login-modal.active {
+            display: flex;
+        }
+
+        .director-login-content {
+            background: var(--bg-medium);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .director-login-content h3 {
+            margin-bottom: 1rem;
+        }
+
+        .director-login-content input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .director-login-content .btn-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .director-login-content button {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .director-login-content button.primary {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .director-login-content button.secondary {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .director-indicator {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 500;
+        }
+
+        .director-indicator.active {
+            display: flex;
+        }
+
+        .director-indicator button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .director-indicator button:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .lightbox-feedback {
+                width: 100%;
+                height: 50%;
+                top: auto;
+                bottom: 0;
+                border-left: none;
+                border-top: 2px solid var(--accent);
+                transform: translateY(100%);
+            }
+
+            .lightbox-feedback.active {
+                transform: translateY(0);
+            }
+
+            .lightbox.active.feedback-open .lightbox-content {
+                margin-right: 0;
+                margin-bottom: 50%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -423,6 +816,58 @@
             <div class="lightbox-info" id="lightbox-info"></div>
         </div>
         <button class="lightbox-nav next" onclick="navigateLightbox(1)">&rarr;</button>
+
+        <button class="feedback-toggle" id="feedback-toggle" onclick="toggleFeedbackPanel()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span id="feedback-toggle-count">Feedback</span>
+        </button>
+
+        <div class="lightbox-feedback" id="feedback-panel">
+            <div class="feedback-header">
+                <h3>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Panel Feedback
+                </h3>
+                <button onclick="toggleFeedbackPanel()" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.2rem;">&times;</button>
+            </div>
+            <div class="feedback-comments" id="feedback-comments">
+                <div class="loading-comments">Loading comments...</div>
+            </div>
+            <div class="feedback-form">
+                <div id="feedback-message-area"></div>
+                <textarea id="feedback-text" placeholder="Share your thoughts on this panel..." maxlength="2000"></textarea>
+                <input type="text" id="feedback-name" placeholder="Your name (optional)" maxlength="50">
+                <button onclick="submitFeedback()" id="submit-feedback-btn">Submit Feedback</button>
+                <div class="form-note">Be constructive and specific. Director comments are highlighted.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Director Login Modal -->
+    <div class="director-login-modal" id="director-login-modal">
+        <div class="director-login-content">
+            <h3>Director Login</h3>
+            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">Enter the director token to leave official feedback.</p>
+            <input type="password" id="director-token-input" placeholder="Director token">
+            <div id="director-login-error" style="color: #ff6b6b; font-size: 0.85rem; margin-bottom: 0.5rem;"></div>
+            <div class="btn-row">
+                <button class="secondary" onclick="closeDirectorLogin()">Cancel</button>
+                <button class="primary" onclick="loginAsDirector()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Director Indicator -->
+    <div class="director-indicator" id="director-indicator">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        Director Mode
+        <button onclick="logoutDirector()" title="Logout">&times;</button>
     </div>
 
     <script>
