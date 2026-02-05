@@ -4,8 +4,14 @@ Generate a JSON manifest of all R2 assets for the WIP page.
 
 This creates a manifest.json file that lists all media assets in R2 with
 their paths, sizes, modification times, and categories for easy display.
+
+Usage:
+  python3 generate_asset_manifest.py                    # Upload to R2
+  python3 generate_asset_manifest.py --output FILE      # Save to local file
+  python3 generate_asset_manifest.py --output docs/manifest.json  # For GitHub Pages
 """
 
+import argparse
 import json
 import subprocess
 import sys
@@ -14,7 +20,6 @@ from pathlib import Path
 
 R2_BUCKET = "r2:rex-assets"
 R2_PUBLIC_URL = "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev"
-OUTPUT_FILE = "manifest.json"
 
 # Media file extensions to include
 MEDIA_EXTENSIONS = {
@@ -145,7 +150,20 @@ def upload_manifest(manifest: dict):
     print(f"Manifest uploaded to {R2_PUBLIC_URL}/manifest.json")
 
 
+def save_manifest_local(manifest: dict, output_path: str):
+    """Save manifest to a local file."""
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, 'w') as f:
+        json.dump(manifest, f, indent=2)
+    print(f"Manifest saved to {output_path}")
+
+
 def main():
+    parser = argparse.ArgumentParser(description='Generate R2 asset manifest')
+    parser.add_argument('--output', '-o', help='Save to local file instead of uploading to R2')
+    args = parser.parse_args()
+
     manifest = generate_manifest()
 
     # Print summary
@@ -155,8 +173,12 @@ def main():
     for cat, count in sorted(manifest['categories'].items()):
         print(f"    {cat}: {count}")
 
-    # Upload to R2
-    upload_manifest(manifest)
+    if args.output:
+        # Save locally (for GitHub Pages)
+        save_manifest_local(manifest, args.output)
+    else:
+        # Upload to R2
+        upload_manifest(manifest)
 
     print("\nDone!")
 
