@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-05T19:11:16.544291Z",
-  "totalAssets": 744,
+  "generated": "2026-02-05T19:22:52.238227Z",
+  "totalAssets": 745,
   "categories": {
-    "Characters": 66,
+    "Characters": 67,
     "Storyboards": 550,
     "Props": 20,
     "Branding": 10,
@@ -13,6 +13,15 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "characters/nina/nina_turnaround_v3.png",
+      "name": "nina_turnaround_v3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_v3.png",
+      "size": 1313976,
+      "modTime": "2026-02-05T19:17:08.940593988Z",
+      "category": "Characters",
+      "type": "image"
+    },
     {
       "path": "characters/nina/nina_turnaround_v2.png",
       "name": "nina_turnaround_v2.png",
