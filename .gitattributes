@@ -1,54 +1,29 @@
-# Git LFS Configuration for Fairy Dinosaur Date Night
-# ===================================================
-# This file configures Git LFS to track large binary files that don't
-# benefit from Git's delta compression.
+# Git Attributes for Fairy Dinosaur Date Night
+# =============================================
+#
+# IMPORTANT: Large binary files (images, video, audio, 3D models)
+# are stored in Cloudflare R2, NOT in git.
+#
+# See CLAUDE.md for R2 storage instructions.
+# R2 Public URL: https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev
+#
+# Only small text files and code should be committed to git.
 
-# 3D Model Files (Blender, FBX, GLTF, etc.)
-*.blend filter=lfs diff=lfs merge=lfs -text
-*.fbx filter=lfs diff=lfs merge=lfs -text
-*.glb filter=lfs diff=lfs merge=lfs -text
-*.gltf filter=lfs diff=lfs merge=lfs -text
-*.obj filter=lfs diff=lfs merge=lfs -text
-*.mtl filter=lfs diff=lfs merge=lfs -text
-*.usd filter=lfs diff=lfs merge=lfs -text
-*.usda filter=lfs diff=lfs merge=lfs -text
-*.usdc filter=lfs diff=lfs merge=lfs -text
-*.usdz filter=lfs diff=lfs merge=lfs -text
-# Image Files (production assets, storyboards, renders)
-*.png filter=lfs diff=lfs merge=lfs -text
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.jpeg filter=lfs diff=lfs merge=lfs -text
-*.tiff filter=lfs diff=lfs merge=lfs -text
-*.tif filter=lfs diff=lfs merge=lfs -text
-*.exr filter=lfs diff=lfs merge=lfs -text
-*.hdr filter=lfs diff=lfs merge=lfs -text
-*.psd filter=lfs diff=lfs merge=lfs -text
-*.xcf filter=lfs diff=lfs merge=lfs -text
-# Video Files
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-*.mov filter=lfs diff=lfs merge=lfs -text
-*.avi filter=lfs diff=lfs merge=lfs -text
-*.mkv filter=lfs diff=lfs merge=lfs -text
-*.webm filter=lfs diff=lfs merge=lfs -text
-# Audio Files
-*.wav filter=lfs diff=lfs merge=lfs -text
-*.mp3 filter=lfs diff=lfs merge=lfs -text
-*.ogg filter=lfs diff=lfs merge=lfs -text
-*.flac filter=lfs diff=lfs merge=lfs -text
-*.aac filter=lfs diff=lfs merge=lfs -text
-# Archive Files (common for asset packs)
-*.zip filter=lfs diff=lfs merge=lfs -text
-*.rar filter=lfs diff=lfs merge=lfs -text
-*.7z filter=lfs diff=lfs merge=lfs -text
-# Fonts
-*.ttf filter=lfs diff=lfs merge=lfs -text
-*.otf filter=lfs diff=lfs merge=lfs -text
-*.woff filter=lfs diff=lfs merge=lfs -text
-*.woff2 filter=lfs diff=lfs merge=lfs -text
+# Explicitly exclude asset directories from LFS (they go to R2)
+assets/** -filter
+animatics/** -filter
+storyboards/** -filter
 
-
-
-# EXCEPTION: docs/images served by GitHub Pages (no LFS support)
-# Exclude from LFS but allow text diffs for code
-docs/** -filter=lfs
+# docs/images for GitHub Pages (small files only)
 docs/images/** binary
+
+# Keep text files as text
+*.md text
+*.py text
+*.js text
+*.html text
+*.css text
+*.json text
+*.yaml text
+*.yml text
+*.sh text
