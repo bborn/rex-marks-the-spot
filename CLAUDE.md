@@ -203,3 +203,71 @@ Key commands:
 - Check existing feedback before regenerating content
 - Don't merge work that doesn't meet quality standards
 - When QA flags issues, create follow-up tasks to fix them
+
+### PR Workflow
+
+**IMPORTANT: Fixes go on the SAME PR, not new ones.**
+
+When there's feedback on a PR:
+1. Make fixes on the SAME branch
+2. Push to update the existing PR
+3. Do NOT create a new PR for fixes
+
+This keeps the PR history clean and avoids duplicate/conflicting PRs.
+
+---
+
+## Asset Storage (Cloudflare R2)
+
+**DO NOT commit large files (images, video, audio) to git.**
+
+Assets are stored in Cloudflare R2, not in the git repo. This avoids LFS budget issues.
+
+### R2 Configuration
+
+- **Bucket:** `rex-assets`
+- **Public URL:** `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev`
+- **Upload tool:** `rclone` (configured as `r2:` remote)
+
+### Uploading Assets
+
+```bash
+# Upload a single file
+rclone copy output.png r2:rex-assets/characters/family/
+
+# Upload a directory
+rclone copy ./generated-images/ r2:rex-assets/characters/family/action-poses/
+
+# Or use the helper script
+python scripts/r2_upload.py ./output/ characters/family/
+```
+
+### In Generation Scripts
+
+```python
+from r2_upload import upload_file, upload_directory
+
+# After generating an image
+url = upload_file("output.png", "characters/family/gabe.png")
+
+# After generating multiple images
+urls = upload_directory("./output/", "characters/family/action-poses/")
+```
+
+### What Goes Where
+
+| Type | Storage | Why |
+|------|---------|-----|
+| Code, scripts | Git | Version controlled, small |
+| Config, docs | Git | Version controlled, small |
+| Generated images | R2 | Large, regeneratable |
+| Video/audio | R2 | Very large |
+| Storyboards | R2 | Many large images |
+| 3D models | R2 | Large binary files |
+
+### Referencing Assets
+
+In HTML/docs, use the R2 public URL:
+```html
+<img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/family/gabe.png">
+```
