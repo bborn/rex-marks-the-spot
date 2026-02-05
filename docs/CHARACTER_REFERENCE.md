@@ -57,13 +57,19 @@ Official approved character designs for "Fairy Dinosaur Date Night".
 
 ## Nina (Mom, late 30s)
 
-**Status:** Turnaround needed
+**Approved Design:** V4 - Locked in 2026-02-05
 
-### Target Features (from script)
-- **Body:** Normal mom body (warm, approachable, NOT a glamorous model)
-- **Hair:** Brown, shoulder length
-- **Face:** Warm, kind eyes
-- **Outfit:** Casual comfortable clothes
+![Nina Turnaround](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_APPROVED.png)
+
+**R2 URL:** `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_APPROVED.png`
+
+### Key Features
+- **Age:** Late 30s (37-38), mature mom look with visible life experience
+- **Skin:** Medium/tan complexion
+- **Hair:** Brownish-auburn (brown with warm auburn undertones), shoulder-length, natural waves
+- **Face:** Warm kind hazel-green eyes, visible smile lines and crow's feet, mature features
+- **Body:** Natural mom body (warm, approachable, comfortable proportions)
+- **Outfit:** Burgundy sweater, dark jeans, white sneakers
 - **Personality:** Patient, supportive, fierce when protecting family
 
 ---
