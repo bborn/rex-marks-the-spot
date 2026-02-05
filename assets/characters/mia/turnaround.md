@@ -78,3 +78,28 @@
 - Protective gestures toward Leo (arm around shoulder, hand-holding)
 - When scared, still maintains composure for Leo's sake
 - Leadership poses when taking charge of situations
+
+---
+
+## Generated Turnaround Sheets
+
+### Approved Costume (V1 Design Direction)
+The following turnaround sheets use an **alternate approved costume**:
+- **Top**: Yellow/mustard t-shirt (warm golden tone)
+- **Bottoms**: Blue denim jeans (full length)
+- **Footwear**: Red sneakers with white soles
+
+### R2 Asset Links
+
+| Version | Description | URL |
+|---------|-------------|-----|
+| V1 | Initial turnaround - baseline design | https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v1.png |
+| V3 | Refined - confident hands-on-hips pose, 8yo appearance | https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v3.png |
+| V4 | Refined - natural stance, clear ponytail visibility | https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v4.png |
+
+### Generation Notes (V3/V4)
+- Iterated on V1 with focus on:
+  - Ensuring she looks exactly 8 years old (not younger)
+  - Adventurous/curious expression befitting the older sister who leads Leo into trouble
+  - Consistent 4-angle layout (front, 3/4, back, profile)
+  - Maintaining yellow shirt, jeans, red sneakers, brown ponytail with turquoise hair tie
