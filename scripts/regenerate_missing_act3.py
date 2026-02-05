@@ -32,7 +32,7 @@ def generate_image(prompt: str, filename: str) -> bool:
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash-exp-image-generation",
+            model="gemini-2.5-flash-image",
             contents=f"Generate an image: {full_prompt}",
             config=types.GenerateContentConfig(response_modalities=["IMAGE", "TEXT"]),
         )
