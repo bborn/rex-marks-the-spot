@@ -10,63 +10,230 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        .wip-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .wip-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
-        .wip-card {
+        .stat-card {
+            background: var(--card-bg, #1a1a2e);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-color, #2a2a4e);
+            min-width: 120px;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color, #6c63ff);
+        }
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-muted, #888);
+        }
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            background: var(--card-bg, #1a1a2e);
+            border: 1px solid var(--border-color, #2a2a4e);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            color: var(--text-color, #fff);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-color, #6c63ff);
+            border-color: var(--accent-color, #6c63ff);
+        }
+        .filter-btn .count {
+            opacity: 0.7;
+            margin-left: 0.3rem;
+        }
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .view-toggle button {
+            background: var(--card-bg, #1a1a2e);
+            border: 1px solid var(--border-color, #2a2a4e);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            color: var(--text-color, #fff);
+            cursor: pointer;
+        }
+        .view-toggle button.active {
+            background: var(--accent-color, #6c63ff);
+            border-color: var(--accent-color, #6c63ff);
+        }
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .asset-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+        .asset-card {
             background: var(--card-bg, #1a1a2e);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color, #2a2a4e);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .wip-card h3 {
-            padding: 1rem 1.5rem;
-            margin: 0;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--border-color, #2a2a4e);
+        .asset-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
-        .wip-card h3 a {
+        .asset-preview {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .asset-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .asset-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .asset-preview .audio-preview {
+            padding: 2rem;
+            width: 100%;
+        }
+        .asset-preview .audio-preview audio {
+            width: 100%;
+        }
+        .asset-preview .type-icon {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+        .asset-info {
+            padding: 1rem;
+        }
+        .asset-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+            word-break: break-word;
+        }
+        .asset-info h3 a {
             color: inherit;
             text-decoration: none;
         }
-        .wip-card h3 a:hover {
+        .asset-info h3 a:hover {
             color: var(--accent-color, #6c63ff);
         }
-        .wip-card .meta {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.85rem;
+        .asset-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.8rem;
             color: var(--text-muted, #888);
         }
-        .wip-card iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            background: #111;
-        }
-        .wip-card .preview-link {
-            display: block;
-            padding: 1rem 1.5rem;
-            text-align: center;
+        .asset-meta .category {
             background: var(--accent-color, #6c63ff);
             color: white;
-            text-decoration: none;
-            font-weight: 500;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
         }
-        .wip-card .preview-link:hover {
-            opacity: 0.9;
+        .asset-grid.list-view .asset-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+        }
+        .asset-grid.list-view .asset-preview {
+            aspect-ratio: auto;
+            height: 120px;
+        }
+        .asset-grid.list-view .asset-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .loading {
             text-align: center;
             padding: 4rem;
             color: var(--text-muted, #888);
         }
-        .no-previews {
+        .error-message {
             text-align: center;
             padding: 4rem;
+            color: #ff6b6b;
+        }
+        .last-updated {
+            text-align: right;
+            font-size: 0.85rem;
             color: var(--text-muted, #888);
+            margin-bottom: 1rem;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+        .lightbox .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+        .lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+        .lightbox .nav-btn.prev { left: 20px; }
+        .lightbox .nav-btn.next { right: 20px; }
+        @media (max-width: 768px) {
+            .asset-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+            .asset-grid.list-view .asset-card {
+                grid-template-columns: 1fr;
+            }
+            .asset-grid.list-view .asset-preview {
+                height: auto;
+                aspect-ratio: 16/10;
+            }
         }
     </style>
 </head>
@@ -96,13 +263,13 @@
         <section class="page-header">
             <div class="container">
                 <h1>Work in Progress</h1>
-                <p>Live previews of assets currently being reviewed. These are pulled directly from open pull requests.</p>
+                <p>Live feed of all assets being created for Fairy Dinosaur Date Night. Everything from finished pieces to experiments and failures.</p>
             </div>
         </section>
 
         <section class="container">
             <div id="wip-content" class="loading">
-                Loading previews...
+                Loading assets from R2...
             </div>
         </section>
     </main>
@@ -126,67 +293,234 @@
         </div>
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <span class="nav-btn prev">&larr;</span>
+        <img id="lightbox-img" src="" alt="">
+        <span class="nav-btn next">&rarr;</span>
+    </div>
+
     <script>
-        async function loadPreviews() {
+        const R2_BASE = 'https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev';
+        let allAssets = [];
+        let currentFilter = 'all';
+        let currentView = 'grid';
+        let lightboxIndex = 0;
+        let filteredImages = [];
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHours = diffMs / (1000 * 60 * 60);
+            const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+            if (diffHours < 1) return 'Just now';
+            if (diffHours < 24) return Math.floor(diffHours) + 'h ago';
+            if (diffDays < 7) return Math.floor(diffDays) + 'd ago';
+            return date.toLocaleDateString();
+        }
+
+        function getPreviewHtml(asset) {
+            if (asset.type === 'image') {
+                return `<img src="${asset.url}" alt="${asset.name}" loading="lazy" onclick="openLightbox('${asset.url}')">`;
+            } else if (asset.type === 'video') {
+                return `<video src="${asset.url}" controls preload="metadata"></video>`;
+            } else if (asset.type === 'audio') {
+                return `<div class="audio-preview"><audio src="${asset.url}" controls preload="metadata"></audio></div>`;
+            } else if (asset.type === '3d') {
+                return `<div class="type-icon">🎮</div>`;
+            }
+            return `<div class="type-icon">📄</div>`;
+        }
+
+        function renderStats(manifest) {
+            const stats = manifest.categories;
+            return `
+                <div class="wip-stats">
+                    <div class="stat-card">
+                        <div class="number">${manifest.totalAssets}</div>
+                        <div class="label">Total Assets</div>
+                    </div>
+                    ${Object.entries(stats).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([cat, count]) => `
+                        <div class="stat-card">
+                            <div class="number">${count}</div>
+                            <div class="label">${cat}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderFilters(categories) {
+            const sorted = Object.entries(categories).sort((a, b) => b[1] - a[1]);
+            const total = sorted.reduce((sum, [, count]) => sum + count, 0);
+            return `
+                <div class="category-filter">
+                    <button class="filter-btn active" data-category="all">All<span class="count">(${total})</span></button>
+                    ${sorted.map(([cat, count]) => `
+                        <button class="filter-btn" data-category="${cat}">${cat}<span class="count">(${count})</span></button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderViewToggle() {
+            return `
+                <div class="view-toggle">
+                    <button class="active" data-view="grid">Grid</button>
+                    <button data-view="list">List</button>
+                </div>
+            `;
+        }
+
+        function renderAssets(assets) {
+            if (!assets.length) {
+                return '<div class="error-message">No assets found for this filter.</div>';
+            }
+
+            const viewClass = currentView === 'list' ? 'list-view' : '';
+            return `
+                <div class="asset-grid ${viewClass}">
+                    ${assets.map(asset => `
+                        <div class="asset-card" data-category="${asset.category}">
+                            <div class="asset-preview">
+                                ${getPreviewHtml(asset)}
+                            </div>
+                            <div class="asset-info">
+                                <h3><a href="${asset.url}" target="_blank">${asset.name}</a></h3>
+                                <div class="asset-meta">
+                                    <span class="category">${asset.category}</span>
+                                    <span>${formatFileSize(asset.size)}</span>
+                                    <span>${formatDate(asset.modTime)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function filterAssets(category) {
+            if (category === 'all') return allAssets;
+            return allAssets.filter(a => a.category === category);
+        }
+
+        function updateDisplay() {
+            const filtered = filterAssets(currentFilter);
+            document.getElementById('asset-grid-container').innerHTML = renderAssets(filtered);
+
+            // Update filtered images for lightbox
+            filteredImages = filtered.filter(a => a.type === 'image').map(a => a.url);
+
+            // Update filter button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === currentFilter);
+            });
+
+            // Update view button states
+            document.querySelectorAll('.view-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.view === currentView);
+            });
+        }
+
+        function setupEventListeners() {
+            // Category filters
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentFilter = btn.dataset.category;
+                    updateDisplay();
+                });
+            });
+
+            // View toggle
+            document.querySelectorAll('.view-toggle button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentView = btn.dataset.view;
+                    updateDisplay();
+                });
+            });
+
+            // Lightbox
+            const lightbox = document.getElementById('lightbox');
+            lightbox.querySelector('.close-btn').addEventListener('click', closeLightbox);
+            lightbox.querySelector('.prev').addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateLightbox(-1);
+            });
+            lightbox.querySelector('.next').addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateLightbox(1);
+            });
+            lightbox.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.classList.contains('active')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                    if (e.key === 'ArrowRight') navigateLightbox(1);
+                }
+            });
+        }
+
+        function openLightbox(url) {
+            lightboxIndex = filteredImages.indexOf(url);
+            if (lightboxIndex === -1) lightboxIndex = 0;
+            document.getElementById('lightbox-img').src = url;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function navigateLightbox(direction) {
+            lightboxIndex += direction;
+            if (lightboxIndex < 0) lightboxIndex = filteredImages.length - 1;
+            if (lightboxIndex >= filteredImages.length) lightboxIndex = 0;
+            document.getElementById('lightbox-img').src = filteredImages[lightboxIndex];
+        }
+
+        async function loadAssets() {
             const container = document.getElementById('wip-content');
 
             try {
-                // Fetch open PRs
-                const prsRes = await fetch('https://api.github.com/repos/bborn/rex-marks-the-spot/pulls?state=open&per_page=20');
-                const prs = await prsRes.json();
+                const res = await fetch(`${R2_BASE}/manifest.json?t=${Date.now()}`);
+                if (!res.ok) throw new Error('Failed to load manifest');
 
-                if (!prs.length) {
-                    container.innerHTML = '<div class="no-previews">No work in progress right now. Check back soon!</div>';
-                    return;
-                }
+                const manifest = await res.json();
+                allAssets = manifest.assets;
 
-                const previews = [];
-
-                // Get preview URLs from comments
-                for (const pr of prs) {
-                    const commentsRes = await fetch(pr.comments_url);
-                    const comments = await commentsRes.json();
-
-                    // Find the latest preview comment
-                    const previewComment = comments.reverse().find(c =>
-                        c.body && c.body.includes('Image Preview') && c.body.includes('pages.dev')
-                    );
-
-                    if (previewComment) {
-                        const urlMatch = previewComment.body.match(/https:\/\/[a-z0-9]+\.rex-marks-the-spot\.pages\.dev/);
-                        if (urlMatch) {
-                            previews.push({
-                                title: pr.title,
-                                number: pr.number,
-                                url: pr.html_url,
-                                previewUrl: urlMatch[0],
-                                updatedAt: new Date(pr.updated_at).toLocaleDateString()
-                            });
-                        }
-                    }
-                }
-
-                if (!previews.length) {
-                    container.innerHTML = '<div class="no-previews">No image previews available yet. PRs are being processed.</div>';
-                    return;
-                }
-
-                container.innerHTML = '<div class="wip-grid">' + previews.map(p => `
-                    <div class="wip-card">
-                        <h3><a href="${p.url}" target="_blank">${p.title}</a></h3>
-                        <div class="meta">PR #${p.number} · Updated ${p.updatedAt}</div>
-                        <iframe src="${p.previewUrl}" loading="lazy"></iframe>
-                        <a href="${p.previewUrl}" target="_blank" class="preview-link">Open Full Preview →</a>
+                container.innerHTML = `
+                    <div class="last-updated">Last updated: ${formatDate(manifest.generated)}</div>
+                    ${renderStats(manifest)}
+                    ${renderFilters(manifest.categories)}
+                    ${renderViewToggle()}
+                    <div id="asset-grid-container">
+                        ${renderAssets(allAssets)}
                     </div>
-                `).join('') + '</div>';
+                `;
+
+                filteredImages = allAssets.filter(a => a.type === 'image').map(a => a.url);
+                setupEventListeners();
 
             } catch (err) {
                 console.error(err);
-                container.innerHTML = '<div class="no-previews">Failed to load previews. Try refreshing.</div>';
+                container.innerHTML = `
+                    <div class="error-message">
+                        <p>Failed to load assets. The manifest may not be generated yet.</p>
+                        <p>Error: ${err.message}</p>
+                    </div>
+                `;
             }
         }
 
-        loadPreviews();
+        loadAssets();
     </script>
     <script src="js/main.js"></script>
 </body>
