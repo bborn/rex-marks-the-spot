@@ -490,7 +490,8 @@
             const container = document.getElementById('wip-content');
 
             try {
-                const res = await fetch(`${R2_BASE}/manifest.json?t=${Date.now()}`);
+                // Fetch from same origin (GitHub Pages) to avoid CORS issues
+                const res = await fetch(`manifest.json?t=${Date.now()}`);
                 if (!res.ok) throw new Error('Failed to load manifest');
 
                 const manifest = await res.json();
