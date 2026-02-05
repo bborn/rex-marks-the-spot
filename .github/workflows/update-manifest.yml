@@ -49,5 +49,6 @@ jobs:
             echo "No changes to manifest"
           else
             git commit -m "Update asset manifest [automated]"
+            git pull --rebase origin main
             git push
           fi
