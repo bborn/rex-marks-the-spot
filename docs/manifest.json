@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-05T12:48:27.494452Z",
-  "totalAssets": 725,
+  "generated": "2026-02-05T18:20:33.749558Z",
+  "totalAssets": 742,
   "categories": {
     "Storyboards": 550,
-    "Characters": 47,
+    "Characters": 64,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -14,11 +14,227 @@
   },
   "assets": [
     {
-      "path": "storyboards/sketchy/scene-01/panel-04-ruben-appears.png",
-      "name": "panel-04-ruben-appears.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-04-ruben-appears.png",
-      "size": 938243,
-      "modTime": "2026-02-05T12:29:19.458093416Z",
+      "path": "storyboards/sketchy/scene-01/panel-04-promise.png",
+      "name": "panel-04-promise.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-04-promise.png",
+      "size": 1528292,
+      "modTime": "2026-02-05T16:44:17.604727224Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/sketchy/scene-01/panel-03-goodbye.png",
+      "name": "panel-03-goodbye.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-03-goodbye.png",
+      "size": 1797805,
+      "modTime": "2026-02-05T16:43:59.416778512Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/sketchy/scene-01/panel-02-parents-ready.png",
+      "name": "panel-02-parents-ready.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-02-parents-ready.png",
+      "size": 1231790,
+      "modTime": "2026-02-05T16:43:40.922830468Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v3f.png",
+      "name": "leo_turnaround_v3f.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v3f.png",
+      "size": 1248453,
+      "modTime": "2026-02-05T16:17:04.404882186Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_APPROVED.png",
+      "name": "leo_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_APPROVED.png",
+      "size": 1305790,
+      "modTime": "2026-02-05T16:16:45.077942031Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v3d.png",
+      "name": "leo_turnaround_v3d.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v3d.png",
+      "size": 1188936,
+      "modTime": "2026-02-05T15:38:08.717131842Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v3c.png",
+      "name": "leo_turnaround_v3c.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v3c.png",
+      "size": 1214595,
+      "modTime": "2026-02-05T15:37:50.354212653Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v3b.png",
+      "name": "leo_turnaround_v3b.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v3b.png",
+      "size": 1160429,
+      "modTime": "2026-02-05T14:16:01.251997772Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v3a.png",
+      "name": "leo_turnaround_v3a.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v3a.png",
+      "size": 905413,
+      "modTime": "2026-02-05T14:15:47.479030592Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v4.png",
+      "name": "leo_turnaround_v4.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v4.png",
+      "size": 565145,
+      "modTime": "2026-02-05T13:58:29.018692566Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v3.png",
+      "name": "leo_turnaround_v3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v3.png",
+      "size": 643884,
+      "modTime": "2026-02-05T13:58:15.134727828Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v2_fixed.png",
+      "name": "leo_turnaround_v2_fixed.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v2_fixed.png",
+      "size": 787140,
+      "modTime": "2026-02-05T13:52:57.766473709Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v1_fixed.png",
+      "name": "leo_turnaround_v1_fixed.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v1_fixed.png",
+      "size": 556559,
+      "modTime": "2026-02-05T13:52:44.224502322Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v2.png",
+      "name": "leo_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v2.png",
+      "size": 709653,
+      "modTime": "2026-02-05T13:39:39.457173967Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/leo/leo_turnaround_v1.png",
+      "name": "leo_turnaround_v1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_v1.png",
+      "size": 638472,
+      "modTime": "2026-02-05T13:39:24.584155158Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/mia_turnaround_APPROVED.png",
+      "name": "mia_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_APPROVED.png",
+      "size": 1210281,
+      "modTime": "2026-02-05T13:10:23.909468127Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/mia_turnaround_v2b.png",
+      "name": "mia_turnaround_v2b.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v2b.png",
+      "size": 1210281,
+      "modTime": "2026-02-05T13:10:23.909468127Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/mia_turnaround_v2a.png",
+      "name": "mia_turnaround_v2a.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v2a.png",
+      "size": 1241274,
+      "modTime": "2026-02-05T13:10:07.562561945Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/panels/scene-01-panel-09.png",
+      "name": "scene-01-panel-09.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-09.png",
+      "size": 743591,
+      "modTime": "2026-02-05T13:00:06.205416640Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/panels/scene-01-panel-07.png",
+      "name": "scene-01-panel-07.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-07.png",
+      "size": 876429,
+      "modTime": "2026-02-05T12:59:52.364460422Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/panels/scene-01-panel-04.png",
+      "name": "scene-01-panel-04.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-04.png",
+      "size": 1000573,
+      "modTime": "2026-02-05T12:59:38.166505329Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/panels/scene-01-panel-03.png",
+      "name": "scene-01-panel-03.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-03.png",
+      "size": 869484,
+      "modTime": "2026-02-05T12:59:24.088549854Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/mia_turnaround_v4.png",
+      "name": "mia_turnaround_v4.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v4.png",
+      "size": 607083,
+      "modTime": "2026-02-05T12:52:04.544937158Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/mia_turnaround_v3.png",
+      "name": "mia_turnaround_v3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_v3.png",
+      "size": 627397,
+      "modTime": "2026-02-05T12:51:04.943124687Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/sketchy/scene-01/panel-01-establishing.png",
+      "name": "panel-01-establishing.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-01-establishing.png",
+      "size": 841838,
+      "modTime": "2026-02-05T12:49:54.686345477Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -29,33 +245,6 @@
       "size": 249643,
       "modTime": "2026-02-05T12:29:16.620101373Z",
       "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/sketchy/scene-01/panel-03-goodbye.png",
-      "name": "panel-03-goodbye.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-03-goodbye.png",
-      "size": 1013076,
-      "modTime": "2026-02-05T12:29:05.448132636Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/sketchy/scene-01/panel-02-parents-ready.png",
-      "name": "panel-02-parents-ready.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-02-parents-ready.png",
-      "size": 813937,
-      "modTime": "2026-02-05T12:28:53.132166993Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/sketchy/scene-01/panel-01-establishing.png",
-      "name": "panel-01-establishing.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/sketchy/scene-01/panel-01-establishing.png",
-      "size": 992929,
-      "modTime": "2026-02-05T12:28:40.592201861Z",
-      "category": "Storyboards",
       "type": "image"
     },
     {
@@ -5702,15 +5891,6 @@
       "type": "image"
     },
     {
-      "path": "storyboards/act1/panels/scene-01-panel-09.png",
-      "name": "scene-01-panel-09.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-09.png",
-      "size": 661674,
-      "modTime": "2026-02-03T15:14:23.938027036Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
       "path": "storyboards/act1/panels/scene-01-panel-08.png",
       "name": "scene-01-panel-08.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-08.png",
@@ -5720,38 +5900,11 @@
       "type": "image"
     },
     {
-      "path": "storyboards/act1/panels/scene-01-panel-07.png",
-      "name": "scene-01-panel-07.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-07.png",
-      "size": 520156,
-      "modTime": "2026-02-03T15:14:23.935205943Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
       "path": "storyboards/act1/panels/scene-01-panel-05.png",
       "name": "scene-01-panel-05.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-05.png",
       "size": 719796,
       "modTime": "2026-02-03T15:14:23.928891869Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/act1/panels/scene-01-panel-04.png",
-      "name": "scene-01-panel-04.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-04.png",
-      "size": 673996,
-      "modTime": "2026-02-03T15:14:23.927598679Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/act1/panels/scene-01-panel-03.png",
-      "name": "scene-01-panel-03.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-03.png",
-      "size": 608263,
-      "modTime": "2026-02-03T15:14:23.926467158Z",
       "category": "Storyboards",
       "type": "image"
     },
