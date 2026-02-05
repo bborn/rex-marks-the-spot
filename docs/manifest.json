@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-05T18:24:04.502102Z",
-  "totalAssets": 742,
+  "generated": "2026-02-05T19:11:16.544291Z",
+  "totalAssets": 744,
   "categories": {
+    "Characters": 66,
     "Storyboards": 550,
-    "Characters": 64,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -13,6 +13,24 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "characters/nina/nina_turnaround_v2.png",
+      "name": "nina_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_v2.png",
+      "size": 1293193,
+      "modTime": "2026-02-05T19:07:15.081890603Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/nina/nina_turnaround_v1.png",
+      "name": "nina_turnaround_v1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_v1.png",
+      "size": 1321473,
+      "modTime": "2026-02-05T19:06:58.238925180Z",
+      "category": "Characters",
+      "type": "image"
+    },
     {
       "path": "storyboards/sketchy/scene-01/panel-04-promise.png",
       "name": "panel-04-promise.png",
