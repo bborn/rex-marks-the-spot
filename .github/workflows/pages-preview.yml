@@ -27,7 +27,8 @@ jobs:
           echo "files<<EOF" >> $GITHUB_OUTPUT
           echo "$IMAGES" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-          echo "count=$(echo "$IMAGES" | grep -c . || echo 0)" >> $GITHUB_OUTPUT
+          COUNT=$(echo "$IMAGES" | grep -c . || true)
+          echo "count=${COUNT:-0}" >> $GITHUB_OUTPUT
 
       - name: Build gallery
         if: steps.images.outputs.count != '0'
