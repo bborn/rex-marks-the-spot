@@ -194,7 +194,7 @@ Key commands:
 - Don't auto-approve Bash commands - make informed decisions
 - `workflow_get_project_context` MCP tool is safe to approve (read-only)
 - Rate limits: Gemini image gen needs ~8 sec delays between requests
-- Model for image gen: `gemini-2.0-flash-exp-image-generation`
+- Model for image gen: **`gemini-2.5-flash-image`** (minimum) or `gemini-3-pro-image-preview` (preferred)
 
 ### Communication
 
