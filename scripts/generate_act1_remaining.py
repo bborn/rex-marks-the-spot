@@ -500,7 +500,7 @@ def generate_image(prompt: str, filename: str, retry_count: int = 3) -> bool:
         try:
             # Use Gemini 2.0 Flash with native image generation
             response = client.models.generate_content(
-                model="gemini-2.0-flash-exp-image-generation",
+                model="gemini-2.5-flash-image",
                 contents=f"Generate an image: {prompt}",
                 config=types.GenerateContentConfig(
                     response_modalities=["IMAGE", "TEXT"],
