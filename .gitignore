@@ -31,3 +31,14 @@ node_modules/
 .env
 .env.local
 *credentials.env
+
+# Large binary assets (stored in R2 instead)
+# Storyboard images
+docs/storyboards/**/panels/*.png
+storyboards/**/panels/*.png
+
+# Character turnarounds and concept art
+assets/characters/**/*.png
+assets/characters/**/*.jpg
+output/**/*.png
+output/**/*.jpg
