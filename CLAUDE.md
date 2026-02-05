@@ -146,6 +146,12 @@ Enable these in the BlenderMCP panel (View3D > Sidebar > BlenderMCP):
 
 ## Project Workflow & Reporting Structure
 
+**See `docs/WORKFLOW.md` for the full production workflow guide**, including:
+- Three parallel workstreams (Production, Built in Public, Community)
+- Task type prefixes (`[design]`, `[generate]`, `[fix]`, etc.)
+- Review gates and batch sizes
+- Production pipeline phases
+
 This project uses a hierarchical workflow with AI agents coordinated through TaskYou.
 
 ### The Team
