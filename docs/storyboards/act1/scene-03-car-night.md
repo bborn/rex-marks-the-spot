@@ -12,6 +12,7 @@ Interior of Gabe's car. Night. Rain pounding on roof and windshield. Wipers work
 ---
 
 ## Panel 3A: Two-Shot - Driving
+![Panel 3A](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-01.png)
 **Shot Type:** Two-shot from dashboard | **Duration:** 15s | **Camera:** STATIC with windshield wiper rhythm
 
 ### Composition
@@ -37,6 +38,7 @@ Gabe starts car, begins driving. Nina searches for her phone. Wipers beat steadi
 ---
 
 ## Panel 3B: Insert - Phone Screen
+![Panel 3B](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-02.png)
 **Shot Type:** Close-up insert | **Duration:** 4s | **Camera:** STATIC
 
 ### Composition
@@ -60,6 +62,7 @@ Nina dials her own number using Gabe's phone. Screen shows calling animation.
 ---
 
 ## Panel 3C: POV - Windshield View
+![Panel 3C](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-03.png)
 **Shot Type:** POV through windshield | **Duration:** 8s | **Camera:** STATIC with car movement
 
 ### Composition
@@ -89,6 +92,7 @@ Rain on roof, wipers, distant thunder, engine
 ---
 
 ## Panel 3D: Close-up - Nina
+![Panel 3D](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-04.png)
 **Shot Type:** Close-up | **Duration:** 18s | **Camera:** STATIC with slight movement from car
 
 ### Composition
