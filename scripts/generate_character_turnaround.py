@@ -30,7 +30,7 @@ import google.generativeai as genai
 from PIL import Image
 
 # Configuration
-MODEL = "gemini-3.0-pro"
+MODEL = "gemini-3-pro-image-preview"
 OUTPUT_BASE_DIR = Path(__file__).parent.parent / "assets" / "characters"
 R2_BASE_PATH = "r2:rex-assets/characters"
 R2_PUBLIC_BASE = "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters"
@@ -60,9 +60,14 @@ def generate_turnaround(
 
     # Prepare content for generation
     if reference_url:
-        print(f"Downloading reference image from: {reference_url}")
-        with urlopen(reference_url) as response:
-            reference_image = Image.open(BytesIO(response.read()))
+        # Check if it's a local file path or URL
+        if reference_url.startswith('http://') or reference_url.startswith('https://'):
+            print(f"Downloading reference image from: {reference_url}")
+            with urlopen(reference_url) as response:
+                reference_image = Image.open(BytesIO(response.read()))
+        else:
+            print(f"Loading reference image from: {reference_url}")
+            reference_image = Image.open(reference_url)
         print(f"Reference image loaded: {reference_image.size}")
         content = [reference_image, prompt]
     else:
