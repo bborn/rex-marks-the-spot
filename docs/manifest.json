@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-06T01:57:52.572984Z",
-  "totalAssets": 853,
+  "generated": "2026-02-06T02:33:18.765556Z",
+  "totalAssets": 862,
   "categories": {
+    "Storyboards": 659,
     "Characters": 75,
-    "Storyboards": 650,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -13,6 +13,87 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-09.png",
+      "name": "scene-01-panel-09.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-09.png",
+      "size": 1048233,
+      "modTime": "2026-02-06T02:28:15.796044085Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-08.png",
+      "name": "scene-01-panel-08.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-08.png",
+      "size": 1382148,
+      "modTime": "2026-02-06T02:27:59.257095206Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-07.png",
+      "name": "scene-01-panel-07.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-07.png",
+      "size": 810859,
+      "modTime": "2026-02-06T02:27:40.827152168Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-06.png",
+      "name": "scene-01-panel-06.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-06.png",
+      "size": 1189008,
+      "modTime": "2026-02-06T02:27:26.148197537Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-05.png",
+      "name": "scene-01-panel-05.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-05.png",
+      "size": 819505,
+      "modTime": "2026-02-06T02:27:12.712239062Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-04.png",
+      "name": "scene-01-panel-04.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-04.png",
+      "size": 1095807,
+      "modTime": "2026-02-06T02:26:59.299280517Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-03.png",
+      "name": "scene-01-panel-03.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-03.png",
+      "size": 832055,
+      "modTime": "2026-02-06T02:26:41.975334059Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-02.png",
+      "name": "scene-01-panel-02.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-02.png",
+      "size": 959484,
+      "modTime": "2026-02-06T02:26:26.770381053Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-01/scene-01-panel-01.png",
+      "name": "scene-01-panel-01.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-01.png",
+      "size": 1288157,
+      "modTime": "2026-02-06T02:26:12.535425049Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
     {
       "path": "characters/nina/nina_turnaround_v5.png",
       "name": "nina_turnaround_v5.png",
