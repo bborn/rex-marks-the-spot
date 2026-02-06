@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-06T12:20:06.026397Z",
-  "totalAssets": 865,
+  "generated": "2026-02-06T18:23:23.387840Z",
+  "totalAssets": 869,
   "categories": {
-    "Storyboards": 662,
+    "Storyboards": 666,
     "Characters": 75,
     "Props": 20,
     "Branding": 10,
@@ -13,6 +13,42 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "storyboards/act1/scene-03/scene-03-panel-04.png",
+      "name": "scene-03-panel-04.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-04.png",
+      "size": 800717,
+      "modTime": "2026-02-06T12:54:17.329157501Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-03/scene-03-panel-03.png",
+      "name": "scene-03-panel-03.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-03.png",
+      "size": 1040427,
+      "modTime": "2026-02-06T12:53:50.201285321Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-03/scene-03-panel-02.png",
+      "name": "scene-03-panel-02.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-02.png",
+      "size": 838317,
+      "modTime": "2026-02-06T12:53:23.149414893Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-03/scene-03-panel-01.png",
+      "name": "scene-03-panel-01.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-01.png",
+      "size": 1060665,
+      "modTime": "2026-02-06T12:52:55.643548905Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
     {
       "path": "storyboards/act1/scene-02/scene-02-panel-03.png",
       "name": "scene-02-panel-03.png",
