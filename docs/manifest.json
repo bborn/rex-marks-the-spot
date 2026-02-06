@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-06T00:39:23.081569Z",
-  "totalAssets": 851,
+  "generated": "2026-02-06T01:57:52.572984Z",
+  "totalAssets": 853,
   "categories": {
-    "Characters": 73,
+    "Characters": 75,
     "Storyboards": 650,
     "Props": 20,
     "Branding": 10,
@@ -13,6 +13,24 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "characters/nina/nina_turnaround_v5.png",
+      "name": "nina_turnaround_v5.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_v5.png",
+      "size": 521337,
+      "modTime": "2026-02-06T01:48:39.333547787Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/gabe/gabe_turnaround_v4.png",
+      "name": "gabe_turnaround_v4.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_v4.png",
+      "size": 515512,
+      "modTime": "2026-02-06T01:47:59.174990361Z",
+      "category": "Characters",
+      "type": "image"
+    },
     {
       "path": "characters/gabe/gabe_turnaround_APPROVED.png",
       "name": "gabe_turnaround_APPROVED.png",
