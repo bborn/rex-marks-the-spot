@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-06T02:33:18.765556Z",
+  "generated": "2026-02-06T06:26:39.506575Z",
   "totalAssets": 862,
   "categories": {
     "Storyboards": 659,
@@ -17,8 +17,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-09.png",
       "name": "scene-01-panel-09.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-09.png",
-      "size": 1048233,
-      "modTime": "2026-02-06T02:28:15.796044085Z",
+      "size": 782034,
+      "modTime": "2026-02-06T03:07:01.444782164Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -26,8 +26,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-08.png",
       "name": "scene-01-panel-08.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-08.png",
-      "size": 1382148,
-      "modTime": "2026-02-06T02:27:59.257095206Z",
+      "size": 974394,
+      "modTime": "2026-02-06T03:06:27.391888077Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -35,8 +35,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-07.png",
       "name": "scene-01-panel-07.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-07.png",
-      "size": 810859,
-      "modTime": "2026-02-06T02:27:40.827152168Z",
+      "size": 935086,
+      "modTime": "2026-02-06T03:06:00.562971526Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -44,8 +44,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-06.png",
       "name": "scene-01-panel-06.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-06.png",
-      "size": 1189008,
-      "modTime": "2026-02-06T02:27:26.148197537Z",
+      "size": 802047,
+      "modTime": "2026-02-06T03:05:11.611123827Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -53,8 +53,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-05.png",
       "name": "scene-01-panel-05.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-05.png",
-      "size": 819505,
-      "modTime": "2026-02-06T02:27:12.712239062Z",
+      "size": 805565,
+      "modTime": "2026-02-06T03:04:45.452205227Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -62,8 +62,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-04.png",
       "name": "scene-01-panel-04.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-04.png",
-      "size": 1095807,
-      "modTime": "2026-02-06T02:26:59.299280517Z",
+      "size": 841078,
+      "modTime": "2026-02-06T03:04:15.364298862Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -71,8 +71,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-03.png",
       "name": "scene-01-panel-03.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-03.png",
-      "size": 832055,
-      "modTime": "2026-02-06T02:26:41.975334059Z",
+      "size": 834810,
+      "modTime": "2026-02-06T03:03:42.696400538Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -80,8 +80,8 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-02.png",
       "name": "scene-01-panel-02.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-02.png",
-      "size": 959484,
-      "modTime": "2026-02-06T02:26:26.770381053Z",
+      "size": 867099,
+      "modTime": "2026-02-06T03:03:13.672490884Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -89,9 +89,18 @@
       "path": "storyboards/act1/scene-01/scene-01-panel-01.png",
       "name": "scene-01-panel-01.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-01.png",
-      "size": 1288157,
-      "modTime": "2026-02-06T02:26:12.535425049Z",
+      "size": 993889,
+      "modTime": "2026-02-06T03:02:44.927580376Z",
       "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "characters/nina/nina_turnaround_APPROVED.png",
+      "name": "nina_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_APPROVED.png",
+      "size": 521337,
+      "modTime": "2026-02-06T01:48:39.333547787Z",
+      "category": "Characters",
       "type": "image"
     },
     {
@@ -104,20 +113,20 @@
       "type": "image"
     },
     {
-      "path": "characters/gabe/gabe_turnaround_v4.png",
-      "name": "gabe_turnaround_v4.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_v4.png",
+      "path": "characters/gabe/gabe_turnaround_APPROVED.png",
+      "name": "gabe_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png",
       "size": 515512,
       "modTime": "2026-02-06T01:47:59.174990361Z",
       "category": "Characters",
       "type": "image"
     },
     {
-      "path": "characters/gabe/gabe_turnaround_APPROVED.png",
-      "name": "gabe_turnaround_APPROVED.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png",
-      "size": 1278294,
-      "modTime": "2026-02-05T22:23:20.472647122Z",
+      "path": "characters/gabe/gabe_turnaround_v4.png",
+      "name": "gabe_turnaround_v4.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_v4.png",
+      "size": 515512,
+      "modTime": "2026-02-06T01:47:59.174990361Z",
       "category": "Characters",
       "type": "image"
     },
@@ -145,15 +154,6 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_v1.png",
       "size": 1216160,
       "modTime": "2026-02-05T21:58:32.317002447Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "characters/nina/nina_turnaround_APPROVED.png",
-      "name": "nina_turnaround_APPROVED.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_APPROVED.png",
-      "size": 1257325,
-      "modTime": "2026-02-05T19:30:35.482123164Z",
       "category": "Characters",
       "type": "image"
     },
