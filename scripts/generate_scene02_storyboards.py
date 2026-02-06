@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-"""Generate Act 1 Scene 2 storyboard panels using Gemini with character references."""
+"""Generate Act 1 Scene 2 storyboard panels using Gemini with character references.
 
+Usage:
+    python generate_scene02_storyboards.py           # Generate all panels
+    python generate_scene02_storyboards.py --panel 2  # Generate only panel 2 (2B)
+"""
+
+import argparse
 import os
 import sys
 import time
 import subprocess
 from pathlib import Path
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from PIL import Image
 
 # Configuration
@@ -82,7 +89,7 @@ PANELS = [
 ]
 
 
-def generate_panel(panel: dict, model_name: str, api_key: str) -> bool:
+def generate_panel(panel: dict, model_name: str, client) -> bool:
     """Generate a single storyboard panel."""
     output_path = OUTPUT_DIR / panel["filename"]
     filename = panel["filename"]
@@ -90,9 +97,6 @@ def generate_panel(panel: dict, model_name: str, api_key: str) -> bool:
     print(f"\nGenerating: {filename}")
     print(f"  Model: {model_name}")
     print(f"  Character refs: {panel['char_refs'] or 'None'}")
-
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(model_name)
 
     # Build content with optional character reference images
     content = []
@@ -109,16 +113,17 @@ def generate_panel(panel: dict, model_name: str, api_key: str) -> bool:
 
     for attempt in range(3):
         try:
-            response = model.generate_content(
-                content,
-                generation_config={
-                    "response_modalities": ["IMAGE", "TEXT"],
-                },
+            response = client.models.generate_content(
+                model=model_name,
+                contents=content,
+                config=types.GenerateContentConfig(
+                    response_modalities=["IMAGE", "TEXT"],
+                ),
             )
 
             if hasattr(response, "candidates") and response.candidates:
                 for part in response.candidates[0].content.parts:
-                    if hasattr(part, "inline_data") and part.inline_data:
+                    if part.inline_data is not None:
                         img_bytes = part.inline_data.data
                         with open(output_path, "wb") as f:
                             f.write(img_bytes)
@@ -158,28 +163,43 @@ def upload_to_r2(local_path: Path) -> str:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate Scene 2 storyboard panels")
+    parser.add_argument("--panel", type=int, help="Generate only this panel (1-3)")
+    args = parser.parse_args()
+
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         print("ERROR: GEMINI_API_KEY not set")
         return 1
 
+    client = genai.Client(api_key=api_key)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Select panels to generate
+    if args.panel:
+        if args.panel < 1 or args.panel > len(PANELS):
+            print(f"ERROR: --panel must be 1-{len(PANELS)}")
+            return 1
+        panels_to_gen = [(args.panel - 1, PANELS[args.panel - 1])]
+    else:
+        panels_to_gen = list(enumerate(PANELS))
 
     print("=" * 60)
     print("Act 1, Scene 2: House Exterior - Storyboard Generation")
     print(f"Model: {MODEL}")
     print(f"Output: {OUTPUT_DIR}")
+    print(f"Panels: {[i + 1 for i, _ in panels_to_gen]}")
     print("=" * 60)
 
     urls = []
-    for i, panel in enumerate(PANELS):
-        print(f"\n[{i + 1}/{len(PANELS)}] ", end="")
+    for idx, (i, panel) in enumerate(panels_to_gen):
+        print(f"\n[Panel {i + 1}] ", end="")
 
         # Try primary model, fall back if needed
-        success = generate_panel(panel, MODEL, api_key)
+        success = generate_panel(panel, MODEL, client)
         if not success:
             print(f"  Trying fallback model: {FALLBACK_MODEL}")
-            success = generate_panel(panel, FALLBACK_MODEL, api_key)
+            success = generate_panel(panel, FALLBACK_MODEL, client)
 
         if success:
             url = upload_to_r2(OUTPUT_DIR / panel["filename"])
@@ -189,20 +209,20 @@ def main():
             urls.append("")
 
         # Rate limit delay between panels
-        if i < len(PANELS) - 1:
+        if idx < len(panels_to_gen) - 1:
             delay = 12
             print(f"  Waiting {delay}s for rate limiting...")
             time.sleep(delay)
 
     print("\n" + "=" * 60)
     print("RESULTS:")
-    for i, url in enumerate(urls):
+    for url in urls:
         status = "OK" if url else "FAILED"
-        print(f"  Panel {i + 1}: [{status}] {url}")
+        print(f"  [{status}] {url}")
     print("=" * 60)
 
     success_count = sum(1 for u in urls if u)
-    return 0 if success_count == len(PANELS) else 1
+    return 0 if success_count == len(panels_to_gen) else 1
 
 
 if __name__ == "__main__":
