@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-06T18:58:29.122116Z",
-  "totalAssets": 869,
+  "generated": "2026-02-07T00:39:23.944673Z",
+  "totalAssets": 872,
   "categories": {
     "Storyboards": 666,
-    "Characters": 75,
+    "Characters": 78,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -17,8 +17,53 @@
       "path": "storyboards/act1/scene-03/scene-03-panel-04.png",
       "name": "scene-03-panel-04.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-04.png",
-      "size": 800717,
-      "modTime": "2026-02-06T12:54:17.329157501Z",
+      "size": 930818,
+      "modTime": "2026-02-06T23:50:17.771785531Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-03/scene-03-panel-01.png",
+      "name": "scene-03-panel-01.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-01.png",
+      "size": 811854,
+      "modTime": "2026-02-06T23:49:50.023851551Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "characters/jetplane/jetplane_turnaround_v2.png",
+      "name": "jetplane_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jetplane/jetplane_turnaround_v2.png",
+      "size": 634441,
+      "modTime": "2026-02-06T23:17:18.281509279Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/turnarounds/jetplane_turnaround_v2.png",
+      "name": "jetplane_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/turnarounds/jetplane_turnaround_v2.png",
+      "size": 634441,
+      "modTime": "2026-02-06T23:17:18.281509279Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/jetplane/jetplane_turnaround_v1.png",
+      "name": "jetplane_turnaround_v1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jetplane/jetplane_turnaround_v1.png",
+      "size": 569920,
+      "modTime": "2026-02-06T19:59:18.136785633Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/scene-02/scene-02-panel-02.png",
+      "name": "scene-02-panel-02.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-02/scene-02-panel-02.png",
+      "size": 855841,
+      "modTime": "2026-02-06T19:03:53.481884138Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -41,29 +86,11 @@
       "type": "image"
     },
     {
-      "path": "storyboards/act1/scene-03/scene-03-panel-01.png",
-      "name": "scene-03-panel-01.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-03/scene-03-panel-01.png",
-      "size": 1060665,
-      "modTime": "2026-02-06T12:52:55.643548905Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
       "path": "storyboards/act1/scene-02/scene-02-panel-03.png",
       "name": "scene-02-panel-03.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-02/scene-02-panel-03.png",
       "size": 1100013,
       "modTime": "2026-02-06T12:18:19.021271283Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/act1/scene-02/scene-02-panel-02.png",
-      "name": "scene-02-panel-02.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-02/scene-02-panel-02.png",
-      "size": 948265,
-      "modTime": "2026-02-06T12:17:50.557255009Z",
       "category": "Storyboards",
       "type": "image"
     },
