@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-07T00:39:23.944673Z",
-  "totalAssets": 872,
+  "generated": "2026-02-07T03:39:33.537676Z",
+  "totalAssets": 874,
   "categories": {
+    "Characters": 80,
     "Storyboards": 666,
-    "Characters": 78,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -13,6 +13,24 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "characters/jetplane/jetplane_turnaround_APPROVED.png",
+      "name": "jetplane_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jetplane/jetplane_turnaround_APPROVED.png",
+      "size": 670656,
+      "modTime": "2026-02-07T00:41:42.103995399Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/jetplane/jetplane_turnaround_v3.png",
+      "name": "jetplane_turnaround_v3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jetplane/jetplane_turnaround_v3.png",
+      "size": 670656,
+      "modTime": "2026-02-07T00:41:42.103995399Z",
+      "category": "Characters",
+      "type": "image"
+    },
     {
       "path": "storyboards/act1/scene-03/scene-03-panel-04.png",
       "name": "scene-03-panel-04.png",
