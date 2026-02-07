@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-07T12:15:08.154429Z",
-  "totalAssets": 874,
+  "generated": "2026-02-07T18:13:41.507918Z",
+  "totalAssets": 907,
   "categories": {
-    "Characters": 80,
+    "Characters": 113,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -13,6 +13,303 @@
     "Audio": 3
   },
   "assets": [
+    {
+      "path": "characters/ruben/ruben_turnaround_APPROVED.png",
+      "name": "ruben_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
+      "size": -1,
+      "modTime": "2026-02-07T18:13:41.495254272Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/final-iterations/ruben_final_C.png",
+      "name": "ruben_final_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/final-iterations/ruben_final_C.png",
+      "size": 540041,
+      "modTime": "2026-02-07T16:01:39.419609227Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/final-iterations/ruben_final_B.png",
+      "name": "ruben_final_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/final-iterations/ruben_final_B.png",
+      "size": 580503,
+      "modTime": "2026-02-07T16:01:13.674513942Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/final-iterations/ruben_final_A.png",
+      "name": "ruben_final_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/final-iterations/ruben_final_A.png",
+      "size": 602490,
+      "modTime": "2026-02-07T16:00:47.020406127Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/iterations/ruben_iter_E.png",
+      "name": "ruben_iter_E.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/iterations/ruben_iter_E.png",
+      "size": 563443,
+      "modTime": "2026-02-07T15:17:28.066622266Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/iterations/ruben_iter_D.png",
+      "name": "ruben_iter_D.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/iterations/ruben_iter_D.png",
+      "size": 634457,
+      "modTime": "2026-02-07T15:17:02.389674313Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/iterations/ruben_iter_C.png",
+      "name": "ruben_iter_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/iterations/ruben_iter_C.png",
+      "size": 554701,
+      "modTime": "2026-02-07T15:16:35.000729710Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/iterations/ruben_iter_B.png",
+      "name": "ruben_iter_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/iterations/ruben_iter_B.png",
+      "size": 592615,
+      "modTime": "2026-02-07T15:16:08.267783653Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/iterations/ruben_iter_A.png",
+      "name": "ruben_iter_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/iterations/ruben_iter_A.png",
+      "size": 585737,
+      "modTime": "2026-02-07T15:15:43.147834223Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v6_C.png",
+      "name": "ruben_v6_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v6_C.png",
+      "size": 606650,
+      "modTime": "2026-02-07T15:03:53.655178775Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v6_B.png",
+      "name": "ruben_v6_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v6_B.png",
+      "size": 542879,
+      "modTime": "2026-02-07T15:03:28.490221631Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v6_A.png",
+      "name": "ruben_v6_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v6_A.png",
+      "size": 511844,
+      "modTime": "2026-02-07T15:03:03.241264110Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/ruben_turnaround_APPROVED.png/ruben_v6_A.png",
+      "name": "ruben_v6_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png/ruben_v6_A.png",
+      "size": 511844,
+      "modTime": "2026-02-07T15:03:03.241264110Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/ruben_turnaround_APPROVED.png",
+      "name": "ruben_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
+      "size": 511844,
+      "modTime": "2026-02-07T15:03:03.241264110Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v5_D.png",
+      "name": "ruben_v5_D.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v5_D.png",
+      "size": 595065,
+      "modTime": "2026-02-07T14:59:59.188555368Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v5_C.png",
+      "name": "ruben_v5_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v5_C.png",
+      "size": 535728,
+      "modTime": "2026-02-07T14:59:34.413591702Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v5_B.png",
+      "name": "ruben_v5_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v5_B.png",
+      "size": 573421,
+      "modTime": "2026-02-07T14:59:06.896631127Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v5_A.png",
+      "name": "ruben_v5_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v5_A.png",
+      "size": 600715,
+      "modTime": "2026-02-07T14:58:41.582666488Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v4_C.png",
+      "name": "ruben_v4_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v4_C.png",
+      "size": 556683,
+      "modTime": "2026-02-07T14:50:46.738096323Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v4_B.png",
+      "name": "ruben_v4_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v4_B.png",
+      "size": 485342,
+      "modTime": "2026-02-07T14:50:22.487101565Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v4_A.png",
+      "name": "ruben_v4_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v4_A.png",
+      "size": 525249,
+      "modTime": "2026-02-07T14:49:56.800104684Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v3_C.png",
+      "name": "ruben_v3_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v3_C.png",
+      "size": 444241,
+      "modTime": "2026-02-07T14:21:12.334763187Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v3_B.png",
+      "name": "ruben_v3_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v3_B.png",
+      "size": 492847,
+      "modTime": "2026-02-07T14:20:44.111917528Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_v3_A.png",
+      "name": "ruben_v3_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v3_A.png",
+      "size": 501862,
+      "modTime": "2026-02-07T14:20:17.565067000Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_concept_D.png",
+      "name": "ruben_concept_D.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_concept_D.png",
+      "size": 542554,
+      "modTime": "2026-02-07T14:11:26.287508248Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_concept_C.png",
+      "name": "ruben_concept_C.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_concept_C.png",
+      "size": 421993,
+      "modTime": "2026-02-07T14:11:02.319537479Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_concept_B.png",
+      "name": "ruben_concept_B.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_concept_B.png",
+      "size": 391406,
+      "modTime": "2026-02-07T14:10:37.749566760Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/concepts/ruben_concept_A.png",
+      "name": "ruben_concept_A.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_concept_A.png",
+      "size": 449262,
+      "modTime": "2026-02-07T14:10:13.005595515Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/jenny/jenny_turnaround_APPROVED.png",
+      "name": "jenny_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jenny/jenny_turnaround_APPROVED.png",
+      "size": 455046,
+      "modTime": "2026-02-07T13:55:39.164668591Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/jenny/jenny_turnaround_v2.png",
+      "name": "jenny_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jenny/jenny_turnaround_v2.png",
+      "size": 455046,
+      "modTime": "2026-02-07T13:55:39.164668591Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/ruben_turnaround_v2.png",
+      "name": "ruben_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_v2.png",
+      "size": 597734,
+      "modTime": "2026-02-07T13:55:21.375635936Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/jenny/jenny_turnaround_v1.png",
+      "name": "jenny_turnaround_v1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jenny/jenny_turnaround_v1.png",
+      "size": 511397,
+      "modTime": "2026-02-07T12:42:06.510698881Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/ruben/ruben_turnaround_v1.png",
+      "name": "ruben_turnaround_v1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_v1.png",
+      "size": 555604,
+      "modTime": "2026-02-07T12:29:14.309162021Z",
+      "category": "Characters",
+      "type": "image"
+    },
     {
       "path": "characters/jetplane/jetplane_turnaround_APPROVED.png",
       "name": "jetplane_turnaround_APPROVED.png",
