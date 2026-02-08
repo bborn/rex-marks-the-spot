@@ -37,17 +37,17 @@
         <section class="page-header">
             <div class="container">
                 <h1>Characters</h1>
-                <p>Meet the cast of "Fairy Dinosaur Date Night" — featuring our actual 3D character models created in Blender.</p>
+                <p>Meet the cast of "Fairy Dinosaur Date Night" — our approved character turnaround designs.</p>
             </div>
         </section>
 
         <section class="bts-section">
             <div class="container">
                 <style>
-                    .characters-grid {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                        gap: 2rem;
+                    .characters-list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2.5rem;
                     }
                     .character-card {
                         background: var(--bg-secondary, #1a1a2e);
@@ -60,102 +60,136 @@
                         transform: translateY(-4px);
                         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
                     }
-                    .character-image {
+                    .character-turnaround {
                         width: 100%;
-                        aspect-ratio: 1;
                         background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
                         overflow: hidden;
                     }
-                    .character-image img {
+                    .character-turnaround img {
                         width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+                        height: auto;
+                        display: block;
                     }
                     .character-info {
-                        padding: 1.5rem;
+                        padding: 1.5rem 2rem;
+                        display: flex;
+                        gap: 1rem;
+                        align-items: baseline;
+                        flex-wrap: wrap;
                     }
                     .character-info h3 {
                         font-size: 1.4rem;
-                        margin-bottom: 0.25rem;
+                        margin-bottom: 0;
+                        white-space: nowrap;
                     }
                     .character-role {
                         color: var(--accent-primary, #6366f1);
                         font-weight: 500;
-                        margin-bottom: 0.75rem;
+                        margin-bottom: 0;
+                        white-space: nowrap;
                     }
-                    .character-info > p:last-child {
+                    .character-desc {
                         color: var(--text-muted, #888);
                         font-size: 0.9rem;
                         line-height: 1.6;
+                        flex-basis: 100%;
+                    }
+                    .family-section-title,
+                    .magical-section-title {
+                        font-size: 1.1rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                        color: var(--text-muted, #888);
+                        margin-bottom: 1rem;
+                        padding-bottom: 0.5rem;
+                        border-bottom: 1px solid var(--border-color, #333);
+                    }
+                    @media (max-width: 600px) {
+                        .character-info {
+                            padding: 1rem 1.25rem;
+                        }
                     }
                 </style>
-                <div class="characters-grid">
+
+                <h2 class="family-section-title">The Family</h2>
+                <div class="characters-list">
                     <article class="character-card">
-                        <div class="character-image">
-                            <img src="images/characters/mia-preview.png" alt="Mia - 3D character model">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png" alt="Gabe character turnaround sheet" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3>Gabe</h3>
+                            <p class="character-role">The Tired Dad</p>
+                            <p class="character-desc">Early 40s, soft around the middle, glasses. A well-meaning workaholic dad whose tinkering hobby leads to the accident that strands him and Nina in the Jurassic era. Resourceful but prone to over-engineering solutions.</p>
+                        </div>
+                    </article>
+
+                    <article class="character-card">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_APPROVED.png" alt="Nina character turnaround sheet" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3>Nina</h3>
+                            <p class="character-role">The Elegant Mom</p>
+                            <p class="character-desc">Gabe's wife and the grounding force in the family. Elegant and practical, Nina keeps everyone fed, on schedule, and alive during their prehistoric predicament. Dresses up in a black dress for their date night.</p>
+                        </div>
+                    </article>
+
+                    <article class="character-card">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_APPROVED.png" alt="Mia character turnaround sheet" loading="lazy">
                         </div>
                         <div class="character-info">
                             <h3>Mia</h3>
-                            <p class="character-role">The Determined Sister</p>
-                            <p>The older sibling who takes charge when her parents disappear. Mia is resourceful, brave, and sometimes too quick to act without thinking. Through her adventure, she learns that true leadership means listening and trusting others.</p>
+                            <p class="character-role">The Determined Sister (age 8)</p>
+                            <p class="character-desc">The older sibling who takes charge when her parents disappear. Resourceful, brave, and sometimes too quick to act without thinking. Through her adventure, she learns that true leadership means listening and trusting others.</p>
                         </div>
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">
-                            <img src="images/characters/leo-preview.png" alt="Leo - 3D character model">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_APPROVED.png" alt="Leo character turnaround sheet" loading="lazy">
                         </div>
                         <div class="character-info">
                             <h3>Leo</h3>
-                            <p class="character-role">The Observant Brother</p>
-                            <p>Mia's younger brother who sees the world differently — literally. Leo notices patterns and connections others miss, making him essential to solving the biggest challenges they face. He's quieter than his sister but no less courageous.</p>
+                            <p class="character-role">The Observant Brother (age 5)</p>
+                            <p class="character-desc">Mia's younger brother who sees the world differently. Wears dinosaur pajamas and carries a plush T-Rex toy everywhere. Leo notices patterns and connections others miss, making him essential to solving the biggest challenges they face.</p>
                         </div>
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">
-                            <img src="images/characters/ruben-preview.png" alt="Ruben - 3D character model">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jenny/jenny_turnaround_APPROVED.png" alt="Jenny character turnaround sheet" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3>Jenny</h3>
+                            <p class="character-role">The Babysitter (age 15)</p>
+                            <p class="character-desc">The phone-obsessed teenage babysitter with a blonde ponytail. Jenny is supposed to be watching the kids while Gabe and Nina go out, but she's more interested in her social media feed than supervising — until things go very wrong.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <h2 class="magical-section-title" style="margin-top: 3rem;">The Magical Ones</h2>
+                <div class="characters-list">
+                    <article class="character-card">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png" alt="Ruben character turnaround sheet" loading="lazy">
                         </div>
                         <div class="character-info">
                             <h3>Ruben</h3>
                             <p class="character-role">The Depressed Fairy Godfather</p>
-                            <p>A magical being going through an existential crisis. Ruben has lost faith in his purpose after centuries of granting wishes that never seem to truly help people. The kids' quest gives him an unexpected chance at redemption — if he can overcome his depression.</p>
+                            <p class="character-desc">A magical being going through an existential crisis. Ruben has lost faith in his purpose after centuries of granting wishes that never seem to truly help people. The kids' quest gives him an unexpected chance at redemption — if he can overcome his depression.</p>
                         </div>
                     </article>
 
                     <article class="character-card">
-                        <div class="character-image">
-                            <img src="images/characters/jetplane-preview.png" alt="Jetplane - 3D character model">
+                        <div class="character-turnaround">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jetplane/jetplane_turnaround_APPROVED.png" alt="Jetplane character turnaround sheet" loading="lazy">
                         </div>
                         <div class="character-info">
                             <h3>Jetplane</h3>
-                            <p class="character-role">The Magical Dinosaur</p>
-                            <p>A dinosaur who gained magical powers through a very unusual mechanism — color-changing emissions that serve as portals through time. What sounds absurd becomes genuinely touching as we learn Jetplane's backstory and their bond with Ruben.</p>
-                        </div>
-                    </article>
-
-                    <article class="character-card">
-                        <div class="character-image">
-                            <img src="images/characters/gabe-preview.png" alt="Gabe - 3D character model">
-                        </div>
-                        <div class="character-info">
-                            <h3>Gabe</h3>
-                            <p class="character-role">The Inventive Dad</p>
-                            <p>Nina's husband and father to Mia and Leo. Gabe's tinkering hobby leads to the accident that strands him and Nina in the Jurassic era. Resourceful but prone to over-engineering solutions, he must rely on his survival instincts while hoping his kids can find a way to rescue them.</p>
-                        </div>
-                    </article>
-
-                    <article class="character-card">
-                        <div class="character-image">
-                            <img src="images/characters/nina-preview.png" alt="Nina - 3D character model">
-                        </div>
-                        <div class="character-info">
-                            <h3>Nina</h3>
-                            <p class="character-role">The Practical Mom</p>
-                            <p>Gabe's wife and the grounding force in the family. Nina is the one who keeps everyone fed, on schedule, and alive during their prehistoric predicament. Her practical nature perfectly complements Gabe's inventiveness.</p>
+                            <p class="character-role">The Color-Farting Dinosaur</p>
+                            <p class="character-desc">A dinosaur who gained magical powers through a very unusual mechanism — color-changing emissions that serve as portals through time. What sounds absurd becomes genuinely touching as we learn Jetplane's backstory and their bond with Ruben.</p>
                         </div>
                     </article>
                 </div>
@@ -165,17 +199,17 @@
         <section class="bts-section">
             <div class="container">
                 <div class="bts-content">
-                    <h2>3D Character Models</h2>
-                    <p>All six main characters have been modeled in Blender with a stylized, low-poly aesthetic that gives the film its unique visual identity. Each character was designed with these principles:</p>
+                    <h2>Character Design Process</h2>
+                    <p>Each character turnaround sheet shows the approved design from multiple angles — front, three-quarter, side, and back views. These reference sheets guide all 3D modeling and animation work to ensure visual consistency throughout the film.</p>
                     <p style="margin-top: 1rem;"><a href="character-concepts.html" class="btn btn-secondary" style="display: inline-flex;">View Character Concept Gallery &rarr;</a></p>
                     <ul>
                         <li><strong>Personality-driven design:</strong> Each character's appearance reflects their role and personality</li>
                         <li><strong>Distinctive silhouettes:</strong> Every character is recognizable from their outline alone</li>
-                        <li><strong>Consistent style:</strong> A cohesive low-poly aesthetic across the entire cast</li>
-                        <li><strong>Animation-ready:</strong> Models structured for efficient rigging and animation</li>
+                        <li><strong>Consistent style:</strong> A cohesive Pixar-like stylized aesthetic across the entire cast</li>
+                        <li><strong>Animation-ready:</strong> Designs structured for efficient rigging and animation</li>
                         <li><strong>Color storytelling:</strong> Palettes that reflect each character's emotional journey</li>
                     </ul>
-                    <p>The magical characters (Ruben and Jetplane) feature special elements like fairy wings and the dinosaur's unique design. Follow the <a href="blog/index.html">blog</a> for updates on animation progress.</p>
+                    <p>Follow the <a href="blog/index.html">blog</a> for updates on animation progress.</p>
                 </div>
             </div>
         </section>
