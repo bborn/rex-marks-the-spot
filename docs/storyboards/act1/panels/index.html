@@ -1045,6 +1045,8 @@
             });
         }
 
+        const R2_BASE = 'https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels';
+
         function generatePanels() {
             const gridContainer = document.getElementById('panels-grid');
             const sequenceContainer = document.getElementById('panels-sequence');
@@ -1076,21 +1078,13 @@
                 scene.panels.forEach((panel, panelIdx) => {
                     const panelNum = panelIdx + 1;
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}`;
-                    // Use PNG for Scene 1 (generated images), SVG placeholders for others
                     const ext = "png";
                     const filename = `${baseFilename}.${ext}`;
+                    const imageUrl = `${R2_BASE}/${filename}`;
 
-                    const cardHtml = ext === 'png' ? `
-                        <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
-                            <img src="${filename}" alt="Scene ${scene.num} Panel ${panelNum}">
-                            <div class="panel-info">
-                                <h3>${panel.shot}</h3>
-                                <p>${panel.desc}</p>
-                            </div>
-                        </div>
-                    ` : `
-                        <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
-                            <object data="${filename}" type="image/svg+xml"></object>
+                    const cardHtml = `
+                        <div class="panel-card" data-file="${imageUrl}" data-scene="${scene.num}" data-panel="${panelNum}">
+                            <img src="${imageUrl}" alt="Scene ${scene.num} Panel ${panelNum}">
                             <div class="panel-info">
                                 <h3>${panel.shot}</h3>
                                 <p>${panel.desc}</p>
@@ -1112,11 +1106,12 @@
                 scene.panels.forEach((panel, idx) => {
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(idx + 1).padStart(2, '0')}`;
                     const ext = "png";
+                    const filename = `${baseFilename}.${ext}`;
                     allPanels.push({
                         scene: scene.num,
                         panel: idx + 1,
-                        file: `${baseFilename}.${ext}`,
-                        isPng: ext === 'png',
+                        file: `${R2_BASE}/${filename}`,
+                        isPng: true,
                         shot: panel.shot,
                         desc: panel.desc,
                         sceneTitle: scene.title
