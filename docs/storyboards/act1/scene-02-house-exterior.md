@@ -14,6 +14,8 @@ Front exterior of Bornsztein family home. Night. Heavy rain falling. Storm in fu
 ## Panel 2A: Wide - House Exterior
 **Shot Type:** Wide establishing | **Duration:** 6s | **Camera:** STATIC
 
+![Panel 2A](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-02/scene-02-panel-01.png)
+
 ### Composition
 Full view of house front. Warm light spilling from windows. Car in driveway. Dark stormy sky dominates upper frame.
 
@@ -42,6 +44,8 @@ Heavy rain, distant thunder, wind
 
 ## Panel 2B: Tracking - Parents Rush to Car
 **Shot Type:** Medium tracking | **Duration:** 5s | **Camera:** TRACK following movement
+
+![Panel 2B](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-02/scene-02-panel-02.png)
 
 ### Composition
 Door bursts open, Gabe and Nina rush out into rain toward car.
@@ -72,6 +76,8 @@ Door slam, rain intensifying, footsteps splashing, car beeping
 
 ## Panel 2C: Low Angle - Lightning Sky
 **Shot Type:** Low angle wide | **Duration:** 4s | **Camera:** STATIC
+
+![Panel 2C](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-02/scene-02-panel-03.png)
 
 ### Composition
 Camera low, looking up at sky. House roofline at bottom of frame. Massive lightning bolt cracks across sky.
