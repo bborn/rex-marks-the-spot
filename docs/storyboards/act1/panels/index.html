@@ -148,7 +148,8 @@
             box-shadow: 0 8px 30px rgba(0, 150, 255, 0.2);
         }
 
-        .panel-card img {
+        .panel-card img,
+        .panel-card object {
             width: 100%;
             aspect-ratio: 16/9;
             object-fit: contain;
@@ -810,8 +811,8 @@
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
         <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">&larr;</button>
         <div class="lightbox-content">
-            <img id="lightbox-image-png">
-            <object id="lightbox-image-svg" type="image/svg+xml" style="display: none;"></object>
+            <img id="lightbox-image-png" style="display: none;">
+            <object id="lightbox-image-svg" type="image/svg+xml"></object>
             <div class="lightbox-info" id="lightbox-info"></div>
         </div>
         <button class="lightbox-nav next" onclick="navigateLightbox(1)">&rarr;</button>
@@ -1020,8 +1021,6 @@
             }
         ];
 
-        const R2_BASE = 'https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/';
-
         let currentLightboxIndex = 0;
         let allPanels = [];
 
@@ -1045,6 +1044,8 @@
                 nav.appendChild(btn);
             });
         }
+
+        const R2_BASE = 'https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels';
 
         function generatePanels() {
             const gridContainer = document.getElementById('panels-grid');
@@ -1077,14 +1078,13 @@
                 scene.panels.forEach((panel, panelIdx) => {
                     const panelNum = panelIdx + 1;
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}`;
-                    // Use PNG for Scene 1 (generated images), SVG placeholders for others
                     const ext = "png";
                     const filename = `${baseFilename}.${ext}`;
+                    const imageUrl = `${R2_BASE}/${filename}`;
 
-                    const imgUrl = `${R2_BASE}${filename}`;
                     const cardHtml = `
-                        <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
-                            <img src="${imgUrl}" alt="Scene ${scene.num} Panel ${panelNum}" loading="lazy">
+                        <div class="panel-card" data-file="${imageUrl}" data-scene="${scene.num}" data-panel="${panelNum}">
+                            <img src="${imageUrl}" alt="Scene ${scene.num} Panel ${panelNum}">
                             <div class="panel-info">
                                 <h3>${panel.shot}</h3>
                                 <p>${panel.desc}</p>
@@ -1105,12 +1105,13 @@
             scenes.forEach(scene => {
                 scene.panels.forEach((panel, idx) => {
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(idx + 1).padStart(2, '0')}`;
-                    const filename = `${baseFilename}.png`;
+                    const ext = "png";
+                    const filename = `${baseFilename}.${ext}`;
                     allPanels.push({
                         scene: scene.num,
                         panel: idx + 1,
-                        file: filename,
-                        url: `${R2_BASE}${filename}`,
+                        file: `${R2_BASE}/${filename}`,
+                        isPng: true,
                         shot: panel.shot,
                         desc: panel.desc,
                         sceneTitle: scene.title
@@ -1195,9 +1196,15 @@
             const pngEl = document.getElementById('lightbox-image-png');
             const svgEl = document.getElementById('lightbox-image-svg');
 
-            pngEl.src = panel.url;
-            pngEl.style.display = 'block';
-            svgEl.style.display = 'none';
+            if (panel.isPng) {
+                pngEl.src = panel.file;
+                pngEl.style.display = 'block';
+                svgEl.style.display = 'none';
+            } else {
+                svgEl.data = panel.file;
+                svgEl.style.display = 'block';
+                pngEl.style.display = 'none';
+            }
 
             document.getElementById('lightbox-info').innerHTML = `
                 <strong>Scene ${panel.scene}: ${panel.sceneTitle}</strong> - Panel ${panel.panel}<br>
