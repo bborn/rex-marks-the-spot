@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-08T13:33:28.555809Z",
+  "generated": "2026-02-08T13:40:48.615404Z",
   "totalAssets": 914,
   "categories": {
     "Characters": 113,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-08T13:33:28.543397507Z",
+      "modTime": "2026-02-08T13:40:48.602659925Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-08T13:33:28.543397507Z",
+      "modTime": "2026-02-08T13:40:48.602659925Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-08T13:33:28.543397507Z",
+      "modTime": "2026-02-08T13:40:48.602659925Z",
       "category": "Other",
       "type": "image"
     },
@@ -50,11 +50,20 @@
       "type": "image"
     },
     {
+      "path": "promo/ruben-jetplane.jpg",
+      "name": "ruben-jetplane.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
+      "size": 2999251,
+      "modTime": "2026-02-08T04:13:00.940972958Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
       "path": "promo/family-portrait.jpg",
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
-      "size": 2999251,
-      "modTime": "2026-02-08T04:13:00.940972958Z",
+      "size": 2805200,
+      "modTime": "2026-02-08T04:04:45.126320822Z",
       "category": "Other",
       "type": "image"
     },
@@ -62,15 +71,6 @@
       "path": "promo/ruben-jetplane.jpg/Gemini_Generated_Image_70jo4770jo4770jo.jpg",
       "name": "Gemini_Generated_Image_70jo4770jo4770jo.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg/Gemini_Generated_Image_70jo4770jo4770jo.jpg",
-      "size": 2805200,
-      "modTime": "2026-02-08T04:04:45.126320822Z",
-      "category": "Other",
-      "type": "image"
-    },
-    {
-      "path": "promo/ruben-jetplane.jpg",
-      "name": "ruben-jetplane.jpg",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": 2805200,
       "modTime": "2026-02-08T04:04:45.126320822Z",
       "category": "Other",
