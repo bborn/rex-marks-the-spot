@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-08T18:14:07.895979Z",
+  "generated": "2026-02-09T00:42:26.214914Z",
   "totalAssets": 914,
   "categories": {
     "Characters": 113,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-08T18:14:07.883308175Z",
+      "modTime": "2026-02-09T00:42:26.202764932Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-08T18:14:07.883308175Z",
+      "modTime": "2026-02-09T00:42:26.202764932Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-08T18:14:07.883308175Z",
+      "modTime": "2026-02-09T00:42:26.202764932Z",
       "category": "Other",
       "type": "image"
     },
@@ -77,11 +77,29 @@
       "type": "image"
     },
     {
+      "path": "storyboards/act1/panels/scene-01-panel-07.png",
+      "name": "scene-01-panel-07.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-07.png",
+      "size": 665915,
+      "modTime": "2026-02-08T00:00:23.317011902Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
       "path": "storyboards/act1/scene-01/scene-01-panel-07.png",
       "name": "scene-01-panel-07.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-07.png",
       "size": 665915,
       "modTime": "2026-02-08T00:00:23.317011902Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/panels/scene-01-panel-09.png",
+      "name": "scene-01-panel-09.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-09.png",
+      "size": 1571205,
+      "modTime": "2026-02-07T20:40:05.189779403Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -95,6 +113,15 @@
       "type": "image"
     },
     {
+      "path": "storyboards/act1/panels/scene-01-panel-04.png",
+      "name": "scene-01-panel-04.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-04.png",
+      "size": 1622409,
+      "modTime": "2026-02-07T20:39:44.928820521Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
       "path": "storyboards/act1/scene-01/scene-01-panel-04.png",
       "name": "scene-01-panel-04.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-04.png",
@@ -104,11 +131,29 @@
       "type": "image"
     },
     {
+      "path": "storyboards/act1/panels/scene-01-panel-02.png",
+      "name": "scene-01-panel-02.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-02.png",
+      "size": 1607691,
+      "modTime": "2026-02-07T20:39:22.447865470Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
       "path": "storyboards/act1/scene-01/scene-01-panel-02.png",
       "name": "scene-01-panel-02.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-02.png",
       "size": 1607691,
       "modTime": "2026-02-07T20:39:22.447865470Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/act1/panels/scene-01-panel-08.png",
+      "name": "scene-01-panel-08.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-08.png",
+      "size": 1545558,
+      "modTime": "2026-02-07T20:39:02.468904796Z",
       "category": "Storyboards",
       "type": "image"
     },
@@ -7358,33 +7403,6 @@
       "type": "image"
     },
     {
-      "path": "storyboards/act1/panels/scene-01-panel-09.png",
-      "name": "scene-01-panel-09.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-09.png",
-      "size": 759391,
-      "modTime": "2026-02-03T15:14:23.552232561Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/act1/panels/scene-01-panel-08.png",
-      "name": "scene-01-panel-08.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-08.png",
-      "size": 801260,
-      "modTime": "2026-02-03T15:14:23.547016631Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/act1/panels/scene-01-panel-07.png",
-      "name": "scene-01-panel-07.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-07.png",
-      "size": 670131,
-      "modTime": "2026-02-03T15:14:23.544495542Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
       "path": "storyboards/act1/panels/scene-01-panel-05.png",
       "name": "scene-01-panel-05.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-05.png",
@@ -7394,29 +7412,11 @@
       "type": "image"
     },
     {
-      "path": "storyboards/act1/panels/scene-01-panel-04.png",
-      "name": "scene-01-panel-04.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-04.png",
-      "size": 555399,
-      "modTime": "2026-02-03T15:14:23.533533380Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
       "path": "storyboards/act1/panels/scene-01-panel-03.png",
       "name": "scene-01-panel-03.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-03.png",
       "size": 644449,
       "modTime": "2026-02-03T15:14:23.531526176Z",
-      "category": "Storyboards",
-      "type": "image"
-    },
-    {
-      "path": "storyboards/act1/panels/scene-01-panel-02.png",
-      "name": "scene-01-panel-02.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-01-panel-02.png",
-      "size": 735515,
-      "modTime": "2026-02-03T15:14:23.529806853Z",
       "category": "Storyboards",
       "type": "image"
     },
