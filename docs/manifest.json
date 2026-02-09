@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-09T12:16:32.007289Z",
-  "totalAssets": 914,
+  "generated": "2026-02-09T12:26:26.283143Z",
+  "totalAssets": 921,
   "categories": {
-    "Characters": 113,
+    "Characters": 120,
     "Other": 38,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-09T12:16:31.994255339Z",
+      "modTime": "2026-02-09T12:26:26.272182343Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-09T12:16:31.994255339Z",
+      "modTime": "2026-02-09T12:26:26.272182343Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,9 +36,54 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-09T12:16:31.994255339Z",
+      "modTime": "2026-02-09T12:26:26.272182343Z",
       "category": "Other",
       "type": "image"
+    },
+    {
+      "path": "3d-models/characters/nina/preview_nina.png",
+      "name": "preview_nina.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/preview_nina.png",
+      "size": 1374567,
+      "modTime": "2026-02-09T12:21:48.380380678Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/preview_gabe.png",
+      "name": "preview_gabe.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/preview_gabe.png",
+      "size": 1339124,
+      "modTime": "2026-02-09T12:21:39.806375483Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/preview_both_characters.png",
+      "name": "preview_both_characters.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/preview_both_characters.png",
+      "size": 1557063,
+      "modTime": "2026-02-09T12:21:31.078369665Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/nina/nina_decimated.glb",
+      "name": "nina_decimated.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/nina_decimated.glb",
+      "size": 945976,
+      "modTime": "2026-02-09T12:17:48.120886859Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/gabe/gabe_decimated.glb",
+      "name": "gabe_decimated.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/gabe_decimated.glb",
+      "size": 1007596,
+      "modTime": "2026-02-09T12:17:46.471893517Z",
+      "category": "Characters",
+      "type": "3d"
     },
     {
       "path": "storyboards/act1/panels/scene-10-panel-07.png",
@@ -113,6 +158,15 @@
       "type": "image"
     },
     {
+      "path": "3d-models/characters/nina/nina.glb",
+      "name": "nina.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/nina.glb",
+      "size": 3104216,
+      "modTime": "2026-02-09T12:08:59.469137256Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
       "path": "storyboards/act1/panels/scene-08-panel-09.png",
       "name": "scene-08-panel-09.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/scene-08-panel-09.png",
@@ -120,6 +174,15 @@
       "modTime": "2026-02-09T12:08:43.275211408Z",
       "category": "Storyboards",
       "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/gabe.glb",
+      "name": "gabe.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/gabe.glb",
+      "size": 3370492,
+      "modTime": "2026-02-09T12:08:41.061221578Z",
+      "category": "Characters",
+      "type": "3d"
     },
     {
       "path": "storyboards/act1/panels/scene-08-panel-06.png",
