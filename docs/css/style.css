@@ -316,6 +316,19 @@ img {
     align-items: center;
 }
 
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: transform var(--transition-normal);
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
 .hero-placeholder {
     width: 100%;
     max-width: 400px;
@@ -472,6 +485,29 @@ img {
     position: absolute;
     left: 0;
     color: var(--color-primary);
+}
+
+.about-feature-image {
+    grid-column: 1 / -1;
+    margin: var(--space-2xl) 0;
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    display: block;
+    margin: 0 auto;
+}
+
+.image-caption {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-top: var(--space-md);
+    font-style: italic;
 }
 
 .info-card {
