@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-09T13:50:19.236382Z",
-  "totalAssets": 930,
+  "generated": "2026-02-09T17:59:59.040848Z",
+  "totalAssets": 976,
   "categories": {
-    "Characters": 129,
+    "Characters": 175,
     "Other": 38,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-09T13:50:19.223767391Z",
+      "modTime": "2026-02-09T17:59:59.028127148Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-09T13:50:19.223767391Z",
+      "modTime": "2026-02-09T17:59:59.028127148Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,8 +36,422 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-09T13:50:19.223767391Z",
+      "modTime": "2026-02-09T17:59:59.028127148Z",
       "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/leo_meshy_comparison.png",
+      "name": "leo_meshy_comparison.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/leo_meshy_comparison.png",
+      "size": 1566676,
+      "modTime": "2026-02-09T17:09:43.497308985Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/leo_meshy_three_quarter.png",
+      "name": "leo_meshy_three_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/leo_meshy_three_quarter.png",
+      "size": 722724,
+      "modTime": "2026-02-09T17:08:25.711557060Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/leo_meshy_side.png",
+      "name": "leo_meshy_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/leo_meshy_side.png",
+      "size": 703973,
+      "modTime": "2026-02-09T17:07:35.695718513Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/leo_meshy_front.png",
+      "name": "leo_meshy_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/leo_meshy_front.png",
+      "size": 746964,
+      "modTime": "2026-02-09T17:06:46.725878241Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo/textures/leo_v2_normal.png",
+      "name": "leo_v2_normal.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo/textures/leo_v2_normal.png",
+      "size": 3620960,
+      "modTime": "2026-02-09T17:05:43.397087490Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo/textures/leo_v2_roughness.png",
+      "name": "leo_v2_roughness.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo/textures/leo_v2_roughness.png",
+      "size": 938239,
+      "modTime": "2026-02-09T17:05:43.046088659Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo/textures/leo_v2_metallic.png",
+      "name": "leo_v2_metallic.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo/textures/leo_v2_metallic.png",
+      "size": 4870,
+      "modTime": "2026-02-09T17:05:42.787089521Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo/textures/leo_v2_base_color.png",
+      "name": "leo_v2_base_color.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo/textures/leo_v2_base_color.png",
+      "size": 5135575,
+      "modTime": "2026-02-09T17:05:42.596090158Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo/leo_meshy.fbx",
+      "name": "leo_meshy.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo/leo_meshy.fbx",
+      "size": 21639212,
+      "modTime": "2026-02-09T17:05:42.252091304Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/leo/leo_meshy.glb",
+      "name": "leo_meshy.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo/leo_meshy.glb",
+      "size": 22745832,
+      "modTime": "2026-02-09T17:05:41.737093019Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "characters/leo/leo_front_single.png",
+      "name": "leo_front_single.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_front_single.png",
+      "size": 427235,
+      "modTime": "2026-02-09T17:02:17.916792312Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/jetplane/preview_jetplane.png",
+      "name": "preview_jetplane.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jetplane/preview_jetplane.png",
+      "size": 584703,
+      "modTime": "2026-02-09T14:40:42.279710358Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/jenny/preview_jenny.png",
+      "name": "preview_jenny.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jenny/preview_jenny.png",
+      "size": 549199,
+      "modTime": "2026-02-09T14:40:36.677738229Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/ruben/preview_ruben.png",
+      "name": "preview_ruben.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/ruben/preview_ruben.png",
+      "size": 541148,
+      "modTime": "2026-02-09T14:39:39.122029369Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/jetplane/jetplane.glb",
+      "name": "jetplane.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jetplane/jetplane.glb",
+      "size": 249848,
+      "modTime": "2026-02-09T14:38:03.487534572Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/nina_original_3quarter.png",
+      "name": "nina_original_3quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/nina_original_3quarter.png",
+      "size": 1062053,
+      "modTime": "2026-02-09T14:35:30.045212447Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/nina_original_side.png",
+      "name": "nina_original_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/nina_original_side.png",
+      "size": 1046594,
+      "modTime": "2026-02-09T14:35:12.431271068Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/nina_original_front.png",
+      "name": "nina_original_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/nina_original_front.png",
+      "size": 1054458,
+      "modTime": "2026-02-09T14:34:55.558327240Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/gabe_original_3quarter.png",
+      "name": "gabe_original_3quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/gabe_original_3quarter.png",
+      "size": 1068159,
+      "modTime": "2026-02-09T14:34:34.876396116Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/gabe_original_side.png",
+      "name": "gabe_original_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/gabe_original_side.png",
+      "size": 1048022,
+      "modTime": "2026-02-09T14:34:17.760453136Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/gabe_original_front.png",
+      "name": "gabe_original_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/gabe_original_front.png",
+      "size": 1057256,
+      "modTime": "2026-02-09T14:34:00.327511233Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/nina_textured_3quarter.png",
+      "name": "nina_textured_3quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/nina_textured_3quarter.png",
+      "size": 1201781,
+      "modTime": "2026-02-09T14:33:39.322581260Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/nina_textured_side.png",
+      "name": "nina_textured_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/nina_textured_side.png",
+      "size": 1160001,
+      "modTime": "2026-02-09T14:33:22.632636924Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/nina_textured_front.png",
+      "name": "nina_textured_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/nina_textured_front.png",
+      "size": 1208739,
+      "modTime": "2026-02-09T14:33:05.997692424Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/gabe_textured_3quarter.png",
+      "name": "gabe_textured_3quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/gabe_textured_3quarter.png",
+      "size": 1239544,
+      "modTime": "2026-02-09T14:32:31.853806406Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/gabe_textured_side.png",
+      "name": "gabe_textured_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/gabe_textured_side.png",
+      "size": 1185723,
+      "modTime": "2026-02-09T14:32:14.760863502Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/texture-comparison/gabe_textured_front.png",
+      "name": "gabe_textured_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/texture-comparison/gabe_textured_front.png",
+      "size": 1237778,
+      "modTime": "2026-02-09T14:31:57.294921869Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/jetplane/jetplane_front.png",
+      "name": "jetplane_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jetplane/jetplane_front.png",
+      "size": 325809,
+      "modTime": "2026-02-09T14:30:27.639221919Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/jenny/jenny_decimated.glb",
+      "name": "jenny_decimated.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jenny/jenny_decimated.glb",
+      "size": 2504932,
+      "modTime": "2026-02-09T14:30:21.762241613Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/jenny/jenny.glb",
+      "name": "jenny.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jenny/jenny.glb",
+      "size": 7532412,
+      "modTime": "2026-02-09T14:30:13.045270832Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/nina/textures/nina_roughness.png",
+      "name": "nina_roughness.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/textures/nina_roughness.png",
+      "size": 886087,
+      "modTime": "2026-02-09T14:26:52.997943861Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/nina/textures/nina_normal.png",
+      "name": "nina_normal.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/textures/nina_normal.png",
+      "size": 4884958,
+      "modTime": "2026-02-09T14:26:52.614945155Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/nina/textures/nina_metallic.png",
+      "name": "nina_metallic.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/textures/nina_metallic.png",
+      "size": 14950,
+      "modTime": "2026-02-09T14:26:52.068947000Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/nina/textures/nina_base_color.png",
+      "name": "nina_base_color.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/textures/nina_base_color.png",
+      "size": 2571820,
+      "modTime": "2026-02-09T14:26:51.803947895Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/nina/nina_textured_meshy.fbx",
+      "name": "nina_textured_meshy.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/nina_textured_meshy.fbx",
+      "size": 7924988,
+      "modTime": "2026-02-09T14:26:51.444949109Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/nina/nina_textured_meshy.glb",
+      "name": "nina_textured_meshy.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/nina_textured_meshy.glb",
+      "size": 27164792,
+      "modTime": "2026-02-09T14:26:51.027950518Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/jenny/jenny_front.png",
+      "name": "jenny_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/jenny/jenny_front.png",
+      "size": 232411,
+      "modTime": "2026-02-09T14:26:45.480969264Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/textures/gabe_roughness.png",
+      "name": "gabe_roughness.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/textures/gabe_roughness.png",
+      "size": 1316401,
+      "modTime": "2026-02-09T14:26:44.367973026Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/textures/gabe_normal.png",
+      "name": "gabe_normal.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/textures/gabe_normal.png",
+      "size": 5001175,
+      "modTime": "2026-02-09T14:26:44.009974236Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/textures/gabe_metallic.png",
+      "name": "gabe_metallic.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/textures/gabe_metallic.png",
+      "size": 305081,
+      "modTime": "2026-02-09T14:26:43.659975418Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/textures/gabe_base_color.png",
+      "name": "gabe_base_color.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/textures/gabe_base_color.png",
+      "size": 2727800,
+      "modTime": "2026-02-09T14:26:43.372976388Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/gabe/gabe_textured_meshy.fbx",
+      "name": "gabe_textured_meshy.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/gabe_textured_meshy.fbx",
+      "size": 8435660,
+      "modTime": "2026-02-09T14:26:42.985977696Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/gabe/gabe_textured_meshy.glb",
+      "name": "gabe_textured_meshy.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/gabe_textured_meshy.glb",
+      "size": 30109644,
+      "modTime": "2026-02-09T14:26:42.481979400Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/ruben/ruben_decimated.glb",
+      "name": "ruben_decimated.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/ruben/ruben_decimated.glb",
+      "size": 1897492,
+      "modTime": "2026-02-09T14:26:29.152024469Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/ruben/ruben.glb",
+      "name": "ruben.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/ruben/ruben.glb",
+      "size": 5669032,
+      "modTime": "2026-02-09T14:26:24.302040873Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/ruben/ruben_front.png",
+      "name": "ruben_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/ruben/ruben_front.png",
+      "size": 248738,
+      "modTime": "2026-02-09T14:25:09.089295785Z",
+      "category": "Characters",
       "type": "image"
     },
     {
