@@ -138,6 +138,24 @@ This document tracks all concept art deliverables for each character.
 
 ---
 
+## Jenny (Babysitter - Supporting Character)
+
+| Deliverable | File | Status | Notes |
+|-------------|------|--------|-------|
+| Hero Portrait | `jenny/concept-art/jenny_portrait_v1.png` | [ ] | Primary character reference |
+| Full Body Turnaround | `jenny/jenny_turnaround_v1.png` | [x] | Front, 3/4, side, back - [R2](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/jenny/jenny_turnaround_v1.png) |
+| Core Expressions | `jenny/concept-art/jenny_expressions_v1.png` | [ ] | 6 key emotions |
+| Scene-Specific Emotions | `jenny/concept-art/jenny_expressions_scenes_v1.png` | [ ] | Interview, TV explosion |
+| Babysitting Outfit Detail | `jenny/concept-art/jenny_costume_babysitting_v1.png` | [ ] | Pink hoodie, phone |
+| Morning After Variation | `jenny/concept-art/jenny_costume_morning_v1.png` | [ ] | Rumpled interview look |
+| Action - Phone Obsessed | `jenny/concept-art/jenny_action_phone_v1.png` | [ ] | Lounging with phone |
+| Action - Nervous Interview | `jenny/concept-art/jenny_action_interview_v1.png` | [ ] | Fidgeting in chair |
+| Icon/Avatar | `jenny/concept-art/jenny_icon_v1.png` | [ ] | Simplified for UI |
+
+**Color Palette Reference:** See `jenny/turnaround.md`
+
+---
+
 ## Summary Statistics
 
 | Character | Required | Recommended | Total | Complete |
@@ -148,7 +166,8 @@ This document tracks all concept art deliverables for each character.
 | Nina | 3 | 10 | 13 | 0 |
 | Ruben | 3 | 12 | 15 | 0 |
 | Jetplane | 3 | 13 | 16 | 0 |
-| **TOTAL** | **18** | **57** | **75** | **0** |
+| Jenny | 1 | 8 | 9 | 1 |
+| **TOTAL** | **19** | **65** | **84** | **1** |
 
 ### Generation Priority
 
