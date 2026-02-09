@@ -871,6 +871,9 @@
     </div>
 
     <script>
+        // R2 base URL for panel images
+        const R2_BASE = 'https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/panels/';
+
         // Panel data
         const scenes = [
             {
@@ -1078,7 +1081,7 @@
                     const baseFilename = `scene-${String(scene.num).padStart(2, '0')}-panel-${String(panelNum).padStart(2, '0')}`;
                     // Use PNG for Scene 1 (generated images), SVG placeholders for others
                     const ext = "png";
-                    const filename = `${baseFilename}.${ext}`;
+                    const filename = `${R2_BASE}${baseFilename}.${ext}`;
 
                     const cardHtml = ext === 'png' ? `
                         <div class="panel-card" data-file="${filename}" data-scene="${scene.num}" data-panel="${panelNum}">
@@ -1115,7 +1118,7 @@
                     allPanels.push({
                         scene: scene.num,
                         panel: idx + 1,
-                        file: `${baseFilename}.${ext}`,
+                        file: `${R2_BASE}${baseFilename}.${ext}`,
                         isPng: ext === 'png',
                         shot: panel.shot,
                         desc: panel.desc,
