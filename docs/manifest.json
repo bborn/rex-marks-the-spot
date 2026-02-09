@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-09T12:26:26.283143Z",
-  "totalAssets": 921,
+  "generated": "2026-02-09T12:34:55.865211Z",
+  "totalAssets": 930,
   "categories": {
-    "Characters": 120,
+    "Characters": 129,
     "Other": 38,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-09T12:26:26.272182343Z",
+      "modTime": "2026-02-09T12:34:55.854162493Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-09T12:26:26.272182343Z",
+      "modTime": "2026-02-09T12:34:55.854162493Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,8 +36,35 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-09T12:26:26.272182343Z",
+      "modTime": "2026-02-09T12:34:55.854162493Z",
       "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/mia_side_view.png",
+      "name": "mia_side_view.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_side_view.png",
+      "size": 626145,
+      "modTime": "2026-02-09T12:28:38.720164721Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/mia_render_front.png",
+      "name": "mia_render_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_render_front.png",
+      "size": 604621,
+      "modTime": "2026-02-09T12:27:59.900215558Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/characters_preview.png",
+      "name": "characters_preview.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/characters_preview.png",
+      "size": 868046,
+      "modTime": "2026-02-09T12:27:35.643244794Z",
+      "category": "Characters",
       "type": "image"
     },
     {
@@ -66,6 +93,24 @@
       "modTime": "2026-02-09T12:21:31.078369665Z",
       "category": "Characters",
       "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo.obj",
+      "name": "leo.obj",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo.obj",
+      "size": 585785,
+      "modTime": "2026-02-09T12:18:39.776679037Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/mia.obj",
+      "name": "mia.obj",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia.obj",
+      "size": 1306765,
+      "modTime": "2026-02-09T12:18:39.470680264Z",
+      "category": "Characters",
+      "type": "3d"
     },
     {
       "path": "3d-models/characters/nina/nina_decimated.glb",
@@ -246,6 +291,42 @@
       "modTime": "2026-02-09T12:06:52.352731733Z",
       "category": "Storyboards",
       "type": "image"
+    },
+    {
+      "path": "3d-models/characters/leo.glb",
+      "name": "leo.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/leo.glb",
+      "size": 951100,
+      "modTime": "2026-02-09T12:05:25.152158327Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/previews/leo_preview.mp4",
+      "name": "leo_preview.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/leo_preview.mp4",
+      "size": 136142,
+      "modTime": "2026-02-09T12:05:06.785250440Z",
+      "category": "Characters",
+      "type": "video"
+    },
+    {
+      "path": "3d-models/characters/mia.glb",
+      "name": "mia.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia.glb",
+      "size": 1186584,
+      "modTime": "2026-02-09T12:04:43.342369254Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/previews/mia_preview.mp4",
+      "name": "mia_preview.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_preview.mp4",
+      "size": 414194,
+      "modTime": "2026-02-09T12:04:18.772495340Z",
+      "category": "Characters",
+      "type": "video"
     },
     {
       "path": "storyboards/act1/panels/scene-07-panel-04.png",
