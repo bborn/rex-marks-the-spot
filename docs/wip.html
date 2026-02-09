@@ -222,6 +222,41 @@
         }
         .lightbox .nav-btn.prev { left: 20px; }
         .lightbox .nav-btn.next { right: 20px; }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .pagination button {
+            background: var(--card-bg, #1a1a2e);
+            border: 1px solid var(--border-color, #2a2a4e);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            color: var(--text-color, #fff);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .pagination button:hover:not(:disabled) {
+            background: var(--accent-color, #6c63ff);
+            border-color: var(--accent-color, #6c63ff);
+        }
+        .pagination button.active {
+            background: var(--accent-color, #6c63ff);
+            border-color: var(--accent-color, #6c63ff);
+        }
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .pagination .page-info {
+            color: var(--text-muted, #888);
+            font-size: 0.85rem;
+            padding: 0 0.5rem;
+        }
         @media (max-width: 768px) {
             .asset-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -302,9 +337,11 @@
 
     <script>
         const R2_BASE = 'https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev';
+        const ITEMS_PER_PAGE = 48;
         let allAssets = [];
         let currentFilter = 'all';
         let currentView = 'grid';
+        let currentPage = 1;
         let lightboxIndex = 0;
         let filteredImages = [];
 
