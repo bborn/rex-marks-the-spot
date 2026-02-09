@@ -42,3 +42,4 @@ assets/characters/**/*.png
 assets/characters/**/*.jpg
 output/**/*.png
 output/**/*.jpg
+tmp/
