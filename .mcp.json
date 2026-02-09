@@ -13,7 +13,7 @@
       "args": [
         "mcp-server",
         "--task-id",
-        "68"
+        "191"
       ],
       "command": "/home/rex/.local/bin/ty",
       "type": "stdio"
