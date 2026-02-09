@@ -1,0 +1,350 @@
+{
+  "audit_date": "2026-02-09",
+  "previous_audit_date": "2026-02-07",
+  "scene": "scene-01",
+  "scene_name": "INT. HOME - EVENING",
+  "total_panels": 9,
+  "panels_passing": 5,
+  "panels_acceptable_with_concerns": 2,
+  "panels_needs_regen": 2,
+  "panels_na": 1,
+  "cross_panel_issues": [
+    {
+      "type": "style_inconsistency",
+      "severity": "major",
+      "detail": "Panels 01, 03, 05, 06 are B&W pencil sketches; Panels 02, 04, 07, 08, 09 are full-color 3D Pixar renders. Director decision needed on target style."
+    },
+    {
+      "type": "aspect_ratio_inconsistency",
+      "severity": "minor",
+      "detail": "Most 3D panels are square (1:1). Only Panel 07 appears 16:9. All should be 16:9 per spec."
+    }
+  ],
+  "panels": {
+    "scene-01-panel-01": {
+      "verdict": "PASS",
+      "style": "B&W pencil sketch",
+      "characters_expected": ["Leo", "Mia", "Jenny", "Nina", "Gabe"],
+      "issues": [
+        {
+          "type": "style_mismatch",
+          "severity": "info",
+          "detail": "B&W sketch while other panels are 3D renders"
+        },
+        {
+          "type": "aspect_ratio",
+          "severity": "minor",
+          "detail": "Not standard 16:9"
+        }
+      ],
+      "regen_priority": null,
+      "notes": "Wide establishing shot - character detail minimal at this distance, acceptable"
+    },
+    "scene-01-panel-02": {
+      "verdict": "PASS",
+      "style": "3D Pixar render",
+      "characters_expected": ["Leo"],
+      "character_match": {
+        "Leo": {
+          "hair_color": "CORRECT - blonde/golden",
+          "hair_texture": "CORRECT - curly",
+          "eyes": "CORRECT - blue",
+          "face_shape": "CORRECT - round, cherubic",
+          "accessories": "CORRECT - green dino toy",
+          "overall": "Strong match to approved turnaround"
+        }
+      },
+      "issues": [
+        {
+          "type": "style_mismatch",
+          "severity": "info",
+          "detail": "3D render while spec calls for B&W sketch"
+        },
+        {
+          "type": "aspect_ratio",
+          "severity": "minor",
+          "detail": "Square (1:1), not 16:9"
+        },
+        {
+          "type": "missing_character",
+          "severity": "minor",
+          "detail": "Mia should be at edge of frame per spec"
+        }
+      ],
+      "regen_priority": null,
+      "notes": "Leo character match is excellent. Previous audit (Feb 7) incorrectly reported dark hair - likely panel was regenerated since then."
+    },
+    "scene-01-panel-03": {
+      "verdict": "PASS",
+      "style": "B&W pencil sketch",
+      "characters_expected": ["Nina"],
+      "character_match": {
+        "Nina": {
+          "silhouette": "CORRECT - elegant, slim",
+          "dress": "CORRECT - fitted cocktail dress",
+          "action": "CORRECT - putting on earrings, carrying purse",
+          "hair_texture": "MINOR CONCERN - appears straighter than approved wavy look",
+          "overall": "Acceptable for sketch style"
+        }
+      },
+      "issues": [
+        {
+          "type": "hair_texture",
+          "severity": "minor",
+          "character": "Nina",
+          "expected": "wavy, shoulder-length",
+          "actual": "appears straighter",
+          "detail": "Hair waviness not prominent enough in sketch"
+        }
+      ],
+      "regen_priority": null,
+      "notes": "Tracking shot silhouette reads correctly. Minor hair concern acceptable for sketch style."
+    },
+    "scene-01-panel-04": {
+      "verdict": "NEEDS_REGENERATION",
+      "style": "3D Pixar render",
+      "characters_expected": ["Gabe", "Nina"],
+      "character_match": {
+        "Gabe": {
+          "hair": "CORRECT - dark brown",
+          "glasses": "PRESENT but not prominent enough",
+          "build": "WRONG - too tall, lean, angular",
+          "face": "WRONG - angular/chiseled instead of round/friendly",
+          "wardrobe": "CORRECT - black suit/tuxedo",
+          "overall": "Does not match approved turnaround"
+        },
+        "Nina": {
+          "hair": "CORRECT - auburn",
+          "dress": "CORRECT - black dress",
+          "overall": "Acceptable match"
+        }
+      },
+      "issues": [
+        {
+          "type": "body_build",
+          "severity": "critical",
+          "character": "Gabe",
+          "expected": "stocky, soft around middle, round face",
+          "actual": "tall, lean, angular, chiseled jaw",
+          "detail": "Gabe looks like a completely different character"
+        },
+        {
+          "type": "accessory_prominence",
+          "severity": "major",
+          "character": "Gabe",
+          "expected": "rectangular glasses (prominent, signature feature)",
+          "actual": "glasses present but not prominent",
+          "detail": "Glasses need to be more visible as Gabe's most recognizable feature"
+        },
+        {
+          "type": "background_character",
+          "severity": "minor",
+          "character": "Leo",
+          "detail": "Background kids both appear dark-haired; Leo should be visibly blonde"
+        },
+        {
+          "type": "aspect_ratio",
+          "severity": "minor",
+          "detail": "Square, not 16:9"
+        }
+      ],
+      "regen_priority": "HIGH",
+      "notes": "First clear two-shot of parents. Gabe must match his stocky turnaround design. Wardrobe is correct here."
+    },
+    "scene-01-panel-05": {
+      "verdict": "PASS",
+      "style": "B&W pencil sketch",
+      "characters_expected": ["Jenny"],
+      "character_match": {
+        "Jenny": {
+          "hair": "CORRECT - blonde ponytail",
+          "action": "CORRECT - absorbed in phone",
+          "age": "CORRECT - reads as ~15",
+          "overall": "Strong match"
+        }
+      },
+      "issues": [],
+      "regen_priority": null,
+      "notes": "Jenny matches description well"
+    },
+    "scene-01-panel-06": {
+      "verdict": "N/A",
+      "style": "B&W pencil sketch",
+      "characters_expected": [],
+      "issues": [],
+      "regen_priority": null,
+      "notes": "Object shot (TV with static/foreshadowing) - no characters to audit"
+    },
+    "scene-01-panel-07": {
+      "verdict": "ACCEPTABLE_WITH_CONCERNS",
+      "style": "3D Pixar render",
+      "characters_expected": ["Mia", "Leo", "Nina", "Gabe"],
+      "character_match": {
+        "Mia": {
+          "hair_from_behind": "CORRECT - dark curly with ponytail/gathering",
+          "clothing": "CORRECT - pink top",
+          "overall": "Excellent match from behind"
+        },
+        "Leo": {
+          "hair_from_behind": "CORRECT - blonde curly",
+          "clothing": "CORRECT - green dinosaur pajamas with pattern",
+          "overall": "Excellent match from behind"
+        },
+        "Nina_background": {
+          "wardrobe": "WRONG - appears in casual clothes (pink/burgundy top), not black cocktail dress",
+          "overall": "Wardrobe error"
+        },
+        "Gabe_background": {
+          "wardrobe": "WRONG - appears in casual clothes, not tuxedo",
+          "overall": "Wardrobe error"
+        }
+      },
+      "issues": [
+        {
+          "type": "wardrobe",
+          "severity": "major",
+          "character": "Nina",
+          "expected": "elegant black cocktail dress",
+          "actual": "casual pink/burgundy top and jeans",
+          "detail": "Wrong outfit for Scene 1 date night preparation"
+        },
+        {
+          "type": "wardrobe",
+          "severity": "major",
+          "character": "Gabe",
+          "expected": "black tuxedo",
+          "actual": "casual clothing",
+          "detail": "Wrong outfit for Scene 1 date night preparation"
+        },
+        {
+          "type": "missing_character",
+          "severity": "minor",
+          "detail": "Jenny not visible in the scene"
+        }
+      ],
+      "regen_priority": "LOW_MEDIUM",
+      "notes": "Kids in foreground are excellent. Parents' wardrobe in background is wrong but they're out of focus. Composition reads well as OTS shot. Aspect ratio appears correct (16:9)."
+    },
+    "scene-01-panel-08": {
+      "verdict": "ACCEPTABLE_WITH_CONCERNS",
+      "style": "3D Pixar render",
+      "characters_expected": ["Mia"],
+      "character_match": {
+        "Mia": {
+          "hair_color": "CORRECT - dark brown/black",
+          "hair_texture": "CORRECT - curly/wavy",
+          "hair_style": "MINOR ISSUE - loose/messy, not clearly in high ponytail",
+          "skin_tone": "CORRECT - darker complexion matching turnaround",
+          "eyes": "CORRECT - big, expressive brown eyes",
+          "expression": "CORRECT - worried, concerned, earnest",
+          "age": "CORRECT - reads as ~8",
+          "clothing": "CORRECT - pink polka-dot top",
+          "overall": "Strong match - recognizably Mia"
+        }
+      },
+      "issues": [
+        {
+          "type": "hair_style",
+          "severity": "minor",
+          "character": "Mia",
+          "expected": "high ponytail (Mia's signature look)",
+          "actual": "loose/messy with slight gathering",
+          "detail": "Ponytail is Mia's distinctive feature from turnaround"
+        },
+        {
+          "type": "aspect_ratio",
+          "severity": "minor",
+          "detail": "Square, not 16:9"
+        }
+      ],
+      "regen_priority": "LOW",
+      "notes": "Strong character match overall. The 'Promise?' moment reads emotionally. Previous audit (Feb 7) incorrectly reported light hair and light skin - panel clearly regenerated since then."
+    },
+    "scene-01-panel-09": {
+      "verdict": "NEEDS_REGENERATION",
+      "style": "3D Pixar render",
+      "characters_expected": ["Gabe", "Nina"],
+      "character_match": {
+        "Gabe": {
+          "hair": "CORRECT - dark brown",
+          "glasses": "CORRECT - visible, adjusting them",
+          "stubble": "CORRECT",
+          "face": "IMPROVED - rounder than Panel 04, closer to turnaround",
+          "build": "MINOR - slightly leaner than turnaround but much better than Panel 04",
+          "wardrobe": "CRITICAL ERROR - wearing casual plaid flannel shirt, NOT tuxedo",
+          "overall": "Facial features improved but wardrobe completely wrong"
+        },
+        "Nina": {
+          "hair": "CORRECT - auburn/reddish",
+          "expression": "CORRECT - stern 'don't you dare' look, arms crossed",
+          "wardrobe": "CRITICAL ERROR - wearing casual burgundy sweater, NOT black cocktail dress",
+          "overall": "Expression perfect but wardrobe completely wrong"
+        }
+      },
+      "issues": [
+        {
+          "type": "wardrobe",
+          "severity": "critical",
+          "character": "Gabe",
+          "expected": "black tuxedo (date night)",
+          "actual": "casual green plaid flannel shirt (turnaround casual outfit)",
+          "detail": "Scene 1 specifies black-tie attire. This is the wrong outfit entirely."
+        },
+        {
+          "type": "wardrobe",
+          "severity": "critical",
+          "character": "Nina",
+          "expected": "elegant black cocktail dress (date night)",
+          "actual": "casual burgundy/maroon sweater (turnaround casual outfit)",
+          "detail": "Scene 1 specifies elegant black dress. This is the wrong outfit entirely."
+        },
+        {
+          "type": "aspect_ratio",
+          "severity": "minor",
+          "detail": "Square, not 16:9"
+        }
+      ],
+      "regen_priority": "HIGHEST",
+      "notes": "Climactic beat of Scene 1. Character faces and expressions are actually good. The critical issue is WARDROBE - both parents are in casual clothes instead of their date night attire. Previous audit missed this entirely."
+    }
+  },
+  "regen_queue": [
+    {
+      "panel": "scene-01-panel-09",
+      "priority": "HIGHEST",
+      "reason": "Both parents in wrong wardrobe (casual instead of black-tie). Climactic scene beat."
+    },
+    {
+      "panel": "scene-01-panel-04",
+      "priority": "HIGH",
+      "reason": "Gabe too tall/lean/angular. Must match stocky turnaround design."
+    },
+    {
+      "panel": "scene-01-panel-07",
+      "priority": "LOW_MEDIUM",
+      "reason": "Parents' wardrobe wrong in background. Kids are excellent. Could be acceptable if background is deemed too blurry to matter."
+    },
+    {
+      "panel": "scene-01-panel-08",
+      "priority": "LOW",
+      "reason": "Mia's ponytail not clearly defined. Otherwise strong character match."
+    }
+  ],
+  "corrections_from_previous_audit": {
+    "panel_02": "Previous audit reported Leo with dark hair (CRITICAL). Current panel shows BLONDE hair matching turnaround. Panel appears regenerated.",
+    "panel_07": "Previous audit reported busy composition and unclear hair distinction. Current panel has clean OTS composition with clearly distinguished kids' hair. But wardrobe issue was missed.",
+    "panel_08": "Previous audit reported light hair, straight texture, and light skin (CRITICAL). Current panel shows dark curly hair and correct skin tone. Panel appears regenerated.",
+    "panel_09": "Previous audit reported 3 figures and angular Gabe. Current panel shows 2 figures (correct) and improved Gabe face. But WARDROBE ERROR (most critical issue) was not flagged."
+  },
+  "turnaround_refs": {
+    "gabe": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png",
+    "nina": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_APPROVED.png",
+    "mia": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_APPROVED.png",
+    "leo": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/leo/leo_turnaround_APPROVED.png"
+  },
+  "director_decisions_needed": [
+    "Standardize panel style: all B&W sketch or all 3D Pixar render?",
+    "Is Panel 07 background wardrobe issue critical enough to regenerate, given parents are blurred?",
+    "Is Panel 08 acceptable as-is, or does Mia's ponytail need to be more defined?"
+  ]
+}

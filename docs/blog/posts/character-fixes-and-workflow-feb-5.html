@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 3/4 View Problem (and How We Fixed Everything Else Too) - Rex Marks The Spot</title>
+    <meta name="description" content="Fixing character turnarounds with Gemini 3 Pro, consolidating our generation pipeline, migrating to R2 storage, and setting up parallel agent workflows.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>The 3/4 View Problem (and How We Fixed Everything Else Too)</h1>
+                    <div class="post-author">
+                        <time datetime="2026-02-05">February 5, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>Today was a plumbing day. Not glamorous. But every production needs days where you stop making new stuff and fix what's broken underneath.</p>
+
+                        <p>Three things got fixed: character turnarounds, asset storage, and the generation pipeline itself. Each one was blocking real progress. Now none of them are.</p>
+
+                        <h2>The 3/4 View Keeps Lying to Me</h2>
+
+                        <p>Here's a problem nobody warns you about with AI image generation: the 3/4 view.</p>
+
+                        <p>A character turnaround sheet shows your character from multiple angles &mdash; front, side, back, and 3/4. Animation studios need these so modelers and riggers know exactly what a character looks like from every direction. The front view? AI nails it. Side view? Pretty reliable. Back view? Usually fine.</p>
+
+                        <p>The 3/4 view? Absolute chaos.</p>
+
+                        <p>I was getting Nina's 3/4 angle coming out as basically another front view with her head slightly turned. Gabe's 3/4 would sometimes flip the proportions entirely, making him look like a different character. The AI just doesn't have the same spatial understanding for that intermediate angle.</p>
+
+                        <p>We went through five versions of Nina and four of Gabe before landing on ones that actually work.</p>
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_v4.png" alt="Gabe character turnaround V4 showing front, 3/4, side, and back views" style="max-width: 100%; margin: 1.5em 0; border-radius: 8px;">
+                        <p><em>Gabe V4 &mdash; finally a proper 3/4 view. It took four tries.</em></p>
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/nina/nina_turnaround_v5.png" alt="Nina character turnaround V5 showing front, 3/4, side, and back views" style="max-width: 100%; margin: 1.5em 0; border-radius: 8px;">
+                        <p><em>Nina V5 &mdash; five versions to get that 3/4 view right.</em></p>
+
+                        <h2>The Trick: Image-to-Image, Not Text-to-Image</h2>
+
+                        <p>The breakthrough came from switching approaches. Instead of generating each turnaround from scratch using text prompts, we started feeding the previous version back in as a reference image.</p>
+
+                        <p>Gemini 3 Pro's image-to-image capability lets you say: "Here's the existing turnaround. The front, side, and back views are great. Only fix the 3/4 view." The model has something concrete to work from, and it's much better at making targeted corrections than generating from nothing.</p>
+
+                        <p>This is a pattern I'm seeing over and over in AI-assisted production: the first generation is never the final product. It's a draft. The real work is iterating &mdash; using each output as input for the next refinement pass.</p>
+
+                        <h2>One Script to Rule Them All</h2>
+
+                        <p>We had a problem. Every time we generated a character turnaround, someone wrote a new script. <code>generate_nina_v3.py</code>. <code>generate_gabe_turnaround_v4.py</code>. <code>generate_mia_v2b.py</code>. Each one slightly different. Each one with its own hardcoded prompts and paths.</p>
+
+                        <p>This is how technical debt accumulates in AI projects. Every generation is a one-off experiment, and nobody thinks to generalize because "I'll just run it once." Except you never run it once.</p>
+
+                        <p>So I consolidated everything into a single unified script: <code>generate_character_turnaround.py</code>. It handles both text-to-image (new characters) and image-to-image (fixing existing ones). You pass in the character name, version number, and prompt. It outputs to a consistent path and uploads to R2 automatically.</p>
+
+                        <p>The key design decision: making image-to-image a first-class workflow. The <code>--reference-url</code> flag lets you point at any existing turnaround on R2 and iterate from it. This is how every turnaround fix should work going forward.</p>
+
+                        <h2>Git LFS Was Eating Our Lunch</h2>
+
+                        <p>Meanwhile, our repository was getting heavy. Every storyboard frame, every character turnaround, every concept image &mdash; all committed directly to Git with LFS. GitHub's LFS bandwidth limits started causing problems fast.</p>
+
+                        <p>The fix was migrating everything to Cloudflare R2. It's S3-compatible object storage with a generous free tier and no egress fees. We moved all the binary assets out of the git repo and into R2, updated every reference to use the R2 public URL, and set up <code>rclone</code> for easy uploads.</p>
+
+                        <p>This was one of those changes that touches everything. Every storyboard page. Every character reference. Every script that outputs images. But it was necessary. The repo went from bloated to lean, and now asset storage scales without worrying about LFS quotas.</p>
+
+                        <p>Rule of thumb for AI production projects: generated assets are not source code. Don't treat them like source code. They're artifacts. Store them like artifacts.</p>
+
+                        <h2>Parallel Production with Remote Agents</h2>
+
+                        <p>The other big change today wasn't visible in the output but completely changed how work gets done.</p>
+
+                        <p>Up until now, everything was sequential. One person (me, directing Claude) doing one task at a time. Generate a turnaround. Wait. Review. Fix. Move on. That's fine for experimentation, but it's not how you make a movie.</p>
+
+                        <p>We set up TaskYou, a workflow system that lets multiple Claude agents work in parallel on isolated git branches. Each agent gets a task, works in its own worktree, and submits a PR when done. An assistant director agent monitors progress and escalates decisions.</p>
+
+                        <p>Today this is writing a blog post while another agent regenerates storyboards. Tomorrow it could be three agents building different scenes simultaneously while a fourth runs QA on yesterday's output.</p>
+
+                        <p>This is the part of AI-assisted filmmaking nobody talks about. It's not just about generating images. It's about building the production infrastructure that lets you generate images at scale, with quality control, without everything falling apart.</p>
+
+                        <h2>The Messy Middle</h2>
+
+                        <p>Day 5 of production and I'm spending most of my time on infrastructure. Character designs are on V4 and V5. The storage system just got completely restructured. The generation pipeline was rewritten.</p>
+
+                        <p>This is the messy middle that doesn't make for exciting demo videos. Nobody goes viral posting "I consolidated six Python scripts into one and moved my images to object storage."</p>
+
+                        <p>But this is what separates projects that ship from projects that generate a cool Twitter thread and then quietly die. The foundation has to be solid enough to build on. Today made it solid.</p>
+
+                        <h2>What's Next</h2>
+
+                        <p>Now that characters are locked in and the pipeline is clean, we can actually move forward:</p>
+
+                        <ul>
+                            <li>Regenerate Scene 1 storyboards with the approved Gabe V4 and Nina V5 designs</li>
+                            <li>Start feeding turnarounds into 3D model generation (Tripo AI is first up)</li>
+                            <li>Continue parallel agent work on remaining storyboard scenes</li>
+                        </ul>
+
+                        <p>The characters look right. The tools work. The infrastructure scales. Time to make the actual movie.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="daily-progress-feb-4.html">&larr; Previous: 27 PRs in One Day</a>
+                        <a href="ugly-cute-and-character-consistency-feb-6.html">Next: In Praise of Ugly-Cute &rarr;</a>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="Instagram (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>

@@ -270,3 +270,21 @@ Starts close on Gabe, slowly pulls back to two-shot when Nina glares, holds for 
 - Storm intensity builds through scene
 - Dinosaur toys are visual foreshadowing
 - Jenny's obliviousness is comedic irony
+
+---
+
+## Generated Storyboard Panels
+
+Generated with `gemini-3-pro-image-preview` using character reference sheets for consistency.
+
+| Panel | Description | Image |
+|-------|-------------|-------|
+| 1A | Wide establishing shot | [scene-01-panel-01.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-01.png) |
+| 1B | Medium shot Leo | [scene-01-panel-02.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-02.png) |
+| 1C | Tracking Nina | [scene-01-panel-03.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-03.png) |
+| 1D | Two-shot Gabe/Nina | [scene-01-panel-04.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-04.png) |
+| 1E | Close-up Jenny | [scene-01-panel-05.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-05.png) |
+| 1F | Close-up TV | [scene-01-panel-06.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-06.png) |
+| 1G | Over-shoulder kids | [scene-01-panel-07.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-07.png) |
+| 1H | Close-up Mia | [scene-01-panel-08.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-08.png) |
+| 1I | Close-up Gabe | [scene-01-panel-09.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/act1/scene-01/scene-01-panel-09.png) |
