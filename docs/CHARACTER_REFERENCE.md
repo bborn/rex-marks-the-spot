@@ -44,9 +44,13 @@ Official approved character designs for "Fairy Dinosaur Date Night".
 
 ## Gabe (Dad, early 40s)
 
-**Status:** Turnaround needed
+**Approved Design:** V4 - Locked in 2026-02-05
 
-### Target Features (from script)
+![Gabe Turnaround](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png)
+
+**R2 URL:** `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png`
+
+### Key Features
 - **Body:** Normal dad body (soft around middle, NOT muscular)
 - **Hair:** Dark brown, slightly thinning
 - **Face:** Glasses, light stubble
@@ -124,7 +128,9 @@ r2:rex-assets/characters/
 │   ├── leo_turnaround_APPROVED.png  (canonical)
 │   └── [iteration files]
 ├── gabe/
+│   ├── gabe_turnaround_APPROVED.png  (canonical)
 ├── nina/
+│   ├── nina_turnaround_APPROVED.png  (canonical)
 ├── ruben/
 └── jetplane/
 ```

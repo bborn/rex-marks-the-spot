@@ -94,7 +94,7 @@ This document tracks all concept art deliverables for each character.
 | Deliverable | File | Status | Notes |
 |-------------|------|--------|-------|
 | Hero Portrait | `ruben/concept-art/ruben_portrait_v1.png` | [ ] | Depressed state |
-| Full Body Turnaround | `ruben/concept-art/ruben_turnaround_v1.png` | [ ] | Front, side, back, 3/4 |
+| Full Body Turnaround | `ruben/ruben_turnaround_v2.png` | [x] | V2 based on approved V6_A design. R2: characters/ruben/ruben_turnaround_v2.png |
 | Core Expressions | `ruben/concept-art/ruben_expressions_v1.png` | [ ] | Cynical to caring |
 | Magic Expressions | `ruben/concept-art/ruben_expressions_magic_v1.png` | [ ] | Spell-related |
 | **Wing State: Droopy** | `ruben/concept-art/ruben_wings_droopy_v1.png` | [ ] | Depressed |
