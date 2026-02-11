@@ -42,5 +42,6 @@ assets/characters/**/*.png
 assets/characters/**/*.jpg
 output/**/*.png
 output/**/*.jpg
-output/
-.venv/
+output/**/*.glb
+output/**/*.fbx
+output/**/*.obj
