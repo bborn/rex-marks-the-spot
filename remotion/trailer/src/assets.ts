@@ -30,6 +30,12 @@ export const MODELS_3D = {
   leoThreeQ: `${R2}/3d-models/characters/previews/leo_meshy_three_quarter.png`,
 };
 
+// Audio assets
+export const AUDIO = {
+  trailerMusic: `${R2}/youtube/trailer-music.mp3`,
+  trailerNarration: `${R2}/youtube/trailer-narration.mp3`,
+};
+
 // Storyboard panels (Act 1)
 export const STORYBOARDS = {
   // Scene 1 - Family at home

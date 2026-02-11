@@ -1,4 +1,4 @@
-import {AbsoluteFill, Sequence} from 'remotion';
+import {AbsoluteFill, Audio, Sequence, interpolate, useCurrentFrame} from 'remotion';
 import {FadeTransition} from './components/FadeTransition';
 import {ImageScene} from './components/ImageScene';
 import {TextOverlay} from './components/TextOverlay';
@@ -7,7 +7,7 @@ import {StoryboardMontage} from './components/StoryboardMontage';
 import {TitleCard} from './components/TitleCard';
 import {ModelShowcase} from './components/ModelShowcase';
 import {CallToAction} from './components/CallToAction';
-import {PROMO, CHARACTERS, MODELS_3D, STORYBOARDS} from './assets';
+import {PROMO, CHARACTERS, MODELS_3D, STORYBOARDS, AUDIO} from './assets';
 import {COLORS} from './styles';
 
 // 45 seconds at 30fps = 1350 frames
@@ -23,8 +23,32 @@ import {COLORS} from './styles';
 //   1170-1350 (39s-45s) CTA - Subscribe / follow the journey
 
 export const Trailer: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  // Music volume: plays full duration, fades out in last 2 seconds (60 frames)
+  const musicVolume = interpolate(
+    frame,
+    [0, 15, 1290, 1350],
+    [0, 0.3, 0.3, 0],
+    {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}
+  );
+
+  // Narration volume: starts at frame 0, fades in quickly
+  const narrationVolume = interpolate(
+    frame,
+    [0, 10, 300, 330],
+    [0, 0.85, 0.85, 0],
+    {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}
+  );
+
   return (
     <AbsoluteFill style={{backgroundColor: '#000'}}>
+      {/* === AUDIO TRACKS === */}
+      <Audio src={AUDIO.trailerMusic} volume={musicVolume} />
+      <Sequence from={0} durationInFrames={330}>
+        <Audio src={AUDIO.trailerNarration} volume={narrationVolume} />
+      </Sequence>
+
       {/* === HOOK: Family portrait + question === */}
       <Sequence from={0} durationInFrames={90}>
         <FadeTransition durationInFrames={90} fadeIn={12} fadeOut={8}>
