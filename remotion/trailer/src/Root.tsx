@@ -1,5 +1,9 @@
 import {Composition} from 'remotion';
 import {Trailer} from './Trailer';
+import {loadFont} from './fonts';
+
+// Load Google Fonts
+loadFont();
 
 // 45 seconds at 30fps = 1350 frames
 const FPS = 30;

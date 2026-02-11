@@ -1,5 +1,7 @@
 import {AbsoluteFill, Audio, Sequence, interpolate, useCurrentFrame} from 'remotion';
 import {FadeTransition} from './components/FadeTransition';
+import {ScaleBlurTransition} from './components/ScaleBlurTransition';
+import {SlideTransition} from './components/SlideTransition';
 import {ImageScene} from './components/ImageScene';
 import {TextOverlay} from './components/TextOverlay';
 import {CharacterReveal} from './components/CharacterReveal';
@@ -7,6 +9,8 @@ import {StoryboardMontage} from './components/StoryboardMontage';
 import {TitleCard} from './components/TitleCard';
 import {ModelShowcase} from './components/ModelShowcase';
 import {CallToAction} from './components/CallToAction';
+import {MagicParticles} from './components/MagicParticles';
+import {Vignette} from './components/Vignette';
 import {PROMO, CHARACTERS, MODELS_3D, STORYBOARDS, AUDIO} from './assets';
 import {COLORS} from './styles';
 
@@ -50,51 +54,90 @@ export const Trailer: React.FC = () => {
       </Sequence>
 
       {/* === HOOK: Family portrait + question === */}
+      {/* Uses scale+blur transition for cinematic opener */}
       <Sequence from={0} durationInFrames={90}>
-        <FadeTransition durationInFrames={90} fadeIn={12} fadeOut={8}>
+        <ScaleBlurTransition
+          durationInFrames={90}
+          fadeIn={15}
+          fadeOut={10}
+          scaleIn={1.05}
+          scaleOut={0.97}
+          blurIn={6}
+          blurOut={3}
+        >
           <ImageScene
             src={PROMO.familyPortrait}
             zoom
             durationInFrames={90}
           />
+          <Vignette intensity={0.4} />
           <TextOverlay
             text="What if date night..."
+            textStyle="subheading"
             fontSize={56}
             position="bottom"
             delay={15}
           />
-        </FadeTransition>
+        </ScaleBlurTransition>
       </Sequence>
 
       {/* === HOOK pt2: Storyboard tease === */}
+      {/* Slides in from right for impact */}
       <Sequence from={70} durationInFrames={50}>
-        <FadeTransition durationInFrames={50} fadeIn={8} fadeOut={8}>
+        <SlideTransition
+          durationInFrames={50}
+          fadeIn={8}
+          fadeOut={8}
+          direction="left"
+          distance={100}
+        >
           <ImageScene
             src={STORYBOARDS.s05p01}
             zoom
             durationInFrames={50}
             backgroundColor="#1a0a2e"
           />
+          <Vignette intensity={0.5} />
           <TextOverlay
             text="...went VERY wrong?"
+            textStyle="heading"
             fontSize={64}
             color={COLORS.fairyPink}
             position="bottom"
             delay={5}
           />
-        </FadeTransition>
+        </SlideTransition>
       </Sequence>
 
       {/* === TITLE CARD === */}
+      {/* Scale+blur for dramatic reveal with magic particles */}
       <Sequence from={120} durationInFrames={120}>
-        <FadeTransition durationInFrames={120} fadeIn={10} fadeOut={10}>
+        <ScaleBlurTransition
+          durationInFrames={120}
+          fadeIn={12}
+          fadeOut={12}
+          scaleIn={0.85}
+          blurIn={12}
+        >
           <TitleCard showLogo />
-        </FadeTransition>
+          <MagicParticles
+            count={25}
+            color={COLORS.warmGold}
+            durationInFrames={120}
+          />
+        </ScaleBlurTransition>
       </Sequence>
 
       {/* === MEET THE CAST === */}
+      {/* Slides up for character entrance */}
       <Sequence from={230} durationInFrames={150}>
-        <FadeTransition durationInFrames={150} fadeIn={10} fadeOut={10}>
+        <SlideTransition
+          durationInFrames={150}
+          fadeIn={12}
+          fadeOut={10}
+          direction="up"
+          distance={60}
+        >
           <CharacterReveal
             durationInFrames={150}
             characters={[
@@ -106,16 +149,24 @@ export const Trailer: React.FC = () => {
           />
           <TextOverlay
             text="Meet the Family"
-            fontSize={42}
+            textStyle="heading"
+            fontSize={48}
             position="top"
             delay={0}
           />
-        </FadeTransition>
+        </SlideTransition>
       </Sequence>
 
       {/* === STORYBOARD MONTAGE: The setup === */}
+      {/* Scale+blur for storytelling mood */}
       <Sequence from={370} durationInFrames={180}>
-        <FadeTransition durationInFrames={180} fadeIn={8} fadeOut={8}>
+        <ScaleBlurTransition
+          durationInFrames={180}
+          fadeIn={10}
+          fadeOut={10}
+          scaleIn={0.95}
+          blurIn={4}
+        >
           <StoryboardMontage
             durationInFrames={180}
             panels={[
@@ -129,16 +180,24 @@ export const Trailer: React.FC = () => {
           />
           <TextOverlay
             text="A simple date night..."
+            textStyle="subheading"
             fontSize={40}
             position="top"
             delay={5}
           />
-        </FadeTransition>
+        </ScaleBlurTransition>
       </Sequence>
 
       {/* === THE TWIST: Adventure panels === */}
+      {/* Slides in from left for contrast with previous montage */}
       <Sequence from={540} durationInFrames={160}>
-        <FadeTransition durationInFrames={160} fadeIn={8} fadeOut={8}>
+        <SlideTransition
+          durationInFrames={160}
+          fadeIn={10}
+          fadeOut={10}
+          direction="right"
+          distance={80}
+        >
           <StoryboardMontage
             durationInFrames={160}
             panels={[
@@ -150,17 +209,25 @@ export const Trailer: React.FC = () => {
           />
           <TextOverlay
             text="...becomes a Jurassic adventure"
+            textStyle="subheading"
             fontSize={44}
             color={COLORS.dinoGreen}
             position="top"
             delay={5}
           />
-        </FadeTransition>
+        </SlideTransition>
       </Sequence>
 
       {/* === 3D MODEL SHOWCASE === */}
+      {/* Scale+blur for tech showcase feel */}
       <Sequence from={690} durationInFrames={190}>
-        <FadeTransition durationInFrames={190} fadeIn={10} fadeOut={10}>
+        <ScaleBlurTransition
+          durationInFrames={190}
+          fadeIn={12}
+          fadeOut={12}
+          scaleIn={0.9}
+          blurIn={8}
+        >
           <ModelShowcase
             durationInFrames={190}
             models={[
@@ -170,12 +237,24 @@ export const Trailer: React.FC = () => {
               {src: MODELS_3D.leoFront, label: 'Leo - 3D Model'},
             ]}
           />
-        </FadeTransition>
+          <MagicParticles
+            count={12}
+            color={COLORS.magicBlue}
+            durationInFrames={190}
+          />
+        </ScaleBlurTransition>
       </Sequence>
 
       {/* === AI PIPELINE TEXT === */}
+      {/* Slide up for tech section */}
       <Sequence from={870} durationInFrames={160}>
-        <FadeTransition durationInFrames={160} fadeIn={10} fadeOut={10}>
+        <SlideTransition
+          durationInFrames={160}
+          fadeIn={12}
+          fadeOut={12}
+          direction="up"
+          distance={50}
+        >
           <AbsoluteFill
             style={{
               background: `linear-gradient(135deg, ${COLORS.deepPurple}, #000)`,
@@ -188,25 +267,39 @@ export const Trailer: React.FC = () => {
           >
             <TextOverlay
               text="Built with AI"
+              textStyle="hero"
               fontSize={72}
               position="top"
               delay={0}
-              subtitle="Gemini | Remotion | Blender | Meshy"
+              subtitle="Gemini  |  Remotion  |  Blender  |  Meshy"
             />
             <TextOverlay
               text="Every frame. Every model. Every scene."
+              textStyle="body"
               fontSize={36}
               color={COLORS.magicBlue}
               position="bottom"
               delay={20}
             />
           </AbsoluteFill>
-        </FadeTransition>
+          <MagicParticles
+            count={15}
+            color={COLORS.fairyPink}
+            durationInFrames={160}
+          />
+        </SlideTransition>
       </Sequence>
 
       {/* === RUBEN + JETPLANE REVEAL === */}
+      {/* Scale+blur for surprise character reveal */}
       <Sequence from={1020} durationInFrames={160}>
-        <FadeTransition durationInFrames={160} fadeIn={10} fadeOut={10}>
+        <ScaleBlurTransition
+          durationInFrames={160}
+          fadeIn={12}
+          fadeOut={12}
+          scaleIn={0.85}
+          blurIn={10}
+        >
           <CharacterReveal
             durationInFrames={160}
             characters={[
@@ -224,18 +317,36 @@ export const Trailer: React.FC = () => {
           />
           <TextOverlay
             text="And some unexpected friends..."
+            textStyle="subheading"
             fontSize={42}
             position="top"
             delay={5}
           />
-        </FadeTransition>
+          <MagicParticles
+            count={20}
+            color={COLORS.warmGold}
+            durationInFrames={160}
+          />
+        </ScaleBlurTransition>
       </Sequence>
 
       {/* === CALL TO ACTION === */}
+      {/* Scale+blur for grand finale */}
       <Sequence from={1170} durationInFrames={180}>
-        <FadeTransition durationInFrames={180} fadeIn={12} fadeOut={0}>
+        <ScaleBlurTransition
+          durationInFrames={180}
+          fadeIn={15}
+          fadeOut={0}
+          scaleIn={0.9}
+          blurIn={6}
+        >
           <CallToAction />
-        </FadeTransition>
+          <MagicParticles
+            count={18}
+            color={COLORS.warmGold}
+            durationInFrames={180}
+          />
+        </ScaleBlurTransition>
       </Sequence>
     </AbsoluteFill>
   );
