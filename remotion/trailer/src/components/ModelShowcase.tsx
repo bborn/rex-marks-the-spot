@@ -1,6 +1,6 @@
 import {Img, interpolate, useCurrentFrame, spring, useVideoConfig} from 'remotion';
 import type {CSSProperties} from 'react';
-import {COLORS, overlayText} from '../styles';
+import {COLORS, TYPE_SCALE} from '../styles';
 
 type ModelImage = {
   src: string;
@@ -34,6 +34,9 @@ export const ModelShowcase: React.FC<Props> = ({models, durationInFrames}) => {
     extrapolateRight: 'clamp',
   });
 
+  // Subtle rotation for 3D feel
+  const rotateY = interpolate(modelFrame, [0, framesPerModel], [-3, 3]);
+
   const containerStyle: CSSProperties = {
     width: '100%',
     height: '100%',
@@ -43,17 +46,31 @@ export const ModelShowcase: React.FC<Props> = ({models, durationInFrames}) => {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   };
 
   return (
     <div style={containerStyle}>
+      {/* Rotating glow ring behind model */}
       <div
         style={{
-          ...overlayText,
-          fontSize: 32,
+          position: 'absolute',
+          width: 500,
+          height: 500,
+          borderRadius: '50%',
+          border: `2px solid ${COLORS.magicBlue}30`,
+          transform: `rotate(${frame * 0.5}deg)`,
+          opacity: 0.3,
+        }}
+      />
+      <div
+        style={{
+          ...TYPE_SCALE.body,
           color: COLORS.magicBlue,
           marginBottom: 20,
           opacity: 0.8,
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         From 2D to 3D
@@ -64,19 +81,23 @@ export const ModelShowcase: React.FC<Props> = ({models, durationInFrames}) => {
           maxWidth: 700,
           maxHeight: 600,
           objectFit: 'contain',
-          transform: `scale(${entryScale})`,
+          transform: `scale(${entryScale}) perspective(800px) rotateY(${rotateY}deg)`,
           opacity,
           filter: 'drop-shadow(0 8px 40px rgba(74,144,217,0.3))',
           borderRadius: 12,
+          position: 'relative',
+          zIndex: 1,
         }}
       />
       <div
         style={{
-          ...overlayText,
-          fontSize: 28,
+          ...TYPE_SCALE.label,
           color: COLORS.warmGold,
           marginTop: 20,
           opacity,
+          textShadow: '0 2px 10px rgba(0,0,0,0.6)',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         {models[activeIndex].label}

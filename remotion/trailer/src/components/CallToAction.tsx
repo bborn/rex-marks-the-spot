@@ -1,6 +1,6 @@
 import {interpolate, useCurrentFrame, spring, useVideoConfig} from 'remotion';
 import type {CSSProperties} from 'react';
-import {COLORS, overlayText} from '../styles';
+import {COLORS, TYPE_SCALE, FONTS} from '../styles';
 
 export const CallToAction: React.FC = () => {
   const frame = useCurrentFrame();
@@ -19,6 +19,9 @@ export const CallToAction: React.FC = () => {
 
   const pulseScale = 1 + 0.03 * Math.sin(frame * 0.15);
 
+  // Animated gradient background
+  const gradientAngle = 135 + Math.sin(frame * 0.02) * 15;
+
   const containerStyle: CSSProperties = {
     width: '100%',
     height: '100%',
@@ -29,27 +32,55 @@ export const CallToAction: React.FC = () => {
     justifyContent: 'center',
     alignItems: 'center',
     gap: 30,
+    overflow: 'hidden',
   };
 
   return (
     <div style={containerStyle}>
+      {/* Animated glow orbs in background */}
       <div
         style={{
-          ...overlayText,
-          fontSize: 64,
-          fontWeight: 900,
+          position: 'absolute',
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background: `radial-gradient(circle, ${COLORS.fairyPink}15, transparent 70%)`,
+          transform: `translate(${Math.sin(frame * 0.03) * 80}px, ${Math.cos(frame * 0.04) * 60}px)`,
+          filter: 'blur(40px)',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          width: 300,
+          height: 300,
+          borderRadius: '50%',
+          background: `radial-gradient(circle, ${COLORS.magicBlue}15, transparent 70%)`,
+          transform: `translate(${Math.cos(frame * 0.025) * 100}px, ${Math.sin(frame * 0.035) * 80}px)`,
+          filter: 'blur(40px)',
+        }}
+      />
+      <div
+        style={{
+          ...TYPE_SCALE.heading,
           color: COLORS.white,
           transform: `scale(${mainScale})`,
+          textShadow: '0 4px 20px rgba(0,0,0,0.8)',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         Follow the Journey
       </div>
       <div
         style={{
-          ...overlayText,
-          fontSize: 32,
+          ...TYPE_SCALE.body,
+          fontFamily: FONTS.subheading,
           color: COLORS.warmGold,
           opacity: buttonOpacity,
+          textShadow: '0 2px 10px rgba(0,0,0,0.6)',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         Made entirely with AI
@@ -58,17 +89,20 @@ export const CallToAction: React.FC = () => {
         style={{
           opacity: buttonOpacity,
           transform: `scale(${pulseScale})`,
-          padding: '16px 48px',
+          padding: '16px 56px',
           borderRadius: 50,
-          background: `linear-gradient(135deg, ${COLORS.fairyPink}, ${COLORS.magicBlue})`,
+          background: `linear-gradient(${gradientAngle}deg, ${COLORS.fairyPink}, ${COLORS.magicBlue})`,
           marginTop: 20,
+          boxShadow: `0 0 30px ${COLORS.fairyPink}40, 0 0 60px ${COLORS.magicBlue}20`,
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <div
           style={{
-            ...overlayText,
-            fontSize: 36,
-            fontWeight: 700,
+            ...TYPE_SCALE.button,
+            color: COLORS.white,
+            textShadow: '0 2px 8px rgba(0,0,0,0.4)',
           }}
         >
           SUBSCRIBE
@@ -76,11 +110,12 @@ export const CallToAction: React.FC = () => {
       </div>
       <div
         style={{
-          ...overlayText,
-          fontSize: 24,
+          ...TYPE_SCALE.caption,
           color: 'rgba(255,255,255,0.6)',
           opacity: buttonOpacity,
           marginTop: 10,
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         rexmarksthespot.com

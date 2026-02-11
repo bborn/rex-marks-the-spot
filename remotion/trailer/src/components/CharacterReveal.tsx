@@ -1,6 +1,6 @@
 import {Img, interpolate, useCurrentFrame, spring, useVideoConfig} from 'remotion';
 import type {CSSProperties} from 'react';
-import {COLORS, overlayText} from '../styles';
+import {COLORS, TYPE_SCALE} from '../styles';
 
 type Character = {
   name: string;
@@ -54,6 +54,12 @@ export const CharacterReveal: React.FC<Props> = ({
 
         const translateY = interpolate(entryProgress, [0, 1], [60, 0]);
 
+        // Subtle glow behind each character
+        const glowOpacity = interpolate(charFrame, [0, 20], [0, 0.4], {
+          extrapolateLeft: 'clamp',
+          extrapolateRight: 'clamp',
+        });
+
         const cardStyle: CSSProperties = {
           display: 'flex',
           flexDirection: 'column',
@@ -62,6 +68,7 @@ export const CharacterReveal: React.FC<Props> = ({
           transform: `translateY(${translateY}px)`,
           flex: 1,
           maxWidth: 280,
+          position: 'relative',
         };
 
         const imgStyle: CSSProperties = {
@@ -70,17 +77,35 @@ export const CharacterReveal: React.FC<Props> = ({
           objectFit: 'contain',
           borderRadius: 16,
           filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.5))',
+          position: 'relative',
+          zIndex: 1,
         };
 
         return (
           <div key={char.name} style={cardStyle}>
+            {/* Glow behind character */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '30%',
+                width: 200,
+                height: 200,
+                borderRadius: '50%',
+                background: `radial-gradient(circle, ${COLORS.magicBlue}40, transparent 70%)`,
+                opacity: glowOpacity,
+                filter: 'blur(30px)',
+                zIndex: 0,
+              }}
+            />
             <Img src={char.src} style={imgStyle} />
             <div
               style={{
-                ...overlayText,
-                fontSize: 28,
+                ...TYPE_SCALE.label,
                 marginTop: 16,
                 color: COLORS.warmGold,
+                textShadow: '0 2px 10px rgba(0,0,0,0.6)',
+                position: 'relative',
+                zIndex: 1,
               }}
             >
               {char.label}
