@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-11T18:50:00.811149Z",
-  "totalAssets": 980,
+  "generated": "2026-02-11T19:34:02.359243Z",
+  "totalAssets": 984,
   "categories": {
     "Characters": 175,
-    "Other": 42,
+    "Other": 46,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-11T18:50:00.798540719Z",
+      "modTime": "2026-02-11T19:34:02.346668466Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-11T18:50:00.798540719Z",
+      "modTime": "2026-02-11T19:34:02.346668466Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,9 +36,45 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-11T18:50:00.798540719Z",
+      "modTime": "2026-02-11T19:34:02.346668466Z",
       "category": "Other",
       "type": "image"
+    },
+    {
+      "path": "youtube/trailer-music-suno.mp3",
+      "name": "trailer-music-suno.mp3",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
+      "size": -1,
+      "modTime": "2026-02-11T19:34:02.346668466Z",
+      "category": "Other",
+      "type": "audio"
+    },
+    {
+      "path": "youtube/trailer-v2.mp4",
+      "name": "trailer-v2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-v2.mp4",
+      "size": 19677375,
+      "modTime": "2026-02-11T18:59:21.015635015Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "youtube/trailer-music-suno.mp3",
+      "name": "trailer-music-suno.mp3",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
+      "size": 3294936,
+      "modTime": "2026-02-11T18:57:55.817693829Z",
+      "category": "Other",
+      "type": "audio"
+    },
+    {
+      "path": "youtube/trailer-music-suno.mp3/Hidden Kingdom Overture.mp3",
+      "name": "Hidden Kingdom Overture.mp3",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3/Hidden Kingdom Overture.mp3",
+      "size": 3294936,
+      "modTime": "2026-02-11T18:42:34.962103087Z",
+      "category": "Other",
+      "type": "audio"
     },
     {
       "path": "youtube/trailer-with-audio.mp4",
