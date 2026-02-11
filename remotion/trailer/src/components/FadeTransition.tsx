@@ -16,12 +16,19 @@ export const FadeTransition: React.FC<Props> = ({
 }) => {
   const frame = useCurrentFrame();
 
-  const opacity = interpolate(
-    frame,
-    [0, fadeIn, durationInFrames - fadeOut, durationInFrames],
-    [0, 1, 1, 0],
-    {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
-  );
+  // Build input/output ranges, ensuring strictly monotonically increasing values
+  const inputRange: number[] = [0, fadeIn];
+  const outputRange: number[] = [0, 1];
+
+  if (fadeOut > 0) {
+    inputRange.push(durationInFrames - fadeOut, durationInFrames);
+    outputRange.push(1, 0);
+  }
+
+  const opacity = interpolate(frame, inputRange, outputRange, {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
 
   const style: CSSProperties = {
     opacity,
