@@ -32,7 +32,7 @@ export const MODELS_3D = {
 
 // Audio assets
 export const AUDIO = {
-  trailerMusic: `${R2}/youtube/trailer-music.mp3`,
+  trailerMusic: `${R2}/youtube/trailer-music-suno.mp3`,
   trailerNarration: `${R2}/youtube/trailer-narration.mp3`,
 };
 
