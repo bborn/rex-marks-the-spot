@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-10T00:47:02.525152Z",
-  "totalAssets": 976,
+  "generated": "2026-02-11T18:50:00.811149Z",
+  "totalAssets": 980,
   "categories": {
     "Characters": 175,
-    "Other": 38,
+    "Other": 42,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-10T00:47:02.511793423Z",
+      "modTime": "2026-02-11T18:50:00.798540719Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-10T00:47:02.511793423Z",
+      "modTime": "2026-02-11T18:50:00.798540719Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,9 +36,45 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-10T00:47:02.511793423Z",
+      "modTime": "2026-02-11T18:50:00.798540719Z",
       "category": "Other",
       "type": "image"
+    },
+    {
+      "path": "youtube/trailer-with-audio.mp4",
+      "name": "trailer-with-audio.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-with-audio.mp4",
+      "size": 18415124,
+      "modTime": "2026-02-11T15:55:31.105149615Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "youtube/trailer-narration.mp3",
+      "name": "trailer-narration.mp3",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-narration.mp3",
+      "size": 168899,
+      "modTime": "2026-02-11T15:53:27.635636126Z",
+      "category": "Other",
+      "type": "audio"
+    },
+    {
+      "path": "youtube/trailer-music.mp3",
+      "name": "trailer-music.mp3",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music.mp3",
+      "size": 1081197,
+      "modTime": "2026-02-11T15:52:59.805746946Z",
+      "category": "Other",
+      "type": "audio"
+    },
+    {
+      "path": "youtube/trailer-preview.mp4",
+      "name": "trailer-preview.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-preview.mp4",
+      "size": 18413170,
+      "modTime": "2026-02-11T12:35:27.634853333Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "3d-models/characters/previews/leo_meshy_comparison.png",

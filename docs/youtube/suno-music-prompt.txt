@@ -1,0 +1,114 @@
+SUNO MUSIC PROMPT - Fairy Dinosaur Date Night YouTube Trailer
+=============================================================
+
+Duration: 45 seconds
+Tempo: 120-128 BPM
+Key: G major (bright, adventurous)
+Style: Cinematic orchestral trailer with whimsical touches
+
+PRIMARY PROMPT (paste into Suno):
+---
+Cinematic orchestral trailer score, 45 seconds, G major, 125 BPM.
+Starts with soft celeste and warm strings, builds to playful pizzicato
+adventure theme with glockenspiel and light snare. Big brass fanfare
+hit at 18 seconds, transitions to modern synth arpeggios layered with
+strings. Builds to triumphant orchestral finale with choir stab and
+timpani. Family-friendly Pixar energy, whimsical and magical,
+cinematic trailer feel, no vocals.
+---
+
+ALTERNATE PROMPT (shorter, if Suno prefers brevity):
+---
+Epic whimsical trailer score, 45 seconds, orchestral adventure
+with celeste and pizzicato strings, dramatic brass hits, synth
+arpeggios, triumphant finale. Pixar-style family movie trailer,
+magical and fun, building excitement, no vocals, cinematic.
+---
+
+SCENE-BY-SCENE MUSIC BREAKDOWN:
+================================
+
+[0s - 4s] HOOK - "What if date night..."
+  Instruments: Solo celeste melody + sustained strings pad
+  Mood: Warm, nostalgic, intimate
+  Dynamics: Piano (soft)
+  Notes: Simple 4-note descending motif, creates curiosity
+
+[4s - 8s] TITLE CARD REVEAL
+  Instruments: Full strings swell + celeste continues + harp glissando
+  Mood: Magical, awe-inspiring reveal
+  Dynamics: Mezzo-forte, crescendo into the swell
+  Notes: The harp gliss should hit RIGHT as the title appears
+  SFX moment: Shimmer/sparkle sound at peak
+
+[8s - 12.5s] MEET THE CAST
+  Instruments: Pizzicato strings + glockenspiel + light woodwinds (flute)
+  Mood: Playful, fun, introducing characters
+  Dynamics: Mezzo-piano, bouncy
+  Notes: Each character pop-in should land on a beat
+  Rhythm: Staccato quarter notes, like tiptoeing
+
+[12.5s - 18.5s] STORYBOARD MONTAGE
+  Instruments: Add snare brush + building strings + oboe melody
+  Mood: Storytelling, building intrigue
+  Dynamics: Gradually building from mp to mf
+  Notes: Feels like pages turning, story unfolding
+  Tempo: Slight accelerando toward the hit at 18s
+
+[18s - 18.5s] THE DRAMATIC HIT
+  Instruments: Full brass stab (French horns + trombones) + timpani + crash cymbal
+  Mood: "Plot twist!" moment
+  Dynamics: Fortissimo - biggest moment so far
+  Notes: Single big hit, then brief 0.5s silence before adventure theme
+
+[18.5s - 23.5s] ADVENTURE / THE TWIST
+  Instruments: French horns melody + driving strings + adventure percussion (toms, snare)
+  Mood: Epic adventure, dinosaurs, excitement
+  Dynamics: Forte, energetic
+  Notes: Think John Williams adventure theme but compressed
+  Feel: Running through jungle, heart pounding
+
+[23.5s - 29.5s] 3D MODEL SHOWCASE
+  Instruments: Synth arpeggios + sustained strings + electronic pulse bass
+  Mood: Modern, techy, showcasing craft
+  Dynamics: Mezzo-forte, controlled energy
+  Notes: Blend orchestral warmth with modern electronic elements
+  Feel: "Look what we built" - pride and innovation
+
+[29.5s - 34.5s] AI PIPELINE / BUILT WITH AI
+  Instruments: Driving electronic beat + strings building + synth pads
+  Mood: Futuristic, impressive, building momentum
+  Dynamics: Building from mf to f
+  Notes: Rhythmic pulse drives forward, energy accumulating
+  Feel: Technology meets artistry
+
+[34.5s - 39.5s] SECRET CHARACTERS (Ruben + Jetplane)
+  Instruments: Comedic brass (tuba/trombone) + whimsical woodwinds + triangle
+  Mood: Fun surprise, comic relief characters
+  Dynamics: Forte, playful
+  Notes: Brief comedic motif, then builds to finale
+  SFX moment: Comedic boing/pop for character reveal
+
+[39.5s - 45s] CALL TO ACTION / FINALE
+  Instruments: Full orchestra + choir "ah" + electronic elements + final timpani hit
+  Mood: Triumphant, inspiring, "join us!"
+  Dynamics: Fortissimo building to final hit, then gentle resolve
+  Notes: Big crescendo peaks at 43s, then resolves cleanly
+  Final beat: Definitive ending note (not fade out) at 44.5s
+  Leave 0.5s silence at end for YouTube
+
+REFERENCE TRACKS:
+=================
+- "Married Life" from UP (opening warmth/emotion)
+- Lego Movie trailer music (playful energy)
+- "Touch the Sky" from Brave (adventure crescendo)
+- Any Pixar short film opening score (whimsy)
+
+TECHNICAL NOTES:
+================
+- NO VOCALS (instrumental only)
+- Clean ending (no fade, definitive final note)
+- Beat drops should align with visual transitions (especially at 4s, 8s, 18s, 39.5s)
+- Leave 2-3 frames of silence at start for clean YouTube playback
+- Output format: WAV or high-quality MP3 (320kbps minimum)
+- If Suno gives multiple versions, pick the one with the clearest dramatic hit at 18s
