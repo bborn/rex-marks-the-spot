@@ -1,5 +1,5 @@
 {
-  "generated": "2026-02-10T00:47:02.525152Z",
+  "generated": "2026-02-11T12:26:32.256856Z",
   "totalAssets": 976,
   "categories": {
     "Characters": 175,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-10T00:47:02.511793423Z",
+      "modTime": "2026-02-11T12:26:32.243912273Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-10T00:47:02.511793423Z",
+      "modTime": "2026-02-11T12:26:32.243912273Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-10T00:47:02.511793423Z",
+      "modTime": "2026-02-11T12:26:32.243912273Z",
       "category": "Other",
       "type": "image"
     },
