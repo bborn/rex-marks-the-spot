@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Flat to 3D: Our First Character Models - Rex Marks The Spot</title>
+    <meta name="description" content="All seven main characters now have 3D models. We tried TRELLIS, Meshy, and Hunyuan3D. Some worked. Some came out flat. Here's what happened.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>From Flat to 3D: Our First Character Models</h1>
+                    <div class="post-author">
+                        <time datetime="2026-02-09">February 9, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>Nine days ago we had a screenplay and nothing else. Today, all seven main characters exist in three dimensions.</p>
+
+                        <p>They're not production-ready. Some of them are barely presentable. But they're real geometry with real textures, and you can rotate them and look at them from any angle. For a project that was entirely 2D a week ago, that feels significant.</p>
+
+                        <h2>The 3D Generation Pipeline</h2>
+
+                        <p>We tried three different AI tools for generating 3D models from our approved character turnarounds. Each one has strengths and weaknesses that weren't obvious until we actually ran characters through them.</p>
+
+                        <p><strong>TRELLIS</strong> was our first attempt. We fed it the approved turnaround sheets for Gabe, Nina, Mia, and Leo. The results for the adults were decent&mdash;recognizable characters with reasonable proportions. Gabe came out looking like himself, which after weeks of fighting character consistency in 2D felt like a minor miracle.</p>
+
+                        <p>But TRELLIS struggled with the kids. Leo in particular came out looking flat. Not flat in the artistic sense&mdash;literally flat, like someone had taken a 3D character and squished it to half its depth. His dinosaur pajamas were there, the plush T-Rex was there, but the whole model looked like it had been run over by a steamroller. Side view? Barely a silhouette.</p>
+
+                        <p><strong>Hunyuan3D</strong> handled Ruben, Jenny, and Jetplane. Tencent's tool produced better depth than TRELLIS for characters with unusual proportions. Ruben's rumpled janitor uniform actually had folds and volume. Jetplane's chunky dinosaur body came out with proper roundness. Jenny was serviceable but a bit generic&mdash;the personality from the 2D design didn't fully translate.</p>
+
+                        <p><strong>Meshy</strong> became our rescue tool for Leo. After the TRELLIS flat-Leo disaster, we set up a Meshy API pipeline specifically to regenerate him. Meshy's approach to image-to-3D produced a model with actual depth. Not perfect, but at least recognizably three-dimensional. We also used Meshy to add PBR textures to the Gabe and Nina models&mdash;proper diffuse, roughness, and normal maps instead of the basic vertex colors TRELLIS gave us.</p>
+
+                        <h2>Why Leo Came Out Flat</h2>
+
+                        <p>This is worth explaining because it's a trap that anyone doing AI 3D generation will hit.</p>
+
+                        <p>Turnaround sheets are designed to show a character from multiple angles. Front, three-quarter, side, back. The AI 3D tools use these images to reconstruct the character's shape. But when a character is small&mdash;like a five-year-old in pajamas&mdash;and the turnaround has less detail per view, the AI doesn't get enough signal about the depth dimension.</p>
+
+                        <p>Adult characters have more surface detail. Clothing wrinkles, body contours, accessories. The AI can infer depth from these cues. A kid in simple pajamas? Not much to work with. The model defaulted to the most conservative interpretation: mostly flat, with the front view dominating.</p>
+
+                        <p>The fix was switching to Meshy, which handles low-detail inputs more gracefully, and giving it additional context&mdash;not just the turnaround but also reference images from the storyboards showing Leo from various angles in actual scenes.</p>
+
+                        <h2>The Storyboard Consistency Push</h2>
+
+                        <p>While the 3D pipeline was running, we also completed a full consistency audit of Act 1. This was the big follow-up from character lock. Every panel in scenes 1 through 10 got checked against the approved turnarounds, and panels with off-model characters got regenerated.</p>
+
+                        <p>The numbers: 27 panels regenerated across Scene 1, plus additional panels across scenes 2-10. Each regeneration used the approved turnaround as an image-to-image reference, so characters actually look like themselves now. The Scene 1 Panel 07 fix was notable because it had three extra kids who shouldn't have existed&mdash;the AI had hallucinated additional children into the scene.</p>
+
+                        <h2>Instagram Strategy</h2>
+
+                        <p>We also spent time today on something we'd been putting off: social media. Specifically, planning the Instagram presence for @rex_the_movie.</p>
+
+                        <p>The strategy is built around showing the process, not just the results. Behind-the-scenes content of AI generation, before-and-after comparisons, character evolution posts, and short video clips of the production pipeline in action. People are curious about AI filmmaking, and showing the messy reality is more interesting than polished marketing.</p>
+
+                        <p>We also built posting automation using the Instagram Graph API, so the assistant director can schedule and publish content without manual intervention. The idea is that as production generates assets, the best ones automatically get queued for social media with appropriate captions.</p>
+
+                        <p>Whether this actually works in practice remains to be seen. Automated posting is easy. Automated good taste is hard.</p>
+
+                        <h2>Production Page Update</h2>
+
+                        <p>The production page on the website now has a 3D character models section. It's basic&mdash;showing the first-pass models for each character&mdash;but it gives visitors a sense of where the project is headed. We went from screenplay to storyboards to 2D characters to 3D models in nine days. The pace is real.</p>
+
+                        <h2>What's Next</h2>
+
+                        <p>The models need work. Leo needs another pass. Everyone needs better textures. And we haven't even started rigging&mdash;adding the internal skeletons that let characters move and be animated. That's the next major milestone.</p>
+
+                        <p>But we've crossed a threshold. The characters exist in a form that can eventually become animated scenes. The pipeline from concept art to turnaround to storyboard to 3D model is a real pipeline now, not a wishlist. Each step feeds into the next.</p>
+
+                        <p>Day nine. Seven characters in 3D. The movie is taking shape. Literally.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="assistant-director-night-shift-feb-8.html">&larr; Previous: Assistant Director Takes the Night Shift</a>
+                        <a href="pipeline-solidifies-feb-10.html">Next: The Pipeline Solidifies &rarr;</a>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="Instagram (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
