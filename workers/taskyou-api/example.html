@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskYou Board</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #555;
+    }
+
+    .status-dot.ok { background: #4ade80; }
+    .status-dot.error { background: #f87171; }
+    .status-dot.loading { background: #fbbf24; animation: pulse 1s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .board {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 220px;
+      max-width: 320px;
+      background: #16213e;
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2a2a4a;
+    }
+
+    .column-header h2 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .column-count {
+      background: #2a2a4a;
+      color: #aaa;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* Status colors */
+    .column[data-status="backlog"] .column-header h2 { color: #94a3b8; }
+    .column[data-status="queued"] .column-header h2 { color: #fbbf24; }
+    .column[data-status="processing"] .column-header h2 { color: #60a5fa; }
+    .column[data-status="blocked"] .column-header h2 { color: #f87171; }
+    .column[data-status="done"] .column-header h2 { color: #4ade80; }
+
+    .task {
+      background: #1e2a47;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .task:hover { background: #253354; }
+
+    .column[data-status="backlog"] .task { border-left-color: #94a3b8; }
+    .column[data-status="queued"] .task { border-left-color: #fbbf24; }
+    .column[data-status="processing"] .task { border-left-color: #60a5fa; }
+    .column[data-status="blocked"] .task { border-left-color: #f87171; }
+    .column[data-status="done"] .task { border-left-color: #4ade80; }
+
+    .task-id {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .task-title {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .task-meta {
+      font-size: 11px;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .task-type {
+      background: #2a2a4a;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+
+    .task-pinned { color: #fbbf24; }
+
+    .empty-col {
+      color: #444;
+      font-size: 13px;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* Task detail modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .modal .detail-row {
+      font-size: 13px;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .modal .detail-row strong { color: #ddd; }
+
+    .modal .description {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #2a2a4a;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .modal .close-btn {
+      float: right;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal .close-btn:hover { color: #fff; }
+
+    .error-message {
+      background: #2a1a1a;
+      border: 1px solid #5a2a2a;
+      color: #f87171;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TaskYou Board</h1>
+    <div class="status-bar">
+      <div id="status-dot" class="status-dot loading"></div>
+      <span id="status-text">Loading...</span>
+    </div>
+  </header>
+
+  <div id="board" class="board"></div>
+  <div id="error" class="error-message" style="display: none;"></div>
+
+  <!-- Task detail modal -->
+  <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h3 id="modal-title"></h3>
+      <div id="modal-details"></div>
+      <div id="modal-description" class="description"></div>
+    </div>
+  </div>
+
+  <footer>
+    Auto-refreshes every 30s &middot; Powered by <a href="#" style="color:#60a5fa;">TaskYou API</a>
+  </footer>
+
+  <script>
+    // Configure API base URL. Change this if serving the widget from a
+    // different origin than the API server.
+    const API_BASE = window.TASKYOU_API_BASE || '';
+
+    const boardEl = document.getElementById('board');
+    const errorEl = document.getElementById('error');
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+
+    function setStatus(state, text) {
+      statusDot.className = 'status-dot ' + state;
+      statusText.textContent = text;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    async function updateBoard() {
+      setStatus('loading', 'Refreshing...');
+      try {
+        const res = await fetch(`${API_BASE}/api/taskyou/board`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        if (data.error) throw new Error(data.error);
+
+        errorEl.style.display = 'none';
+        boardEl.innerHTML = data.columns.map(col => `
+          <div class="column" data-status="${escapeHtml(col.status)}">
+            <div class="column-header">
+              <h2>${escapeHtml(col.label)}</h2>
+              <span class="column-count">${col.count}</span>
+            </div>
+            ${col.tasks && col.tasks.length > 0
+              ? col.tasks.map(task => `
+                <div class="task" onclick="showTask(${task.id})">
+                  <div class="task-id">
+                    #${task.id}
+                    ${task.pinned ? '<span class="task-pinned">&#9733;</span>' : ''}
+                  </div>
+                  <div class="task-title">${escapeHtml(task.title)}</div>
+                  <div class="task-meta">
+                    <span class="task-type">${escapeHtml(task.type || '')}</span>
+                    <span>${escapeHtml(task.age_hint || '')}</span>
+                  </div>
+                </div>
+              `).join('')
+              : '<div class="empty-col">No tasks</div>'
+            }
+            ${col.count > (col.tasks ? col.tasks.length : 0)
+              ? `<div class="empty-col" style="font-size:11px;">+${col.count - (col.tasks ? col.tasks.length : 0)} more</div>`
+              : ''
+            }
+          </div>
+        `).join('');
+
+        const now = new Date().toLocaleTimeString();
+        setStatus('ok', `Updated ${now}`);
+      } catch (err) {
+        setStatus('error', 'Error');
+        errorEl.textContent = `Failed to load board: ${err.message}`;
+        errorEl.style.display = 'block';
+      }
+    }
+
+    async function showTask(id) {
+      const overlay = document.getElementById('modal-overlay');
+      const titleEl = document.getElementById('modal-title');
+      const detailsEl = document.getElementById('modal-details');
+      const descEl = document.getElementById('modal-description');
+
+      titleEl.textContent = `Loading task #${id}...`;
+      detailsEl.innerHTML = '';
+      descEl.textContent = '';
+      overlay.classList.add('open');
+
+      try {
+        const res = await fetch(`${API_BASE}/api/taskyou/task/${id}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const task = await res.json();
+
+        titleEl.textContent = `#${task.id} ${task.title || ''}`;
+        detailsEl.innerHTML = [
+          task.status && `<div class="detail-row"><strong>Status:</strong> ${escapeHtml(task.status)}</div>`,
+          task.project && `<div class="detail-row"><strong>Project:</strong> ${escapeHtml(task.project)}</div>`,
+          task.type && `<div class="detail-row"><strong>Type:</strong> ${escapeHtml(task.type)}</div>`,
+          task.branch && `<div class="detail-row"><strong>Branch:</strong> ${escapeHtml(task.branch)}</div>`,
+          task.created_at && `<div class="detail-row"><strong>Created:</strong> ${escapeHtml(task.created_at)}</div>`,
+        ].filter(Boolean).join('');
+
+        descEl.textContent = task.body || 'No description.';
+      } catch (err) {
+        titleEl.textContent = 'Error';
+        detailsEl.innerHTML = `<div class="detail-row" style="color:#f87171;">${escapeHtml(err.message)}</div>`;
+      }
+    }
+
+    function closeModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      document.getElementById('modal-overlay').classList.remove('open');
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Initial load + auto-refresh
+    updateBoard();
+    setInterval(updateBoard, 30000);
+  </script>
+</body>
+</html>

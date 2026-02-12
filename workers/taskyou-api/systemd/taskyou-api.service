@@ -1,0 +1,15 @@
+[Unit]
+Description=TaskYou Board API Server
+After=network.target
+
+[Service]
+Type=simple
+User=rex
+WorkingDirectory=/home/rex/rex-marks-the-spot/workers/taskyou-api
+ExecStart=/usr/bin/python3 server.py --host 127.0.0.1 --port 8099
+Restart=on-failure
+RestartSec=5
+Environment=PATH=/home/rex/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target
