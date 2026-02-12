@@ -1,124 +1,72 @@
 INSTAGRAM - TRAILER ANNOUNCEMENT
 =================================
 
-CAPTION (2200 chars max)
-------------------------
+CAPTION
+-------
 
-The trailer is here.
+made a trailer for this movie i've been working on. it's rough but it's done.
 
-"Fairy Dinosaur Date Night" — an animated movie about two kids who have to rescue their parents from the Jurassic era. With help from a depressed fairy godfather and a dinosaur that farts rainbows.
+it's called "Fairy Dinosaur Date Night" - two kids have to rescue their parents from the jurassic era with help from a depressed fairy godfather and a dinosaur that farts rainbows.
 
-Yes, really.
+yes really.
 
-I'm making this entire film by myself using AI tools and Blender. No studio. No animation team. Just one person and a bunch of AI-assisted tools figuring it out in public.
+i'm making this whole thing by myself with AI tools and blender. is it good? not yet. does it look like a first attempt? absolutely. but that's the point - i'm learning this stuff in public.
 
-The process is messy. Some of it works on the first try. Some of it takes eight rounds of iteration and still looks wrong. I'm sharing all of it.
+some shots work. some need like three more tries. the transitions are janky. the timing's off in places. welcome to version 1.
 
-Here's what you'll find if you follow along:
-- The real process behind AI-assisted filmmaking
-- Character designs, storyboards, 3D models
-- What works, what doesn't, and what's weird
-- An honest take on making art with AI tools
+AI doesn't magically make you an animator. it just lets you fail faster and iterate. which is good because i'm doing a lot of both.
 
-The movie follows Mia (8) and Leo (5) after their parents disappear through a time warp on date night. They team up with Ruben — a fairy godfather who's given up on magic — and Jetplane — a dinosaur with a very unusual talent — to bring their family back together.
+made with claude, gemini, blender, meshy, and a lot of "well that didn't work"
 
-Full trailer on YouTube — link in bio.
+if you're into watching someone figure out AI filmmaking in real time, complete with all the weird results and things that break - full trailer's on youtube (link in bio)
 
-.
-.
-.
+no hype. just documenting what actually happens when you try to make a movie with AI tools.
 
-#FairyDinosaurDateNight #RexMarksTheSpot #AIFilmmaking #IndieAnimation #AnimatedMovie #BlenderAnimation #AIArt #3DAnimation #IndieFilm #MovieTrailer #AnimationProcess #Blender3D #DigitalArt #FilmProduction #AnimatedShortFilm #DinosaurMovie #FamilyMovie #IndieFilmmaker #SoloFilmmaker #AIMovie #AnimationStudy #CharacterDesign #ConceptArt #Storyboard #MovieMaking #BehindTheScenes #FilmmakingProcess #ComingSoon #NewMovie #AnimationCommunity
+also there's a dinosaur that farts rainbows so there's that.
 
-(1177 characters — well within 2200 limit)
-(30 hashtags — at the maximum)
+#FairyDinosaurDateNight #AIFilmmaking #LearningInPublic #IndieAnimation #Blender #AITools #WorkInProgress #MadeWithAI #IndieFilm #AnimationProcess #FirstTry #BehindTheScenes #SoloFilmmaker #AIArt
 
 
-HASHTAG STRATEGY
-----------------
+FIRST COMMENT
+-------------
 
-First comment (post immediately after publishing):
+full process at rexmarksthespot.com
 
-More about the project: rexmarksthespot.com
-
-Made with: Claude AI, Gemini, Blender, Meshy, Tripo AI
-
-Every step documented. Every failure shared.
+sharing the wins and the "why did i think that would work" moments
 
 
-STORY TEXT OVERLAYS (for Stories/Reels promotion)
--------------------------------------------------
+STORY SLIDES (for Stories/Reels promotion)
+-------------------------------------------
 
 Story Slide 1 (over trailer thumbnail):
-"THE TRAILER IS HERE"
-Swipe up / Link sticker to YouTube
+"made a trailer"
+"it's rough but it exists"
+Link sticker to YouTube
 
-Story Slide 2 (over family scene still):
-"Two kids. One mission."
-"Save their parents from the Jurassic era."
+Story Slide 2:
+"learning AI filmmaking in public"
+"documenting everything"
 
 Story Slide 3 (over Jetplane still):
-"Meet Jetplane."
-"He farts rainbows."
-"It's a whole thing."
+"there's a dinosaur that farts rainbows"
+"that's the best part honestly"
 
-Story Slide 4 (over Ruben still):
-"A fairy godfather who peaked in the Renaissance"
-"and has been coasting since"
+Story Slide 4 (call to action):
+"full trailer on youtube"
+"link in bio"
 
-Story Slide 5 (call to action):
-"Full trailer on YouTube"
-"Link in bio"
-"Made with AI tools by one person"
-
-Story Slide 6 (engagement):
-Poll sticker: "Would you watch this?"
-Options: "OBVIOUSLY" / "Tell me more"
-
-Story Slide 7 (engagement):
-Question sticker: "What AI tools do you want to know about?"
+Story Slide 5 (engagement):
+Poll sticker: "would you watch this?"
+Options: "yes" / "tell me more about the rainbow farts"
 
 
-REEL VS POST RECOMMENDATION
-----------------------------
+REEL VS POST
+------------
 
-POST THE TRAILER AS BOTH:
+POST AS REEL:
+- Format: 9:16 vertical crop of trailer
+- Cover: Most visually interesting frame
+- Caption: Use the main caption above
+- Pin to profile
 
-1. FEED POST (Main grid post):
-   - Format: Reel (video) — Instagram prioritizes video in feed
-   - Aspect ratio: 9:16 (vertical) or 1:1 (square) crop of trailer
-   - Duration: Full trailer (~70 seconds) is fine for Reels
-   - Cover image: Choose the most visually striking frame (Jetplane or T-Rex moment)
-   - Pin to profile grid
-
-2. REEL (separate post, optimized for discovery):
-   - Cut a 15-30 second highlight reel from the trailer
-   - Best moments: Time warp → T-Rex reveal → Jetplane farts → Family reunion
-   - Add trending audio if appropriate (or keep original trailer audio)
-   - More likely to hit Explore page than the full trailer
-   - Caption: shorter version of main caption
-
-3. STORIES (day of posting):
-   - Use the story slides above
-   - Post throughout the day (morning, afternoon, evening)
-   - Include countdown sticker if doing a premiere
-   - Share any early engagement/comments
-
-PRIORITY ORDER:
-1. Post full trailer as Reel (main announcement)
-2. Stories with slides above (same day)
-3. 15-30 sec highlight Reel (next day, for discovery)
-
-
-CAROUSEL POST OPTION (supplementary, post 2-3 days later)
-----------------------------------------------------------
-
-Slide 1: Title card "FAIRY DINOSAUR DATE NIGHT"
-Slide 2: Mia & Leo character art
-Slide 3: Ruben character art
-Slide 4: Jetplane character art
-Slide 5: Behind-the-scenes (Blender screenshot or storyboard panel)
-Slide 6: "Full trailer on YouTube — Link in bio"
-
-Caption for carousel:
-"Meet the cast of Fairy Dinosaur Date Night. Full trailer on YouTube (link in bio). Made with AI tools by one person — documenting the whole process."
+Stories throughout the day using slides above

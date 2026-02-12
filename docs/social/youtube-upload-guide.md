@@ -6,52 +6,45 @@ Copy-paste ready content for uploading the trailer to YouTube.
 
 ## Video File
 
-**Source:** `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-with-audio.mp4`
+**Source:** `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-v2.mp4`
 
 ---
 
 ## Title
 
 ```
-Fairy Dinosaur Date Night | Official Teaser Trailer | AI-Animated Film
+Fairy Dinosaur Date Night - First Trailer (Made With AI, It Shows)
 ```
-
-**Alt titles (A/B test):**
-- `Fairy Dinosaur Date Night - Official Teaser | An AI-Made Animated Movie`
-- `A Dinosaur That Farts Rainbows | Fairy Dinosaur Date Night Teaser Trailer`
 
 ---
 
 ## Description
 
 ```
-Two kids. A depressed fairy godfather. A dinosaur that farts rainbows. And parents stuck in the Jurassic era.
+i made a trailer for an animated movie i'm working on. it's not good yet but here we are.
 
-When Mia and Leo's parents vanish through a time warp on date night, the kids team up with Ruben — a washed-up fairy godfather — and Jetplane — a very unusual dinosaur — to bring them home.
+the movie's about two kids who have to rescue their parents after they get zapped to dinosaur times during date night. they team up with a washed-up fairy godfather and a dinosaur that farts in colors.
 
-FAIRY DINOSAUR DATE NIGHT is a full-length animated film made with AI-assisted tools and Blender. We're documenting every step of the process.
+real talk: this is my first time making an animated film. i'm using AI tools and blender and mostly just figuring it out as i go. the trailer's rough. transitions are janky. timing's off. some shots work, most need more work.
 
-TIMESTAMPS:
-0:00 - Opening
-0:08 - The Incident
-0:17 - Parents Lost
-0:24 - T-Rex Reveal
-0:31 - Heroes Assemble
-0:42 - The Adventure
-0:53 - Climax Tease
-1:02 - Title Reveal
+but that's the whole point - i'm documenting what it's actually like to learn these tools. not the highlight reel, the actual process.
 
-FOLLOW THE PROJECT:
-Website: https://rexmarksthespot.com
-Twitter/X: https://x.com/rex_the_movie
-GitHub: https://github.com/bborn/rex-marks-the-spot
+what i'm using:
+- gemini for storyboards (then manually fixing them)
+- AI tools for 3D models (then cleaning them up in blender)
+- blender for scenes and rendering
+- claude for coordination
+- suno for music (this version anyway)
 
-ABOUT THIS FILM:
-Fairy Dinosaur Date Night is an experiment in AI-assisted filmmaking. One person, AI tools, and Blender — making a movie that would normally take a studio. We share everything: the wins, the failures, and the weird middle ground.
+this is version 1. there'll be more versions. probably many more versions.
 
-AI tools used: Claude, Gemini, Blender + Python automation, Meshy, Tripo AI
+website: https://rexmarksthespot.com
+twitter: https://x.com/rex_the_movie
+github: https://github.com/bborn/rex-marks-the-spot (yeah it's all public)
 
-#FairyDinosaurDateNight #RexMarksTheSpot #AIFilmmaking #Animation #IndieAnimation #Trailer
+if you want to see what AI filmmaking actually looks like when you're learning - no hype, just the messy reality - that's what this is.
+
+also there's a dinosaur that farts rainbows which honestly might be the best part.
 ```
 
 ---
@@ -59,38 +52,8 @@ AI tools used: Claude, Gemini, Blender + Python automation, Meshy, Tripo AI
 ## Tags
 
 ```
-fairy dinosaur date night, ai animated movie, ai animation, ai filmmaking, indie animation, animated movie trailer, blender animation, ai movie, animated short film, dinosaur movie, fairy godfather, time travel movie, family adventure, kids movie trailer, 3d animation, ai art, ai generated movie, claude ai, blender 3d, indie film, animated film, teaser trailer, ai tools filmmaking, open source film, one person animated movie, solo filmmaker, ai assisted animation, dinosaur farts rainbows, rex marks the spot
+fairy dinosaur date night, ai filmmaking, learning in public, first attempt, indie animation, made with ai, blender animation, work in progress, behind the scenes, ai tools, solo filmmaker, animation process, ai movie, indie film, blender, learning animation, first try, ai art, animated movie, one person film, making of
 ```
-
----
-
-## Thumbnail Recommendations
-
-**Option A: "The Fart Shot"**
-- Jetplane mid-rainbow-fart with Leo and Mia staring in amazement
-- Bold text overlay: "HE FARTS RAINBOWS."
-- Bright, colorful, eye-catching — high CTR potential
-- This is the unique hook; lean into it
-
-**Option B: "The Family Split"**
-- Split screen: kids on one side, parents facing T-Rex on the other
-- Time warp portal dividing them
-- Text overlay: "CAN THEY SAVE THEIR PARENTS?"
-- More dramatic, story-focused
-
-**Option C: "The Hero Shot"**
-- Giant Jetplane facing off against T-Rex
-- Kids riding on Jetplane's back
-- Text overlay: "THIS SUMMER"
-- Epic scale, appeals to adventure fans
-
-**Thumbnail specs:**
-- Resolution: 1280 x 720 (minimum), 1920 x 1080 (recommended)
-- Aspect ratio: 16:9
-- File size: Under 2MB
-- Format: JPG or PNG
-- Use high contrast, large faces, readable text at small sizes
-- Avoid clutter — 3 elements max
 
 ---
 
@@ -101,35 +64,14 @@ fairy dinosaur date night, ai animated movie, ai animation, ai filmmaking, indie
 | **Visibility** | Public |
 | **Category** | Film & Animation |
 | **Language** | English |
-| **License** | Standard YouTube License |
-| **Allow embedding** | Yes |
-| **Publish to Subscriptions feed** | Yes |
-| **Age restriction** | No (set as "not made for kids" — content appeals to all ages but marketing targets adults) |
-| **Made for kids** | No (AI filmmaking angle targets adult creators/tech audience) |
+| **Made for kids** | No |
 | **Comments** | Allow all comments |
-| **Show how many viewers like this video** | Yes |
-
-### Cards & End Screens
-- **End screen (last 20 sec):** Subscribe button + link to website
-- **Cards:** Add card at 0:30 linking to "Making Of" or devlog video (when available)
-
-### Premiere Settings (Optional)
-- Consider using YouTube Premiere for the first trailer drop
-- Set premiere 24-48 hours in advance
-- This creates a countdown + live chat during the premiere
-- Share the premiere link on social before it goes live
-
-### Playlist
-- Create playlist: "Fairy Dinosaur Date Night" for all project videos
-- Add trailer as first video in playlist
+| **Show likes** | Yes |
 
 ---
 
-## SEO Notes
+## Notes
 
-- Title front-loads the movie name for brand searches
-- "Official Teaser Trailer" matches common search patterns
-- "AI-Animated Film" targets the growing AI filmmaking search interest
-- Description includes natural keyword variations
-- Tags cover: movie name, genre, technique, tools, audience terms
-- Timestamps improve watch time metrics and enable chapter navigation
+- Keep it casual and honest
+- No need for fancy thumbnails on first version
+- Just get it up and share the process

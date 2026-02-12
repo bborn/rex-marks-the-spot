@@ -1,20 +1,18 @@
 TWITTER/X - TRAILER ANNOUNCEMENT
 =================================
 
-MAIN ANNOUNCEMENT TWEET (280 chars max)
-----------------------------------------
+MAIN ANNOUNCEMENT TWEET
+-----------------------
 
-The trailer for "Fairy Dinosaur Date Night" is here.
+made a trailer for this animated movie thing i've been working on
 
-Two kids. A depressed fairy godfather. A dinosaur that farts rainbows. And parents stuck in the Jurassic era.
+it's not good but it exists
 
-Made by one person with AI tools.
+two kids, a depressed fairy godfather, and a dinosaur that farts rainbows
+
+made with AI tools, learning as i go
 
 https://www.youtube.com/@rex_the_movie
-
-#FairyDinosaurDateNight
-
-(277 characters)
 
 
 THREAD - FOLLOW-UP TWEETS
@@ -22,105 +20,58 @@ THREAD - FOLLOW-UP TWEETS
 
 TWEET 2 (Reply to main tweet):
 
-What is this? It's an animated movie I'm making with AI tools and Blender.
+look i'll be real with you - this is my first time trying to make an animated film and it shows
 
-No studio. No team. Just me, Claude, Gemini, and a lot of iteration.
+using AI tools + blender. some parts turned out ok. most parts didn't.
 
-I'm documenting the entire process — the wins AND the spectacular failures.
-
-#AIFilmmaking #RexMarksTheSpot
+but that's literally the whole point - documenting what it's actually like to learn this stuff
 
 
 TWEET 3:
 
-The pitch: Mia (8) and Leo (5) have to rescue their parents after a time warp sends them to the Jurassic era on date night.
+the story: mia (8) and leo (5) have to rescue their parents from dinosaurs
 
-Their help? A fairy godfather who peaked in the Renaissance and a dinosaur with a very colorful digestive system.
+they get help from a fairy godfather who's completely checked out and a dinosaur with a very specific talent
+
+is the animation good? no. is there a rainbow-farting dinosaur? yes.
 
 
 TWEET 4:
 
-The AI filmmaking part is real. Storyboards, 3D models, animation pipeline — all built with AI-assisted tools.
+AI tools don't make you pixar overnight
 
-But AI doesn't replace the creative decisions. It makes them possible for one person.
+they just let you make bad animation faster while you figure things out
 
-I'll share what works and what doesn't. No hype.
+storyboards, 3D models, the whole pipeline - all AI-assisted, all manually fixed afterward
 
-https://rexmarksthespot.com
+sharing everything at https://rexmarksthespot.com
 
 
 TWEET 5:
 
-Characters so far:
-- Mia: 8yo who takes charge when adults can't
-- Leo: 5yo in dinosaur pajamas who bonds with actual dinosaurs
-- Ruben: fairy godfather with eye bags and droopy wings
-- Jetplane: chicken-lizard hybrid who farts rainbows
-- Gabe & Nina: parents having the worst date night ever
+anyway if you want to watch someone stumble through AI filmmaking with zero idea what they're doing - that's this
 
+no polish, no hype, just trying stuff and sharing what happens
 
-TWEET 6 (Call to action):
-
-If you're into indie animation, AI filmmaking, or just want to see where this goes — follow along.
-
-Website: https://rexmarksthespot.com
-YouTube: https://www.youtube.com/@rex_the_movie
-
-The whole process is open. Everything gets documented.
-
-Let's see what happens.
+the dinosaur farting rainbows is real though. that part i'm committed to.
 
 
 HASHTAGS
 --------
 
-Primary (every tweet):
+Use sparingly, only when helpful:
 #FairyDinosaurDateNight
-#RexMarksTheSpot
-
-Thread-specific (rotate):
 #AIFilmmaking
+#LearningInPublic
 #IndieAnimation
-#Blender3D
-#AIArt
-#AnimatedMovie
-#IndieFilm
-
-Discovery (use 1-2 per tweet):
-#Animation
-#Filmmaking
-#3DAnimation
-#MovieTrailer
-#ComingSoon
-
-
-WHEN TO TAG/MENTION
--------------------
-
-Tag in main tweet:
-- None (let the content speak first)
-
-Tag in thread if relevant:
-- @AnthropicAI (Claude is a key tool)
-- @blaborstudio (community engagement)
-- @blaborbot (community engagement)
-- Reply to anyone in the indie animation community who engages
-
-Engage with replies to:
-- r/animation cross-posts
-- AI filmmaking community accounts
-- Indie animation creators who retweet
 
 
 POSTING SCHEDULE
 ----------------
 
 Best times: Tuesday-Thursday, 9am-12pm ET or 6pm-8pm ET
-- Post main tweet + first 2 replies immediately
-- Space remaining thread tweets 5-10 minutes apart
-- This keeps the thread in feeds longer
-
-Alternative: Drop on a Sunday evening (less competition, dedicated scrollers)
+- Post main tweet + first reply immediately
+- Space remaining tweets 5-10 minutes apart
 
 
 ALT TEXT FOR MEDIA
@@ -128,4 +79,4 @@ ALT TEXT FOR MEDIA
 
 If attaching trailer thumbnail or stills:
 
-"Teaser trailer still from Fairy Dinosaur Date Night, an AI-animated film. Shows [describe the specific frame — e.g., 'a colorful dinosaur creature named Jetplane meeting a young boy named Leo in a prehistoric jungle setting']"
+"Screenshot from Fairy Dinosaur Date Night trailer showing [describe what's in the frame]"
