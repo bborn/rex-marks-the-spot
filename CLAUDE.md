@@ -95,15 +95,17 @@ This is the "Fairy Dinosaur Date Night" animated movie production project.
 
 ### Recommended Pipeline (Priority Order)
 
-1. **Tripo AI** (https://www.tripo3d.ai) - Primary tool
+1. **Meshy** (https://www.meshy.ai) - Primary tool
+   - API key configured and working
+   - Good quality with PBR textures (diffuse, roughness, metallic, normal)
+   - 500+ preset animations included
+   - Blender plugin available
+   - Use image-to-3D with approved turnaround sheets
+
+2. **Tripo AI** (https://www.tripo3d.ai) - Alternative
    - Best for animation-ready characters with auto-rigging
    - Clean quad topology, $12/mo
    - Use text-to-3D or image-to-3D with storyboard frames
-
-2. **Meshy** (https://www.meshy.ai) - Secondary/iteration
-   - Good for quick variations
-   - 500+ preset animations included
-   - Blender plugin available
 
 3. **Hyper3D Rodin** - Hero characters (enable in BlenderMCP)
    - Premium quality for main cast
