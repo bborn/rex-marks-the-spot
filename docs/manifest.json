@@ -1,6 +1,6 @@
 {
   "generated": "2026-02-10T00:47:02.525152Z",
-  "totalAssets": 976,
+  "totalAssets": 977,
   "categories": {
     "Characters": 175,
     "Other": 38,
@@ -460,6 +460,15 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_side_view.png",
       "size": 626145,
       "modTime": "2026-02-09T12:28:38.720164721Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/mia_blender_full_body.png",
+      "name": "mia_blender_full_body.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_blender_full_body.png",
+      "size": 1818904,
+      "modTime": "2026-02-12T16:50:00.000000000Z",
       "category": "Characters",
       "type": "image"
     },
