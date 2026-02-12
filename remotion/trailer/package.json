@@ -1,0 +1,21 @@
+{
+  "name": "fairy-dinosaur-trailer",
+  "version": "1.0.0",
+  "description": "YouTube channel trailer for Fairy Dinosaur Date Night",
+  "scripts": {
+    "start": "npx remotion studio",
+    "build": "npx remotion render src/index.ts Trailer out/trailer.mp4",
+    "upgrade": "npx remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.252",
+    "@remotion/player": "4.0.252",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "4.0.252"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

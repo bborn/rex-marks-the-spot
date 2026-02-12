@@ -1,0 +1,148 @@
+REDDIT - TRAILER ANNOUNCEMENT
+==============================
+
+Each subreddit has different norms. These are tailored to each community.
+
+
+===========================================
+r/animation
+===========================================
+
+TITLE:
+I'm making an animated film by myself using AI tools and Blender — here's the teaser trailer for "Fairy Dinosaur Date Night"
+
+BODY:
+Hey r/animation,
+
+I've been working on an animated film called "Fairy Dinosaur Date Night" and just finished the teaser trailer.
+
+**The premise:** Two kids (Mia, 8, and Leo, 5) have to rescue their parents after they get transported to the Jurassic era during a date night. They're helped by a reluctant fairy godfather and a dinosaur that farts in colors.
+
+**The process:** I'm one person using AI-assisted tools (Claude, Gemini, Meshy, Tripo AI) alongside Blender to build everything — storyboards, character models, environments, animation pipeline. It's an experiment in what's possible when you combine traditional 3D animation tools with AI.
+
+**What I'll say upfront:** AI doesn't replace the creative work. It makes it possible for one person to attempt something that would normally require a team. The iteration count is still high. The quality control is still manual. The creative decisions are still mine.
+
+I'm documenting the entire process openly — wins, failures, and the weird middle ground.
+
+**Trailer:** https://www.youtube.com/@rex_the_movie
+**Website:** https://rexmarksthespot.com
+**GitHub (yes, the whole project is on GitHub):** https://github.com/bborn/rex-marks-the-spot
+
+Happy to answer questions about the process, the tools, or the production pipeline.
+
+FLAIR: Work In Progress (or Self-Promotion if required)
+
+
+===========================================
+r/indiefilm
+===========================================
+
+TITLE:
+Teaser trailer for my solo animated film "Fairy Dinosaur Date Night" — one filmmaker, AI tools, and Blender
+
+BODY:
+Just dropped the teaser trailer for my animated film project.
+
+**Fairy Dinosaur Date Night** is about two siblings who have to rescue their parents from the Jurassic era with help from a washed-up fairy godfather and a rainbow-farting dinosaur. It's a family adventure with heart, comedy, and a dinosaur with digestive issues.
+
+I'm making it solo using a combination of AI tools (for generating assets, storyboards, and 3D models) and Blender (for scene assembly, rendering, and animation). The whole production is documented publicly — every decision, every tool, every failure.
+
+This isn't a "look what AI made" project. AI is the production pipeline. The story, direction, and creative choices are human. Think of it more like: what if a solo filmmaker had access to a small studio's worth of tools?
+
+Full screenplay is done (28 pages). Storyboards complete. Character designs approved. Now in the animation phase.
+
+**Trailer:** https://www.youtube.com/@rex_the_movie
+**Production site:** https://rexmarksthespot.com
+
+Interested in feedback on the trailer pacing and tone. This is meant to hit somewhere between Pixar heart and indie charm.
+
+
+===========================================
+r/aiart
+===========================================
+
+TITLE:
+Using AI tools to make a full animated movie — teaser trailer for "Fairy Dinosaur Date Night" (Claude + Gemini + Blender + Meshy)
+
+BODY:
+I've been building an animated film using AI-assisted tools and just released the teaser trailer.
+
+**The movie:** "Fairy Dinosaur Date Night" — kids rescue parents from the Jurassic era with a depressed fairy godfather and a rainbow-farting dinosaur.
+
+**The AI stack:**
+- **Claude** — script development, production coordination, code generation for Blender automation
+- **Gemini** — storyboard image generation, concept art
+- **Meshy / Tripo AI** — 3D character model generation from concept art
+- **Blender + Python** — scene assembly, materials, rendering, animation
+- **BlenderMCP** — AI-controlled Blender scene building
+
+**What I've learned so far:**
+- AI-generated 3D models need significant cleanup but save weeks of modeling time
+- Storyboard generation is where AI shines — rapid iteration on composition and framing
+- The creative bottleneck isn't generation, it's curation and quality control
+- Animation is still the hardest part — AI tools aren't there yet for character animation
+- The production pipeline (orchestrating all these tools together) is its own engineering project
+
+Everything is open source and documented:
+- **Trailer:** https://www.youtube.com/@rex_the_movie
+- **Website:** https://rexmarksthespot.com
+- **GitHub:** https://github.com/bborn/rex-marks-the-spot
+
+Happy to do a deeper technical breakdown of any part of the pipeline if there's interest.
+
+
+===========================================
+r/blender (bonus — strong community fit)
+===========================================
+
+TITLE:
+Making a full animated film in Blender with AI-assisted pipeline — teaser trailer for "Fairy Dinosaur Date Night"
+
+BODY:
+Teaser trailer just dropped for my solo animated film project, built primarily in Blender with an AI-assisted production pipeline.
+
+**Quick overview:**
+- Full screenplay (28 pages), all storyboards complete
+- Characters generated via AI (Meshy, Tripo AI) then refined
+- Scenes assembled in Blender with Python automation
+- BlenderMCP for AI-controlled scene building
+- PBR materials throughout
+
+The film is "Fairy Dinosaur Date Night" — a family adventure about two kids rescuing their parents from the Jurassic era. It's going for a stylized Pixar-like aesthetic.
+
+The AI tools handle asset generation and iteration speed. Blender does the heavy lifting for everything else — scene layout, lighting, materials, rendering, animation.
+
+**Trailer:** https://www.youtube.com/@rex_the_movie
+**Production website:** https://rexmarksthespot.com
+**Full source on GitHub:** https://github.com/bborn/rex-marks-the-spot
+
+If people are interested, I can share more about the Blender + AI pipeline specifically — the Python automation scripts, how BlenderMCP works, and where the AI tools fall short.
+
+
+===========================================
+BEST TIME TO POST
+===========================================
+
+r/animation:
+- Tuesday or Wednesday, 10am-1pm ET
+- Avoid weekends (lower engagement for self-promo)
+
+r/indiefilm:
+- Wednesday or Thursday, 11am-2pm ET
+- Smaller sub — timing less critical, but weekday mornings are best
+
+r/aiart:
+- Any weekday, 10am-2pm ET
+- This community is active and fast-moving — post when you can engage with comments for the first hour
+
+r/blender:
+- Tuesday-Thursday, 9am-12pm ET
+- Very active community — be ready to answer technical questions
+
+GENERAL REDDIT TIPS:
+- Post to ONE subreddit first, see how it does, then cross-post to others over the next 2-3 days
+- Recommended order: r/animation first, then r/aiart, then r/indiefilm, then r/blender
+- Respond to every comment in the first 2 hours — Reddit rewards engagement
+- Don't post to all subreddits on the same day (looks spammy)
+- Be genuine — Reddit hates marketing speak. These posts are written in a straightforward tone for a reason
+- If a post gets traction, do a follow-up "Making Of" post in that subreddit a week later
