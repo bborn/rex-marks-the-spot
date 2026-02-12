@@ -407,6 +407,17 @@
                 </div>
 
                 <div class="video-grid">
+                    <div class="video-card" style="border-color: var(--color-primary);">
+                        <video controls preload="metadata" loop playsinline>
+                            <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_test.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-card-content">
+                            <h3>Mia Walking Test</h3>
+                            <p>First production character walking animation. Meshy-generated model with auto-rigging, tested in Blender. This is the real deal &mdash; not a placeholder anymore.</p>
+                        </div>
+                    </div>
+
                     <div class="video-card">
                         <video controls preload="metadata">
                             <source src="media/video/test_animation.mp4" type="video/mp4">
@@ -477,15 +488,47 @@
             <div class="container">
                 <div class="section-header">
                     <h2>3D Character Models</h2>
-                    <p>First 3D assets generated from approved character turnarounds</p>
+                    <p>Production-quality 3D characters generated from approved designs. 1 of 6 complete.</p>
                 </div>
 
+                <!-- Mia - Featured (First Production Character) -->
+                <div style="margin-bottom: 2.5rem; background: var(--color-bg-card); border-radius: var(--radius-xl); border: 1px solid var(--color-primary); overflow: hidden;">
+                    <div style="padding: 1rem 1.5rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.1)); border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary-light);">First Production Character</span>
+                    </div>
+                    <div class="video-grid" style="padding: 1.5rem; gap: 1.5rem;">
+                        <div>
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_blender_full_body.png" alt="Mia 3D Model - Full Body Preview" style="width: 100%; height: auto; border-radius: var(--radius-lg); background: #1a1a2e;">
+                        </div>
+                        <div>
+                            <video controls preload="metadata" loop playsinline style="width: 100%; border-radius: var(--radius-lg); background: #000;">
+                                <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_test.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div style="padding: 0 1.5rem 1.5rem;">
+                        <h3 style="font-size: 1.5rem; margin: 0 0 0.75rem;">Mia (Daughter)</h3>
+                        <p style="color: var(--color-text-muted); margin: 0 0 1rem; line-height: 1.6;">Our first production-quality character. Generated with Meshy image-to-3D from approved turnaround sheets, then rigged and animated in Blender. 80k polygons, quad topology, full PBR textures (diffuse, normal, roughness, metallic). She walks, she runs &mdash; the previous TRELLIS placeholder didn't even stand up straight.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+                            <span style="padding: 0.35rem 0.75rem; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 999px; font-size: 0.8rem; color: var(--color-primary-light);">80k polygons</span>
+                            <span style="padding: 0.35rem 0.75rem; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 999px; font-size: 0.8rem; color: #6ee7b7;">PBR textures</span>
+                            <span style="padding: 0.35rem 0.75rem; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 999px; font-size: 0.8rem; color: #fcd34d;">Auto-rigged</span>
+                            <span style="padding: 0.35rem 0.75rem; background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.3); border-radius: 999px; font-size: 0.8rem; color: #f9a8d4;">Walking + Running</span>
+                        </div>
+                        <a href="https://gltf-viewer.donmccurdy.com/?url=https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_rigged.glb" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; background: var(--color-primary); color: #fff; border-radius: var(--radius-lg); font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;">
+                            View Interactive 3D Model &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Other Characters (in progress) -->
                 <div class="video-grid">
                     <div class="video-card">
                         <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/gabe/preview_gabe.png" alt="Gabe 3D Model" style="width: 100%; height: auto; background: #f0f0f0;">
                         <div class="video-card-content">
                             <h3>Gabe (Dad)</h3>
-                            <p>Shape-only model via Hunyuan3D-2. Geometry captures glasses, stocky build, and shirt details. Awaiting texture pass.</p>
+                            <p>Shape-only model via Hunyuan3D-2. Geometry captures glasses, stocky build, and shirt details. Awaiting Meshy upgrade.</p>
                         </div>
                     </div>
 
@@ -493,15 +536,7 @@
                         <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/nina/preview_nina.png" alt="Nina 3D Model" style="width: 100%; height: auto; background: #f0f0f0;">
                         <div class="video-card-content">
                             <h3>Nina (Mom)</h3>
-                            <p>Shape-only model via Hunyuan3D-2. Wavy hair geometry, sweater detail visible. Awaiting texture pass.</p>
-                        </div>
-                    </div>
-
-                    <div class="video-card">
-                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_render_front.png" alt="Mia 3D Model" style="width: 100%; height: auto; background: #000;">
-                        <div class="video-card-content">
-                            <h3>Mia (Daughter)</h3>
-                            <p>Textured model via TRELLIS. Good 3D depth, pink top, curly dark hair. Ready for rigging.</p>
+                            <p>Shape-only model via Hunyuan3D-2. Wavy hair geometry, sweater detail visible. Awaiting Meshy upgrade.</p>
                         </div>
                     </div>
 
@@ -512,13 +547,13 @@
                         </video>
                         <div class="video-card-content">
                             <h3>Leo (Son)</h3>
-                            <p>Initial model via TRELLIS. Flat output (depth 0.014) - requires regeneration with production-quality tool.</p>
+                            <p>Initial TRELLIS model was flat. Queued for Meshy regeneration like Mia.</p>
                         </div>
                     </div>
                 </div>
 
                 <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-bg-card); border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
-                    <p style="margin: 0; color: var(--color-text-muted);"><strong>Status:</strong> First generation complete. Gabe and Nina need texture passes. Leo requires full regeneration. Next: rigging and animation-ready exports.</p>
+                    <p style="margin: 0; color: var(--color-text-muted);"><strong>Status:</strong> Mia is production-ready with full rigging and animations. Gabe, Nina, and Leo will be regenerated through the same Meshy pipeline. Remaining: Ruben and Jetplane.</p>
                 </div>
             </div>
         </section>
