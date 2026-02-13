@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-13T13:24:34.083570Z",
-  "totalAssets": 1030,
+  "generated": "2026-02-13T14:54:08.134566Z",
+  "totalAssets": 1046,
   "categories": {
-    "Characters": 221,
+    "Characters": 237,
     "Other": 46,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-13T13:24:34.069680158Z",
+      "modTime": "2026-02-13T14:54:08.120295096Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-13T13:24:34.069680158Z",
+      "modTime": "2026-02-13T14:54:08.120295096Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-13T13:24:34.069680158Z",
+      "modTime": "2026-02-13T14:54:08.120295096Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,153 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-13T13:24:34.069680158Z",
+      "modTime": "2026-02-13T14:54:08.120295096Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_walking_cleaned.mp4",
+      "name": "mia_walking_cleaned.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_cleaned.mp4",
+      "size": 580758,
+      "modTime": "2026-02-13T14:15:21.421590337Z",
+      "category": "Characters",
+      "type": "video"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/13_ponytail_3q_back.png",
+      "name": "13_ponytail_3q_back.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/13_ponytail_3q_back.png",
+      "size": 1015777,
+      "modTime": "2026-02-13T13:49:02.040489675Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/12_ponytail_back.png",
+      "name": "12_ponytail_back.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/12_ponytail_back.png",
+      "size": 968826,
+      "modTime": "2026-02-13T13:47:04.119796359Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/11_walking_3q.png",
+      "name": "11_walking_3q.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/11_walking_3q.png",
+      "size": 1011060,
+      "modTime": "2026-02-13T13:45:04.987072434Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/10_walking_front.png",
+      "name": "10_walking_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/10_walking_front.png",
+      "size": 969595,
+      "modTime": "2026-02-13T13:43:59.373206862Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/09_head_turn_front.png",
+      "name": "09_head_turn_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/09_head_turn_front.png",
+      "size": 953299,
+      "modTime": "2026-02-13T13:42:52.862328102Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/08_backswing_side.png",
+      "name": "08_backswing_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/08_backswing_side.png",
+      "size": 1020440,
+      "modTime": "2026-02-13T13:41:49.253427974Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/07_backswing_front.png",
+      "name": "07_backswing_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/07_backswing_front.png",
+      "size": 965141,
+      "modTime": "2026-02-13T13:40:44.951510799Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/06_squat_side.png",
+      "name": "06_squat_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/06_squat_side.png",
+      "size": 941840,
+      "modTime": "2026-02-13T13:39:38.124574940Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/05_squat_front.png",
+      "name": "05_squat_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/05_squat_front.png",
+      "size": 923340,
+      "modTime": "2026-02-13T13:38:42.956608871Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/04_arms_up_3q.png",
+      "name": "04_arms_up_3q.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/04_arms_up_3q.png",
+      "size": 978398,
+      "modTime": "2026-02-13T13:37:47.893623492Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/03_arms_up_front.png",
+      "name": "03_arms_up_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/03_arms_up_front.png",
+      "size": 941646,
+      "modTime": "2026-02-13T13:36:41.715898464Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/02_rest_3q.png",
+      "name": "02_rest_3q.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/02_rest_3q.png",
+      "size": 987105,
+      "modTime": "2026-02-13T13:35:36.182179889Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/cleanup-validation/01_rest_front.png",
+      "name": "01_rest_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/cleanup-validation/01_rest_front.png",
+      "size": 959713,
+      "modTime": "2026-02-13T13:34:30.737462315Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_cleaned.fbx",
+      "name": "mia_cleaned.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_cleaned.fbx",
+      "size": 66171884,
+      "modTime": "2026-02-13T13:31:55.224140125Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_cleaned.glb",
+      "name": "mia_cleaned.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_cleaned.glb",
+      "size": 51904768,
+      "modTime": "2026-02-13T13:31:48.318170479Z",
+      "category": "Characters",
+      "type": "3d"
     },
     {
       "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_97.png",
