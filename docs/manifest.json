@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-13T14:54:08.134566Z",
-  "totalAssets": 1046,
+  "generated": "2026-02-13T18:22:51.471044Z",
+  "totalAssets": 1117,
   "categories": {
-    "Characters": 237,
+    "Characters": 308,
     "Other": 46,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-13T14:54:08.120295096Z",
+      "modTime": "2026-02-13T18:22:51.455759454Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-13T14:54:08.120295096Z",
+      "modTime": "2026-02-13T18:22:51.455759454Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-13T14:54:08.120295096Z",
+      "modTime": "2026-02-13T18:22:51.455759454Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,648 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-13T14:54:08.120295096Z",
+      "modTime": "2026-02-13T18:22:51.455759454Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_tpose_verify.png",
+      "name": "mia_tpose_verify.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_tpose_verify.png",
+      "size": 1236530,
+      "modTime": "2026-02-13T18:19:51.023948856Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_mesh_tpose.fbx",
+      "name": "mia_mesh_tpose.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_mesh_tpose.fbx",
+      "size": 8794476,
+      "modTime": "2026-02-13T18:19:44.784989316Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/full_bend_forward_quarter.png",
+      "name": "full_bend_forward_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/full_bend_forward_quarter.png",
+      "size": 1116630,
+      "modTime": "2026-02-13T18:09:46.771784389Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/full_bend_forward_front.png",
+      "name": "full_bend_forward_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/full_bend_forward_front.png",
+      "size": 1081130,
+      "modTime": "2026-02-13T18:09:42.297795316Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/walk_extreme_quarter.png",
+      "name": "walk_extreme_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/walk_extreme_quarter.png",
+      "size": 1112429,
+      "modTime": "2026-02-13T18:09:37.599806784Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/walk_extreme_front.png",
+      "name": "walk_extreme_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/walk_extreme_front.png",
+      "size": 1098504,
+      "modTime": "2026-02-13T18:09:33.154817628Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/extreme_head_turn_quarter.png",
+      "name": "extreme_head_turn_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/extreme_head_turn_quarter.png",
+      "size": 1087465,
+      "modTime": "2026-02-13T18:09:28.033830113Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/extreme_head_turn_front.png",
+      "name": "extreme_head_turn_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/extreme_head_turn_front.png",
+      "size": 1088378,
+      "modTime": "2026-02-13T18:09:23.411841376Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/spine_twist_quarter.png",
+      "name": "spine_twist_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/spine_twist_quarter.png",
+      "size": 1098913,
+      "modTime": "2026-02-13T18:09:19.354851256Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/spine_twist_front.png",
+      "name": "spine_twist_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/spine_twist_front.png",
+      "size": 1097010,
+      "modTime": "2026-02-13T18:09:14.414863280Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/arms_behind_back_quarter.png",
+      "name": "arms_behind_back_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/arms_behind_back_quarter.png",
+      "size": 1108495,
+      "modTime": "2026-02-13T18:09:10.172873599Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/arms_behind_back_front.png",
+      "name": "arms_behind_back_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/arms_behind_back_front.png",
+      "size": 1100283,
+      "modTime": "2026-02-13T18:09:05.173885753Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/arms_overhead_quarter.png",
+      "name": "arms_overhead_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/arms_overhead_quarter.png",
+      "size": 1083381,
+      "modTime": "2026-02-13T18:09:00.509897084Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/arms_overhead_front.png",
+      "name": "arms_overhead_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/arms_overhead_front.png",
+      "size": 1082094,
+      "modTime": "2026-02-13T18:08:56.029907963Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/deep_squat_quarter.png",
+      "name": "deep_squat_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/deep_squat_quarter.png",
+      "size": 1106440,
+      "modTime": "2026-02-13T18:08:51.719918422Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/deep_squat_front.png",
+      "name": "deep_squat_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/deep_squat_front.png",
+      "size": 1090915,
+      "modTime": "2026-02-13T18:08:46.581930883Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/t_pose_quarter.png",
+      "name": "t_pose_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/t_pose_quarter.png",
+      "size": 1093052,
+      "modTime": "2026-02-13T18:08:41.733942635Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-mixamo/t_pose_front.png",
+      "name": "t_pose_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-mixamo/t_pose_front.png",
+      "size": 1086659,
+      "modTime": "2026-02-13T18:08:36.860954441Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_mixamo_rigged.fbx",
+      "name": "mia_mixamo_rigged.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_mixamo_rigged.fbx",
+      "size": 6639596,
+      "modTime": "2026-02-13T18:07:07.370169724Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_mesh_only.fbx",
+      "name": "mia_mesh_only.fbx",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_mesh_only.fbx",
+      "size": 8824348,
+      "modTime": "2026-02-13T17:57:47.440414850Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/full_bend_forward_quarter.png",
+      "name": "full_bend_forward_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/full_bend_forward_quarter.png",
+      "size": 767169,
+      "modTime": "2026-02-13T17:01:44.371764743Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/full_bend_forward_front.png",
+      "name": "full_bend_forward_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/full_bend_forward_front.png",
+      "size": 728000,
+      "modTime": "2026-02-13T17:00:18.955906844Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/spine_twist_quarter.png",
+      "name": "spine_twist_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/spine_twist_quarter.png",
+      "size": 766722,
+      "modTime": "2026-02-13T16:59:25.105994252Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/spine_twist_front.png",
+      "name": "spine_twist_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/spine_twist_front.png",
+      "size": 758162,
+      "modTime": "2026-02-13T16:57:59.741128844Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/walk_extreme_quarter.png",
+      "name": "walk_extreme_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/walk_extreme_quarter.png",
+      "size": 772660,
+      "modTime": "2026-02-13T16:54:21.432444819Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/walk_extreme_front.png",
+      "name": "walk_extreme_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/walk_extreme_front.png",
+      "size": 762552,
+      "modTime": "2026-02-13T16:52:54.798555709Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/extreme_head_turn_quarter.png",
+      "name": "extreme_head_turn_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/extreme_head_turn_quarter.png",
+      "size": 767723,
+      "modTime": "2026-02-13T16:52:02.901617187Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/extreme_head_turn_front.png",
+      "name": "extreme_head_turn_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/extreme_head_turn_front.png",
+      "size": 771419,
+      "modTime": "2026-02-13T16:50:35.659710854Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/arms_behind_back_quarter.png",
+      "name": "arms_behind_back_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/arms_behind_back_quarter.png",
+      "size": 795218,
+      "modTime": "2026-02-13T16:47:24.061863445Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/arms_behind_back_front.png",
+      "name": "arms_behind_back_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/arms_behind_back_front.png",
+      "size": 765895,
+      "modTime": "2026-02-13T16:45:56.397902358Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/arms_overhead_quarter.png",
+      "name": "arms_overhead_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/arms_overhead_quarter.png",
+      "size": 767296,
+      "modTime": "2026-02-13T16:45:00.730914598Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/arms_overhead_front.png",
+      "name": "arms_overhead_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/arms_overhead_front.png",
+      "size": 740433,
+      "modTime": "2026-02-13T16:43:35.485911556Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/full_bend_forward_quarter.png",
+      "name": "full_bend_forward_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/full_bend_forward_quarter.png",
+      "size": 786111,
+      "modTime": "2026-02-13T16:43:31.847910783Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/deep_squat_quarter.png",
+      "name": "deep_squat_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/deep_squat_quarter.png",
+      "size": 853469,
+      "modTime": "2026-02-13T16:42:43.119894865Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/full_bend_forward_front.png",
+      "name": "full_bend_forward_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/full_bend_forward_front.png",
+      "size": 765635,
+      "modTime": "2026-02-13T16:42:04.560874492Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/deep_squat_front.png",
+      "name": "deep_squat_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/deep_squat_front.png",
+      "size": 813592,
+      "modTime": "2026-02-13T16:41:17.215839217Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/walk_extreme_quarter.png",
+      "name": "walk_extreme_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/walk_extreme_quarter.png",
+      "size": 837231,
+      "modTime": "2026-02-13T16:41:13.707836127Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/t_pose_quarter.png",
+      "name": "t_pose_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/t_pose_quarter.png",
+      "size": 766601,
+      "modTime": "2026-02-13T16:40:26.184787349Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/walk_extreme_front.png",
+      "name": "walk_extreme_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/walk_extreme_front.png",
+      "size": 792736,
+      "modTime": "2026-02-13T16:39:48.447738897Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/stress-tests-v2/t_pose_front.png",
+      "name": "t_pose_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/t_pose_front.png",
+      "size": 752032,
+      "modTime": "2026-02-13T16:38:59.715662438Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/extreme_head_turn_quarter.png",
+      "name": "extreme_head_turn_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/extreme_head_turn_quarter.png",
+      "size": 779354,
+      "modTime": "2026-02-13T16:38:56.132656162Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/extreme_head_turn_front.png",
+      "name": "extreme_head_turn_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/extreme_head_turn_front.png",
+      "size": 772062,
+      "modTime": "2026-02-13T16:37:33.785484901Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/spine_twist_quarter.png",
+      "name": "spine_twist_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/spine_twist_quarter.png",
+      "size": 834300,
+      "modTime": "2026-02-13T16:36:43.597352762Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_improved_rig.glb",
+      "name": "mia_improved_rig.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_improved_rig.glb",
+      "size": 51899808,
+      "modTime": "2026-02-13T16:36:26.222301620Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/spine_twist_front.png",
+      "name": "spine_twist_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/spine_twist_front.png",
+      "size": 839614,
+      "modTime": "2026-02-13T16:35:18.184072161Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/arms_behind_back_quarter.png",
+      "name": "arms_behind_back_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/arms_behind_back_quarter.png",
+      "size": 824595,
+      "modTime": "2026-02-13T16:34:27.464868031Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/arms_behind_back_front.png",
+      "name": "arms_behind_back_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/arms_behind_back_front.png",
+      "size": 799009,
+      "modTime": "2026-02-13T16:33:01.824450060Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/arms_overhead_quarter.png",
+      "name": "arms_overhead_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/arms_overhead_quarter.png",
+      "size": 837772,
+      "modTime": "2026-02-13T16:32:08.563137571Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/arms_overhead_front.png",
+      "name": "arms_overhead_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/arms_overhead_front.png",
+      "size": 798477,
+      "modTime": "2026-02-13T16:30:42.043530467Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/deep_squat_quarter.png",
+      "name": "deep_squat_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/deep_squat_quarter.png",
+      "size": 791824,
+      "modTime": "2026-02-13T16:29:49.766095988Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/deep_squat_front.png",
+      "name": "deep_squat_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/deep_squat_front.png",
+      "size": 740866,
+      "modTime": "2026-02-13T16:28:26.294304284Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/t_pose_quarter.png",
+      "name": "t_pose_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/t_pose_quarter.png",
+      "size": 822626,
+      "modTime": "2026-02-13T16:27:34.690540889Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v2/t_pose_front.png",
+      "name": "t_pose_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v2/t_pose_front.png",
+      "size": 782965,
+      "modTime": "2026-02-13T16:26:08.668938705Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/3d-models/mia_meshy_rigged.blend",
+      "name": "mia_meshy_rigged.blend",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/3d-models/mia_meshy_rigged.blend",
+      "size": 150727436,
+      "modTime": "2026-02-13T16:24:13.017481476Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/full_bend_forward_quarter.png",
+      "name": "full_bend_forward_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/full_bend_forward_quarter.png",
+      "size": 670096,
+      "modTime": "2026-02-13T15:09:20.315333814Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/full_bend_forward_front.png",
+      "name": "full_bend_forward_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/full_bend_forward_front.png",
+      "size": 662186,
+      "modTime": "2026-02-13T15:09:16.650341338Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/walk_extreme_quarter.png",
+      "name": "walk_extreme_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/walk_extreme_quarter.png",
+      "size": 664230,
+      "modTime": "2026-02-13T15:09:13.556347688Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/walk_extreme_front.png",
+      "name": "walk_extreme_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/walk_extreme_front.png",
+      "size": 657515,
+      "modTime": "2026-02-13T15:09:09.670355661Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/extreme_head_turn_quarter.png",
+      "name": "extreme_head_turn_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/extreme_head_turn_quarter.png",
+      "size": 657459,
+      "modTime": "2026-02-13T15:09:06.209362759Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/extreme_head_turn_front.png",
+      "name": "extreme_head_turn_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/extreme_head_turn_front.png",
+      "size": 664956,
+      "modTime": "2026-02-13T15:09:02.191370995Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/spine_twist_quarter.png",
+      "name": "spine_twist_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/spine_twist_quarter.png",
+      "size": 666998,
+      "modTime": "2026-02-13T15:08:59.227377069Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/spine_twist_front.png",
+      "name": "spine_twist_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/spine_twist_front.png",
+      "size": 663923,
+      "modTime": "2026-02-13T15:08:55.378384953Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/arms_behind_back_quarter.png",
+      "name": "arms_behind_back_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/arms_behind_back_quarter.png",
+      "size": 666364,
+      "modTime": "2026-02-13T15:08:52.354391145Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/arms_behind_back_front.png",
+      "name": "arms_behind_back_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/arms_behind_back_front.png",
+      "size": 663933,
+      "modTime": "2026-02-13T15:08:48.641398745Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/arms_overhead_quarter.png",
+      "name": "arms_overhead_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/arms_overhead_quarter.png",
+      "size": 656870,
+      "modTime": "2026-02-13T15:08:45.267405649Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/arms_overhead_front.png",
+      "name": "arms_overhead_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/arms_overhead_front.png",
+      "size": 657754,
+      "modTime": "2026-02-13T15:08:41.145414079Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/deep_squat_quarter.png",
+      "name": "deep_squat_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/deep_squat_quarter.png",
+      "size": 655983,
+      "modTime": "2026-02-13T15:08:37.399421737Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/deep_squat_front.png",
+      "name": "deep_squat_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/deep_squat_front.png",
+      "size": 649476,
+      "modTime": "2026-02-13T15:08:33.636429427Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/t_pose_quarter.png",
+      "name": "t_pose_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/t_pose_quarter.png",
+      "size": 657908,
+      "modTime": "2026-02-13T15:08:30.039436774Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/rigging-review/v1/t_pose_front.png",
+      "name": "t_pose_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/rigging-review/v1/t_pose_front.png",
+      "size": 659858,
+      "modTime": "2026-02-13T15:08:26.644443705Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/3d-models/mia_rigged.blend",
+      "name": "mia_rigged.blend",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/3d-models/mia_rigged.blend",
+      "size": 3908024,
+      "modTime": "2026-02-13T15:03:37.114022604Z",
+      "category": "Characters",
+      "type": "3d"
     },
     {
       "path": "3d-models/characters/mia/animation-tests/mia_walking_cleaned.mp4",
