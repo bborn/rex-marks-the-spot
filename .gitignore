@@ -45,3 +45,8 @@ output/**/*.jpg
 output/**/*.glb
 output/**/*.fbx
 output/**/*.obj
+
+# 3D models (stored in R2)
+models/characters/**/*.glb
+models/characters/**/*.fbx
+models/characters/**/*.blend
