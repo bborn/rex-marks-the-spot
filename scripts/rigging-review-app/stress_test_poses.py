@@ -38,20 +38,20 @@ except ImportError:
 # The script tries multiple naming conventions to find the right bones.
 
 BONE_NAME_VARIANTS = {
-    "hips": ["hips", "Hips", "mixamorig:Hips", "DEF-spine", "root", "Root"],
-    "spine": ["spine", "Spine", "mixamorig:Spine", "DEF-spine.001"],
-    "spine1": ["spine1", "Spine1", "mixamorig:Spine1", "DEF-spine.002"],
-    "spine2": ["spine2", "Spine2", "mixamorig:Spine2", "DEF-spine.003"],
+    "hips": ["hips", "Hips", "mixamorig:Hips", "root", "Root"],
+    "spine": ["spine_fk", "spine", "Spine", "mixamorig:Spine", "DEF-spine.001"],
+    "spine1": ["spine_fk.001", "spine1", "Spine1", "mixamorig:Spine1", "DEF-spine.002"],
+    "spine2": ["spine_fk.002", "spine2", "Spine2", "mixamorig:Spine2", "DEF-spine.003"],
     "neck": ["neck", "Neck", "mixamorig:Neck", "DEF-spine.004"],
     "head": ["head", "Head", "mixamorig:Head", "DEF-spine.005"],
-    "left_upper_arm": ["leftshoulder", "LeftArm", "mixamorig:LeftArm", "DEF-upper_arm.L", "Left arm", "LeftUpperArm", "upper_arm.L"],
-    "right_upper_arm": ["rightshoulder", "RightArm", "mixamorig:RightArm", "DEF-upper_arm.R", "Right arm", "RightUpperArm", "upper_arm.R"],
-    "left_forearm": ["leftforearm", "LeftForeArm", "mixamorig:LeftForeArm", "DEF-forearm.L", "Left forearm", "forearm.L"],
-    "right_forearm": ["rightforearm", "RightForeArm", "mixamorig:RightForeArm", "DEF-forearm.R", "Right forearm", "forearm.R"],
-    "left_upper_leg": ["leftupleg", "LeftUpLeg", "mixamorig:LeftUpLeg", "DEF-thigh.L", "Left thigh", "thigh.L"],
-    "right_upper_leg": ["rightupleg", "RightUpLeg", "mixamorig:RightUpLeg", "DEF-thigh.R", "Right thigh", "thigh.R"],
-    "left_lower_leg": ["leftleg", "LeftLeg", "mixamorig:LeftLeg", "DEF-shin.L", "Left shin", "shin.L"],
-    "right_lower_leg": ["rightleg", "RightLeg", "mixamorig:RightLeg", "DEF-shin.R", "Right shin", "shin.R"],
+    "left_upper_arm": ["upper_arm_fk.L", "leftshoulder", "LeftArm", "mixamorig:LeftArm", "DEF-upper_arm.L", "Left arm", "LeftUpperArm", "upper_arm.L"],
+    "right_upper_arm": ["upper_arm_fk.R", "rightshoulder", "RightArm", "mixamorig:RightArm", "DEF-upper_arm.R", "Right arm", "RightUpperArm", "upper_arm.R"],
+    "left_forearm": ["forearm_fk.L", "leftforearm", "LeftForeArm", "mixamorig:LeftForeArm", "DEF-forearm.L", "Left forearm", "forearm.L"],
+    "right_forearm": ["forearm_fk.R", "rightforearm", "RightForeArm", "mixamorig:RightForeArm", "DEF-forearm.R", "Right forearm", "forearm.R"],
+    "left_upper_leg": ["thigh_fk.L", "leftupleg", "LeftUpLeg", "mixamorig:LeftUpLeg", "DEF-thigh.L", "Left thigh", "thigh.L"],
+    "right_upper_leg": ["thigh_fk.R", "rightupleg", "RightUpLeg", "mixamorig:RightUpLeg", "DEF-thigh.R", "Right thigh", "thigh.R"],
+    "left_lower_leg": ["shin_fk.L", "leftleg", "LeftLeg", "mixamorig:LeftLeg", "DEF-shin.L", "Left shin", "shin.L"],
+    "right_lower_leg": ["shin_fk.R", "rightleg", "RightLeg", "mixamorig:RightLeg", "DEF-shin.R", "Right shin", "shin.R"],
 }
 
 STRESS_POSES = [
@@ -188,6 +188,16 @@ def reset_pose(armature):
         bone.location = (0, 0, 0)
         bone.scale = (1, 1, 1)
 
+    # For Rigify rigs: switch all limbs to FK mode so FK bones can be posed
+    fk_switch_bones = [
+        "upper_arm_parent.L", "upper_arm_parent.R",
+        "thigh_parent.L", "thigh_parent.R",
+    ]
+    for bname in fk_switch_bones:
+        bone = armature.pose.bones.get(bname)
+        if bone and "IK_FK" in bone:
+            bone["IK_FK"] = 1.0  # 1.0 = FK mode
+
 
 def apply_pose(armature, bone_rotations):
     """Apply rotations (in degrees) to named bones."""
@@ -252,7 +262,11 @@ def render_pose(output_path, resolution=(1280, 960)):
     scene.render.filepath = str(output_path)
 
     # Use EEVEE for speed
-    scene.render.engine = 'BLENDER_EEVEE_NEXT' if bpy.app.version >= (4, 0, 0) else 'BLENDER_EEVEE'
+    # EEVEE_NEXT was introduced in Blender 4.2; 4.0-4.1 still use BLENDER_EEVEE
+    if bpy.app.version >= (4, 2, 0):
+        scene.render.engine = 'BLENDER_EEVEE_NEXT'
+    else:
+        scene.render.engine = 'BLENDER_EEVEE'
 
     bpy.ops.render.render(write_still=True)
     print(f"  Rendered: {output_path}")
