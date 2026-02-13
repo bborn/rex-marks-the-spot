@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-13T12:20:33.266248Z",
-  "totalAssets": 1008,
+  "generated": "2026-02-13T13:24:34.083570Z",
+  "totalAssets": 1030,
   "categories": {
-    "Characters": 199,
+    "Characters": 221,
     "Other": 46,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-13T12:20:33.252563074Z",
+      "modTime": "2026-02-13T13:24:34.069680158Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-13T12:20:33.252563074Z",
+      "modTime": "2026-02-13T13:24:34.069680158Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-13T12:20:33.252563074Z",
+      "modTime": "2026-02-13T13:24:34.069680158Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,207 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-13T12:20:33.252563074Z",
+      "modTime": "2026-02-13T13:24:34.069680158Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_97.png",
+      "name": "frame_97.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_97.png",
+      "size": 1930903,
+      "modTime": "2026-02-13T12:44:30.515294930Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_96.png",
+      "name": "frame_96.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_96.png",
+      "size": 1933036,
+      "modTime": "2026-02-13T12:44:30.511294934Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_95.png",
+      "name": "frame_95.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_95.png",
+      "size": 1930426,
+      "modTime": "2026-02-13T12:44:30.508294937Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_94.png",
+      "name": "frame_94.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_94.png",
+      "size": 1932252,
+      "modTime": "2026-02-13T12:44:30.505294940Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_72.png",
+      "name": "frame_72.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_72.png",
+      "size": 1932176,
+      "modTime": "2026-02-13T12:44:30.502294942Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_71.png",
+      "name": "frame_71.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_71.png",
+      "size": 1931849,
+      "modTime": "2026-02-13T12:44:30.499294945Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_70.png",
+      "name": "frame_70.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_70.png",
+      "size": 1930250,
+      "modTime": "2026-02-13T12:44:30.495294949Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_69.png",
+      "name": "frame_69.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_69.png",
+      "size": 1931972,
+      "modTime": "2026-02-13T12:44:30.491294952Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_47.png",
+      "name": "frame_47.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_47.png",
+      "size": 1929533,
+      "modTime": "2026-02-13T12:44:30.488294955Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_46.png",
+      "name": "frame_46.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/v2-comparison-frames/frame_46.png",
+      "size": 1931671,
+      "modTime": "2026-02-13T12:44:30.485294958Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_walking_test_v2.mp4",
+      "name": "mia_walking_test_v2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_test_v2.mp4",
+      "size": 904869,
+      "modTime": "2026-02-13T12:44:19.887304451Z",
+      "category": "Characters",
+      "type": "video"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_ponytail_3q_back.png",
+      "name": "v2_ponytail_3q_back.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_ponytail_3q_back.png",
+      "size": 535647,
+      "modTime": "2026-02-13T12:39:25.084312500Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_ponytail_back.png",
+      "name": "v2_ponytail_back.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_ponytail_back.png",
+      "size": 481731,
+      "modTime": "2026-02-13T12:37:29.449137350Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_spine_twist_top.png",
+      "name": "v2_spine_twist_top.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_spine_twist_top.png",
+      "size": 441351,
+      "modTime": "2026-02-13T12:35:25.520793111Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_spine_twist_front.png",
+      "name": "v2_spine_twist_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_spine_twist_front.png",
+      "size": 495127,
+      "modTime": "2026-02-13T12:33:27.214273696Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_arm_backswing_3q.png",
+      "name": "v2_arm_backswing_3q.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_arm_backswing_3q.png",
+      "size": 515727,
+      "modTime": "2026-02-13T12:31:29.321521722Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_arm_backswing_front.png",
+      "name": "v2_arm_backswing_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_arm_backswing_front.png",
+      "size": 493823,
+      "modTime": "2026-02-13T12:29:39.320555774Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_arm_backswing_side.png",
+      "name": "v2_arm_backswing_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_arm_backswing_side.png",
+      "size": 520907,
+      "modTime": "2026-02-13T12:27:41.973033231Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_rest_back.png",
+      "name": "v2_rest_back.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_rest_back.png",
+      "size": 499406,
+      "modTime": "2026-02-13T12:25:45.445662245Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_rest_side.png",
+      "name": "v2_rest_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_rest_side.png",
+      "size": 492847,
+      "modTime": "2026-02-13T12:23:50.542295051Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/rig-v2-validation/v2_rest_front.png",
+      "name": "v2_rest_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/rig-v2-validation/v2_rest_front.png",
+      "size": 499960,
+      "modTime": "2026-02-13T12:21:56.685937494Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_rigged_v2.glb",
+      "name": "mia_rigged_v2.glb",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_rigged_v2.glb",
+      "size": 51903812,
+      "modTime": "2026-02-13T12:03:43.995242183Z",
+      "category": "Characters",
+      "type": "3d"
     },
     {
       "path": "3d-models/characters/previews/mia_blender_full_body.png",
