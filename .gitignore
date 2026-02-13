@@ -43,4 +43,14 @@ assets/characters/**/*.jpg
 output/**/*.png
 output/**/*.jpg
 output/
-.venv/
+
+# 3D model files (stored in R2)
+assets/models/**/*.glb
+assets/models/**/*.fbx
+assets/models/**/*.obj
+assets/models/**/*.gltf
+
+# Render outputs (stored in R2)
+renders/**/*.mp4
+renders/**/*.avi
+renders/**/*.mov
