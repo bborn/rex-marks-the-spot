@@ -63,6 +63,15 @@
 
                         <p>we saw all of these today.</p>
 
+                        <figure style="margin: 2em 0;">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/t_pose_front.png"
+                                 alt="Mia in T-pose, the starting position for rigging"
+                                 style="max-width: 100%; height: auto; border-radius: 8px;">
+                            <figcaption style="margin-top: 0.5em; font-size: 0.9em; color: #666; text-align: center;">
+                                Mia in T-pose. She looks great when she's standing still. The problems only show up when she starts to move.
+                            </figcaption>
+                        </figure>
+
                         <h2>Attempt 1: Fix Meshy's Auto-Rig</h2>
 
                         <p>Meshy, the tool we used to generate Mia's 3D model, includes an auto-rigging feature. it puts a skeleton inside the mesh and tries to assign vertex weights automatically. the weights are what tell each point on the mesh how much it should follow each bone.</p>
@@ -75,6 +84,15 @@
 
                         <p>verdict: catastrophic. moved on.</p>
 
+                        <figure style="margin: 2em 0;">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/walk_extreme_front.png"
+                                 alt="Mia's walking pose showing severe deformation issues"
+                                 style="max-width: 100%; height: auto; border-radius: 8px;">
+                            <figcaption style="margin-top: 0.5em; font-size: 0.9em; color: #666; text-align: center;">
+                                The walking pose that revealed all the problems. Hair distortion, arm clipping—none of this is supposed to happen.
+                            </figcaption>
+                        </figure>
+
                         <h2>Attempt 2: Rigify (Blender's Built-in System)</h2>
 
                         <p>Blender comes with a rigging system called Rigify. it's designed by professional animators and used in real productions. how hard could it be?</p>
@@ -86,6 +104,15 @@
                         <p>Mia looked like a crash test dummy. stiff, blocky movements. the arms rotated like they were on hinges. no smooth deformation anywhere.</p>
 
                         <p>410 bones and nothing to show for it. moving on.</p>
+
+                        <figure style="margin: 2em 0;">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/deep_squat_front.png"
+                                 alt="Mia in a deep squat pose showing rigid, blocky deformation"
+                                 style="max-width: 100%; height: auto; border-radius: 8px;">
+                            <figcaption style="margin-top: 0.5em; font-size: 0.9em; color: #666; text-align: center;">
+                                Rigify's 410-bone rig producing blocky, crash-test-dummy deformation. The joints are sharp creases instead of smooth bends.
+                            </figcaption>
+                        </figure>
 
                         <h2>Attempt 3: Improving the Meshy Rig Directly</h2>
 
@@ -108,6 +135,15 @@
                         <p>second attempt: much better base pose, but when we ran it through Mixamo and applied a walking animation, one leg twisted at an unnatural angle. like she'd injured her knee and was trying to walk it off. the upper body was actually pretty good though&mdash;natural arm swings, decent shoulder deformation.</p>
 
                         <p>of the four attempts, Mixamo was the clear winner. but "best of four failures" is still a failure when your standard is "production-ready animation."</p>
+
+                        <figure style="margin: 2em 0;">
+                            <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/stress-tests-v2/spine_twist_front.png"
+                                 alt="Mia in a spine twist pose using Mixamo rig"
+                                 style="max-width: 100%; height: auto; border-radius: 8px;">
+                            <figcaption style="margin-top: 0.5em; font-size: 0.9em; color: #666; text-align: center;">
+                                Mixamo's result—noticeably better than the others, with smoother deformation. But look closely at the lower body and you'll still see issues.
+                            </figcaption>
+                        </figure>
 
                         <h2>The Robot That Said Everything Was Fine</h2>
 
