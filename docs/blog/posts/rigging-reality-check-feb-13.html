@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rigging Reality Check - Rex Marks The Spot</title>
+    <meta name="description" content="We spent all day trying to rig Mia for animation. Four different approaches. Four different flavors of failure. Here's what happened.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>Rigging Reality Check</h1>
+                    <div class="post-author">
+                        <time datetime="2026-02-13">February 13, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>today was supposed to be the day we made Mia walk.</p>
+
+                        <p>she has a 3D model. she has textures. all she needs is a skeleton inside her so she can move like a real character instead of a frozen statue. this process is called rigging, and in traditional animation studios, skilled technical artists spend days getting it right.</p>
+
+                        <p>we spent all day on it. tried four different approaches. every single one failed in a new and interesting way.</p>
+
+                        <p>it was kinda fun, actually.</p>
+
+                        <h2>Why Rigging Matters</h2>
+
+                        <p>quick context for anyone who hasn't done 3D animation: a character model is just a hollow shell. a mesh of triangles that looks like a person but can't do anything. to make it move, you need to put a skeleton inside it&mdash;bones connected by joints, just like a real body. then you need to tell the mesh which parts should follow which bones. raise the arm bone, the sleeve should follow. bend the knee, the leg should flex.</p>
+
+                        <p>when it works, it's invisible. the character just moves naturally and you don't think about it. when it doesn't work, you get nightmares. hair stretching into spaghetti. arms phasing through torsos. knees bending backwards. faces collapsing inward.</p>
+
+                        <p>we saw all of these today.</p>
+
+                        <h2>Attempt 1: Fix Meshy's Auto-Rig</h2>
+
+                        <p>Meshy, the tool we used to generate Mia's 3D model, includes an auto-rigging feature. it puts a skeleton inside the mesh and tries to assign vertex weights automatically. the weights are what tell each point on the mesh how much it should follow each bone.</p>
+
+                        <p>the auto-rig looked okay in the default T-pose. arms out, legs straight, everything symmetrical. cool, we thought. let's try a walking animation.</p>
+
+                        <p>Mia's hair immediately stretched downward like it was made of taffy. her arms clipped straight through her legs on the forward swing. the walking motion looked less like a child and more like a marionette being operated by someone having a bad day.</p>
+
+                        <p>we spent hours trying to fix the weight painting&mdash;manually adjusting which vertices follow which bones. repainted the hair weights, the arm weights, the hip area. every fix exposed a new problem somewhere else. fix the hair, break the shoulders. fix the shoulders, the skirt clips through the legs.</p>
+
+                        <p>verdict: catastrophic. moved on.</p>
+
+                        <h2>Attempt 2: Rigify (Blender's Built-in System)</h2>
+
+                        <p>Blender comes with a rigging system called Rigify. it's designed by professional animators and used in real productions. how hard could it be?</p>
+
+                        <p>Rigify generated a rig with 410 bones. four hundred and ten. for context, a production character rig at a major studio might have 200-300. a simple character like Mia should need maybe 60-80. but Rigify went full overkill&mdash;individual finger joints, twist bones, rubber hose controls, the works.</p>
+
+                        <p>the bigger problem: every mesh piece was "rigidly parented" to its nearest bone. this means instead of smooth bending, each triangle on the mesh was locked to one bone and only one bone. bend the elbow, and instead of a nice smooth joint, you get a sharp crease like she's made of cardboard.</p>
+
+                        <p>Mia looked like a crash test dummy. stiff, blocky movements. the arms rotated like they were on hinges. no smooth deformation anywhere.</p>
+
+                        <p>410 bones and nothing to show for it. moving on.</p>
+
+                        <h2>Attempt 3: Improving the Meshy Rig Directly</h2>
+
+                        <p>okay, new strategy. instead of replacing Meshy's rig entirely, what if we just kept it and improved the weight painting? the bone structure was reasonable&mdash;the problem was just the mesh deformation.</p>
+
+                        <p>spent a solid chunk of the afternoon on this. cleaned up the vertex groups. smoothed the weight gradients around joints. tried to get the shoulder area working properly. painted. tested. painted again. tested again.</p>
+
+                        <p>it got marginally better, but the underlying mesh quality was fighting us. AI-generated meshes have uneven topology&mdash;dense triangles in some areas, sparse in others, weird edge flows that don't follow the body's natural contours. weight painting can only do so much when the geometry itself isn't cooperating.</p>
+
+                        <p>verdict: slightly less catastrophic than attempt 1. still not usable.</p>
+
+                        <h2>Attempt 4: Mixamo (The Industry Standard)</h2>
+
+                        <p>Mixamo is Adobe's auto-rigging service. it's been around for years, used by game developers and indie filmmakers, and it has a library of thousands of pre-made animations. this is the proven solution.</p>
+
+                        <p>one catch: Mixamo needs the character in a T-pose&mdash;arms straight out, legs apart, facing forward. Mia's model wasn't in a clean T-pose, so we had to create one first.</p>
+
+                        <p>first T-pose attempt: the arms came out distorted and stretched, like she'd been on a medieval rack. the proportions were wrong and the fingers looked like they belonged to a different character entirely.</p>
+
+                        <p>second attempt: much better base pose, but when we ran it through Mixamo and applied a walking animation, one leg twisted at an unnatural angle. like she'd injured her knee and was trying to walk it off. the upper body was actually pretty good though&mdash;natural arm swings, decent shoulder deformation.</p>
+
+                        <p>of the four attempts, Mixamo was the clear winner. but "best of four failures" is still a failure when your standard is "production-ready animation."</p>
+
+                        <h2>The Robot That Said Everything Was Fine</h2>
+
+                        <p>here's the part that's both funny and a little concerning.</p>
+
+                        <p>alongside all this rigging work, we built a review system. a web app where you can view stress-test renders of the character in extreme poses&mdash;arms up, deep squat, twisting, reaching&mdash;designed to expose exactly the kinds of problems we were seeing.</p>
+
+                        <p>the app also runs automated quality checks. bone count, hierarchy structure, weight coverage, naming conventions. objective, measurable criteria.</p>
+
+                        <p>the automated checks said Mia's rig was 100% production-ready.</p>
+
+                        <p>not "pretty good." not "needs some work." one hundred percent. perfect score. ship it.</p>
+
+                        <p>meanwhile, you could look at the actual render and see her knee bending sideways.</p>
+
+                        <p>this is the fundamental problem with using AI and automated tools to validate visual quality. the numbers all check out. the bones are named correctly. the weight coverage hits all the vertices. the hierarchy is clean. by every measurable metric, the rig is great. but the thing that matters&mdash;does it look right when she moves?&mdash;is exactly what the automated system can't see.</p>
+
+                        <p>LLMs can read numbers and check boxes. they can't tell you that a walking animation looks like a marionette with tangled strings.</p>
+
+                        <h2>What We Actually Learned</h2>
+
+                        <p>a full day of failing at the same thing in four different ways sounds unproductive. it wasn't.</p>
+
+                        <ul>
+                            <li><strong>AI-generated meshes have rigging-hostile topology.</strong> the triangle density, edge flow, and UV layout from tools like Meshy aren't optimized for deformation. this is a known issue in the industry with no fully automated fix yet.</li>
+                            <li><strong>automated quality metrics are necessary but not sufficient.</strong> bone counts and weight coverage tell you if the rig is structurally sound. they tell you nothing about whether it'll look good in motion. you need human eyes for that.</li>
+                            <li><strong>the review app we built is actually valuable.</strong> even though the automated scoring was hilariously wrong, having a central place to upload stress-test renders and track iterations across rigging attempts was genuinely useful. the infrastructure outlasts any single failed rig.</li>
+                            <li><strong>rigging is where "good enough" AI hits a wall.</strong> we've been riding a wave of AI tools that get us 80% of the way. concept art, 3D models, textures&mdash;the AI output needs polish but it's a real starting point. rigging seems to be where that 80% isn't enough. the last 20% matters too much.</li>
+                        </ul>
+
+                        <h2>The Pragmatic Path Forward</h2>
+
+                        <p>so where do we go from here?</p>
+
+                        <p>we've got two options we're considering. the first is Auto-Rig Pro, a $40 Blender addon that's specifically designed for game and animation rigging with much better weight painting than the built-in tools. it's a last shot at an automated approach before we accept that this particular problem might need a human.</p>
+
+                        <p>the second option: hire a professional rigger. we got quotes in the $50-100 range to rig all six main characters. for context, we've now spent an entire day failing to rig one character, and a professional could do all six for the cost of a nice dinner.</p>
+
+                        <p>sometimes the most AI-forward decision is knowing when to stop using AI.</p>
+
+                        <p>this is the messy reality of making an AI-generated movie. the tools are incredible for some things and completely useless for others, and you don't always know which category you're in until you've spent a day finding out. we're thirteen days into production and we're still learning where the boundaries are.</p>
+
+                        <p>Mia will walk eventually. today just wasn't her day.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="trailer-posted-feb-11.html">&larr; Previous: Trailer Posted</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="Instagram (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
