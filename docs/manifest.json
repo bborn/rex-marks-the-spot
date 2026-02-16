@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-16T18:19:38.162282Z",
-  "totalAssets": 1140,
+  "generated": "2026-02-16T22:14:35.072761Z",
+  "totalAssets": 1179,
   "categories": {
-    "Characters": 331,
+    "Characters": 370,
     "Other": 46,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-16T18:19:38.144987086Z",
+      "modTime": "2026-02-16T22:14:35.057134902Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-16T18:19:38.144987086Z",
+      "modTime": "2026-02-16T22:14:35.057134902Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-16T18:19:38.144987086Z",
+      "modTime": "2026-02-16T22:14:35.057134902Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,360 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-16T18:19:38.144987086Z",
+      "modTime": "2026-02-16T22:14:35.057134902Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_rear_var2.png",
+      "name": "mia_rear_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_rear_var2.png",
+      "size": 993846,
+      "modTime": "2026-02-16T22:05:50.049710789Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_rear_var1.png",
+      "name": "mia_rear_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_rear_var1.png",
+      "size": 610111,
+      "modTime": "2026-02-16T22:05:23.901831309Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_side_var2.png",
+      "name": "mia_side_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_side_var2.png",
+      "size": 1014891,
+      "modTime": "2026-02-16T22:04:57.277955592Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_side_var1.png",
+      "name": "mia_side_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_side_var1.png",
+      "size": 552681,
+      "modTime": "2026-02-16T22:04:30.847080627Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_threequarter_var2.png",
+      "name": "mia_threequarter_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_threequarter_var2.png",
+      "size": 841143,
+      "modTime": "2026-02-16T22:04:04.519206915Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_threequarter_var1.png",
+      "name": "mia_threequarter_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_threequarter_var1.png",
+      "size": 1008947,
+      "modTime": "2026-02-16T22:03:37.643337697Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_front_var2.png",
+      "name": "mia_front_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_front_var2.png",
+      "size": 1132649,
+      "modTime": "2026-02-16T22:03:08.867479947Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/individual-views/mia_front_var1.png",
+      "name": "mia_front_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/individual-views/mia_front_var1.png",
+      "size": 833614,
+      "modTime": "2026-02-16T22:02:41.572617106Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/mia_turnaround_APPROVED_ALT.png",
+      "name": "mia_turnaround_APPROVED_ALT.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/mia_turnaround_APPROVED_ALT.png",
+      "size": 1007866,
+      "modTime": "2026-02-16T21:51:52.068947840Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v6/mia_v6_from5e_var3.png",
+      "name": "mia_v6_from5e_var3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v6/mia_v6_from5e_var3.png",
+      "size": 1008358,
+      "modTime": "2026-02-16T21:40:30.173832763Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v6/mia_v6_from5e_var2.png",
+      "name": "mia_v6_from5e_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v6/mia_v6_from5e_var2.png",
+      "size": 1007866,
+      "modTime": "2026-02-16T21:40:03.729893987Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v6/mia_v6_from5e_var1.png",
+      "name": "mia_v6_from5e_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v6/mia_v6_from5e_var1.png",
+      "size": 982662,
+      "modTime": "2026-02-16T21:39:36.460957067Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v6/mia_v6_from5b_var3.png",
+      "name": "mia_v6_from5b_var3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v6/mia_v6_from5b_var3.png",
+      "size": 1033936,
+      "modTime": "2026-02-16T21:39:06.159027113Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v6/mia_v6_from5b_var2.png",
+      "name": "mia_v6_from5b_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v6/mia_v6_from5b_var2.png",
+      "size": 1036354,
+      "modTime": "2026-02-16T21:38:37.887092405Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v6/mia_v6_from5b_var1.png",
+      "name": "mia_v6_from5b_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v6/mia_v6_from5b_var1.png",
+      "size": 1034202,
+      "modTime": "2026-02-16T21:38:11.052154317Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v5/mia_turnaround_v5e.png",
+      "name": "mia_turnaround_v5e.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v5/mia_turnaround_v5e.png",
+      "size": 871662,
+      "modTime": "2026-02-16T21:25:00.905927790Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v5/mia_turnaround_v5d.png",
+      "name": "mia_turnaround_v5d.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v5/mia_turnaround_v5d.png",
+      "size": 863349,
+      "modTime": "2026-02-16T21:24:34.707983792Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v5/mia_turnaround_v5c.png",
+      "name": "mia_turnaround_v5c.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v5/mia_turnaround_v5c.png",
+      "size": 874622,
+      "modTime": "2026-02-16T21:24:08.454039617Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v5/mia_turnaround_v5b.png",
+      "name": "mia_turnaround_v5b.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v5/mia_turnaround_v5b.png",
+      "size": 906683,
+      "modTime": "2026-02-16T21:23:42.254095017Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v5/mia_turnaround_v5a.png",
+      "name": "mia_turnaround_v5a.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v5/mia_turnaround_v5a.png",
+      "size": 865246,
+      "modTime": "2026-02-16T21:23:16.712148721Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var9.png",
+      "name": "mia_turnaround_v4_var9.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var9.png",
+      "size": 862251,
+      "modTime": "2026-02-16T19:14:41.157097231Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var8.png",
+      "name": "mia_turnaround_v4_var8.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var8.png",
+      "size": 1127929,
+      "modTime": "2026-02-16T19:14:16.055181750Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var7.png",
+      "name": "mia_turnaround_v4_var7.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var7.png",
+      "size": 892046,
+      "modTime": "2026-02-16T19:13:56.689247167Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var6.png",
+      "name": "mia_turnaround_v4_var6.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var6.png",
+      "size": 1100624,
+      "modTime": "2026-02-16T19:13:30.187337007Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var5.png",
+      "name": "mia_turnaround_v4_var5.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var5.png",
+      "size": 1130290,
+      "modTime": "2026-02-16T19:12:02.237638054Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var4.png",
+      "name": "mia_turnaround_v4_var4.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var4.png",
+      "size": 1116804,
+      "modTime": "2026-02-16T19:11:43.668702236Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var3.png",
+      "name": "mia_turnaround_v4_var3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var3.png",
+      "size": 1105848,
+      "modTime": "2026-02-16T19:11:23.877770898Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var2.png",
+      "name": "mia_turnaround_v4_var2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var2.png",
+      "size": 1108490,
+      "modTime": "2026-02-16T19:11:04.947836828Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v4/mia_turnaround_v4_var1.png",
+      "name": "mia_turnaround_v4_var1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v4/mia_turnaround_v4_var1.png",
+      "size": 1112292,
+      "modTime": "2026-02-16T19:10:45.939903299Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3e_hires.png",
+      "name": "mia_v3e_hires.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3e_hires.png",
+      "size": 2083456,
+      "modTime": "2026-02-16T18:52:10.784684828Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3d_hires.png",
+      "name": "mia_v3d_hires.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3d_hires.png",
+      "size": 2253117,
+      "modTime": "2026-02-16T18:52:10.022686888Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3e.png",
+      "name": "mia_v3e.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3e.png",
+      "size": 652177,
+      "modTime": "2026-02-16T18:51:38.063773041Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3d.png",
+      "name": "mia_v3d.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3d.png",
+      "size": 666685,
+      "modTime": "2026-02-16T18:51:23.331812576Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3c_hires.png",
+      "name": "mia_v3c_hires.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3c_hires.png",
+      "size": 1865699,
+      "modTime": "2026-02-16T18:50:33.935944272Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3b_hires.png",
+      "name": "mia_v3b_hires.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3b_hires.png",
+      "size": 1939324,
+      "modTime": "2026-02-16T18:50:33.224946157Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3a_hires.png",
+      "name": "mia_v3a_hires.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3a_hires.png",
+      "size": 1859251,
+      "modTime": "2026-02-16T18:50:32.460948183Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3c.png",
+      "name": "mia_v3c.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3c.png",
+      "size": 1229028,
+      "modTime": "2026-02-16T18:49:46.044070622Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3b.png",
+      "name": "mia_v3b.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3b.png",
+      "size": 1270218,
+      "modTime": "2026-02-16T18:49:29.032115149Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "characters/mia/turnaround-v2/mia_v3a.png",
+      "name": "mia_v3a.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/mia/turnaround-v2/mia_v3a.png",
+      "size": 1232138,
+      "modTime": "2026-02-16T18:49:12.896157201Z",
+      "category": "Characters",
+      "type": "image"
     },
     {
       "path": "3d-models/characters/mia/mia_hybrid_rig.blend",
