@@ -89,52 +89,68 @@ This is the "Fairy Dinosaur Date Night" animated movie production project.
 - Jurassic swamp/jungle
 - Cave hideout
 
-## AI 3D Character Generation
+## 3D Character Pipeline (PROVEN - Feb 2025)
 
-**DO NOT** manually model characters in Blender - use AI generation tools instead.
+**DO NOT** manually rig characters. DO NOT use Auto-Rig Pro, Rigify, or Mixamo for rigging.
+Use Meshy's auto-rig — it produces clean deformation that survives FBX export to Blender.
 
-### Recommended Pipeline (Priority Order)
+### The Pipeline
 
-1. **Meshy** (https://www.meshy.ai) - Primary tool
-   - API key configured and working
-   - Good quality with PBR textures (diffuse, roughness, metallic, normal)
-   - 500+ preset animations included
-   - Blender plugin available
-   - Use image-to-3D with approved turnaround sheets
+1. **Generate 2D turnaround** — concept art showing character from front/side/back
+2. **Meshy image-to-3D** — upload turnaround to https://www.meshy.ai, generate 3D model
+3. **Meshy auto-rig** — apply Meshy's built-in rigging (biped). This produces good vertex weights.
+4. **Apply animation in Meshy** — pick from 500+ preset animations or use custom
+5. **Export FBX from Meshy** — download with "Skin" option (bakes animation + mesh)
+6. **Import FBX into Blender**:
+   ```python
+   bpy.ops.import_scene.fbx(
+       filepath="path/to/file.fbx",
+       use_anim=True,
+       ignore_leaf_bones=False,
+       automatic_bone_orientation=True,
+   )
+   ```
+7. **Re-apply textures in Blender** — FBX from Meshy comes with 0 materials; download PBR textures separately from Meshy and apply them in Blender
 
-2. **Tripo AI** (https://www.tripo3d.ai) - Alternative
-   - Best for animation-ready characters with auto-rigging
-   - Clean quad topology, $12/mo
-   - Use text-to-3D or image-to-3D with storyboard frames
+### What We Tried That DIDN'T Work
 
-3. **Hyper3D Rodin** - Hero characters (enable in BlenderMCP)
-   - Premium quality for main cast
-   - T-Pose output for rigging
-   - Enable: BlenderMCP panel > "Use Hyper3D Rodin 3D model generation"
+- **Auto-Rig Pro from scratch**: Destroyed mesh detail, head detached, limbs disappeared
+- **Auto-Rig Pro hybrid** (Meshy rig + ARP cleanup): Shirt stretching, cylinder limbs
+- **Rigify**: Poor weight painting on stylized characters
+- **Mixamo**: Limited bone count, bad deformation on non-humanoid proportions
 
-### BlenderMCP AI Integrations
+The core issue: re-rigging AI-generated meshes produces terrible vertex weights.
+Meshy's auto-rig does a much better job because it understands the mesh it generated.
 
-Enable these in the BlenderMCP panel (View3D > Sidebar > BlenderMCP):
+### Approved Character Turnarounds
 
-- **Hyper3D Rodin**: Check "Use Hyper3D Rodin 3D model generation"
-- **Hunyuan3D**: Check "Use Tencent Hunyuan 3D model generation"
-- **Sketchfab**: Check "Use assets from Sketchfab" + add API key
+- **Mia (original)**: `r2:rex-assets/characters/mia/mia_turnaround_APPROVED.png` — curly hair, most faithful to character design
+- **Mia (animation-friendly)**: `r2:rex-assets/characters/mia/mia_turnaround_APPROVED_ALT.png` — simple wavy ponytail, no front wisps, best for 3D/animation
 
-### Character Generation Workflow
+Use the ALT version for 3D model generation in Meshy. The original curly hair creates mesh artifacts (stray skin-colored geometry near the ears).
 
-1. Generate concept art/storyboard showing character design
-2. Use AI tool (Tripo/Meshy/Rodin) to create 3D model from image
-3. Export as FBX/GLB with rigging
-4. Import to Blender for scene integration
-5. Apply animations from library or create custom
+### Meshy Best Practices for Input Images
 
-### Quality Standards
+- Resolution: at least 1040x1040
+- Plain white background, well-lit, no dramatic shadows
+- A-pose (arms at 30-45 degrees from body)
+- Avoid individual hair strands, wisps, or fine curly details — they create mesh artifacts
+- Hair should be solid sculpted volumes, not individual strands
 
-- Characters must match Pixar-like stylized aesthetic from storyboards
-- Must have clean topology suitable for rigging/animation
-- Must export with PBR materials (Diffuse, Roughness, Metallic, Normal)
+### Textures
 
-**See:** `docs/research/3d-model-generation.md` for full tool comparison
+FBX exports from Meshy include PBR texture PNGs (diffuse, normal, roughness, metallic) when downloaded WITHOUT rigging. Rigged FBX downloads may not include textures — download the static model separately to get the texture files, then apply them in Blender.
+
+### Known Issues / TODOs
+
+- **Custom animations**: For poses not in Meshy's library, need to figure out workflow
+- **Multiple characters in scene**: Need to test importing multiple rigged FBX files
+
+### Meshy FBX Import Details (for reference)
+
+- Model comes in as 1 mesh + 1 armature (24 bones, 22 vertex groups)
+- Walk cycle: ~30 frames, ~249 animation channels
+- Bone names: Hips, Spine, Spine01, Spine02, LeftArm, RightArm, etc. (standard biped)
 
 ---
 
