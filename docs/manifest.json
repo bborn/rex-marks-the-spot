@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-16T12:22:27.366972Z",
-  "totalAssets": 1134,
+  "generated": "2026-02-16T18:19:38.162282Z",
+  "totalAssets": 1140,
   "categories": {
-    "Characters": 325,
+    "Characters": 331,
     "Other": 46,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-16T12:22:27.351957954Z",
+      "modTime": "2026-02-16T18:19:38.144987086Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-16T12:22:27.351957954Z",
+      "modTime": "2026-02-16T18:19:38.144987086Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-16T12:22:27.351957954Z",
+      "modTime": "2026-02-16T18:19:38.144987086Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,63 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-16T12:22:27.351957954Z",
+      "modTime": "2026-02-16T18:19:38.144987086Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "3d-models/characters/mia/mia_hybrid_rig.blend",
+      "name": "mia_hybrid_rig.blend",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_hybrid_rig.blend",
+      "size": 131454728,
+      "modTime": "2026-02-16T12:56:22.735469149Z",
+      "category": "Characters",
+      "type": "3d"
+    },
+    {
+      "path": "3d-models/characters/mia/hybrid-rig-tests/05_deep_squat.png",
+      "name": "05_deep_squat.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/hybrid-rig-tests/05_deep_squat.png",
+      "size": 554695,
+      "modTime": "2026-02-16T12:56:22.420471444Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/hybrid-rig-tests/04_walking.png",
+      "name": "04_walking.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/hybrid-rig-tests/04_walking.png",
+      "size": 561928,
+      "modTime": "2026-02-16T12:55:21.088928088Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/hybrid-rig-tests/03_arms_up.png",
+      "name": "03_arms_up.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/hybrid-rig-tests/03_arms_up.png",
+      "size": 585542,
+      "modTime": "2026-02-16T12:54:19.780405609Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/hybrid-rig-tests/02_head_turn.png",
+      "name": "02_head_turn.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/hybrid-rig-tests/02_head_turn.png",
+      "size": 554570,
+      "modTime": "2026-02-16T12:53:17.609914085Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/hybrid-rig-tests/01_rest_pose.png",
+      "name": "01_rest_pose.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/hybrid-rig-tests/01_rest_pose.png",
+      "size": 546590,
+      "modTime": "2026-02-16T12:52:15.982445296Z",
+      "category": "Characters",
+      "type": "image"
     },
     {
       "path": "3d-models/characters/mia/auto-rig-pro-v2/05_spine_twist.png",
