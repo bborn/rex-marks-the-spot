@@ -1,8 +1,8 @@
 {
-  "generated": "2026-02-17T00:41:56.945387Z",
-  "totalAssets": 1179,
+  "generated": "2026-02-17T03:56:40.057982Z",
+  "totalAssets": 1184,
   "categories": {
-    "Characters": 370,
+    "Characters": 375,
     "Other": 46,
     "Storyboards": 666,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-17T00:41:56.929382551Z",
+      "modTime": "2026-02-17T03:56:40.042224492Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-17T00:41:56.929382551Z",
+      "modTime": "2026-02-17T03:56:40.042224492Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-17T00:41:56.929382551Z",
+      "modTime": "2026-02-17T03:56:40.042224492Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,54 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-17T00:41:56.929382551Z",
+      "modTime": "2026-02-17T03:56:40.042224492Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_stomp.mp4",
+      "name": "mia_stomp.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_stomp.mp4",
+      "size": 291650,
+      "modTime": "2026-02-17T02:36:18.072284057Z",
+      "category": "Characters",
+      "type": "video"
+    },
+    {
+      "path": "3d-models/characters/mia/scene-render/frame_0030.png",
+      "name": "frame_0030.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/scene-render/frame_0030.png",
+      "size": 976355,
+      "modTime": "2026-02-17T02:11:26.262781353Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/scene-render/frame_0020.png",
+      "name": "frame_0020.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/scene-render/frame_0020.png",
+      "size": 966611,
+      "modTime": "2026-02-17T02:09:17.985013340Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/scene-render/frame_0010.png",
+      "name": "frame_0010.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/scene-render/frame_0010.png",
+      "size": 983892,
+      "modTime": "2026-02-17T02:07:04.653223498Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/scene-render/frame_0001.png",
+      "name": "frame_0001.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/scene-render/frame_0001.png",
+      "size": 974282,
+      "modTime": "2026-02-17T02:05:04.975377676Z",
+      "category": "Characters",
+      "type": "image"
     },
     {
       "path": "characters/mia/individual-views/mia_rear_var2.png",
