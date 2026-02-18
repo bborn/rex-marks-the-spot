@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-18T02:19:41.752333Z",
-  "totalAssets": 1184,
+  "generated": "2026-02-18T02:56:57.989763Z",
+  "totalAssets": 1186,
   "categories": {
     "Characters": 375,
-    "Other": 46,
+    "Other": 48,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-18T02:19:41.736141071Z",
+      "modTime": "2026-02-18T02:56:57.974170181Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-18T02:19:41.736141071Z",
+      "modTime": "2026-02-18T02:56:57.974170181Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-18T02:19:41.736141071Z",
+      "modTime": "2026-02-18T02:56:57.974170181Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,27 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-18T02:19:41.736141071Z",
+      "modTime": "2026-02-18T02:56:57.974170181Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "blog/animation-landscape-feb-17/deepmotion-pricing.png",
+      "name": "deepmotion-pricing.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/animation-landscape-feb-17/deepmotion-pricing.png",
+      "size": 139259,
+      "modTime": "2026-02-18T02:47:55.339446404Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "blog/animation-landscape-feb-17/deepmotion-saymotion.png",
+      "name": "deepmotion-saymotion.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/animation-landscape-feb-17/deepmotion-saymotion.png",
+      "size": 316368,
+      "modTime": "2026-02-18T02:47:40.774428203Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "3d-models/characters/mia/animation-tests/mia_stomp.mp4",
