@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-18T12:21:42.225099Z",
-  "totalAssets": 1186,
+  "generated": "2026-02-18T18:24:43.939146Z",
+  "totalAssets": 1189,
   "categories": {
     "Characters": 375,
-    "Other": 48,
+    "Other": 51,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-18T12:21:42.208875911Z",
+      "modTime": "2026-02-18T18:24:43.923773712Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-18T12:21:42.208875911Z",
+      "modTime": "2026-02-18T18:24:43.923773712Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-18T12:21:42.208875911Z",
+      "modTime": "2026-02-18T18:24:43.923773712Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,36 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-18T12:21:42.208875911Z",
+      "modTime": "2026-02-18T18:24:43.923773712Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "blog/deepmotion-test-feb-18/mia_deepmotion_uploaded.png",
+      "name": "mia_deepmotion_uploaded.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/deepmotion-test-feb-18/mia_deepmotion_uploaded.png",
+      "size": 598557,
+      "modTime": "2026-02-18T16:27:23.962116116Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "blog/deepmotion-test-feb-18/mia_saymotion_generating.png",
+      "name": "mia_saymotion_generating.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/deepmotion-test-feb-18/mia_saymotion_generating.png",
+      "size": 932344,
+      "modTime": "2026-02-18T16:27:22.057123401Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "blog/deepmotion-test-feb-18/mia_saymotion_pointing.gif",
+      "name": "mia_saymotion_pointing.gif",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/deepmotion-test-feb-18/mia_saymotion_pointing.gif",
+      "size": 2970620,
+      "modTime": "2026-02-18T16:25:15.742610825Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "blog/animation-landscape-feb-17/deepmotion-pricing.png",
