@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Do You Make Her Act? - Rex Marks The Spot</title>
+    <meta name="description" content="Mia can walk now. But walking isn't acting. We spent the day researching how to actually animate scenes for a movie, and discovered the answer might be in my living room.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>How Do You Make Her Act?</h1>
+                    <div class="post-author">
+                        <time datetime="2026-02-17">February 17, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>yesterday we got Mia walking. today we realized that walking isn't acting.</p>
+
+                        <p>we have a fully textured, rigged 3D character. she can stomp, she can idle, she can do any of the 500+ preset animations in Meshy's library. but our screenplay doesn't say "Mia does preset animation #247." it says things like "Mia grabs Leo's hand and pulls him toward the minivan" and "Mia looks back at the house, uncertain, then steels herself and steps through the portal."</p>
+
+                        <p>that's not a preset. that's acting. and figuring out how to get AI-generated characters to act is, it turns out, the next major unsolved problem in our pipeline.</p>
+
+                        <h2>The Animation Landscape in 2026</h2>
+
+                        <p>we spent the entire day researching what's actually available for AI-assisted character animation. not reading press releases and hype&mdash;actually digging into user forums, GitHub issues, pricing pages, and community reviews. here's the honest picture.</p>
+
+                        <p><strong>text-to-motion AI</strong> is a real thing now. you type "a person walks forward angrily" and get a 3D animation. the two leading options are HY-Motion 1.0 (free, open source, from Tencent, released December 2025) and DeepMotion's SayMotion (cloud-based, $9-83/month). both produce genuinely usable body animation for simple actions.</p>
+
+                        <p>but here's what none of them can do:</p>
+
+                        <ul>
+                            <li><strong>no facial animation.</strong> body only. for a movie about a family, this is a dealbreaker on its own. every scene needs faces.</li>
+                            <li><strong>no hand animation.</strong> hands stay in a default pose. characters can't hold things, gesture, or interact with objects.</li>
+                            <li><strong>no two-character interaction.</strong> you can't prompt "two characters hug" or "child grabs parent's hand." each character is animated in isolation.</li>
+                            <li><strong>no non-humanoid characters.</strong> Jetplane the dinosaur&mdash;one of our main characters&mdash;is completely out of scope for every tool we found.</li>
+                            <li><strong>10-12 second maximum per clip.</strong> every scene has to be built from tiny chunks stitched together.</li>
+                        </ul>
+
+                        <p>this is the state of the art. the best AI animation tools in the world, right now, can make a single human do simple body movements for 10 seconds at a time with no face and no hands.</p>
+
+                        <p>it's genuinely impressive technology. and it's genuinely not enough to make a movie.</p>
+
+                        <h2>The Living Room Mocap Studio</h2>
+
+                        <p>the more interesting discovery was on the motion capture side.</p>
+
+                        <p>you can now point a phone camera at a person, record them moving, and get 3D animation data out the other side. no suit, no markers, no special equipment. apps like Move.ai, Rokoko Vision, and DeepMotion's Animate 3D all do this, with varying quality levels and price points (free to $30/month).</p>
+
+                        <p>which led to an idea that might be the most this-project thing we've come up with yet: what if we have the kids act out the scenes?</p>
+
+                        <p>I have two children. the movie is about two children. the living room is right there. we could literally have them perform the scenes&mdash;walking, running, arguing, being scared, being brave&mdash;capture it with a phone, and use that motion data to drive the 3D characters in Blender.</p>
+
+                        <p>there's something poetically right about it. an AI-generated movie about kids, performed by actual kids, captured with a phone, processed by AI, and rendered by a computer. every layer of technology in service of something fundamentally human: my children pretending to be characters in a story their dad wrote.</p>
+
+                        <p>there are real questions to answer first. these AI pose estimation systems are trained on adult bodies, and kids have different proportions&mdash;bigger heads, shorter limbs, less predictable movement patterns. we'd need to test whether the tracking actually works on small humans before building the whole pipeline around it. the plan is to do a free test with Rokoko Vision: film each kid doing a simple walk and a dramatic gesture, see what the skeleton tracking looks like.</p>
+
+                        <h2>The Tool We're Actually Going to Try</h2>
+
+                        <p>after all the research, we're leaning toward DeepMotion as the primary platform. not because it's the best at any single thing, but because it does the most things in one place:</p>
+
+                        <ul>
+                            <li><strong>SayMotion:</strong> text-to-animation for generating body motion from prompts</li>
+                            <li><strong>Animate 3D:</strong> video-to-animation for capturing real performances</li>
+                            <li><strong>custom character upload:</strong> bring your own FBX (our Meshy characters) and animations get generated directly on your rig</li>
+                            <li><strong>cloud-based:</strong> no GPU required, which matters because our production server doesn't have one</li>
+                        </ul>
+
+                        <p>the free tier gives us 3 credits and 1 download per month&mdash;enough to test the pipeline end to end before committing money. the Starter tier at $9/month (annual) or the Professional at $39/month give us real production capacity.</p>
+
+                        <p>we also looked hard at HY-Motion 1.0, Tencent's open-source text-to-motion model. it's technically superior and completely free, but it needs an NVIDIA GPU with 8-12GB of VRAM minimum. our server has no GPU at all. running it would mean renting cloud GPU time, which adds complexity and arguably costs about the same as a DeepMotion subscription anyway.</p>
+
+                        <h2>What's Still Missing</h2>
+
+                        <p>even with the best available tools, we have gaps that no amount of AI can currently fill:</p>
+
+                        <p><strong>facial animation and lip sync.</strong> this is its own entire pipeline. none of the motion tools handle faces. we'll need to figure this out separately&mdash;probably some combination of blendshapes and a lip-sync tool.</p>
+
+                        <p><strong>Jetplane.</strong> a color-farting dinosaur is not a standard biped. every humanoid animation tool is useless here. Jetplane will probably need to be animated by hand, or we need to find quadruped-specific tools.</p>
+
+                        <p><strong>character interaction.</strong> two characters touching, holding hands, passing objects&mdash;this has to be choreographed manually in Blender by positioning separately-animated characters in the same scene. it's doable but labor-intensive.</p>
+
+                        <p><strong>the last 20%.</strong> AI motion generation gets you a plausible starting point. making it look like a specific character with specific emotions in a specific moment&mdash;that's the hard part, and it's still manual work.</p>
+
+                        <h2>The Pattern</h2>
+
+                        <p>we're seventeen days into production and a pattern has emerged. every stage of this process follows the same curve:</p>
+
+                        <ol>
+                            <li>AI gets us 70-80% of the way, fast</li>
+                            <li>we discover the remaining 20-30% is where the actual craft lives</li>
+                            <li>we figure out which parts of that 20% to do manually and which to accept as "good enough"</li>
+                        </ol>
+
+                        <p>concept art, 3D models, rigging, and now animation&mdash;same story every time. the tools are transformatively good at producing raw material. turning raw material into a movie is still a human job.</p>
+
+                        <p>tomorrow we start testing. upload Mia to DeepMotion, generate some real scene animations, and maybe point a phone at a couple of kids and see what happens.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="mia-walks-feb-16.html">&larr; Previous: She Walks</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="Instagram (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
