@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-19T12:22:37.120398Z",
-  "totalAssets": 1189,
+  "generated": "2026-02-19T18:26:26.229295Z",
+  "totalAssets": 1190,
   "categories": {
     "Characters": 375,
-    "Other": 51,
+    "Other": 52,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-19T12:22:37.106179869Z",
+      "modTime": "2026-02-19T18:26:26.213546541Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-19T12:22:37.106179869Z",
+      "modTime": "2026-02-19T18:26:26.213546541Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-19T12:22:37.106179869Z",
+      "modTime": "2026-02-19T18:26:26.213546541Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,18 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-19T12:22:37.106179869Z",
+      "modTime": "2026-02-19T18:26:26.213546541Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "blog/higgsfield-test-feb-19/mia_higgsfield_render.mp4",
+      "name": "mia_higgsfield_render.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/higgsfield-test-feb-19/mia_higgsfield_render.mp4",
+      "size": 17623892,
+      "modTime": "2026-02-19T17:57:44.882249838Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "blog/deepmotion-test-feb-18/mia_deepmotion_uploaded.png",
