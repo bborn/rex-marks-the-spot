@@ -73,6 +73,19 @@
 - Compared to parents: Reaches about hip/waist height on adults
 - Compared to Jetplane (small form): About same height
 
+## 3D Model Assets
+
+| Asset | URL |
+|-------|-----|
+| Rigged GLB | https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_rigged.glb |
+| Blender Preview | https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/mia_blender_preview.png |
+
+- **Vertices**: 640,542
+- **Polygons**: 1,075,577
+- **Bones**: 24
+- **Textures**: 2048x2048 PBR
+- **Model height**: ~1.2m (Blender units)
+
 ## Animation Guidelines
 - Moves with purpose and determination
 - Protective gestures toward Leo (arm around shoulder, hand-holding)
