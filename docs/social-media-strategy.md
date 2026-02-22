@@ -50,32 +50,37 @@ https://rexmarksthespot.com
 
 ---
 
-### Instagram (@rexmarksthespot)
+### Instagram (@rex_the_movie)
 
+**Handle**: https://www.instagram.com/rex_the_movie/
 **Purpose**: Visual content - concept art, storyboards, renders, character designs
-**Frequency**: 2-3 posts per week + daily Stories during active production
-**Content Mix**:
-- 50% Visual content (art, renders, storyboards)
-- 30% Process shots (Blender screenshots, code snippets styled nicely)
-- 20% Team/behind-the-scenes content
+**Frequency**: 4 posts per week + daily Stories during active production
+
+**See detailed strategy**: `docs/social-media/instagram-strategy.md`
+**See content calendar**: `docs/social-media/instagram-calendar-week1-2.md`
+
+**Content Pillars**:
+- 30% Character World (reveals, turnarounds, backstories)
+- 25% Built in Public / BTS (AI tools, process, honest takes)
+- 20% Story & Storyboards (panels, scene breakdowns)
+- 15% World Building (environments, creatures, props)
+- 10% Community & Culture (philosophy, engagement, milestones)
 
 **Bio**:
 ```
-An AI filmmaking experiment
+Making "Fairy Dinosaur Date Night" with AI + Blender
 
-Making "Fairy Dinosaur Date Night" with Blender + AI tools
+The whole process. The wins. The fails. The color-farting dinosaur.
 
-The whole process, documented
-
-linktr.ee/rexmarksthespot (or rexmarksthespot.com/links)
+rexmarksthespot.com
 ```
 
 **Highlight Categories**:
 - Characters
 - Storyboards
-- Renders
+- Process
 - Tech
-- Progress
+- Updates
 
 ---
 
@@ -285,7 +290,7 @@ GitHub: https://github.com/bborn/rex-marks-the-spot
 | Platform | Primary Handle | Backup Options |
 |----------|---------------|----------------|
 | Twitter/X | @RexMarksTheSpot | @RexMarksSpot, @FairyDinoFilm |
-| Instagram | @rexmarksthespot | @rexmarksspot, @fairydinofilm |
+| Instagram | @rex_the_movie | @rexmarksthespot, @fairydinofilm |
 | YouTube | Rex Marks The Spot | Fairy Dinosaur Date Night |
 | GitHub | bborn/rex-marks-the-spot | (already exists) |
 
