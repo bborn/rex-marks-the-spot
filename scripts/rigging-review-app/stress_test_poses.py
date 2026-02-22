@@ -39,9 +39,9 @@ except ImportError:
 
 BONE_NAME_VARIANTS = {
     "hips": ["hips", "Hips", "mixamorig:Hips", "DEF-spine", "root", "Root"],
-    "spine": ["spine", "Spine", "mixamorig:Spine", "DEF-spine.001"],
-    "spine1": ["spine1", "Spine1", "mixamorig:Spine1", "DEF-spine.002"],
-    "spine2": ["spine2", "Spine2", "mixamorig:Spine2", "DEF-spine.003"],
+    "spine": ["spine", "Spine", "mixamorig:Spine", "DEF-spine.001", "Spine02"],
+    "spine1": ["spine1", "Spine1", "mixamorig:Spine1", "DEF-spine.002", "Spine01"],
+    "spine2": ["spine2", "Spine2", "mixamorig:Spine2", "DEF-spine.003", "Spine"],
     "neck": ["neck", "Neck", "mixamorig:Neck", "DEF-spine.004"],
     "head": ["head", "Head", "mixamorig:Head", "DEF-spine.005"],
     "left_upper_arm": ["leftshoulder", "LeftArm", "mixamorig:LeftArm", "DEF-upper_arm.L", "Left arm", "LeftUpperArm", "upper_arm.L"],
@@ -211,16 +211,31 @@ def apply_pose(armature, bone_rotations):
 
 def setup_camera(armature, angle_name="front"):
     """Position camera to view the character."""
-    # Get armature bounds
-    bbox = [armature.matrix_world @ mathutils.Vector(c) for c in armature.bound_box]
-    center = sum(bbox, mathutils.Vector()) / 8
+    # Get bounds from mesh children (more accurate than armature bounds)
+    meshes = [c for c in armature.children if c.type == 'MESH']
+    if meshes:
+        all_bbox = []
+        for m in meshes:
+            all_bbox.extend([m.matrix_world @ mathutils.Vector(c) for c in m.bound_box])
+        bbox = all_bbox
+    else:
+        bbox = [armature.matrix_world @ mathutils.Vector(c) for c in armature.bound_box]
+    center = sum(bbox, mathutils.Vector()) / len(bbox)
     size = max((max(v[i] for v in bbox) - min(v[i] for v in bbox)) for i in range(3))
 
     cam = bpy.context.scene.camera
     if cam is None:
+        # Must be in object mode to add camera
+        current_mode = bpy.context.mode
+        if current_mode != 'OBJECT':
+            bpy.ops.object.mode_set(mode='OBJECT')
         bpy.ops.object.camera_add()
         cam = bpy.context.object
         bpy.context.scene.camera = cam
+        # Return to pose mode if we were in it
+        if current_mode == 'POSE':
+            bpy.context.view_layer.objects.active = armature
+            bpy.ops.object.mode_set(mode='POSE')
 
     dist = size * 2.5
     if angle_name == "front":
@@ -238,8 +253,16 @@ def setup_lighting():
     """Ensure basic lighting exists."""
     has_light = any(obj.type == 'LIGHT' for obj in bpy.context.scene.objects)
     if not has_light:
+        # Must be in object mode to add lights
+        current_mode = bpy.context.mode
+        active_obj = bpy.context.view_layer.objects.active
+        if current_mode != 'OBJECT':
+            bpy.ops.object.mode_set(mode='OBJECT')
         bpy.ops.object.light_add(type='SUN', location=(5, -5, 10))
         bpy.context.object.data.energy = 3
+        if current_mode == 'POSE' and active_obj:
+            bpy.context.view_layer.objects.active = active_obj
+            bpy.ops.object.mode_set(mode='POSE')
 
 
 def render_pose(output_path, resolution=(1280, 960)):
@@ -251,8 +274,11 @@ def render_pose(output_path, resolution=(1280, 960)):
     scene.render.image_settings.file_format = 'PNG'
     scene.render.filepath = str(output_path)
 
-    # Use EEVEE for speed
-    scene.render.engine = 'BLENDER_EEVEE_NEXT' if bpy.app.version >= (4, 0, 0) else 'BLENDER_EEVEE'
+    # Use EEVEE for speed (EEVEE_NEXT only in Blender 4.2+)
+    if bpy.app.version >= (4, 2, 0):
+        scene.render.engine = 'BLENDER_EEVEE_NEXT'
+    else:
+        scene.render.engine = 'BLENDER_EEVEE'
 
     bpy.ops.render.render(write_still=True)
     print(f"  Rendered: {output_path}")
