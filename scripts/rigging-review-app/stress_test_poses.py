@@ -54,6 +54,14 @@ BONE_NAME_VARIANTS = {
     "right_lower_leg": ["rightleg", "RightLeg", "mixamorig:RightLeg", "DEF-shin.R", "Right shin", "shin.R"],
 }
 
+# Meshy uses reversed spine numbering: Spine02 (bottom) -> Spine01 (mid) -> Spine (top)
+# Detect and remap when Spine02 exists in the armature.
+MESHY_SPINE_REMAP = {
+    "spine": "Spine02",
+    "spine1": "Spine01",
+    "spine2": "Spine",
+}
+
 STRESS_POSES = [
     {
         "name": "t_pose",
@@ -167,7 +175,17 @@ def find_armature():
 
 
 def find_bone(armature, canonical_name):
-    """Find a bone by trying multiple naming conventions."""
+    """Find a bone by trying multiple naming conventions.
+
+    Handles Meshy's reversed spine numbering (Spine02=bottom, Spine01=mid, Spine=top)
+    by checking for Spine02 and remapping spine bones accordingly.
+    """
+    # Check for Meshy spine naming convention
+    if canonical_name in MESHY_SPINE_REMAP and "Spine02" in armature.pose.bones:
+        meshy_name = MESHY_SPINE_REMAP[canonical_name]
+        if meshy_name in armature.pose.bones:
+            return armature.pose.bones[meshy_name]
+
     variants = BONE_NAME_VARIANTS.get(canonical_name, [canonical_name])
     for name in variants:
         if name in armature.pose.bones:
@@ -211,16 +229,30 @@ def apply_pose(armature, bone_rotations):
 
 def setup_camera(armature, angle_name="front"):
     """Position camera to view the character."""
-    # Get armature bounds
-    bbox = [armature.matrix_world @ mathutils.Vector(c) for c in armature.bound_box]
+    # Prefer mesh bounds over armature bounds for more accurate framing
+    mesh_obj = None
+    for obj in bpy.context.scene.objects:
+        if obj.type == 'MESH' and any(m.type == 'ARMATURE' for m in obj.modifiers):
+            mesh_obj = obj
+            break
+
+    target = mesh_obj if mesh_obj else armature
+    bbox = [target.matrix_world @ mathutils.Vector(c) for c in target.bound_box]
     center = sum(bbox, mathutils.Vector()) / 8
     size = max((max(v[i] for v in bbox) - min(v[i] for v in bbox)) for i in range(3))
 
     cam = bpy.context.scene.camera
     if cam is None:
+        # Must be in OBJECT mode to add camera
+        prev_mode = bpy.context.object.mode if bpy.context.object else 'OBJECT'
+        if prev_mode != 'OBJECT':
+            bpy.ops.object.mode_set(mode='OBJECT')
         bpy.ops.object.camera_add()
         cam = bpy.context.object
         bpy.context.scene.camera = cam
+        if prev_mode != 'OBJECT':
+            bpy.context.view_layer.objects.active = armature
+            bpy.ops.object.mode_set(mode=prev_mode)
 
     dist = size * 2.5
     if angle_name == "front":
@@ -252,7 +284,11 @@ def render_pose(output_path, resolution=(1280, 960)):
     scene.render.filepath = str(output_path)
 
     # Use EEVEE for speed
-    scene.render.engine = 'BLENDER_EEVEE_NEXT' if bpy.app.version >= (4, 0, 0) else 'BLENDER_EEVEE'
+    # EEVEE_NEXT was introduced in Blender 4.2; 4.0 uses BLENDER_EEVEE
+    if bpy.app.version >= (4, 2, 0):
+        scene.render.engine = 'BLENDER_EEVEE_NEXT'
+    else:
+        scene.render.engine = 'BLENDER_EEVEE'
 
     bpy.ops.render.render(write_still=True)
     print(f"  Rendered: {output_path}")
