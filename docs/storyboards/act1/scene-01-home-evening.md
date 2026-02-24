@@ -275,7 +275,7 @@ Starts close on Gabe, slowly pulls back to two-shot when Nina glares, holds for 
 
 ## Generated Storyboard Panels
 
-Generated with `gemini-3-pro-image-preview` using character reference sheets for consistency.
+All panels rendered in consistent 3D Pixar style using `gemini-2.5-flash-image` with character reference turnaround sheets. Panels 01, 03, 05, 06 were regenerated from B&W sketches to 3D renders to match the style of the other panels.
 
 | Panel | Description | Image |
 |-------|-------------|-------|
