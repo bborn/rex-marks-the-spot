@@ -1,0 +1,35 @@
+{
+  "1": {
+    "class_type": "CapybaraLoadPipeline",
+    "inputs": {
+      "task": "t2v",
+      "dtype": "bf16"
+    }
+  },
+  "2": {
+    "class_type": "CapybaraGenerate",
+    "inputs": {
+      "pipeline": ["1", 0],
+      "prompt": "A cute cartoon dinosaur with colorful scales walks through a lush jungle, Pixar animation style, vibrant colors, smooth motion",
+      "negative_prompt": "blurry, low quality, distorted, watermark",
+      "width": 512,
+      "height": 320,
+      "num_frames": 33,
+      "steps": 20,
+      "guidance_scale": 7.0,
+      "seed": 42
+    }
+  },
+  "3": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": ["2", 0],
+      "frame_rate": 16,
+      "loop_count": 0,
+      "filename_prefix": "capybara_t2v_test",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_output": true
+    }
+  }
+}

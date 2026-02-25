@@ -1,0 +1,45 @@
+{
+  "_comment": "Capybara Video-to-Video workflow - load in ComfyUI UI and update input video path",
+  "1": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "INPUT_VIDEO.mp4",
+      "force_rate": 16,
+      "force_size": "Disabled",
+      "frame_load_cap": 0,
+      "skip_first_frames": 0
+    }
+  },
+  "2": {
+    "class_type": "CapybaraLoadPipeline",
+    "inputs": {
+      "task": "tv2v",
+      "dtype": "bf16"
+    }
+  },
+  "3": {
+    "class_type": "CapybaraGenerate",
+    "inputs": {
+      "pipeline": ["2", 0],
+      "video": ["1", 0],
+      "prompt": "A Pixar-style cartoon scene, high quality 3D animation, smooth movement, vibrant colors",
+      "negative_prompt": "blurry, low quality, distorted, live action, photo-realistic",
+      "steps": 20,
+      "guidance_scale": 7.0,
+      "strength": 0.7,
+      "seed": 42
+    }
+  },
+  "4": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": ["3", 0],
+      "frame_rate": 16,
+      "loop_count": 0,
+      "filename_prefix": "capybara_tv2v",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_output": true
+    }
+  }
+}
