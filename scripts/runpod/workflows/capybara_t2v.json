@@ -1,0 +1,45 @@
+{
+  "_comment": "TESTED AND WORKING on RunPod L40S. Generated video in 3 minutes.",
+  "1": {
+    "class_type": "CapybaraLoadPipeline",
+    "inputs": {
+      "model_path": "/workspace/capybara_model",
+      "transformer_version": "capybara_v01",
+      "dtype": "bfloat16",
+      "enable_offloading": true,
+      "flow_shift": 5.0,
+      "quantize": "none"
+    }
+  },
+  "2": {
+    "class_type": "CapybaraGenerate",
+    "inputs": {
+      "pipe": ["1", 0],
+      "prompt": "A cute Pixar-style cartoon dinosaur with colorful rainbow scales walking through a magical jungle with glowing mushrooms and giant ferns. Smooth 3D animation, vibrant colors, soft lighting.",
+      "negative_prompt": "blurry, low quality, distorted, ugly, watermark",
+      "task_type": "t2v",
+      "resolution": "480p",
+      "aspect_ratio": "16:9",
+      "num_frames": 33,
+      "num_inference_steps": 20,
+      "guidance_scale": 6.0,
+      "seed": 42
+    }
+  },
+  "3": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": ["2", 0],
+      "frame_rate": 16,
+      "loop_count": 0,
+      "filename_prefix": "capybara_t2v_test",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_output": true,
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false
+    }
+  }
+}

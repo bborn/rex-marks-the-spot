@@ -1,0 +1,11 @@
+{
+  "pod_id": "b0zwt2jb434e97",
+  "name": "rex-comfyui-video",
+  "gpu": "L40S",
+  "vram_gb": 48,
+  "comfyui_url": "https://b0zwt2jb434e97-8188.proxy.runpod.net",
+  "cost_per_hr": 0.79,
+  "ssh_host": "60.249.37.148",
+  "ssh_port": 26374,
+  "ssh_cmd": "ssh -i ~/.ssh/id_ed25519 root@60.249.37.148 -p 26374"
+}
