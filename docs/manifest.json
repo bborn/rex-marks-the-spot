@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-25T14:34:15.314392Z",
-  "totalAssets": 1193,
+  "generated": "2026-02-25T17:56:44.584113Z",
+  "totalAssets": 1201,
   "categories": {
     "Characters": 375,
-    "Other": 55,
+    "Other": 63,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-25T14:34:15.298722639Z",
+      "modTime": "2026-02-25T17:56:44.570355451Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-25T14:34:15.298722639Z",
+      "modTime": "2026-02-25T17:56:44.570355451Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-25T14:34:15.298722639Z",
+      "modTime": "2026-02-25T17:56:44.570355451Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,81 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-25T14:34:15.298722639Z",
+      "modTime": "2026-02-25T17:56:44.570355451Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "comfyui-tests/character-tests/storyboard_capybara_tv2v_storyboard_capybara_tv2v_00001.mp4",
+      "name": "storyboard_capybara_tv2v_storyboard_capybara_tv2v_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/storyboard_capybara_tv2v_storyboard_capybara_tv2v_00001.mp4",
+      "size": 113516,
+      "modTime": "2026-02-25T15:43:44.143630743Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_capybara_tv2v_mia_capybara_tv2v_00001.mp4",
+      "name": "mia_capybara_tv2v_mia_capybara_tv2v_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_tv2v_mia_capybara_tv2v_00001.mp4",
+      "size": 402783,
+      "modTime": "2026-02-25T15:41:14.665074302Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/storyboard_capybara_ti2i_storyboard_capybara_ti2i_00001.mp4",
+      "name": "storyboard_capybara_ti2i_storyboard_capybara_ti2i_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/storyboard_capybara_ti2i_storyboard_capybara_ti2i_00001.mp4",
+      "size": 35866,
+      "modTime": "2026-02-25T15:36:43.067878119Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001.mp4",
+      "name": "gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001.mp4",
+      "size": 286634,
+      "modTime": "2026-02-25T15:35:57.622012245Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_capybara_ti2i_mia_capybara_ti2i_00001.mp4",
+      "name": "mia_capybara_ti2i_mia_capybara_ti2i_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_ti2i_mia_capybara_ti2i_00001.mp4",
+      "size": 24935,
+      "modTime": "2026-02-25T15:32:23.013643691Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_capybara_t2v_mia_capybara_t2v_00001.mp4",
+      "name": "mia_capybara_t2v_mia_capybara_t2v_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_t2v_mia_capybara_t2v_00001.mp4",
+      "size": 241369,
+      "modTime": "2026-02-25T15:31:31.017796088Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001.mp4",
+      "name": "gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001.mp4",
+      "size": 116314,
+      "modTime": "2026-02-25T15:12:49.691949716Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_wan_t2v_mia_wan_t2v_00001.mp4",
+      "name": "mia_wan_t2v_mia_wan_t2v_00001.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_wan_t2v_mia_wan_t2v_00001.mp4",
+      "size": 122119,
+      "modTime": "2026-02-25T15:12:29.008012805Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "comfyui-tests/capybara_tv2v_test_00001.mp4",
