@@ -1,4 +1,5 @@
 {
+  "_comment": "TESTED AND WORKING on RunPod L40S with ComfyUI 0.15.0. Generated video in 20s.",
   "1": {
     "class_type": "UNETLoader",
     "inputs": {
@@ -7,31 +8,30 @@
     }
   },
   "2": {
-    "class_type": "DualCLIPLoader",
+    "class_type": "CLIPLoader",
     "inputs": {
-      "clip_name1": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
-      "clip_name2": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
       "type": "wan"
     }
   },
   "3": {
     "class_type": "CLIPTextEncode",
     "inputs": {
-      "text": "A cute cartoon dinosaur with colorful scales walks through a lush jungle, Pixar style, vibrant colors, 4k quality",
+      "text": "A cute cartoon dinosaur with sparkling rainbow scales walks through a lush prehistoric jungle with giant ferns and glowing mushrooms. Pixar animation style, smooth character animation, vibrant saturated colors, soft volumetric lighting.",
       "clip": ["2", 0]
     }
   },
   "4": {
     "class_type": "CLIPTextEncode",
     "inputs": {
-      "text": "blurry, low quality, distorted, ugly, watermark",
+      "text": "blurry, low quality, distorted, ugly, watermark, text, static image",
       "clip": ["2", 0]
     }
   },
   "5": {
-    "class_type": "EmptyWanLatentVideo",
+    "class_type": "EmptyHunyuanLatentVideo",
     "inputs": {
-      "width": 512,
+      "width": 480,
       "height": 320,
       "length": 33,
       "batch_size": 1
@@ -46,9 +46,9 @@
       "latent_image": ["5", 0],
       "seed": 42,
       "steps": 20,
-      "cfg": 7.0,
+      "cfg": 6.0,
       "sampler_name": "euler",
-      "scheduler": "normal",
+      "scheduler": "simple",
       "denoise": 1.0
     }
   },
@@ -74,7 +74,11 @@
       "filename_prefix": "wan21_t2v_test",
       "format": "video/h264-mp4",
       "pingpong": false,
-      "save_output": true
+      "save_output": true,
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false
     }
   }
 }
