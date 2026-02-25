@@ -4,12 +4,15 @@
 
 All panels should use these base style parameters:
 
-**Consistent Style Prefix:**
+**Consistent Style Prefix (3D Pixar Render):**
 ```
-Storyboard panel, rough sketch style, cinematic composition,
-Pixar-style family adventure animation, professional animation production,
-16:9 aspect ratio, black and white with blue accents for mood lighting
+Pixar-style 3D animated render, rich warm cinematic lighting,
+detailed textures, soft ambient occlusion, subsurface scattering on skin,
+professional animation quality, movie production still,
+16:9 widescreen aspect ratio, photorealistic Pixar rendering
 ```
+
+> **Note:** Director decision (Feb 2026): All panels should use consistent 3D Pixar render style. B&W sketch style is deprecated.
 
 **Character Descriptions:**
 - **Gabe (Father):** Late 30s, rectangular glasses, short dark brown hair with gray temples, stubble, black tuxedo (Act 1)
