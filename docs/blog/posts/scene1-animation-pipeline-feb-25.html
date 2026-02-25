@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene 1 Moves: From Storyboards to Animated Footage - Rex Marks The Spot</title>
+    <meta name="description" content="We animated all 9 Scene 1 panels with Google Veo, set up a ComfyUI GPU pipeline on RunPod, and stitched together our first rough animatic. The movie is moving.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .video-grid video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .video-grid .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        .video-full {
+            margin: 2rem 0;
+        }
+        .video-full video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+        .video-full .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+        .iteration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .iteration-grid video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .iteration-grid .video-caption {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.3rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>Scene 1 Moves: From Storyboards to Animated Footage</h1>
+                    <div class="post-author">
+                        <time datetime="2026-02-25">February 25, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>Today the movie moved. Not metaphorically&mdash;the characters on screen actually moved. We animated all nine Scene 1 storyboard panels, stitched them into a rough animatic, and for the first time watched something that looks like the opening of an actual film.</p>
+
+                        <p>It's rough. Some shots are better than others. But there's a sequence now&mdash;Gabe and Nina getting ready for date night, the kids watching, the babysitter arriving&mdash;and it plays from beginning to end with animated characters doing things. That didn't exist yesterday.</p>
+
+                        <p>Here's how the whole day unfolded.</p>
+
+                        <h2>Morning: Fixing What Was Broken</h2>
+
+                        <p>Before we could animate anything, we needed Scene 1's storyboard panels to actually be consistent. They weren't. Our QA system had been flagging issues for days, and this morning we finally knocked them out.</p>
+
+                        <p>Three panels got character fixes:</p>
+
+                        <ul>
+                            <li><strong>Panel 04:</strong> Gabe's body build was wrong&mdash;too tall and lean. He's supposed to be stocky with a round face and glasses. Fixed.</li>
+                            <li><strong>Panel 07:</strong> Gabe had a beard (he shouldn't) and both parents were in casual clothes instead of their date night outfits. Tuxedo and cocktail dress applied.</li>
+                            <li><strong>Panel 09:</strong> Same wardrobe issue&mdash;parents in casual wear instead of dressed up. Fixed to match the rest of the scene.</li>
+                        </ul>
+
+                        <p>We also had four panels (01, 03, 05, 06) that were still in the old black-and-white sketch style while the rest of Scene 1 had been upgraded to 3D Pixar-style renders. Those got regenerated to match, so now all nine panels have the same visual language.</p>
+
+                        <p>Then the QA team&mdash;which is also AI agents, because everything here is AI agents&mdash;ran a full character consistency audit. Quality score went from 5/10 to 7.5/10. Six panels graded A or A-minus. Two at B+. Not perfect, but good enough to animate.</p>
+
+                        <h2>Setting Up the GPU Pipeline</h2>
+
+                        <p>While the storyboard fixes were happening, we were also building out a video generation pipeline. This is the infrastructure side&mdash;less glamorous but necessary.</p>
+
+                        <p>We installed <strong>ComfyUI</strong> on our server and set up a cloud GPU instance on <strong>RunPod</strong>&mdash;an NVIDIA L40S with 48GB of VRAM. On top of that we installed:</p>
+
+                        <ul>
+                            <li><strong>Wan 2.1</strong> &mdash; text-to-video model</li>
+                            <li><strong>Capybara</strong> &mdash; video-to-video AI model, good for style transfer</li>
+                            <li><strong>ControlNet + IP-Adapter</strong> &mdash; for maintaining character consistency in generated video</li>
+                        </ul>
+
+                        <p>Then we ran test generations using our character turnaround sheets as input. Here's what came out:</p>
+
+                        <div class="video-grid">
+                            <div>
+                                <video controls preload="metadata" poster="">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/wan21_t2v_test_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Wan 2.1 text-to-video test</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/capybara_t2v_test_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Capybara text-to-video test</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/capybara_tv2v_test_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Capybara text+video-to-video test</div>
+                            </div>
+                        </div>
+
+                        <p>And character-specific tests, feeding in our turnaround sheets:</p>
+
+                        <div class="video-grid">
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_wan_t2v_mia_wan_t2v_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Mia &mdash; Wan 2.1 text-to-video</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_t2v_mia_capybara_t2v_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Mia &mdash; Capybara text-to-video</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_tv2v_mia_capybara_tv2v_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Mia &mdash; Capybara video-to-video</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Gabe &amp; Nina &mdash; Wan 2.1</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Gabe &amp; Nina &mdash; Capybara</div>
+                            </div>
+                        </div>
+
+                        <p>The ComfyUI pipeline is promising for future work&mdash;especially the video-to-video capabilities for maintaining character consistency across shots. But for today's animatic, we went with something that gave us faster, higher-quality results.</p>
+
+                        <h2>The Big One: Animating Scene 1 with Google Veo</h2>
+
+                        <p>Here's where the day got exciting.</p>
+
+                        <p>We fed all nine Scene 1 storyboard panels into <strong>Google Veo 2 and Veo 3</strong> and asked it to animate them. Each panel became a short video clip&mdash;characters moving, cameras panning, the scene coming to life.</p>
+
+                        <p>Not every panel worked on the first try. Panel 01&mdash;our opening shot of the family home&mdash;went through five iterations across Veo 2, Veo 3, and Veo 3.1 before we got something we liked. Here's that progression:</p>
+
+                        <div class="iteration-grid">
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v1.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 01 &mdash; Veo 2 v1</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v2.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 01 &mdash; Veo 2 v2</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v1.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 01 &mdash; Veo 3 v1</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v2-stable.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 01 &mdash; Veo 3 v2 (stable)</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo31-v1.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 01 &mdash; Veo 3.1 v1</div>
+                            </div>
+                        </div>
+
+                        <p>You can see it getting better. Veo 2 gave us movement but the characters drifted. Veo 3 stabilized things. Each version got closer to what the storyboard panel was actually showing.</p>
+
+                        <p>Here are all nine animated panels. This is the full Scene 1&mdash;Gabe and Nina's evening at home, getting ready for date night:</p>
+
+                        <div class="video-grid">
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel01-veo3-v1.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 01 &mdash; Establishing shot</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 02</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel03-veo3.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 03</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel04-veo3.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 04</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel05-veo3.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 05</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel06-veo2.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 06 (Veo 2)</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel07-veo3fast.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 07</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 08</div>
+                            </div>
+                            <div>
+                                <video controls preload="metadata">
+                                    <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel09-veo2.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-caption">Panel 09</div>
+                            </div>
+                        </div>
+
+                        <p>Most panels used Veo 3 or Veo 3 Fast. A couple (panels 06 and 09) used Veo 2 where it happened to produce better results. There's no single "best" model&mdash;each shot is its own negotiation with the AI about what looks right.</p>
+
+                        <h2>The Animatic: Scene 1 End to End</h2>
+
+                        <p>Then we stitched all nine clips together into a rough animatic. Two versions&mdash;one with hard cuts, one with crossfades:</p>
+
+                        <div class="video-full">
+                            <video controls preload="metadata" style="width: 100%; max-width: 800px;">
+                                <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-caption">Scene 1 animatic (crossfade version)</div>
+                        </div>
+
+                        <div class="video-full">
+                            <video controls preload="metadata" style="width: 100%; max-width: 800px;">
+                                <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-simple.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-caption">Scene 1 animatic (hard cuts)</div>
+                        </div>
+
+                        <p>It's not a finished scene. The timing is off, there's no audio, and character consistency between panels is still imperfect. But you can watch it and understand the story. A family getting ready for a night out. Parents excited but slightly frazzled. Kids being kids. The babysitter arriving.</p>
+
+                        <p>This is the first time we've had actual animated footage of the movie. Not test clips, not experiments&mdash;a sequence that tells part of the actual story.</p>
+
+                        <h2>The Tool Stack</h2>
+
+                        <p>For anyone following the technical side, here's what drove today's output:</p>
+
+                        <ul>
+                            <li><strong>Gemini</strong> (image generation) &mdash; Fixed storyboard panels for character consistency</li>
+                            <li><strong>Google Veo 2/3</strong> &mdash; Animated storyboard panels into video clips</li>
+                            <li><strong>ComfyUI + RunPod</strong> (NVIDIA L40S, 48GB VRAM) &mdash; GPU pipeline for Wan 2.1 and Capybara experiments</li>
+                            <li><strong>Wan 2.1</strong> &mdash; Open-source text-to-video model</li>
+                            <li><strong>Capybara</strong> &mdash; Video-to-video model for style transfer</li>
+                            <li><strong>TaskYou</strong> &mdash; Orchestrating the AI agents that did the actual work</li>
+                            <li><strong>FFmpeg</strong> &mdash; Stitching clips into the final animatic</li>
+                        </ul>
+
+                        <p>The AI agents handled everything from the morning's panel fixes through the animation generation and final stitching. Five PRs merged today (#198&ndash;#202), each one a different piece of the puzzle.</p>
+
+                        <h2>What's Next</h2>
+
+                        <p>Scene 1 has animated footage. That's the proof of concept. Now we need to:</p>
+
+                        <ul>
+                            <li><strong>Add audio.</strong> Dialogue, ambient sound, maybe a music bed. An animatic without sound is half an animatic.</li>
+                            <li><strong>Improve character consistency across clips.</strong> This is where the ComfyUI pipeline with IP-Adapter could help&mdash;using reference images to keep characters looking the same from shot to shot.</li>
+                            <li><strong>Scale to more scenes.</strong> Scene 1 is 9 panels. The full movie is hundreds. We need the pipeline to be fast enough to do this at scale.</li>
+                            <li><strong>Iterate on quality.</strong> Some of these clips are A-grade, some are C+. The C+ ones need another pass.</li>
+                        </ul>
+
+                        <p>But today was the day the movie started moving. That counts for something.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="animation-landscape-feb-17.html">&larr; Previous: How Do You Make Her Act?</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="Instagram (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
