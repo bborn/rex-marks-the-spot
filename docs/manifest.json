@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-25T19:10:56.721424Z",
-  "totalAssets": 1209,
+  "generated": "2026-02-25T19:54:45.342991Z",
+  "totalAssets": 1218,
   "categories": {
     "Characters": 375,
-    "Other": 71,
+    "Other": 80,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-25T19:10:56.705849142Z",
+      "modTime": "2026-02-25T19:54:45.327248024Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-25T19:10:56.705849142Z",
+      "modTime": "2026-02-25T19:54:45.327248024Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-25T19:10:56.705849142Z",
+      "modTime": "2026-02-25T19:54:45.327248024Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,81 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-25T19:10:56.705849142Z",
+      "modTime": "2026-02-25T19:54:45.327248024Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel08-veo3fast.mp4",
+      "name": "scene01-panel08-veo3fast.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast.mp4",
+      "size": 1739157,
+      "modTime": "2026-02-25T19:48:31.165691831Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel07-veo3fast.mp4",
+      "name": "scene01-panel07-veo3fast.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel07-veo3fast.mp4",
+      "size": 1777354,
+      "modTime": "2026-02-25T19:46:44.860517973Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel09-veo2.mp4",
+      "name": "scene01-panel09-veo2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel09-veo2.mp4",
+      "size": 1659578,
+      "modTime": "2026-02-25T19:42:54.376677296Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel06-veo2.mp4",
+      "name": "scene01-panel06-veo2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel06-veo2.mp4",
+      "size": 2025569,
+      "modTime": "2026-02-25T19:38:33.824760780Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel05-veo3.mp4",
+      "name": "scene01-panel05-veo3.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel05-veo3.mp4",
+      "size": 1166828,
+      "modTime": "2026-02-25T19:18:58.596614106Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel04-veo3.mp4",
+      "name": "scene01-panel04-veo3.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel04-veo3.mp4",
+      "size": 1728119,
+      "modTime": "2026-02-25T19:16:57.254085289Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel03-veo3.mp4",
+      "name": "scene01-panel03-veo3.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel03-veo3.mp4",
+      "size": 1647913,
+      "modTime": "2026-02-25T19:14:56.025107369Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel02-veo3.mp4",
+      "name": "scene01-panel02-veo3.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3.mp4",
+      "size": 1483434,
+      "modTime": "2026-02-25T19:12:54.666555578Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v4-anchored.mp4",
@@ -91,6 +163,15 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v2.mp4",
       "size": 2177102,
       "modTime": "2026-02-25T18:41:09.327426198Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel01-veo3-v1.mp4",
+      "name": "scene01-panel01-veo3-v1.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel01-veo3-v1.mp4",
+      "size": 1749434,
+      "modTime": "2026-02-25T18:39:05.186119510Z",
       "category": "Other",
       "type": "video"
     },
