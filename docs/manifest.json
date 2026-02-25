@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-25T19:54:45.342991Z",
-  "totalAssets": 1218,
+  "generated": "2026-02-25T20:03:49.755492Z",
+  "totalAssets": 1220,
   "categories": {
     "Characters": 375,
-    "Other": 80,
+    "Other": 82,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-25T19:54:45.327248024Z",
+      "modTime": "2026-02-25T20:03:49.739145455Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-25T19:54:45.327248024Z",
+      "modTime": "2026-02-25T20:03:49.739145455Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-25T19:54:45.327248024Z",
+      "modTime": "2026-02-25T20:03:49.739145455Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,27 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-25T19:54:45.327248024Z",
+      "modTime": "2026-02-25T20:03:49.739145455Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4",
+      "name": "scene01-animatic-crossfade.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4",
+      "size": 17843972,
+      "modTime": "2026-02-25T19:55:33.616039784Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-animatic/scene01-animatic-simple.mp4",
+      "name": "scene01-animatic-simple.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-simple.mp4",
+      "size": 17165722,
+      "modTime": "2026-02-25T19:55:01.704030498Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-all-panels/scene01-panel08-veo3fast.mp4",
