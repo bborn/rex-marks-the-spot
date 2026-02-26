@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-26T18:42:34.613964Z",
-  "totalAssets": 1226,
+  "generated": "2026-02-26T18:58:53.741616Z",
+  "totalAssets": 1231,
   "categories": {
     "Characters": 375,
-    "Other": 88,
+    "Other": 93,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-26T18:42:34.597708227Z",
+      "modTime": "2026-02-26T18:58:53.725316173Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-26T18:42:34.597708227Z",
+      "modTime": "2026-02-26T18:58:53.725316173Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-26T18:42:34.597708227Z",
+      "modTime": "2026-02-26T18:58:53.725316173Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,54 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-26T18:42:34.597708227Z",
+      "modTime": "2026-02-26T18:58:53.725316173Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic.mp4",
+      "name": "pvideo-std-1080p-5s-cinematic.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic.mp4",
+      "size": 8366668,
+      "modTime": "2026-02-26T18:50:14.111516639Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/pvideo-img2vid-test/pvideo-std-720p-5s-atmospheric.mp4",
+      "name": "pvideo-std-720p-5s-atmospheric.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-720p-5s-atmospheric.mp4",
+      "size": 3819528,
+      "modTime": "2026-02-26T18:49:44.126611551Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/pvideo-img2vid-test/pvideo-draft-720p-5s-atmospheric.mp4",
+      "name": "pvideo-draft-720p-5s-atmospheric.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-draft-720p-5s-atmospheric.mp4",
+      "size": 1236611,
+      "modTime": "2026-02-26T18:49:25.886669137Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/pvideo-test/pvideo_standard_20260226_184320.mp4",
+      "name": "pvideo_standard_20260226_184320.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_standard_20260226_184320.mp4",
+      "size": 4751286,
+      "modTime": "2026-02-26T18:43:36.983742508Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/pvideo-test/pvideo_draft_20260226_184320.mp4",
+      "name": "pvideo_draft_20260226_184320.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_draft_20260226_184320.mp4",
+      "size": 1138171,
+      "modTime": "2026-02-26T18:43:25.934775383Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "social-media/2025-02-25/animatic-thumbnail-overlay.png",
