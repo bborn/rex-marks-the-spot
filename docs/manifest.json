@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-25T20:03:49.755492Z",
-  "totalAssets": 1220,
+  "generated": "2026-02-26T00:39:46.175926Z",
+  "totalAssets": 1226,
   "categories": {
     "Characters": 375,
-    "Other": 82,
+    "Other": 88,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-25T20:03:49.739145455Z",
+      "modTime": "2026-02-26T00:39:46.160429234Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-25T20:03:49.739145455Z",
+      "modTime": "2026-02-26T00:39:46.160429234Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-25T20:03:49.739145455Z",
+      "modTime": "2026-02-26T00:39:46.160429234Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,16 +45,52 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-25T20:03:49.739145455Z",
+      "modTime": "2026-02-26T00:39:46.160429234Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "social-media/2025-02-25/animatic-thumbnail-overlay.png",
+      "name": "animatic-thumbnail-overlay.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/social-media/2025-02-25/animatic-thumbnail-overlay.png",
+      "size": 807427,
+      "modTime": "2026-02-25T23:05:40.806681297Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "social-media/2025-02-25/ai-tools-comparison.png",
+      "name": "ai-tools-comparison.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/social-media/2025-02-25/ai-tools-comparison.png",
+      "size": 1257411,
+      "modTime": "2026-02-25T23:05:29.794699331Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "social-media/2025-02-25/comparison-panel04.png",
+      "name": "comparison-panel04.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/social-media/2025-02-25/comparison-panel04.png",
+      "size": 1892638,
+      "modTime": "2026-02-25T23:05:20.975713704Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "social-media/2025-02-25/comparison-panel01.png",
+      "name": "comparison-panel01.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/social-media/2025-02-25/comparison-panel01.png",
+      "size": 2060305,
+      "modTime": "2026-02-25T23:05:20.323714763Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4",
       "name": "scene01-animatic-crossfade.mp4",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4",
-      "size": 17843972,
-      "modTime": "2026-02-25T19:55:33.616039784Z",
+      "size": 18787127,
+      "modTime": "2026-02-25T20:15:45.507590707Z",
       "category": "Other",
       "type": "video"
     },
@@ -62,8 +98,26 @@
       "path": "animation-tests/scene01-animatic/scene01-animatic-simple.mp4",
       "name": "scene01-animatic-simple.mp4",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-simple.mp4",
-      "size": 17165722,
-      "modTime": "2026-02-25T19:55:01.704030498Z",
+      "size": 18013481,
+      "modTime": "2026-02-25T20:15:34.842597789Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel08-veo3fast-16x9.mp4",
+      "name": "scene01-panel08-veo3fast-16x9.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast-16x9.mp4",
+      "size": 2107940,
+      "modTime": "2026-02-25T20:14:53.618624959Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel02-veo3fast-16x9.mp4",
+      "name": "scene01-panel02-veo3fast-16x9.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3fast-16x9.mp4",
+      "size": 1755243,
+      "modTime": "2026-02-25T20:13:06.809693633Z",
       "category": "Other",
       "type": "video"
     },
