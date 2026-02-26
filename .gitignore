@@ -45,3 +45,5 @@ output/**/*.jpg
 output/**/*.glb
 output/**/*.fbx
 output/**/*.obj
+output/**/*.mp4
+output/**/*.json
