@@ -29,9 +29,25 @@ rex-marks-the-spot/
     └── pipeline-guide.md # Pipeline usage guide
 ```
 
-## Production Pipeline
+## How We Work
 
-This project uses [TaskYou](https://taskyou.dev) for AI-orchestrated task management and automation.
+This isn't a typical animation project — there's no render farm full of humans. The entire production is orchestrated by AI agents managed through [TaskYou OS](https://github.com/taskyou/taskyou-os).
+
+A human director (Bruno) sets creative direction and makes final calls. A GM agent (Claude Code) breaks that vision into concrete tasks — storyboard panels, 3D models, video clips, code. Worker agents running on a Linux server pick up those tasks and execute them autonomously, producing real assets. TaskYou handles the queuing, agent sessions, and orchestration that keeps the whole thing moving.
+
+The result: a production pipeline where dozens of tasks can run in parallel, each agent working in its own isolated git worktree, pushing PRs when done.
+
+## Tools & Pipeline
+
+| Tool | Role |
+|------|------|
+| [TaskYou OS](https://github.com/taskyou/taskyou-os) | Task orchestration — queuing, agent sessions, worktrees |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | GM agent that coordinates work + worker agents that execute tasks |
+| Gemini | Image generation (storyboards, concept art, visual assets) |
+| [Meshy](https://www.meshy.ai) | 3D model generation and auto-rigging from 2D concept art |
+| Wan / Veo | Video generation (drafts via Wan on Replicate, finals via Veo) |
+| [Blender 4.x](https://www.blender.org) | 3D scene assembly, rendering, and animation |
+| [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/) | Asset storage (images, video, 3D models — kept out of git) |
 
 ## Characters
 
