@@ -1,14 +1,14 @@
 {
-  "generated": "2026-02-27T12:59:44.913937Z",
-  "totalAssets": 1255,
+  "generated": "2026-02-27T13:51:20.326386Z",
+  "totalAssets": 1276,
   "categories": {
-    "Characters": 375,
-    "Other": 117,
+    "Characters": 381,
+    "Other": 131,
+    "Animatics": 2,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
-    "Animatics": 1,
     "Creatures": 12,
     "Audio": 3
   },
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-27T12:59:44.899513584Z",
+      "modTime": "2026-02-27T13:51:20.309979833Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-27T12:59:44.899513584Z",
+      "modTime": "2026-02-27T13:51:20.309979833Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-27T12:59:44.899513584Z",
+      "modTime": "2026-02-27T13:51:20.309979833Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,198 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-27T12:59:44.899513584Z",
+      "modTime": "2026-02-27T13:51:20.309979833Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animatics/act3_animatic-thumb.jpg",
+      "name": "act3_animatic-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animatics/act3_animatic-thumb.jpg",
+      "size": 187275,
+      "modTime": "2026-02-27T13:37:02.761834079Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/mia_preview-thumb.jpg",
+      "name": "mia_preview-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/mia_preview-thumb.jpg",
+      "size": 23733,
+      "modTime": "2026-02-27T13:37:00.519840849Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/previews/leo_preview-thumb.jpg",
+      "name": "leo_preview-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/previews/leo_preview-thumb.jpg",
+      "size": 14828,
+      "modTime": "2026-02-27T13:36:59.783843072Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "youtube/trailer-preview-thumb.jpg",
+      "name": "trailer-preview-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-preview-thumb.jpg",
+      "size": 222528,
+      "modTime": "2026-02-27T13:36:59.053845276Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "youtube/trailer-with-audio-thumb.jpg",
+      "name": "trailer-with-audio-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-with-audio-thumb.jpg",
+      "size": 222528,
+      "modTime": "2026-02-27T13:36:58.644846511Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "youtube/trailer-v2-thumb.jpg",
+      "name": "trailer-v2-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-v2-thumb.jpg",
+      "size": 214778,
+      "modTime": "2026-02-27T13:36:58.284847598Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_walking_test-thumb.jpg",
+      "name": "mia_walking_test-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_test-thumb.jpg",
+      "size": 21586,
+      "modTime": "2026-02-27T13:36:57.716849314Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_walking_test_v2-thumb.jpg",
+      "name": "mia_walking_test_v2-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_test_v2-thumb.jpg",
+      "size": 41465,
+      "modTime": "2026-02-27T13:36:57.016851428Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_walking_cleaned-thumb.jpg",
+      "name": "mia_walking_cleaned-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_walking_cleaned-thumb.jpg",
+      "size": 23217,
+      "modTime": "2026-02-27T13:36:56.279853653Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "3d-models/characters/mia/animation-tests/mia_stomp-thumb.jpg",
+      "name": "mia_stomp-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/3d-models/characters/mia/animation-tests/mia_stomp-thumb.jpg",
+      "size": 25119,
+      "modTime": "2026-02-27T13:36:55.718855347Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "blog/higgsfield-test-feb-19/mia_higgsfield_render-thumb.jpg",
+      "name": "mia_higgsfield_render-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/blog/higgsfield-test-feb-19/mia_higgsfield_render-thumb.jpg",
+      "size": 169634,
+      "modTime": "2026-02-27T13:36:54.937857705Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/character-tests/storyboard_capybara_tv2v_storyboard_capybara_tv2v_00001-thumb.jpg",
+      "name": "storyboard_capybara_tv2v_storyboard_capybara_tv2v_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/storyboard_capybara_tv2v_storyboard_capybara_tv2v_00001-thumb.jpg",
+      "size": 58176,
+      "modTime": "2026-02-27T13:36:53.180863010Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v3-ultrastable-thumb.jpg",
+      "name": "scene01-panel01-veo3-v3-ultrastable-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v3-ultrastable-thumb.jpg",
+      "size": 124159,
+      "modTime": "2026-02-27T13:36:52.639864644Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v4-anchored-thumb.jpg",
+      "name": "scene01-panel01-veo3-v4-anchored-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v4-anchored-thumb.jpg",
+      "size": 120854,
+      "modTime": "2026-02-27T13:36:51.839867059Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel02-veo3fast-16x9-thumb.jpg",
+      "name": "scene01-panel02-veo3fast-16x9-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3fast-16x9-thumb.jpg",
+      "size": 118115,
+      "modTime": "2026-02-27T13:36:51.214868946Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel08-veo3fast-16x9-thumb.jpg",
+      "name": "scene01-panel08-veo3fast-16x9-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast-16x9-thumb.jpg",
+      "size": 97898,
+      "modTime": "2026-02-27T13:36:50.609870772Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/pvideo-test/pvideo_draft_20260226_184320-thumb.jpg",
+      "name": "pvideo_draft_20260226_184320-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_draft_20260226_184320-thumb.jpg",
+      "size": 58813,
+      "modTime": "2026-02-27T13:36:49.808873190Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/pvideo-test/pvideo_standard_20260226_184320-thumb.jpg",
+      "name": "pvideo_standard_20260226_184320-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_standard_20260226_184320-thumb.jpg",
+      "size": 193755,
+      "modTime": "2026-02-27T13:36:48.976875702Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/pvideo-img2vid-test/pvideo-draft-720p-5s-atmospheric-thumb.jpg",
+      "name": "pvideo-draft-720p-5s-atmospheric-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-draft-720p-5s-atmospheric-thumb.jpg",
+      "size": 46383,
+      "modTime": "2026-02-27T13:36:48.620876777Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/pvideo-img2vid-test/pvideo-std-720p-5s-atmospheric-thumb.jpg",
+      "name": "pvideo-std-720p-5s-atmospheric-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-720p-5s-atmospheric-thumb.jpg",
+      "size": 141511,
+      "modTime": "2026-02-27T13:36:47.863879063Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic-thumb.jpg",
+      "name": "pvideo-std-1080p-5s-cinematic-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic-thumb.jpg",
+      "size": 255225,
+      "modTime": "2026-02-27T13:36:47.502880152Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "animation-tests/scene01-animatic/scene01-animatic-simple-thumb.jpg",
