@@ -1,9 +1,9 @@
 {
-  "generated": "2026-02-27T12:20:02.024698Z",
-  "totalAssets": 1231,
+  "generated": "2026-02-27T12:59:44.913937Z",
+  "totalAssets": 1255,
   "categories": {
     "Characters": 375,
-    "Other": 93,
+    "Other": 117,
     "Storyboards": 666,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-02-27T12:20:02.008123463Z",
+      "modTime": "2026-02-27T12:59:44.899513584Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-02-27T12:20:02.008123463Z",
+      "modTime": "2026-02-27T12:59:44.899513584Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-02-27T12:20:02.008123463Z",
+      "modTime": "2026-02-27T12:59:44.899513584Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,225 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-02-27T12:20:02.008123463Z",
+      "modTime": "2026-02-27T12:59:44.899513584Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-animatic/scene01-animatic-simple-thumb.jpg",
+      "name": "scene01-animatic-simple-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-simple-thumb.jpg",
+      "size": 117162,
+      "modTime": "2026-02-27T12:35:13.657399583Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-animatic/scene01-animatic-crossfade-thumb.jpg",
+      "name": "scene01-animatic-crossfade-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-crossfade-thumb.jpg",
+      "size": 143688,
+      "modTime": "2026-02-27T12:35:13.327400616Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel09-veo2-thumb.jpg",
+      "name": "scene01-panel09-veo2-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel09-veo2-thumb.jpg",
+      "size": 89879,
+      "modTime": "2026-02-27T12:35:12.948401802Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel08-veo3fast-thumb.jpg",
+      "name": "scene01-panel08-veo3fast-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast-thumb.jpg",
+      "size": 73327,
+      "modTime": "2026-02-27T12:35:11.999404772Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel07-veo3fast-thumb.jpg",
+      "name": "scene01-panel07-veo3fast-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel07-veo3fast-thumb.jpg",
+      "size": 139948,
+      "modTime": "2026-02-27T12:35:11.369406744Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel06-veo2-thumb.jpg",
+      "name": "scene01-panel06-veo2-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel06-veo2-thumb.jpg",
+      "size": 93186,
+      "modTime": "2026-02-27T12:35:10.708408812Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel05-veo3-thumb.jpg",
+      "name": "scene01-panel05-veo3-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel05-veo3-thumb.jpg",
+      "size": 97740,
+      "modTime": "2026-02-27T12:35:09.781411714Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel04-veo3-thumb.jpg",
+      "name": "scene01-panel04-veo3-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel04-veo3-thumb.jpg",
+      "size": 107593,
+      "modTime": "2026-02-27T12:35:09.114413802Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel03-veo3-thumb.jpg",
+      "name": "scene01-panel03-veo3-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel03-veo3-thumb.jpg",
+      "size": 76691,
+      "modTime": "2026-02-27T12:35:08.393416059Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel02-veo3-thumb.jpg",
+      "name": "scene01-panel02-veo3-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3-thumb.jpg",
+      "size": 93203,
+      "modTime": "2026-02-27T12:35:07.608418516Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-all-panels/scene01-panel01-veo3-v1-thumb.jpg",
+      "name": "scene01-panel01-veo3-v1-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel01-veo3-v1-thumb.jpg",
+      "size": 121253,
+      "modTime": "2026-02-27T12:35:06.947420585Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo31-v1-thumb.jpg",
+      "name": "scene01-panel01-veo31-v1-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo31-v1-thumb.jpg",
+      "size": 125573,
+      "modTime": "2026-02-27T12:35:06.334422504Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v2-stable-thumb.jpg",
+      "name": "scene01-panel01-veo3-v2-stable-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v2-stable-thumb.jpg",
+      "size": 125587,
+      "modTime": "2026-02-27T12:35:05.718424433Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v1-thumb.jpg",
+      "name": "scene01-panel01-veo3-v1-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v1-thumb.jpg",
+      "size": 121253,
+      "modTime": "2026-02-27T12:35:05.091426396Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v2-thumb.jpg",
+      "name": "scene01-panel01-veo2-v2-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v2-thumb.jpg",
+      "size": 123560,
+      "modTime": "2026-02-27T12:35:04.496428259Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v1-thumb.jpg",
+      "name": "scene01-panel01-veo2-v1-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v1-thumb.jpg",
+      "size": 111453,
+      "modTime": "2026-02-27T12:35:03.706430732Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/character-tests/gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001-thumb.jpg",
+      "name": "gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/gabe_nina_capybara_t2v_gabe_nina_capybara_t2v_00001-thumb.jpg",
+      "size": 69438,
+      "modTime": "2026-02-27T12:35:02.908433231Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/character-tests/gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001-thumb.jpg",
+      "name": "gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/gabe_nina_wan_t2v_gabe_nina_wan_t2v_00001-thumb.jpg",
+      "size": 32791,
+      "modTime": "2026-02-27T12:35:02.049435920Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_capybara_tv2v_mia_capybara_tv2v_00001-thumb.jpg",
+      "name": "mia_capybara_tv2v_mia_capybara_tv2v_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_tv2v_mia_capybara_tv2v_00001-thumb.jpg",
+      "size": 88718,
+      "modTime": "2026-02-27T12:35:01.462437758Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_capybara_t2v_mia_capybara_t2v_00001-thumb.jpg",
+      "name": "mia_capybara_t2v_mia_capybara_t2v_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_capybara_t2v_mia_capybara_t2v_00001-thumb.jpg",
+      "size": 78548,
+      "modTime": "2026-02-27T12:35:00.697440154Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/character-tests/mia_wan_t2v_mia_wan_t2v_00001-thumb.jpg",
+      "name": "mia_wan_t2v_mia_wan_t2v_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/character-tests/mia_wan_t2v_mia_wan_t2v_00001-thumb.jpg",
+      "size": 33619,
+      "modTime": "2026-02-27T12:34:59.814442919Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/capybara_tv2v_test_00001-thumb.jpg",
+      "name": "capybara_tv2v_test_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/capybara_tv2v_test_00001-thumb.jpg",
+      "size": 58786,
+      "modTime": "2026-02-27T12:34:59.276444604Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/capybara_t2v_test_00001-thumb.jpg",
+      "name": "capybara_t2v_test_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/capybara_t2v_test_00001-thumb.jpg",
+      "size": 92105,
+      "modTime": "2026-02-27T12:34:58.336447548Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "comfyui-tests/wan21_t2v_test_00001-thumb.jpg",
+      "name": "wan21_t2v_test_00001-thumb.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/comfyui-tests/wan21_t2v_test_00001-thumb.jpg",
+      "size": 44198,
+      "modTime": "2026-02-27T12:34:57.575449931Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic.mp4",
