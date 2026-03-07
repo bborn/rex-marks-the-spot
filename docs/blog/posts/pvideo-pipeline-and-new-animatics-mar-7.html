@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>80x Cheaper Video: P-Video Pipeline and New Animatics - Rex Marks The Spot</title>
+    <meta name="description" content="We built a model-agnostic video generation layer, discovered P-Video as an 80x cheaper alternative to Veo, and assembled full animatics for Scene 1 and Scene 3.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .video-grid video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .video-grid .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        .video-full {
+            margin: 2rem 0;
+        }
+        .video-full video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+        .video-full .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+        .cost-comparison {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .cost-comparison table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cost-comparison th, .cost-comparison td {
+            text-align: left;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #333;
+        }
+        .cost-comparison th {
+            color: #888;
+            font-weight: 500;
+        }
+        .cost-comparison .highlight {
+            color: #4ade80;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>80x Cheaper Video: P-Video Pipeline and New Animatics</h1>
+                    <div class="post-author">
+                        <time datetime="2026-03-07">March 7, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>Remember the <a href="scene1-animation-pipeline-feb-25.html">Veo cost scare</a>? Fifty dollars in one afternoon animating Scene 1. That was ten days ago. Since then we've built a system that lets us generate draft video clips for roughly half a cent per second instead of forty cents. That's not a typo. 80x cheaper.</p>
+
+                        <p>Here's the Scene 1 animatic, regenerated entirely with P-Video:</p>
+
+                        <div class="video-full">
+                            <video controls preload="metadata" style="width: 100%; max-width: 800px;">
+                                <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-pvideo-animatic-crossfade.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-caption">Scene 1 P-Video animatic &mdash; 9 clips, crossfade transitions, ~45 seconds</div>
+                        </div>
+
+                        <p>Is it as good as the Veo version? No. The quality is noticeably lower&mdash;softer details, less precise motion. But for drafting, blocking out timing, and iterating on which shots work? It's more than good enough. And I can regenerate the whole thing without checking my bank account.</p>
+
+                        <h2>The Abstraction Layer</h2>
+
+                        <p>The real work this week wasn't just finding a cheaper model. It was building a system so we can swap between models without rewriting our generation scripts.</p>
+
+                        <p>We built a model-agnostic video generation abstraction in <code>scripts/video/</code>. It has a base <code>VideoGenerator</code> class with a unified interface, and two implementations: <code>VeoGenerator</code> for Google Veo and <code>PVideoGenerator</code> for Replicate's P-Video (<code>prunaai/p-video</code>). Same function call, same parameters, different backend.</p>
+
+                        <p>The idea is simple: use P-Video for drafts and iteration, then swap to Veo for final renders when quality matters. One line of code changes which model you're using:</p>
+
+                        <pre><code>from video import create_generator
+
+# Draft mode - cheap and fast
+gen = create_generator("p-video")
+
+# Final render - expensive but beautiful
+gen = create_generator("veo-3.1")
+
+result = gen.generate(
+    prompt="Family at dining table, warm evening light",
+    output_path="scene01-panel02.mp4",
+    image_path="storyboard-panel-02.png"
+)</code></pre>
+
+                        <p>Both generators return the same <code>VideoResult</code> with file path, duration, estimated cost, and generation time. So all our stitching and animatic assembly scripts work identically regardless of which model produced the clips.</p>
+
+                        <h2>The Cost Difference</h2>
+
+                        <p>This is what made my week:</p>
+
+                        <div class="cost-comparison">
+                            <table>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Cost per second</th>
+                                    <th>45-second animatic</th>
+                                </tr>
+                                <tr>
+                                    <td>Google Veo</td>
+                                    <td>$0.40/sec</td>
+                                    <td>~$18.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="highlight">P-Video</td>
+                                    <td class="highlight">$0.005/sec</td>
+                                    <td class="highlight">~$0.23</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <p>After the $50 Veo afternoon, I'd been rationing video generation like it was wartime. Every clip felt expensive because it was. P-Video changed that completely. I can generate a full scene animatic, watch it, hate it, throw it away, and regenerate with different prompts&mdash;all for less than a dollar. That changes how you work. Instead of agonizing over prompts before hitting generate, you just try things.</p>
+
+                        <h2>Scene 1: The P-Video Rebuild</h2>
+
+                        <p>To test the new pipeline, we regenerated all nine Scene 1 clips with P-Video at standard quality, then stitched them into two animatic versions&mdash;simple cuts and crossfade transitions.</p>
+
+                        <p>Nine clips. About 45 seconds of footage. The crossfade version above is the better one. The transitions smooth over the inevitable style differences between clips, which is even more helpful at P-Video's lower quality level than it was with Veo.</p>
+
+                        <p>Total cost for the full Scene 1 P-Video animatic: roughly a quarter. Compare that to the $50 Veo session that produced our first version.</p>
+
+                        <h2>Scene 3: New Territory</h2>
+
+                        <p>With cheap generation available, we pushed into Scene 3 for the first time. This is the scene where things start going wrong&mdash;the family's evening takes an unexpected turn.</p>
+
+                        <p>We started with four draft-quality clips to test compositions and camera angles. Once those looked right, we upgraded to standard quality and assembled them into an animatic with crossfade transitions:</p>
+
+                        <div class="video-full">
+                            <video controls preload="metadata" style="width: 100%; max-width: 800px;">
+                                <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-crossfade-fixed.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-caption">Scene 3 animatic &mdash; 4 standard-quality P-Video clips with crossfade transitions</div>
+                        </div>
+
+                        <p>Scene 3 is shorter than Scene 1&mdash;four clips instead of nine&mdash;but it's the first time we've animated anything beyond the opening scene. The movie is growing shot by shot.</p>
+
+                        <h2>Draft, Then Polish</h2>
+
+                        <p>The workflow that's emerging is: draft everything cheap, review the animatic as a whole, figure out which shots actually work for the story, then selectively upgrade the keepers to high quality with Veo.</p>
+
+                        <p>This is closer to how real animation studios work. You don't render final quality on your first pass. You block things out rough, get the timing and storytelling right, then polish. We just happen to be doing it with two different AI models instead of pencil sketches and final renders.</p>
+
+                        <p>The abstraction layer makes this painless. Same scripts, same prompts, same assembly pipeline. Just change the model name and the quality goes up (along with the cost).</p>
+
+                        <h2>What's Next</h2>
+
+                        <ul>
+                            <li><strong>More scenes.</strong> With P-Video costs this low, there's no reason not to draft animatics for every scene we have storyboards for.</li>
+                            <li><strong>Audio.</strong> These animatics are still silent. Adding dialogue and ambient sound will make them dramatically more useful for editorial decisions.</li>
+                            <li><strong>Selective Veo upgrades.</strong> Pick the shots that matter most and regenerate just those at full quality. The budget goes a lot further when you're only paying premium prices for hero shots.</li>
+                        </ul>
+
+                        <p>Ten days ago, generating video felt like burning money. Now it feels like sketching. That's the difference that matters.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="scene1-animation-pipeline-feb-25.html">&larr; Previous: Scene 1 Moves</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="Instagram (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
