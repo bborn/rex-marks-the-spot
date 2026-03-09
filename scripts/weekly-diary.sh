@@ -44,7 +44,8 @@ echo "Generating weekly diary for $WEEK_LABEL..."
 # --- 1. Git commits from the last 7 days ---
 echo "  Collecting git commits..."
 GIT_LOG="$(cd "$PROJECT_ROOT" && git log --since="$START_DATE" --until="$END_DATE 23:59:59" --oneline --no-merges 2>/dev/null || echo "(no commits found)")"
-COMMIT_COUNT="$(echo "$GIT_LOG" | grep -c '.' || echo 0)"
+COMMIT_COUNT="$(echo "$GIT_LOG" | grep -c '.' || true)"
+COMMIT_COUNT="${COMMIT_COUNT:-0}"
 
 # --- 2. TaskYou completed tasks ---
 echo "  Collecting completed tasks..."
@@ -54,7 +55,7 @@ TASK_LIST="$(ty list 2>/dev/null || echo "(TaskYou unavailable)")"
 echo "  Checking R2 for new assets..."
 mkdir -p "$R2_MANIFEST_DIR"
 CURRENT_MANIFEST="$R2_MANIFEST_DIR/manifest-$END_DATE.txt"
-PREVIOUS_MANIFEST="$(ls -t "$R2_MANIFEST_DIR"/manifest-*.txt 2>/dev/null | head -1)"
+PREVIOUS_MANIFEST="$(ls -t "$R2_MANIFEST_DIR"/manifest-*.txt 2>/dev/null | head -1 || true)"
 
 # Get current R2 listing (just filenames, skip huge listing details)
 if rclone ls r2:rex-assets/ --max-depth 2 2>/dev/null | awk '{print $2}' | sort > "$CURRENT_MANIFEST.tmp"; then
@@ -67,7 +68,8 @@ NEW_ASSETS=""
 if [ -n "$PREVIOUS_MANIFEST" ] && [ "$PREVIOUS_MANIFEST" != "$CURRENT_MANIFEST" ] && [ -f "$PREVIOUS_MANIFEST" ]; then
     NEW_ASSETS="$(comm -13 "$PREVIOUS_MANIFEST" "$CURRENT_MANIFEST" 2>/dev/null | head -50 || echo "")"
 fi
-NEW_ASSET_COUNT="$(echo "$NEW_ASSETS" | grep -c '.' || echo 0)"
+NEW_ASSET_COUNT="$(echo "$NEW_ASSETS" | grep -c '.' || true)"
+NEW_ASSET_COUNT="${NEW_ASSET_COUNT:-0}"
 
 # --- 4. Call Gemini to write the blog post ---
 echo "  Generating blog post with Gemini..."
@@ -128,13 +130,17 @@ if [ -z "$BLOG_CONTENT" ]; then
 fi
 
 # Split tweet from blog content
-TWEET="$(echo "$BLOG_CONTENT" | grep '^TWEET: ' | sed 's/^TWEET: //')"
-POST_BODY="$(echo "$BLOG_CONTENT" | sed '/^TWEET: /d')"
+# Strip markdown code fences if Gemini wraps the response
+BLOG_CONTENT="$(echo "$BLOG_CONTENT" | sed '/^```html$/d; /^```$/d')"
+
+TWEET="$(echo "$BLOG_CONTENT" | grep -i '^\s*TWEET: ' | sed 's/^[[:space:]]*TWEET: //i' | tail -1 || true)"
+POST_BODY="$(echo "$BLOG_CONTENT" | sed '/^[[:space:]]*TWEET: /Id')"
 
 # Generate a title from the first line or heading
 POST_TITLE="Weekly Diary: $WEEK_LABEL"
 
 # --- 5. Write the HTML file ---
+mkdir -p "$BLOG_DIR"
 OUTPUT_FILE="$BLOG_DIR/weekly-diary-${END_DATE}.html"
 
 cat > "$OUTPUT_FILE" <<HTML_EOF
