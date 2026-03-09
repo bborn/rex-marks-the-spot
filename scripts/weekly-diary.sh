@@ -238,6 +238,61 @@ cat > "$OUTPUT_FILE" <<HTML_EOF
 </html>
 HTML_EOF
 
+# --- 6. Update blog index (docs/blog/index.html) ---
+BLOG_INDEX="$PROJECT_ROOT/docs/blog/index.html"
+POST_FILENAME="weekly-diary-${END_DATE}.html"
+POST_URL="posts/${POST_FILENAME}"
+
+# Extract the first <p> from the post body as the excerpt
+POST_EXCERPT="$(echo "$POST_BODY" | sed -n 's/.*<p>\(.*\)<\/p>.*/\1/p' | head -1)"
+# Truncate to ~200 chars if needed
+if [ "${#POST_EXCERPT}" -gt 200 ]; then
+    POST_EXCERPT="${POST_EXCERPT:0:197}..."
+fi
+
+if [ -f "$BLOG_INDEX" ]; then
+    # Check if this post is already in the index
+    if grep -q "$POST_FILENAME" "$BLOG_INDEX"; then
+        echo "Blog index already contains $POST_FILENAME, skipping update."
+    else
+        # Build the new entry HTML block
+        NEW_ENTRY_FILE="$(mktemp)"
+        cat > "$NEW_ENTRY_FILE" <<ENTRY_EOF
+                    <article class="post-list-item">
+                        <div class="post-meta">
+                            <span class="post-category">Production</span>
+                            <time datetime="${END_DATE}">${END_DISPLAY}</time>
+                        </div>
+                        <h2><a href="${POST_URL}">${POST_TITLE}</a></h2>
+                        <p class="post-excerpt">${POST_EXCERPT}</p>
+                        <a href="${POST_URL}" class="read-more">Read More &rarr;</a>
+                    </article>
+ENTRY_EOF
+
+        # Insert after <div class="posts-list"> using python for robustness
+        python3 -c "
+import sys
+marker = '<div class=\"posts-list\">'
+with open(sys.argv[1]) as f:
+    index_html = f.read()
+with open(sys.argv[2]) as f:
+    new_entry = f.read()
+pos = index_html.find(marker)
+if pos == -1:
+    print('ERROR: Could not find posts-list marker in blog index', file=sys.stderr)
+    sys.exit(1)
+insert_pos = pos + len(marker)
+updated = index_html[:insert_pos] + '\n' + new_entry + index_html[insert_pos:]
+with open(sys.argv[1], 'w') as f:
+    f.write(updated)
+" "$BLOG_INDEX" "$NEW_ENTRY_FILE"
+        rm -f "$NEW_ENTRY_FILE"
+        echo "Blog index updated with new entry."
+    fi
+else
+    echo "WARNING: Blog index not found at $BLOG_INDEX" >&2
+fi
+
 echo ""
 echo "Blog post written to: $OUTPUT_FILE"
 echo ""
