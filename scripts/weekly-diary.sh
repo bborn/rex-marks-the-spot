@@ -71,6 +71,14 @@ fi
 NEW_ASSET_COUNT="$(echo "$NEW_ASSETS" | grep -c '.' || true)"
 NEW_ASSET_COUNT="${NEW_ASSET_COUNT:-0}"
 
+# --- 3b. Filter media assets (.mp4 and .png) for embedding ---
+MEDIA_ASSETS=""
+if [ -n "$NEW_ASSETS" ] && [ "$NEW_ASSETS" != "(rclone unavailable)" ]; then
+    MEDIA_ASSETS="$(echo "$NEW_ASSETS" | grep -iE '\.(mp4|png|jpg|jpeg|webm)$' | head -30 || true)"
+fi
+MEDIA_ASSET_COUNT="$(echo "$MEDIA_ASSETS" | grep -c '.' || true)"
+MEDIA_ASSET_COUNT="${MEDIA_ASSET_COUNT:-0}"
+
 # --- 4. Call Gemini to write the blog post ---
 echo "  Generating blog post with Gemini..."
 
@@ -84,6 +92,26 @@ PROMPT="$(cat <<PROMPT_EOF
 You are writing a weekly production diary for "Rex Marks the Spot" (working title: "Fairy Dinosaur Date Night"), an AI-generated animated movie. The blog is conversational, honest, and technical — aimed at people interested in AI filmmaking.
 
 Write a blog post summarizing this week's progress ($WEEK_LABEL). Keep it short (300-500 words). Be conversational and specific — mention actual tools, actual problems, actual wins. Don't be generic or hype-y.
+
+IMPORTANT — Embedding media:
+You MUST embed relevant videos and images inline with the text to make the post visually engaging. Use these placeholder formats which will be replaced with proper HTML after generation:
+
+  For video: VIDEO:path/to/file.mp4
+  For video with caption: VIDEO:path/to/file.mp4|Caption text here
+  For images: IMAGE:path/to/file.png
+  For images with caption: IMAGE:path/to/file.png|Caption text here
+
+Place media placeholders on their own line, right after the paragraph that discusses the relevant content. Do NOT wrap them in any HTML tags.
+
+Available media assets this week ($MEDIA_ASSET_COUNT files):
+$MEDIA_ASSETS
+
+If no new media assets are available, you may reference key assets from previous weeks such as:
+- animation-tests/scene01-pvideo-animatic/scene01-pvideo-animatic-crossfade.mp4
+- animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4
+- animation-tests/scene01-all-panels/scene01-panel01-veo3-v1.mp4
+
+Pick the most relevant 2-4 media files to embed. Don't embed everything — choose ones that illustrate the key points of the post.
 
 Also output a Twitter summary (under 280 chars) on the very last line, prefixed with "TWEET: ".
 
@@ -136,10 +164,25 @@ BLOG_CONTENT="$(echo "$BLOG_CONTENT" | sed '/^```html$/d; /^```$/d')"
 TWEET="$(echo "$BLOG_CONTENT" | grep -i '^\s*TWEET: ' | sed 's/^[[:space:]]*TWEET: //i' | tail -1 || true)"
 POST_BODY="$(echo "$BLOG_CONTENT" | sed '/^[[:space:]]*TWEET: /Id')"
 
+# --- 5b. Replace media placeholders with HTML5 tags ---
+R2_URL_PREFIX="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev"
+
+# Replace VIDEO:path|caption with full HTML5 video embed
+POST_BODY="$(echo "$POST_BODY" | sed -E "s|^VIDEO:([^|]+)\|(.+)$|<div class=\"video-full\"><video controls muted preload=\"metadata\"><source src=\"${R2_URL_PREFIX}/\1\" type=\"video/mp4\"></video><div class=\"video-caption\">\2</div></div>|")"
+
+# Replace VIDEO:path (no caption) with video embed
+POST_BODY="$(echo "$POST_BODY" | sed -E "s|^VIDEO:(.+)$|<div class=\"video-full\"><video controls muted preload=\"metadata\"><source src=\"${R2_URL_PREFIX}/\1\" type=\"video/mp4\"></video></div>|")"
+
+# Replace IMAGE:path|caption with img embed
+POST_BODY="$(echo "$POST_BODY" | sed -E "s|^IMAGE:([^|]+)\|(.+)$|<div class=\"video-full\"><img src=\"${R2_URL_PREFIX}/\1\" alt=\"\2\" style=\"width: 100%; max-width: 800px; border-radius: 8px;\"><div class=\"video-caption\">\2</div></div>|")"
+
+# Replace IMAGE:path (no caption) with img embed
+POST_BODY="$(echo "$POST_BODY" | sed -E "s|^IMAGE:(.+)$|<div class=\"video-full\"><img src=\"${R2_URL_PREFIX}/\1\" alt=\"\" style=\"width: 100%; max-width: 800px; border-radius: 8px;\"></div>|")"
+
 # Generate a title from the first line or heading
 POST_TITLE="Weekly Diary: $WEEK_LABEL"
 
-# --- 5. Write the HTML file ---
+# --- 6. Write the HTML file ---
 mkdir -p "$BLOG_DIR"
 OUTPUT_FILE="$BLOG_DIR/weekly-diary-${END_DATE}.html"
 
@@ -154,6 +197,38 @@ cat > "$OUTPUT_FILE" <<HTML_EOF
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .video-grid video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .video-grid .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        .video-full {
+            margin: 2rem 0;
+        }
+        .video-full video,
+        .video-full img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+        .video-full .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">

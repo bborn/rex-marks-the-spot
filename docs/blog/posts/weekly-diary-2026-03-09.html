@@ -8,6 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .video-grid video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .video-grid .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        .video-full {
+            margin: 2rem 0;
+        }
+        .video-full video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+        .video-full .video-caption {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -50,7 +81,35 @@
 
 <h2>P-Video Pipeline & Animatics</h2>
 <p>The big win this week was pushing forward significantly on our "P-Video" pipeline. This is our internal framework for orchestrating the various AI models needed to generate coherent video sequences from our narrative beats. It's less about the individual models (though we're constantly iterating on those) and more about the glue – how we feed prompts, manage consistency between frames, handle interpolation, and ensure character/environment fidelity across shots.</p>
-<p>The immediate payoff of this work? We started generating our first pass of new animatics! This isn't final quality video by any stretch. Think of it as a moving storyboard, but powered by AI. We're using it to test pacing, camera angles, and the overall flow of key scenes. It's fascinating to see how even rough AI-generated frames help us identify where our prompts are weakest, where character consistency breaks down, or where a narrative beat isn't landing visually. For instance, we quickly realized some complex actions were collapsing into visual noise, indicating we need to break them down into simpler, sequential prompts or consider more targeted inpainting steps.</p>
+<p>The immediate payoff of this work? We started generating our first pass of new animatics! This isn't final quality video by any stretch. Think of it as a moving storyboard, but powered by AI. We're using it to test pacing, camera angles, and the overall flow of key scenes.</p>
+
+<p>Here's a single panel clip to show what a P-Video generation looks like before stitching:</p>
+
+<div class="video-full">
+    <video controls muted preload="metadata">
+        <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel01-pvideo-std.mp4" type="video/mp4">
+    </video>
+    <div class="video-caption">Scene 1, Panel 01 &mdash; individual P-Video clip</div>
+</div>
+
+<p>And here are the full animatics stitched together with crossfade transitions for Scene 1 and Scene 3:</p>
+
+<div class="video-grid">
+    <div>
+        <video controls muted preload="metadata">
+            <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-pvideo-animatic-crossfade.mp4" type="video/mp4">
+        </video>
+        <div class="video-caption">Scene 1 P-Video animatic (crossfade)</div>
+    </div>
+    <div>
+        <video controls muted preload="metadata">
+            <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-crossfade-fixed.mp4" type="video/mp4">
+        </video>
+        <div class="video-caption">Scene 3 P-Video animatic (crossfade)</div>
+    </div>
+</div>
+
+<p>It's fascinating to see how even rough AI-generated frames help us identify where our prompts are weakest, where character consistency breaks down, or where a narrative beat isn't landing visually. For instance, we quickly realized some complex actions were collapsing into visual noise, indicating we need to break them down into simpler, sequential prompts or consider more targeted inpainting steps.</p>
 
 <h2>Automating the Meta-Work</h2>
 <p>On a more meta-level, we also dedicated some time to streamlining our own production reporting. We now have a shiny new script, <code>weekly-diary.sh</code>, that automates the generation of these very blog posts and their accompanying social media snippets. It pulls directly from our Git commits, saving us precious time. Of course, it wasn't a flawless launch – we spent a bit of time debugging some <code>pipefail</code> errors and finessing the tweet extraction logic. It's a small win, but every little bit of automation helps us focus more on the creative and technical challenges of the film itself.</p>
