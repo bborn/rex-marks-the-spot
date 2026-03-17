@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storyboard Deep Dive: 12 Hours Chasing Consistency - Rex Marks The Spot</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .comparison { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .comparison img { flex: 1; min-width: 280px; max-width: 49%; border-radius: 8px; }
+        .post-body img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+        .caption { color: #888; font-size: 0.85em; text-align: center; margin-top: -8px; margin-bottom: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 20px 0; }
+        .grid-3 img { width: 100%; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>Storyboard Deep Dive: 12 Hours Chasing Consistency</h1>
+                    <div class="post-author">
+                        <time datetime="2026-03-16">March 16, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+
+<p>Today I spent an entire day trying to generate usable storyboard panels for Scene 1 of our movie. One scene. Nine panels. Eighteen images (start and end frames for each shot). How hard could it be?</p>
+
+<p>Pretty hard, it turns out. Here's everything I tried, everything that went wrong, and what I actually learned.</p>
+
+<h2>The Problem</h2>
+
+<p>Our existing storyboards were garbage. Characters drifted between panels &mdash; different faces, different outfits, sometimes completely different people. The backgrounds changed randomly. They were rough sketches generated months ago with basic text-to-image prompts and zero character references. You couldn't actually use them for anything.</p>
+
+<p>What I need are start and end frames for each shot that I can feed directly into a video generation model. That means: accurate characters based on our approved designs, consistent environments, Pixar-quality rendering. No drift.</p>
+
+<h2>Attempt 1: Text-to-Image with Character References (Gemini 2.5 Flash)</h2>
+
+<p>The first thing we tried was image-to-image generation with Gemini, passing our approved character turnaround sheets as reference images alongside text prompts. The idea: show the model what each character looks like, tell it what scene to generate.</p>
+
+<p>An agent wrote a script, ran it, and produced 18 panels. They were... not great. Square aspect ratio (not 16:9). Characters with wrong outfits. Jenny was blonde (she's not &mdash; more on that later). Some panels were just empty rooms with no characters at all.</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v2/scene-01/scene-01-panel-05-start.png" alt="v2 Jenny - wrong character">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v2/scene-01/scene-01-panel-09-start.png" alt="v2 Gabe - wrong outfit">
+</div>
+<p class="caption">Left: Jenny was supposed to be here but this is... not Jenny. Right: Gabe in a flannel shirt instead of a tuxedo.</p>
+
+<h2>The Jenny Incident</h2>
+
+<p>This one really annoyed me. Our screenplay described Jenny as "about 15, blonde, with her hair back in a ponytail." But at some point we changed the character design. The approved turnaround shows Jenny with dark brown curly hair and brown skin. Nobody updated the screenplay or the storyboard prompt files.</p>
+
+<p>So multiple rounds of generation kept producing a blonde Jenny because the agents were reading the text descriptions instead of looking at the actual approved turnaround. I had to go through and fix every reference across a dozen files. Lesson learned: <strong>the turnaround image is the only source of truth for character appearance. Always.</strong></p>
+
+<h2>Attempt 2: Scene-Specific Turnarounds + Better Model (Gemini 3 Pro)</h2>
+
+<p>The next insight was that our characters' turnarounds showed them in casual clothes, but in Scene 1 the parents are dressed up for a gala. So Gemini kept generating Gabe in a flannel shirt (matching his turnaround) instead of a tuxedo (matching the screenplay).</p>
+
+<p>Solution: generate scene-specific turnarounds first. Take each character's approved turnaround, use img2img to generate a new version wearing their Scene 1 outfit. Lock those in, then use them for all panel generation.</p>
+
+<div class="grid-3">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v2/scene-01-refs/gabe_scene01_turnaround.png" alt="Gabe in tuxedo">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v2/scene-01-refs/nina_scene01_turnaround.png" alt="Nina in black dress">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v2/scene-01-refs/leo_scene01_turnaround.png" alt="Leo in dino pajamas">
+</div>
+<p class="caption">Scene-specific turnarounds: Gabe in tuxedo, Nina in black dress, Leo in dino pajamas. Generated from the approved turnarounds.</p>
+
+<p>This actually worked really well. We also switched from Gemini 2.5 Flash to Gemini 3 Pro Image Preview, which outputs native 16:9 and significantly better quality. The close-ups were beautiful:</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-panel-08-start.png" alt="Mia close-up start">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-panel-08-end.png" alt="Mia close-up end">
+</div>
+<p class="caption">Mia's close-up. Start frame: worried expression. End frame: pleading, with lightning. Same character, same angle. This works.</p>
+
+<h2>The Consistency Problem</h2>
+
+<p>But while individual panels looked good, the scene as a whole didn't hold together. Each panel was generated independently, so the living room looked different in every shot. Furniture moved. Walls changed color. Characters that should be visible in the background disappeared. One panel showed the kids on a completely different couch.</p>
+
+<p>I tried everything to fix this:</p>
+
+<ul>
+    <li><strong>Environment locking:</strong> Generate a hero establishing shot first, use it as reference for every subsequent panel. Helped, but the model still drifted.</li>
+    <li><strong>"Reproduce with one change" for end frames:</strong> Instead of generating end frames from scratch, pass the start frame and say "make this exact image but change one thing." This was the single biggest improvement for start/end consistency.</li>
+    <li><strong>Scene context in every prompt:</strong> Every prompt described the full room with all characters, even for close-ups. This stopped characters from disappearing but added new problems (extra children, duplicate characters).</li>
+</ul>
+
+<p>After multiple rounds of feedback and fixes, some panels were great. But the wide shots and reverse angles kept breaking. The model simply doesn't have a spatial understanding of the room. It doesn't know that the couch faces the window, or that the TV is on the right wall, or that when you flip the camera 180 degrees the furniture should be in mirrored positions.</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-panel-04-start.png" alt="Panel 04 start">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-panel-04-end.png" alt="Panel 04 end">
+</div>
+<p class="caption">Panel 04: Gabe and Nina two-shot. The "reproduce with one change" approach gives tight start/end consistency. But does this room match the establishing shot? Not really.</p>
+
+<h2>Attempt 3: Blender Layout Mockup</h2>
+
+<p>I realized we needed to give the model actual spatial information. Not a text description of a room &mdash; a 3D reference.</p>
+
+<p>So I had an agent build a simple 3D mockup of the living room in Blender. Basic primitives: box for the couch, boxes for tables, rectangles for the TV and window, colored shapes for character stand-ins. Set up 8 camera angles (front wide, reverse, medium, close-ups, etc.) and rendered snapshots.</p>
+
+<img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01-layout-v2/cam_front_wide.png" alt="Blender layout mockup - front">
+<p class="caption">The Blender layout mockup. Ugly on purpose &mdash; it's a spatial reference, not art. Green = Leo, pink = Mia, coral = Jenny.</p>
+
+<p>The idea: feed this to Gemini along with the character turnarounds and say "transform this layout into a Pixar-style frame, replacing the stand-ins with these characters."</p>
+
+<h2>Attempt 4: ControlNet (the ComfyUI Detour)</h2>
+
+<p>I also tried using ControlNet &mdash; extracting depth maps from the Blender renders and using them to constrain image generation through SDXL on Replicate. In theory, this should give perfect spatial locking because ControlNet uses the actual 3D depth information, not just "vibes."</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/controlnet-test/depth_test_0.png" alt="Depth map from Blender render">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/controlnet-test/depth_test_1.png" alt="ControlNet generation from depth">
+</div>
+<p class="caption">Left: MiDaS depth map extracted from the Blender render. Right: ControlNet generation using that depth. Spatial structure is preserved but... that's a dinosaur on the couch.</p>
+
+<p>The spatial locking worked. The style didn't. SDXL base model doesn't do Pixar well, and we couldn't get a good fine-tuned checkpoint loaded. I also tried to self-host ComfyUI on RunPod, but the GPU pod had CUDA driver issues, then RunPod had no GPUs available at all. Classic cloud infrastructure fun.</p>
+
+<h2>What Actually Worked: Blender + Gemini</h2>
+
+<p>In the end, the simplest combination won. Feed the Blender layout render directly to Gemini 3.1 Flash as an img2img reference, along with the character turnarounds and a detailed prompt. Gemini understands "transform this mockup into a Pixar frame" much better than "imagine a room that looks like this text description."</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01-layout-v2/cam_front_wide.png" alt="Blender mockup">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-panel-01-start.png" alt="Gemini v4 output">
+</div>
+<p class="caption">Left: Blender mockup. Right: Gemini 3.1 Flash transformation. Same spatial layout, now rendered in a Pixar-ish style with actual characters.</p>
+
+<p>Here are a few more panels from the final v4 batch:</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-panel-04-start.png" alt="Panel 04 v4">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-panel-07-start.png" alt="Panel 07 v4">
+</div>
+<p class="caption">Left: Parents two-shot with kids and Jenny in background. Right: The reverse angle OTS shot &mdash; the one that kept breaking for hours &mdash; finally working with spatial grounding from Blender.</p>
+
+<div class="comparison">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-panel-09-start.png" alt="Panel 09 start">
+    <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-panel-09-end.png" alt="Panel 09 end">
+</div>
+<p class="caption">Panel 09: Gabe and Nina. Start: hesitation. End: "Promise." Same composition, expression change only. The "reproduce with one change" technique.</p>
+
+<h2>Is It Good Enough?</h2>
+
+<p>Honestly? No. Not yet. The quality is better than anything we've produced before, and the pipeline is significantly more robust. But there's still character drift between panels, the backgrounds aren't perfectly consistent, and some shots just don't match the turnarounds well enough. For video generation input, these need to be tighter.</p>
+
+<p>But I learned a ton today about what works and what doesn't:</p>
+
+<h2>Lessons Learned</h2>
+
+<ol>
+    <li><strong>Scene-specific turnarounds are essential.</strong> Don't make the model guess wardrobe from text. Generate turnarounds in the correct outfit for each scene, then use those as refs.</li>
+    <li><strong>Turnaround images are the only source of truth.</strong> Text descriptions go stale. The approved image is what matters.</li>
+    <li><strong>"Reproduce with one change" beats generating from scratch.</strong> For start/end frame pairs, always pass the start frame as input for the end frame and describe only what changes. Massive consistency improvement.</li>
+    <li><strong>AI image models have zero spatial understanding.</strong> They can't maintain a room layout across different camera angles. You need external spatial grounding &mdash; in our case, a 3D Blender mockup.</li>
+    <li><strong>Gemini 3.1 Flash > Gemini 3 Pro for this use case.</strong> Higher detail, richer rendering, and it handles the Blender-to-Pixar transformation better.</li>
+    <li><strong>Empty room first, characters second.</strong> Establish the environment before placing characters in it. Reduces the chance of the model hallucinating extra furniture or people.</li>
+    <li><strong>Build a review tool.</strong> I built a simple HTML annotation tool where I can click on panels to leave feedback. It's crude but it cut the feedback loop time in half. Building a proper Cloudflare Workers version next.</li>
+</ol>
+
+<h2>The Pipeline (for now)</h2>
+
+<ol>
+    <li>Approved character turnarounds (locked)</li>
+    <li>Scene-specific turnarounds (wardrobe for each scene)</li>
+    <li>Blender 3D layout mockup (spatial grounding)</li>
+    <li>Blender camera renders from each shot angle</li>
+    <li>Gemini 3.1 img2img: Blender render + character turnarounds &rarr; Pixar-style frame</li>
+    <li>"Reproduce with one change" for end frames</li>
+    <li>Director review and annotation</li>
+    <li>Targeted regeneration of flagged panels</li>
+</ol>
+
+<p>Tomorrow I'll keep iterating on this pipeline. The Blender mockup needs more detail (the humanoid stand-ins helped but they're still crude), and I want to explore rendering actual depth maps from Blender for ControlNet once we get the RunPod situation sorted. The ControlNet approach showed real promise for spatial locking &mdash; it just needs a better style model underneath.</p>
+
+<p>One scene down. Thirty-six to go.</p>
+
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="../index.html">&larr; Back to Blog</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
