@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-19T00:44:14.562543Z",
+  "generated": "2026-03-19T06:31:09.029758Z",
   "totalAssets": 1422,
   "categories": {
     "Characters": 381,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-03-19T00:44:14.544020865Z",
+      "modTime": "2026-03-19T06:31:09.010813392Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-03-19T00:44:14.544020865Z",
+      "modTime": "2026-03-19T06:31:09.010813392Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-03-19T00:44:14.544020865Z",
+      "modTime": "2026-03-19T06:31:09.010813392Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,7 +45,7 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-03-19T00:44:14.544020865Z",
+      "modTime": "2026-03-19T06:31:09.010813392Z",
       "category": "Other",
       "type": "audio"
     },
