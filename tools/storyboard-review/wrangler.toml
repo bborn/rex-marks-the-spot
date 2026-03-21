@@ -1,0 +1,9 @@
+name = "storyboard-review"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+account_id = "407493dfba8306ff79bb5cd68f609eb0"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "storyboard-review-db"
+database_id = "5100bd52-59fe-4d2f-9eae-2889f0e900c1"
