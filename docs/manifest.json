@@ -1,9 +1,9 @@
 {
-  "generated": "2026-03-21T18:14:28.638952Z",
-  "totalAssets": 1433,
+  "generated": "2026-03-21T23:01:37.335441Z",
+  "totalAssets": 1442,
   "categories": {
     "Characters": 381,
-    "Other": 177,
+    "Other": 186,
     "Storyboards": 777,
     "Animatics": 2,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-03-21T18:14:28.620101413Z",
+      "modTime": "2026-03-21T23:01:37.316779899Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-03-21T18:14:28.620101413Z",
+      "modTime": "2026-03-21T23:01:37.316779899Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-03-21T18:14:28.620101413Z",
+      "modTime": "2026-03-21T23:01:37.316779899Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,90 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-03-21T18:14:28.620101413Z",
+      "modTime": "2026-03-21T23:01:37.316779899Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1G-end.png",
+      "name": "panel-1G-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1G-end.png",
+      "size": 746163,
+      "modTime": "2026-03-21T18:28:59.948008065Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1B-end.png",
+      "name": "panel-1B-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1B-end.png",
+      "size": 705813,
+      "modTime": "2026-03-21T18:28:59.764006568Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1A-end.png",
+      "name": "panel-1A-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1A-end.png",
+      "size": 706186,
+      "modTime": "2026-03-21T18:28:59.580005071Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1G-clip.mp4",
+      "name": "panel-1G-clip.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1G-clip.mp4",
+      "size": 1487085,
+      "modTime": "2026-03-21T18:28:50.106928002Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1B-clip.mp4",
+      "name": "panel-1B-clip.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1B-clip.mp4",
+      "size": 1316783,
+      "modTime": "2026-03-21T18:28:35.158806397Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1A-clip.mp4",
+      "name": "panel-1A-clip.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1A-clip.mp4",
+      "size": 2498535,
+      "modTime": "2026-03-21T18:28:20.234684985Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1G-start.png",
+      "name": "panel-1G-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1G-start.png",
+      "size": 1772617,
+      "modTime": "2026-03-21T18:27:23.279221584Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1B-start.png",
+      "name": "panel-1B-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1B-start.png",
+      "size": 1776902,
+      "modTime": "2026-03-21T18:26:58.555020398Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/video-first-pipeline/panel-1A-start.png",
+      "name": "panel-1A-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1A-start.png",
+      "size": 1703003,
+      "modTime": "2026-03-21T18:26:36.555841385Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "tests/flux-kontext-chained/panel-1G-end.png",
