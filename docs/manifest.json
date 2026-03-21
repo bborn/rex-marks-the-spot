@@ -1,9 +1,9 @@
 {
-  "generated": "2026-03-21T12:15:56.023918Z",
-  "totalAssets": 1422,
+  "generated": "2026-03-21T18:14:28.638952Z",
+  "totalAssets": 1433,
   "categories": {
     "Characters": 381,
-    "Other": 166,
+    "Other": 177,
     "Storyboards": 777,
     "Animatics": 2,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-03-21T12:15:56.005613947Z",
+      "modTime": "2026-03-21T18:14:28.620101413Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-03-21T12:15:56.005613947Z",
+      "modTime": "2026-03-21T18:14:28.620101413Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-03-21T12:15:56.005613947Z",
+      "modTime": "2026-03-21T18:14:28.620101413Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,108 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-03-21T12:15:56.005613947Z",
+      "modTime": "2026-03-21T18:14:28.620101413Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "tests/flux-kontext-chained/panel-1G-end.png",
+      "name": "panel-1G-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-chained/panel-1G-end.png",
+      "size": 1201590,
+      "modTime": "2026-03-21T17:29:22.280057810Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-chained/panel-1G-start.png",
+      "name": "panel-1G-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-chained/panel-1G-start.png",
+      "size": 1192169,
+      "modTime": "2026-03-21T17:29:04.655903798Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-chained/panel-1B-end.png",
+      "name": "panel-1B-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-chained/panel-1B-end.png",
+      "size": 1211417,
+      "modTime": "2026-03-21T17:28:47.067750075Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-chained/panel-1B-start.png",
+      "name": "panel-1B-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-chained/panel-1B-start.png",
+      "size": 1216302,
+      "modTime": "2026-03-21T17:26:40.467642333Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-chained/panel-1A-end.png",
+      "name": "panel-1A-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-chained/panel-1A-end.png",
+      "size": 1242556,
+      "modTime": "2026-03-21T17:26:17.845444145Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-chained/panel-1A-start.png",
+      "name": "panel-1A-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-chained/panel-1A-start.png",
+      "size": 1219739,
+      "modTime": "2026-03-21T17:25:22.853962011Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-consistency/panel_e.png",
+      "name": "panel_e.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-consistency/panel_e.png",
+      "size": 31236,
+      "modTime": "2026-03-21T15:20:33.640619145Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-consistency/panel_d.png",
+      "name": "panel_d.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-consistency/panel_d.png",
+      "size": 23964,
+      "modTime": "2026-03-21T15:20:27.614538633Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-consistency/panel_c.png",
+      "name": "panel_c.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-consistency/panel_c.png",
+      "size": 24682,
+      "modTime": "2026-03-21T15:20:21.582457702Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-consistency/panel_b.png",
+      "name": "panel_b.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-consistency/panel_b.png",
+      "size": 31642,
+      "modTime": "2026-03-21T15:20:15.589376954Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "tests/flux-kontext-consistency/panel_a.png",
+      "name": "panel_a.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/flux-kontext-consistency/panel_a.png",
+      "size": 36586,
+      "modTime": "2026-03-21T15:20:08.972287402Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "storyboards/v4/scene-01/scene-01-panel-09-end.png",
