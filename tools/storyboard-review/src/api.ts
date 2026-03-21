@@ -3,6 +3,8 @@ export interface Env {
   ASSETS: R2Bucket;
   GEMINI_API_KEY: string;
   REPLICATE_API_TOKEN: string;
+  FRAME_EXTRACTOR_URL: string;
+  FRAME_EXTRACTOR_TOKEN: string;
 }
 
 function json(data: unknown, status = 200) {

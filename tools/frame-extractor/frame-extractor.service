@@ -1,0 +1,15 @@
+[Unit]
+Description=Frame Extractor - extracts last frame from video URLs
+After=network.target
+
+[Service]
+Type=simple
+User=rex
+WorkingDirectory=/home/rex/rex-marks-the-spot/tools/frame-extractor
+ExecStart=/usr/bin/python3 /home/rex/rex-marks-the-spot/tools/frame-extractor/server.py --port 8788
+Restart=on-failure
+RestartSec=5
+Environment=FRAME_EXTRACTOR_TOKEN=frex_rexmarksthespot_2024
+
+[Install]
+WantedBy=multi-user.target
