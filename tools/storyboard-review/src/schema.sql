@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS scenes (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
+  hero_shot_url TEXT,
+  character_refs TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
 
@@ -13,6 +15,8 @@ CREATE TABLE IF NOT EXISTS panels (
   end_url TEXT NOT NULL,
   status TEXT DEFAULT 'pending',
   video_url TEXT,
+  scene_description TEXT,
+  motion_prompt TEXT,
   FOREIGN KEY (scene_id) REFERENCES scenes(id)
 );
 

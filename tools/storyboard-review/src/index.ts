@@ -1,4 +1,5 @@
 import { handleApi, Env } from './api';
+import { handleGenerate, handleStatus } from './generate';
 import { renderPage, renderHome } from './frontend';
 
 export default {
@@ -17,6 +18,20 @@ export default {
             'Access-Control-Allow-Headers': 'Content-Type',
           },
         });
+      }
+
+      // Generation endpoints
+      if (path.startsWith('/api/generate/')) {
+        const response = await handleGenerate(request, env, path);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        return response;
+      }
+
+      // Status endpoint
+      if (path === '/api/status') {
+        const response = handleStatus(env);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        return response;
       }
 
       const response = await handleApi(request, env, path);
