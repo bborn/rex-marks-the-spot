@@ -41,7 +41,7 @@ export function renderPage(sceneId: string): string {
 body { background: #111; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 
 /* Top bar */
-.topbar { display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: #1a1a1a; border-bottom: 1px solid #282828; position: sticky; top: 0; z-index: 100; }
+.topbar { display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: #1a1a1a; border-bottom: 1px solid #282828; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
 .topbar h1 { font-size: 16px; font-weight: 600; }
 .topbar .back { color: #888; text-decoration: none; font-size: 14px; }
 .topbar .back:hover { color: #e0e0e0; }
@@ -61,6 +61,27 @@ body { background: #111; color: #e0e0e0; font-family: -apple-system, BlinkMacSys
 .mode-btn.active { background: #333; color: #e0e0e0; border-color: #555; }
 .export-btn { padding: 4px 12px; border: 1px solid #333; background: transparent; color: #4caf50; border-radius: 4px; cursor: pointer; font-size: 12px; margin-left: 8px; }
 .export-btn:hover { background: #1a3a1a; }
+
+/* Scene settings panel */
+.scene-settings { padding: 16px 20px; background: #161616; border-bottom: 1px solid #282828; }
+.scene-settings summary { cursor: pointer; font-size: 13px; font-weight: 600; color: #aaa; }
+.scene-settings summary:hover { color: #e0e0e0; }
+.settings-content { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.setting-row { display: flex; align-items: center; gap: 10px; font-size: 12px; }
+.setting-row label { width: 100px; flex-shrink: 0; color: #888; }
+.setting-row input { flex: 1; background: #111; border: 1px solid #333; color: #e0e0e0; padding: 6px 8px; border-radius: 4px; font-size: 12px; }
+.setting-row input:focus { outline: none; border-color: #555; }
+.char-ref-list { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.char-ref-item { display: flex; gap: 6px; align-items: center; }
+.char-ref-item input { flex: 1; }
+.char-ref-item img { width: 32px; height: 32px; object-fit: cover; border-radius: 4px; border: 1px solid #333; }
+.add-ref-btn, .save-settings-btn { padding: 4px 10px; border: 1px solid #333; background: transparent; color: #888; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.save-settings-btn { color: #4caf50; border-color: #4caf50; }
+.save-settings-btn:hover { background: #1a3a1a; }
+.remove-ref-btn { background: transparent; border: none; color: #666; cursor: pointer; font-size: 14px; }
+.remove-ref-btn:hover { color: #f44336; }
+.status-indicator { font-size: 11px; color: #4caf50; margin-left: 8px; opacity: 0; transition: opacity 0.3s; }
+.status-indicator.show { opacity: 1; }
 
 /* Panel grid */
 .panels { padding: 20px; display: flex; flex-direction: column; gap: 24px; }
@@ -113,8 +134,36 @@ body { background: #111; color: #e0e0e0; font-family: -apple-system, BlinkMacSys
 .draw-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 15; }
 .draw-rect { position: absolute; border: 2px dashed #ff9800; background: rgba(255,152,0,0.15); }
 
+/* Panel metadata */
+.panel-meta { padding: 8px 14px; border-top: 1px solid #282828; display: flex; flex-direction: column; gap: 6px; }
+.meta-row { display: flex; align-items: start; gap: 8px; font-size: 12px; }
+.meta-row label { width: 100px; flex-shrink: 0; color: #666; padding-top: 4px; }
+.meta-row textarea { flex: 1; background: #111; border: 1px solid #333; color: #e0e0e0; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-family: inherit; resize: vertical; min-height: 36px; }
+.meta-row textarea:focus { outline: none; border-color: #555; }
+
+/* Regenerate UI */
+.regen-section { padding: 8px 14px; border-top: 1px solid #282828; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.regen-btn { padding: 5px 12px; border: 1px solid #2196f3; background: transparent; color: #2196f3; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.regen-btn:hover { background: #0a1a2a; }
+.regen-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.regen-btn.generating { border-color: #ff9800; color: #ff9800; animation: pulse 1.5s infinite; }
+.regen-status { font-size: 11px; color: #888; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Toast/saving indicator */
 .saving { position: fixed; bottom: 16px; right: 16px; background: #333; color: #aaa; padding: 6px 14px; border-radius: 4px; font-size: 12px; opacity: 0; transition: opacity 0.3s; z-index: 200; }
 .saving.show { opacity: 1; }
+
+/* Generation log */
+.gen-log { position: fixed; bottom: 16px; left: 16px; max-width: 400px; max-height: 200px; overflow-y: auto; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 8px 12px; font-size: 11px; font-family: monospace; color: #888; z-index: 200; display: none; }
+.gen-log.show { display: block; }
+.gen-log .log-entry { padding: 2px 0; border-bottom: 1px solid #222; }
+.gen-log .log-entry.error { color: #f44336; }
+.gen-log .log-entry.success { color: #4caf50; }
 </style>
 </head>
 <body>
@@ -129,14 +178,40 @@ body { background: #111; color: #e0e0e0; font-family: -apple-system, BlinkMacSys
   <button class="export-btn" id="export-btn">Export JSON</button>
 </div>
 <div class="stats" id="stats"></div>
+
+<!-- Scene settings (collapsible) -->
+<div class="scene-settings">
+  <details id="settings-details">
+    <summary>Scene Settings (hero shot, character references)</summary>
+    <div class="settings-content" id="settings-content">
+      <div class="setting-row">
+        <label>Hero Shot URL</label>
+        <input type="text" id="hero-shot-input" placeholder="URL to hero/reference shot...">
+      </div>
+      <div class="setting-row" style="align-items:start">
+        <label style="padding-top:6px">Character Refs</label>
+        <div class="char-ref-list" id="char-ref-list"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button class="add-ref-btn" id="add-ref-btn">+ Add Reference</button>
+        <button class="save-settings-btn" id="save-settings-btn">Save Settings</button>
+        <span class="status-indicator" id="settings-status">Saved</span>
+      </div>
+    </div>
+  </details>
+</div>
+
 <div class="panels" id="panels"></div>
 <div class="saving" id="saving">Saving...</div>
+<div class="gen-log" id="gen-log"></div>
 
 <script>
 const SCENE_ID = '${sceneId}';
 let panels = [];
+let sceneSettings = { hero_shot_url: '', character_refs: [] };
 let currentMode = 'pin';
 let drawState = null;
+let generatingPanels = {};
 
 // Mode selector
 document.querySelectorAll('.mode-btn').forEach(btn => {
@@ -156,21 +231,99 @@ function updateCursors() {
   });
 }
 
-// Saving indicator
 function showSaving() {
   const el = document.getElementById('saving');
   el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 800);
 }
 
-async function api(path, method = 'GET', body = null) {
+function logGen(msg, type) {
+  const log = document.getElementById('gen-log');
+  log.classList.add('show');
+  const entry = document.createElement('div');
+  entry.className = 'log-entry' + (type ? ' ' + type : '');
+  entry.textContent = new Date().toLocaleTimeString() + ' ' + msg;
+  log.appendChild(entry);
+  log.scrollTop = log.scrollHeight;
+  if (type === 'success' || type === 'error') {
+    setTimeout(() => { log.classList.remove('show'); }, 5000);
+  }
+}
+
+async function api(path, method, body) {
+  method = method || 'GET';
   const opts = { method, headers: {} };
   if (body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
   const res = await fetch(path, opts);
   return res.json();
 }
 
-// Load panels
+// ─── Scene Settings ───────────────────────────────────────────────────────
+
+async function loadSettings() {
+  try {
+    sceneSettings = await api('/api/scenes/' + SCENE_ID + '/settings');
+    if (!sceneSettings.character_refs) sceneSettings.character_refs = [];
+  } catch { sceneSettings = { hero_shot_url: '', character_refs: [] }; }
+  renderSettings();
+}
+
+function renderSettings() {
+  document.getElementById('hero-shot-input').value = sceneSettings.hero_shot_url || '';
+  const list = document.getElementById('char-ref-list');
+  list.innerHTML = sceneSettings.character_refs.map((url, i) =>
+    '<div class="char-ref-item">' +
+      '<img src="' + escAttr(url) + '" onerror="this.style.display=\\'none\\'">' +
+      '<input type="text" class="char-ref-input" data-idx="' + i + '" value="' + escAttr(url) + '">' +
+      '<button class="remove-ref-btn" data-idx="' + i + '">&times;</button>' +
+    '</div>'
+  ).join('');
+
+  // Bind remove buttons
+  list.querySelectorAll('.remove-ref-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sceneSettings.character_refs.splice(parseInt(btn.dataset.idx), 1);
+      renderSettings();
+    });
+  });
+
+  // Bind input changes
+  list.querySelectorAll('.char-ref-input').forEach(inp => {
+    inp.addEventListener('change', () => {
+      sceneSettings.character_refs[parseInt(inp.dataset.idx)] = inp.value;
+    });
+  });
+}
+
+document.getElementById('add-ref-btn').addEventListener('click', () => {
+  sceneSettings.character_refs.push('');
+  renderSettings();
+  // Focus the new input
+  const inputs = document.querySelectorAll('.char-ref-input');
+  if (inputs.length) inputs[inputs.length - 1].focus();
+});
+
+document.getElementById('save-settings-btn').addEventListener('click', async () => {
+  const heroUrl = document.getElementById('hero-shot-input').value.trim();
+  // Collect current values from inputs
+  const refs = [];
+  document.querySelectorAll('.char-ref-input').forEach(inp => {
+    const val = inp.value.trim();
+    if (val) refs.push(val);
+  });
+  await api('/api/scenes/' + SCENE_ID + '/settings', 'PUT', {
+    hero_shot_url: heroUrl || null,
+    character_refs: refs,
+  });
+  sceneSettings.hero_shot_url = heroUrl;
+  sceneSettings.character_refs = refs;
+  const status = document.getElementById('settings-status');
+  status.classList.add('show');
+  setTimeout(() => status.classList.remove('show'), 2000);
+});
+
+// ─── Panels ───────────────────────────────────────────────────────────────
+
 async function loadPanels() {
   panels = await api('/api/scenes/' + SCENE_ID + '/panels');
   render();
@@ -192,6 +345,7 @@ function render() {
   const container = document.getElementById('panels');
   container.innerHTML = panels.map((panel, pi) => {
     const annotations = panel.annotations || [];
+    const isGenerating = generatingPanels[panel.id];
     return '<div class="panel-card ' + panel.status + '" data-panel-idx="' + pi + '">' +
       '<div class="panel-header">' +
         '<h3>' + panel.panel_number + ' — ' + escHtml(panel.name) + '</h3>' +
@@ -207,6 +361,8 @@ function render() {
         renderFrame(panel, 'end', annotations) +
       '</div>' +
       renderAnnotationList(panel, annotations) +
+      renderPanelMeta(panel) +
+      renderRegenSection(panel, isGenerating) +
     '</div>';
   }).join('');
   bindEvents();
@@ -259,8 +415,38 @@ function renderAnnotationList(panel, annotations) {
   '</div>';
 }
 
-function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function escAttr(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function renderPanelMeta(panel) {
+  return '<div class="panel-meta">' +
+    '<div class="meta-row">' +
+      '<label>Description</label>' +
+      '<textarea class="meta-desc" data-panel-id="' + panel.id + '" rows="2" placeholder="Scene description for generation...">' + escHtml(panel.scene_description || '') + '</textarea>' +
+    '</div>' +
+    '<div class="meta-row">' +
+      '<label>Motion Prompt</label>' +
+      '<textarea class="meta-motion" data-panel-id="' + panel.id + '" rows="2" placeholder="Motion/animation prompt...">' + escHtml(panel.motion_prompt || '') + '</textarea>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderRegenSection(panel, isGenerating) {
+  const disabled = isGenerating ? ' disabled' : '';
+  const genClass = isGenerating ? ' generating' : '';
+  return '<div class="regen-section">' +
+    '<button class="regen-btn regen-start' + genClass + '" data-panel-id="' + panel.id + '"' + disabled + '>' +
+      (isGenerating === 'start' ? 'Generating...' : 'Regenerate Start Frame') +
+    '</button>' +
+    '<button class="regen-btn regen-clip' + genClass + '" data-panel-id="' + panel.id + '"' + disabled + '>' +
+      (isGenerating === 'clip' ? 'Generating...' : 'Generate Clip') +
+    '</button>' +
+    '<button class="regen-btn regen-full' + genClass + '" data-panel-id="' + panel.id + '"' + disabled + '>' +
+      (isGenerating === 'full' ? 'Generating...' : 'Regenerate Full Panel') +
+    '</button>' +
+    (isGenerating ? '<span class="regen-status">Generation in progress...</span>' : '') +
+  '</div>';
+}
+
+function escHtml(s) { return s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
+function escAttr(s) { return s ? s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
 
 function bindEvents() {
   // Status buttons
@@ -269,7 +455,6 @@ function bindEvents() {
       const panelId = btn.dataset.panelId;
       const status = btn.dataset.status;
       const panel = panels.find(p => p.id === panelId);
-      // Toggle off if already active
       const newStatus = panel.status === status ? 'pending' : status;
       await api('/api/panels/' + panelId + '/status', 'PUT', { status: newStatus });
       panel.status = newStatus;
@@ -291,7 +476,6 @@ function bindEvents() {
         addAnnotation(frame.dataset.panelId, frame.dataset.frame, 'pin', x, y);
       } else if (currentMode === 'region') {
         drawState = { panelId: frame.dataset.panelId, frameName: frame.dataset.frame, startX: x, startY: y, el: frame };
-        // Create temporary draw rect
         const drawRect = document.createElement('div');
         drawRect.className = 'draw-rect';
         drawRect.style.left = (x * 100) + '%';
@@ -335,7 +519,6 @@ function bindEvents() {
     });
   });
 
-  // Cancel draw on mouseleave
   document.addEventListener('mouseup', () => {
     if (drawState) {
       if (drawState.drawRect) drawState.drawRect.remove();
@@ -351,7 +534,6 @@ function bindEvents() {
       debounceTimer = setTimeout(async () => {
         const annId = input.dataset.annotationId;
         await api('/api/annotations/' + annId, 'PUT', { text: input.value });
-        // Update local state
         for (const p of panels) {
           const ann = (p.annotations || []).find(a => a.id == annId);
           if (ann) { ann.text = input.value; break; }
@@ -373,6 +555,100 @@ function bindEvents() {
       render();
     });
   });
+
+  // Panel metadata editing (debounced)
+  document.querySelectorAll('.meta-desc').forEach(ta => {
+    let timer;
+    ta.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(async () => {
+        const panelId = ta.dataset.panelId;
+        await api('/api/panels/' + panelId + '/metadata', 'PUT', { scene_description: ta.value });
+        const panel = panels.find(p => p.id === panelId);
+        if (panel) panel.scene_description = ta.value;
+        showSaving();
+      }, 600);
+    });
+  });
+
+  document.querySelectorAll('.meta-motion').forEach(ta => {
+    let timer;
+    ta.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(async () => {
+        const panelId = ta.dataset.panelId;
+        await api('/api/panels/' + panelId + '/metadata', 'PUT', { motion_prompt: ta.value });
+        const panel = panels.find(p => p.id === panelId);
+        if (panel) panel.motion_prompt = ta.value;
+        showSaving();
+      }, 600);
+    });
+  });
+
+  // Regenerate buttons
+  document.querySelectorAll('.regen-start').forEach(btn => {
+    btn.addEventListener('click', () => regenerate(btn.dataset.panelId, 'start'));
+  });
+  document.querySelectorAll('.regen-clip').forEach(btn => {
+    btn.addEventListener('click', () => regenerate(btn.dataset.panelId, 'clip'));
+  });
+  document.querySelectorAll('.regen-full').forEach(btn => {
+    btn.addEventListener('click', () => regenerate(btn.dataset.panelId, 'full'));
+  });
+}
+
+async function regenerate(panelId, mode) {
+  const panel = panels.find(p => p.id === panelId);
+  if (!panel) return;
+
+  generatingPanels[panelId] = mode;
+  render();
+  logGen('Starting ' + mode + ' generation for ' + panel.panel_number + '...');
+
+  try {
+    let result;
+    if (mode === 'start') {
+      result = await api('/api/generate/start-frame', 'POST', {
+        panel_id: panelId,
+        scene_description: panel.scene_description || panel.name,
+        hero_shot_url: sceneSettings.hero_shot_url || undefined,
+        character_refs: sceneSettings.character_refs.length ? sceneSettings.character_refs : undefined,
+      });
+      if (result.error) throw new Error(result.error);
+      panel.start_url = result.start_url;
+      logGen('Start frame generated: ' + result.start_url, 'success');
+
+    } else if (mode === 'clip') {
+      result = await api('/api/generate/clip', 'POST', {
+        panel_id: panelId,
+        start_frame_url: panel.start_url,
+        motion_prompt: panel.motion_prompt || panel.name,
+      });
+      if (result.error) throw new Error(result.error);
+      panel.video_url = result.video_url;
+      panel.end_url = result.end_url;
+      logGen('Clip generated: ' + result.video_url, 'success');
+
+    } else if (mode === 'full') {
+      result = await api('/api/generate/full-panel', 'POST', {
+        panel_id: panelId,
+        scene_description: panel.scene_description || panel.name,
+        motion_prompt: panel.motion_prompt || panel.name,
+        hero_shot_url: sceneSettings.hero_shot_url || undefined,
+        character_refs: sceneSettings.character_refs.length ? sceneSettings.character_refs : undefined,
+      });
+      if (result.error) throw new Error(result.error);
+      panel.start_url = result.start_url;
+      panel.end_url = result.end_url;
+      panel.video_url = result.video_url;
+      logGen('Full panel generated!', 'success');
+    }
+  } catch (err) {
+    logGen('Error: ' + err.message, 'error');
+  } finally {
+    delete generatingPanels[panelId];
+    render();
+  }
 }
 
 async function addAnnotation(panelId, frame, type, x, y, w, h) {
@@ -402,6 +678,7 @@ api('/api/scenes').then(scenes => {
   if (scene) document.getElementById('scene-title').textContent = scene.name;
 });
 
+loadSettings();
 loadPanels();
 </script>
 </body>

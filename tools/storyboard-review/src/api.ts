@@ -1,5 +1,8 @@
 export interface Env {
   DB: D1Database;
+  ASSETS: R2Bucket;
+  GEMINI_API_KEY: string;
+  REPLICATE_API_TOKEN: string;
 }
 
 function json(data: unknown, status = 200) {
@@ -107,6 +110,49 @@ export async function handleApi(request: Request, env: Env, path: string): Promi
     return json(feedback);
   }
 
+  // PUT /api/scenes/:id/settings
+  const settingsMatch = path.match(/^\/api\/scenes\/([^/]+)\/settings$/);
+  if (method === 'PUT' && settingsMatch) {
+    const sceneId = settingsMatch[1];
+    const body: any = await request.json();
+    const updates: string[] = [];
+    const binds: any[] = [];
+    if (body.hero_shot_url !== undefined) { updates.push('hero_shot_url = ?'); binds.push(body.hero_shot_url); }
+    if (body.character_refs !== undefined) { updates.push('character_refs = ?'); binds.push(JSON.stringify(body.character_refs)); }
+    if (!updates.length) return json({ error: 'No fields to update' }, 400);
+    binds.push(sceneId);
+    await env.DB.prepare(`UPDATE scenes SET ${updates.join(', ')} WHERE id = ?`).bind(...binds).run();
+    return json({ ok: true });
+  }
+
+  // GET /api/scenes/:id/settings
+  const getSettingsMatch = path.match(/^\/api\/scenes\/([^/]+)\/settings$/);
+  if (method === 'GET' && getSettingsMatch) {
+    const sceneId = getSettingsMatch[1];
+    const { results } = await env.DB.prepare('SELECT hero_shot_url, character_refs FROM scenes WHERE id = ?').bind(sceneId).all();
+    if (!results.length) return json({ error: 'Scene not found' }, 404);
+    const scene: any = results[0];
+    return json({
+      hero_shot_url: scene.hero_shot_url || null,
+      character_refs: scene.character_refs ? JSON.parse(scene.character_refs) : [],
+    });
+  }
+
+  // PUT /api/panels/:id/metadata
+  const metadataMatch = path.match(/^\/api\/panels\/([^/]+)\/metadata$/);
+  if (method === 'PUT' && metadataMatch) {
+    const panelId = metadataMatch[1];
+    const body: any = await request.json();
+    const updates: string[] = [];
+    const binds: any[] = [];
+    if (body.scene_description !== undefined) { updates.push('scene_description = ?'); binds.push(body.scene_description); }
+    if (body.motion_prompt !== undefined) { updates.push('motion_prompt = ?'); binds.push(body.motion_prompt); }
+    if (!updates.length) return json({ error: 'No fields to update' }, 400);
+    binds.push(panelId);
+    await env.DB.prepare(`UPDATE panels SET ${updates.join(', ')} WHERE id = ?`).bind(...binds).run();
+    return json({ ok: true });
+  }
+
   // POST /api/scenes/:id/seed
   const seedMatch = path.match(/^\/api\/scenes\/([^/]+)\/seed$/);
   if (method === 'POST' && seedMatch) {
@@ -121,8 +167,8 @@ export async function handleApi(request: Request, env: Env, path: string): Promi
     // Insert panels
     const batch = body.panels.map((p: any) =>
       env.DB.prepare(
-        'INSERT OR REPLACE INTO panels (id, scene_id, panel_number, name, start_url, end_url, status, video_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
-      ).bind(p.id, sceneId, p.panel_number, p.name, p.start_url, p.end_url, p.status || 'pending', p.video_url || null)
+        'INSERT OR REPLACE INTO panels (id, scene_id, panel_number, name, start_url, end_url, status, video_url, scene_description, motion_prompt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+      ).bind(p.id, sceneId, p.panel_number, p.name, p.start_url, p.end_url, p.status || 'pending', p.video_url || null, p.scene_description || null, p.motion_prompt || null)
     );
     await env.DB.batch(batch);
     return json({ ok: true, panels_seeded: body.panels.length });

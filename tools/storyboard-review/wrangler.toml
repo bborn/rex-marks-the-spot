@@ -7,3 +7,11 @@ account_id = "407493dfba8306ff79bb5cd68f609eb0"
 binding = "DB"
 database_name = "storyboard-review-db"
 database_id = "5100bd52-59fe-4d2f-9eae-2889f0e900c1"
+
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "rex-assets"
+
+# Required secrets (set via: npx wrangler secret put <NAME>):
+# - GEMINI_API_KEY
+# - REPLICATE_API_TOKEN
