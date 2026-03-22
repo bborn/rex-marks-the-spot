@@ -47,7 +47,7 @@ async function generateStartFrame(input: StartFrameInput, env: Env): Promise<{ s
         const base64 = arrayBufferToBase64(buf);
         const mime = imgResp.headers.get('content-type') || 'image/png';
         parts.push({
-          inline_data: { mime_type: mime, data: base64 },
+          inlineData: { mimeType: mime, data: base64 },
         });
       }
     } catch {
@@ -60,7 +60,7 @@ async function generateStartFrame(input: StartFrameInput, env: Env): Promise<{ s
     text: `Generate a storyboard panel image based on this description. Match the style of the reference images if provided. Use a 16:9 aspect ratio, cinematic composition, Pixar-style animation look.\n\nScene description: ${input.scene_description}`,
   });
 
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:generateContent?key=${apiKey}`;
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${apiKey}`;
 
   const resp = await fetch(geminiUrl, {
     method: 'POST',
@@ -69,6 +69,7 @@ async function generateStartFrame(input: StartFrameInput, env: Env): Promise<{ s
       contents: [{ parts }],
       generationConfig: {
         responseModalities: ['TEXT', 'IMAGE'],
+        responseConfig: { imageDimension: { width: 1376, height: 768 } },
       },
     }),
   });
@@ -85,11 +86,11 @@ async function generateStartFrame(input: StartFrameInput, env: Env): Promise<{ s
   if (!candidates.length) throw new Error('Gemini returned no candidates');
 
   const responseParts = candidates[0].content?.parts || [];
-  const imagePart = responseParts.find((p: any) => p.inline_data?.mime_type?.startsWith('image/'));
+  const imagePart = responseParts.find((p: any) => p.inlineData?.mimeType?.startsWith('image/'));
   if (!imagePart) throw new Error('Gemini returned no image in response');
 
-  const imageData = base64ToArrayBuffer(imagePart.inline_data.data);
-  const mimeType = imagePart.inline_data.mime_type;
+  const imageData = base64ToArrayBuffer(imagePart.inlineData.data);
+  const mimeType = imagePart.inlineData.mimeType;
   const ext = mimeType === 'image/jpeg' ? 'jpg' : 'png';
 
   // Upload to R2
@@ -119,14 +120,13 @@ async function generateClip(input: ClipInput, env: Env): Promise<{ video_url: st
   const startFrameDataUri = `data:${startFrameMime};base64,${startFrameBase64}`;
 
   // Create prediction on Replicate
-  const createResp = await fetch('https://api.replicate.com/v1/predictions', {
+  const createResp = await fetch("https://api.replicate.com/v1/models/prunaai/p-video/predictions", {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${apiToken}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'prunaai/p-video',
       input: {
         image: startFrameDataUri,
         prompt: input.motion_prompt,
