@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cracking Character Consistency: A Storyboard Pipeline That Actually Works - Rex Marks The Spot</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .comparison { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .comparison img { flex: 1; min-width: 280px; max-width: 49%; border-radius: 8px; }
+        .post-body img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+        .caption { color: #888; font-size: 0.85em; text-align: center; margin-top: -8px; margin-bottom: 20px; }
+        .pipeline-step { background: #1a1a2e; border-radius: 8px; padding: 16px 20px; margin: 8px 0; display: flex; align-items: center; gap: 12px; }
+        .pipeline-step .step-num { background: #e94560; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; flex-shrink: 0; }
+        .pipeline-step .step-text { font-size: 0.95em; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>Cracking Character Consistency: A Storyboard Pipeline That Actually Works</h1>
+                    <div class="post-author">
+                        <time datetime="2026-03-22">March 22, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+
+<p>We've been fighting the same problem for weeks: when you generate storyboard panels one at a time, characters drift. Hair color changes between shots. Wardrobes shift. The living room rearranges itself. We'd done <strong>five rounds of fixes</strong> on Scene 1 alone and still couldn't get nine panels to look like they belonged in the same movie.</p>
+
+<p>Over the past two days, we finally cracked it. And we built a whole review system around it.</p>
+
+<img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1A-start.png" alt="Establishing shot of Scene 1 living room">
+<p class="caption">The establishing shot that anchors everything. Generated once with Gemini using character turnarounds as references, then used as the visual anchor for every other panel.</p>
+
+<h2>The Breakthrough: Video-First</h2>
+
+<p>The insight was almost too simple. Instead of generating start and end frames separately (and watching them drift), we generate <strong>one</strong> start frame, then use a video model to create a short motion clip from it. The end frame is just the last frame of that video.</p>
+
+<p>Consistency is free, because both frames come from the same generation.</p>
+
+<p>Here's the pipeline:</p>
+
+<div class="pipeline-step"><span class="step-num">1</span><span class="step-text"><strong>Hero shot</strong> &mdash; Generate one establishing shot with Gemini, using character turnarounds as img2img references. This locks the room, lighting, and style.</span></div>
+<div class="pipeline-step"><span class="step-num">2</span><span class="step-text"><strong>Start frames</strong> &mdash; Generate each panel's start frame with Gemini, referencing the hero shot + character turnarounds for consistency.</span></div>
+<div class="pipeline-step"><span class="step-num">3</span><span class="step-text"><strong>Video clip</strong> &mdash; Feed the start frame to P-Video, which generates a 5-second motion clip. Cost: about $0.025 per clip.</span></div>
+<div class="pipeline-step"><span class="step-num">4</span><span class="step-text"><strong>End frame</strong> &mdash; Extract the last frame from the video with ffmpeg. Done. No drift.</span></div>
+
+<p>Total cost for all 9 Scene 1 panels (start frames + video clips + extraction): <strong>under $1</strong>.</p>
+
+<h2>What We Tried First (and Why It Didn't Work)</h2>
+
+<p>Before landing on the video-first approach, we tested <strong>Flux Kontext</strong> on Replicate. It was good at panel-to-panel consistency &mdash; characters looked similar from one frame to the next. But the quality was noticeably lower, and characters drifted away from our approved turnaround designs. The faces were "close enough" but not our characters.</p>
+
+<p>The video-first pipeline sidesteps this entirely. Gemini handles the hard part (faithful character rendering from reference images), and P-Video handles the easy part (making things move without changing what they look like).</p>
+
+<h2>The Review App</h2>
+
+<p>Generating panels is only half the problem. The other half is reviewing them efficiently, flagging issues, and regenerating the bad ones without breaking the good ones.</p>
+
+<p>So we built a review app. It runs on Cloudflare Workers with a D1 database and R2 storage.</p>
+
+<img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-start.png" alt="Mia close-up panel from the pipeline">
+<p class="caption">One of the panels generated through the pipeline: Mia's close-up. Consistent with her turnaround design, consistent lighting with the establishing shot.</p>
+
+<p>The app shows every panel with its start frame, video clip, and end frame side by side. Each panel gets an <strong>Approve / Needs Fix / Redo</strong> button. When something's off, you can drop pins or draw regions directly on the image to mark exactly what's wrong &mdash; "Mia's hair color is off here" or "the couch changed shape in this corner."</p>
+
+<p>Hit the regenerate button and it kicks off the whole pipeline again for just that panel: Gemini generates a new start frame, P-Video creates the motion clip, ffmpeg extracts the end frame, everything uploads to R2 automatically.</p>
+
+<h2>Where We Are Now</h2>
+
+<p>All 9 Scene 1 panels are generated with consistent characters and settings. The director reviews in the web app, flags issues, and agents regenerate the flagged panels. It's a tight loop that actually works.</p>
+
+<p>The pipeline went from "regenerate everything and hope for the best" to "surgical fixes on individual panels while keeping everything else locked." That's the real win.</p>
+
+<p>Next up: running the same pipeline on Scenes 2 and 3, and seeing how well the hero-shot anchoring approach scales to completely different environments.</p>
+
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="../index.html">&larr; Back to Blog</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
