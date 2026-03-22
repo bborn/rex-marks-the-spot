@@ -1,10 +1,10 @@
 {
-  "generated": "2026-03-22T06:25:14.723098Z",
-  "totalAssets": 1442,
+  "generated": "2026-03-22T12:17:47.105123Z",
+  "totalAssets": 1445,
   "categories": {
     "Characters": 381,
     "Other": 186,
-    "Storyboards": 777,
+    "Storyboards": 780,
     "Animatics": 2,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-03-22T06:25:14.703703890Z",
+      "modTime": "2026-03-22T12:17:47.086641572Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-03-22T06:25:14.703703890Z",
+      "modTime": "2026-03-22T12:17:47.086641572Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-03-22T06:25:14.703703890Z",
+      "modTime": "2026-03-22T12:17:47.086641572Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,36 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-03-22T06:25:14.703703890Z",
+      "modTime": "2026-03-22T12:17:47.086641572Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "storyboards/v3/scene-01/scene-01-1H-end.png",
+      "name": "scene-01-1H-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-end.png",
+      "size": 1990768,
+      "modTime": "2026-03-22T12:15:53.094000000Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v3/scene-01/scene-01-1H-clip.mp4",
+      "name": "scene-01-1H-clip.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-clip.mp4",
+      "size": 2336125,
+      "modTime": "2026-03-22T12:15:52.797000000Z",
+      "category": "Storyboards",
+      "type": "video"
+    },
+    {
+      "path": "storyboards/v3/scene-01/scene-01-1H-start.png",
+      "name": "scene-01-1H-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-start.png",
+      "size": 1990768,
+      "modTime": "2026-03-22T12:15:40.606000000Z",
+      "category": "Storyboards",
+      "type": "image"
     },
     {
       "path": "tests/video-first-pipeline/panel-1G-end.png",
