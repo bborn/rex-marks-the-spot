@@ -180,30 +180,52 @@ async function generateClip(input: ClipInput, env: Env): Promise<{ video_url: st
   });
   const videoR2Url = `${R2_PUBLIC_URL}/${videoR2Path}`;
 
-  // Extract last frame using a simple approach:
-  // We can't run ffmpeg in Workers, so we'll use the start frame as a fallback end frame
-  // and let the user regenerate if needed. In practice, we generate end frame from the video
-  // by re-using the Gemini API to describe/capture the last frame.
-  // For now: upload the start frame as end frame placeholder, mark it for later extraction.
+  // Extract last frame from the video using the frame extractor service
   const endR2Path = `storyboards/v3/scene-01/${input.panel_id}-end.png`;
+  let endUrl = '';
 
-  // Try to extract last frame via a lightweight approach:
-  // Use Gemini to generate an end frame description based on the motion
-  // Actually, simplest: just set end_url to empty and let user extract manually
-  // OR: we can ask Gemini to generate what the end frame looks like
+  if (env.FRAME_EXTRACTOR_URL) {
+    try {
+      const extractResp = await fetch(`${env.FRAME_EXTRACTOR_URL}/extract-last-frame`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(env.FRAME_EXTRACTOR_TOKEN ? { 'Authorization': `Bearer ${env.FRAME_EXTRACTOR_TOKEN}` } : {}),
+        },
+        body: JSON.stringify({
+          video_url: videoR2Url,
+          output_path: endR2Path,
+        }),
+      });
 
-  // For MVP: copy start frame as end frame placeholder
-  const startFrameForEnd = await fetch(input.start_frame_url);
-  if (startFrameForEnd.ok) {
-    const endBuffer = await startFrameForEnd.arrayBuffer();
-    await env.ASSETS.put(endR2Path, endBuffer, {
-      httpMetadata: { contentType: 'image/png' },
-    });
+      if (extractResp.ok) {
+        const extractData: any = await extractResp.json();
+        endUrl = extractData.frame_url;
+      } else {
+        const errText = await extractResp.text();
+        console.error(`Frame extractor error (${extractResp.status}): ${errText}`);
+      }
+    } catch (err: any) {
+      console.error(`Frame extractor call failed: ${err.message}`);
+    }
+  }
+
+  // Fallback: copy start frame if frame extraction failed
+  if (!endUrl) {
+    console.warn('Frame extractor unavailable, using start frame as fallback end frame');
+    const startFrameForEnd = await fetch(input.start_frame_url);
+    if (startFrameForEnd.ok) {
+      const endBuffer = await startFrameForEnd.arrayBuffer();
+      await env.ASSETS.put(endR2Path, endBuffer, {
+        httpMetadata: { contentType: 'image/png' },
+      });
+    }
+    endUrl = `${R2_PUBLIC_URL}/${endR2Path}`;
   }
 
   return {
     video_url: videoR2Url,
-    end_url: `${R2_PUBLIC_URL}/${endR2Path}`,
+    end_url: endUrl,
   };
 }
 

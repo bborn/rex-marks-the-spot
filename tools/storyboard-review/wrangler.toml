@@ -12,6 +12,10 @@ database_id = "5100bd52-59fe-4d2f-9eae-2889f0e900c1"
 binding = "ASSETS"
 bucket_name = "rex-assets"
 
+[vars]
+FRAME_EXTRACTOR_URL = "http://5.161.224.250:8788"
+FRAME_EXTRACTOR_TOKEN = "frex_rexmarksthespot_2024"
+
 # Required secrets (set via: npx wrangler secret put <NAME>):
 # - GEMINI_API_KEY
 # - REPLICATE_API_TOKEN
