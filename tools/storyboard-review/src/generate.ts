@@ -69,7 +69,6 @@ async function generateStartFrame(input: StartFrameInput, env: Env): Promise<{ s
       contents: [{ parts }],
       generationConfig: {
         responseModalities: ['TEXT', 'IMAGE'],
-        responseConfig: { imageDimension: { width: 1376, height: 768 } },
       },
     }),
   });
