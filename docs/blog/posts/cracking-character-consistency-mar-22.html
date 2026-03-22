@@ -63,6 +63,11 @@
 <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1A-start.png" alt="Establishing shot of Scene 1 living room">
 <p class="caption">The establishing shot that anchors everything. Generated once with Gemini using character turnarounds as references, then used as the visual anchor for every other panel.</p>
 
+<video controls playsinline muted loop style="width:100%; border-radius:8px; margin:16px 0;">
+  <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/video-first-pipeline/panel-1A-clip.mp4" type="video/mp4">
+</video>
+<p class="caption">A 5-second motion clip generated from the establishing shot by P-Video. Cost: about 2.5 cents.</p>
+
 <h2>The Breakthrough: Video-First</h2>
 
 <p>The insight was almost too simple. Instead of generating start and end frames separately (and watching them drift), we generate <strong>one</strong> start frame, then use a video model to create a short motion clip from it. The end frame is just the last frame of that video.</p>
@@ -92,6 +97,11 @@
 
 <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-start.png" alt="Mia close-up panel from the pipeline">
 <p class="caption">One of the panels generated through the pipeline: Mia's close-up. Consistent with her turnaround design, consistent lighting with the establishing shot.</p>
+
+<video controls playsinline muted loop style="width:100%; border-radius:8px; margin:16px 0;">
+  <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-clip.mp4" type="video/mp4">
+</video>
+<p class="caption">Mia's "Promise?" moment as a video clip, with the end frame extracted automatically.</p>
 
 <p>The app shows every panel with its start frame, video clip, and end frame side by side. Each panel gets an <strong>Approve / Needs Fix / Redo</strong> button. When something's off, you can drop pins or draw regions directly on the image to mark exactly what's wrong &mdash; "Mia's hair color is off here" or "the couch changed shape in this corner."</p>
 
