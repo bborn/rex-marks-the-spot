@@ -19,7 +19,7 @@ professional animation quality, movie production still,
 - **Nina (Mother):** Late 30s, shoulder-length dark brown wavy hair, hazel-green eyes, elegant black cocktail dress
 - **Mia (Daughter, ~8):** Brown hair, ponytail possible, pajamas, big expressive eyes
 - **Leo (Son, ~5):** Blonde/light brown hair, dinosaur pajamas, round face, innocent
-- **Jenny (Babysitter, ~15):** Blonde ponytail, casual teen clothes, always on phone
+- **Jenny (Babysitter, ~15):** Dark brown curly hair in messy ponytail, brown skin, coral pink hoodie, gray leggings, white sneakers, always on phone
 
 ---
 
@@ -79,7 +79,7 @@ warm interior lighting, 16:9 cinematic composition
 **Shot:** Insert - Jenny
 **Prompt:**
 ```
-Storyboard panel, close-up insert, teenage babysitter blonde ponytail,
+Storyboard panel, close-up insert, teenage babysitter dark brown curly hair messy ponytail, brown skin, coral pink hoodie,
 Pixar animation style, head tilted down looking at phone screen,
 texting completely absorbed, oblivious expression,
 phone glow illuminating face, background soft focus,
