@@ -75,10 +75,11 @@ PANELS = {
     "05": {
         "desc": "1E: Close-up Jenny on phone",
         "prompt": (
-            "Pixar-style 3D animated close-up shot. A teenage girl with blonde hair "
-            "in a ponytail sits in an armchair, looking down at her phone with a slight "
-            "smile. Phone screen casts a soft blue-white glow on her face. Warm fireplace "
-            "light in the blurred background. She occasionally taps the screen and smirks. "
+            "Pixar-style 3D animated close-up shot. A teenage girl with dark brown curly hair "
+            "in a messy ponytail, brown skin, coral pink hoodie, sits in an armchair, "
+            "looking down at her phone with a slight smile. Phone screen casts a soft "
+            "blue-white glow on her face. Warm fireplace light in the blurred background. "
+            "She occasionally taps the screen and smirks. "
             "Shallow depth of field, warm cozy atmosphere. "
             "Cinematic lighting, movie-quality 3D animation."
         ),
