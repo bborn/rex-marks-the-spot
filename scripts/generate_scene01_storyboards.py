@@ -104,8 +104,9 @@ PANELS = [
         "name": "Panel 1E: Close-up Jenny",
         "chars": [],
         "prompt": (
-            "Close-up of a 15-year-old babysitter with a blonde ponytail, "
-            "head tilted down looking at her phone screen. She is completely absorbed in texting. "
+            "Close-up of a 15-year-old babysitter with dark brown curly hair in a messy ponytail, "
+            "brown skin, coral pink hoodie. Head tilted down looking at her phone screen. "
+            "She is completely absorbed in texting. "
             "Phone glow illuminates her face. Cheerful but disconnected expression. "
             "Background is blurred with shallow depth of field. "
             "She is oblivious to the family chaos around her. "
