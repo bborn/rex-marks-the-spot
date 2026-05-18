@@ -1,9 +1,9 @@
 {
-  "generated": "2026-05-17T18:30:49.244523Z",
-  "totalAssets": 1479,
+  "generated": "2026-05-18T01:03:09.094644Z",
+  "totalAssets": 1483,
   "categories": {
     "Characters": 381,
-    "Other": 186,
+    "Other": 190,
     "Storyboards": 814,
     "Animatics": 2,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-17T18:30:49.226682241Z",
+      "modTime": "2026-05-18T01:03:09.076453906Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-17T18:30:49.226682241Z",
+      "modTime": "2026-05-18T01:03:09.076453906Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-17T18:30:49.226682241Z",
+      "modTime": "2026-05-18T01:03:09.076453906Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,45 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-17T18:30:49.226682241Z",
+      "modTime": "2026-05-18T01:03:09.076453906Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "tests/scene1-opening-comparison/veo3fast_panel01_720p_6s.mp4",
+      "name": "veo3fast_panel01_720p_6s.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/scene1-opening-comparison/veo3fast_panel01_720p_6s.mp4",
+      "size": 1520532,
+      "modTime": "2026-05-17T19:53:03.803292151Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "tests/scene1-opening-comparison/happyhorse_panel01_720p_5s.mp4",
+      "name": "happyhorse_panel01_720p_5s.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/scene1-opening-comparison/happyhorse_panel01_720p_5s.mp4",
+      "size": 2677141,
+      "modTime": "2026-05-17T19:51:31.491881362Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "tests/scene1-opening-comparison/pvideo_panel01_720p_5s.mp4",
+      "name": "pvideo_panel01_720p_5s.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/scene1-opening-comparison/pvideo_panel01_720p_5s.mp4",
+      "size": 3129887,
+      "modTime": "2026-05-17T19:49:59.676472344Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "tests/happy-horse/happyhorse_scene01_panel03_720p_5s.mp4",
+      "name": "happyhorse_scene01_panel03_720p_5s.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/tests/happy-horse/happyhorse_scene01_panel03_720p_5s.mp4",
+      "size": 1795001,
+      "modTime": "2026-05-17T18:34:20.044635504Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "storyboards/v3/scene-01/scene-01-1I-end.png",
