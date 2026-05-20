@@ -1,9 +1,9 @@
 {
-  "generated": "2026-05-20T01:07:18.038353Z",
-  "totalAssets": 1495,
+  "generated": "2026-05-20T07:26:16.733466Z",
+  "totalAssets": 1497,
   "categories": {
     "Characters": 381,
-    "Other": 202,
+    "Other": 204,
     "Storyboards": 814,
     "Animatics": 2,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-20T01:07:18.022444676Z",
+      "modTime": "2026-05-20T07:26:16.715594285Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-20T01:07:18.022444676Z",
+      "modTime": "2026-05-20T07:26:16.715594285Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-20T01:07:18.022444676Z",
+      "modTime": "2026-05-20T07:26:16.715594285Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,27 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-20T01:07:18.022444676Z",
+      "modTime": "2026-05-20T07:26:16.715594285Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/flow-veo-1C.mp4",
+      "name": "flow-veo-1C.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1C.mp4",
+      "size": 2076744,
+      "modTime": "2026-05-20T01:49:48.019468395Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/flow-veo-1A-frames.mp4",
+      "name": "flow-veo-1A-frames.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1A-frames.mp4",
+      "size": 1471619,
+      "modTime": "2026-05-20T01:42:17.101181671Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-seedance-mitte/flow-veo-1A.mp4",
