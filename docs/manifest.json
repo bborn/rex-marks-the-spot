@@ -1,9 +1,9 @@
 {
-  "generated": "2026-05-19T18:47:36.912819Z",
-  "totalAssets": 1483,
+  "generated": "2026-05-20T01:07:18.038353Z",
+  "totalAssets": 1495,
   "categories": {
     "Characters": 381,
-    "Other": 190,
+    "Other": 202,
     "Storyboards": 814,
     "Animatics": 2,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-19T18:47:36.896845004Z",
+      "modTime": "2026-05-20T01:07:18.022444676Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-19T18:47:36.896845004Z",
+      "modTime": "2026-05-20T01:07:18.022444676Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-19T18:47:36.896845004Z",
+      "modTime": "2026-05-20T01:07:18.022444676Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,117 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-19T18:47:36.896845004Z",
+      "modTime": "2026-05-20T01:07:18.022444676Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/flow-veo-1A.mp4",
+      "name": "flow-veo-1A.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1A.mp4",
+      "size": 4307315,
+      "modTime": "2026-05-19T22:12:05.799348460Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/scene-01-parents-leaving.mp4",
+      "name": "scene-01-parents-leaving.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/scene-01-parents-leaving.mp4",
+      "size": 6306498,
+      "modTime": "2026-05-19T19:33:24.208886387Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/scene-01-parents-leaving-silent.mp4",
+      "name": "scene-01-parents-leaving-silent.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/scene-01-parents-leaving-silent.mp4",
+      "size": 5950264,
+      "modTime": "2026-05-19T19:33:23.823880500Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/scene-01-draft-no1H.mp4",
+      "name": "scene-01-draft-no1H.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/scene-01-draft-no1H.mp4",
+      "size": 5177515,
+      "modTime": "2026-05-19T19:33:23.443874689Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/07-shot-1I.mp4",
+      "name": "07-shot-1I.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/07-shot-1I.mp4",
+      "size": 997457,
+      "modTime": "2026-05-19T19:33:23.104869505Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/06-shot-1H.mp4",
+      "name": "06-shot-1H.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/06-shot-1H.mp4",
+      "size": 1130316,
+      "modTime": "2026-05-19T19:33:22.891866247Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/05-shot-1G.mp4",
+      "name": "05-shot-1G.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/05-shot-1G.mp4",
+      "size": 842948,
+      "modTime": "2026-05-19T19:33:22.675862944Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/04-shot-1D.mp4",
+      "name": "04-shot-1D.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/04-shot-1D.mp4",
+      "size": 882348,
+      "modTime": "2026-05-19T19:33:22.469859794Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/03-shot-1C.mp4",
+      "name": "03-shot-1C.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/03-shot-1C.mp4",
+      "size": 1606592,
+      "modTime": "2026-05-19T19:33:22.260856597Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/02-shot-1B.mp4",
+      "name": "02-shot-1B.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/02-shot-1B.mp4",
+      "size": 778030,
+      "modTime": "2026-05-19T19:33:22.025853003Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/shots/01-shot-1A.mp4",
+      "name": "01-shot-1A.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/01-shot-1A.mp4",
+      "size": 853453,
+      "modTime": "2026-05-19T19:33:21.817849822Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/scene-01-parents-leaving-silent.mp4",
+      "name": "scene-01-parents-leaving-silent.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/scene-01-parents-leaving-silent.mp4",
+      "size": 5950264,
+      "modTime": "2026-05-19T19:33:05.325597404Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "tests/scene1-opening-comparison/veo3fast_panel01_720p_6s.mp4",
