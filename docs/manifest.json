@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-20T07:26:16.733466Z",
-  "totalAssets": 1497,
+  "generated": "2026-05-20T11:34:30.656403Z",
+  "totalAssets": 1498,
   "categories": {
     "Characters": 381,
-    "Other": 204,
+    "Other": 104,
+    "Animatics": 103,
     "Storyboards": 814,
-    "Animatics": 2,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-20T07:26:16.715594285Z",
+      "modTime": "2026-05-20T11:34:30.638752561Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-20T07:26:16.715594285Z",
+      "modTime": "2026-05-20T11:34:30.638752561Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-20T07:26:16.715594285Z",
+      "modTime": "2026-05-20T11:34:30.638752561Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,18 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-20T07:26:16.715594285Z",
+      "modTime": "2026-05-20T11:34:30.638752561Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-seedance-mitte/flow-omni-1D.mp4",
+      "name": "flow-omni-1D.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-omni-1D.mp4",
+      "size": 1255705,
+      "modTime": "2026-05-20T11:14:28.650886581Z",
+      "category": "Animatics",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-seedance-mitte/flow-veo-1C.mp4",
@@ -55,7 +64,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1C.mp4",
       "size": 2076744,
       "modTime": "2026-05-20T01:49:48.019468395Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -64,7 +73,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1A-frames.mp4",
       "size": 1471619,
       "modTime": "2026-05-20T01:42:17.101181671Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -73,7 +82,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1A.mp4",
       "size": 4307315,
       "modTime": "2026-05-19T22:12:05.799348460Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -82,7 +91,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/scene-01-parents-leaving.mp4",
       "size": 6306498,
       "modTime": "2026-05-19T19:33:24.208886387Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -91,7 +100,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/scene-01-parents-leaving-silent.mp4",
       "size": 5950264,
       "modTime": "2026-05-19T19:33:23.823880500Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -100,7 +109,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/scene-01-draft-no1H.mp4",
       "size": 5177515,
       "modTime": "2026-05-19T19:33:23.443874689Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -109,7 +118,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/07-shot-1I.mp4",
       "size": 997457,
       "modTime": "2026-05-19T19:33:23.104869505Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -118,7 +127,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/06-shot-1H.mp4",
       "size": 1130316,
       "modTime": "2026-05-19T19:33:22.891866247Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -127,7 +136,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/05-shot-1G.mp4",
       "size": 842948,
       "modTime": "2026-05-19T19:33:22.675862944Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -136,7 +145,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/04-shot-1D.mp4",
       "size": 882348,
       "modTime": "2026-05-19T19:33:22.469859794Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -145,7 +154,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/03-shot-1C.mp4",
       "size": 1606592,
       "modTime": "2026-05-19T19:33:22.260856597Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -154,7 +163,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/02-shot-1B.mp4",
       "size": 778030,
       "modTime": "2026-05-19T19:33:22.025853003Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -163,7 +172,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/shots/01-shot-1A.mp4",
       "size": 853453,
       "modTime": "2026-05-19T19:33:21.817849822Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -172,7 +181,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/scene-01-parents-leaving-silent.mp4",
       "size": 5950264,
       "modTime": "2026-05-19T19:33:05.325597404Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1720,7 +1729,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-pvideo-animatic-crossfade.mp4",
       "size": 20144883,
       "modTime": "2026-03-05T14:10:55.127111266Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1729,7 +1738,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-pvideo-animatic-simple.mp4",
       "size": 19852814,
       "modTime": "2026-03-05T14:10:46.570091411Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1738,7 +1747,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel09-pvideo-std.mp4",
       "size": 2387217,
       "modTime": "2026-03-05T14:10:31.212057779Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1747,7 +1756,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel08-pvideo-std.mp4",
       "size": 3243960,
       "modTime": "2026-03-05T14:10:00.371998297Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1756,7 +1765,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel07-pvideo-std.mp4",
       "size": 3856689,
       "modTime": "2026-03-05T14:09:42.188968480Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1765,7 +1774,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel06-pvideo-std.mp4",
       "size": 4114133,
       "modTime": "2026-03-05T14:09:25.612944848Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1774,7 +1783,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel05-pvideo-std.mp4",
       "size": 2680439,
       "modTime": "2026-03-05T14:09:08.828924477Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1783,7 +1792,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel04-pvideo-std.mp4",
       "size": 2864398,
       "modTime": "2026-03-05T14:08:36.516895799Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1792,7 +1801,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel03-pvideo-std.mp4",
       "size": 2251421,
       "modTime": "2026-03-05T14:08:19.490886511Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1801,7 +1810,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel02-pvideo-std.mp4",
       "size": 4175168,
       "modTime": "2026-03-05T14:08:01.898881324Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1810,7 +1819,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-pvideo-animatic/scene01-panel01-pvideo-std.mp4",
       "size": 4900422,
       "modTime": "2026-03-05T14:07:43.492880870Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1819,7 +1828,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-crossfade-fixed.mp4",
       "size": 8122799,
       "modTime": "2026-03-05T13:44:10.837323334Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1828,7 +1837,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-crossfade.thumb.jpg",
       "size": 98856,
       "modTime": "2026-03-05T13:30:32.383844235Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -1837,7 +1846,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-simple.thumb.jpg",
       "size": 72483,
       "modTime": "2026-03-05T13:30:32.186842684Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -1846,7 +1855,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3D-pvideo-std.thumb.jpg",
       "size": 57589,
       "modTime": "2026-03-05T13:30:31.975841022Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -1855,7 +1864,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3C-pvideo-std.thumb.jpg",
       "size": 69800,
       "modTime": "2026-03-05T13:30:31.784839518Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -1864,7 +1873,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3B-pvideo-std.thumb.jpg",
       "size": 54507,
       "modTime": "2026-03-05T13:30:31.595838030Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -1873,7 +1882,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3A-pvideo-std.thumb.jpg",
       "size": 73512,
       "modTime": "2026-03-05T13:30:31.402836509Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -1882,7 +1891,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-crossfade.mp4",
       "size": 8885390,
       "modTime": "2026-03-05T13:30:31.072833911Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1891,7 +1900,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-animatic-simple.mp4",
       "size": 9133495,
       "modTime": "2026-03-05T13:30:27.029802067Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1900,7 +1909,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3D-pvideo-std.mp4",
       "size": 2366837,
       "modTime": "2026-03-05T13:30:23.924777608Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1909,7 +1918,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3C-pvideo-std.mp4",
       "size": 3235617,
       "modTime": "2026-03-05T13:30:22.950769935Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1918,7 +1927,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3B-pvideo-std.mp4",
       "size": 1429047,
       "modTime": "2026-03-05T13:30:21.795760835Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1927,7 +1936,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-round2/scene03-panel3A-pvideo-std.mp4",
       "size": 3120055,
       "modTime": "2026-03-05T13:30:20.940754099Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1936,7 +1945,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-drafts/scene03-panel3D-pvideo-draft.mp4",
       "size": 840329,
       "modTime": "2026-03-05T13:02:20.314599384Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1945,7 +1954,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-drafts/scene03-panel3C-pvideo-draft.mp4",
       "size": 1066623,
       "modTime": "2026-03-05T13:02:14.077523326Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1954,7 +1963,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-drafts/scene03-panel3B-pvideo-draft.mp4",
       "size": 776077,
       "modTime": "2026-03-05T13:01:58.419330859Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1963,7 +1972,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-pvideo-drafts/scene03-panel3A-pvideo-draft.mp4",
       "size": 1320026,
       "modTime": "2026-03-05T13:01:53.770273289Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1972,7 +1981,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/pair-3C-to-3D-veo3.mp4",
       "size": 1566507,
       "modTime": "2026-03-05T12:50:23.810486797Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1981,7 +1990,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/pair-3B-to-3C-veo3.mp4",
       "size": 1340541,
       "modTime": "2026-03-05T12:48:37.325762302Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -1990,7 +1999,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/pair-3A-to-3B-veo3.mp4",
       "size": 1267020,
       "modTime": "2026-03-05T12:46:50.814040083Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2116,7 +2125,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v3-ultrastable-thumb.jpg",
       "size": 124159,
       "modTime": "2026-02-27T13:36:52.639864644Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2125,7 +2134,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v4-anchored-thumb.jpg",
       "size": 120854,
       "modTime": "2026-02-27T13:36:51.839867059Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2134,7 +2143,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3fast-16x9-thumb.jpg",
       "size": 118115,
       "modTime": "2026-02-27T13:36:51.214868946Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2143,7 +2152,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast-16x9-thumb.jpg",
       "size": 97898,
       "modTime": "2026-02-27T13:36:50.609870772Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2152,7 +2161,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_draft_20260226_184320-thumb.jpg",
       "size": 58813,
       "modTime": "2026-02-27T13:36:49.808873190Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2161,7 +2170,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_standard_20260226_184320-thumb.jpg",
       "size": 193755,
       "modTime": "2026-02-27T13:36:48.976875702Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2170,7 +2179,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-draft-720p-5s-atmospheric-thumb.jpg",
       "size": 46383,
       "modTime": "2026-02-27T13:36:48.620876777Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2179,7 +2188,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-720p-5s-atmospheric-thumb.jpg",
       "size": 141511,
       "modTime": "2026-02-27T13:36:47.863879063Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2188,7 +2197,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic-thumb.jpg",
       "size": 255225,
       "modTime": "2026-02-27T13:36:47.502880152Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2197,7 +2206,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-simple-thumb.jpg",
       "size": 117162,
       "modTime": "2026-02-27T12:35:13.657399583Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2206,7 +2215,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-crossfade-thumb.jpg",
       "size": 143688,
       "modTime": "2026-02-27T12:35:13.327400616Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2215,7 +2224,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel09-veo2-thumb.jpg",
       "size": 89879,
       "modTime": "2026-02-27T12:35:12.948401802Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2224,7 +2233,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast-thumb.jpg",
       "size": 73327,
       "modTime": "2026-02-27T12:35:11.999404772Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2233,7 +2242,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel07-veo3fast-thumb.jpg",
       "size": 139948,
       "modTime": "2026-02-27T12:35:11.369406744Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2242,7 +2251,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel06-veo2-thumb.jpg",
       "size": 93186,
       "modTime": "2026-02-27T12:35:10.708408812Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2251,7 +2260,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel05-veo3-thumb.jpg",
       "size": 97740,
       "modTime": "2026-02-27T12:35:09.781411714Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2260,7 +2269,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel04-veo3-thumb.jpg",
       "size": 107593,
       "modTime": "2026-02-27T12:35:09.114413802Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2269,7 +2278,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel03-veo3-thumb.jpg",
       "size": 76691,
       "modTime": "2026-02-27T12:35:08.393416059Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2278,7 +2287,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3-thumb.jpg",
       "size": 93203,
       "modTime": "2026-02-27T12:35:07.608418516Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2287,7 +2296,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel01-veo3-v1-thumb.jpg",
       "size": 121253,
       "modTime": "2026-02-27T12:35:06.947420585Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2296,7 +2305,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo31-v1-thumb.jpg",
       "size": 125573,
       "modTime": "2026-02-27T12:35:06.334422504Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2305,7 +2314,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v2-stable-thumb.jpg",
       "size": 125587,
       "modTime": "2026-02-27T12:35:05.718424433Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2314,7 +2323,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v1-thumb.jpg",
       "size": 121253,
       "modTime": "2026-02-27T12:35:05.091426396Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2323,7 +2332,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v2-thumb.jpg",
       "size": 123560,
       "modTime": "2026-02-27T12:35:04.496428259Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2332,7 +2341,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v1-thumb.jpg",
       "size": 111453,
       "modTime": "2026-02-27T12:35:03.706430732Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -2413,7 +2422,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-1080p-5s-cinematic.mp4",
       "size": 8366668,
       "modTime": "2026-02-26T18:50:14.111516639Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2422,7 +2431,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-std-720p-5s-atmospheric.mp4",
       "size": 3819528,
       "modTime": "2026-02-26T18:49:44.126611551Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2431,7 +2440,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-img2vid-test/pvideo-draft-720p-5s-atmospheric.mp4",
       "size": 1236611,
       "modTime": "2026-02-26T18:49:25.886669137Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2440,7 +2449,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_standard_20260226_184320.mp4",
       "size": 4751286,
       "modTime": "2026-02-26T18:43:36.983742508Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2449,7 +2458,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/pvideo-test/pvideo_draft_20260226_184320.mp4",
       "size": 1138171,
       "modTime": "2026-02-26T18:43:25.934775383Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2494,7 +2503,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-crossfade.mp4",
       "size": 18787127,
       "modTime": "2026-02-25T20:15:45.507590707Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2503,7 +2512,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-animatic/scene01-animatic-simple.mp4",
       "size": 18013481,
       "modTime": "2026-02-25T20:15:34.842597789Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2512,7 +2521,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast-16x9.mp4",
       "size": 2107940,
       "modTime": "2026-02-25T20:14:53.618624959Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2521,7 +2530,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3fast-16x9.mp4",
       "size": 1755243,
       "modTime": "2026-02-25T20:13:06.809693633Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2530,7 +2539,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel08-veo3fast.mp4",
       "size": 1739157,
       "modTime": "2026-02-25T19:48:31.165691831Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2539,7 +2548,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel07-veo3fast.mp4",
       "size": 1777354,
       "modTime": "2026-02-25T19:46:44.860517973Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2548,7 +2557,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel09-veo2.mp4",
       "size": 1659578,
       "modTime": "2026-02-25T19:42:54.376677296Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2557,7 +2566,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel06-veo2.mp4",
       "size": 2025569,
       "modTime": "2026-02-25T19:38:33.824760780Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2566,7 +2575,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel05-veo3.mp4",
       "size": 1166828,
       "modTime": "2026-02-25T19:18:58.596614106Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2575,7 +2584,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel04-veo3.mp4",
       "size": 1728119,
       "modTime": "2026-02-25T19:16:57.254085289Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2584,7 +2593,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel03-veo3.mp4",
       "size": 1647913,
       "modTime": "2026-02-25T19:14:56.025107369Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2593,7 +2602,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel02-veo3.mp4",
       "size": 1483434,
       "modTime": "2026-02-25T19:12:54.666555578Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2602,7 +2611,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v4-anchored.mp4",
       "size": 1602864,
       "modTime": "2026-02-25T18:59:07.559603354Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2611,7 +2620,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v3-ultrastable.mp4",
       "size": 796834,
       "modTime": "2026-02-25T18:56:30.615439790Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2620,7 +2629,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v2-stable.mp4",
       "size": 1608945,
       "modTime": "2026-02-25T18:53:54.547273613Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2629,7 +2638,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo31-v1.mp4",
       "size": 3340504,
       "modTime": "2026-02-25T18:43:24.283681304Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2638,7 +2647,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v2.mp4",
       "size": 2177102,
       "modTime": "2026-02-25T18:41:09.327426198Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2647,7 +2656,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-all-panels/scene01-panel01-veo3-v1.mp4",
       "size": 1749434,
       "modTime": "2026-02-25T18:39:05.186119510Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2656,7 +2665,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo3-v1.mp4",
       "size": 1749434,
       "modTime": "2026-02-25T18:39:05.186119510Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2665,7 +2674,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene01-panel01-veo2-v1.mp4",
       "size": 1193760,
       "modTime": "2026-02-25T18:36:08.571123656Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "video"
     },
     {
@@ -2674,7 +2683,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-panel01-mvp/scene-01-panel-01.png",
       "size": 1532654,
       "modTime": "2026-02-25T18:32:14.379501018Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -5599,7 +5608,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/scene-03-panel-04.png",
       "size": 620090,
       "modTime": "2026-02-09T12:01:14.493500527Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -5617,7 +5626,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/scene-03-panel-01.png",
       "size": 533219,
       "modTime": "2026-02-09T12:00:59.050590282Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -12628,7 +12637,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/scene-03-panel-03.png",
       "size": 551005,
       "modTime": "2026-02-03T15:14:23.564819503Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
@@ -12646,7 +12655,7 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene03-panel-pairs/scene-03-panel-02.png",
       "size": 559102,
       "modTime": "2026-02-03T15:14:23.560076290Z",
-      "category": "Other",
+      "category": "Animatics",
       "type": "image"
     },
     {
