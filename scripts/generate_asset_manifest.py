@@ -40,6 +40,7 @@ CATEGORY_PATTERNS = [
     ('assets/audio/', 'Audio'),
     ('assets/props/', 'Props'),
     ('animatics/', 'Animatics'),
+    ('animation-tests/', 'Animatics'),
     ('renders/', 'Renders'),
 ]
 

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirty Seconds of Scene 1 - Rex Marks The Spot</title>
+    <meta name="description" content="Testing two new AI video tools — mitte.ai and Google Flow — on a whole scene. The character consistency problem looks handled. It's still not a film.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .post-body img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+        .caption { color: #888; font-size: 0.85em; text-align: center; margin-top: -8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>Thirty Seconds of Scene 1</h1>
+                    <div class="post-author">
+                        <time datetime="2026-05-20">May 20, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+
+<p>Back in March I wrote about cracking character consistency &mdash; generate one start frame, let a video model carry it into motion, and the end frame comes free because both frames come from the same generation. That fixed storyboard panels. It did not give me a scene.</p>
+
+<p>A scene is shots. Shots are cuts. And every cut is a fresh chance for a character to forget what her face looks like.</p>
+
+<p>So this week I tried two tools I hadn't touched before &mdash; mitte.ai and Google Flow &mdash; with one question: can either of them hold a character across a whole scene, not just a single clip?</p>
+
+<p>Short answer: better than I expected, and still not enough.</p>
+
+<h2>mitte.ai</h2>
+
+<p>mitte is a front-end bolted onto a pile of current video models &mdash; Seedance 2, Veo, Kling, a dozen others. I fed it Scene 1, the one where Gabe and Nina are trying to leave for date night while the storm rolls in and the kids stall them at the door.</p>
+
+<p>I gave Seedance 2 the four character turnarounds and the storyboard panels, one shot at a time, and asked for six: the establishing wide, Nina speed-walking through the room half-dressed, the two-shot of the parents, the over-the-shoulder of the kids, Mia's close-up, and Gabe finally caving. Then I stitched them.</p>
+
+<video controls playsinline muted loop style="width:100%; border-radius:8px; margin:16px 0;">
+  <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/scene-01-parents-leaving-silent.mp4" type="video/mp4">
+</video>
+<p class="caption">Six shots, about thirty seconds, Seedance 2 via mitte.ai. No audio &mdash; that gets added later.</p>
+
+<p>Watching it back: Mia is Mia in every shot. Leo is Leo. The living room is the same living room &mdash; same lamp, same window, same dinosaur toys on the floor. That has never been true before. Six months ago this was the exact thing that broke every time.</p>
+
+<p>It is not free of problems. The tooling is a website &mdash; there's no API, so "rendering a scene" means me clicking through a browser, uploading the same reference images over and over, one shot at a time. Seedance's auto-generated audio tripped a content filter twice before I learned to turn it off. And it caps you at two generations at once, so a six-shot scene is a slow afternoon. But the shots themselves hold up. That's the part that matters.</p>
+
+<h2>Google Flow</h2>
+
+<p>Flow is Google's own thing &mdash; same Veo 3.1 under the hood, but built like an actual production tool. It has a Characters panel: upload a character once and it stays in the project. After a session of re-uploading turnarounds into mitte, that felt like a real workflow instead of a chore.</p>
+
+<p>The first shot came out gorgeous and wrong. I'd given Flow the characters but not the room, and Veo decided the scene didn't need a television &mdash; a problem when the whole point of the shot is three kids watching one.</p>
+
+<video controls playsinline muted loop style="width:100%; border-radius:8px; margin:16px 0;">
+  <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1A.mp4" type="video/mp4">
+</video>
+<p class="caption">Beautiful. Also missing the entire premise.</p>
+
+<p>The fix was to hand it the storyboard panel as the literal first frame instead of a loose reference. Do that and it behaves &mdash; same room, same blocking, the camera holds.</p>
+
+<video controls playsinline muted loop style="width:100%; border-radius:8px; margin:16px 0;">
+  <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-veo-1A-frames.mp4" type="video/mp4">
+</video>
+<p class="caption">Same shot, with the storyboard panel handed in as the first frame. The TV comes back.</p>
+
+<p>So Flow can do it. The catch is the meter. Veo's good setting burns credits fast &mdash; about four shots before Google told me I was out. There's a cheaper, faster model, Omni Flash, that's genuinely close in quality for a quarter the cost, and I finished the parents' two-shot on it.</p>
+
+<video controls playsinline muted loop style="width:100%; border-radius:8px; margin:16px 0;">
+  <source src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-seedance-mitte/flow-omni-1D.mp4" type="video/mp4">
+</video>
+<p class="caption">Gabe and Nina, rendered on Omni Flash &mdash; a quarter the cost of the premium Veo setting, and hard to tell apart.</p>
+
+<p>The trade: the expensive Veo models stamp a "Veo" watermark into the corner of every frame. Omni Flash only leaves a small sparkle. Neither is something I want in a finished film.</p>
+
+<h2>Where this actually leaves us</h2>
+
+<p>I want to be careful here, because the easy version of this post is "we did it." We didn't.</p>
+
+<p>What I have is thirty seconds. Six clips taped together. It's the best-looking thirty seconds this project has produced, and the consistency problem that ate the whole spring looks, for the first time, basically handled. But thirty seconds of an animatic is not a film, and the gap between the two is most of the actual work &mdash; performances that carry a scene, timing, edits that mean something, shots that talk to each other instead of just sitting next to each other.</p>
+
+<p>The tools still take liberties I didn't ask for. They still can't be scripted &mdash; everything is a person clicking. They still flinch at the kids: Veo's safety filter rejected my first prompt outright for describing children too specifically, and I had to launder the language to get a frame out of it. None of that is film-ready.</p>
+
+<p>But I've been doing this since February, and I can see the slope. In February, rigging a single character was a four-day fight. In March, two consecutive panels wouldn't agree on hair color. This week I got six shots of four characters to hold together across cuts, on tools that didn't exist in usable form when I started. I'm not going to pretend that's a movie. I'm also not going to pretend it isn't moving.</p>
+
+<p>Next: pushing past the single scene, and figuring out which of these &mdash; or which combination &mdash; is worth committing to.</p>
+
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="../index.html">&larr; Back to Blog</a>
+                        <span></span>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/rex_the_movie" target="_blank" rel="noopener" title="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
