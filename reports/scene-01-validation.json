@@ -10,23 +10,36 @@
         "character_presence": 0.6,
         "location_match": 0.9,
         "continuity": 1.0,
-        "artifacts": 1.0,
+        "artifacts": 0.967,
         "character_identity": {
-          "Mia": 0.9,
-          "Leo": 0.933,
-          "Jenny": 0.9
+          "Mia": 1.0,
+          "Leo": 1.0,
+          "Jenny": 1.0
         },
         "character_identity_no_reference": [
           "Gabe",
           "Nina"
-        ]
+        ],
+        "character_wardrobe": {
+          "Mia": 0.5,
+          "Leo": 1.0,
+          "Jenny": 1.0
+        },
+        "character_wardrobe_no_reference": [
+          "Gabe",
+          "Nina"
+        ],
+        "character_wardrobe_expected": {
+          "Mia": "casual home wear, legs tucked under on couch",
+          "Leo": "green dinosaur-pattern pajamas",
+          "Jenny": "casual teen, dark brown hair in ponytail, on phone"
+        }
       },
       "reasons": [
-        "Nina is missing from the shot.",
-        "Gabe is missing from the shot.",
-        "Mia's top is a solid pink instead of pink with stars.",
-        "Jenny's hoodie color is slightly off.",
-        "Mia's wardrobe does not match the expected pajamas."
+        "Characters Nina and Gabe are missing from the shot.",
+        "Mia's pose does not match the manifest description of 'legs tucked under on couch'.",
+        "Two expected characters, Nina and Gabe, are missing from the keyframe.",
+        "Mia's pose does not fully match the wardrobe description regarding her legs."
       ],
       "keyframes": [
         {
@@ -52,51 +65,82 @@
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's hair and general appearance match the turnaround, but her top is a solid pink instead of pink with stars.",
+              "score": 1.0,
+              "notes": "Mia's identity matches the turnaround reference.",
               "no_reference": false
             },
             "Leo": {
               "score": 1.0,
-              "notes": "Leo's appearance and green dinosaur pajamas perfectly match the turnaround.",
+              "notes": "Leo's identity matches the turnaround reference.",
               "no_reference": false
             },
             "Jenny": {
-              "score": 0.9,
-              "notes": "Jenny's hair, skin tone, and general appearance match the turnaround, but her hoodie is a slightly different shade of pink.",
+              "score": 1.0,
+              "notes": "Jenny's identity matches the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
               "score": 0.0,
-              "notes": "Nina is not present in the keyframe.",
+              "notes": "Nina is not visible in the keyframe.",
               "no_reference": true
             },
             "Gabe": {
               "score": 0.0,
-              "notes": "Gabe is not present in the keyframe.",
+              "notes": "Gabe is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 0.5,
+              "expected": "casual home wear, legs tucked under on couch",
+              "notes": "Mia is wearing casual home wear, but her legs are not tucked under on the couch.",
+              "no_reference": false
+            },
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas",
+              "notes": "Leo is wearing green dinosaur-pattern pajamas as expected.",
+              "no_reference": false
+            },
+            "Jenny": {
+              "score": 1.0,
+              "expected": "casual teen, dark brown hair in ponytail, on phone",
+              "notes": "Jenny is dressed as a casual teen with dark brown hair and is on her phone.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 0.0,
+              "expected": "elegant black formal dress (date-night)",
+              "notes": "Nina is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Gabe": {
+              "score": 0.0,
+              "expected": "black tuxedo (date-night, slightly rumpled)",
+              "notes": "Gabe is not visible in the keyframe.",
               "no_reference": true
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room layout, furniture, and general ambiance closely match the location plate, though the TV content is different and the storm outside is less dramatic."
+            "score": 0.8,
+            "notes": "The living room matches the location plate, but the lighting and atmosphere are different."
           },
           "continuity": {
             "score": 1.0,
-            "notes": "There is no prior shot to compare against, so continuity is assumed to be perfect.",
-            "no_prior_shot": true
+            "notes": "There is no prior shot to compare for continuity.",
+            "no_prior_shot": true,
+            "same_location_as_prior": false
           },
           "artifacts": {
-            "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "score": 0.9,
+            "notes": "No significant artifacts were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
-            "Nina is missing from the shot.",
-            "Gabe is missing from the shot.",
-            "Mia's top is a solid pink instead of pink with stars.",
-            "Jenny's hoodie color is slightly off."
+            "Characters Nina and Gabe are missing from the shot.",
+            "Mia's pose does not match the manifest description of 'legs tucked under on couch'."
           ],
           "_keyframe_path": "footage/keyframes/01-shot-1A-first.jpg"
         },
@@ -123,40 +167,82 @@
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's hair and general appearance match the turnaround, but her wardrobe is different from the expected pajamas.",
+              "score": 1.0,
+              "notes": "Mia's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Leo": {
-              "score": 0.9,
-              "notes": "Leo's appearance and green dinosaur pajamas match the turnaround and expected wardrobe.",
+              "score": 1.0,
+              "notes": "Leo's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Jenny": {
-              "score": 0.9,
-              "notes": "Jenny's appearance and casual teen wardrobe match the turnaround and expected description.",
+              "score": 1.0,
+              "notes": "Jenny's identity matches the turnaround reference perfectly.",
               "no_reference": false
+            },
+            "Nina": {
+              "score": 0.0,
+              "notes": "Nina is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Gabe": {
+              "score": 0.0,
+              "notes": "Gabe is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 0.5,
+              "expected": "casual home wear, legs tucked under on couch",
+              "notes": "Mia is wearing casual home wear, but her legs are not tucked under on the couch.",
+              "no_reference": false
+            },
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas",
+              "notes": "Leo's green dinosaur-pattern pajamas match the manifest description.",
+              "no_reference": false
+            },
+            "Jenny": {
+              "score": 1.0,
+              "expected": "casual teen, dark brown hair in ponytail, on phone",
+              "notes": "Jenny's casual teen attire and ponytail match the manifest description.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 0.0,
+              "expected": "elegant black formal dress (date-night)",
+              "notes": "Nina is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Gabe": {
+              "score": 0.0,
+              "expected": "black tuxedo (date-night, slightly rumpled)",
+              "notes": "Gabe is not visible in the keyframe.",
+              "no_reference": true
             }
           },
           "location_match": {
             "score": 0.9,
-            "notes": "The living room layout, furniture, and general ambiance closely match the location plate, though the lighting is slightly different."
+            "notes": "The living room matches the location plate, though the TV content is different and the lighting is slightly brighter."
           },
           "continuity": {
             "score": 1.0,
-            "notes": "There is no prior shot to compare against, so continuity is assumed to be perfect.",
-            "no_prior_shot": true
+            "notes": "There is no prior shot to compare for continuity.",
+            "no_prior_shot": true,
+            "same_location_as_prior": false
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
-            "Nina is missing from the shot.",
-            "Gabe is missing from the shot.",
-            "Mia's wardrobe does not match the expected pajamas."
+            "Two expected characters, Nina and Gabe, are missing from the keyframe.",
+            "Mia's pose does not fully match the wardrobe description regarding her legs."
           ],
           "_keyframe_path": "footage/keyframes/01-shot-1A-mid.jpg"
         },
@@ -183,56 +269,89 @@
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's hair and clothing match the turnaround, though her pajamas are pink with stars instead of the solid pink shown in the reference.",
+              "score": 1.0,
+              "notes": "Mia's identity matches the turnaround reference.",
               "no_reference": false
             },
             "Leo": {
-              "score": 0.9,
-              "notes": "Leo's hair and clothing match the turnaround, and he is holding his plush T-Rex.",
+              "score": 1.0,
+              "notes": "Leo's identity matches the turnaround reference.",
               "no_reference": false
             },
             "Jenny": {
-              "score": 0.9,
-              "notes": "Jenny's hair and clothing match the turnaround, and she is on her phone.",
+              "score": 1.0,
+              "notes": "Jenny's identity matches the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
               "score": 0.0,
-              "notes": "Nina is not present in the keyframe.",
+              "notes": "Nina is not visible in the keyframe.",
               "no_reference": true
             },
             "Gabe": {
               "score": 0.0,
-              "notes": "Gabe is not present in the keyframe.",
+              "notes": "Gabe is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 0.5,
+              "expected": "casual home wear, legs tucked under on couch",
+              "notes": "Mia is wearing casual home wear, but her legs are not tucked under on the couch.",
+              "no_reference": false
+            },
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas",
+              "notes": "Leo is wearing green dinosaur-pattern pajamas as expected.",
+              "no_reference": false
+            },
+            "Jenny": {
+              "score": 1.0,
+              "expected": "casual teen, dark brown hair in ponytail, on phone",
+              "notes": "Jenny is wearing casual teen attire with her hair in a ponytail and is on her phone.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 0.0,
+              "expected": "elegant black formal dress (date-night)",
+              "notes": "Nina is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Gabe": {
+              "score": 0.0,
+              "expected": "black tuxedo (date-night, slightly rumpled)",
+              "notes": "Gabe is not visible in the keyframe.",
               "no_reference": true
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room set, furniture, and layout closely match the location plate, including the stormy sky outside the window."
+            "score": 1.0,
+            "notes": "The living room set matches the location plate, including furniture, layout, and the stormy window view."
           },
           "continuity": {
             "score": 1.0,
-            "notes": "There is no prior shot to compare against, so continuity is assumed to be perfect.",
-            "no_prior_shot": true
+            "notes": "There is no prior shot to compare for continuity.",
+            "no_prior_shot": true,
+            "same_location_as_prior": false
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
-            "Nina is missing from the shot.",
-            "Gabe is missing from the shot."
+            "Characters Nina and Gabe are missing from the shot.",
+            "Mia's pose does not fully match the wardrobe description regarding her legs."
           ],
           "_keyframe_path": "footage/keyframes/01-shot-1A-last.jpg"
         }
       ],
       "usage": {
-        "input_tokens": 8433,
-        "output_tokens": 1202
+        "input_tokens": 13125,
+        "output_tokens": 2612
       },
       "media_paths": {
         "media": "footage/scene-01/shots/01-shot-1A.mp4",
@@ -246,6 +365,8 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": null,
+        "prior_shot_id": null,
+        "wardrobe_refs": {},
         "keyframes": [
           "footage/keyframes/01-shot-1A-first.jpg",
           "footage/keyframes/01-shot-1A-mid.jpg",
@@ -257,21 +378,29 @@
       "shot_id": "1B",
       "overall_pass": false,
       "aggregate_scores": {
-        "character_presence": 1.0,
-        "location_match": 0.933,
-        "continuity": 0.8,
-        "artifacts": 0.967,
+        "character_presence": 0.833,
+        "location_match": 1.0,
+        "continuity": 0.833,
+        "artifacts": 1.0,
         "character_identity": {
-          "Leo": 0.933,
-          "Mia": 0.933
+          "Leo": 1.0,
+          "Mia": 1.0
         },
-        "character_identity_no_reference": []
+        "character_identity_no_reference": [],
+        "character_wardrobe": {
+          "Leo": 1.0,
+          "Mia": 0.667
+        },
+        "character_wardrobe_no_reference": [],
+        "character_wardrobe_expected": {
+          "Leo": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+          "Mia": "casual home wear (partial frame edge)"
+        }
       },
       "reasons": [
-        "Mia's wardrobe does not match the previous shot's keyframe.",
-        "Leo's pajamas are a different shade of green compared to the previous shot.",
-        "Leo's hair color is slightly off from the turnaround reference.",
-        "Mia's top has a star pattern not seen in the previous shot or expected wardrobe."
+        "An unexpected character, Jenny, is present in the shot.",
+        "Mia's wardrobe does not match the expected wardrobe for this shot.",
+        "Mia's wardrobe is inconsistent with the previous shot."
       ],
       "keyframes": [
         {
@@ -291,27 +420,42 @@
           "character_identity": {
             "Leo": {
               "score": 1.0,
-              "notes": "Leo's appearance, including hair, face, and wardrobe, perfectly matches the provided turnaround reference.",
+              "notes": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Mia": {
               "score": 1.0,
-              "notes": "Mia's appearance, including hair, face, and wardrobe, perfectly matches the provided turnaround reference.",
+              "notes": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+              "notes": "Leo is wearing green dinosaur-pattern pajamas and hugging a plush T-Rex, matching the manifest.",
+              "no_reference": false
+            },
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear (partial frame edge)",
+              "notes": "Mia is wearing casual home wear, consistent with the manifest description.",
               "no_reference": false
             }
           },
           "location_match": {
             "score": 1.0,
-            "notes": "The living room set, including furniture, layout, and lighting, is consistent with the location plate."
+            "notes": "The living room set, including the couch, TV, window with storm, and lamp, perfectly matches the location plate."
           },
           "continuity": {
-            "score": 0.9,
-            "notes": "The room state, wardrobe, and general lighting are consistent with the previous shot, though the TV content has changed.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location, time of day, and visible character wardrobes are consistent with the prior shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts such as extra limbs, melting, or garbled features were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -320,50 +464,67 @@
         },
         {
           "character_presence": {
-            "score": 1.0,
+            "score": 0.5,
             "expected": [
               "Leo",
               "Mia"
             ],
             "observed": [
+              "Mia",
               "Leo",
-              "Mia"
+              "Jenny"
             ],
             "missing": [],
-            "unexpected": []
+            "unexpected": [
+              "Jenny"
+            ]
           },
           "character_identity": {
             "Leo": {
-              "score": 0.9,
-              "notes": "Leo's hair color is slightly lighter than the reference, and his pajamas are green with a dinosaur, but not the exact pattern.",
+              "score": 1.0,
+              "notes": "Leo's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's hair and skin tone match, but her wardrobe is different from the expected casual home wear, wearing a pink top with stars instead of the solid pink from the previous shot.",
+              "score": 1.0,
+              "notes": "Mia's identity matches the turnaround reference perfectly.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+              "notes": "Leo is wearing green dinosaur-pattern pajamas and hugging a plush T-Rex, matching the manifest.",
+              "no_reference": false
+            },
+            "Mia": {
+              "score": 0.0,
+              "expected": "casual home wear (partial frame edge)",
+              "notes": "Mia is wearing a pink t-shirt with stars and blue jeans, which does not match the 'casual home wear' description from the prior shot's manifest.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room matches the location plate well, with similar furniture and layout, though the lighting is slightly different due to the TV glow on Leo's face."
+            "score": 1.0,
+            "notes": "The living room set, furniture, and window view match the location plate reference."
           },
           "continuity": {
-            "score": 0.7,
-            "notes": "The room state and time of day are consistent, but Mia's wardrobe has changed from a solid pink top to a star-patterned one, and Leo's pajamas are a different shade of green.",
-            "no_prior_shot": false
+            "score": 0.5,
+            "notes": "Mia's wardrobe is inconsistent with the previous shot, where she was wearing casual home wear, not a pink t-shirt and jeans.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
-            "score": 0.9,
-            "notes": "There are no significant generation artifacts, though the TV glow on Leo's face is a bit intense and colorful.",
+            "score": 1.0,
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
-            "Mia's wardrobe does not match the previous shot's keyframe.",
-            "Leo's pajamas are a different shade of green compared to the previous shot.",
-            "Leo's hair color is slightly off from the turnaround reference.",
-            "Mia's top has a star pattern not seen in the previous shot or expected wardrobe."
+            "An unexpected character, Jenny, is present in the shot.",
+            "Mia's wardrobe does not match the expected wardrobe for this shot.",
+            "Mia's wardrobe is inconsistent with the previous shot."
           ],
           "_keyframe_path": "footage/keyframes/02-shot-1B-mid.jpg"
         },
@@ -383,28 +544,43 @@
           },
           "character_identity": {
             "Leo": {
-              "score": 0.9,
-              "notes": "Leo's hair color is slightly lighter than the reference, and his pajamas are green with a dinosaur pattern, but he is not hugging the plush T-Rex.",
+              "score": 1.0,
+              "notes": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's hair and facial features match, and her wardrobe is consistent with casual home wear, though the specific pattern on her shirt is not visible.",
+              "score": 1.0,
+              "notes": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+              "notes": "Leo is wearing green dinosaur-pattern pajamas and hugging a plush T-Rex, matching the manifest.",
+              "no_reference": false
+            },
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear (partial frame edge)",
+              "notes": "Mia is wearing casual home wear, consistent with the manifest description.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room set, furniture, and overall layout match the location plate, with consistent lighting and window view."
+            "score": 1.0,
+            "notes": "The living room set, furniture, and window view with the storm match the location plate exactly."
           },
           "continuity": {
-            "score": 0.8,
-            "notes": "The room state, wardrobe, and general lighting are consistent with the previous shot, though the camera angle and character positions have changed.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location, time of day, and character wardrobes are consistent with the prior shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts such as extra limbs, melting, text-in-frame, or garbled hands were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -413,8 +589,8 @@
         }
       ],
       "usage": {
-        "input_tokens": 6585,
-        "output_tokens": 977
+        "input_tokens": 10971,
+        "output_tokens": 1456
       },
       "media_paths": {
         "media": "footage/scene-01/shots/02-shot-1B.mp4",
@@ -425,6 +601,8 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": "footage/keyframes/01-shot-1A-last.jpg",
+        "prior_shot_id": "1A",
+        "wardrobe_refs": {},
         "keyframes": [
           "footage/keyframes/02-shot-1B-first.jpg",
           "footage/keyframes/02-shot-1B-mid.jpg",
@@ -437,28 +615,36 @@
       "overall_pass": false,
       "aggregate_scores": {
         "character_presence": 0.767,
-        "location_match": 0.767,
-        "continuity": 0.0,
+        "location_match": 1.0,
+        "continuity": 1.0,
         "artifacts": 1.0,
         "character_identity": {
-          "Nina": 0.667,
-          "Gabe": 0.467,
-          "Jenny": 0.567
+          "Nina": 1.0,
+          "Gabe": 1.0,
+          "Jenny": 1.0
         },
-        "character_identity_no_reference": []
+        "character_identity_no_reference": [
+          "Gabe",
+          "Jenny"
+        ],
+        "character_wardrobe": {
+          "Nina": 1.0,
+          "Gabe": 1.0,
+          "Jenny": 1.0
+        },
+        "character_wardrobe_no_reference": [
+          "Gabe",
+          "Jenny"
+        ],
+        "character_wardrobe_expected": {
+          "Nina": "elegant black formal dress, putting on earrings",
+          "Gabe": "black tuxedo (background)",
+          "Jenny": "casual teen, dark brown hair in ponytail (background, on phone)"
+        }
       },
       "reasons": [
-        "Continuity break: Nina's wardrobe is different from the previous shot.",
-        "Continuity break: Gabe's wardrobe is different from the previous shot.",
-        "Continuity break: The lighting and time of day are inconsistent with the previous shot.",
-        "Continuity break: Wardrobe for all characters is inconsistent with the previous shot.",
-        "Continuity break: The time of day and lighting have changed drastically from the previous shot.",
-        "Nina's wardrobe does not match her turnaround reference.",
-        "Gabe's wardrobe does not match his turnaround reference.",
-        "Gabe and Jenny are missing from the shot.",
-        "Nina's wardrobe does not match the expected formal dress, instead she is wearing a casual sweater and jeans.",
-        "The location does not match the reference plate, with a different layout and missing window.",
-        "The shot lacks continuity with the previous keyframe regarding characters, wardrobe, and room state."
+        "Gabe is missing from the shot.",
+        "Jenny is missing from the shot."
       ],
       "keyframes": [
         {
@@ -479,41 +665,58 @@
           },
           "character_identity": {
             "Nina": {
-              "score": 0.8,
-              "notes": "Nina's hair color is slightly lighter and her dress is a different style than the turnaround, but her facial features are consistent.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Gabe": {
-              "score": 0.8,
-              "notes": "Gabe's hair and glasses match, but his wardrobe is a tuxedo instead of the expected plaid shirt and khakis from his turnaround.",
+              "score": 1.0,
+              "notes": "Gabe's identity, including face, hair, skin tone, and build, is consistent with the turnaround.",
               "no_reference": false
             },
             "Jenny": {
-              "score": 0.9,
-              "notes": "Jenny's appearance is consistent with her turnaround, including her hair and casual attire.",
+              "score": 1.0,
+              "notes": "Jenny's identity, including face, hair, skin tone, and build, is consistent with the turnaround.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress, putting on earrings",
+              "notes": "Nina is wearing an elegant black formal dress and appears to be putting on earrings, matching the manifest.",
+              "no_reference": false
+            },
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (background)",
+              "notes": "Gabe is wearing a black tuxedo, consistent with the manifest and the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Jenny": {
+              "score": 1.0,
+              "expected": "casual teen, dark brown hair in ponytail (background, on phone)",
+              "notes": "Jenny is dressed in casual teen attire, matching the manifest description.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room layout, furniture, and window view are largely consistent with the location plate, though some minor decor differences exist."
+            "score": 1.0,
+            "notes": "The living room set, including furniture, layout, and window view, perfectly matches the location plate."
           },
           "continuity": {
-            "score": 0.0,
-            "notes": "The wardrobe for Nina and Gabe, as well as the overall lighting and time of day, are completely different from the previous shot.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day are consistent with the previous shot, despite different characters being present.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visual artifacts, physics violations, or unexpected background figures were detected in the keyframe.",
             "detected": []
           },
-          "overall_pass": false,
-          "reasons": [
-            "Continuity break: Nina's wardrobe is different from the previous shot.",
-            "Continuity break: Gabe's wardrobe is different from the previous shot.",
-            "Continuity break: The lighting and time of day are inconsistent with the previous shot."
-          ],
+          "overall_pass": true,
+          "reasons": [],
           "_keyframe_path": "footage/keyframes/03-shot-1C-first.jpg"
         },
         {
@@ -534,42 +737,58 @@
           },
           "character_identity": {
             "Nina": {
-              "score": 0.6,
-              "notes": "Nina's hair color is slightly off, and her wardrobe is a black formal dress instead of the expected maroon sweater and jeans from her turnaround.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Gabe": {
-              "score": 0.6,
-              "notes": "Gabe's wardrobe is a black tuxedo, which is different from his turnaround reference, but his facial features and hair are consistent.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Jenny": {
-              "score": 0.8,
-              "notes": "Jenny's appearance is mostly consistent with her turnaround, though her hair is down instead of in a ponytail.",
+              "score": 1.0,
+              "notes": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress, putting on earrings",
+              "notes": "Nina is wearing an elegant black formal dress and appears to be putting on earrings, matching the manifest.",
+              "no_reference": false
+            },
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (background)",
+              "notes": "Gabe is wearing a black tuxedo, consistent with the manifest and the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Jenny": {
+              "score": 1.0,
+              "expected": "casual teen, dark brown hair in ponytail (background, on phone)",
+              "notes": "Jenny is wearing casual clothing and has dark brown hair in a ponytail, matching the manifest.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room set matches the location plate very well, with consistent furniture, layout, and overall ambiance."
+            "score": 1.0,
+            "notes": "The living room set, including furniture, layout, and the view outside the window, perfectly matches the location plate."
           },
           "continuity": {
-            "score": 0.0,
-            "notes": "The wardrobe for Nina, Gabe, and Jenny is completely different from the previous shot, and the overall mood and time of day have changed significantly.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day are consistent with the prior shot, with appropriate changes in characters and their positions.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
-          "overall_pass": false,
-          "reasons": [
-            "Continuity break: Wardrobe for all characters is inconsistent with the previous shot.",
-            "Continuity break: The time of day and lighting have changed drastically from the previous shot.",
-            "Nina's wardrobe does not match her turnaround reference.",
-            "Gabe's wardrobe does not match his turnaround reference."
-          ],
+          "overall_pass": true,
+          "reasons": [],
           "_keyframe_path": "footage/keyframes/03-shot-1C-mid.jpg"
         },
         {
@@ -591,48 +810,67 @@
           },
           "character_identity": {
             "Nina": {
-              "score": 0.6,
-              "notes": "Nina's face and hair are consistent with the turnaround, but her wardrobe is a black formal dress instead of the expected maroon sweater and jeans.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Gabe": {
               "score": 0.0,
-              "notes": "Gabe is not present in the keyframe.",
-              "no_reference": false
+              "notes": "Gabe is not visible in the keyframe.",
+              "no_reference": true
             },
             "Jenny": {
               "score": 0.0,
-              "notes": "Jenny is not present in the keyframe.",
+              "notes": "Jenny is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress, putting on earrings",
+              "notes": "Nina is wearing an elegant black formal dress, matching the manifest description.",
               "no_reference": false
+            },
+            "Gabe": {
+              "score": 0.0,
+              "expected": "black tuxedo (background)",
+              "notes": "Gabe is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Jenny": {
+              "score": 0.0,
+              "expected": "casual teen, dark brown hair in ponytail (background, on phone)",
+              "notes": "Jenny is not visible in the keyframe.",
+              "no_reference": true
             }
           },
           "location_match": {
-            "score": 0.5,
-            "notes": "The room shares some elements like the lamp and general wall color, but the layout and specific furniture are different from the location plate, and the window is missing."
+            "score": 1.0,
+            "notes": "The living room set, including the lamp and wall decor, matches the location plate perfectly."
           },
           "continuity": {
-            "score": 0.0,
-            "notes": "The keyframe shows Nina in a formal dress in a different room layout, while the previous shot showed the children and Jenny in pajamas in the living room with a storm outside.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day are consistent with the prior shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
-            "Gabe and Jenny are missing from the shot.",
-            "Nina's wardrobe does not match the expected formal dress, instead she is wearing a casual sweater and jeans.",
-            "The location does not match the reference plate, with a different layout and missing window.",
-            "The shot lacks continuity with the previous keyframe regarding characters, wardrobe, and room state."
+            "Gabe is missing from the shot.",
+            "Jenny is missing from the shot."
           ],
           "_keyframe_path": "footage/keyframes/03-shot-1C-last.jpg"
         }
       ],
       "usage": {
-        "input_tokens": 7395,
-        "output_tokens": 1185
+        "input_tokens": 13008,
+        "output_tokens": 1789
       },
       "media_paths": {
         "media": "footage/scene-01/shots/03-shot-1C.mp4",
@@ -644,6 +882,14 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": "footage/keyframes/02-shot-1B-last.jpg",
+        "prior_shot_id": "1B",
+        "wardrobe_refs": {
+          "Gabe": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "black tuxedo (date-night, slightly rumpled)",
+            "source_shot": "1A"
+          }
+        },
         "keyframes": [
           "footage/keyframes/03-shot-1C-first.jpg",
           "footage/keyframes/03-shot-1C-mid.jpg",
@@ -655,36 +901,37 @@
       "shot_id": "1D",
       "overall_pass": false,
       "aggregate_scores": {
-        "character_presence": 0.467,
-        "location_match": 0.867,
-        "continuity": 0.8,
+        "character_presence": 0.6,
+        "location_match": 0.967,
+        "continuity": 1.0,
         "artifacts": 1.0,
         "character_identity": {
-          "Gabe": 0.9,
-          "Nina": 0.9,
-          "Mia": 0.5,
-          "Leo": 0.5,
-          "Jenny": 0.5
+          "Gabe": 1.0,
+          "Nina": 1.0
         },
         "character_identity_no_reference": [
           "Jenny",
           "Leo",
           "Mia"
-        ]
+        ],
+        "character_wardrobe": {
+          "Gabe": 1.0,
+          "Nina": 1.0
+        },
+        "character_wardrobe_no_reference": [
+          "Jenny",
+          "Leo",
+          "Mia"
+        ],
+        "character_wardrobe_expected": {
+          "Gabe": "black tuxedo (slightly rumpled), checking watch",
+          "Nina": "elegant black formal dress"
+        }
       },
       "reasons": [
-        "Gabe's wardrobe does not match the expected black tuxedo; he is wearing a plaid shirt and khakis in the turnaround.",
-        "Nina's wardrobe does not match the expected elegant black formal dress; she is wearing a maroon sweater and jeans in the turnaround.",
-        "Mia's identity score is low due to blurriness and unclear wardrobe.",
-        "Leo's identity score is low due to blurriness and unclear wardrobe.",
-        "Jenny's identity score is low due to blurriness and unclear wardrobe.",
         "Mia is missing from the shot.",
         "Leo is missing from the shot.",
-        "Jenny is missing from the shot.",
-        "Gabe's wardrobe does not match the expected casual home wear.",
-        "Nina's wardrobe does not match the expected casual home wear.",
-        "Gabe's wardrobe is a tuxedo, not a rumpled black tuxedo as expected.",
-        "Nina's dress is a formal black dress, not an elegant black formal dress as expected."
+        "Jenny is missing from the shot."
       ],
       "keyframes": [
         {
@@ -699,68 +946,100 @@
             ],
             "observed": [
               "Gabe",
-              "Nina",
+              "Nina"
+            ],
+            "missing": [
               "Mia",
               "Leo",
               "Jenny"
             ],
-            "missing": [],
             "unexpected": []
           },
           "character_identity": {
             "Gabe": {
-              "score": 0.9,
-              "notes": "Gabe's face, hair, and general build match the turnaround, but his wardrobe is a tuxedo instead of the expected plaid shirt and khakis.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.9,
-              "notes": "Nina's face, hair, and general build match the turnaround, but her wardrobe is an elegant black formal dress instead of the expected maroon sweater and jeans.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Mia": {
-              "score": 0.5,
-              "notes": "Mia is present in the background, but her appearance is very blurry and her wardrobe is not clearly discernible as casual home wear.",
-              "no_reference": false
+              "score": 0.0,
+              "notes": "Mia is not visible in the keyframe.",
+              "no_reference": true
             },
             "Leo": {
-              "score": 0.5,
-              "notes": "Leo is present in the background, but his appearance is very blurry and his green dinosaur-pattern pajamas are not clearly visible.",
-              "no_reference": false
+              "score": 0.0,
+              "notes": "Leo is not visible in the keyframe.",
+              "no_reference": true
             },
             "Jenny": {
-              "score": 0.5,
-              "notes": "Jenny is present in the background, but her appearance is very blurry and her casual teen wardrobe is not clearly visible.",
+              "score": 0.0,
+              "notes": "Jenny is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (slightly rumpled), checking watch",
+              "notes": "Gabe is wearing a black tuxedo and checking his watch, matching the manifest description.",
               "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress",
+              "notes": "Nina is wearing an elegant black formal dress, consistent with the manifest and prior shot reference.",
+              "no_reference": false
+            },
+            "Mia": {
+              "score": 0.0,
+              "expected": "casual home wear (background, on couch)",
+              "notes": "Mia is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Leo": {
+              "score": 0.0,
+              "expected": "green dinosaur-pattern pajamas (background, on couch)",
+              "notes": "Leo is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Jenny": {
+              "score": 0.0,
+              "expected": "casual teen, dark brown hair in ponytail, on phone (background, oblivious)",
+              "notes": "Jenny is not visible in the keyframe.",
+              "no_reference": true
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room set, including the couch, armchair, and general layout, matches the location plate well, though the lighting is different due to the time of day change."
+            "score": 1.0,
+            "notes": "The living room set, including furniture, layout, and window view, perfectly matches the location plate."
           },
           "continuity": {
-            "score": 0.6,
-            "notes": "The location and Nina's wardrobe are consistent with the previous shot, but Gabe's presence and wardrobe are new, and the background characters are also new.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location, time of day, and visible wardrobe elements are consistent with the prior shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
-            "Gabe's wardrobe does not match the expected black tuxedo; he is wearing a plaid shirt and khakis in the turnaround.",
-            "Nina's wardrobe does not match the expected elegant black formal dress; she is wearing a maroon sweater and jeans in the turnaround.",
-            "Mia's identity score is low due to blurriness and unclear wardrobe.",
-            "Leo's identity score is low due to blurriness and unclear wardrobe.",
-            "Jenny's identity score is low due to blurriness and unclear wardrobe."
+            "Mia is missing from the shot.",
+            "Leo is missing from the shot.",
+            "Jenny is missing from the shot."
           ],
           "_keyframe_path": "footage/keyframes/04-shot-1D-first.jpg"
         },
         {
           "character_presence": {
-            "score": 0.4,
+            "score": 0.6,
             "expected": [
               "Gabe",
               "Nina",
@@ -781,58 +1060,89 @@
           },
           "character_identity": {
             "Gabe": {
-              "score": 0.9,
-              "notes": "Gabe's facial features, hair, and glasses match the turnaround, but his wardrobe is a black tuxedo instead of the expected plaid shirt and khakis.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.9,
-              "notes": "Nina's facial features, hair, and general appearance match the turnaround, but her wardrobe is an elegant black formal dress instead of the expected maroon sweater and jeans.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Mia": {
               "score": 0.0,
-              "notes": "Mia is not present in the keyframe.",
+              "notes": "Mia is not visible in the keyframe.",
               "no_reference": true
             },
             "Leo": {
               "score": 0.0,
-              "notes": "Leo is not present in the keyframe.",
+              "notes": "Leo is not visible in the keyframe.",
               "no_reference": true
             },
             "Jenny": {
               "score": 0.0,
-              "notes": "Jenny is not present in the keyframe.",
+              "notes": "Jenny is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (slightly rumpled), checking watch",
+              "notes": "Gabe is wearing a black tuxedo and checking his watch, matching the manifest description.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress",
+              "notes": "Nina is wearing an elegant black formal dress, consistent with the manifest and prior shot reference.",
+              "no_reference": false
+            },
+            "Mia": {
+              "score": 0.0,
+              "expected": "casual home wear (background, on couch)",
+              "notes": "Mia is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Leo": {
+              "score": 0.0,
+              "expected": "green dinosaur-pattern pajamas (background, on couch)",
+              "notes": "Leo is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Jenny": {
+              "score": 0.0,
+              "expected": "casual teen, dark brown hair in ponytail, on phone (background, oblivious)",
+              "notes": "Jenny is not visible in the keyframe.",
               "no_reference": true
             }
           },
           "location_match": {
-            "score": 0.8,
-            "notes": "The living room layout, furniture, and general ambiance match the location plate, though the TV content is different and the background is slightly blurred."
+            "score": 0.9,
+            "notes": "The living room set matches the location plate, though the background is slightly out of focus."
           },
           "continuity": {
-            "score": 0.9,
-            "notes": "The keyframe maintains continuity with the previous shot regarding Nina's wardrobe and the overall lighting, though Gabe is newly present.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location, time of day, and wardrobe for Nina and Gabe are consistent with the prior shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
             "Mia is missing from the shot.",
             "Leo is missing from the shot.",
-            "Jenny is missing from the shot.",
-            "Gabe's wardrobe does not match the expected casual home wear.",
-            "Nina's wardrobe does not match the expected casual home wear."
+            "Jenny is missing from the shot."
           ],
           "_keyframe_path": "footage/keyframes/04-shot-1D-mid.jpg"
         },
         {
           "character_presence": {
-            "score": 0.4,
+            "score": 0.6,
             "expected": [
               "Gabe",
               "Nina",
@@ -853,59 +1163,90 @@
           },
           "character_identity": {
             "Gabe": {
-              "score": 0.9,
-              "notes": "Gabe's face, hair, and glasses match the turnaround, but his wardrobe is a tuxedo instead of the expected rumpled black tuxedo.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.9,
-              "notes": "Nina's face, hair, and general appearance match the turnaround, but her dress is a formal black dress instead of the expected elegant black formal dress.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Mia": {
               "score": 0.0,
-              "notes": "Mia is not present in the keyframe.",
+              "notes": "Mia is not visible in the keyframe.",
               "no_reference": true
             },
             "Leo": {
               "score": 0.0,
-              "notes": "Leo is not present in the keyframe.",
+              "notes": "Leo is not visible in the keyframe.",
               "no_reference": true
             },
             "Jenny": {
               "score": 0.0,
-              "notes": "Jenny is not present in the keyframe.",
+              "notes": "Jenny is not visible in the keyframe.",
+              "no_reference": true
+            }
+          },
+          "character_wardrobe": {
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (slightly rumpled), checking watch",
+              "notes": "Gabe is wearing a black tuxedo, consistent with the manifest.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress",
+              "notes": "Nina is wearing an elegant black formal dress, consistent with the manifest and prior shot.",
+              "no_reference": false
+            },
+            "Mia": {
+              "score": 0.0,
+              "expected": "casual home wear (background, on couch)",
+              "notes": "Mia is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Leo": {
+              "score": 0.0,
+              "expected": "green dinosaur-pattern pajamas (background, on couch)",
+              "notes": "Leo is not visible in the keyframe.",
+              "no_reference": true
+            },
+            "Jenny": {
+              "score": 0.0,
+              "expected": "casual teen, dark brown hair in ponytail, on phone (background, oblivious)",
+              "notes": "Jenny is not visible in the keyframe.",
               "no_reference": true
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room matches the location plate, including the couch, lamp, and window with a storm outside."
+            "score": 1.0,
+            "notes": "The living room set, including the couch, lamp, and window with storm, matches the location plate."
           },
           "continuity": {
-            "score": 0.9,
-            "notes": "The room state, wardrobe, and lighting are consistent with the previous shot keyframe, showing Nina in the same dress and the same general setting.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location, time of day, and Nina's wardrobe are consistent with the prior shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": false,
           "reasons": [
             "Mia is missing from the shot.",
             "Leo is missing from the shot.",
-            "Jenny is missing from the shot.",
-            "Gabe's wardrobe is a tuxedo, not a rumpled black tuxedo as expected.",
-            "Nina's dress is a formal black dress, not an elegant black formal dress as expected."
+            "Jenny is missing from the shot."
           ],
           "_keyframe_path": "footage/keyframes/04-shot-1D-last.jpg"
         }
       ],
       "usage": {
-        "input_tokens": 9168,
-        "output_tokens": 1528
+        "input_tokens": 18654,
+        "output_tokens": 2685
       },
       "media_paths": {
         "media": "footage/scene-01/shots/04-shot-1D.mp4",
@@ -919,6 +1260,29 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": "footage/keyframes/03-shot-1C-last.jpg",
+        "prior_shot_id": "1C",
+        "wardrobe_refs": {
+          "Nina": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "elegant black formal dress (date-night)",
+            "source_shot": "1A"
+          },
+          "Mia": {
+            "path": "footage/keyframes/02-shot-1B-mid.jpg",
+            "expected": "casual home wear (partial frame edge)",
+            "source_shot": "1B"
+          },
+          "Leo": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "green dinosaur-pattern pajamas",
+            "source_shot": "1A"
+          },
+          "Jenny": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "casual teen, dark brown hair in ponytail, on phone",
+            "source_shot": "1A"
+          }
+        },
         "keyframes": [
           "footage/keyframes/04-shot-1D-first.jpg",
           "footage/keyframes/04-shot-1D-mid.jpg",
@@ -931,16 +1295,29 @@
       "overall_pass": true,
       "aggregate_scores": {
         "character_presence": 1.0,
-        "location_match": 0.967,
-        "continuity": 0.933,
+        "location_match": 1.0,
+        "continuity": 1.0,
         "artifacts": 1.0,
         "character_identity": {
-          "Mia": 0.967,
-          "Leo": 0.967,
-          "Nina": 0.967,
-          "Gabe": 0.967
+          "Mia": 1.0,
+          "Leo": 1.0,
+          "Nina": 1.0,
+          "Gabe": 1.0
         },
-        "character_identity_no_reference": []
+        "character_identity_no_reference": [],
+        "character_wardrobe": {
+          "Mia": 1.0,
+          "Leo": 1.0,
+          "Nina": 1.0,
+          "Gabe": 1.0
+        },
+        "character_wardrobe_no_reference": [],
+        "character_wardrobe_expected": {
+          "Mia": "casual home wear (OTS, back of head visible)",
+          "Leo": "green dinosaur-pattern pajamas (OTS, PJs visible)",
+          "Nina": "elegant black formal dress (background, preparing)",
+          "Gabe": "black tuxedo (background, preparing)"
+        }
       },
       "reasons": [],
       "keyframes": [
@@ -965,37 +1342,64 @@
           "character_identity": {
             "Mia": {
               "score": 1.0,
-              "notes": "Mia's appearance, including her hair, skin tone, and casual home wear, perfectly matches her turnaround reference.",
+              "notes": "Mia's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Leo": {
               "score": 1.0,
-              "notes": "Leo's hair, skin tone, and green dinosaur pajamas are consistent with his turnaround reference.",
+              "notes": "Leo's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Nina": {
               "score": 1.0,
-              "notes": "Nina's hair, skin tone, and elegant black formal dress are consistent with her turnaround reference and the previous shot.",
+              "notes": "Nina's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Gabe": {
               "score": 1.0,
-              "notes": "Gabe's appearance, including his hair, glasses, and black tuxedo, matches his turnaround reference and the previous shot.",
+              "notes": "Gabe's identity matches the turnaround reference perfectly.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear (OTS, back of head visible)",
+              "notes": "Mia's casual home wear matches the manifest and consistency reference.",
+              "no_reference": false
+            },
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas (OTS, PJs visible)",
+              "notes": "Leo's green dinosaur-pattern pajamas match the manifest and consistency reference.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress (background, preparing)",
+              "notes": "Nina's elegant black formal dress matches the manifest and consistency reference.",
+              "no_reference": false
+            },
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (background, preparing)",
+              "notes": "Gabe's black tuxedo matches the manifest and consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
             "score": 1.0,
-            "notes": "The living room set, including furniture, layout, and window view, perfectly matches the provided location plate."
+            "notes": "The living room set matches the location plate with all key landmarks present and consistent."
           },
           "continuity": {
             "score": 1.0,
-            "notes": "The room state, wardrobe of Nina and Gabe, and overall lighting are consistent with the previous shot keyframe.",
-            "no_prior_shot": false
+            "notes": "Continuity with the prior shot is maintained, including location, time of day, and character wardrobe.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts such as extra limbs, melting, text-in-frame, or garbled hands were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -1022,38 +1426,65 @@
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's hair and general appearance match the turnaround, though her top is pink with stars instead of plain pink.",
+              "score": 1.0,
+              "notes": "Mia's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Leo": {
-              "score": 0.9,
-              "notes": "Leo's hair and general appearance match the turnaround, and his green pajamas are consistent.",
+              "score": 1.0,
+              "notes": "Leo's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.9,
-              "notes": "Nina's hair and facial features are consistent with the turnaround, and her black dress matches the expected wardrobe.",
+              "score": 1.0,
+              "notes": "Nina's identity matches the turnaround reference perfectly.",
               "no_reference": false
             },
             "Gabe": {
-              "score": 0.9,
-              "notes": "Gabe's appearance, including his glasses and tuxedo, matches the turnaround and expected wardrobe.",
+              "score": 1.0,
+              "notes": "Gabe's identity matches the turnaround reference perfectly.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear (OTS, back of head visible)",
+              "notes": "Mia's casual home wear matches the manifest description and consistency reference.",
+              "no_reference": false
+            },
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas (OTS, PJs visible)",
+              "notes": "Leo's green dinosaur-pattern pajamas match the manifest description and consistency reference.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress (background, preparing)",
+              "notes": "Nina's elegant black formal dress matches the manifest description and consistency reference.",
+              "no_reference": false
+            },
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (background, preparing)",
+              "notes": "Gabe's black tuxedo matches the manifest description and consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room layout, furniture, and general ambiance are consistent with the location plate, though the lighting is different due to the time of day."
+            "score": 1.0,
+            "notes": "The living room set matches the location plate with all key landmarks present and consistent."
           },
           "continuity": {
-            "score": 0.8,
-            "notes": "The characters' wardrobe and the general setting are consistent with the previous shot, showing Nina and Gabe in formal wear.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "Continuity with the prior shot is maintained; the location, time of day, and character wardrobes are consistent.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -1081,37 +1512,64 @@
           "character_identity": {
             "Mia": {
               "score": 1.0,
-              "notes": "Mia's hair and general appearance match the turnaround, and her casual home wear is appropriate for the shot.",
+              "notes": "Mia's identity matches the turnaround reference perfectly, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             },
             "Leo": {
               "score": 1.0,
-              "notes": "Leo's hair and pajamas match the turnaround, and his overall appearance is consistent.",
+              "notes": "Leo's identity matches the turnaround reference perfectly, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             },
             "Nina": {
               "score": 1.0,
-              "notes": "Nina's hair, facial features, and black formal dress match the turnaround and expected wardrobe.",
+              "notes": "Nina's identity matches the turnaround reference perfectly, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             },
             "Gabe": {
               "score": 1.0,
-              "notes": "Gabe's appearance, including his glasses, hair, and tuxedo, matches the turnaround and expected wardrobe.",
+              "notes": "Gabe's identity matches the turnaround reference perfectly, with consistent facial features, hair, skin tone, and build.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear (OTS, back of head visible)",
+              "notes": "Mia's casual home wear matches the manifest description and the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Leo": {
+              "score": 1.0,
+              "expected": "green dinosaur-pattern pajamas (OTS, PJs visible)",
+              "notes": "Leo's green dinosaur-pattern pajamas match the manifest description and the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress (background, preparing)",
+              "notes": "Nina's elegant black formal dress matches the manifest description and the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (background, preparing)",
+              "notes": "Gabe's black tuxedo matches the manifest description and the wardrobe consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
             "score": 1.0,
-            "notes": "The living room set, including furniture, layout, and lighting, perfectly matches the provided location plate."
+            "notes": "The living room set matches the location plate, including furniture, layout, and the stormy window view."
           },
           "continuity": {
             "score": 1.0,
-            "notes": "The room state, wardrobe for Nina and Gabe, and overall lighting are consistent with the previous shot keyframe.",
-            "no_prior_shot": false
+            "notes": "Continuity with the prior shot is maintained; the location, time of day, and character wardrobes are consistent.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -1120,8 +1578,8 @@
         }
       ],
       "usage": {
-        "input_tokens": 8295,
-        "output_tokens": 1142
+        "input_tokens": 17661,
+        "output_tokens": 2272
       },
       "media_paths": {
         "media": "footage/scene-01/shots/05-shot-1G.mp4",
@@ -1134,6 +1592,29 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": "footage/keyframes/04-shot-1D-last.jpg",
+        "prior_shot_id": "1D",
+        "wardrobe_refs": {
+          "Mia": {
+            "path": "footage/keyframes/02-shot-1B-mid.jpg",
+            "expected": "casual home wear (partial frame edge)",
+            "source_shot": "1B"
+          },
+          "Leo": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "green dinosaur-pattern pajamas",
+            "source_shot": "1A"
+          },
+          "Nina": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "elegant black formal dress (date-night)",
+            "source_shot": "1A"
+          },
+          "Gabe": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "black tuxedo (date-night, slightly rumpled)",
+            "source_shot": "1A"
+          }
+        },
         "keyframes": [
           "footage/keyframes/05-shot-1G-first.jpg",
           "footage/keyframes/05-shot-1G-mid.jpg",
@@ -1145,18 +1626,24 @@
       "shot_id": "1H",
       "overall_pass": false,
       "aggregate_scores": {
-        "character_presence": 0.9,
-        "location_match": 0.833,
-        "continuity": 0.733,
-        "artifacts": 1.0,
+        "character_presence": 1.0,
+        "location_match": 1.0,
+        "continuity": 1.0,
+        "artifacts": 0.8,
         "character_identity": {
-          "Mia": 0.9
+          "Mia": 1.0
         },
-        "character_identity_no_reference": []
+        "character_identity_no_reference": [],
+        "character_wardrobe": {
+          "Mia": 1.0
+        },
+        "character_wardrobe_no_reference": [],
+        "character_wardrobe_expected": {
+          "Mia": "casual home wear, looking up at off-screen parents"
+        }
       },
       "reasons": [
-        "An unexpected character is partially visible in the background.",
-        "The lightning is depicted inside the room, which is a significant deviation from the location plate."
+        "Lightning is depicted inside the room, which is a significant physical artifact."
       ],
       "keyframes": [
         {
@@ -1173,23 +1660,32 @@
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's face, hair, and wardrobe are consistent with the turnaround, though her expression is different.",
+              "score": 1.0,
+              "notes": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear, looking up at off-screen parents",
+              "notes": "Mia is wearing casual home wear, which matches the manifest description.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.9,
-            "notes": "The living room set matches the location plate, with consistent furniture and overall ambiance."
+            "score": 1.0,
+            "notes": "The living room set, including the couch, lamp, and window, matches the location plate reference."
           },
           "continuity": {
-            "score": 0.8,
-            "notes": "Mia's wardrobe is consistent with the previous shot, but the lighting has changed to reflect the lightning outside.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day are consistent with the previous shot, and Mia's wardrobe is appropriate for the continuity.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts are present in the keyframe.",
+            "notes": "No visual artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -1198,44 +1694,51 @@
         },
         {
           "character_presence": {
-            "score": 0.7,
+            "score": 1.0,
             "expected": [
               "Mia"
             ],
             "observed": [
-              "Mia",
-              "unidentified character"
+              "Mia"
             ],
             "missing": [],
-            "unexpected": [
-              "unidentified character"
-            ]
+            "unexpected": []
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's appearance is consistent with the turnaround, though her expression is different due to the scene's context.",
+              "score": 1.0,
+              "notes": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear, looking up at off-screen parents",
+              "notes": "Mia is wearing casual home wear, consistent with the manifest description.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.8,
-            "notes": "The living room matches the location plate, including the couch and lamp, but the window view is different and there's a lightning flash inside."
+            "score": 1.0,
+            "notes": "The living room set, including the couch, lamp, and window with a storm, matches the location plate."
           },
           "continuity": {
-            "score": 0.7,
-            "notes": "Mia's wardrobe is consistent with the previous shot, but the lighting has changed significantly due to the lightning flash.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day are consistent with the previous shot.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
-            "score": 1.0,
-            "notes": "No visible generation artifacts are present in the keyframe.",
-            "detected": []
+            "score": 0.4,
+            "notes": "A lightning bolt is visible inside the room, overlapping the wall and lamp, which is a physical impossibility.",
+            "detected": [
+              "lightning inside room"
+            ]
           },
           "overall_pass": false,
           "reasons": [
-            "An unexpected character is partially visible in the background.",
-            "The lightning is depicted inside the room, which is a significant deviation from the location plate."
+            "Lightning is depicted inside the room, which is a significant physical artifact."
           ],
           "_keyframe_path": "footage/keyframes/06-shot-1H-mid.jpg"
         },
@@ -1253,23 +1756,32 @@
           },
           "character_identity": {
             "Mia": {
-              "score": 0.9,
-              "notes": "Mia's facial features and hair match the turnaround, but her freckles are more prominent in the keyframe.",
+              "score": 1.0,
+              "notes": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Mia": {
+              "score": 1.0,
+              "expected": "casual home wear, looking up at off-screen parents",
+              "notes": "Mia is wearing casual home wear, consistent with the manifest description.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.8,
-            "notes": "The living room setting is consistent with the location plate, though the specific angle and lighting differ due to the close-up shot and lightning flash."
+            "score": 1.0,
+            "notes": "The background elements visible are consistent with the living room location plate, including the lamp and general room ambiance."
           },
           "continuity": {
-            "score": 0.7,
-            "notes": "Mia's wardrobe is consistent with the previous shot, but the lighting has changed significantly due to the lightning flash.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The time of day and general room dressing are consistent with the prior shot, which also took place in the living room.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts are detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -1278,8 +1790,8 @@
         }
       ],
       "usage": {
-        "input_tokens": 5670,
-        "output_tokens": 693
+        "input_tokens": 9795,
+        "output_tokens": 965
       },
       "media_paths": {
         "media": "footage/scene-01/shots/06-shot-1H.mp4",
@@ -1289,6 +1801,8 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": "footage/keyframes/05-shot-1G-last.jpg",
+        "prior_shot_id": "1G",
+        "wardrobe_refs": {},
         "keyframes": [
           "footage/keyframes/06-shot-1H-first.jpg",
           "footage/keyframes/06-shot-1H-mid.jpg",
@@ -1298,28 +1812,28 @@
     },
     {
       "shot_id": "1I",
-      "overall_pass": false,
+      "overall_pass": true,
       "aggregate_scores": {
         "character_presence": 1.0,
-        "location_match": 0.8,
-        "continuity": 0.0,
+        "location_match": 1.0,
+        "continuity": 1.0,
         "artifacts": 1.0,
         "character_identity": {
-          "Gabe": 0.767,
-          "Nina": 0.767
+          "Gabe": 1.0,
+          "Nina": 1.0
         },
-        "character_identity_no_reference": []
+        "character_identity_no_reference": [],
+        "character_wardrobe": {
+          "Gabe": 1.0,
+          "Nina": 1.0
+        },
+        "character_wardrobe_no_reference": [],
+        "character_wardrobe_expected": {
+          "Gabe": "black tuxedo (conflicted expression)",
+          "Nina": "elegant black formal dress (sharp glare)"
+        }
       },
-      "reasons": [
-        "Gabe's wardrobe does not match his turnaround reference.",
-        "Nina's wardrobe does not match her turnaround reference.",
-        "The continuity score is too low due to significant changes from the previous shot.",
-        "The wardrobe and character expressions are inconsistent with the previous shot.",
-        "Gabe's wardrobe does not match the turnaround reference.",
-        "Nina's wardrobe does not match the turnaround reference.",
-        "The keyframe shows different characters and wardrobe compared to the previous shot.",
-        "The time of day and lighting are inconsistent with the previous shot."
-      ],
+      "reasons": [],
       "keyframes": [
         {
           "character_presence": {
@@ -1337,36 +1851,47 @@
           },
           "character_identity": {
             "Gabe": {
-              "score": 0.6,
-              "notes": "Gabe's face shape and hair are consistent, but his wardrobe is a black tuxedo instead of the expected plaid shirt and khakis.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.6,
-              "notes": "Nina's face and hair are consistent, but her wardrobe is an elegant black formal dress instead of the expected maroon sweater and jeans.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (conflicted expression)",
+              "notes": "Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress (sharp glare)",
+              "notes": "Nina is wearing an elegant black formal dress that matches the wardrobe consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.8,
-            "notes": "The living room matches the reference plate, but the lighting is different, suggesting a different time of day or mood."
+            "score": 1.0,
+            "notes": "The living room set, furniture, and window view with the storm outside perfectly match the location plate."
           },
           "continuity": {
-            "score": 0.0,
-            "notes": "The characters, their wardrobe, and the overall lighting and mood are completely different from the previous shot.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day are consistent with the prior shot, which also took place in the living room during a storm.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
-          "overall_pass": false,
-          "reasons": [
-            "Gabe's wardrobe does not match his turnaround reference.",
-            "Nina's wardrobe does not match her turnaround reference.",
-            "The continuity score is too low due to significant changes from the previous shot."
-          ],
+          "overall_pass": true,
+          "reasons": [],
           "_keyframe_path": "footage/keyframes/07-shot-1I-first.jpg"
         },
         {
@@ -1385,36 +1910,47 @@
           },
           "character_identity": {
             "Gabe": {
-              "score": 0.8,
-              "notes": "Gabe's face and hair match the turnaround, but his wardrobe is a black tuxedo instead of the expected plaid shirt and khakis.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.8,
-              "notes": "Nina's face and hair match the turnaround, but her wardrobe is an elegant black formal dress instead of the expected maroon sweater and jeans.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (conflicted expression)",
+              "notes": "Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress (sharp glare)",
+              "notes": "Nina is wearing an elegant black formal dress that matches the wardrobe consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.8,
-            "notes": "The living room matches the location plate, though the lighting is different and the TV is showing a different image, which is acceptable for a new shot."
+            "score": 1.0,
+            "notes": "The living room set, including the couch, TV, lamp, and window with a storm outside, matches the location plate."
           },
           "continuity": {
-            "score": 0.0,
-            "notes": "The characters' wardrobe and expressions are completely different from the previous shot, indicating a significant time jump or scene change.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and time of day (night with a storm) are consistent with the prior shot, which also showed the living room at night.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts are present in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
-          "overall_pass": false,
-          "reasons": [
-            "Gabe's wardrobe does not match his turnaround reference.",
-            "Nina's wardrobe does not match her turnaround reference.",
-            "The wardrobe and character expressions are inconsistent with the previous shot."
-          ],
+          "overall_pass": true,
+          "reasons": [],
           "_keyframe_path": "footage/keyframes/07-shot-1I-mid.jpg"
         },
         {
@@ -1433,43 +1969,53 @@
           },
           "character_identity": {
             "Gabe": {
-              "score": 0.9,
-              "notes": "Gabe's facial features, hair, and glasses match the turnaround, but his wardrobe is a black tuxedo instead of the expected plaid shirt and khakis.",
+              "score": 1.0,
+              "notes": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
               "no_reference": false
             },
             "Nina": {
-              "score": 0.9,
-              "notes": "Nina's facial features, hair, and general build match the turnaround, but her wardrobe is an elegant black formal dress instead of the expected maroon sweater and jeans.",
+              "score": 1.0,
+              "notes": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+              "no_reference": false
+            }
+          },
+          "character_wardrobe": {
+            "Gabe": {
+              "score": 1.0,
+              "expected": "black tuxedo (conflicted expression)",
+              "notes": "Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.",
+              "no_reference": false
+            },
+            "Nina": {
+              "score": 1.0,
+              "expected": "elegant black formal dress (sharp glare)",
+              "notes": "Nina is wearing an elegant black formal dress that matches the wardrobe consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.8,
-            "notes": "The living room layout, furniture, and window view are consistent with the location plate, though the lighting is different, suggesting a later time of day."
+            "score": 1.0,
+            "notes": "The living room set, including the couch, TV, lamp, and window with the storm, matches the location plate."
           },
           "continuity": {
-            "score": 0.0,
-            "notes": "The characters, their wardrobe, and the overall lighting/time of day are completely different from the previous shot, which showed children in pajamas during a storm.",
-            "no_prior_shot": false
+            "score": 1.0,
+            "notes": "The location and general ambiance are consistent with the prior shot, maintaining the stormy night setting.",
+            "no_prior_shot": false,
+            "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
-          "overall_pass": false,
-          "reasons": [
-            "Gabe's wardrobe does not match the turnaround reference.",
-            "Nina's wardrobe does not match the turnaround reference.",
-            "The keyframe shows different characters and wardrobe compared to the previous shot.",
-            "The time of day and lighting are inconsistent with the previous shot."
-          ],
+          "overall_pass": true,
+          "reasons": [],
           "_keyframe_path": "footage/keyframes/07-shot-1I-last.jpg"
         }
       ],
       "usage": {
-        "input_tokens": 6525,
-        "output_tokens": 1012
+        "input_tokens": 13005,
+        "output_tokens": 1538
       },
       "media_paths": {
         "media": "footage/scene-01/shots/07-shot-1I.mp4",
@@ -1480,6 +2026,19 @@
         "missing_refs": [],
         "location_ref": "asset-bible/locations/storyboard-1A.png",
         "prior_keyframe": "footage/keyframes/06-shot-1H-last.jpg",
+        "prior_shot_id": "1H",
+        "wardrobe_refs": {
+          "Gabe": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "black tuxedo (date-night, slightly rumpled)",
+            "source_shot": "1A"
+          },
+          "Nina": {
+            "path": "footage/keyframes/01-shot-1A-mid.jpg",
+            "expected": "elegant black formal dress (date-night)",
+            "source_shot": "1A"
+          }
+        },
         "keyframes": [
           "footage/keyframes/07-shot-1I-first.jpg",
           "footage/keyframes/07-shot-1I-mid.jpg",
@@ -1489,8 +2048,8 @@
     }
   ],
   "total_usage": {
-    "input_tokens": 52071,
-    "output_tokens": 7739
+    "input_tokens": 96219,
+    "output_tokens": 13317
   },
-  "estimated_cost_usd": 0.035
+  "estimated_cost_usd": 0.0622
 }
