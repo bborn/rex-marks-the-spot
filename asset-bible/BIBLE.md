@@ -24,7 +24,7 @@ Public R2 URL prefix: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset
 | Character | Best candidate (R2 URL) | Alternatives directory |
 |-----------|-------------------------|------------------------|
 | Ruben | [ruben_turnaround.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround.png) | `asset-bible/characters/ruben-alts/` |
-| Jetplane | _in progress (Blender ortho turnaround)_ | `asset-bible/characters/jetplane-alts/` |
+| Jetplane | [jetplane_turnaround.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane_turnaround.png) | `asset-bible/characters/jetplane-alts/` |
 
 ### MISSING (need source art from Bruno)
 
