@@ -231,6 +231,18 @@ Key commands:
 - Don't merge work that doesn't meet quality standards
 - When QA flags issues, create follow-up tasks to fix them
 
+## Validation Gates - Validate at EVERY Stage (CRITICAL)
+
+The pipeline is self-validating: every stage validates its output against the locked references before the next stage may use it. NEVER generate stage N+1 from unvalidated stage N output.
+
+The chain of gates:
+1. Character turnarounds + location plates - the locked Asset Bible (r2:rex-assets/asset-bible/). The source of truth.
+2. Storyboard panels - every panel MUST pass validation against the turnarounds (character identity) and the manifest (wardrobe, characters present, key props, location) before any video is generated from it. A failing panel is regenerated (image-to-image from the turnarounds) and re-validated. Only a PASSED panel proceeds.
+3. Video shots - every shot is validated against the bible before it can be stitched. Failing shots regenerate within the cost governor's caps, then escalate.
+4. Stitched scene - the assembled cut is validated for cross-shot continuity.
+
+Hard rule: before generating from ANY artifact, confirm that artifact passed its validation gate. A storyboard panel is not trusted because it exists - only after it has been validated against the locked turnarounds. Do not skip a gate to save time; a skipped gate is how off-model work reaches the final cut.
+
 ### PR Workflow
 
 **IMPORTANT: Fixes go on the SAME PR, not new ones.**
