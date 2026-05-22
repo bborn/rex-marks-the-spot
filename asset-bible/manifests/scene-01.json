@@ -164,7 +164,7 @@
   },
   {
     "shot_id": "1I",
-    "location": "living_room",
+    "location": "front_entryway",
     "characters": [
       "Gabe",
       "Nina"
@@ -174,9 +174,12 @@
       "Nina": "elegant black formal dress (sharp glare)"
     },
     "key_props": [
-      "front door area (parents heading out)"
+      "front door (parents heading out)",
+      "coat rack with hanging coats",
+      "entryway console table with vase / lamp",
+      "stormy window visible from entryway"
     ],
-    "camera": "Close-up to Two-shot, STATIC then PULL to include Nina, 77s. Starts close on Gabe's face, slowly pulls back when Nina enters frame screen left with glare.",
+    "camera": "Close-up to Two-shot at the front entryway, STATIC then PULL to include Nina, 77s. Starts close on Gabe's face, slowly pulls back when Nina enters frame screen left with glare. Same family home as the living-room shots, distinct sub-location (front hall / foyer next to the front door).",
     "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1I-start.png"
   }
 ]
