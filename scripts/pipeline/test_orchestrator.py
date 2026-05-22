@@ -34,7 +34,11 @@ from scripts.pipeline.orchestrator import (
     ExistingClipsGenerator,
     Orchestrator,
     StubGenerator,
+    StubPanelGenerator,
+    StubPanelValidator,
+    StubStitchValidator,
     StubValidator,
+    StitchValidationOutcome,
     stitch_clips,
 )
 
@@ -574,3 +578,359 @@ def test_existing_clips_generator_raises_when_no_source(tmp_path):
     )
     with pytest.raises(RuntimeError, match="No existing clip available"):
         gen.generate(req)
+
+
+# ---------------------------------------------------------------------------
+# Panel gate (PANEL GATE) — the standing-enforcement headline
+# ---------------------------------------------------------------------------
+
+
+def _make_panel(path: Path, *, color: str = "white") -> Path:
+    """Create a tiny 16x16 PNG used as a stub panel image."""
+    from PIL import Image  # type: ignore
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    img = Image.new("RGB", (16, 16), color=color)
+    img.save(path, format="PNG")
+    return path
+
+
+def _make_orch_with_panel_gate(
+    tmp_path: Path,
+    *,
+    manifest_path: Path,
+    generator,
+    validator,
+    panel_generator,
+    panel_validator,
+    governor: CostGovernor,
+    label: str = "Panel Gate Scene",
+    stitch: bool = True,
+) -> Orchestrator:
+    return Orchestrator(
+        manifest_path=manifest_path,
+        generator=generator,
+        validator=validator,
+        governor=governor,
+        references_dir=tmp_path / "refs",
+        work_dir=tmp_path / "work",
+        scene_label=label,
+        report_dir=tmp_path / "reports",
+        fetch_references_from_r2=False,
+        stitch_on_complete=stitch,
+        panel_generator=panel_generator,
+        panel_validator=panel_validator,
+    )
+
+
+def test_panel_gate_blocks_failing_panel_before_video(tmp_path):
+    """The headline acceptance criterion: a panel that fails validation is
+    regenerated and re-validated BEFORE any video generation is attempted.
+
+    We track each call into the video generator so we can assert: no video
+    generation runs until the panel has passed.
+    """
+    clip = _make_clip(tmp_path / "stub.mp4")
+    panel_bad = _make_panel(tmp_path / "panels" / "bad.png", color="black")
+    panel_good = _make_panel(tmp_path / "panels" / "good.png", color="white")
+    manifest = _make_manifest(tmp_path / "m.json", ["s1"])
+
+    panel_attempt_order: list[str] = []
+    video_attempt_order: list[str] = []
+
+    def panel_before(req):
+        panel_attempt_order.append(
+            f"panel:{req.shot['shot_id']}:{req.attempt_index}"
+        )
+
+    def video_before(req):
+        video_attempt_order.append(
+            f"video:{req.shot['shot_id']}:{req.attempt_index}"
+        )
+
+    panel_gen = StubPanelGenerator(
+        per_shot_panels={"s1": [panel_bad, panel_good]},
+        before_generate=panel_before,
+    )
+    panel_val = StubPanelValidator(
+        script={
+            "s1": [
+                # attempt 0 (manifest panel - but stub returns panel_bad first)
+                (0.40, False, ["Mia drawn as pajama toddler, off-model"]),
+                # attempt 1 (regenerated)
+                (0.95, True, []),
+            ],
+        },
+    )
+    gen = StubGenerator(clip_path=clip, before_generate=video_before)
+    val = StubValidator(script={"s1": [(0.95, True, [])]})
+    gov = _make_gov(tmp_path)
+
+    orch = _make_orch_with_panel_gate(
+        tmp_path,
+        manifest_path=manifest,
+        generator=gen,
+        validator=val,
+        panel_generator=panel_gen,
+        panel_validator=panel_val,
+        governor=gov,
+    )
+    report = orch.run_scene()
+
+    # Shot ends approved because video gate passes after panel gate passes.
+    assert report.approved == ["s1"]
+    assert orch.shots["s1"].status == "approved"
+
+    # Panel gate ran TWICE: first attempt failed, second attempt passed.
+    assert orch.shots["s1"].panel_status == "passed"
+    assert len(orch.shots["s1"].panel_attempts) == 2
+    assert orch.shots["s1"].panel_attempts[0].passed is False
+    assert orch.shots["s1"].panel_attempts[1].passed is True
+    # The panel that the video stage used must be the GOOD panel, not the bad one.
+    assert orch.shots["s1"].panel_path == str(panel_gen._pick("s1", 1).resolve()) \
+        or Path(orch.shots["s1"].panel_path).read_bytes() == panel_good.read_bytes()
+
+    # Video gate ran exactly once, AFTER the panel gate finished.
+    assert len(orch.shots["s1"].attempts) == 1
+    assert orch.shots["s1"].attempts[0].passed is True
+
+    # Ordering check — every panel call comes before every video call.
+    # (StubGenerator records into video_attempt_order in its before_generate
+    # hook, and panel_attempts in panel_attempt_order.)
+    assert panel_attempt_order, "panel generator was never invoked"
+    assert video_attempt_order, "video generator was never invoked"
+    last_panel_index = max(
+        i for i, e in enumerate(panel_attempt_order + video_attempt_order)
+        if e.startswith("panel:")
+    )
+    first_video_index = min(
+        i for i, e in enumerate(panel_attempt_order + video_attempt_order)
+        if e.startswith("video:")
+    )
+    assert last_panel_index < first_video_index, (
+        "video generation must not begin until the panel gate has finished; "
+        f"order was {panel_attempt_order + video_attempt_order}"
+    )
+
+    # Run report shows per-stage outcomes.
+    assert report.panel_passed == ["s1"]
+    assert report.video_passed == ["s1"]
+    assert report.panel_escalated == []
+    text = report.report_path.read_text()
+    assert "Per-stage gate outcomes" in text
+    assert "Panel gate" in text
+
+
+def test_panel_that_never_passes_escalates_and_video_never_runs(tmp_path):
+    """A panel that never passes validation must escalate the shot, and
+    the video stage must NEVER be invoked for it.
+
+    This is the structural-impossibility guarantee: the orchestrator
+    cannot call video generation for a shot whose panel gate did not pass.
+    """
+    clip = _make_clip(tmp_path / "stub.mp4")
+    panel_a = _make_panel(tmp_path / "panels" / "a.png", color="red")
+    panel_b = _make_panel(tmp_path / "panels" / "b.png", color="green")
+    panel_c = _make_panel(tmp_path / "panels" / "c.png", color="blue")
+    manifest = _make_manifest(tmp_path / "m.json", ["broken_panel"])
+
+    video_calls: list[dict] = []
+
+    def video_before(req):
+        video_calls.append({"shot_id": req.shot["shot_id"]})
+
+    panel_gen = StubPanelGenerator(
+        per_shot_panels={"broken_panel": [panel_a, panel_b, panel_c]},
+    )
+    panel_val = StubPanelValidator(
+        script={
+            "broken_panel": [
+                (0.20, False, ["Mia off-model: drawn as toddler, not curly-haired"]),
+                (0.25, False, ["Mia still off-model"]),
+                (0.22, False, ["Mia still off-model"]),
+                (0.20, False, ["Mia still off-model"]),
+                (0.20, False, ["Mia still off-model"]),
+            ],
+        },
+    )
+    gen = StubGenerator(clip_path=clip, before_generate=video_before)
+    # Video validator would pass, but it must never be reached.
+    val = StubValidator(script={"broken_panel": [(1.0, True, [])]})
+    gov = _make_gov(tmp_path, per_shot_attempts=3)
+
+    orch = _make_orch_with_panel_gate(
+        tmp_path,
+        manifest_path=manifest,
+        generator=gen,
+        validator=val,
+        panel_generator=panel_gen,
+        panel_validator=panel_val,
+        governor=gov,
+    )
+    report = orch.run_scene()
+
+    # Shot escalated; its escalation came from the PANEL gate.
+    assert report.approved == []
+    assert [sid for sid, _ in report.escalated] == ["broken_panel"]
+    assert orch.shots["broken_panel"].status == "escalated"
+    assert orch.shots["broken_panel"].panel_status == "escalated"
+    assert "panel gate" in (
+        orch.shots["broken_panel"].escalation_reason or ""
+    )
+
+    # Panel attempts exhausted the per-shot cap (3).
+    assert len(orch.shots["broken_panel"].panel_attempts) == 3
+    # Critical: VIDEO generation NEVER ran for this shot.
+    assert video_calls == [], (
+        f"video generator must not be called for a panel-escalated shot, "
+        f"but it was called {len(video_calls)} time(s): {video_calls}"
+    )
+    assert orch.shots["broken_panel"].attempts == []
+    assert orch.shots["broken_panel"].final_clip is None
+
+    # Per-stage report fields reflect the panel-only failure.
+    assert report.panel_escalated and report.panel_escalated[0][0] == "broken_panel"
+    assert report.video_passed == []
+    assert report.video_escalated == []  # video gate never even ran -> no video escalation
+
+
+def test_panel_gate_records_per_stage_outcomes_in_run_report(tmp_path):
+    """Mixed scene: one shot passes panel + video; one shot panel-escalates.
+
+    Verifies the run report enumerates per-stage gate outcomes and that
+    panel-only escalations are categorized separately from video escalations.
+    """
+    clip = _make_clip(tmp_path / "stub.mp4")
+    p_good = _make_panel(tmp_path / "panels" / "good.png", color="white")
+    p_bad = _make_panel(tmp_path / "panels" / "bad.png", color="black")
+    manifest = _make_manifest(tmp_path / "m.json", ["clean", "bad_panel"])
+
+    panel_gen = StubPanelGenerator(
+        per_shot_panels={
+            "clean": [p_good],
+            "bad_panel": [p_bad, p_bad, p_bad, p_bad],
+        },
+    )
+    panel_val = StubPanelValidator(
+        script={
+            "clean": [(0.95, True, [])],
+            "bad_panel": [
+                (0.30, False, ["wardrobe wrong"]),
+                (0.30, False, ["wardrobe wrong"]),
+                (0.30, False, ["wardrobe wrong"]),
+            ],
+        },
+    )
+    gen = StubGenerator(clip_path=clip)
+    val = StubValidator(
+        script={
+            "clean": [(1.0, True, [])],
+            # bad_panel must never reach the video validator
+            "bad_panel": [(1.0, True, [])],
+        },
+    )
+    gov = _make_gov(tmp_path, per_shot_attempts=3)
+    orch = _make_orch_with_panel_gate(
+        tmp_path,
+        manifest_path=manifest,
+        generator=gen,
+        validator=val,
+        panel_generator=panel_gen,
+        panel_validator=panel_val,
+        governor=gov,
+    )
+    report = orch.run_scene()
+
+    assert report.approved == ["clean"]
+    assert [sid for sid, _ in report.escalated] == ["bad_panel"]
+    assert report.panel_passed == ["clean"]
+    assert [sid for sid, _ in report.panel_escalated] == ["bad_panel"]
+    assert report.video_passed == ["clean"]
+    assert report.video_escalated == []
+
+    # Run report file shows per-stage gate outcomes
+    text = report.report_path.read_text()
+    assert "Per-stage gate outcomes" in text
+    assert "Panel gate" in text
+    assert "Video gate" in text
+    # Stitch ran over only the approved clips
+    assert report.stitched_path is not None and Path(report.stitched_path).exists()
+
+
+def test_panel_gate_with_validator_only_escalates_without_generator(tmp_path):
+    """If a panel_validator is configured but no panel_generator, then a
+    first-attempt failure has no retry path and must escalate immediately.
+    This is the conservative-by-default behavior for production runs that
+    are not yet wired to a real panel regenerator."""
+    clip = _make_clip(tmp_path / "stub.mp4")
+    manifest = _make_manifest(tmp_path / "m.json", ["s1"])
+
+    # Manifest has no panel_url; first attempt should try generator -> escalate.
+    panel_val = StubPanelValidator(
+        script={"s1": [(0.20, False, ["wrong character"])]}
+    )
+    gen = StubGenerator(clip_path=clip)
+    val = StubValidator(script={"s1": [(1.0, True, [])]})
+    gov = _make_gov(tmp_path)
+    orch = _make_orch_with_panel_gate(
+        tmp_path,
+        manifest_path=manifest,
+        generator=gen,
+        validator=val,
+        panel_generator=None,
+        panel_validator=panel_val,
+        governor=gov,
+    )
+    # Add a panel_url so attempt 0 uses a real file. We need a small PNG
+    # served from the existing-panel reference resolution path - here we
+    # simulate by injecting it via the manifest's panel_url after we know
+    # references_dir/fetch_from_r2=False so the resolver returns None for
+    # start_frame. The validator's first call therefore fails on no panel.
+    report = orch.run_scene()
+    # When there's no manifest panel AND no panel_generator, the gate
+    # cannot produce a panel to validate; it escalates after the first
+    # failed/blocked attempt.
+    assert orch.shots["s1"].panel_status == "escalated"
+    assert orch.shots["s1"].status == "escalated"
+    # Video was never attempted.
+    assert orch.shots["s1"].attempts == []
+    assert orch.shots["s1"].final_clip is None
+
+
+def test_stitch_gate_reported_in_run_report(tmp_path):
+    """Stitch gate's pass/fail outcome is reported per-run."""
+    clip = _make_clip(tmp_path / "stub.mp4")
+    manifest = _make_manifest(tmp_path / "m.json", ["a", "b"])
+    gen = StubGenerator(clip_path=clip)
+    val = StubValidator(
+        script={"a": [(1.0, True, [])], "b": [(1.0, True, [])]},
+    )
+    gov = _make_gov(tmp_path)
+    # Inject a stub stitch validator that FAILS, simulating a cross-shot
+    # continuity issue.
+    stub_stitch = StubStitchValidator(
+        outcome=StitchValidationOutcome(
+            passed=False,
+            reasons=["wardrobe jump between a and b"],
+        ),
+    )
+    orch = Orchestrator(
+        manifest_path=manifest,
+        generator=gen,
+        validator=val,
+        governor=gov,
+        references_dir=tmp_path / "refs",
+        work_dir=tmp_path / "work",
+        scene_label="Stitch Test",
+        report_dir=tmp_path / "reports",
+        fetch_references_from_r2=False,
+        stitch_validator=stub_stitch,
+    )
+    report = orch.run_scene()
+    assert report.approved == ["a", "b"]
+    assert report.stitched_path is not None
+    assert report.stitch_passed is False
+    assert "wardrobe jump" in (report.stitch_reasons[0] if report.stitch_reasons else "")
+    text = report.report_path.read_text()
+    assert "Stitch gate" in text
+    assert "FAIL" in text
