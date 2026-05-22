@@ -320,11 +320,14 @@ VALIDATION_SCHEMA = {
         "character_identity": {
             "type": "array",
             "description": (
-                "One entry per manifest character. If you have a turnaround "
-                "reference for them, set no_reference=false and score how "
-                "well the keyframe matches the turnaround. If you do NOT "
-                "have a turnaround, set no_reference=true, score=0.0, and "
-                "explain in notes."
+                "One entry per manifest character. IDENTITY ONLY: score face, "
+                "hair, skin tone, and build against the turnaround. EXPLICITLY "
+                "IGNORE CLOTHING - a character in different clothes whose face "
+                "matches is a full identity match. If you have a turnaround "
+                "and the character is visible, set no_reference=false and "
+                "score the match. If the character is NOT visible in the "
+                "keyframe, set no_reference=true, score=0.0, and explain in "
+                "notes."
             ),
             "items": {
                 "type": "object",
@@ -335,6 +338,30 @@ VALIDATION_SCHEMA = {
                     "no_reference": {"type": "boolean"},
                 },
                 "required": ["name", "score", "notes", "no_reference"],
+            },
+        },
+        "character_wardrobe": {
+            "type": "array",
+            "description": (
+                "One entry per manifest character that has a wardrobe entry. "
+                "Compare ONLY the character's clothing in the keyframe against "
+                "the manifest's per-shot wardrobe description for that "
+                "character. The turnaround's clothing is irrelevant here - "
+                "characters wear different clothes in different scenes. If the "
+                "manifest says 'black tuxedo' and the shot shows a tuxedo, "
+                "that is a PASS. If the character is not visible in the "
+                "keyframe, set no_reference=true and score=0.0."
+            ),
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "score": {"type": "number"},
+                    "expected": {"type": "string"},
+                    "notes": {"type": "string", "maxLength": 240},
+                    "no_reference": {"type": "boolean"},
+                },
+                "required": ["name", "score", "expected", "notes", "no_reference"],
             },
         },
         "location_match": {
@@ -351,8 +378,9 @@ VALIDATION_SCHEMA = {
                 "score": {"type": "number"},
                 "notes": {"type": "string"},
                 "no_prior_shot": {"type": "boolean"},
+                "same_location_as_prior": {"type": "boolean"},
             },
-            "required": ["score", "notes", "no_prior_shot"],
+            "required": ["score", "notes", "no_prior_shot", "same_location_as_prior"],
         },
         "artifacts": {
             "type": "object",
@@ -372,8 +400,8 @@ VALIDATION_SCHEMA = {
         },
     },
     "required": [
-        "character_presence", "character_identity", "location_match",
-        "continuity", "artifacts", "overall_pass", "reasons",
+        "character_presence", "character_identity", "character_wardrobe",
+        "location_match", "continuity", "artifacts", "overall_pass", "reasons",
     ],
 }
 
@@ -413,12 +441,36 @@ def _normalize_identity(raw: Any) -> dict[str, dict]:
     return {}
 
 
+def _normalize_wardrobe(raw: Any) -> dict[str, dict]:
+    """Coerce the model's character_wardrobe into a name-keyed dict."""
+    if isinstance(raw, dict):
+        return raw
+    if isinstance(raw, list):
+        out: dict[str, dict] = {}
+        for entry in raw:
+            if not isinstance(entry, dict):
+                continue
+            name = entry.get("name")
+            if not name:
+                continue
+            out[name] = {
+                "score": entry.get("score", 0.0),
+                "expected": entry.get("expected", ""),
+                "notes": entry.get("notes", ""),
+                "no_reference": bool(entry.get("no_reference", False)),
+            }
+        return out
+    return {}
+
+
 def _build_prompt(
     shot: dict,
     char_refs: dict[str, Path],
     missing_refs: list[str],
     has_location_ref: bool,
     has_prior: bool,
+    prior_shot: Optional[dict] = None,
+    wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
 ) -> str:
     expected = ", ".join(shot["characters"]) if shot["characters"] else "(no characters - prop/insert shot)"
     wardrobe_lines = "\n".join(
@@ -438,17 +490,46 @@ def _build_prompt(
         "EXPECTED CHARACTERS (per manifest):",
         f"  {expected}",
         "",
-        "EXPECTED WARDROBE:",
+        "EXPECTED WARDROBE (per manifest - this is the source of truth for "
+        "what each character should be WEARING in this specific shot; the "
+        "turnaround clothing is NOT the wardrobe spec):",
         wardrobe_lines,
         "",
         "EXPECTED KEY PROPS:",
         props,
         "",
-        "REFERENCE IMAGES PROVIDED, IN ORDER:",
     ]
+    if prior_shot is not None:
+        prior_loc = prior_shot.get("location", "unknown")
+        prior_chars = ", ".join(prior_shot.get("characters", [])) or "(none)"
+        prior_wardrobe_lines = "\n".join(
+            f"  - {name}: {desc}"
+            for name, desc in prior_shot.get("wardrobe", {}).items()
+        ) or "  (none specified)"
+        parts.extend([
+            f"PRIOR SHOT: {prior_shot.get('shot_id', '?')}",
+            f"PRIOR SHOT LOCATION: {prior_loc}",
+            f"PRIOR SHOT CHARACTERS: {prior_chars}",
+            "PRIOR SHOT WARDROBE:",
+            prior_wardrobe_lines,
+            "",
+        ])
+    parts.append("REFERENCE IMAGES PROVIDED, IN ORDER:")
 
     for name, path in char_refs.items():
-        parts.append(f"  - CHARACTER TURNAROUND for {name} (locked reference)")
+        parts.append(
+            f"  - CHARACTER TURNAROUND for {name} (IDENTITY ONLY: face, hair, "
+            f"skin tone, build). The clothing in the turnaround is NOT a "
+            f"wardrobe spec - it is just whatever {name} happened to be wearing "
+            f"on the day the turnaround was drawn."
+        )
+    if wardrobe_refs:
+        for name, (_p, desc, src_shot) in wardrobe_refs.items():
+            parts.append(
+                f"  - WARDROBE CONSISTENCY REFERENCE for {name} - canonical "
+                f"look of '{desc}' as established in shot {src_shot}; the "
+                f"outfit in the current keyframe should match this image."
+            )
     if missing_refs:
         parts.append(
             f"  - NOTE: No turnaround available for: {', '.join(missing_refs)}. "
@@ -468,26 +549,110 @@ def _build_prompt(
         "    - List who you see, who is missing, who is unexpected.\n"
         "    - 1.0 = exactly right set; deduct for missing/extra; 0.0 = none right.\n"
         "    - For background/OTS/silhouette characters, count them as present if visible at all.\n"
-        "  character_identity: For each character you see AND have a turnaround for, "
-        "    does the rendered character match the turnaround? Check hair color & style, "
-        "    skin tone, face shape, wardrobe match.\n"
-        "    - 1.0 = unmistakably the same character; 0.5 = roughly similar but drifted; "
-        "    0.0 = clearly a different person.\n"
+        "    - ANY visible human figure that is NOT in the manifest is "
+        "      'unexpected' - including blurry, partial, edge-of-frame, or "
+        "      out-of-focus background figures. Be strict: if a person is "
+        "      visible at all and not in the expected list, list them in "
+        "      'unexpected'.\n"
+        "  character_identity: IDENTITY ONLY - face, hair (color + style), "
+        "    skin tone, build. EXPLICITLY IGNORE CLOTHING. The character may "
+        "    be wearing completely different clothes than in the turnaround, "
+        "    because each shot has its own per-shot wardrobe (see EXPECTED "
+        "    WARDROBE above). A clothing difference between the turnaround "
+        "    and the keyframe MUST NOT lower the identity score and MUST NOT "
+        "    appear in the identity notes as a problem. Judge identity "
+        "    strictly on face, hair, skin tone, and build.\n"
+        "    - 1.0 = unmistakably the same person (face/hair/skin/build "
+        "      match the turnaround); 0.5 = roughly similar but drifted "
+        "      facial features or hair; 0.0 = clearly a different person.\n"
+        "    - If the character is NOT visible in the keyframe, set "
+        "      no_reference=true, score=0.0; do not penalize identity for "
+        "      absence (presence handles missing characters separately).\n"
+        "  character_wardrobe: SOURCE OF TRUTH for this score is the "
+        "    EXPECTED WARDROBE block above, which comes from the per-shot "
+        "    manifest. The turnaround's clothing is IRRELEVANT and must "
+        "    NEVER drive this score.\n"
+        "    - Score the GARMENTS ONLY. Ignore pose, action, prop "
+        "      interaction, body language, gaze, etc. - those are not "
+        "      wardrobe. Example: if the manifest reads 'casual home wear, "
+        "      legs tucked under on couch', only judge whether the "
+        "      clothing is casual home wear; do not penalize the wardrobe "
+        "      score because the character's legs are not tucked under.\n"
+        "    - For each visible character with an EXPECTED WARDROBE entry, "
+        "      compare the character's clothing in the keyframe to that "
+        "      manifest description. If the manifest says 'black tuxedo' "
+        "      and the shot shows a tuxedo, that is a PASS (1.0) - even if "
+        "      the turnaround shows casual clothes. If the manifest says "
+        "      'elegant black formal dress' and the shot shows a formal "
+        "      black dress, that is a PASS.\n"
+        "    - Set 'expected' to the manifest text you used.\n"
+        "    - Score 1.0 = clothing matches the manifest description; 0.5 "
+        "      = partial match (right category, wrong color/detail); 0.0 = "
+        "      clearly the wrong type of garment.\n"
+        "    - WARDROBE CONSISTENCY: if a WARDROBE CONSISTENCY REFERENCE "
+        "      image is provided for this character, the outfit in the "
+        "      keyframe should look like the SAME specific garment as in "
+        "      that reference (same tuxedo, same dress, same pajamas). Only "
+        "      mark inconsistency in 'notes' / lower the score if the same "
+        "      character with the same manifest outfit looks visibly "
+        "      different (different cut, color, accessories) between shots.\n"
+        "    - If the character is not visible in the keyframe, set "
+        "      no_reference=true, score=0.0.\n"
         "  location_match: Does the set match the location plate? "
         "    - Compare furniture, layout, color palette, windows, lighting style.\n"
-        "    - 1.0 = same room; 0.5 = same type of room but rearranged; 0.0 = different place.\n"
-        "  continuity: Does this frame match the PREVIOUS shot keyframe? "
-        "    - Same room state, same wardrobe, same lighting/time-of-day.\n"
-        "    - If there is no prior shot, set no_prior_shot=true and score 1.0.\n"
-        "  artifacts: Visible generation artifacts (extra limbs, melting/morphing, "
-        "    text-in-frame, watermarks, garbled hands, anatomy breaks, duplicated features).\n"
-        "    - 1.0 = none visible; 0.5 = minor artifacts; 0.0 = severely broken.\n"
+        "    - For each distinctive landmark in the plate (e.g. a TV, a "
+        "      specific couch, a window with a storm visible, an armchair, "
+        "      a particular lamp), check whether the keyframe shows the "
+        "      same landmarks in roughly the same positions.\n"
+        "    - 1.0 = clearly the same room with most distinctive landmarks "
+        "      visible and consistent; 0.5 = recognizably the same TYPE of "
+        "      room (e.g. another living room) but key landmarks are "
+        "      missing or rearranged - a hallway, foyer, dining room, or "
+        "      bedroom is NOT a 1.0 even if the wall color matches; 0.0 = "
+        "      a clearly different place.\n"
+        "    - If the keyframe shows a different room entirely (e.g. a "
+        "      hallway with no couch / no TV / no window when the plate "
+        "      shows the living room), score 0.3-0.5 at most and "
+        "      explicitly note which landmarks are missing.\n"
+        "  continuity: Only meaningful when this shot is in the SAME LOCATION "
+        "    as the prior shot. If you can see from the PRIOR SHOT context "
+        "    above that the location differs from this shot's location, OR "
+        "    if there is no prior shot, set no_prior_shot=true and score 1.0 "
+        "    (this is a normal cut, not a continuity error). Same-location "
+        "    rule: set same_location_as_prior=true and score ONLY genuinely "
+        "    persistent elements - set/room dressing, time of day (day vs "
+        "    night, storm vs calm), and the wardrobe of characters that "
+        "    appear in BOTH this shot and the prior one. DO NOT penalize: "
+        "    different characters appearing (a cut to another beat is fine), "
+        "    wardrobe differing for characters that were not in the prior "
+        "    shot, normal camera angle / framing changes, or different TV "
+        "    content. DO penalize: a real room-layout change, missing "
+        "    furniture/windows, or a day-to-night jump within the same "
+        "    location.\n"
+        "  artifacts: Visible generation artifacts and physics violations. "
+        "    Examples to actively look for:\n"
+        "    - extra limbs, melting/morphing, garbled hands, anatomy breaks, "
+        "      duplicated features, text-in-frame, watermarks;\n"
+        "    - environment effects that do not make physical sense, "
+        "      especially LIGHTNING BOLTS SHOWN INSIDE A ROOM (lightning "
+        "      should only be visible through a window from outdoors). If "
+        "      you see a lightning bolt overlapping interior walls, "
+        "      furniture, or lamps rather than the sky outside a window, "
+        "      flag it explicitly in 'detected' and lower the score.\n"
+        "    - unexpected background human figures that are not in the "
+        "      manifest character list - this overlaps with presence, but "
+        "      list it here too as 'unexpected background character' so it "
+        "      cannot be missed.\n"
+        "    - 1.0 = none visible; 0.7-0.9 = minor anomalies; 0.4-0.6 = a "
+        "      clear artifact like indoor lightning or a phantom person; "
+        "      0.0 = severely broken.\n"
     )
     parts.append("")
     parts.append(
         "PASS/FAIL GATE: Set overall_pass=true only if ALL of:\n"
         "  - character_presence.score >= 0.7 (no major missing/swapped characters)\n"
-        "  - every non-no_reference character_identity score >= 0.6\n"
+        "  - every visible (no_reference=false) character_identity score >= 0.6\n"
+        "  - every visible (no_reference=false) character_wardrobe score >= 0.6\n"
         "  - location_match.score >= 0.6\n"
         "  - continuity.score >= 0.6 (or no_prior_shot=true)\n"
         "  - artifacts.score >= 0.7\n"
@@ -495,8 +660,12 @@ def _build_prompt(
         "specific, human-readable failure descriptions.\n"
         "\n"
         "Be HONEST. This is a real production validator; false-pass is worse "
-        "than false-fail. If hair color, hairstyle, or wardrobe diverges from "
-        "the turnaround, say so explicitly.\n"
+        "than false-fail. If hair color, hairstyle, or face structure diverges "
+        "from the turnaround, say so explicitly. If the manifest wardrobe is "
+        "violated, say so. But do NOT flag scene-appropriate clothing "
+        "(different from the turnaround but matching the manifest) as an "
+        "identity error - that is the most common false positive and is "
+        "now explicitly disallowed.\n"
         "\n"
         "OUTPUT LENGTH RULES (critical, to avoid truncation):\n"
         "  - Every 'notes' field must be a SINGLE sentence, max 200 characters.\n"
@@ -514,15 +683,39 @@ def _build_labeled_images(
     location_ref: Optional[Path],
     prior_keyframe: Optional[Path],
     keyframe: Path,
+    wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
 ) -> list[tuple[str, Path]]:
-    """Ordered list of (caption, image_path) used by both backends."""
+    """Ordered list of (caption, image_path) used by both backends.
+
+    wardrobe_refs maps character name -> (canonical keyframe path,
+    manifest wardrobe text, source shot id) for cross-shot wardrobe
+    consistency checking. Only populated when an earlier shot in the
+    scene established a canonical look for that character + outfit.
+    """
     out: list[tuple[str, Path]] = []
     for name, path in char_refs.items():
-        out.append((f"REFERENCE - {name} turnaround:", path))
+        out.append((
+            f"REFERENCE - {name} TURNAROUND (IDENTITY ONLY - face, hair, "
+            f"skin tone, build). Clothing in this turnaround does NOT define "
+            f"what {name} should be wearing in any specific shot; the manifest "
+            f"wardrobe spec does.",
+            path,
+        ))
+    if wardrobe_refs:
+        for name, (path, desc, src_shot) in wardrobe_refs.items():
+            out.append((
+                f"WARDROBE CONSISTENCY REFERENCE - {name}'s outfit '{desc}' "
+                f"as already established in shot {src_shot}. {name} appears "
+                f"in the current shot with the same manifest wardrobe text, "
+                f"so the outfit should look like the SAME garment as in this "
+                f"reference image (same tuxedo, same dress, same pajamas - "
+                f"not a different one).",
+                path,
+            ))
     if location_ref:
         out.append(("REFERENCE - location plate:", location_ref))
     if prior_keyframe:
-        out.append(("REFERENCE - previous shot keyframe:", prior_keyframe))
+        out.append(("REFERENCE - previous shot keyframe (for continuity):", prior_keyframe))
     out.append(("KEYFRAME UNDER TEST:", keyframe))
     return out
 
@@ -568,9 +761,13 @@ def _validate_keyframe_claude(
     missing_refs: list[str],
     location_ref: Optional[Path],
     prior_keyframe: Optional[Path],
+    prior_shot: Optional[dict] = None,
+    wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
 ) -> tuple[dict, dict]:
     content: list[dict] = []
-    for caption, path in _build_labeled_images(char_refs, location_ref, prior_keyframe, keyframe):
+    for caption, path in _build_labeled_images(
+        char_refs, location_ref, prior_keyframe, keyframe, wardrobe_refs=wardrobe_refs,
+    ):
         content.append({"type": "text", "text": caption})
         content.append(_encode_image(path))
 
@@ -580,6 +777,8 @@ def _validate_keyframe_claude(
         missing_refs=missing_refs,
         has_location_ref=location_ref is not None,
         has_prior=prior_keyframe is not None,
+        prior_shot=prior_shot,
+        wardrobe_refs=wardrobe_refs,
     )
     content.append({"type": "text", "text": prompt})
 
@@ -606,6 +805,7 @@ def _validate_keyframe_claude(
         tool_input = json.loads(m.group())
 
     tool_input["character_identity"] = _normalize_identity(tool_input.get("character_identity"))
+    tool_input["character_wardrobe"] = _normalize_wardrobe(tool_input.get("character_wardrobe"))
     usage = {
         "input_tokens": response.usage.input_tokens,
         "output_tokens": response.usage.output_tokens,
@@ -702,9 +902,10 @@ def _try_repair_json(text: str) -> Optional[dict]:
             "missing": [], "unexpected": [],
         },
         "character_identity": [],
+        "character_wardrobe": [],
         "location_match": {"score": 0.0, "notes": "(missing from truncated output)"},
         "continuity": {"score": 0.0, "notes": "(missing from truncated output)",
-                        "no_prior_shot": False},
+                        "no_prior_shot": False, "same_location_as_prior": False},
         "artifacts": {"score": 0.0, "notes": "(missing from truncated output)", "detected": []},
         "overall_pass": False,
         "reasons": ["Model output was truncated; structured fields are incomplete."],
@@ -737,11 +938,15 @@ def _validate_keyframe_gemini(
     missing_refs: list[str],
     location_ref: Optional[Path],
     prior_keyframe: Optional[Path],
+    prior_shot: Optional[dict] = None,
+    wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
 ) -> tuple[dict, dict]:
     from google.genai import types
 
     parts: list = []
-    for caption, path in _build_labeled_images(char_refs, location_ref, prior_keyframe, keyframe):
+    for caption, path in _build_labeled_images(
+        char_refs, location_ref, prior_keyframe, keyframe, wardrobe_refs=wardrobe_refs,
+    ):
         parts.append(caption)
         # Re-use the resized/encoded image bytes from the shared helper.
         block = _encode_image(path)
@@ -754,6 +959,8 @@ def _validate_keyframe_gemini(
         missing_refs=missing_refs,
         has_location_ref=location_ref is not None,
         has_prior=prior_keyframe is not None,
+        prior_shot=prior_shot,
+        wardrobe_refs=wardrobe_refs,
     )
     parts.append(prompt)
 
@@ -806,6 +1013,7 @@ def _validate_keyframe_gemini(
     response, data = pair
 
     data["character_identity"] = _normalize_identity(data.get("character_identity"))
+    data["character_wardrobe"] = _normalize_wardrobe(data.get("character_wardrobe"))
     usage_meta = getattr(response, "usage_metadata", None)
     usage = {
         "input_tokens": getattr(usage_meta, "prompt_token_count", 0) or 0,
@@ -825,6 +1033,22 @@ def _validate_keyframe(
     if backend == "gemini":
         return _validate_keyframe_gemini(client, model, **kwargs)
     raise ValueError(f"Unknown backend: {backend}")
+
+
+def _wardrobe_key(text: str) -> str:
+    """Normalize a manifest wardrobe text so 'black tuxedo' and 'black "
+    tuxedo (slightly rumpled)' map to the same key.
+
+    Strategy: lowercase, strip parenthetical asides, collapse whitespace, drop
+    trailing punctuation. Keeps the core garment phrase so that small
+    parenthetical action notes (e.g. "(slightly rumpled)", "(background, "
+    on phone)") do not cause the same outfit to be treated as a new one.
+    """
+    if not text:
+        return ""
+    t = re.sub(r"\([^)]*\)", " ", text)  # drop parenthetical notes
+    t = re.sub(r"\s+", " ", t).strip().lower().rstrip(".,;")
+    return t
 
 
 # ---------------------------------------------------------------------------
@@ -890,6 +1114,27 @@ def _aggregate(per_keyframe: list[dict]) -> tuple[dict, bool, list[str]]:
     }
     aggregate["character_identity_no_reference"] = sorted(id_no_ref)
 
+    # Per-character wardrobe: same pattern as identity.
+    wd_acc: dict[str, list[float]] = {}
+    wd_no_ref: set[str] = set()
+    wd_expected: dict[str, str] = {}
+    for kf in per_keyframe:
+        for ch, info in (kf.get("character_wardrobe") or {}).items():
+            if info.get("no_reference"):
+                wd_no_ref.add(ch)
+                continue
+            sc = info.get("score")
+            if isinstance(sc, (int, float)):
+                wd_acc.setdefault(ch, []).append(float(sc))
+            exp = info.get("expected")
+            if exp and ch not in wd_expected:
+                wd_expected[ch] = exp
+    aggregate["character_wardrobe"] = {
+        ch: round(sum(vs) / len(vs), 3) for ch, vs in wd_acc.items()
+    }
+    aggregate["character_wardrobe_no_reference"] = sorted(wd_no_ref)
+    aggregate["character_wardrobe_expected"] = wd_expected
+
     # Pass = every keyframe passed.
     overall_pass = all(kf.get("overall_pass") for kf in per_keyframe) if per_keyframe else False
 
@@ -925,6 +1170,8 @@ def validate_shot(
     locations_dir: Path,
     keyframes_dir: Path,
     prior_keyframe: Optional[Path] = None,
+    prior_shot: Optional[dict] = None,
+    wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
     backend: str = DEFAULT_BACKEND,
     model: Optional[str] = None,
     client=None,
@@ -956,6 +1203,8 @@ def validate_shot(
             missing_refs=missing,
             location_ref=location_ref,
             prior_keyframe=prior_keyframe,
+            prior_shot=prior_shot,
+            wardrobe_refs=wardrobe_refs,
         )
         out["_keyframe_path"] = str(kf)
         per_keyframe.append(out)
@@ -977,6 +1226,11 @@ def validate_shot(
             "missing_refs": missing,
             "location_ref": str(location_ref) if location_ref else None,
             "prior_keyframe": str(prior_keyframe) if prior_keyframe else None,
+            "prior_shot_id": prior_shot["shot_id"] if prior_shot else None,
+            "wardrobe_refs": {
+                name: {"path": str(p), "expected": desc, "source_shot": src}
+                for name, (p, desc, src) in (wardrobe_refs or {}).items()
+            },
             "keyframes": [str(p) for p in keyframes],
         },
     )
@@ -1021,16 +1275,18 @@ def _short_flag(reasons: list[str]) -> list[str]:
         tag = None
         if "missing" in rl and "missing" not in seen and "character" in rl:
             tag = "missing character(s)"; seen.add("missing")
-        elif "unexpected" in rl and "character" in rl:
+        elif "unexpected" in rl and ("character" in rl or "background" in rl):
             tag = "unexpected/extra character(s)"
-        elif "wardrobe" in rl or "outfit" in rl or ("pajamas" in rl) or ("dress" in rl and "match" in rl):
-            tag = "wardrobe drift"
+        elif "lightning" in rl and ("inside" in rl or "indoor" in rl or "in the room" in rl):
+            tag = "environment artifact (indoor lightning)"
+        elif "wardrobe" in rl or "outfit" in rl or ("pajamas" in rl and "match" in rl) or ("dress" in rl and "match" in rl):
+            tag = "wardrobe mismatch (vs manifest)"
         elif "hair" in rl and ("color" in rl or "style" in rl or "different" in rl or "off" in rl):
             tag = "hair drift"
         elif "continuity" in rl:
             tag = "continuity break"
-        elif "location" in rl or "set " in rl or "room" in rl:
-            tag = "location drift"
+        elif "window" in rl or "layout" in rl or ("location" in rl and "match" not in rl) or ("room" in rl and "drift" in rl):
+            tag = "location/room drift"
         elif "artifact" in rl or "extra limb" in rl or "morph" in rl:
             tag = "visible artifacts"
         elif "identity" in rl:
@@ -1085,18 +1341,21 @@ def render_markdown_report(
 
     lines.append("## Summary")
     lines.append("")
-    lines.append("| Shot | Pass? | Presence | Location | Continuity | Artifacts | Identity (avg) | # Reasons |")
-    lines.append("|------|-------|----------|----------|------------|-----------|----------------|-----------|")
+    lines.append("| Shot | Pass? | Presence | Location | Continuity | Artifacts | Identity (avg) | Wardrobe (avg) | # Reasons |")
+    lines.append("|------|-------|----------|----------|------------|-----------|----------------|----------------|-----------|")
     for r in results:
         agg = r.aggregate_scores
         ids = agg.get("character_identity", {})
         id_avg = (sum(ids.values()) / len(ids)) if ids else None
         id_str = f"{id_avg:.2f}" if id_avg is not None else "n/a"
+        wds = agg.get("character_wardrobe", {})
+        wd_avg = (sum(wds.values()) / len(wds)) if wds else None
+        wd_str = f"{wd_avg:.2f}" if wd_avg is not None else "n/a"
         gate = "PASS" if r.overall_pass else "FAIL"
         lines.append(
             f"| {r.shot_id} | **{gate}** | {agg.get('character_presence',0):.2f} | "
             f"{agg.get('location_match',0):.2f} | {agg.get('continuity',0):.2f} | "
-            f"{agg.get('artifacts',0):.2f} | {id_str} | {len(r.reasons)} |"
+            f"{agg.get('artifacts',0):.2f} | {id_str} | {wd_str} | {len(r.reasons)} |"
         )
     lines.append("")
     in_tot = sum(r.usage["input_tokens"] for r in results)
@@ -1125,6 +1384,14 @@ def render_markdown_report(
                 f"- character_identity (no reference, not scored): "
                 f"{', '.join(agg['character_identity_no_reference'])}"
             )
+        if agg.get("character_wardrobe"):
+            wd_strs = ", ".join(f"{k}: {v:.2f}" for k, v in agg["character_wardrobe"].items())
+            lines.append(f"- character_wardrobe: {wd_strs}")
+        if agg.get("character_wardrobe_no_reference"):
+            lines.append(
+                f"- character_wardrobe (not visible, not scored): "
+                f"{', '.join(agg['character_wardrobe_no_reference'])}"
+            )
         lines.append(f"- location_match: {agg.get('location_match',0):.2f}")
         lines.append(f"- continuity: {agg.get('continuity',0):.2f}")
         lines.append(f"- artifacts: {agg.get('artifacts',0):.2f}")
@@ -1150,16 +1417,28 @@ def render_markdown_report(
             ci = kf.get("character_identity", {})
             for ch, info in ci.items():
                 if info.get("no_reference"):
-                    lines.append(f"- identity[{ch}]: no reference - {info.get('notes','')}")
+                    lines.append(f"- identity[{ch}]: not visible - {info.get('notes','')}")
                 else:
                     lines.append(f"- identity[{ch}]: {info.get('score',0):.2f} - {info.get('notes','')}")
+            cw = kf.get("character_wardrobe", {})
+            for ch, info in cw.items():
+                if info.get("no_reference"):
+                    lines.append(f"- wardrobe[{ch}]: not visible - {info.get('notes','')}")
+                else:
+                    exp = info.get("expected", "")
+                    exp_str = f" (expected: {exp})" if exp else ""
+                    lines.append(
+                        f"- wardrobe[{ch}]: {info.get('score',0):.2f}{exp_str} - "
+                        f"{info.get('notes','')}"
+                    )
             lm = kf.get("location_match", {})
             lines.append(f"- location: {lm.get('score',0):.2f} - {lm.get('notes','')}")
             cn = kf.get("continuity", {})
             if cn.get("no_prior_shot"):
-                lines.append(f"- continuity: n/a (no prior shot)")
+                lines.append(f"- continuity: n/a (no prior shot or different location)")
             else:
-                lines.append(f"- continuity: {cn.get('score',0):.2f} - {cn.get('notes','')}")
+                same_loc = " [same location]" if cn.get("same_location_as_prior") else ""
+                lines.append(f"- continuity: {cn.get('score',0):.2f}{same_loc} - {cn.get('notes','')}")
             art = kf.get("artifacts", {})
             det = ", ".join(art.get("detected", [])) or "none"
             lines.append(f"- artifacts: {art.get('score',0):.2f} - detected: {det} - {art.get('notes','')}")
@@ -1250,6 +1529,9 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
     client = _make_client(backend)
     results: list[ShotValidationResult] = []
     last_keyframe: Optional[Path] = None
+    last_shot: Optional[dict] = None
+    # (character_name, normalized_wardrobe_text) -> (canonical_keyframe, raw_text, source_shot_id)
+    wardrobe_canonical: dict[tuple[str, str], tuple[Path, str, str]] = {}
 
     for shot in manifest:
         media = _match_footage(shot["shot_id"], footage_dir)
@@ -1257,6 +1539,18 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
             print(f"[skip] No footage for {shot['shot_id']} in {footage_dir}")
             continue
         print(f"[validate] {shot['shot_id']} -> {media.name}", flush=True)
+
+        # Build per-shot wardrobe consistency refs: for each character in this
+        # shot whose manifest wardrobe text matches one we have already seen
+        # earlier in the scene, pass that prior keyframe as a consistency
+        # reference. Skip the character if this is the first time we are seeing
+        # that outfit (this shot becomes the canonical after validation).
+        wardrobe_refs: dict[str, tuple[Path, str, str]] = {}
+        for ch, desc in (shot.get("wardrobe") or {}).items():
+            key = (ch, _wardrobe_key(desc))
+            if key[1] and key in wardrobe_canonical:
+                wardrobe_refs[ch] = wardrobe_canonical[key]
+
         result = validate_shot(
             shot=shot,
             media_path=media,
@@ -1264,6 +1558,8 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
             locations_dir=locations_dir,
             keyframes_dir=keyframes_dir,
             prior_keyframe=last_keyframe,
+            prior_shot=last_shot,
+            wardrobe_refs=wardrobe_refs or None,
             backend=backend,
             model=model,
             client=client,
@@ -1272,6 +1568,19 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
         kf_paths = result.media_paths.get("keyframes", [])
         if kf_paths:
             last_keyframe = Path(kf_paths[-1])
+        last_shot = shot
+
+        # Record the canonical look for any (character, outfit) pair we have
+        # not yet seen, using the middle keyframe as the canonical reference
+        # (typically the most stable / least edge-of-shot frame).
+        canonical_kf = Path(kf_paths[len(kf_paths) // 2]) if kf_paths else None
+        if canonical_kf is not None:
+            for ch, desc in (shot.get("wardrobe") or {}).items():
+                key = (ch, _wardrobe_key(desc))
+                if not key[1] or key in wardrobe_canonical:
+                    continue
+                wardrobe_canonical[key] = (canonical_kf, desc, shot["shot_id"])
+
         gate = "PASS" if result.overall_pass else "FAIL"
         print(f"  -> {gate}  reasons={len(result.reasons)}  "
               f"tokens(in/out)={result.usage['input_tokens']}/{result.usage['output_tokens']}")
