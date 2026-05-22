@@ -36,6 +36,8 @@ node_modules/
 # Storyboard images
 docs/storyboards/**/panels/*.png
 storyboards/**/panels/*.png
+storyboards/v*/**/*.png
+storyboards/v*/**/*.jpg
 
 # Character turnarounds and concept art
 assets/characters/**/*.png

@@ -2,7 +2,13 @@
   {
     "shot_id": "1A",
     "location": "living_room",
-    "characters": ["Mia", "Leo", "Jenny", "Nina", "Gabe"],
+    "characters": [
+      "Mia",
+      "Leo",
+      "Jenny",
+      "Nina",
+      "Gabe"
+    ],
     "wardrobe": {
       "Mia": "casual home wear, legs tucked under on couch",
       "Leo": "green dinosaur-pattern pajamas",
@@ -19,12 +25,15 @@
       "Leo's plush T-Rex"
     ],
     "camera": "Wide establishing shot, STATIC, 8s. Full view of living room; TV left, couch center-left, kitchen background right.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1A-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1A-start.png"
   },
   {
     "shot_id": "1B",
     "location": "living_room",
-    "characters": ["Leo", "Mia"],
+    "characters": [
+      "Leo",
+      "Mia"
+    ],
     "wardrobe": {
       "Leo": "green dinosaur-pattern pajamas, hugging plush T-Rex",
       "Mia": "casual home wear (partial frame edge)"
@@ -36,12 +45,16 @@
       "TV glow on Leo's face"
     ],
     "camera": "Medium shot on Leo, STATIC with slight PUSH, 6s. Leo center, cross-legged on couch.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1B-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1B-start.png"
   },
   {
     "shot_id": "1C",
     "location": "living_room",
-    "characters": ["Nina", "Gabe", "Jenny"],
+    "characters": [
+      "Nina",
+      "Gabe",
+      "Jenny"
+    ],
     "wardrobe": {
       "Nina": "elegant black formal dress, putting on earrings",
       "Gabe": "black tuxedo (background)",
@@ -53,12 +66,18 @@
       "phone (Nina looking for hers)"
     ],
     "camera": "Medium tracking shot following Nina, TRACK left to right, 15s. Smooth track from living room toward front door.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1C-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1C-start.png"
   },
   {
     "shot_id": "1D",
     "location": "living_room",
-    "characters": ["Gabe", "Nina", "Mia", "Leo", "Jenny"],
+    "characters": [
+      "Gabe",
+      "Nina",
+      "Mia",
+      "Leo",
+      "Jenny"
+    ],
     "wardrobe": {
       "Gabe": "black tuxedo (slightly rumpled), checking watch",
       "Nina": "elegant black formal dress",
@@ -72,12 +91,14 @@
       "armchair (Jenny in background)"
     ],
     "camera": "Two-shot Gabe/Nina, STATIC with occasional REFRAMES, 45s. Medium shot from waist up.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1D-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1D-start.png"
   },
   {
     "shot_id": "1E",
     "location": "living_room",
-    "characters": ["Jenny"],
+    "characters": [
+      "Jenny"
+    ],
     "wardrobe": {
       "Jenny": "casual teen, dark brown hair in ponytail, head tilted down at phone"
     },
@@ -85,7 +106,7 @@
       "phone (glowing, texting)"
     ],
     "camera": "Close-up insert on Jenny, STATIC, 5s. Phone glow on face, shallow depth of field, background blurred.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1E-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1E-start.png"
   },
   {
     "shot_id": "1F",
@@ -100,12 +121,17 @@
       "lightning flash reflected in screen"
     ],
     "camera": "Close-up insert on TV, STATIC, 4s. TV screen fills most of frame.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1F-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1F-start.png"
   },
   {
     "shot_id": "1G",
     "location": "living_room",
-    "characters": ["Mia", "Leo", "Nina", "Gabe"],
+    "characters": [
+      "Mia",
+      "Leo",
+      "Nina",
+      "Gabe"
+    ],
     "wardrobe": {
       "Mia": "casual home wear (OTS, back of head visible)",
       "Leo": "green dinosaur-pattern pajamas (OTS, PJs visible)",
@@ -118,12 +144,14 @@
       "kids' silhouettes against TV glow"
     ],
     "camera": "OTS from behind kids, STATIC, 30s. Camera behind/between kids looking past them at TV and parents in background.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1G-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1G-start.png"
   },
   {
     "shot_id": "1H",
     "location": "living_room",
-    "characters": ["Mia"],
+    "characters": [
+      "Mia"
+    ],
     "wardrobe": {
       "Mia": "casual home wear, looking up at off-screen parents"
     },
@@ -132,12 +160,15 @@
       "lightning flash illumination"
     ],
     "camera": "Close-up on Mia, SLOW PUSH, 20s. Mia center frame, looking up at parents off-screen. Emotional anchor of the scene.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1H-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1H-start.png"
   },
   {
     "shot_id": "1I",
     "location": "living_room",
-    "characters": ["Gabe", "Nina"],
+    "characters": [
+      "Gabe",
+      "Nina"
+    ],
     "wardrobe": {
       "Gabe": "black tuxedo (conflicted expression)",
       "Nina": "elegant black formal dress (sharp glare)"
@@ -146,6 +177,6 @@
       "front door area (parents heading out)"
     ],
     "camera": "Close-up to Two-shot, STATIC then PULL to include Nina, 77s. Starts close on Gabe's face, slowly pulls back when Nina enters frame screen left with glare.",
-    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1I-start.png"
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1I-start.png"
   }
 ]
