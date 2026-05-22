@@ -16,7 +16,7 @@ Pixar-style family adventure animation, professional animation production,
 - **Nina (Mother):** Late 30s, shoulder-length dark brown wavy hair, hazel-green eyes, elegant black cocktail dress
 - **Mia (Daughter, ~8):** Brown hair, ponytail possible, pajamas, big expressive eyes
 - **Leo (Son, ~5):** Blonde/light brown hair, dinosaur pajamas, round face, innocent
-- **Jenny (Babysitter, ~15):** Blonde ponytail, casual teen clothes, always on phone
+- **Jenny (Babysitter, ~15):** Dark brown curly hair in messy ponytail, brown skin, coral/salmon hoodie, gray leggings, always on phone
 
 ---
 

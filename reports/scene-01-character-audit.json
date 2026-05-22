@@ -157,7 +157,7 @@
       "characters_expected": ["Jenny"],
       "character_match": {
         "Jenny": {
-          "hair": "CORRECT - blonde ponytail",
+          "hair": "CORRECT - dark brown curly hair in messy ponytail",
           "action": "CORRECT - absorbed in phone",
           "age": "CORRECT - reads as ~15",
           "overall": "Strong match"

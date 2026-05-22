@@ -34,7 +34,7 @@ CHARACTERS = {
     "leo": "5-year-old boy, blonde/light brown hair, dinosaur pajamas, round face, innocent, carrying snack backpack",
     "ruben": "Fairy godfather, wild gray Einstein-like hair, tired baggy eyes, janitor coveralls, droopy iridescent wings, uses mop as magic wand",
     "mcnattin": "Middle-aged detective, rumpled suit, tired weathered face, professional demeanor",
-    "jenny": "15-year-old babysitter, blonde ponytail, nervous teen"
+    "jenny": "15-year-old babysitter, dark brown curly hair in messy ponytail, brown skin, coral hoodie, nervous teen"
 }
 
 # All Act 2 panels with sketch-style prompts
