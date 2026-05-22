@@ -80,8 +80,11 @@ This is the "Fairy Dinosaur Date Night" animated movie production project.
 ### Key Characters
 - **Gabe & Nina** (parents)
 - **Mia & Leo** (kid protagonists)
+- **Jenny** (the teenage babysitter - dark brown hair, NOT blonde)
 - **Ruben** (fairy godfather)
 - **Jetplane** (color-farting dinosaur)
+
+All seven characters have locked turnarounds on R2 at `r2:rex-assets/characters/<name>/<name>_turnaround_APPROVED.png` and in the Asset Bible at `r2:rex-assets/asset-bible/characters/`. To inventory characters, run `rclone lsd r2:rex-assets/characters/` - do not rely on this list from memory.
 
 ### Key Locations
 - Family home (cozy, warm lighting)
