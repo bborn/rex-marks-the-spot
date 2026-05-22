@@ -18,10 +18,18 @@ these panels, so on-model panels = on-model shots.
 
 **Validator pass rate.**
 - v3: 4/9 passed (`reports/audit-v3/scene-01-audit.md`)
-- v4: 8/9 passed (`reports/audit-v4/scene-01-audit.md`)
-- 1I (the only v4 fail) passes character_identity 1.0 / 1.0 and wardrobe 1.0 / 1.0;
-  it fails only because the validator's fallback location plate is the 1A couch/TV
-  view while shot 1I is intentionally set at the front door per the manifest camera.
+- v4 (initial): 8/9 passed - 1I failed location/continuity because its manifest
+  said `location: living_room` while the panel correctly depicts the front-door
+  entryway (coat rack, console table, front door, etc.) per the manifest camera
+  description.
+- v4 (after manifest fix): 9/9 passed (`reports/audit-v4/scene-01-audit.md`).
+  Root cause was a manifest labeling error, not a panel error: 1I is a distinct
+  sub-location (front entryway / foyer) inside the same family home, not the
+  main living room. Updated `scene-01.json` 1I -> `location: "front_entryway"`,
+  expanded `key_props` with the entryway dressing visible in the panel, and
+  noted the sub-location in `camera`. Re-validation: location 1.00, continuity
+  1.00 (validator correctly treats it as a normal cut to a different location
+  within the same beat). +$0.024 in re-audit cost; no image regeneration.
 
 ## Before / after per shot
 

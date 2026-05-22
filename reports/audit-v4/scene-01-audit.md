@@ -16,7 +16,7 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 - **1F - PASS**: (no issues flagged)
 - **1G - PASS**: (no issues flagged)
 - **1H - PASS**: (no issues flagged)
-- **1I - FAIL**: location/room drift; continuity break
+- **1I - PASS**: (no issues flagged)
 
 ## Summary
 
@@ -30,9 +30,9 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 | 1F | **PASS** | 1.00 | 1.00 | 1.00 | 1.00 | n/a | n/a | 0 |
 | 1G | **PASS** | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
 | 1H | **PASS** | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
-| 1I | **FAIL** | 1.00 | 0.50 | 0.70 | 1.00 | 1.00 | 1.00 | 2 |
+| 1I | **PASS** | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 0 |
 
-**Total API usage:** 35,628 input tokens + 5,133 output tokens. **Estimated cost:** $0.0235.
+**Total API usage:** 35,683 input tokens + 5,171 output tokens. **Estimated cost:** $0.0236.
 
 ## Per-Shot Breakdown
 
@@ -55,11 +55,11 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 - identity[Jenny]: 1.00 - Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.
 - identity[Nina]: 1.00 - Nina's face, hair, skin tone, and build perfectly match the turnaround reference.
 - identity[Gabe]: 1.00 - Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.
-- wardrobe[Mia]: 1.00 (expected: casual home wear, legs tucked under on couch) - Mia is wearing casual home wear, a pink t-shirt and blue pants, consistent with the manifest.
-- wardrobe[Leo]: 1.00 (expected: green dinosaur-pattern pajamas) - Leo is wearing green dinosaur-pattern pajamas, consistent with the manifest.
-- wardrobe[Jenny]: 1.00 (expected: casual teen, dark brown hair in ponytail, on phone) - Jenny is wearing casual teen attire, a light blue hoodie and dark pants, consistent with the manifest.
-- wardrobe[Nina]: 1.00 (expected: elegant black formal dress (date-night)) - Nina is wearing an elegant black formal dress, consistent with the manifest.
-- wardrobe[Gabe]: 1.00 (expected: black tuxedo (date-night, slightly rumpled)) - Gabe is wearing a black tuxedo, consistent with the manifest.
+- wardrobe[Mia]: 1.00 (expected: casual home wear, legs tucked under on couch) - Mia is wearing casual home wear, and her legs are tucked under on the couch as expected.
+- wardrobe[Leo]: 1.00 (expected: green dinosaur-pattern pajamas) - Leo is wearing green dinosaur-pattern pajamas as specified in the manifest.
+- wardrobe[Jenny]: 1.00 (expected: casual teen, dark brown hair in ponytail, on phone) - Jenny is dressed in casual teen attire, has dark brown hair in a ponytail, and is on her phone.
+- wardrobe[Nina]: 1.00 (expected: elegant black formal dress (date-night)) - Nina is wearing an elegant black formal dress, consistent with a date-night outfit.
+- wardrobe[Gabe]: 1.00 (expected: black tuxedo (date-night, slightly rumpled)) - Gabe is wearing a black tuxedo, which appears slightly rumpled, matching the date-night description.
 - location: 1.00 - The living room set, including the TV, couch, armchair, and windows showing a stormy sky, perfectly matches the description.
 - continuity: n/a (no prior shot or different location)
 - artifacts: 1.00 - detected: none - No visible generation artifacts or physics violations were detected in the keyframe.
@@ -109,10 +109,10 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 - identity[Nina]: 1.00 - Nina's face, hair, skin tone, and build perfectly match the turnaround reference.
 - identity[Gabe]: 1.00 - Gabe's face, hair, skin tone, and build are consistent with the turnaround reference.
 - identity[Jenny]: 1.00 - Jenny's face, hair, skin tone, and build are consistent with the turnaround reference.
-- wardrobe[Nina]: 1.00 (expected: elegant black formal dress, putting on earrings) - Nina is wearing an elegant black formal dress and is putting on earrings, matching the manifest.
-- wardrobe[Gabe]: 1.00 (expected: black tuxedo (background)) - Gabe is wearing a black tuxedo, consistent with the manifest and the wardrobe consistency reference.
-- wardrobe[Jenny]: 1.00 (expected: casual teen, dark brown hair in ponytail (background, on phone)) - Jenny is wearing casual teen attire with her dark brown hair in a ponytail, matching the manifest.
-- location: 1.00 - The living room set, furniture, and window view with the storm are consistent with the location plate.
+- wardrobe[Nina]: 1.00 (expected: elegant black formal dress, putting on earrings) - Nina is wearing an elegant black formal dress and is putting on earrings as expected.
+- wardrobe[Gabe]: 1.00 (expected: black tuxedo (background)) - Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.
+- wardrobe[Jenny]: 1.00 (expected: casual teen, dark brown hair in ponytail (background, on phone)) - Jenny is wearing casual teen attire and has her dark brown hair in a ponytail, consistent with the manifest.
+- location: 1.00 - The living room set, furniture, and window view with the storm are consistent with the reference images.
 - continuity: 1.00 [same location] - The location and time of day are consistent with the prior shot, despite different characters being present.
 - artifacts: 1.00 - detected: none - No visible generation artifacts or physics violations were detected in the keyframe.
 - keyframe overall_pass: True
@@ -206,17 +206,17 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 
 **Keyframe first** (scene-01-1G.png)
 - presence: 1.00 (observed: Mia, Leo, Nina, Gabe | missing: none | unexpected: none)
-- identity[Mia]: 1.00 - Mia's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.
-- identity[Leo]: 1.00 - Leo's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.
-- identity[Nina]: 1.00 - Nina's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.
-- identity[Gabe]: 1.00 - Gabe's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.
-- wardrobe[Mia]: 1.00 (expected: casual home wear (OTS, back of head visible)) - Mia's casual home wear matches the manifest description and the established look from shot 1B.
-- wardrobe[Leo]: 1.00 (expected: green dinosaur-pattern pajamas (OTS, PJs visible)) - Leo's green dinosaur-pattern pajamas match the manifest description and the established look from shot 1A.
-- wardrobe[Nina]: 1.00 (expected: elegant black formal dress (background, preparing)) - Nina's elegant black formal dress matches the manifest description and the established look from shot 1A.
-- wardrobe[Gabe]: 1.00 (expected: black tuxedo (background, preparing)) - Gabe's black tuxedo matches the manifest description and the established look from shot 1A.
-- location: 1.00 - The living room set, including furniture, layout, windows, and lighting style, perfectly matches the expected location.
-- continuity: 1.00 [same location] - The location, time of day, and general environment are consistent with the prior shot, which also depicted the living room during a storm.
-- artifacts: 1.00 - detected: none - No visible generation artifacts, physics violations, or unexpected elements were detected in the keyframe.
+- identity[Mia]: 1.00 - Mia's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.
+- identity[Leo]: 1.00 - Leo's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.
+- identity[Nina]: 1.00 - Nina's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.
+- identity[Gabe]: 1.00 - Gabe's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.
+- wardrobe[Mia]: 1.00 (expected: casual home wear (OTS, back of head visible)) - Mia's casual home wear matches the manifest description and the wardrobe consistency reference.
+- wardrobe[Leo]: 1.00 (expected: green dinosaur-pattern pajamas (OTS, PJs visible)) - Leo's green dinosaur-pattern pajamas match the manifest description and the wardrobe consistency reference.
+- wardrobe[Nina]: 1.00 (expected: elegant black formal dress (background, preparing)) - Nina's elegant black formal dress matches the manifest description and the wardrobe consistency reference.
+- wardrobe[Gabe]: 1.00 (expected: black tuxedo (background, preparing)) - Gabe's black tuxedo matches the manifest description and the wardrobe consistency reference.
+- location: 1.00 - The living room set, furniture, and window view are consistent with the location plate.
+- continuity: 1.00 [same location] - The location, time of day, and general environment are consistent with the prior shot.
+- artifacts: 1.00 - detected: none - No visible generation artifacts or physics violations were detected in the keyframe.
 - keyframe overall_pass: True
 
 </details>
@@ -244,19 +244,15 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 
 </details>
 
-### Shot 1I - FAIL
+### Shot 1I - PASS
 
 **Aggregate scores:**
 - character_presence: 1.00
 - character_identity: Gabe: 1.00, Nina: 1.00
 - character_wardrobe: Gabe: 1.00, Nina: 1.00
-- location_match: 0.50
-- continuity: 0.70
+- location_match: 1.00
+- continuity: 1.00
 - artifacts: 1.00
-
-**Failure reasons:**
-- The location match score is below the passing threshold due to significant changes in the visible furniture and layout.
-- The continuity score is below the passing threshold due to the changed room layout.
 
 <details><summary>Per-keyframe detail</summary>
 
@@ -264,13 +260,11 @@ Note: when a manifest character is **not visible** in a keyframe, the model repo
 - presence: 1.00 (observed: Gabe, Nina | missing: none | unexpected: none)
 - identity[Gabe]: 1.00 - Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.
 - identity[Nina]: 1.00 - Nina's face, hair, skin tone, and build perfectly match the turnaround reference.
-- wardrobe[Gabe]: 1.00 (expected: black tuxedo (conflicted expression)) - Gabe is wearing a black tuxedo, consistent with the manifest and the wardrobe consistency reference.
-- wardrobe[Nina]: 1.00 (expected: elegant black formal dress (sharp glare)) - Nina is wearing an elegant black formal dress, consistent with the manifest and the wardrobe consistency reference.
-- location: 0.50 - The keyframe shows a different area of the living room, missing the couch and TV from the prior shot, but the window and storm are consistent.
-- continuity: 0.70 [same location] - The storm outside the window is consistent, but the room layout has changed significantly with different furniture visible.
+- wardrobe[Gabe]: 1.00 (expected: black tuxedo (conflicted expression)) - Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.
+- wardrobe[Nina]: 1.00 (expected: elegant black formal dress (sharp glare)) - Nina is wearing an elegant black formal dress that matches the wardrobe consistency reference.
+- location: 1.00 - The front entryway location is consistent with the description, featuring a coat rack, console table, and a stormy window.
+- continuity: 1.00 - This shot is in a different location than the prior shot, so continuity is not applicable.
 - artifacts: 1.00 - detected: none - No visible generation artifacts or physics violations were detected in the keyframe.
-- keyframe overall_pass: False
-  - The location match score is below the passing threshold due to significant changes in the visible furniture and layout.
-  - The continuity score is below the passing threshold due to the changed room layout.
+- keyframe overall_pass: True
 
 </details>

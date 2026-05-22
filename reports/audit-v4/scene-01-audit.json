@@ -88,31 +88,31 @@
             "Mia": {
               "score": 1.0,
               "expected": "casual home wear, legs tucked under on couch",
-              "notes": "Mia is wearing casual home wear, a pink t-shirt and blue pants, consistent with the manifest.",
+              "notes": "Mia is wearing casual home wear, and her legs are tucked under on the couch as expected.",
               "no_reference": false
             },
             "Leo": {
               "score": 1.0,
               "expected": "green dinosaur-pattern pajamas",
-              "notes": "Leo is wearing green dinosaur-pattern pajamas, consistent with the manifest.",
+              "notes": "Leo is wearing green dinosaur-pattern pajamas as specified in the manifest.",
               "no_reference": false
             },
             "Jenny": {
               "score": 1.0,
               "expected": "casual teen, dark brown hair in ponytail, on phone",
-              "notes": "Jenny is wearing casual teen attire, a light blue hoodie and dark pants, consistent with the manifest.",
+              "notes": "Jenny is dressed in casual teen attire, has dark brown hair in a ponytail, and is on her phone.",
               "no_reference": false
             },
             "Nina": {
               "score": 1.0,
               "expected": "elegant black formal dress (date-night)",
-              "notes": "Nina is wearing an elegant black formal dress, consistent with the manifest.",
+              "notes": "Nina is wearing an elegant black formal dress, consistent with a date-night outfit.",
               "no_reference": false
             },
             "Gabe": {
               "score": 1.0,
               "expected": "black tuxedo (date-night, slightly rumpled)",
-              "notes": "Gabe is wearing a black tuxedo, consistent with the manifest.",
+              "notes": "Gabe is wearing a black tuxedo, which appears slightly rumpled, matching the date-night description.",
               "no_reference": false
             }
           },
@@ -138,7 +138,7 @@
       ],
       "usage": {
         "input_tokens": 4096,
-        "output_tokens": 905
+        "output_tokens": 916
       },
       "media_paths": {
         "media": "footage/scene-01/shots-v4/scene-01-1A.png",
@@ -329,25 +329,25 @@
             "Nina": {
               "score": 1.0,
               "expected": "elegant black formal dress, putting on earrings",
-              "notes": "Nina is wearing an elegant black formal dress and is putting on earrings, matching the manifest.",
+              "notes": "Nina is wearing an elegant black formal dress and is putting on earrings as expected.",
               "no_reference": false
             },
             "Gabe": {
               "score": 1.0,
               "expected": "black tuxedo (background)",
-              "notes": "Gabe is wearing a black tuxedo, consistent with the manifest and the wardrobe consistency reference.",
+              "notes": "Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.",
               "no_reference": false
             },
             "Jenny": {
               "score": 1.0,
               "expected": "casual teen, dark brown hair in ponytail (background, on phone)",
-              "notes": "Jenny is wearing casual teen attire with her dark brown hair in a ponytail, matching the manifest.",
+              "notes": "Jenny is wearing casual teen attire and has her dark brown hair in a ponytail, consistent with the manifest.",
               "no_reference": false
             }
           },
           "location_match": {
             "score": 1.0,
-            "notes": "The living room set, furniture, and window view with the storm are consistent with the location plate."
+            "notes": "The living room set, furniture, and window view with the storm are consistent with the reference images."
           },
           "continuity": {
             "score": 1.0,
@@ -367,7 +367,7 @@
       ],
       "usage": {
         "input_tokens": 4057,
-        "output_tokens": 501
+        "output_tokens": 497
       },
       "media_paths": {
         "media": "footage/scene-01/shots-v4/scene-01-1C.png",
@@ -772,22 +772,22 @@
           "character_identity": {
             "Mia": {
               "score": 1.0,
-              "notes": "Mia's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.",
+              "notes": "Mia's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             },
             "Leo": {
               "score": 1.0,
-              "notes": "Leo's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.",
+              "notes": "Leo's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             },
             "Nina": {
               "score": 1.0,
-              "notes": "Nina's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.",
+              "notes": "Nina's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             },
             "Gabe": {
               "score": 1.0,
-              "notes": "Gabe's identity, including face, hair, skin tone, and build, perfectly matches the provided turnaround reference.",
+              "notes": "Gabe's identity matches the turnaround reference, with consistent facial features, hair, skin tone, and build.",
               "no_reference": false
             }
           },
@@ -795,41 +795,41 @@
             "Mia": {
               "score": 1.0,
               "expected": "casual home wear (OTS, back of head visible)",
-              "notes": "Mia's casual home wear matches the manifest description and the established look from shot 1B.",
+              "notes": "Mia's casual home wear matches the manifest description and the wardrobe consistency reference.",
               "no_reference": false
             },
             "Leo": {
               "score": 1.0,
               "expected": "green dinosaur-pattern pajamas (OTS, PJs visible)",
-              "notes": "Leo's green dinosaur-pattern pajamas match the manifest description and the established look from shot 1A.",
+              "notes": "Leo's green dinosaur-pattern pajamas match the manifest description and the wardrobe consistency reference.",
               "no_reference": false
             },
             "Nina": {
               "score": 1.0,
               "expected": "elegant black formal dress (background, preparing)",
-              "notes": "Nina's elegant black formal dress matches the manifest description and the established look from shot 1A.",
+              "notes": "Nina's elegant black formal dress matches the manifest description and the wardrobe consistency reference.",
               "no_reference": false
             },
             "Gabe": {
               "score": 1.0,
               "expected": "black tuxedo (background, preparing)",
-              "notes": "Gabe's black tuxedo matches the manifest description and the established look from shot 1A.",
+              "notes": "Gabe's black tuxedo matches the manifest description and the wardrobe consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
             "score": 1.0,
-            "notes": "The living room set, including furniture, layout, windows, and lighting style, perfectly matches the expected location."
+            "notes": "The living room set, furniture, and window view are consistent with the location plate."
           },
           "continuity": {
             "score": 1.0,
-            "notes": "The location, time of day, and general environment are consistent with the prior shot, which also depicted the living room during a storm.",
+            "notes": "The location, time of day, and general environment are consistent with the prior shot.",
             "no_prior_shot": false,
             "same_location_as_prior": true
           },
           "artifacts": {
             "score": 1.0,
-            "notes": "No visible generation artifacts, physics violations, or unexpected elements were detected in the keyframe.",
+            "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
           "overall_pass": true,
@@ -839,7 +839,7 @@
       ],
       "usage": {
         "input_tokens": 5534,
-        "output_tokens": 829
+        "output_tokens": 790
       },
       "media_paths": {
         "media": "footage/scene-01/shots-v4/scene-01-1G.png",
@@ -970,11 +970,11 @@
     },
     {
       "shot_id": "1I",
-      "overall_pass": false,
+      "overall_pass": true,
       "aggregate_scores": {
         "character_presence": 1.0,
-        "location_match": 0.5,
-        "continuity": 0.7,
+        "location_match": 1.0,
+        "continuity": 1.0,
         "artifacts": 1.0,
         "character_identity": {
           "Gabe": 1.0,
@@ -991,10 +991,7 @@
           "Nina": "elegant black formal dress (sharp glare)"
         }
       },
-      "reasons": [
-        "The location match score is below the passing threshold due to significant changes in the visible furniture and layout.",
-        "The continuity score is below the passing threshold due to the changed room layout."
-      ],
+      "reasons": [],
       "keyframes": [
         {
           "character_presence": {
@@ -1026,42 +1023,39 @@
             "Gabe": {
               "score": 1.0,
               "expected": "black tuxedo (conflicted expression)",
-              "notes": "Gabe is wearing a black tuxedo, consistent with the manifest and the wardrobe consistency reference.",
+              "notes": "Gabe is wearing a black tuxedo that matches the wardrobe consistency reference.",
               "no_reference": false
             },
             "Nina": {
               "score": 1.0,
               "expected": "elegant black formal dress (sharp glare)",
-              "notes": "Nina is wearing an elegant black formal dress, consistent with the manifest and the wardrobe consistency reference.",
+              "notes": "Nina is wearing an elegant black formal dress that matches the wardrobe consistency reference.",
               "no_reference": false
             }
           },
           "location_match": {
-            "score": 0.5,
-            "notes": "The keyframe shows a different area of the living room, missing the couch and TV from the prior shot, but the window and storm are consistent."
+            "score": 1.0,
+            "notes": "The front entryway location is consistent with the description, featuring a coat rack, console table, and a stormy window."
           },
           "continuity": {
-            "score": 0.7,
-            "notes": "The storm outside the window is consistent, but the room layout has changed significantly with different furniture visible.",
+            "score": 1.0,
+            "notes": "This shot is in a different location than the prior shot, so continuity is not applicable.",
             "no_prior_shot": false,
-            "same_location_as_prior": true
+            "same_location_as_prior": false
           },
           "artifacts": {
             "score": 1.0,
             "notes": "No visible generation artifacts or physics violations were detected in the keyframe.",
             "detected": []
           },
-          "overall_pass": false,
-          "reasons": [
-            "The location match score is below the passing threshold due to significant changes in the visible furniture and layout.",
-            "The continuity score is below the passing threshold due to the changed room layout."
-          ],
+          "overall_pass": true,
+          "reasons": [],
           "_keyframe_path": "footage/scene-01/shots-v4/scene-01-1I.png"
         }
       ],
       "usage": {
-        "input_tokens": 4056,
-        "output_tokens": 437
+        "input_tokens": 4111,
+        "output_tokens": 507
       },
       "media_paths": {
         "media": "footage/scene-01/shots-v4/scene-01-1I.png",
@@ -1092,8 +1086,8 @@
     }
   ],
   "total_usage": {
-    "input_tokens": 35628,
-    "output_tokens": 5133
+    "input_tokens": 35683,
+    "output_tokens": 5171
   },
-  "estimated_cost_usd": 0.0235
+  "estimated_cost_usd": 0.0236
 }
