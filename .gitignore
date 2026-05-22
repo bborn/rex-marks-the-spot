@@ -53,3 +53,8 @@ asset-bible/**/*.png
 asset-bible/**/*.jpg
 asset-bible/**/*.jpeg
 asset-bible/**/*.webp
+
+# Shot-validator artifacts: video footage + extracted keyframes are large
+# and live in R2. The validator code + the markdown/JSON reports it produces
+# stay in git so the report itself is reviewable.
+footage/
