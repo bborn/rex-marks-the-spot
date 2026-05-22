@@ -1,9 +1,9 @@
 {
-  "generated": "2026-05-22T13:02:19.065706Z",
-  "totalAssets": 1498,
+  "generated": "2026-05-22T18:46:30.566975Z",
+  "totalAssets": 1537,
   "categories": {
-    "Characters": 381,
-    "Other": 104,
+    "Characters": 394,
+    "Other": 130,
     "Animatics": 103,
     "Storyboards": 814,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-22T13:02:19.048217711Z",
+      "modTime": "2026-05-22T18:46:30.548435546Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-22T13:02:19.048217711Z",
+      "modTime": "2026-05-22T18:46:30.548435546Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-22T13:02:19.048217711Z",
+      "modTime": "2026-05-22T18:46:30.548435546Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,351 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-22T13:02:19.048217711Z",
+      "modTime": "2026-05-22T18:46:30.548435546Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "orchestrator-runs/scene-01-2026-05-22/scene-01-stitched.mp4",
+      "name": "scene-01-stitched.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/orchestrator-runs/scene-01-2026-05-22/scene-01-stitched.mp4",
+      "size": 2770417,
+      "modTime": "2026-05-22T17:41:16.530967871Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "validation/scene-01/keyframes/07-shot-1I-last.jpg",
+      "name": "07-shot-1I-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/07-shot-1I-last.jpg",
+      "size": 60308,
+      "modTime": "2026-05-22T17:06:11.365687845Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/07-shot-1I-mid.jpg",
+      "name": "07-shot-1I-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/07-shot-1I-mid.jpg",
+      "size": 61239,
+      "modTime": "2026-05-22T17:06:11.183685015Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/07-shot-1I-first.jpg",
+      "name": "07-shot-1I-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/07-shot-1I-first.jpg",
+      "size": 62733,
+      "modTime": "2026-05-22T17:06:11.027682590Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/06-shot-1H-last.jpg",
+      "name": "06-shot-1H-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/06-shot-1H-last.jpg",
+      "size": 56657,
+      "modTime": "2026-05-22T17:06:02.508550127Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/06-shot-1H-mid.jpg",
+      "name": "06-shot-1H-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/06-shot-1H-mid.jpg",
+      "size": 60979,
+      "modTime": "2026-05-22T17:06:02.289546721Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/06-shot-1H-first.jpg",
+      "name": "06-shot-1H-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/06-shot-1H-first.jpg",
+      "size": 55477,
+      "modTime": "2026-05-22T17:06:02.131544264Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/05-shot-1G-last.jpg",
+      "name": "05-shot-1G-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/05-shot-1G-last.jpg",
+      "size": 63162,
+      "modTime": "2026-05-22T17:05:53.168404850Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/05-shot-1G-mid.jpg",
+      "name": "05-shot-1G-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/05-shot-1G-mid.jpg",
+      "size": 62464,
+      "modTime": "2026-05-22T17:05:53.002402268Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/05-shot-1G-first.jpg",
+      "name": "05-shot-1G-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/05-shot-1G-first.jpg",
+      "size": 58981,
+      "modTime": "2026-05-22T17:05:52.850399903Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/04-shot-1D-last.jpg",
+      "name": "04-shot-1D-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/04-shot-1D-last.jpg",
+      "size": 56073,
+      "modTime": "2026-05-22T17:05:42.312235932Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/04-shot-1D-mid.jpg",
+      "name": "04-shot-1D-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/04-shot-1D-mid.jpg",
+      "size": 56266,
+      "modTime": "2026-05-22T17:05:42.139233240Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/04-shot-1D-first.jpg",
+      "name": "04-shot-1D-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/04-shot-1D-first.jpg",
+      "size": 54271,
+      "modTime": "2026-05-22T17:05:41.973230657Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/03-shot-1C-last.jpg",
+      "name": "03-shot-1C-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/03-shot-1C-last.jpg",
+      "size": 36234,
+      "modTime": "2026-05-22T17:05:30.805056812Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/03-shot-1C-mid.jpg",
+      "name": "03-shot-1C-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/03-shot-1C-mid.jpg",
+      "size": 51911,
+      "modTime": "2026-05-22T17:05:30.604053682Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/03-shot-1C-first.jpg",
+      "name": "03-shot-1C-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/03-shot-1C-first.jpg",
+      "size": 54706,
+      "modTime": "2026-05-22T17:05:30.413050708Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/02-shot-1B-last.jpg",
+      "name": "02-shot-1B-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/02-shot-1B-last.jpg",
+      "size": 64142,
+      "modTime": "2026-05-22T17:05:23.025935678Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/02-shot-1B-mid.jpg",
+      "name": "02-shot-1B-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/02-shot-1B-mid.jpg",
+      "size": 62318,
+      "modTime": "2026-05-22T17:05:22.856933046Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/02-shot-1B-first.jpg",
+      "name": "02-shot-1B-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/02-shot-1B-first.jpg",
+      "size": 61554,
+      "modTime": "2026-05-22T17:05:22.710930772Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/01-shot-1A-last.jpg",
+      "name": "01-shot-1A-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/01-shot-1A-last.jpg",
+      "size": 56068,
+      "modTime": "2026-05-22T17:05:12.206767140Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/01-shot-1A-mid.jpg",
+      "name": "01-shot-1A-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/01-shot-1A-mid.jpg",
+      "size": 57702,
+      "modTime": "2026-05-22T17:05:12.036764491Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "validation/scene-01/keyframes/01-shot-1A-first.jpg",
+      "name": "01-shot-1A-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/validation/scene-01/keyframes/01-shot-1A-first.jpg",
+      "size": 56849,
+      "modTime": "2026-05-22T17:05:11.891762232Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jetplane_turnaround.png",
+      "name": "jetplane_turnaround.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane_turnaround.png",
+      "size": 509370,
+      "modTime": "2026-05-22T16:48:12.066256289Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jetplane-alts/jetplane_view_back.png",
+      "name": "jetplane_view_back.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_back.png",
+      "size": 163348,
+      "modTime": "2026-05-22T16:46:46.951980492Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jetplane-alts/jetplane_view_side.png",
+      "name": "jetplane_view_side.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_side.png",
+      "size": 216101,
+      "modTime": "2026-05-22T16:46:43.927935166Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/locations/cave.png",
+      "name": "cave.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/cave.png",
+      "size": 1579576,
+      "modTime": "2026-05-22T16:45:48.121098724Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/locations/swamp.png",
+      "name": "swamp.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/swamp.png",
+      "size": 1689554,
+      "modTime": "2026-05-22T16:45:31.948856345Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/locations/minivan.png",
+      "name": "minivan.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/minivan.png",
+      "size": 1374832,
+      "modTime": "2026-05-22T16:45:17.171634873Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/locations/living_room.png",
+      "name": "living_room.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/living_room.png",
+      "size": 1428826,
+      "modTime": "2026-05-22T16:43:40.190181509Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jetplane-alts/jetplane_view_three_quarter.png",
+      "name": "jetplane_view_three_quarter.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_three_quarter.png",
+      "size": 216122,
+      "modTime": "2026-05-22T16:28:24.508479449Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jetplane-alts/jetplane_view_front.png",
+      "name": "jetplane_view_front.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_front.png",
+      "size": 174606,
+      "modTime": "2026-05-22T16:28:21.159429463Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/ruben_turnaround.png",
+      "name": "ruben_turnaround.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround.png",
+      "size": 477770,
+      "modTime": "2026-05-22T16:26:18.450599139Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/ruben-alts/ruben_turnaround_v2.png",
+      "name": "ruben_turnaround_v2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben-alts/ruben_turnaround_v2.png",
+      "size": 475823,
+      "modTime": "2026-05-22T16:26:05.077399816Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/ruben-alts/ruben_turnaround_v1.png",
+      "name": "ruben_turnaround_v1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben-alts/ruben_turnaround_v1.png",
+      "size": 477770,
+      "modTime": "2026-05-22T16:25:24.299792242Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/nina_turnaround_APPROVED.png",
+      "name": "nina_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/nina_turnaround_APPROVED.png",
+      "size": 521337,
+      "modTime": "2026-05-22T15:46:38.483207053Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/gabe_turnaround_APPROVED.png",
+      "name": "gabe_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/gabe_turnaround_APPROVED.png",
+      "size": 515512,
+      "modTime": "2026-05-22T15:46:38.481207024Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/leo_turnaround_APPROVED.png",
+      "name": "leo_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/leo_turnaround_APPROVED.png",
+      "size": 1305790,
+      "modTime": "2026-05-22T15:46:38.480207009Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/mia_turnaround_APPROVED.png",
+      "name": "mia_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/mia_turnaround_APPROVED.png",
+      "size": 1210281,
+      "modTime": "2026-05-22T15:46:38.478206980Z",
+      "category": "Characters",
+      "type": "image"
     },
     {
       "path": "animation-tests/scene01-seedance-mitte/flow-omni-1D.mp4",
@@ -5977,6 +6319,15 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_concept_A.png",
       "size": 449262,
       "modTime": "2026-02-07T14:10:13.005595515Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jenny_turnaround_APPROVED.png",
+      "name": "jenny_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jenny_turnaround_APPROVED.png",
+      "size": 455046,
+      "modTime": "2026-02-07T13:55:39.164668591Z",
       "category": "Characters",
       "type": "image"
     },
