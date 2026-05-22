@@ -1,6 +1,6 @@
 # Asset Bible
 
-**Status:** In progress
+**Status:** Locked - 7 character references + 4 location plates + Scene 1 manifest
 **Purpose:** Single locked source of truth for character and location references. All shot generation and validation must reference these locked assets.
 
 R2 bucket root for the bible: `r2:rex-assets/asset-bible/`
@@ -18,6 +18,7 @@ Public R2 URL prefix: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset
 | Leo | `asset-bible/characters/leo_turnaround_APPROVED.png` | `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/leo_turnaround_APPROVED.png` |
 | Gabe | `asset-bible/characters/gabe_turnaround_APPROVED.png` | `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/gabe_turnaround_APPROVED.png` |
 | Nina | `asset-bible/characters/nina_turnaround_APPROVED.png` | `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/nina_turnaround_APPROVED.png` |
+| Jenny | `asset-bible/characters/jenny_turnaround_APPROVED.png` | `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jenny_turnaround_APPROVED.png` |
 
 ### CANDIDATES (awaiting Bruno's pick — see "FOR BRUNO TO REVIEW" below)
 
@@ -25,10 +26,6 @@ Public R2 URL prefix: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset
 |-----------|-------------------------|------------------------|
 | Ruben | [ruben_turnaround.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround.png) | `asset-bible/characters/ruben-alts/` |
 | Jetplane | [jetplane_turnaround.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane_turnaround.png) | `asset-bible/characters/jetplane-alts/` |
-
-### MISSING (need source art from Bruno)
-
-- **Jenny** — no usable source art on disk. Cached/older docs describe her as blonde; the correct hair color is **DARK BROWN**.
 
 ---
 
@@ -85,6 +82,6 @@ All four were picked from existing canonical environment art (clean establishing
 - **Jurassic swamp / jungle** → `swamp_swamp_overview.png` ([R2](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/swamp.png)) — misty ancient trees, bioluminescent mushrooms, friendly carnivorous plants, pterosaurs in the distance.
 - **Cave hideout** → `cave_establishing_wide.png` ([R2](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/cave.png)) — bioluminescent mushroom cluster, central campfire, tents, jungle visible through the exit.
 
-### Still missing — needs source art from you
+### Resolved
 
-- **Jenny** (15-year-old babysitter, Scene 1) — no usable source art on disk. We need either (a) a reference image you've made, or (b) an approved description so we can generate a turnaround. Note: the correct hair color is **DARK BROWN** (older docs cached a "blonde" mistake — please confirm).
+- **Jenny** - approved turnaround `jenny_turnaround_APPROVED.png` was located on R2 and is now LOCKED in the Characters table above. Hair color confirmed dark brown.
