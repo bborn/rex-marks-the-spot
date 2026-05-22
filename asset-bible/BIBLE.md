@@ -19,12 +19,12 @@ Public R2 URL prefix: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset
 | Gabe | `asset-bible/characters/gabe_turnaround_APPROVED.png` | `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/gabe_turnaround_APPROVED.png` |
 | Nina | `asset-bible/characters/nina_turnaround_APPROVED.png` | `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/nina_turnaround_APPROVED.png` |
 
-### CANDIDATES (awaiting Bruno's pick)
+### CANDIDATES (awaiting Bruno's pick — see "FOR BRUNO TO REVIEW" below)
 
-| Character | Best candidate | Alternatives directory |
-|-----------|----------------|------------------------|
-| Ruben | _to be generated_ | `asset-bible/characters/ruben-alts/` |
-| Jetplane | _to be rendered_ | `asset-bible/characters/jetplane-alts/` |
+| Character | Best candidate (R2 URL) | Alternatives directory |
+|-----------|-------------------------|------------------------|
+| Ruben | [ruben_turnaround.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround.png) | `asset-bible/characters/ruben-alts/` |
+| Jetplane | _in progress (Blender ortho turnaround)_ | `asset-bible/characters/jetplane-alts/` |
 
 ### MISSING (need source art from Bruno)
 
@@ -36,12 +36,12 @@ Public R2 URL prefix: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset
 
 ### CANDIDATES (awaiting Bruno's pick — one plate per location)
 
-| Location | Best candidate | Alternatives directory |
-|----------|----------------|------------------------|
-| Family living room | _to be picked_ | `asset-bible/locations/living_room-alts/` |
-| Magic minivan interior | _to be picked_ | `asset-bible/locations/minivan-alts/` |
-| Jurassic swamp / jungle | _to be picked_ | `asset-bible/locations/swamp-alts/` |
-| Cave hideout | _to be picked_ | `asset-bible/locations/cave-alts/` |
+| Location | Best candidate (R2 URL) | Source |
+|----------|-------------------------|--------|
+| Family living room | [living_room.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/living_room.png) | `assets/environments/bornsztein_home/bornsztein_home_living_room.png` |
+| Magic minivan interior | _in progress_ | |
+| Jurassic swamp / jungle | _in progress_ | |
+| Cave hideout | _in progress_ | |
 
 ---
 
