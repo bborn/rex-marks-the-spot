@@ -47,3 +47,9 @@ output/**/*.fbx
 output/**/*.obj
 output/**/*.mp4
 output/**/*.json
+
+# Asset Bible: image binaries mirror to R2; only JSON/MD lives in git
+asset-bible/**/*.png
+asset-bible/**/*.jpg
+asset-bible/**/*.jpeg
+asset-bible/**/*.webp
