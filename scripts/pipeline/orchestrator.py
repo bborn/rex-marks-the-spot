@@ -363,7 +363,7 @@ class MitteSeedanceGenerator(Generator):
         self,
         *,
         storage_state: Optional[Path] = None,
-        base_url: str = "https://app.mitte.ai/",
+        base_url: str = "https://mitte.ai/",
         headless: bool = True,
         debug_dir: Optional[Path] = None,
         wait_timeout_s: float = 300.0,
