@@ -1,18 +1,36 @@
-"""Pipeline orchestrator: closed generate -> validate -> regenerate loop.
+"""Pipeline orchestrator: FULLY validate-gated generate->validate->regenerate loop.
 
-This is the brain of the self-correcting animation pipeline. For each shot
-in a scene manifest it:
+This is the brain of the self-correcting animation pipeline. EVERY stage is
+self-validating: a stage's output cannot be used by the next stage until it
+has PASSED validation against the locked Asset Bible references.
 
-  1. Asks the ``CostGovernor`` for spend authorization BEFORE any paid call.
-  2. Drives a ``Generator`` (stub, or browser-driven mitte) to produce a clip.
-  3. Records spend.
-  4. Runs a ``Validator`` (stub, or the real reference-aware shot validator)
-     against the clip and the locked Asset Bible references.
-  5. PASS  -> the shot is approved.
-     FAIL  -> regenerates, feeding the validator's reasons forward, but only
-              within the governor's per-shot retry cap and no-progress guard.
-              When the cap or guard trips, the shot is ESCALATED with the
-              specific reason - never an infinite loop.
+Per-shot pipeline (each gate blocks the next):
+
+  PANEL GATE  ->  VIDEO GATE  ->  STITCH GATE
+
+  1. PANEL GATE
+     - Validate the storyboard panel (still image) against character
+       turnarounds, wardrobe spec, expected characters present, location,
+       and artifacts.
+     - On FAIL: regenerate the panel (Gemini image-to-image from locked
+       turnarounds, wardrobe per manifest), re-validate, repeat under the
+       cost governor's per-item retry caps.
+     - On EXHAUSTED retries: escalate the shot. The video stage is then
+       structurally unreachable for that shot - we never call video
+       generation for a panel that did not pass.
+
+  2. VIDEO GATE
+     - Generate video using the panel-that-passed as the start frame.
+     - Validate against the bible. Regenerate failures within the
+       cost-governor caps; escalate on exhaustion.
+
+  3. STITCH GATE
+     - Only shots whose video stage passed are included in the cut.
+     - The assembled cut is validated for cross-shot continuity. A failing
+       stitch is reported but does not loop.
+
+Every gate decision (pass / fail / regenerated / escalated) for every
+stage is recorded in the run report.
 
 The orchestrator:
 
@@ -147,10 +165,29 @@ class AttemptRecord:
 
 @dataclass
 class ShotState:
-    """Persisted state for a single shot across restarts."""
+    """Persisted state for a single shot across restarts.
+
+    The ``attempts``/``final_clip``/``escalation_reason``/``last_*`` fields
+    track the VIDEO gate (kept under their original names for backward
+    compatibility). The ``panel_*`` fields track the new PANEL gate.
+
+    A shot's overall ``status`` is set to ``approved`` only after BOTH
+    gates have passed; if the panel gate escalates, the shot is escalated
+    and the video gate is structurally unreachable.
+    """
 
     shot_id: str
     status: str = "pending"  # pending | approved | escalated | skipped
+
+    # PANEL gate state
+    panel_status: str = "pending"  # pending | passed | escalated | skipped
+    panel_attempts: list[AttemptRecord] = field(default_factory=list)
+    panel_path: Optional[str] = None
+    panel_escalation_reason: Optional[str] = None
+    panel_last_reasons: list[str] = field(default_factory=list)
+    panel_last_score: float = 0.0
+
+    # VIDEO gate state (legacy field names kept)
     attempts: list[AttemptRecord] = field(default_factory=list)
     final_clip: Optional[str] = None
     escalation_reason: Optional[str] = None
@@ -159,8 +196,41 @@ class ShotState:
 
     def to_dict(self) -> dict:
         d = asdict(self)
-        # attempts is already serializable via asdict
         return d
+
+
+@dataclass
+class PanelGenerationRequest:
+    """Inputs handed to a PanelGenerator for one panel attempt."""
+
+    shot: dict
+    attempt_index: int  # 0 = use manifest panel as-is; >=1 = regenerate
+    prior_reasons: list[str]
+    character_refs: dict[str, Path]
+    location_ref: Optional[Path]
+    output_path: Path
+    existing_panel: Optional[Path]  # manifest's panel image, if available
+    prior_panel: Optional[Path] = None
+
+
+@dataclass
+class PanelGenerationResult:
+    """Returned by a PanelGenerator. Same shape as GenerationResult, but the
+    payload is a still image rather than a video clip."""
+
+    panel_path: Path
+    cost_action: str  # pricing-table key, e.g. ``"gemini_image"``
+    cost_units: float
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class StitchValidationOutcome:
+    """Result of validating the assembled cut."""
+
+    passed: bool
+    reasons: list[str] = field(default_factory=list)
+    notes: str = ""
 
 
 # ---------------------------------------------------------------------------
@@ -807,6 +877,477 @@ class RealValidator(Validator):
 
 
 # ---------------------------------------------------------------------------
+# Panel generator + validator interfaces (PANEL GATE)
+# ---------------------------------------------------------------------------
+
+
+class PanelGenerator(abc.ABC):
+    """A PanelGenerator regenerates a storyboard PANEL (still image).
+
+    On attempt 0 the orchestrator's panel gate uses the manifest's panel
+    as-is (no regeneration). Attempt 1+ are produced by this generator
+    using the locked character turnarounds + the manifest's wardrobe spec
+    as image-to-image conditioning. Implementations MUST:
+
+      * Write the panel image to ``request.output_path``.
+      * Return a ``PanelGenerationResult`` describing spend.
+      * Raise on failure; the orchestrator records it as a failed attempt.
+    """
+
+    name: str = "panel_generator"
+
+    @abc.abstractmethod
+    def generate(self, request: PanelGenerationRequest) -> PanelGenerationResult: ...
+
+    def cost_estimate(self, request: PanelGenerationRequest) -> tuple[str, float]:
+        if hasattr(self, "default_cost"):
+            return self.default_cost  # type: ignore[return-value]
+        return ("gemini_image", 1.0)
+
+
+class StubPanelGenerator(PanelGenerator):
+    """Returns canned PNGs for tests. Supports per-attempt panel sequences.
+
+    ``per_shot_panels`` maps ``shot_id -> list[Path]``. On attempt N for a
+    shot, the Nth entry from that list is returned (the last entry is
+    reused once the list is exhausted). Reports a fake cost in the
+    governor's pricing table so budget tests look realistic.
+    """
+
+    name = "stub_panel"
+
+    def __init__(
+        self,
+        *,
+        panel_path: Optional[Path] = None,
+        per_shot_panels: Optional[dict[str, list[Path]]] = None,
+        cost_action: str = "gemini_image",
+        cost_units: float = 1.0,
+        before_generate: Optional[Callable[[PanelGenerationRequest], None]] = None,
+    ) -> None:
+        self.default_panel = Path(panel_path) if panel_path else None
+        self.per_shot_panels: dict[str, list[Path]] = {
+            sid: [Path(p) for p in paths]
+            for sid, paths in (per_shot_panels or {}).items()
+        }
+        self.default_cost = (cost_action, cost_units)
+        self.before_generate = before_generate
+
+    def _pick(self, shot_id: str, attempt: int) -> Path:
+        panels = self.per_shot_panels.get(shot_id)
+        if panels:
+            idx = min(attempt, len(panels) - 1)
+            return panels[idx]
+        if self.default_panel is None:
+            raise RuntimeError(
+                f"StubPanelGenerator has no panel for {shot_id!r}"
+            )
+        return self.default_panel
+
+    def generate(self, request: PanelGenerationRequest) -> PanelGenerationResult:
+        if self.before_generate is not None:
+            self.before_generate(request)
+        src = self._pick(request.shot["shot_id"], request.attempt_index)
+        if not src.exists():
+            raise FileNotFoundError(f"stub panel not found: {src}")
+        request.output_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src, request.output_path)
+        action, units = self.default_cost
+        return PanelGenerationResult(
+            panel_path=request.output_path,
+            cost_action=action,
+            cost_units=units,
+            metadata={"source": str(src), "stub": True},
+        )
+
+
+class GeminiPanelGenerator(PanelGenerator):
+    """Real Gemini image-to-image panel regeneration.
+
+    Uses the locked character turnarounds + location plate as conditioning
+    references, and an instruction prompt built from the shot manifest and
+    the prior validator's failure reasons. Output: one PNG written to the
+    requested path. Cost is recorded as ``gemini_image`` units.
+
+    The actual Gemini API call is isolated here so failures (network,
+    quota, content filter) raise cleanly into the orchestrator's failed-
+    attempt path rather than corrupting state.
+    """
+
+    name = "gemini_panel"
+    default_cost = ("gemini_image", 1.0)
+
+    def __init__(
+        self,
+        *,
+        model: str = "gemini-2.5-flash-image",
+        cost_action: str = "gemini_image",
+        cost_units: float = 1.0,
+    ) -> None:
+        self.model = model
+        self.default_cost = (cost_action, cost_units)
+        self._client = None
+
+    def _lazy_client(self):
+        if self._client is None:
+            from google import genai  # type: ignore
+            import os as _os
+            api_key = _os.environ.get("GEMINI_API_KEY") or _os.environ.get(
+                "GOOGLE_API_KEY"
+            )
+            if not api_key:
+                raise RuntimeError(
+                    "GEMINI_API_KEY is not set; cannot run GeminiPanelGenerator."
+                )
+            self._client = genai.Client(api_key=api_key)
+        return self._client
+
+    def _build_prompt(self, request: PanelGenerationRequest) -> str:
+        shot = request.shot
+        parts = [
+            f"Generate a single STORYBOARD PANEL for shot {shot['shot_id']}.",
+            f"Location: {shot.get('location', 'unknown')}.",
+            f"Camera framing: {shot.get('camera', 'static')}.",
+        ]
+        if shot.get("characters"):
+            parts.append(
+                "Characters PRESENT in this panel (ALL of them must be "
+                "visible if expected, NO unexpected extras): "
+                + ", ".join(shot["characters"]) + "."
+            )
+        for name, desc in (shot.get("wardrobe") or {}).items():
+            parts.append(
+                f"{name} wardrobe (use this exact description; the character "
+                f"turnaround is the IDENTITY reference, NOT a wardrobe spec): {desc}."
+            )
+        if shot.get("key_props"):
+            parts.append("Key props in frame: " + "; ".join(shot["key_props"]) + ".")
+        parts.append(
+            "Strict identity match: faces, hair (color + style), skin tone, "
+            "and build MUST match the provided character turnaround references."
+        )
+        if request.prior_reasons:
+            parts.append(
+                "CORRECTIONS from the prior panel attempt — fix these "
+                "specifically: " + "; ".join(request.prior_reasons[:5]) + "."
+            )
+        parts.append(
+            "Output: one square or 16:9 storyboard panel PNG, clean illustration "
+            "style consistent with the locked references; no text overlays."
+        )
+        return "\n".join(parts)
+
+    def generate(self, request: PanelGenerationRequest) -> PanelGenerationResult:
+        from google.genai import types  # type: ignore
+
+        client = self._lazy_client()
+        prompt = self._build_prompt(request)
+
+        # Conditioning images: character turnarounds, then location plate.
+        contents: list[Any] = [prompt]
+        for ref in list(request.character_refs.values()) + (
+            [request.location_ref] if request.location_ref else []
+        ):
+            raw = Path(ref).read_bytes()
+            mime = (
+                "image/png" if str(ref).lower().endswith(".png") else "image/jpeg"
+            )
+            contents.append(types.Part.from_bytes(data=raw, mime_type=mime))
+
+        response = client.models.generate_content(
+            model=self.model,
+            contents=contents,
+        )
+        # Find an inline image part in the response.
+        out_path = request.output_path
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        wrote = False
+        try:
+            candidates = response.candidates or []
+            for cand in candidates:
+                for part in cand.content.parts or []:
+                    inline = getattr(part, "inline_data", None)
+                    if inline is None or not getattr(inline, "data", None):
+                        continue
+                    data = inline.data
+                    if isinstance(data, str):
+                        import base64 as _b64
+                        data = _b64.b64decode(data)
+                    out_path.write_bytes(data)
+                    wrote = True
+                    break
+                if wrote:
+                    break
+        except Exception as exc:
+            raise RuntimeError(
+                f"GeminiPanelGenerator response parse error: {exc}"
+            ) from exc
+        if not wrote:
+            raise RuntimeError(
+                "GeminiPanelGenerator: response contained no inline image data"
+            )
+
+        action, units = self.default_cost
+        return PanelGenerationResult(
+            panel_path=out_path,
+            cost_action=action,
+            cost_units=units,
+            metadata={"model": self.model},
+        )
+
+
+class PanelValidator(abc.ABC):
+    """Validates a still PANEL image against the locked Asset Bible."""
+
+    name: str = "panel_validator"
+
+    @abc.abstractmethod
+    def validate(
+        self,
+        *,
+        shot: dict,
+        panel_path: Path,
+        character_refs: dict[str, Path],
+        location_ref: Optional[Path],
+        work_dir: Path,
+    ) -> ValidationOutcome: ...
+
+    def cost_estimate(self) -> tuple[str, float]:
+        return ("anthropic_vision_call", 1.0)
+
+
+class StubPanelValidator(PanelValidator):
+    """Scriptable pass/fail for panel-gate tests.
+
+    ``script`` maps ``shot_id -> list[ValidationOutcome | (score, passed, reasons)]``.
+    Mirrors ``StubValidator`` semantics so panel tests look familiar.
+    """
+
+    name = "stub_panel_validator"
+
+    def __init__(
+        self,
+        *,
+        script: dict[str, list[Any]],
+        cost_action: str = "anthropic_vision_call",
+        cost_units: float = 1.0,
+    ) -> None:
+        self.script = {
+            sid: [StubValidator._coerce(e) for e in entries]
+            for sid, entries in script.items()
+        }
+        self._idx: dict[str, int] = {sid: 0 for sid in self.script}
+        self._cost = (cost_action, cost_units)
+
+    def cost_estimate(self) -> tuple[str, float]:
+        return self._cost
+
+    def validate(
+        self,
+        *,
+        shot: dict,
+        panel_path: Path,
+        character_refs: dict[str, Path],
+        location_ref: Optional[Path],
+        work_dir: Path,
+    ) -> ValidationOutcome:
+        sid = shot["shot_id"]
+        if sid not in self.script:
+            raise KeyError(f"StubPanelValidator has no script for shot {sid!r}")
+        entries = self.script[sid]
+        idx = min(self._idx[sid], len(entries) - 1)
+        self._idx[sid] = idx + 1
+        out = entries[idx]
+        action, units = self._cost
+        out.cost_action = action
+        out.cost_units = units
+        return out
+
+
+class RealPanelValidator(PanelValidator):
+    """Wraps ``scripts.validate.shot_validator.validate_panel``.
+
+    The same rubric the video validator uses, applied to a single still
+    image. One vision call per panel attempt.
+    """
+
+    name = "real_panel"
+
+    def __init__(
+        self,
+        *,
+        backend: Optional[str] = None,
+        model: Optional[str] = None,
+    ) -> None:
+        self.backend = backend
+        self.model = model
+        self._client = None
+        self._effective_backend: Optional[str] = None
+        self._effective_model: Optional[str] = None
+
+    def cost_estimate(self) -> tuple[str, float]:
+        return ("anthropic_vision_call", 1.0)
+
+    def _lazy_init(self) -> None:
+        if self._client is not None:
+            return
+        from scripts.validate import shot_validator as sv
+
+        backend = self.backend or sv.DEFAULT_BACKEND
+        model = self.model or sv._default_model_for_backend(backend)
+        self._client = sv._make_client(backend)
+        self._effective_backend = backend
+        self._effective_model = model
+
+    def validate(
+        self,
+        *,
+        shot: dict,
+        panel_path: Path,
+        character_refs: dict[str, Path],
+        location_ref: Optional[Path],
+        work_dir: Path,
+    ) -> ValidationOutcome:
+        from scripts.validate import shot_validator as sv
+
+        self._lazy_init()
+        keyframes_dir = work_dir / "panel-keyframes"
+        keyframes_dir.mkdir(parents=True, exist_ok=True)
+        scratch_chars = work_dir / "scratch" / "characters"
+        scratch_locs = work_dir / "scratch" / "locations"
+        scratch_chars.mkdir(parents=True, exist_ok=True)
+        scratch_locs.mkdir(parents=True, exist_ok=True)
+        for name, path in character_refs.items():
+            tgt = scratch_chars / (
+                f"{name.lower()}_turnaround_APPROVED{path.suffix.lower()}"
+            )
+            if not tgt.exists():
+                shutil.copyfile(path, tgt)
+        if location_ref is not None:
+            tgt = scratch_locs / (
+                f"storyboard-{shot['shot_id']}{location_ref.suffix.lower()}"
+            )
+            if not tgt.exists():
+                shutil.copyfile(location_ref, tgt)
+
+        result = sv.validate_panel(
+            shot=shot,
+            panel_path=panel_path,
+            characters_dir=scratch_chars,
+            locations_dir=scratch_locs,
+            keyframes_dir=keyframes_dir,
+            backend=self._effective_backend,
+            model=self._effective_model,
+            client=self._client,
+        )
+        agg = result.aggregate_scores or {}
+        sub = [
+            float(agg.get("character_presence", 0.0)),
+            float(agg.get("location_match", 0.0)),
+            float(agg.get("artifacts", 0.0)),
+        ]
+        ids = agg.get("character_identity") or {}
+        if ids:
+            sub.append(sum(ids.values()) / len(ids))
+        wds = agg.get("character_wardrobe") or {}
+        if wds:
+            sub.append(sum(wds.values()) / len(wds))
+        score = sum(sub) / len(sub) if sub else 0.0
+        action, units = self.cost_estimate()
+        return ValidationOutcome(
+            passed=bool(result.overall_pass),
+            score=round(score, 4),
+            reasons=list(result.reasons or []),
+            cost_action=action,
+            cost_units=units,
+            raw=result.to_dict(),
+        )
+
+
+# ---------------------------------------------------------------------------
+# Stitch validator interface (STITCH GATE)
+# ---------------------------------------------------------------------------
+
+
+class StitchValidator(abc.ABC):
+    """Validates the assembled cut once stitching has completed.
+
+    The stitch gate is non-looping: a failing stitch is reported but the
+    pipeline does not retry stitch (re-running ffmpeg concat would not fix
+    a cross-shot continuity problem; that requires regenerating one of the
+    approved shots, which is a human-review decision).
+    """
+
+    name: str = "stitch_validator"
+
+    @abc.abstractmethod
+    def validate(
+        self,
+        *,
+        manifest: list[dict],
+        stitched_path: Path,
+        approved_shots: list[str],
+        work_dir: Path,
+    ) -> StitchValidationOutcome: ...
+
+    def cost_estimate(self) -> tuple[str, float]:
+        return ("anthropic_vision_call", 0.0)
+
+
+class AlwaysPassStitchValidator(StitchValidator):
+    """Pass as long as the stitched file exists and is non-empty.
+
+    Useful default for stub-tested runs and for not blocking the report on
+    a fancier continuity check that has not been wired up yet.
+    """
+
+    name = "stitch_size_check"
+
+    def validate(
+        self,
+        *,
+        manifest: list[dict],
+        stitched_path: Path,
+        approved_shots: list[str],
+        work_dir: Path,
+    ) -> StitchValidationOutcome:
+        if not stitched_path.exists():
+            return StitchValidationOutcome(
+                passed=False,
+                reasons=[f"stitched output missing: {stitched_path}"],
+            )
+        size = stitched_path.stat().st_size
+        if size <= 0:
+            return StitchValidationOutcome(
+                passed=False,
+                reasons=[f"stitched output is empty: {stitched_path}"],
+            )
+        return StitchValidationOutcome(
+            passed=True,
+            notes=f"stitched {len(approved_shots)} clip(s); {size} bytes",
+        )
+
+
+class StubStitchValidator(StitchValidator):
+    """Scriptable pass/fail for stitch-gate tests."""
+
+    name = "stub_stitch"
+
+    def __init__(self, *, outcome: StitchValidationOutcome) -> None:
+        self._outcome = outcome
+
+    def validate(
+        self,
+        *,
+        manifest: list[dict],
+        stitched_path: Path,
+        approved_shots: list[str],
+        work_dir: Path,
+    ) -> StitchValidationOutcome:
+        return self._outcome
+
+
+# ---------------------------------------------------------------------------
 # Reference resolution
 # ---------------------------------------------------------------------------
 
@@ -925,6 +1466,13 @@ class RunReport:
     estimated_spend_usd: float
     state_path: Path
     report_path: Path
+    # Per-stage gate outcomes
+    panel_passed: list[str] = field(default_factory=list)
+    panel_escalated: list[tuple[str, str]] = field(default_factory=list)
+    video_passed: list[str] = field(default_factory=list)
+    video_escalated: list[tuple[str, str]] = field(default_factory=list)
+    stitch_passed: Optional[bool] = None
+    stitch_reasons: list[str] = field(default_factory=list)
 
 
 class Orchestrator:
@@ -945,6 +1493,9 @@ class Orchestrator:
         fetch_references_from_r2: bool = True,
         on_event: Optional[Callable[[str, dict[str, Any]], None]] = None,
         stitch_on_complete: bool = True,
+        panel_generator: Optional[PanelGenerator] = None,
+        panel_validator: Optional[PanelValidator] = None,
+        stitch_validator: Optional[StitchValidator] = None,
     ) -> None:
         self.manifest_path = Path(manifest_path)
         self.manifest: list[dict] = json.loads(self.manifest_path.read_text())
@@ -960,6 +1511,20 @@ class Orchestrator:
         self.on_event = on_event or (lambda *_: None)
         self.stitch_on_complete = stitch_on_complete
 
+        # Panel gate (PANEL GATE). Both panel_generator and panel_validator
+        # are optional for backward compatibility with stub-only video tests.
+        # When both are None, the panel gate auto-passes with the manifest's
+        # existing panel (if any). When ANY is configured, the gate is fully
+        # enforced and video generation is structurally unreachable until
+        # the panel passes validation.
+        self.panel_generator = panel_generator
+        self.panel_validator = panel_validator
+
+        # Stitch gate (STITCH GATE). Defaults to a size-check validator so
+        # the gate is always present in some form; tests can override with
+        # StubStitchValidator.
+        self.stitch_validator = stitch_validator or AlwaysPassStitchValidator()
+
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.report_dir.mkdir(parents=True, exist_ok=True)
         self.state_path = self.work_dir / f"{self.scene_slug}-state.json"
@@ -967,6 +1532,8 @@ class Orchestrator:
         self._load_state()
         # Estimate spend for the entire run so we can warn the user up-front.
         self.estimated_spend_usd = self._estimate_run_spend()
+        # Stitch gate outcome is populated by run_scene.
+        self.stitch_outcome: Optional[StitchValidationOutcome] = None
 
     # ------------------------------------------------------------------
     # State persistence
@@ -992,6 +1559,14 @@ class Orchestrator:
             self.shots[sid] = ShotState(
                 shot_id=sid,
                 status=raw.get("status", "pending"),
+                panel_status=raw.get("panel_status", "pending"),
+                panel_attempts=[
+                    AttemptRecord(**a) for a in raw.get("panel_attempts", [])
+                ],
+                panel_path=raw.get("panel_path"),
+                panel_escalation_reason=raw.get("panel_escalation_reason"),
+                panel_last_reasons=list(raw.get("panel_last_reasons", [])),
+                panel_last_score=float(raw.get("panel_last_score", 0.0)),
                 attempts=[
                     AttemptRecord(**a) for a in raw.get("attempts", [])
                 ],
@@ -1016,7 +1591,10 @@ class Orchestrator:
     # ------------------------------------------------------------------
 
     def _estimate_run_spend(self) -> float:
-        """Rough up-front estimate: one generation + one validation per shot."""
+        """Rough up-front estimate: one panel-validate + one generation +
+        one video-validate per shot. If a panel generator is configured,
+        we do NOT pre-charge for regeneration since attempt 0 reuses the
+        manifest panel."""
         try:
             gen_action, gen_units = self.generator.cost_estimate(
                 GenerationRequest(
@@ -1035,6 +1613,9 @@ class Orchestrator:
         per_shot = self.governor.estimate(gen_action, gen_units) + self.governor.estimate(
             val_action, val_units
         )
+        if self.panel_validator is not None:
+            pval_action, pval_units = self.panel_validator.cost_estimate()
+            per_shot += self.governor.estimate(pval_action, pval_units)
         return per_shot * len(self.manifest)
 
     # ------------------------------------------------------------------
@@ -1118,12 +1699,43 @@ class Orchestrator:
                     "stitched",
                     {"path": str(stitched_path), "n_clips": len(approved)},
                 )
+                # ---------- STITCH GATE ----------
+                # Validate the assembled cut. A failing stitch gate is
+                # reported but does not loop (the fix lies upstream).
+                self._run_stitch_gate(
+                    stitched_path=stitched_path,
+                    approved_shots=approved,
+                )
             except Exception as exc:
                 self.on_event(
                     "stitch_failed", {"reason": str(exc)}
                 )
 
-        total_attempts = sum(len(s.attempts) for s in self.shots.values())
+        total_attempts = sum(
+            len(s.attempts) + len(s.panel_attempts)
+            for s in self.shots.values()
+        )
+        # Per-stage outcome lists for the report.
+        panel_passed_list = [
+            s.shot_id for s in self.shots.values() if s.panel_status == "passed"
+        ]
+        panel_escalated_list = [
+            (s.shot_id, s.panel_escalation_reason or "")
+            for s in self.shots.values()
+            if s.panel_status == "escalated"
+        ]
+        video_passed_list = [
+            s.shot_id for s in self.shots.values() if s.status == "approved"
+        ]
+        # A shot is "video-escalated" only if its panel passed but its
+        # video gate then failed. Panel-escalated shots are reported
+        # separately so the report distinguishes the two failure modes.
+        video_escalated_list = [
+            (s.shot_id, s.escalation_reason or "")
+            for s in self.shots.values()
+            if s.status == "escalated" and s.panel_status == "passed"
+        ]
+
         self._write_report(report_path, stitched_path=stitched_path)
 
         report = RunReport(
@@ -1139,6 +1751,14 @@ class Orchestrator:
             estimated_spend_usd=round(self.estimated_spend_usd, 6),
             state_path=self.state_path,
             report_path=report_path,
+            panel_passed=panel_passed_list,
+            panel_escalated=panel_escalated_list,
+            video_passed=video_passed_list,
+            video_escalated=video_escalated_list,
+            stitch_passed=(self.stitch_outcome.passed if self.stitch_outcome else None),
+            stitch_reasons=(
+                list(self.stitch_outcome.reasons) if self.stitch_outcome else []
+            ),
         )
         self.on_event("run_complete", asdict(report))
         return report
@@ -1148,6 +1768,12 @@ class Orchestrator:
     # ------------------------------------------------------------------
 
     def _run_one_shot(self, shot: dict, state: ShotState) -> None:
+        """Run the gated per-shot pipeline: PANEL GATE then VIDEO GATE.
+
+        Video generation is structurally unreachable until the panel gate
+        has set ``state.panel_status == 'passed'``. The stitch gate runs
+        once at the end of ``run_scene`` over all video-passed shots.
+        """
         sid = shot["shot_id"]
         self.on_event("shot_start", {"shot_id": sid})
 
@@ -1159,11 +1785,44 @@ class Orchestrator:
             download_dir=ref_download_dir,
             fetch_from_r2=self.fetch_references_from_r2,
         )
-        prior_keyframe = self._prior_keyframe(shot)
 
-        # Inner generate-validate loop. We keep going until either we get
-        # a pass, or the governor refuses another attempt (per-shot cap,
-        # no-progress, or budget halt), at which point we mark escalated.
+        # ---------- PANEL GATE ----------
+        if state.panel_status != "passed":
+            panel_path = self._run_panel_gate(
+                shot, state, char_refs, location_ref, start_frame
+            )
+            if state.panel_status == "escalated":
+                # Video stage is structurally unreachable: we return here
+                # without ever building a GenerationRequest for video.
+                state.status = "escalated"
+                state.escalation_reason = (
+                    f"panel gate: {state.panel_escalation_reason}"
+                )
+                self._flush_state()
+                self.on_event(
+                    "shot_escalated",
+                    {
+                        "shot_id": sid,
+                        "stage": "panel",
+                        "reason": state.escalation_reason,
+                    },
+                )
+                return
+            # else: panel_status == "passed"; panel_path is the verified
+            # storyboard panel to use as the video start frame.
+        else:
+            panel_path = (
+                Path(state.panel_path) if state.panel_path else None
+            )
+
+        # ---------- VIDEO GATE ----------
+        # By construction we only reach here with a panel that PASSED the
+        # panel gate (or, in legacy auto-pass mode, with the manifest's
+        # existing panel). The orchestrator's only call site for video
+        # generation is below; there is no other code path.
+        prior_keyframe = self._prior_keyframe(shot)
+        video_start_frame = panel_path if panel_path is not None else start_frame
+
         while True:
             attempt_idx = len(state.attempts)
             attempt_started = _utcnow_iso()
@@ -1171,18 +1830,17 @@ class Orchestrator:
             # 1) Pre-check: would the governor allow this attempt at all?
             #    register_attempt enforces per-shot/per-run caps + the
             #    no-progress guard; it raises before we spend a cent.
+            video_gate_key = f"{sid}::video"
             try:
-                # If this is a retry, register the prior score so the
-                # no-progress check has data. On attempt 0 we have no
-                # score yet — register with None to consume one slot.
                 last_score = state.last_score if state.attempts else None
-                self.governor.register_attempt(sid, score=last_score)
+                self.governor.register_attempt(video_gate_key, score=last_score)
             except (RetryCapExceeded, NoProgress) as exc:
                 state.status = "escalated"
                 state.escalation_reason = str(exc)
                 self._flush_state()
                 self.on_event(
-                    "shot_escalated", {"shot_id": sid, "reason": str(exc)}
+                    "shot_escalated",
+                    {"shot_id": sid, "stage": "video", "reason": str(exc)},
                 )
                 return
             except KillSwitchTripped:
@@ -1198,7 +1856,7 @@ class Orchestrator:
                 prior_reasons=list(state.last_reasons),
                 character_refs=char_refs,
                 location_ref=location_ref,
-                start_frame=start_frame,
+                start_frame=video_start_frame,
                 output_path=self._attempt_clip_path(sid, attempt_idx),
                 prior_clip=Path(state.attempts[-1].clip_path)
                 if state.attempts and state.attempts[-1].clip_path
@@ -1349,8 +2007,345 @@ class Orchestrator:
             # else: loop and let register_attempt enforce caps on the next pass.
 
     # ------------------------------------------------------------------
+    # Panel gate (PANEL GATE)
+    # ------------------------------------------------------------------
+
+    def _run_panel_gate(
+        self,
+        shot: dict,
+        state: ShotState,
+        char_refs: dict[str, Path],
+        location_ref: Optional[Path],
+        existing_panel: Optional[Path],
+    ) -> Optional[Path]:
+        """Run the panel-gate generate/validate loop for one shot.
+
+        Returns the verified panel ``Path`` on PASS, ``None`` when the gate
+        escalates (and ``state.panel_status`` is set accordingly). Video
+        generation is only reachable when this returns a Path.
+
+        Attempt 0 reuses the manifest's existing panel (no regeneration
+        cost); attempts 1+ invoke ``self.panel_generator`` to redraw the
+        panel from the locked turnarounds. If no ``panel_generator`` is
+        configured and the first panel fails, the gate escalates because
+        no retry is possible.
+
+        When BOTH ``panel_generator`` and ``panel_validator`` are None the
+        gate auto-passes (legacy mode) so existing video-only stub tests
+        keep working; production setups must pass at least a validator.
+        """
+        sid = shot["shot_id"]
+        gate_key = f"{sid}::panel"
+
+        # Auto-pass legacy mode: no validator AND no generator configured.
+        if self.panel_validator is None and self.panel_generator is None:
+            state.panel_status = "passed"
+            state.panel_path = str(existing_panel) if existing_panel else None
+            self._flush_state()
+            self.on_event(
+                "panel_gate_auto_passed",
+                {
+                    "shot_id": sid,
+                    "reason": "no panel gate configured (legacy mode)",
+                    "panel_path": state.panel_path,
+                },
+            )
+            return existing_panel
+
+        # If the validator is missing but a generator is set, that is a
+        # misconfiguration — without validation there is no gate.
+        if self.panel_validator is None:
+            raise RuntimeError(
+                "panel_generator was provided without a panel_validator; "
+                "the panel gate requires a validator to be a real gate."
+            )
+
+        while True:
+            attempt_idx = len(state.panel_attempts)
+            attempt_started = _utcnow_iso()
+
+            # 1) Retry-cap / no-progress check
+            try:
+                last_score = (
+                    state.panel_last_score if state.panel_attempts else None
+                )
+                self.governor.register_attempt(gate_key, score=last_score)
+            except (RetryCapExceeded, NoProgress) as exc:
+                state.panel_status = "escalated"
+                state.panel_escalation_reason = str(exc)
+                self._flush_state()
+                self.on_event(
+                    "panel_gate_escalated",
+                    {"shot_id": sid, "reason": str(exc)},
+                )
+                return None
+            except KillSwitchTripped:
+                raise
+            except PipelineHalted:
+                raise
+
+            # 2) Acquire a panel for this attempt.
+            #    Attempt 0: reuse the manifest's existing panel (no
+            #    generator cost). Attempts 1+: regenerate via
+            #    self.panel_generator. If attempt 0 has no existing panel,
+            #    fall through to the generator.
+            panel_path_for_attempt: Optional[Path] = None
+            gen_cost_usd = 0.0
+            gen_action: Optional[str] = None
+            gen_units: float = 0.0
+            gen_error: Optional[str] = None
+            gen_metadata: dict[str, Any] = {}
+
+            use_existing = attempt_idx == 0 and existing_panel is not None
+            if use_existing:
+                panel_path_for_attempt = existing_panel
+                gen_action = "manifest_panel"  # not a paid action
+                gen_units = 0.0
+                gen_metadata = {"source": str(existing_panel), "via": "manifest"}
+            else:
+                if self.panel_generator is None:
+                    # No way to regenerate; escalate immediately.
+                    state.panel_status = "escalated"
+                    state.panel_escalation_reason = (
+                        "panel failed and no panel_generator is configured "
+                        "to regenerate it"
+                    )
+                    state.panel_attempts.append(
+                        AttemptRecord(
+                            index=attempt_idx,
+                            started_at=attempt_started,
+                            clip_path=None,
+                            gen_cost_action=None,
+                            gen_cost_units=0.0,
+                            gen_cost_usd=0.0,
+                            val_cost_action=None,
+                            val_cost_units=0.0,
+                            val_cost_usd=0.0,
+                            passed=False,
+                            score=0.0,
+                            reasons=[],
+                            error="no_panel_generator_for_retry",
+                        )
+                    )
+                    self._flush_state()
+                    self.on_event(
+                        "panel_gate_escalated",
+                        {
+                            "shot_id": sid,
+                            "reason": state.panel_escalation_reason,
+                        },
+                    )
+                    return None
+
+                preq = PanelGenerationRequest(
+                    shot=shot,
+                    attempt_index=attempt_idx,
+                    prior_reasons=list(state.panel_last_reasons),
+                    character_refs=char_refs,
+                    location_ref=location_ref,
+                    output_path=self._attempt_panel_path(sid, attempt_idx),
+                    existing_panel=existing_panel,
+                    prior_panel=Path(state.panel_attempts[-1].clip_path)
+                    if state.panel_attempts and state.panel_attempts[-1].clip_path
+                    else None,
+                )
+                gen_action, gen_units = self.panel_generator.cost_estimate(preq)
+                try:
+                    self.governor.check_can_spend_strict(
+                        gen_action, gen_units, shot_id=sid
+                    )
+                except PipelineHalted:
+                    state.panel_attempts.append(
+                        AttemptRecord(
+                            index=attempt_idx,
+                            started_at=attempt_started,
+                            clip_path=None,
+                            gen_cost_action=gen_action,
+                            gen_cost_units=gen_units,
+                            gen_cost_usd=0.0,
+                            val_cost_action=None,
+                            val_cost_units=0.0,
+                            val_cost_usd=0.0,
+                            passed=False,
+                            score=0.0,
+                            reasons=[],
+                            error="budget_blocked_pre_panel_generation",
+                        )
+                    )
+                    self._flush_state()
+                    raise
+
+                try:
+                    gres = self.panel_generator.generate(preq)
+                except PipelineHalted:
+                    raise
+                except Exception as exc:
+                    gen_error = f"panel_generator: {exc}"
+                    gres = None
+
+                if gres is not None:
+                    spend_entry = self.governor.record_spend(
+                        gres.cost_action,
+                        gres.cost_units,
+                        metadata={
+                            "shot_id": sid,
+                            "stage": "panel_generate",
+                            **gres.metadata,
+                        },
+                        shot_id=sid,
+                    )
+                    gen_cost_usd = spend_entry.cost_usd
+                    panel_path_for_attempt = gres.panel_path
+                    gen_action = gres.cost_action
+                    gen_units = gres.cost_units
+                    gen_metadata = gres.metadata
+
+            # 3) Validate the panel (or skip validation if generator failed).
+            val_action, val_units = self.panel_validator.cost_estimate()
+            val_cost_usd = 0.0
+            outcome = ValidationOutcome(passed=False, score=0.0, reasons=[])
+            if panel_path_for_attempt is not None:
+                try:
+                    self.governor.check_can_spend_strict(
+                        val_action, val_units, shot_id=sid
+                    )
+                except PipelineHalted:
+                    state.panel_attempts.append(
+                        AttemptRecord(
+                            index=attempt_idx,
+                            started_at=attempt_started,
+                            clip_path=str(panel_path_for_attempt),
+                            gen_cost_action=gen_action,
+                            gen_cost_units=gen_units,
+                            gen_cost_usd=gen_cost_usd,
+                            val_cost_action=val_action,
+                            val_cost_units=val_units,
+                            val_cost_usd=0.0,
+                            passed=False,
+                            score=0.0,
+                            reasons=[],
+                            error="budget_blocked_pre_panel_validation",
+                        )
+                    )
+                    self._flush_state()
+                    raise
+                try:
+                    outcome = self.panel_validator.validate(
+                        shot=shot,
+                        panel_path=panel_path_for_attempt,
+                        character_refs=char_refs,
+                        location_ref=location_ref,
+                        work_dir=self.work_dir,
+                    )
+                except PipelineHalted:
+                    raise
+                except Exception as exc:
+                    gen_error = (
+                        (gen_error + " | " if gen_error else "")
+                        + f"panel_validator: {exc}"
+                    )
+                else:
+                    val_spend = self.governor.record_spend(
+                        outcome.cost_action or val_action,
+                        outcome.cost_units or val_units,
+                        metadata={"shot_id": sid, "stage": "panel_validate"},
+                        shot_id=sid,
+                    )
+                    val_cost_usd = val_spend.cost_usd
+
+            # 4) Record the panel attempt.
+            attempt = AttemptRecord(
+                index=attempt_idx,
+                started_at=attempt_started,
+                clip_path=str(panel_path_for_attempt)
+                if panel_path_for_attempt
+                else None,
+                gen_cost_action=gen_action,
+                gen_cost_units=gen_units,
+                gen_cost_usd=gen_cost_usd,
+                val_cost_action=val_action,
+                val_cost_units=val_units,
+                val_cost_usd=val_cost_usd,
+                passed=outcome.passed,
+                score=outcome.score,
+                reasons=list(outcome.reasons),
+                error=gen_error,
+            )
+            state.panel_attempts.append(attempt)
+            state.panel_last_reasons = list(outcome.reasons)
+            state.panel_last_score = outcome.score
+            self._flush_state()
+            self.on_event(
+                "panel_attempt_recorded",
+                {
+                    "shot_id": sid,
+                    "attempt": attempt_idx,
+                    "passed": outcome.passed,
+                    "score": outcome.score,
+                    "via": gen_metadata.get("via", "regenerate"),
+                    "gen_cost_usd": round(gen_cost_usd, 4),
+                    "val_cost_usd": round(val_cost_usd, 4),
+                    "reasons": outcome.reasons[:3],
+                    "error": gen_error,
+                },
+            )
+
+            if outcome.passed:
+                state.panel_status = "passed"
+                state.panel_path = str(panel_path_for_attempt)
+                self._flush_state()
+                self.on_event(
+                    "panel_gate_passed",
+                    {
+                        "shot_id": sid,
+                        "attempts": attempt_idx + 1,
+                        "panel_path": state.panel_path,
+                    },
+                )
+                return panel_path_for_attempt
+            # else: loop; register_attempt on the next pass enforces caps.
+
+    # ------------------------------------------------------------------
+    # Stitch gate (STITCH GATE)
+    # ------------------------------------------------------------------
+
+    def _run_stitch_gate(
+        self,
+        *,
+        stitched_path: Path,
+        approved_shots: list[str],
+    ) -> StitchValidationOutcome:
+        try:
+            outcome = self.stitch_validator.validate(
+                manifest=self.manifest,
+                stitched_path=stitched_path,
+                approved_shots=approved_shots,
+                work_dir=self.work_dir,
+            )
+        except Exception as exc:
+            outcome = StitchValidationOutcome(
+                passed=False,
+                reasons=[f"stitch_validator raised: {exc}"],
+            )
+        self.stitch_outcome = outcome
+        self.on_event(
+            "stitch_gate",
+            {
+                "passed": outcome.passed,
+                "reasons": outcome.reasons,
+                "notes": outcome.notes,
+            },
+        )
+        return outcome
+
+    # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
+
+    def _attempt_panel_path(self, shot_id: str, attempt_idx: int) -> Path:
+        panels_dir = self.work_dir / "panels" / shot_id
+        panels_dir.mkdir(parents=True, exist_ok=True)
+        return panels_dir / f"attempt-{attempt_idx:02d}.png"
 
     def _attempt_clip_path(self, shot_id: str, attempt_idx: int) -> Path:
         clips_dir = self.work_dir / "clips" / shot_id
@@ -1401,8 +2396,17 @@ class Orchestrator:
         lines.append("")
         lines.append(f"- Generated: {_utcnow_iso()}")
         lines.append(f"- Manifest: `{self.manifest_path}`")
-        lines.append(f"- Generator: `{self.generator.name}`")
-        lines.append(f"- Validator: `{self.validator.name}`")
+        lines.append(f"- Video generator: `{self.generator.name}`")
+        lines.append(f"- Video validator: `{self.validator.name}`")
+        lines.append(
+            f"- Panel generator: "
+            f"`{self.panel_generator.name if self.panel_generator else '(none)'}`"
+        )
+        lines.append(
+            f"- Panel validator: "
+            f"`{self.panel_validator.name if self.panel_validator else '(none - legacy auto-pass)'}`"
+        )
+        lines.append(f"- Stitch validator: `{self.stitch_validator.name}`")
         lines.append(f"- Run state file: `{self.state_path}`")
         lines.append(f"- Governor state file: `{s.get('state_path','?')}`")
         lines.append("")
@@ -1450,16 +2454,64 @@ class Orchestrator:
             )
         lines.append("")
 
+        # Per-stage gate outcomes (PANEL / VIDEO / STITCH).
+        lines.append("## Per-stage gate outcomes")
+        lines.append("")
+        lines.append(
+            "| Shot | Panel gate | Panel attempts | Panel score | Video gate | "
+            "Video attempts | Video score |"
+        )
+        lines.append(
+            "|------|------------|----------------|-------------|------------|"
+            "----------------|-------------|"
+        )
+        for shot in self.manifest:
+            st = self.shots[shot["shot_id"]]
+            lines.append(
+                f"| {st.shot_id} | **{st.panel_status}** | {len(st.panel_attempts)} | "
+                f"{st.panel_last_score:.2f} | **{st.status}** | {len(st.attempts)} | "
+                f"{st.last_score:.2f} |"
+            )
+        lines.append("")
+        # Stitch gate row
+        if self.stitch_outcome is not None:
+            stitch_str = "PASS" if self.stitch_outcome.passed else "FAIL"
+            reasons_str = (
+                "; ".join(self.stitch_outcome.reasons[:3])
+                if self.stitch_outcome.reasons
+                else (self.stitch_outcome.notes or "")
+            )
+            lines.append(
+                f"- **Stitch gate**: {stitch_str} ({reasons_str})"
+            )
+        else:
+            lines.append(
+                "- **Stitch gate**: not run "
+                "(scene did not stitch — see budget/escalation above)"
+            )
+        lines.append("")
+
         if escalated:
             lines.append("## Escalations (for human review)")
             lines.append("")
             for st in escalated:
                 lines.append(f"### {st.shot_id}")
                 lines.append("")
+                stage = (
+                    "panel"
+                    if st.panel_status == "escalated"
+                    else "video"
+                )
+                lines.append(f"- Stage: {stage}")
                 lines.append(f"- Reason: {st.escalation_reason}")
-                if st.last_reasons:
+                last_reasons = (
+                    st.panel_last_reasons
+                    if stage == "panel"
+                    else st.last_reasons
+                )
+                if last_reasons:
                     lines.append("- Last validator reasons:")
-                    for r in st.last_reasons[:8]:
+                    for r in last_reasons[:8]:
                         lines.append(f"  - {r}")
                 lines.append("")
 
@@ -1473,21 +2525,51 @@ class Orchestrator:
         lines.append("")
         for shot in self.manifest:
             st = self.shots[shot["shot_id"]]
-            lines.append(f"### {st.shot_id} - {st.status}")
+            lines.append(f"### {st.shot_id} - shot status: {st.status}")
             lines.append("")
-            if not st.attempts:
-                lines.append("(no attempts recorded)")
+
+            # Panel-stage table
+            lines.append(f"**Panel gate**: {st.panel_status}")
+            if st.panel_attempts:
                 lines.append("")
-                continue
-            lines.append("| # | passed | score | gen $ | val $ | error | reasons |")
-            lines.append("|---|--------|-------|-------|-------|-------|---------|")
-            for a in st.attempts:
-                err = a.error or ""
-                rstr = "; ".join(a.reasons[:2])
                 lines.append(
-                    f"| {a.index} | {'yes' if a.passed else 'no'} | {a.score:.2f} | "
-                    f"${a.gen_cost_usd:.4f} | ${a.val_cost_usd:.4f} | {err} | {rstr} |"
+                    "| # | passed | score | gen $ | val $ | error | reasons |"
                 )
+                lines.append(
+                    "|---|--------|-------|-------|-------|-------|---------|"
+                )
+                for a in st.panel_attempts:
+                    err = a.error or ""
+                    rstr = "; ".join(a.reasons[:2])
+                    lines.append(
+                        f"| {a.index} | {'yes' if a.passed else 'no'} | "
+                        f"{a.score:.2f} | ${a.gen_cost_usd:.4f} | "
+                        f"${a.val_cost_usd:.4f} | {err} | {rstr} |"
+                    )
+            else:
+                lines.append("(no panel attempts recorded)")
+            lines.append("")
+
+            # Video-stage table
+            lines.append(f"**Video gate**: {st.status}")
+            if st.attempts:
+                lines.append("")
+                lines.append(
+                    "| # | passed | score | gen $ | val $ | error | reasons |"
+                )
+                lines.append(
+                    "|---|--------|-------|-------|-------|-------|---------|"
+                )
+                for a in st.attempts:
+                    err = a.error or ""
+                    rstr = "; ".join(a.reasons[:2])
+                    lines.append(
+                        f"| {a.index} | {'yes' if a.passed else 'no'} | "
+                        f"{a.score:.2f} | ${a.gen_cost_usd:.4f} | "
+                        f"${a.val_cost_usd:.4f} | {err} | {rstr} |"
+                    )
+            else:
+                lines.append("(no video attempts recorded)")
             lines.append("")
 
         path.write_text("\n".join(lines), encoding="utf-8")
@@ -1542,6 +2624,33 @@ def _make_validator(name: str, args: argparse.Namespace) -> Validator:
     raise ValueError(f"unknown validator: {name}")
 
 
+def _make_panel_generator(name: str, args: argparse.Namespace) -> Optional[PanelGenerator]:
+    if name in (None, "none"):
+        return None
+    if name == "gemini":
+        return GeminiPanelGenerator(
+            model=getattr(args, "panel_generator_model", None) or "gemini-2.5-flash-image",
+        )
+    raise ValueError(f"unknown panel generator: {name}")
+
+
+def _make_panel_validator(name: str, args: argparse.Namespace) -> Optional[PanelValidator]:
+    if name in (None, "none"):
+        return None
+    if name == "real":
+        return RealPanelValidator(
+            backend=args.validator_backend, model=args.validator_model
+        )
+    if name == "stub_pass":
+        return StubPanelValidator(
+            script={
+                shot["shot_id"]: [(1.0, True, [])]
+                for shot in json.loads(Path(args.manifest).read_text())
+            },
+        )
+    raise ValueError(f"unknown panel validator: {name}")
+
+
 def cmd_run(args: argparse.Namespace) -> int:
     governor = CostGovernor(
         run_id=args.run_id or _scene_slug_from_manifest(Path(args.manifest)),
@@ -1557,6 +2666,8 @@ def cmd_run(args: argparse.Namespace) -> int:
     )
     generator = _make_generator(args.generator, args)
     validator = _make_validator(args.validator, args)
+    panel_generator = _make_panel_generator(args.panel_generator, args)
+    panel_validator = _make_panel_validator(args.panel_validator, args)
     orch = Orchestrator(
         manifest_path=Path(args.manifest),
         generator=generator,
@@ -1569,6 +2680,8 @@ def cmd_run(args: argparse.Namespace) -> int:
         fetch_references_from_r2=not args.no_r2_fetch,
         on_event=_print_event,
         stitch_on_complete=not args.no_stitch,
+        panel_generator=panel_generator,
+        panel_validator=panel_validator,
     )
     report = orch.run_scene()
     governor.write_report()
@@ -1714,6 +2827,18 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--validator", default="real", choices=["real", "stub_pass"])
     r.add_argument("--validator-backend", default=None, choices=[None, "claude", "gemini"])
     r.add_argument("--validator-model", default=None)
+    r.add_argument("--panel-generator", default="none",
+                   choices=["none", "gemini"],
+                   help="Panel REGENERATOR for retries. 'none' = no regeneration "
+                        "(first-attempt failures escalate); 'gemini' = real "
+                        "Gemini image-to-image from the locked turnarounds.")
+    r.add_argument("--panel-generator-model", default=None,
+                   help="Override the panel generator's model name.")
+    r.add_argument("--panel-validator", default="none",
+                   choices=["none", "real", "stub_pass"],
+                   help="Panel VALIDATOR. 'none' = legacy auto-pass (NOT for "
+                        "production scenes); 'real' = same vision rubric as "
+                        "the video validator; 'stub_pass' = always-pass stub.")
     r.add_argument("--stub-clip", default=None)
     r.add_argument("--existing-clips-dir", default=None,
                    help="Local dir of pre-generated clips (e.g. footage/scene-01/shots)")

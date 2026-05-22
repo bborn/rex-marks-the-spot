@@ -1163,6 +1163,49 @@ def _make_client(backend: str):
     raise ValueError(f"Unknown backend: {backend}")
 
 
+_VIDEO_SUFFIXES = {".mp4", ".mov", ".webm", ".mkv", ".avi"}
+_IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
+
+
+def validate_panel(
+    shot: dict,
+    panel_path: Path,
+    characters_dir: Path,
+    locations_dir: Path,
+    keyframes_dir: Path,
+    *,
+    backend: str = DEFAULT_BACKEND,
+    model: Optional[str] = None,
+    client=None,
+) -> ShotValidationResult:
+    """Validate a STILL PANEL image (storyboard panel) against the bible.
+
+    This is the still-image entry point used by the orchestrator's panel gate.
+    Identical rubric to ``validate_shot``, but the panel is treated as a
+    single keyframe (no ffmpeg extraction). Continuity is reported as n/a
+    because a still panel has no prior keyframe of itself.
+    """
+    p = Path(panel_path)
+    if p.suffix.lower() not in _IMAGE_SUFFIXES:
+        raise ValueError(
+            f"validate_panel expects a still image (PNG/JPG/WEBP/GIF); "
+            f"got {p.suffix!r}. For video, use validate_shot."
+        )
+    return validate_shot(
+        shot=shot,
+        media_path=p,
+        characters_dir=characters_dir,
+        locations_dir=locations_dir,
+        keyframes_dir=keyframes_dir,
+        prior_keyframe=None,
+        prior_shot=None,
+        wardrobe_refs=None,
+        backend=backend,
+        model=model,
+        client=client,
+    )
+
+
 def validate_shot(
     shot: dict,
     media_path: Path,
@@ -1176,15 +1219,24 @@ def validate_shot(
     model: Optional[str] = None,
     client=None,
 ) -> ShotValidationResult:
-    """Validate a single shot. media_path may be a video or a still image."""
+    """Validate a single shot. media_path may be a video or a still image.
+
+    Still images (PNG/JPG/WEBP/GIF) are validated as a single keyframe;
+    videos have first/middle/last keyframes extracted via ffmpeg. The
+    rubric and pass/fail gate are identical.
+    """
     if model is None:
         model = _default_model_for_backend(backend)
     if client is None:
         client = _make_client(backend)
 
-    if media_path.suffix.lower() in {".mp4", ".mov", ".webm", ".mkv", ".avi"}:
+    if media_path.suffix.lower() in _VIDEO_SUFFIXES:
         keyframes = extract_keyframes(media_path, keyframes_dir)
+    elif media_path.suffix.lower() in _IMAGE_SUFFIXES:
+        keyframes = [media_path]
     else:
+        # Unknown extension — best-effort treat as image; ffmpeg would have
+        # failed anyway on a non-decodable file.
         keyframes = [media_path]
 
     char_refs, missing = resolve_character_refs(shot["characters"], characters_dir)
@@ -1515,6 +1567,47 @@ def cmd_validate_shot(args: argparse.Namespace) -> int:
     return 0 if result.overall_pass else 1
 
 
+def cmd_validate_panel(args: argparse.Namespace) -> int:
+    """Validate a single still-panel image (storyboard PNG) against the bible."""
+    manifest = _load_manifest(Path(args.manifest))
+    shot = next((s for s in manifest if s["shot_id"] == args.shot_id), None)
+    if shot is None:
+        print(f"Shot {args.shot_id} not found in {args.manifest}", file=sys.stderr)
+        return 2
+    panel = Path(args.panel)
+    if not panel.exists():
+        print(f"Panel not found: {panel}", file=sys.stderr)
+        return 2
+    keyframes_dir = (
+        Path(args.keyframes_dir) if args.keyframes_dir else Path("./footage/keyframes")
+    )
+    backend = args.backend
+    model = args.model or _default_model_for_backend(backend)
+    result = validate_panel(
+        shot=shot,
+        panel_path=panel,
+        characters_dir=Path(args.characters_dir),
+        locations_dir=Path(args.locations_dir),
+        keyframes_dir=keyframes_dir,
+        backend=backend,
+        model=model,
+    )
+    out_dict = result.to_dict()
+    out_dict["backend"] = backend
+    out_dict["model"] = model
+    out_dict["estimated_cost_usd"] = round(
+        estimate_cost(model, result.usage["input_tokens"], result.usage["output_tokens"]), 4
+    )
+    if args.out:
+        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+        with open(args.out, "w") as f:
+            json.dump(out_dict, f, indent=2)
+        print(f"Wrote {args.out}")
+    else:
+        print(json.dumps(out_dict, indent=2))
+    return 0 if result.overall_pass else 1
+
+
 def cmd_validate_scene(args: argparse.Namespace) -> int:
     manifest = _load_manifest(Path(args.manifest))
     footage_dir = Path(args.footage_dir)
@@ -1655,6 +1748,20 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--model", default=None,
                    help="Override the per-backend default model.")
     a.set_defaults(func=cmd_validate_shot)
+
+    pa = sub.add_parser("validate-panel", help="Validate a single still-panel image (storyboard PNG).")
+    pa.add_argument("--manifest", required=True)
+    pa.add_argument("--shot-id", required=True)
+    pa.add_argument("--panel", required=True,
+                    help="Path to the still panel image (PNG/JPG/WEBP/GIF).")
+    pa.add_argument("--characters-dir", default="asset-bible/characters")
+    pa.add_argument("--locations-dir", default="asset-bible/locations")
+    pa.add_argument("--keyframes-dir", default=None)
+    pa.add_argument("--out", default=None)
+    pa.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
+    pa.add_argument("--model", default=None,
+                    help="Override the per-backend default model.")
+    pa.set_defaults(func=cmd_validate_panel)
 
     b = sub.add_parser("validate-scene", help="Validate every shot in a manifest, emit markdown report.")
     b.add_argument("--manifest", required=True)
