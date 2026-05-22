@@ -40,7 +40,7 @@ Public R2 URL prefix: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset
 |----------|-------------------------|--------|
 | Family living room | [living_room.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/living_room.png) | `assets/environments/bornsztein_home/bornsztein_home_living_room.png` |
 | Magic minivan interior | [minivan.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/minivan.png) | `assets/environments/family_car/family_car_interior.png` |
-| Jurassic swamp / jungle | _in progress_ | |
+| Jurassic swamp / jungle | [swamp.png](https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/swamp.png) | `assets/environments/swamp/swamp_swamp_overview.png` |
 | Cave hideout | _in progress_ | |
 
 ---
