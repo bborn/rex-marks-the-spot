@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Self-Correcting Pipeline for an AI Movie - Rex Marks The Spot</title>
+    <meta name="description" content="I rebuilt the Fairy Dinosaur Date Night pipeline so it validates itself at every stage instead of catching errors with my eyes at the end. Here is what broke, what got fixed, what it cost (about $16.75 in direct spend), and a real Scene 1 shot rendered on a verified foundation.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🦖</span>
+                <span class="logo-text">Rex Marks The Spot</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../production.html">Production</a></li>
+                <li><a href="../index.html" class="active">Blog</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../links.html">Links</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header class="post-header">
+                <div class="container">
+                    <span class="post-category">Production</span>
+                    <h1>Building a Self-Correcting Pipeline for an AI Movie</h1>
+                    <div class="post-author">
+                        <time datetime="2026-05-23">May 23, 2026</time>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <div class="container">
+                    <div class="post-body">
+                        <p>The hardest part of making this movie has not been generating individual shots. Modern video models do that reasonably well. The hardest part is consistency. I would render a scene, watch it back, and find that Mia had different hair in every cut, that the living room had rearranged itself between two shots, that the TV had drifted across the room, or that a character who was supposed to be in the scene was just not in frame. I was finding all of this by eye, then patching it by hand. Every patch is more credits, more time, and more attention burned.</p>
+
+                        <p>So I sat down and rebuilt the whole thing as a self-correcting pipeline. The shape is simple. Lock the source of truth at the top. Pass every intermediate asset through a validator before the next stage is allowed to use it. Cap spend so a bad loop cannot run away. Here is what that turned into, the failure modes that bit me along the way, and what it cost.</p>
+
+                        <h2>The shape of the problem</h2>
+
+                        <p>A scene is a sequence of shots cut together. Each shot is generated from a storyboard panel plus a motion prompt. The panel anchors the composition and the characters; the video model animates motion on top. So when a shot looks wrong, the wrongness has come from one of three places:</p>
+
+                        <ol>
+                            <li>The character references themselves are wrong, drifted, or missing.</li>
+                            <li>The storyboard panel was drawn off-model in the first place.</li>
+                            <li>The video model misinterpreted the panel during generation.</li>
+                        </ol>
+
+                        <p>All three used to silently happen, and I would discover them with my eyes after the fact.</p>
+
+                        <h2>The architecture</h2>
+
+                        <p>Four pieces, each one validated against the piece above it.</p>
+
+                        <h3>1. Asset Bible</h3>
+
+                        <p>The single locked source of truth. Seven character turnarounds, four location plates, and a per-shot manifest in JSON that says, for every shot, which characters are present, what each one is wearing, the key props that must survive into the final image, the camera intent, and the storyboard panel URL. Lives at <code>r2:rex-assets/asset-bible/</code>.</p>
+
+                        <p>The cast:</p>
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/mia_turnaround_APPROVED.png" alt="Mia character turnaround" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/leo_turnaround_APPROVED.png" alt="Leo character turnaround" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/gabe_turnaround_APPROVED.png" alt="Gabe character turnaround" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/nina_turnaround_APPROVED.png" alt="Nina character turnaround" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jenny_turnaround_APPROVED.png" alt="Jenny character turnaround" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround_APPROVED.png" alt="Ruben character turnaround" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane_turnaround_APPROVED.png" alt="Jetplane character turnaround" loading="lazy">
+
+                        <p>The location plates (family living room, magic minivan, Jurassic swamp, cave hideout):</p>
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/living_room.png" alt="Family living room location plate" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/minivan.png" alt="Magic minivan interior location plate" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/swamp.png" alt="Jurassic swamp location plate" loading="lazy">
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/cave.png" alt="Cave hideout location plate" loading="lazy">
+
+                        <p>These are what every downstream stage gets measured against.</p>
+
+                        <h3>2. Storyboard panels</h3>
+
+                        <p>One per shot, generated with image-to-image so the locked turnarounds are literally the visual reference. Per-shot composition, lighting, characters in place, props in place. This is the composition layer of the scene.</p>
+
+                        <h3>3. Shot validator</h3>
+
+                        <p>A vision model that scores every asset against the bible. For a still panel or a video keyframe it produces structured scores for character identity (face, hair, and build versus the turnaround, decoupled from clothing), wardrobe (versus the manifest, since the same character wears different clothes in different scenes), location (versus the location plate), continuity with the adjacent shot, and visible artifacts.</p>
+
+                        <p>Each call costs three or four cents using Gemini Flash 2.5. The whole nine-shot Scene 1 audit was about three cents total. Catching a bad shot with a four-cent vision check before stitching, instead of after, is the entire economic argument for this system.</p>
+
+                        <h3>4. Cost governor and orchestrator</h3>
+
+                        <p>The closed loop. The orchestrator runs gated stages per shot. The cost governor wraps every paid action with a hard cap: a per-run budget cap, a per-shot retry cap, a no-progress detector that aborts a shot that keeps failing without improving, and a kill-switch file at <code>scripts/pipeline/STOP</code> that halts everything.</p>
+
+                        <p>The budget-halt demo: a scene whose up-front estimate was $3.51, configured with a per-run cap of $0.50, stopped cleanly at $0.39 spent with the message "per-run cap $0.50 would be exceeded, halted." Zero of nine shots got past the cap. The reason this matters is the explicit failure mode I am insuring against, which is an automated pipeline running away to a thousand dollars while I am asleep. Not a class of bug that exists in this one.</p>
+
+                        <h2>The validation principle</h2>
+
+                        <p>The mistake I made earlier in this project was that I built a validator and only pointed it at the end of the line, at video shots. Storyboard panels rolled through, trusted because they existed. So when Mia was drawn wrong in the panel, the video model faithfully animated the wrong Mia.</p>
+
+                        <p>The corrected principle, now codified in <code>CLAUDE.md</code> and enforced in the orchestrator's code, is this: validate at every stage. References, then panels, then video, then stitched scene, and at every arrow between stages there is a blocking gate. Output cannot move forward until it has passed validation against the layer above. If it fails, it gets regenerated within the cost governor's retry cap. If it cannot pass after a few attempts, the orchestrator escalates rather than continuing.</p>
+
+                        <p>The hard rule: do not generate from an artifact you have not validated. A storyboard panel is not trusted because it exists. It is trusted because the validator confirmed it matches the locked references.</p>
+
+                        <h2>What broke</h2>
+
+                        <p>Four real problems worth telling you about.</p>
+
+                        <h3>Jenny was missing from the canonical roster</h3>
+
+                        <p>I had been operating from a project doc that listed six characters. The team had actually locked seven turnarounds back on February 7. Jenny, the teenage babysitter, was on R2 the whole time. The first build of the Asset Bible left her out because I trusted the wrong list. The fix was adding Jenny back to the canonical roster, and the standing rule is now to enumerate characters by running <code>rclone lsd r2:rex-assets/characters/</code>, never from memory.</p>
+
+                        <h3>Ruben and Jetplane were generated instead of looked up</h3>
+
+                        <p>Same root cause, twice over. The canonical approved turnarounds for both of them lived at <code>r2:rex-assets/characters/&lt;name&gt;/&lt;name&gt;_turnaround_APPROVED.png</code>. The bible build never checked those paths. It generated a substitute Ruben (an AI re-interpretation that looked sort of right) and rendered a pale low-poly Jetplane straight from the rigging <code>.blend</code> file. Both ended up in the bible. The fix was a quick R2-to-R2 copy of the canonical files into place.</p>
+
+                        <p>The lesson is the same as Jenny: source of truth lives at one specific place; check that place; do not generate a substitute when the real thing exists.</p>
+
+                        <h3>The task daemon was killing live agents</h3>
+
+                        <p>This was the most painful bug. Every agent I launched would die after one to five minutes. I thought it was flakiness for a while. I finally tailed the daemon log and found this signature repeating every five minutes:</p>
+
+                        <pre><code>Cleaning up inactive done task task=32
+Terminated Claude process task=32 pid=3125131
+Task finished id=323 success=false</code></pre>
+
+                        <p>Task #32 was a website tweak that had been marked done 109 days ago. The daemon was running a cleanup pass on it every five minutes, and the cleanup was killing whatever live process happened to currently have the recycled PID that #32's record was still pointing at. Every five minutes a live agent would be killed and the kill would be logged against #32.</p>
+
+                        <p>The permanent fix is policy. Delete finished tasks; do not let them sit in the "done" state with stale PID records. Closed tasks stay as kill triggers; deleted tasks are gone for good.</p>
+
+                        <h3>The storyboard panels were off-model</h3>
+
+                        <p>This was the most consequential one. I had locked the right turnarounds, built the orchestrator, gated the validator on every video shot, and rendered the first real Scene 1 shot 1A. Mia did not look like Mia. She was drawn as a pajama-clad toddler with her hair in a tight bun. The locked turnaround shows her as an older child with voluminous curly dark hair worn down and a magenta casual top and jeans. Two different characters.</p>
+
+                        <p>The old (v3) Scene 1 panel for shot 1A:</p>
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v3/scene-01/scene-01-1A-start.png" alt="The off-model v3 storyboard panel: Mia drawn as a pajama-clad toddler with a bun" loading="lazy">
+
+                        <p>The video had faithfully reproduced the wrong Mia. The error was baked in at the panel stage. I had been validating the video, not the panels. So I had been generating video off panels nobody had checked.</p>
+
+                        <p>This was the deepest moment of the build. The bug was not in the video model. It was that the entire video stage was running on a base nobody had verified.</p>
+
+                        <p>The pipeline now has a panel validation gate. Every panel must pass identity-against-turnaround, wardrobe-against-manifest, location, and characters-present before any video stage is allowed to touch it. I regenerated all nine Scene 1 panels with image-to-image, using the locked turnarounds as references, and ran the validator on each. Eight passed clean. One (1I, the parents at the front door) failed for "location drift," which turned out to be a manifest bug, not a panel error: the shot is at the front entryway, not the main living room, and the manifest had it labeled <code>living_room</code>. The agent caught it, fixed the manifest, the panel revalidated, and now all nine pass.</p>
+
+                        <p>The same shot 1A panel, regenerated on-model:</p>
+
+                        <img src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1A-start.png" alt="The on-model v4 storyboard panel: Mia matches her locked turnaround" loading="lazy">
+
+                        <p>The validator's audit on the v4 panel set:</p>
+
+                        <table>
+                            <thead>
+                                <tr><th>Shot</th><th>Pass</th><th>Identity</th><th>Wardrobe</th><th>Location</th><th>Continuity</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1A</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1B</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1C</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1D</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1E</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1F</td><td>PASS</td><td>1.00</td><td>n/a</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1G</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1H</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                                <tr><td>1I</td><td>PASS</td><td>1.00</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+                            </tbody>
+                        </table>
+
+                        <p>Total cost of that audit: about three cents.</p>
+
+                        <h2>A real shot, finally</h2>
+
+                        <p>The first render off the broken v3 panel, with my early "static, subtle, calm" prompting:</p>
+
+                        <video src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/orchestrator-runs/scene-01-1A/shot-1A.mp4" controls width="720"></video>
+
+                        <p>Mia is wrong, nothing happens, the TV has imagery on its back face. It reproduces the panel faithfully, because the panel itself was just bad.</p>
+
+                        <p>The render after the panel was regenerated on-model and the prompt was rewritten to actually describe motion:</p>
+
+                        <video src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/orchestrator-runs/scene-01-1A/shot-1A-v3.mp4" controls width="720"></video>
+
+                        <p>Mia has curly hair worn down, the magenta star top, and jeans. Leo has the green dinosaur pajamas. Jenny is on her phone in the armchair. Nina and Gabe are in date-night formalwear in the background. The TV reads as a normal TV. The camera does a slow cinematic push-in over twelve seconds; the kids shift on the couch, lightning flashes outside the window, the dinosaur toys hold their positions on the rug.</p>
+
+                        <p>It is one shot, not a full scene, and the character action is subtle rather than dramatic. Image-to-video from a single start frame inherently limits motion to small in-frame action and camera moves. To get a kid lunging for a toy or the parents dramatically crossing the room I will need to use the start-plus-end-frame mode (both mitte and Flow call it "Frames mode") and generate matching end panels.</p>
+
+                        <p>But this is the first piece of footage on the project that was generated off a foundation that had actually been verified. And it shows.</p>
+
+                        <h2>Costs</h2>
+
+                        <p>Direct API and credit spend across the build:</p>
+
+                        <table>
+                            <thead>
+                                <tr><th>Item</th><th>Cost</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Cost governor (code only)</td><td>$0.00</td></tr>
+                                <tr><td>Asset Bible build, including Gemini gens for Ruben and Jetplane, plus four location selections</td><td>~$0.50</td></tr>
+                                <tr><td>Validator build and first proof run scoring Scene 1 video</td><td>~$0.04</td></tr>
+                                <tr><td>Validator fix run (wardrobe and continuity rework)</td><td>~$0.04</td></tr>
+                                <tr><td>Orchestrator build, plus budget-halt demo and closed-loop demo against existing clips</td><td>$7.02 of a $15 cap (recorded against existing clips, so representative rather than fully real)</td></tr>
+                                <tr><td>Panel regeneration v4 (nine panels, Gemini image-to-image)</td><td>~$0.40</td></tr>
+                                <tr><td>Panel 1I fix (turned out to be a manifest edit)</td><td>~$0.00</td></tr>
+                                <tr><td>Validator audit on the v4 panel set</td><td>~$0.03</td></tr>
+                                <tr><td>Mitte Seedance video renders (1A v1 off the broken panel, v2 with TV-correction prompting, v3 on the validated v4 panel)</td><td>8,709 mitte credits, about $8.71</td></tr>
+                                <tr><td><strong>Total direct, validatable spend</strong></td><td><strong>~$16.75</strong></td></tr>
+                            </tbody>
+                        </table>
+
+                        <p>That figure does not include the Anthropic API cost of running the agents themselves (the agents are what write the code, generate the panels, drive the validator, and so on). That cost is real but routed through a separate billing line. The table above does fully capture every dollar that hit a generation or vision API and every mitte credit spent.</p>
+
+                        <p>The cost-per-shot story is worth pulling out. A video render is about $2.90 at twelve seconds, 720p, 16:9, Seedance 2 on Fast. A validator pass on a panel is about $0.04. A panel regeneration in Gemini is about $0.04. Catching a bad panel with two $0.04 validator calls and re-rolling it for $0.04, instead of finding the problem after $2.90 of video has been generated, is the move. That economic argument is what makes a self-validating pipeline actually pay off instead of just being a code aesthetic.</p>
+
+                        <h2>What's next</h2>
+
+                        <p>The foundation is sound for the first time. Every panel under the video stage has passed validation. The orchestrator structurally cannot run video generation on an unvalidated panel. The bible is correct (all seven characters, four location plates), the manifest is correct (front entryway labeled correctly), the validator decouples identity from wardrobe so a tuxedo does not get flagged as wrong because the turnaround happens to show a t-shirt.</p>
+
+                        <p>The next thing to add is start-plus-end-frame mode so character action becomes a thing the model can actually render. That requires generating matching end panels for each shot, which is more Gemini image-to-image work, and switching the orchestrator's generator wrapper to pass both the start and end panel to mitte.</p>
+
+                        <p>I will write that step up when it lands.</p>
+                    </div>
+
+                    <nav class="post-nav">
+                        <a href="thirty-seconds-of-scene-1-may-20.html">&larr; Previous: Thirty Seconds of Scene 1</a>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🦖</span>
+                    <span>Rex Marks The Spot</span>
+                </div>
+                <p class="footer-tagline">An experiment in AI-assisted filmmaking</p>
+                <div class="footer-social">
+                    <a href="https://github.com/bborn/rex-marks-the-spot" target="_blank" rel="noopener" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="../../links.html" title="YouTube (Coming Soon)">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+                <nav class="footer-nav">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../production.html">Production</a>
+                    <a href="../index.html">Blog</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../links.html">Links</a>
+                </nav>
+                <p class="footer-copyright">&copy; 2026 Rex Marks The Spot. Made with creativity and AI assistance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/chat-widget.js"></script>
+</body>
+</html>
