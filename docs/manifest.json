@@ -1,9 +1,9 @@
 {
-  "generated": "2026-05-23T07:05:30.645205Z",
-  "totalAssets": 1542,
+  "generated": "2026-05-23T12:20:23.211853Z",
+  "totalAssets": 1543,
   "categories": {
     "Characters": 388,
-    "Other": 132,
+    "Other": 133,
     "Storyboards": 823,
     "Animatics": 103,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-23T07:05:30.627432438Z",
+      "modTime": "2026-05-23T12:20:23.193869830Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-23T07:05:30.627432438Z",
+      "modTime": "2026-05-23T12:20:23.193869830Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-23T07:05:30.627432438Z",
+      "modTime": "2026-05-23T12:20:23.193869830Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,18 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-23T07:05:30.627432438Z",
+      "modTime": "2026-05-23T12:20:23.193869830Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "orchestrator-runs/scene-01-1A/shot-1A-v3.mp4",
+      "name": "shot-1A-v3.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/orchestrator-runs/scene-01-1A/shot-1A-v3.mp4",
+      "size": 4493791,
+      "modTime": "2026-05-23T11:32:15.745633558Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "storyboards/v4/scene-01/scene-01-1G-start.png",
