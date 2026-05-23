@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-22T18:46:30.566975Z",
-  "totalAssets": 1537,
+  "generated": "2026-05-23T01:02:00.006709Z",
+  "totalAssets": 1542,
   "categories": {
-    "Characters": 394,
-    "Other": 130,
+    "Characters": 388,
+    "Other": 132,
+    "Storyboards": 823,
     "Animatics": 103,
-    "Storyboards": 814,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-05-22T18:46:30.548435546Z",
+      "modTime": "2026-05-23T01:01:59.988213681Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-05-22T18:46:30.548435546Z",
+      "modTime": "2026-05-23T01:01:59.988213681Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-05-22T18:46:30.548435546Z",
+      "modTime": "2026-05-23T01:01:59.988213681Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,108 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-05-22T18:46:30.548435546Z",
+      "modTime": "2026-05-23T01:01:59.988213681Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1G-start.png",
+      "name": "scene-01-1G-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1G-start.png",
+      "size": 623004,
+      "modTime": "2026-05-22T20:32:47.514887090Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1I-start.png",
+      "name": "scene-01-1I-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1I-start.png",
+      "size": 550780,
+      "modTime": "2026-05-22T20:30:18.972664999Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1E-start.png",
+      "name": "scene-01-1E-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1E-start.png",
+      "size": 524955,
+      "modTime": "2026-05-22T20:29:13.823685486Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1D-start.png",
+      "name": "scene-01-1D-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1D-start.png",
+      "size": 584967,
+      "modTime": "2026-05-22T20:28:46.329271062Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1H-start.png",
+      "name": "scene-01-1H-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1H-start.png",
+      "size": 580152,
+      "modTime": "2026-05-22T20:25:31.873318460Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1F-start.png",
+      "name": "scene-01-1F-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1F-start.png",
+      "size": 649329,
+      "modTime": "2026-05-22T20:24:29.436360770Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1C-start.png",
+      "name": "scene-01-1C-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1C-start.png",
+      "size": 557455,
+      "modTime": "2026-05-22T20:22:56.156919067Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1B-start.png",
+      "name": "scene-01-1B-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1B-start.png",
+      "size": 715040,
+      "modTime": "2026-05-22T20:22:27.370471176Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v4/scene-01/scene-01-1A-start.png",
+      "name": "scene-01-1A-start.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1A-start.png",
+      "size": 686385,
+      "modTime": "2026-05-22T20:21:54.125951978Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "orchestrator-runs/scene-01-1A/shot-1A-v2.mp4",
+      "name": "shot-1A-v2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/orchestrator-runs/scene-01-1A/shot-1A-v2.mp4",
+      "size": 3562594,
+      "modTime": "2026-05-22T20:08:53.617776873Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "orchestrator-runs/scene-01-1A/shot-1A.mp4",
+      "name": "shot-1A.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/orchestrator-runs/scene-01-1A/shot-1A.mp4",
+      "size": 2257650,
+      "modTime": "2026-05-22T19:56:25.552196901Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "orchestrator-runs/scene-01-2026-05-22/scene-01-stitched.mp4",
@@ -248,33 +347,6 @@
       "type": "image"
     },
     {
-      "path": "asset-bible/characters/jetplane_turnaround.png",
-      "name": "jetplane_turnaround.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane_turnaround.png",
-      "size": 509370,
-      "modTime": "2026-05-22T16:48:12.066256289Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/jetplane-alts/jetplane_view_back.png",
-      "name": "jetplane_view_back.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_back.png",
-      "size": 163348,
-      "modTime": "2026-05-22T16:46:46.951980492Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/jetplane-alts/jetplane_view_side.png",
-      "name": "jetplane_view_side.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_side.png",
-      "size": 216101,
-      "modTime": "2026-05-22T16:46:43.927935166Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
       "path": "asset-bible/locations/cave.png",
       "name": "cave.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/locations/cave.png",
@@ -308,51 +380,6 @@
       "size": 1428826,
       "modTime": "2026-05-22T16:43:40.190181509Z",
       "category": "Other",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/jetplane-alts/jetplane_view_three_quarter.png",
-      "name": "jetplane_view_three_quarter.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_three_quarter.png",
-      "size": 216122,
-      "modTime": "2026-05-22T16:28:24.508479449Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/jetplane-alts/jetplane_view_front.png",
-      "name": "jetplane_view_front.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane-alts/jetplane_view_front.png",
-      "size": 174606,
-      "modTime": "2026-05-22T16:28:21.159429463Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/ruben_turnaround.png",
-      "name": "ruben_turnaround.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround.png",
-      "size": 477770,
-      "modTime": "2026-05-22T16:26:18.450599139Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/ruben-alts/ruben_turnaround_v2.png",
-      "name": "ruben_turnaround_v2.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben-alts/ruben_turnaround_v2.png",
-      "size": 475823,
-      "modTime": "2026-05-22T16:26:05.077399816Z",
-      "category": "Characters",
-      "type": "image"
-    },
-    {
-      "path": "asset-bible/characters/ruben-alts/ruben_turnaround_v1.png",
-      "name": "ruben_turnaround_v1.png",
-      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben-alts/ruben_turnaround_v1.png",
-      "size": 477770,
-      "modTime": "2026-05-22T16:25:24.299792242Z",
-      "category": "Characters",
       "type": "image"
     },
     {
@@ -6170,6 +6197,15 @@
       "type": "image"
     },
     {
+      "path": "asset-bible/characters/ruben_turnaround_APPROVED.png",
+      "name": "ruben_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/ruben_turnaround_APPROVED.png",
+      "size": 511844,
+      "modTime": "2026-02-07T15:03:03.241264110Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
       "path": "characters/ruben/concepts/ruben_v6_A.png",
       "name": "ruben_v6_A.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/concepts/ruben_v6_A.png",
@@ -6355,6 +6391,15 @@
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_v1.png",
       "size": 555604,
       "modTime": "2026-02-07T12:29:14.309162021Z",
+      "category": "Characters",
+      "type": "image"
+    },
+    {
+      "path": "asset-bible/characters/jetplane_turnaround_APPROVED.png",
+      "name": "jetplane_turnaround_APPROVED.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/asset-bible/characters/jetplane_turnaround_APPROVED.png",
+      "size": 670656,
+      "modTime": "2026-02-07T00:41:42.103995399Z",
       "category": "Characters",
       "type": "image"
     },
