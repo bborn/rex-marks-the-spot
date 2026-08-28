@@ -61,10 +61,10 @@
 <p>No API:</p>
 
 <blockquote>
-    <p>The tooling is a website &mdash; there's no API, so "rendering a scene" means me clicking through a browser, uploading the same reference images over and over, one shot at a time.</p>
+    <p>The tooling is a website. There's no API, so "rendering a scene" means me clicking through a browser, uploading the same reference images over and over, one shot at a time.</p>
 </blockquote>
 
-<p>And, in the same post's closing assessment: "They still can't be scripted &mdash; everything is a person clicking."</p>
+<p>And, in the same post's closing assessment: "They still can't be scripted, everything is a person clicking."</p>
 
 <p>The watermark:</p>
 
@@ -80,16 +80,16 @@
 
 <p>That last one is not a cosmetic problem. Veo 3.1 returned <code>no_media_generated</code> on prompts that described Mia and Leo as children, so I adopted a workaround: describe the environment, describe "figures" and "characters," and let the input image carry the fact that there are two kids on the couch. It works, in the sense that you get a frame out. It also means the prompt cannot say what the shot is about, which is a bad place to be when the film is largely about two kids.</p>
 
-<p>Omni 1.1 Flash removes all three. The API is real &mdash; a single <code>client.interactions.create</code> call. There is no visible watermark: I cropped the bottom-right corner of all four frame grabs and upscaled 3&times;, and found no mark, logo or text overlay in any clip. (SynthID is imperceptible by design and would not show up this way; this finding is only about a <em>visible</em> mark.) And the third one turned out to be the interesting one.</p>
+<p>Omni 1.1 Flash removes all three. The API is real, a single <code>client.interactions.create</code> call. There is no visible watermark: I cropped the bottom-right corner of all four frame grabs and upscaled 3&times;, and found no mark, logo or text overlay in any clip. (SynthID is imperceptible by design and would not show up this way; this finding is only about a <em>visible</em> mark.) And the third one turned out to be the interesting one.</p>
 
-<h2>The headline: the child-character filter did not fire</h2>
+<h2>The filter did not fire</h2>
 
-<p>I ran an A/B. Same validated storyboard panel, same shot, same everything &mdash; the only variable is how the characters are described in the prompt.</p>
+<p>I ran an A/B. Same validated storyboard panel, same shot, same everything. The only variable is how the characters are described in the prompt.</p>
 
 <p>G2 is the control. It uses the May workaround: "figures," "characters," no ages, no "kids."</p>
 
 <video controls preload="metadata" playsinline style="width:100%; border-radius:8px; margin:16px 0;" src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G2_image_to_video.mp4"></video>
-<p class="caption">G2, the depersonalized control. Turn the sound on &mdash; that matters in a minute.</p>
+<p class="caption">G2, the depersonalized control. Turn the sound on, it matters in a minute.</p>
 
 <p>G3 is the probe. It names them, ages them, and calls them kids. Verbatim:</p>
 
@@ -100,11 +100,11 @@
 <video controls preload="metadata" playsinline style="width:100%; border-radius:8px; margin:16px 0;" src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G3_image_to_video.mp4"></video>
 <p class="caption">G3, the safety probe. Same panel, same shot. The prompt names both kids and gives their ages.</p>
 
-<p>It generated. No error, no <code>no_media_generated</code>, no RAI filter count, no content warning. The output is visually indistinguishable from the control &mdash; same composition, same characters, same framing. G2 cost $0.1825, G3 cost $0.3572, and the only reason for the difference is that G3 ran at the default 10s while G2 ran at 5s.</p>
+<p>It generated. No error, no <code>no_media_generated</code>, no RAI filter count, no content warning. The output is visually indistinguishable from the control. Same composition, same characters, same framing. G2 cost $0.1825, G3 cost $0.3572, and the only reason for the difference is that G3 ran at the default 10s while G2 ran at 5s.</p>
 
 <p>I want to be careful about what this does and does not mean, and I will come back to it at the end. But on this model, on this kind of prompt, the workaround I have been carrying since May is not needed.</p>
 
-<h2>The audio, which cuts the other way</h2>
+<h2>The audio is the new problem</h2>
 
 <p>Both of those prompts end with "No dialogue. No music. No sound effects. Silent." Every prompt in the run did. If you turned the sound on for G2 and G3, you already know how that went.</p>
 
@@ -145,9 +145,9 @@
 
 <p>Worth noting how the panel got chosen. The task brief pointed at the older <code>storyboards/act1/scene-01/</code> panels, which are pre-validation. The Validation Gates rule says not to generate from an artifact that has not passed its gate, so the run used <code>storyboards/v4/scene-01/scene-01-1A-start.png</code> instead, from the 9/9 PASS set. That rule earning its keep on the first task that touched it is a good sign for the rule.</p>
 
-<h2>Reference images: the cap is at least 12</h2>
+<h2>It takes at least 12 reference images</h2>
 
-<p>Published sources say the reference-image limit is 3, or 6, or 7. All of those are wrong for this API. A <code>reference_to_video</code> request carrying twelve real reference images &mdash; the seven locked character turnarounds plus the 1A panel, cycled up to twelve &mdash; was accepted and generated normally.</p>
+<p>Published sources say the reference-image limit is 3, or 6, or 7. All of those are wrong for this API. A <code>reference_to_video</code> request carrying twelve real reference images, the seven locked character turnarounds plus the 1A panel cycled up to twelve, was accepted and generated normally.</p>
 
 <video controls preload="metadata" playsinline style="width:100%; border-radius:8px; margin:16px 0;" src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/PROBE_12refs.mp4"></video>
 <p class="caption">Twelve reference images, accepted without complaint.</p>
@@ -184,15 +184,15 @@ generation_config={"video_config": {"task": "image_to_video"}},</code></pre>
 
 <h3>The wrong conclusion I drew from it</h3>
 
-<p>Worse than the money: from that silent ignore I concluded the model had no duration control, and that went into a status report before it got caught. It was wrong. Valid values work fine. The bounds are confirmed by the errors they produce &mdash; <code>"999s"</code> returns <em>Requested video duration 999s 0ns exceeds the maximum allowed 10s 0ns</em>, and <code>"0.5s"</code>, <code>"1s"</code> and <code>"2s"</code> all return <em>is less than the minimum allowed 3s 0ns</em>. The range is continuous rather than an enum of 4/6/8/10. And end to end, <code>duration="5s"</code> produces a clip that ffprobe reports as 5.013s.</p>
+<p>Worse than the money: from that silent ignore I concluded the model had no duration control, and that went into a status report before it got caught. It was wrong. Valid values work fine. The bounds are confirmed by the errors they produce. <code>"999s"</code> returns <em>Requested video duration 999s 0ns exceeds the maximum allowed 10s 0ns</em>, and <code>"0.5s"</code>, <code>"1s"</code> and <code>"2s"</code> all return <em>is less than the minimum allowed 3s 0ns</em>. The range is continuous rather than an enum of 4/6/8/10. And end to end, <code>duration="5s"</code> produces a clip that ffprobe reports as 5.013s.</p>
 
 <p>An API that silently ignores an unknown key looks identical to an API that lacks the feature. The only difference is the bill.</p>
 
-<h3>The probe technique that could not have worked</h3>
+<h3>A probe that was never going to work</h3>
 
 <p>The plan for finding the reference-image cap was to send N corrupt images and read the rejection, on the theory that rejected requests are free. That does not work here. Sending N corrupt images returns <em>Unable to process input image</em> for every N up to 12, because image decode runs <em>before</em> any count validation. The decode error masks the count check permanently, at every N.</p>
 
-<p>Which means establishing the real limit requires valid images, and a valid within-limit request generates video. That is where <code>PROBE_12refs.mp4</code> came from, and it cost an unplanned $0.3808. The free-rejection technique is genuinely useful for enumerating accepted values &mdash; most of the API surface in this run was mapped that way, because an invalid value makes the server echo the supported set back in the 400 message &mdash; but it cannot reach a check that sits behind a decode step.</p>
+<p>Which means establishing the real limit requires valid images, and a valid within-limit request generates video. That is where <code>PROBE_12refs.mp4</code> came from, and it cost an unplanned $0.3808. The free-rejection technique is genuinely useful for enumerating accepted values, and most of the API surface in this run was mapped that way, because an invalid value makes the server echo the supported set back in the 400 message. It just cannot reach a check that sits behind a decode step.</p>
 
 <h3>The SDK trap</h3>
 
@@ -203,13 +203,13 @@ Please upgrade your google-genai Python SDK to version >= 2.0.0</code></pre>
 
 <p>This run went against 2.20.0 in a throwaway venv, because bumping the pin repo-wide would touch every image-generation script in the project. That is a decision I still have to make: upgrade globally and regression-test the image scripts, or keep Omni on its own venv.</p>
 
-<h3>The arithmetic of two unplanned clips</h3>
+<h3>Two clips I did not mean to buy</h3>
 
-<p>Six clips generated, four planned. The duration probe and the twelve-reference probe were both unplanned, and together they are $0.7329 of a $1.8097 run &mdash; a bit over 40% of the spend. The original cap on this task was $1.50. At that cap those two clips would have squeezed out G4, which is the one that told me references carry identity but not wardrobe. The cap got raised to $2.50 mid-run instead.</p>
+<p>Six clips generated, four planned. The duration probe and the twelve-reference probe were both unplanned, and together they are $0.7329 of a $1.8097 run, a bit over 40% of the spend. The original cap on this task was $1.50. At that cap those two clips would have squeezed out G4, which is the one that told me references carry identity but not wardrobe. The cap got raised to $2.50 mid-run instead.</p>
 
 <h2>Costs</h2>
 
-<p>Billing is by output token, not by second of wall clock. Published rates are $1.50 per 1M input tokens and $17.50 per 1M video output tokens. At 360p a clip is 1,931 video tokens per second, measured, which works out to about $0.0338/s &mdash; and is consistent with Google's stated 5,792 tokens per second for 720p at roughly $0.10/s.</p>
+<p>Billing is by output token, not by second of wall clock. Published rates are $1.50 per 1M input tokens and $17.50 per 1M video output tokens. At 360p a clip is 1,931 video tokens per second, measured, which works out to about $0.0338/s, consistent with Google's stated 5,792 tokens per second for 720p at roughly $0.10/s.</p>
 
 <table>
     <thead>
@@ -217,18 +217,18 @@ Please upgrade your google-genai Python SDK to version >= 2.0.0</code></pre>
     </thead>
     <tbody>
         <tr><td>G1 <code>text_to_video</code> (10s)</td><td>19,310</td><td>805</td><td>50</td><td>0.3521</td></tr>
-        <tr><td>PROBE 12 refs (10s) &mdash; <strong>unplanned</strong></td><td>19,310</td><td>1,322</td><td>13,139</td><td>0.3808</td></tr>
+        <tr><td>PROBE 12 refs (10s, <strong>unplanned</strong>)</td><td>19,310</td><td>1,322</td><td>13,139</td><td>0.3808</td></tr>
         <tr><td>G2 <code>image_to_video</code> (5s)</td><td>9,655</td><td>676</td><td>1,161</td><td>0.1825</td></tr>
         <tr><td>G3 <code>image_to_video</code> (10s)</td><td>19,310</td><td>997</td><td>1,189</td><td>0.3572</td></tr>
         <tr><td>G4 <code>reference_to_video</code> (5s)</td><td>9,655</td><td>729</td><td>2,230</td><td>0.1851</td></tr>
-        <tr><td><code>duration_seconds</code> probe (10s) &mdash; <strong>unplanned</strong></td><td>19,310</td><td>805</td><td>50</td><td>0.3521</td></tr>
+        <tr><td><code>duration_seconds</code> probe (10s, <strong>unplanned</strong>)</td><td>19,310</td><td>805</td><td>50</td><td>0.3521</td></tr>
         <tr><td><strong>Total</strong></td><td></td><td></td><td></td><td><strong>$1.8097</strong></td></tr>
     </tbody>
 </table>
 
-<p>The duration probe's usage was never captured, because the probe did not save the response. Its cost is modelled on G1, which is the identical request shape. All rejected requests &mdash; the 400s and 404s that mapped most of the API surface &mdash; were free.</p>
+<p>The duration probe's usage was never captured, because the probe did not save the response. Its cost is modelled on G1, which is the identical request shape. All rejected requests were free, including the 400s and 404s that mapped most of the API surface.</p>
 
-<p>Two structural things to design around. Clips are capped at 10s, so anything longer needs the <code>extend</code> task, which is documented to reach 40s total and which I have not tested. And aspect ratio is 16:9 or 9:16 only &mdash; no 4:3, no 2.39:1.</p>
+<p>Two structural things to design around. Clips are capped at 10s, so anything longer needs the <code>extend</code> task, which is documented to reach 40s total and which I have not tested. And aspect ratio is 16:9 or 9:16 only. No 4:3, no 2.39:1.</p>
 
 <h2>What's next</h2>
 
@@ -236,7 +236,7 @@ Please upgrade your google-genai Python SDK to version >= 2.0.0</code></pre>
 
 <p>The beats most likely to trip a filter are the ones I did not probe: a child in apparent jeopardy, Jetplane looming over Leo, the Act 2 abduction. Those are the prompts that made Veo return <code>no_media_generated</code> in the first place, and I have no evidence at all about how Omni handles them. So this does not clear the model for the film. It clears the model for a calm two-shot.</p>
 
-<p>The next step is to re-run exactly this A/B &mdash; same panel, same shot, only the wording changed &mdash; on two or three of the tensest Act 2 panels, before dropping depersonalization pipeline-wide. If the filter is going to fire, it will fire there, and I would rather find that out for $0.35 a clip at 360p than halfway through a scene.</p>
+<p>The next step is to re-run exactly this A/B, same panel and same shot with only the wording changed, on two or three of the tensest Act 2 panels, before dropping depersonalization pipeline-wide. If the filter is going to fire, it will fire there, and I would rather find that out for $0.35 a clip at 360p than halfway through a scene.</p>
 
 <p>After that: make the audio strip mandatory in whatever ingests video, decide the SDK story, test <code>extend</code> for shots longer than 10s, and check 720p pricing empirically. $0.10/s is three times the 360p rate and it will dominate the budget of any real bake-off against the current pipeline.</p>
 

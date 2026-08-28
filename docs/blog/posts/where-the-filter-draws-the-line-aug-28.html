@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Where The Filter Draws The Line - Rex Marks The Spot</title>
-    <meta name="description" content="Twelve clips, three probes, $2.63. We assumed a content filter would react to danger. A five-year-old taunting a charging T-Rex generated fine. Two kids sitting still in a police car did not.">
+    <meta name="description" content="I spent $2.63 finding out what this model's safety filter blocks. A five-year-old taunting a charging T-Rex was fine. Two kids sitting still in a police car was not.">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,11 +142,13 @@
                 <div class="container">
                     <div class="post-body">
 
-<p>Twelve clips, three probes, $2.63. I assumed a content filter would react to danger. It doesn't.</p>
+<p>I spent $2.63 on twelve clips working out what this model refuses to make. I had it backwards.</p>
 
-<p>A named five-year-old, alone in a clearing, waving his arms to make himself the target of a charging tyrannosaurus &mdash; that generated on the first attempt. So did the same children breaking out of police custody with an office chair. One prompt out of twelve was blocked: two kids sitting still in the back seat of a police car. The quietest thing I asked for.</p>
+<p>I had assumed the filter would balk at danger. It didn't. A named five-year-old, alone in a clearing, waving his arms to pull a charging tyrannosaurus onto himself: generated first try. Same for the two of them breaking out of police custody with an office chair.</p>
 
-<div class="dl-rule">Measured trigger: minors alone and confined in a police <em>vehicle</em> &mdash; not peril, and not a police facility.</div>
+<p>One prompt out of twelve came back blocked. It was two kids sitting still in the back of a police car, which is about the calmest thing I asked for all day.</p>
+
+<div class="dl-rule">What it actually blocks: kids alone and confined in a police <em>vehicle</em>. A police <em>building</em> is fine. Danger is fine.</div>
 
 <dl class="dl-stats">
     <div class="dl-stat"><dt>Clips generated</dt><dd>12<small>Across three probes, all 360p</small></dd></div>
@@ -155,11 +157,11 @@
     <div class="dl-stat"><dt>Total spend</dt><dd>$2.63<small>Token-metered, ~$0.034/s at 360p</small></dd></div>
 </dl>
 
-<p>This is the whole record. Every clip below is the actual output, and every prompt is what was actually sent. Turn the sound on &mdash; every one of them was told "No dialogue. No music. Silent."</p>
+<p>Everything is here. The clips are the real output and the prompts are what I actually sent. Turn the sound on. Every one of them was told "No dialogue. No music. Silent."</p>
 
-<h2>The safety probe &mdash; same shot, one variable</h2>
+<h2>Same shot, different words</h2>
 
-<p>Each pair is the identical beat, identical references, identical camera direction. The only thing that changes is whether the prompt names the children.</p>
+<p>Each pair below is the same beat, same reference images, same camera direction. The one thing I changed is whether the prompt says these are children.</p>
 
 <div class="dl-wide">
 
@@ -175,7 +177,7 @@
             <div class="dl-cell">
                 <div class="dl-cell__head"><span class="dl-cell__label">(a) depersonalised</span><span class="dl-chip dl-chip--pass">generated</span><span class="dl-cell__cost">$0.1143</span></div>
                 <video controls preload="none" playsinline poster="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/A-policecar-depersonalised_frame.png" src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/A-policecar-depersonalised.mp4"></video>
-                <p>"Two small figures sit alone behind the clear barrier&hellip;" The model gave back an ordinary car rather than a police car &mdash; a fidelity miss, not a filter effect.</p>
+                <p>"Two small figures sit alone behind the clear barrier&hellip;" What came back is an ordinary car, no barrier. That's the model missing the brief, not the filter doing anything.</p>
             </div>
             <div class="dl-cell dl-cell--blocked">
                 <div class="dl-cell__head"><span class="dl-cell__label">(b) child-explicit</span><span class="dl-chip dl-chip--fail">blocked</span></div>
@@ -232,7 +234,7 @@
                 <p>"Leo, a 5-year-old boy, stands alone in the open&hellip;" with "small child" and "dinosaur" in the same sentence.</p>
             </div>
         </div>
-        <p class="dl-pair__verdict">A named five-year-old making himself a predator's target. Generated without complaint.</p>
+        <p class="dl-pair__verdict">A named five-year-old making himself a predator's target. Generated first try.</p>
     </article>
 
     <article class="dl-pair">
@@ -268,14 +270,14 @@
                 <p>Children, named and aged, alone in a police facility at night, physically escaping custody.</p>
             </div>
         </div>
-        <p class="dl-pair__verdict">The strongest single result: escape from police custody, generated.</p>
+        <p class="dl-pair__verdict">Kids escaping police custody. Generated.</p>
     </article>
 
 </div>
 
-<h2>The capability test &mdash; can it do the job at all?</h2>
+<h2>Does it work at all?</h2>
 
-<p>Before any of the safety work, a cheap probe at 360p to find out whether the model does what the pipeline needs.</p>
+<p>All of that came after a cheaper question. I ran four clips at 360p to see whether the model can do the things my pipeline needs.</p>
 
 <div class="dl-wide">
 
@@ -285,8 +287,8 @@
             <div class="dl-card__v"><video controls preload="none" playsinline poster="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G3_image_to_video_frame.png" src="https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G3_image_to_video.mp4"></video></div>
             <div class="dl-card__d">
                 <h3>Does the safety filter block child characters?</h3>
-                <p><span class="dl-chip dl-chip--pass">No &mdash; on a calm beat</span></p>
-                <p>The first safety result, from one calm living-room panel. It was right about danger and wrong to generalise &mdash; Scenario A is what it missed.</p>
+                <p><span class="dl-chip dl-chip--pass">Not on a calm beat</span></p>
+                <p>My first safety result, off one calm living-room panel. It was right about danger. It was also the reason I nearly stopped looking, and Scenario A is what that would have missed.</p>
             </div>
         </div>
     </article>
@@ -298,7 +300,7 @@
             <div class="dl-card__d">
                 <h3>Does the storyboard panel hold the composition?</h3>
                 <p><span class="dl-chip dl-chip--pass">Yes, strongly</span></p>
-                <p>First-frame anchoring &mdash; the capability Omni lacked in the Flow UI. Couch, Jenny's chair screen-right, storm window and dinosaur toys all carry over from the validated panel.</p>
+                <p>First-frame anchoring, which Omni couldn't do in the Flow UI. The couch, Jenny's chair screen-right, the storm window and the dinosaur toys all survive from the validated panel.</p>
             </div>
         </div>
     </article>
@@ -310,7 +312,7 @@
             <div class="dl-card__d">
                 <h3>Do the locked turnarounds carry identity?</h3>
                 <p><span class="dl-chip dl-chip--mixed">Identity yes. Costume no.</span></p>
-                <p>Mia and Leo read as our characters, but Leo arrives in a green tee instead of dinosaur pajamas. Reference images carry identity, not wardrobe.</p>
+                <p>Mia and Leo read as our characters. Leo turns up in a green tee instead of his dinosaur pajamas, though, so the references carry identity but nothing about costume.</p>
             </div>
         </div>
     </article>
@@ -322,7 +324,7 @@
             <div class="dl-card__d">
                 <h3>Can the audio track be switched off?</h3>
                 <p><span class="dl-chip dl-chip--fail">No. There is no parameter.</span></p>
-                <p>This came back near-silent, which looked like the prompt instruction working. It wasn't &mdash; only shots with nobody in them come back quiet.</p>
+                <p>This came back near-silent and I took it for the prompt instruction working. It wasn't. Only the shots with nobody in them come back quiet.</p>
             </div>
         </div>
     </article>
@@ -334,7 +336,7 @@
             <div class="dl-card__d">
                 <h3>How many reference images will it take?</h3>
                 <p><span class="dl-chip dl-chip--pass">At least 12</span></p>
-                <p>Unplanned, and billed. Published sources say 3, 6 or 7 &mdash; all wrong. We can feed it the whole cast at once.</p>
+                <p>Unplanned, and billed. Published sources say the cap is 3, or 6, or 7. All wrong. I can hand it the whole cast at once.</p>
             </div>
         </div>
     </article>
@@ -355,17 +357,17 @@
 </table>
 </div>
 
-<p>Billing is per output token, not per second of video &mdash; 1,931 video tokens per second at 360p, which works out to about $0.034/s measured.</p>
+<p>Billing runs on output tokens rather than seconds of video. At 360p a clip costs 1,931 video tokens per second, which measured out to about $0.034/s.</p>
 
-<h2>Three caveats</h2>
+<h2>What this doesn't prove</h2>
 
-<ul>
-    <li><strong>360p is the draft tier, chosen to be cheap.</strong> These prove the API does what the pipeline needs. They are not a sample of finish quality.</li>
-    <li><strong>Twelve data points do not map a filter boundary.</strong> The vehicle-versus-facility line is what I measured, not a law, and it can move without notice. Scene 17 &mdash; the other car scene &mdash; is still untested. The pipeline needs a blocked-shot handler regardless of which wording policy I adopt.</li>
-    <li><strong>Turn the sound on.</strong> Every clip was told "No dialogue. No music. Silent." and every one carries an audio track anyway. Shots with people come back loud; empty rooms come back quiet. Audio gets stripped on ingest, unconditionally.</li>
-</ul>
+<p>Twelve clips is not a map of anything. The vehicle-versus-building line is what I measured on one afternoon, and Google can move it whenever they like without telling me. Scene 17 is the other car scene and I still haven't tested it. Whatever wording policy I settle on, the pipeline needs to catch a 400 and stop, rather than assume every shot comes back.</p>
 
-<p>The narrative version of the first probe, including the two clips I paid for by mistake, is in <a href="the-filter-that-didnt-fire-aug-28.html">The Filter That Didn't Fire</a>.</p>
+<p>These are all 360p because 360p is cheap. They show the API doing what I need it to do. They are not what the film looks like.</p>
+
+<p>And the audio problem is real. There is no parameter for it. Shots with people in them come back loud no matter what the prompt says, so everything gets an unconditional strip on the way in.</p>
+
+<p>I wrote up the first probe at length, including the two clips I paid for by accident, in <a href="the-filter-that-didnt-fire-aug-28.html">The Filter That Didn't Fire</a>.</p>
 
                     </div>
                 </div>
