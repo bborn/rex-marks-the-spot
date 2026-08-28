@@ -90,6 +90,7 @@ def create_generator(model: str, **kwargs) -> VideoGenerator:
     Supported model names:
         - "veo-2", "veo-3", "veo-3.1" -> VeoGenerator
         - "p-video", "p-video-draft"   -> PVideoGenerator
+        - "omni-flash", "omni-flash-preview" -> OmniFlashGenerator
 
     Args:
         model: Model identifier string.
@@ -123,9 +124,15 @@ def _ensure_registry():
 
     from video.veo_generator import VeoGenerator
     from video.pvideo_generator import PVideoGenerator
+    from video.omni_flash import OmniFlashGenerator
 
     _register("veo-2", VeoGenerator, model_variant="veo-2")
     _register("veo-3", VeoGenerator, model_variant="veo-3-generate-preview")
     _register("veo-3.1", VeoGenerator, model_variant="veo-3.1-generate-preview")
     _register("p-video", PVideoGenerator, draft=False)
     _register("p-video-draft", PVideoGenerator, draft=True)
+    _register("omni-flash", OmniFlashGenerator, model_variant="gemini-omni-1.1-flash")
+    _register(
+        "omni-flash-preview", OmniFlashGenerator,
+        model_variant="gemini-omni-flash-preview",
+    )
