@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-28T09:21:05.873257Z",
-  "totalAssets": 1543,
+  "generated": "2026-08-28T16:19:42.962922Z",
+  "totalAssets": 1567,
   "categories": {
     "Characters": 388,
     "Other": 133,
+    "Animatics": 127,
     "Storyboards": 823,
-    "Animatics": 103,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-08-28T09:21:05.854788170Z",
+      "modTime": "2026-08-28T16:19:42.944253508Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-08-28T09:21:05.854788170Z",
+      "modTime": "2026-08-28T16:19:42.944253508Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-08-28T09:21:05.854788170Z",
+      "modTime": "2026-08-28T16:19:42.944253508Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,225 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-08-28T09:21:05.854788170Z",
+      "modTime": "2026-08-28T16:19:42.944253508Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/omni-phase06-police/S22-chair-ram-child-explicit_frame.png",
+      "name": "S22-chair-ram-child-explicit_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase06-police/S22-chair-ram-child-explicit_frame.png",
+      "size": 207349,
+      "modTime": "2026-08-28T14:02:03.864803188Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase06-police/S22-chair-ram-child-explicit.mp4",
+      "name": "S22-chair-ram-child-explicit.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase06-police/S22-chair-ram-child-explicit.mp4",
+      "size": 312336,
+      "modTime": "2026-08-28T14:02:03.862803182Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-phase06-police/S20-conference-room-child-explicit_frame.png",
+      "name": "S20-conference-room-child-explicit_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase06-police/S20-conference-room-child-explicit_frame.png",
+      "size": 214393,
+      "modTime": "2026-08-28T14:02:03.860803177Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase06-police/S20-conference-room-child-explicit.mp4",
+      "name": "S20-conference-room-child-explicit.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase06-police/S20-conference-room-child-explicit.mp4",
+      "size": 269225,
+      "modTime": "2026-08-28T14:02:03.859803174Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/C-jeopardy-child-explicit_frame.png",
+      "name": "C-jeopardy-child-explicit_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/C-jeopardy-child-explicit_frame.png",
+      "size": 451091,
+      "modTime": "2026-08-28T13:38:37.316100363Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/C-jeopardy-child-explicit.mp4",
+      "name": "C-jeopardy-child-explicit.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/C-jeopardy-child-explicit.mp4",
+      "size": 547666,
+      "modTime": "2026-08-28T13:38:37.314100341Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/C-jeopardy-depersonalised_frame.png",
+      "name": "C-jeopardy-depersonalised_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/C-jeopardy-depersonalised_frame.png",
+      "size": 445127,
+      "modTime": "2026-08-28T13:38:37.309100285Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/C-jeopardy-depersonalised.mp4",
+      "name": "C-jeopardy-depersonalised.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/C-jeopardy-depersonalised.mp4",
+      "size": 635129,
+      "modTime": "2026-08-28T13:38:37.307100262Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/B-family-flee-child-explicit_frame.png",
+      "name": "B-family-flee-child-explicit_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/B-family-flee-child-explicit_frame.png",
+      "size": 476692,
+      "modTime": "2026-08-28T13:38:37.302100206Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/B-family-flee-child-explicit.mp4",
+      "name": "B-family-flee-child-explicit.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/B-family-flee-child-explicit.mp4",
+      "size": 951534,
+      "modTime": "2026-08-28T13:38:37.300100183Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/B-family-flee-depersonalised_frame.png",
+      "name": "B-family-flee-depersonalised_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/B-family-flee-depersonalised_frame.png",
+      "size": 530308,
+      "modTime": "2026-08-28T13:38:37.294100115Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/B-family-flee-depersonalised.mp4",
+      "name": "B-family-flee-depersonalised.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/B-family-flee-depersonalised.mp4",
+      "size": 1135582,
+      "modTime": "2026-08-28T13:38:37.292100093Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/A-policecar-depersonalised_frame.png",
+      "name": "A-policecar-depersonalised_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/A-policecar-depersonalised_frame.png",
+      "size": 290314,
+      "modTime": "2026-08-28T13:38:37.287100037Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-phase05-safety/A-policecar-depersonalised.mp4",
+      "name": "A-policecar-depersonalised.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-phase05-safety/A-policecar-depersonalised.mp4",
+      "size": 241078,
+      "modTime": "2026-08-28T13:38:37.284100003Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/PROBE_12refs_frame.png",
+      "name": "PROBE_12refs_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/PROBE_12refs_frame.png",
+      "size": 366428,
+      "modTime": "2026-08-28T12:41:08.731207144Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G4_reference_to_video_frame.png",
+      "name": "G4_reference_to_video_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G4_reference_to_video_frame.png",
+      "size": 292876,
+      "modTime": "2026-08-28T12:41:08.608205803Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G3_image_to_video_frame.png",
+      "name": "G3_image_to_video_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G3_image_to_video_frame.png",
+      "size": 395761,
+      "modTime": "2026-08-28T12:41:08.488204494Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G2_image_to_video_frame.png",
+      "name": "G2_image_to_video_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G2_image_to_video_frame.png",
+      "size": 409833,
+      "modTime": "2026-08-28T12:41:08.363203130Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G1_text_to_video_frame.png",
+      "name": "G1_text_to_video_frame.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G1_text_to_video_frame.png",
+      "size": 240455,
+      "modTime": "2026-08-28T12:41:08.250201898Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G4_reference_to_video.mp4",
+      "name": "G4_reference_to_video.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G4_reference_to_video.mp4",
+      "size": 418064,
+      "modTime": "2026-08-28T12:40:53.464040599Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G2_image_to_video.mp4",
+      "name": "G2_image_to_video.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G2_image_to_video.mp4",
+      "size": 751484,
+      "modTime": "2026-08-28T12:40:25.998740799Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G3_image_to_video.mp4",
+      "name": "G3_image_to_video.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G3_image_to_video.mp4",
+      "size": 1420278,
+      "modTime": "2026-08-28T12:39:02.248824961Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/PROBE_12refs.mp4",
+      "name": "PROBE_12refs.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/PROBE_12refs.mp4",
+      "size": 1080956,
+      "modTime": "2026-08-28T12:37:19.996702897Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/omni-1.1-flash-phase0/G1_text_to_video.mp4",
+      "name": "G1_text_to_video.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/omni-1.1-flash-phase0/G1_text_to_video.mp4",
+      "size": 769401,
+      "modTime": "2026-08-28T12:35:54.533761144Z",
+      "category": "Animatics",
+      "type": "video"
     },
     {
       "path": "orchestrator-runs/scene-01-1A/shot-1A-v3.mp4",
