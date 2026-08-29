@@ -1,0 +1,152 @@
+{
+  "_comment": "Locked identity attribute sheet: each character's turnaround expressed in the validator's fixed vocabularies. DRAFTED by `shot_validator.py build-sheets` and then CORRECTED BY A HUMAN against the turnarounds. Treat it as a bible artifact - changing a row changes what the validator considers on-model.",
+  "_vocabularies": {
+    "hair_colour": [
+      "blonde",
+      "light_brown",
+      "dark_brown",
+      "black",
+      "red_auburn",
+      "grey_white"
+    ],
+    "hair_length": [
+      "cropped",
+      "short",
+      "chin",
+      "shoulder",
+      "mid_back",
+      "longer"
+    ],
+    "hair_texture": [
+      "straight",
+      "wavy",
+      "curly",
+      "tightly_curled"
+    ],
+    "build": [
+      "child",
+      "slim",
+      "average",
+      "heavy_set",
+      "stocky"
+    ],
+    "eyewear": [
+      "none",
+      "thin_wire_round",
+      "thin_wire_rectangular",
+      "heavy_dark_round",
+      "heavy_dark_rectangular",
+      "other"
+    ],
+    "facial_hair": [
+      "clean_shaven",
+      "stubble",
+      "moustache",
+      "full_beard"
+    ],
+    "apparent_age": [
+      "toddler",
+      "child",
+      "teenager",
+      "adult",
+      "older_adult"
+    ],
+    "skin_tone": [
+      "pale",
+      "light",
+      "tan",
+      "medium_brown",
+      "deep_brown"
+    ],
+    "hair_styling": [
+      "worn_loose",
+      "ponytail",
+      "bun_or_updo",
+      "braid",
+      "tied_back",
+      "not_visible"
+    ],
+    "face_shape": [
+      "round",
+      "oval",
+      "long_and_narrow",
+      "square",
+      "heart"
+    ]
+  },
+  "characters": {
+    "Gabe": {
+      "hair_colour": "dark_brown",
+      "hair_length": "short",
+      "hair_texture": "wavy",
+      "build": "heavy_set",
+      "eyewear": "thin_wire_rectangular",
+      "facial_hair": "stubble",
+      "apparent_age": "adult",
+      "skin_tone": "light",
+      "hair_styling": "worn_loose",
+      "face_shape": "round"
+    },
+    "Jenny": {
+      "hair_colour": "dark_brown",
+      "hair_length": "mid_back",
+      "hair_texture": "curly",
+      "build": "slim",
+      "eyewear": "none",
+      "facial_hair": "clean_shaven",
+      "apparent_age": "teenager",
+      "skin_tone": "medium_brown",
+      "hair_styling": "ponytail",
+      "face_shape": "oval"
+    },
+    "Leo": {
+      "hair_colour": "blonde",
+      "hair_length": "short",
+      "hair_texture": "wavy",
+      "build": "child",
+      "eyewear": "none",
+      "facial_hair": "clean_shaven",
+      "apparent_age": "child",
+      "skin_tone": "light",
+      "hair_styling": "worn_loose",
+      "face_shape": "round"
+    },
+    "Mia": {
+      "hair_colour": "dark_brown",
+      "hair_length": "mid_back",
+      "hair_texture": "curly",
+      "build": "child",
+      "eyewear": "none",
+      "facial_hair": "clean_shaven",
+      "apparent_age": "child",
+      "skin_tone": "tan",
+      "hair_styling": "ponytail",
+      "face_shape": "round"
+    },
+    "Nina": {
+      "hair_colour": "red_auburn",
+      "hair_length": "shoulder",
+      "hair_texture": "wavy",
+      "build": "average",
+      "eyewear": "none",
+      "facial_hair": "clean_shaven",
+      "apparent_age": "adult",
+      "skin_tone": "light",
+      "hair_styling": "worn_loose",
+      "face_shape": "round"
+    }
+  },
+  "_review": {
+    "reviewed_by": "human review pass, 2026-08-29, against the locked turnarounds",
+    "corrections": {
+      "Gabe.face_shape": "oval -> round (full, round face in the turnaround)",
+      "Jenny.build": "average -> slim",
+      "Jenny.face_shape": "round -> oval",
+      "Leo.hair_texture": "curly -> wavy (tousled, not curled)",
+      "Mia.skin_tone": "light -> tan"
+    },
+    "left_alone": {
+      "Nina.build": "kept at 'average'. She reads fuller than slim and lighter than Gabe's heavy_set, and the ladder has no rung between. Promoting her to heavy_set would make the v4 1D panel fail on build - the answer we wanted - so it was not done. See the known miss in docs/research/identity-validator-repair.md."
+    }
+  }
+}

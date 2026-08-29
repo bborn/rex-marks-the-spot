@@ -60,7 +60,13 @@ from typing import Any, Optional
 
 DEFAULT_BACKEND = "claude" if os.environ.get("ANTHROPIC_API_KEY") else "gemini"
 DEFAULT_CLAUDE_MODEL = "claude-sonnet-4-5"
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+# gemini-2.5-flash was the previous default and is NOT fit for this job: on the
+# adversarial control set it returned identity 1.00 on all 11 cases, including
+# one where the wrong person's turnaround was supplied as the reference.
+# gemini-3-flash-preview reproduces the control table exactly, at a comparable
+# price. See scripts/validate/controls/ and
+# docs/research/identity-validator-repair.md.
+DEFAULT_GEMINI_MODEL = "gemini-3-flash-preview"
 
 CREDENTIALS_PATH = Path.home() / ".claude" / ".credentials.json"
 
@@ -70,6 +76,12 @@ PRICING = {
     "claude-haiku-4-5-20251001": {"input": 1.00, "output":  5.00},
     "gemini-2.5-flash":       {"input": 0.30, "output":  2.50},
     "gemini-2.5-pro":         {"input": 1.25, "output": 10.00},
+    # Gemini 3 Flash preview pricing was not published on a rate card we could
+    # cite at the time of writing, so it is estimated at the 2.5 Flash rate.
+    # Token counts are exact in every report; only the dollar conversion is an
+    # assumption. If it turns out to price like 2.5 Pro instead, multiply the
+    # per-image figure by ~4 (still well under a cent a panel).
+    "gemini-3-flash-preview": {"input": 0.30, "output":  2.50},
 }
 
 
@@ -299,6 +311,360 @@ def resolve_location_ref(
 # Vision validation
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Identity: observation-first grading
+#
+# The previous version of this file asked the vision model to look at a
+# turnaround, look at a keyframe, and emit a 0-1 identity score. It returned
+# 1.00 for every character on every shot, including a control where Jenny's
+# turnaround was supplied as the reference for Nina. The notes were boilerplate
+# with the name swapped. See docs/research/identity-validator-repair.md.
+#
+# The model no longer emits an identity score. It fills in two tables of
+# ENUMERATED observations - what the keyframe shows, and what the turnaround
+# shows - and the diff, the classification and the score are computed here, in
+# Python, from those two tables. A grader that never emits a score cannot
+# rubber-stamp one, and every score is now traceable to the two attribute rows
+# it came from.
+# ---------------------------------------------------------------------------
+
+# Each attribute is an ordinal ladder of enumerated values. "distance" is how
+# far apart two observations sit on that ladder; `defining_at` is the distance
+# at which a difference stops being explicable by lighting, pose or framing and
+# starts meaning the character was drawn differently.
+#
+#   defining_at = 1  ->  any difference at all is a design difference
+#   defining_at = 2  ->  one step is drift/lighting, two steps is a design change
+#   defining_at = None -> never defining on its own (pose- and light-sensitive)
+IDENTITY_ATTRIBUTES: list[dict] = [
+    {
+        "key": "hair_colour",
+        "values": ["blonde", "light_brown", "dark_brown", "black", "red_auburn", "grey_white"],
+        # Colour is not a straight ladder: auburn sits beside the browns, not
+        # beside blonde. Adjacency is spelled out instead of implied by order.
+        "adjacency": [
+            ("blonde", "light_brown"),
+            ("light_brown", "dark_brown"),
+            ("dark_brown", "black"),
+            ("light_brown", "red_auburn"),
+            ("red_auburn", "dark_brown"),
+            ("grey_white", "blonde"),
+        ],
+        "defining_at": 2,
+        "hint": ("Colour FAMILY, not exact shade. Warm interior lamplight reads a "
+                 "shade darker than a white-background turnaround."),
+    },
+    {
+        "key": "hair_length",
+        "values": ["cropped", "short", "chin", "shoulder", "mid_back", "longer"],
+        "defining_at": 2,
+        "hint": "Length as worn down, ignoring whether it is currently tied up.",
+    },
+    {
+        "key": "hair_texture",
+        "values": ["straight", "wavy", "curly", "tightly_curled"],
+        "defining_at": 2,
+        "hint": "Straight vs wavy is a styling difference; straight vs curly is not.",
+    },
+    {
+        "key": "build",
+        "values": ["child", "slim", "average", "heavy_set", "stocky"],
+        "defining_at": 2,
+        "hint": "Body type as drawn, not as flattered by the costume.",
+    },
+    {
+        "key": "eyewear",
+        "values": ["none", "thin_wire_round", "thin_wire_rectangular",
+                   "heavy_dark_round", "heavy_dark_rectangular", "other"],
+        "defining_at": 1,
+        "hint": ("Glasses are a character design element, not a lighting effect. "
+                 "Report 'none' only if you can see the face and there are none."),
+    },
+    {
+        "key": "facial_hair",
+        "values": ["clean_shaven", "stubble", "moustache", "full_beard"],
+        "defining_at": 1,
+        "hint": "Only fill this in for adult male characters; use clean_shaven otherwise.",
+    },
+    {
+        "key": "apparent_age",
+        "values": ["toddler", "child", "teenager", "adult", "older_adult"],
+        # Defining at one step. These bands are wide and read reliably, and the
+        # cast depends on them: with age tolerant, Mia's locked row and Jenny's
+        # scored 0.75 against each other - an 8-year-old and a 15-year-old the
+        # validator could not tell apart. Caught by
+        # test_locked_cast_is_pairwise_distinguishable.
+        "defining_at": 1,
+        "hint": ("Band, not exact years: a 5-year-old is 'child', not "
+                 "'toddler'; a 15-year-old is 'teenager', not 'adult'."),
+    },
+    {
+        "key": "skin_tone",
+        "values": ["pale", "light", "tan", "medium_brown", "deep_brown"],
+        "defining_at": 2,
+        "hint": "One step is lighting. Two steps is a different character.",
+    },
+    {
+        "key": "hair_styling",
+        "values": ["worn_loose", "ponytail", "bun_or_updo", "braid", "tied_back", "not_visible"],
+        "defining_at": None,
+        "hint": "Hair goes up and down between shots; this can never fail a character on its own.",
+    },
+    {
+        "key": "face_shape",
+        "values": ["round", "oval", "long_and_narrow", "square", "heart"],
+        "defining_at": None,
+        "hint": "Reads differently at different angles; never failing on its own.",
+    },
+]
+
+_ATTR_BY_KEY = {a["key"]: a for a in IDENTITY_ATTRIBUTES}
+
+# Verdict ladder. The gate elsewhere in this file passes at >= 0.6, so exactly
+# one defining mismatch is enough to fail a character - which is the point.
+IDENTITY_VERDICT_SCORES = {
+    "same_character": 1.0,
+    "minor_drift": 0.75,
+    "significant_drift": 0.4,
+    "different_person": 0.1,
+    "not_visible": 0.0,
+}
+
+
+def _attr_distance(attr: dict, a: str, b: str) -> Optional[int]:
+    """Ordinal distance between two observations of one attribute.
+
+    Returns None when either value is outside the enum (the model wrote
+    something we did not offer), which callers treat as "cannot compare".
+    """
+    if a == b:
+        return 0
+    vals = attr["values"]
+    if a not in vals or b not in vals:
+        return None
+    if "adjacency" in attr:
+        # Breadth-first over the declared adjacency graph.
+        edges: dict[str, set[str]] = {v: set() for v in vals}
+        for x, y in attr["adjacency"]:
+            edges[x].add(y)
+            edges[y].add(x)
+        seen = {a}
+        frontier = [a]
+        dist = 0
+        while frontier:
+            dist += 1
+            nxt = []
+            for node in frontier:
+                for peer in edges[node]:
+                    if peer in seen:
+                        continue
+                    if peer == b:
+                        return dist
+                    seen.add(peer)
+                    nxt.append(peer)
+            frontier = nxt
+        return len(vals)  # unreachable in the graph == maximally far apart
+    return abs(vals.index(a) - vals.index(b))
+
+
+def score_identity(
+    frame_obs: dict[str, dict],
+    ref_obs: dict[str, dict],
+    expected: list[str],
+) -> dict[str, dict]:
+    """Diff the two observation tables and score each character, in Python.
+
+    ``frame_obs`` and ``ref_obs`` are name -> {attribute: enum value}. The
+    returned dict keeps the shape the rest of this module and the pipeline
+    orchestrator already consume (score / notes / no_reference) and adds the
+    evidence the score was derived from.
+    """
+    out: dict[str, dict] = {}
+    for name in expected:
+        fr = frame_obs.get(name)
+        rf = ref_obs.get(name)
+        if not fr or not fr.get("_visible", True):
+            out[name] = {
+                "score": 0.0,
+                "notes": "not visible in this keyframe - identity not compared "
+                         "(absence is scored by character_presence)",
+                "no_reference": True,
+                "verdict": "not_visible",
+                "defining_mismatches": [],
+                "soft_mismatches": [],
+                "frame_attributes": fr or {},
+                "reference_attributes": rf or {},
+            }
+            continue
+        if not rf or all(v is None for v in rf.values()):
+            out[name] = {
+                "score": 0.0,
+                "notes": "no locked identity sheet for this character - "
+                         "identity NOT VERIFIED (this is a gap in the bible, "
+                         "not a pass)",
+                "no_reference": True,
+                "verdict": "not_visible",
+                "defining_mismatches": [],
+                "soft_mismatches": [],
+                "frame_attributes": fr,
+                "reference_attributes": {},
+            }
+            continue
+
+        defining: list[str] = []
+        soft: list[str] = []
+        detail: list[str] = []
+        for attr in IDENTITY_ATTRIBUTES:
+            k = attr["key"]
+            a, b = fr.get(k), rf.get(k)
+            if a is None or b is None or a == b:
+                continue
+            d = _attr_distance(attr, a, b)
+            detail.append(f"{k}: turnaround {b} / frame {a}")
+            threshold = attr["defining_at"]
+            if threshold is not None and d is not None and d >= threshold:
+                defining.append(k)
+            else:
+                soft.append(k)
+
+        if defining:
+            verdict = "different_person" if len(defining) >= 2 else "significant_drift"
+        elif soft:
+            verdict = "minor_drift"
+        else:
+            verdict = "same_character"
+
+        if defining:
+            notes = f"off-model on {', '.join(defining)} - " + "; ".join(
+                d for d in detail if d.split(":")[0] in defining
+            )
+        elif soft:
+            notes = "on-model; differs only on pose/lighting-sensitive attributes: " + "; ".join(detail)
+        else:
+            notes = "every compared attribute matches the turnaround"
+
+        out[name] = {
+            "score": IDENTITY_VERDICT_SCORES[verdict],
+            "notes": notes[:400],
+            "no_reference": False,
+            "verdict": verdict,
+            "defining_mismatches": defining,
+            "soft_mismatches": soft,
+            "frame_attributes": {a["key"]: fr.get(a["key"]) for a in IDENTITY_ATTRIBUTES},
+            "reference_attributes": {a["key"]: rf.get(a["key"]) for a in IDENTITY_ATTRIBUTES},
+        }
+    return out
+
+
+def _identity_attr_schema(with_hints: bool) -> dict:
+    props = {}
+    for attr in IDENTITY_ATTRIBUTES:
+        entry: dict = {"type": "string", "enum": list(attr["values"])}
+        if with_hints and attr.get("hint"):
+            entry["description"] = attr["hint"]
+        props[attr["key"]] = entry
+    return props
+
+
+def _identity_prompt_block(char_hints: dict[str, str]) -> str:
+    lines = [
+        "IDENTITY - how it is graded (read this before you fill anything in):",
+        "",
+        "  You do NOT score identity, and you are NOT shown the character",
+        "  turnarounds. You record ONE table - what each character actually",
+        "  looks like in the KEYFRAME UNDER TEST - and the validator compares",
+        "  that table against the locked turnaround sheet itself. There is no",
+        "  score for you to agree with and no reference for you to agree with.",
+        "  Recording the wrong observation is the only way to get this wrong.",
+        "",
+        "  frame_observations: one entry per manifest character. Fill in every",
+        "  attribute from THIS IMAGE, for the figure that is meant to be that",
+        "  character. Write down what is drawn, not what the character is",
+        "  supposed to look like. If a manifest character is not in the frame,",
+        "  set visible=false; the attributes are then ignored.",
+        "",
+        "  Who is who in this frame:",
+    ]
+    for name, hint in char_hints.items():
+        lines.append(f"    - {name}: {hint}")
+    lines += [
+        "",
+        "  Fixed vocabularies. Pick the closest listed value:",
+    ]
+    for attr in IDENTITY_ATTRIBUTES:
+        lines.append(f"    {attr['key']}: {' | '.join(attr['values'])}")
+        if attr.get("hint"):
+            lines.append(f"      {attr['hint']}")
+    lines += [
+        "",
+        "  CLOTHING IS NOT AN IDENTITY ATTRIBUTE and is not in this table. It",
+        "  is scored separately against the manifest, above.",
+        "",
+        "  These are generated images and characters DO drift off-model - that",
+        "  is the entire reason this check exists. An earlier version of this",
+        "  validator was shown the turnarounds and asked for a score; it",
+        "  returned a perfect identity score on every character of every shot,",
+        "  including a control where the wrong person's turnaround was supplied",
+        "  as the reference. You are not being asked to agree with anything.",
+        "  Describe the frame.",
+    ]
+    return "\n".join(lines)
+
+
+# The locked reference rows. Each is a character's turnaround expressed in the
+# vocabulary above - a bible artifact in exactly the sense CLAUDE.md means, and
+# reviewed by a human like any other locked reference. Build a first draft with
+#
+#     python scripts/validate/shot_validator.py build-sheets \
+#         --characters-dir <dir of turnarounds> --out <path>
+#
+# then READ IT AGAINST THE TURNAROUNDS and correct it before committing. The
+# validator can only be as right as this file.
+DEFAULT_IDENTITY_SHEET = Path(__file__).resolve().parent / "identity-sheets.json"
+
+
+def _repo_relative(p: Path) -> str:
+    """Path relative to the repo root when possible, so reports are portable."""
+    try:
+        return str(Path(p).resolve().relative_to(Path(__file__).resolve().parents[2]))
+    except ValueError:
+        return str(p)
+
+
+def load_identity_sheets(path: Optional[Path] = None) -> dict[str, dict]:
+    """Load the locked per-character attribute rows.
+
+    Returns name -> {attribute: value}. Missing file or missing character is
+    not an error here; it surfaces downstream as no_reference, i.e. "identity
+    was not verified", which is not the same thing as a pass.
+    """
+    p = path or DEFAULT_IDENTITY_SHEET
+    if not p.exists():
+        return {}
+    blob = json.loads(p.read_text())
+    sheets = blob.get("characters", blob)
+    out: dict[str, dict] = {}
+    for name, row in sheets.items():
+        if not isinstance(row, dict):
+            continue
+        out[name] = {a["key"]: row.get(a["key"]) for a in IDENTITY_ATTRIBUTES}
+    return out
+
+
+def validate_identity_sheet(sheets: dict[str, dict]) -> list[str]:
+    """Return a list of problems with a sheet file (unknown enum values, gaps)."""
+    problems: list[str] = []
+    for name, row in sheets.items():
+        for attr in IDENTITY_ATTRIBUTES:
+            v = row.get(attr["key"])
+            if v is None:
+                problems.append(f"{name}.{attr['key']} is missing")
+            elif v not in attr["values"]:
+                problems.append(
+                    f"{name}.{attr['key']}={v!r} is not one of {attr['values']}")
+    return problems
+
+
 # Shared JSON schema for the validation output. Designed to be acceptable by
 # both Anthropic tool-input schemas and Google Gemini response_schemas, which
 # means: no additionalProperties, no patternProperties, and use arrays-of-
@@ -316,29 +682,6 @@ VALIDATION_SCHEMA = {
                 "unexpected": {"type": "array", "items": {"type": "string"}},
             },
             "required": ["score", "expected", "observed", "missing", "unexpected"],
-        },
-        "character_identity": {
-            "type": "array",
-            "description": (
-                "One entry per manifest character. IDENTITY ONLY: score face, "
-                "hair, skin tone, and build against the turnaround. EXPLICITLY "
-                "IGNORE CLOTHING - a character in different clothes whose face "
-                "matches is a full identity match. If you have a turnaround "
-                "and the character is visible, set no_reference=false and "
-                "score the match. If the character is NOT visible in the "
-                "keyframe, set no_reference=true, score=0.0, and explain in "
-                "notes."
-            ),
-            "items": {
-                "type": "object",
-                "properties": {
-                    "name": {"type": "string"},
-                    "score": {"type": "number"},
-                    "notes": {"type": "string", "maxLength": 240},
-                    "no_reference": {"type": "boolean"},
-                },
-                "required": ["name", "score", "notes", "no_reference"],
-            },
         },
         "character_wardrobe": {
             "type": "array",
@@ -366,11 +709,17 @@ VALIDATION_SCHEMA = {
         },
         "location_match": {
             "type": "object",
+            "description": (
+                "Compare the set against the LOCATION PLATE. If no location "
+                "plate image was supplied, set no_reference=true - there is "
+                "nothing to compare against and a score would be invented."
+            ),
             "properties": {
                 "score": {"type": "number"},
                 "notes": {"type": "string"},
+                "no_reference": {"type": "boolean"},
             },
-            "required": ["score", "notes"],
+            "required": ["score", "notes", "no_reference"],
         },
         "continuity": {
             "type": "object",
@@ -391,17 +740,21 @@ VALIDATION_SCHEMA = {
             },
             "required": ["score", "notes", "detected"],
         },
-        "overall_pass": {"type": "boolean"},
         "reasons": {
             "type": "array",
             "maxItems": 6,
             "items": {"type": "string", "maxLength": 240},
-            "description": "Specific human-readable failure reasons. Empty if pass.",
+            "description": (
+                "Anything wrong with this keyframe that the numeric rubric "
+                "above does not already capture. The pass/fail gate is "
+                "computed by the validator from the scores, not from this "
+                "list, so there is nothing to be gained by leaving it empty."
+            ),
         },
     },
     "required": [
-        "character_presence", "character_identity", "character_wardrobe",
-        "location_match", "continuity", "artifacts", "overall_pass", "reasons",
+        "character_presence", "character_wardrobe",
+        "location_match", "continuity", "artifacts", "reasons",
     ],
 }
 
@@ -416,29 +769,120 @@ VALIDATION_TOOL = {
 }
 
 
-def _normalize_identity(raw: Any) -> dict[str, dict]:
-    """Coerce the model's character_identity into a name-keyed dict.
-
-    The schema asks for an array-of-records; older Claude outputs may still
-    use a dict. Accept both.
-    """
-    if isinstance(raw, dict):
-        return raw
-    if isinstance(raw, list):
-        out: dict[str, dict] = {}
-        for entry in raw:
-            if not isinstance(entry, dict):
-                continue
-            name = entry.get("name")
-            if not name:
-                continue
-            out[name] = {
-                "score": entry.get("score", 0.0),
-                "notes": entry.get("notes", ""),
-                "no_reference": bool(entry.get("no_reference", False)),
-            }
+def _obs_table(raw: Any) -> dict[str, dict]:
+    """Coerce an observation array-of-records into a name-keyed dict."""
+    out: dict[str, dict] = {}
+    if not isinstance(raw, list):
         return out
-    return {}
+    for entry in raw:
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get("name")
+        if not name:
+            continue
+        row = {a["key"]: entry.get(a["key"]) for a in IDENTITY_ATTRIBUTES}
+        row["_visible"] = bool(entry.get("visible", True))
+        row["_where"] = entry.get("where_in_frame", "")
+        out[name] = row
+    return out
+
+
+# Gate thresholds. These are the ONLY place pass/fail is decided.
+GATE = {
+    "character_presence": 0.7,
+    "character_identity": 0.6,
+    "character_wardrobe": 0.6,
+    "location_match": 0.6,
+    "continuity": 0.6,
+    "artifacts": 0.7,
+}
+
+
+def _gate_keyframe(data: dict, expected: list[str]) -> tuple[bool, list[str]]:
+    """Decide pass/fail for one keyframe from its scores. Never the model's call.
+
+    The previous version took the model's own ``overall_pass`` boolean, which
+    meant a grader that scored everything 1.00 also declared itself passing.
+    """
+    # The model's own free-text notes are kept separately: they are commentary,
+    # not gate findings, and merging them made passing observations show up
+    # under "Failure reasons".
+    data["model_notes"] = list(data.get("reasons") or [])
+    reasons: list[str] = []
+    ok = True
+
+    cp = data.get("character_presence") or {}
+    if float(cp.get("score", 0.0)) < GATE["character_presence"]:
+        ok = False
+        miss = ", ".join(cp.get("missing") or []) or "none"
+        extra = ", ".join(cp.get("unexpected") or []) or "none"
+        reasons.append(f"character_presence {float(cp.get('score', 0.0)):.2f} "
+                       f"(missing: {miss}; unexpected: {extra})")
+
+    for name, info in (data.get("character_identity") or {}).items():
+        if info.get("no_reference"):
+            continue
+        if float(info.get("score", 0.0)) < GATE["character_identity"]:
+            ok = False
+            reasons.append(
+                f"{name} identity {float(info['score']):.2f} "
+                f"({info.get('verdict', '?')}): {info.get('notes', '')}")
+
+    for name, info in (data.get("character_wardrobe") or {}).items():
+        if info.get("no_reference"):
+            continue
+        if float(info.get("score", 0.0)) < GATE["character_wardrobe"]:
+            ok = False
+            reasons.append(
+                f"{name} wardrobe {float(info['score']):.2f} vs manifest "
+                f"'{info.get('expected', '')}': {info.get('notes', '')}")
+
+    lm = data.get("location_match") or {}
+    if lm.get("no_reference"):
+        reasons.append("location not verified: no location plate was supplied "
+                       "for this shot (this is a gap in the bible, not a pass)")
+    elif float(lm.get("score", 0.0)) < GATE["location_match"]:
+        ok = False
+        reasons.append(f"location_match {float(lm.get('score', 0.0)):.2f}: {lm.get('notes', '')}")
+
+    cn = data.get("continuity") or {}
+    if not cn.get("no_prior_shot") and float(cn.get("score", 0.0)) < GATE["continuity"]:
+        ok = False
+        reasons.append(f"continuity {float(cn.get('score', 0.0)):.2f}: {cn.get('notes', '')}")
+
+    ar = data.get("artifacts") or {}
+    if float(ar.get("score", 0.0)) < GATE["artifacts"]:
+        ok = False
+        det = ", ".join(ar.get("detected") or []) or "unspecified"
+        reasons.append(f"artifacts {float(ar.get('score', 0.0)):.2f} ({det})")
+
+    # Dedupe, keep order.
+    seen: list[str] = []
+    for r in reasons:
+        if r not in seen:
+            seen.append(r)
+    return ok, seen[:8]
+
+
+def _postprocess_keyframe(data: dict, expected: list[str],
+                          sheets: dict[str, dict],
+                          frame_obs: Optional[dict[str, dict]] = None) -> dict:
+    """Turn one raw model response into the validator's keyframe record.
+
+    This is where identity stops being something the model asserts and starts
+    being something the validator computes: the model's frame observations are
+    diffed against the locked attribute sheet in Python.
+    """
+    frame_obs = frame_obs if frame_obs is not None else _obs_table(
+        data.pop("frame_observations", None))
+    data["character_identity"] = score_identity(frame_obs, sheets, expected)
+    data["character_wardrobe"] = _normalize_wardrobe(data.get("character_wardrobe"))
+    data["_frame_observations"] = frame_obs
+    data["_identity_sheet_rows"] = {n: sheets.get(n) for n in expected}
+    if "no_reference" not in (data.get("location_match") or {}):
+        data.setdefault("location_match", {})["no_reference"] = False
+    data["overall_pass"], data["reasons"] = _gate_keyframe(data, expected)
+    return data
 
 
 def _normalize_wardrobe(raw: Any) -> dict[str, dict]:
@@ -516,13 +960,6 @@ def _build_prompt(
         ])
     parts.append("REFERENCE IMAGES PROVIDED, IN ORDER:")
 
-    for name, path in char_refs.items():
-        parts.append(
-            f"  - CHARACTER TURNAROUND for {name} (IDENTITY ONLY: face, hair, "
-            f"skin tone, build). The clothing in the turnaround is NOT a "
-            f"wardrobe spec - it is just whatever {name} happened to be wearing "
-            f"on the day the turnaround was drawn."
-        )
     if wardrobe_refs:
         for name, (_p, desc, src_shot) in wardrobe_refs.items():
             parts.append(
@@ -532,10 +969,9 @@ def _build_prompt(
             )
     if missing_refs:
         parts.append(
-            f"  - NOTE: No turnaround available for: {', '.join(missing_refs)}. "
-            f"For these characters, set no_reference=true and report "
-            f"'no reference available - cannot verify identity'. Do NOT fail "
-            f"the shot on their identity score; rely on the manifest description."
+            f"  - NOTE: no locked identity sheet for: {', '.join(missing_refs)}. "
+            f"Still describe them in frame_observations; the validator will "
+            f"report their identity as unverified rather than as a pass."
         )
     if has_location_ref:
         parts.append("  - LOCATION PLATE (locked set reference for this shot's location)")
@@ -554,20 +990,9 @@ def _build_prompt(
         "      out-of-focus background figures. Be strict: if a person is "
         "      visible at all and not in the expected list, list them in "
         "      'unexpected'.\n"
-        "  character_identity: IDENTITY ONLY - face, hair (color + style), "
-        "    skin tone, build. EXPLICITLY IGNORE CLOTHING. The character may "
-        "    be wearing completely different clothes than in the turnaround, "
-        "    because each shot has its own per-shot wardrobe (see EXPECTED "
-        "    WARDROBE above). A clothing difference between the turnaround "
-        "    and the keyframe MUST NOT lower the identity score and MUST NOT "
-        "    appear in the identity notes as a problem. Judge identity "
-        "    strictly on face, hair, skin tone, and build.\n"
-        "    - 1.0 = unmistakably the same person (face/hair/skin/build "
-        "      match the turnaround); 0.5 = roughly similar but drifted "
-        "      facial features or hair; 0.0 = clearly a different person.\n"
-        "    - If the character is NOT visible in the keyframe, set "
-        "      no_reference=true, score=0.0; do not penalize identity for "
-        "      absence (presence handles missing characters separately).\n"
+        "  identity: NOT SCORED HERE - see the IDENTITY block below. You fill "
+        "    in frame_observations and reference_observations; the validator "
+        "    computes the identity score from them.\n"
         "  character_wardrobe: SOURCE OF TRUTH for this score is the "
         "    EXPECTED WARDROBE block above, which comes from the per-shot "
         "    manifest. The turnaround's clothing is IRRELEVANT and must "
@@ -599,6 +1024,9 @@ def _build_prompt(
         "    - If the character is not visible in the keyframe, set "
         "      no_reference=true, score=0.0.\n"
         "  location_match: Does the set match the location plate? "
+        "    - If NO LOCATION PLATE image is listed in the reference images "
+        "      above, set no_reference=true and score 0.0. Do not score a "
+        "      comparison you were given nothing to compare against.\n"
         "    - Compare furniture, layout, color palette, windows, lighting style.\n"
         "    - For each distinctive landmark in the plate (e.g. a TV, a "
         "      specific couch, a window with a storm visible, an armchair, "
@@ -649,23 +1077,22 @@ def _build_prompt(
     )
     parts.append("")
     parts.append(
-        "PASS/FAIL GATE: Set overall_pass=true only if ALL of:\n"
-        "  - character_presence.score >= 0.7 (no major missing/swapped characters)\n"
-        "  - every visible (no_reference=false) character_identity score >= 0.6\n"
-        "  - every visible (no_reference=false) character_wardrobe score >= 0.6\n"
-        "  - location_match.score >= 0.6\n"
-        "  - continuity.score >= 0.6 (or no_prior_shot=true)\n"
+        "THE PASS/FAIL GATE IS NOT YOURS TO SET. The validator computes it "
+        "from your scores and observations:\n"
+        "  - character_presence.score >= 0.7\n"
+        "  - every visible character's computed identity score >= 0.6\n"
+        "  - every visible character_wardrobe score >= 0.6\n"
+        "  - location_match.score >= 0.6 (skipped if no_reference=true)\n"
+        "  - continuity.score >= 0.6 (skipped if no_prior_shot=true)\n"
         "  - artifacts.score >= 0.7\n"
-        "Otherwise overall_pass=false and the 'reasons' array must contain "
-        "specific, human-readable failure descriptions.\n"
+        "You cannot pass or fail this shot by asserting anything. Report what "
+        "you see; the arithmetic happens elsewhere.\n"
         "\n"
-        "Be HONEST. This is a real production validator; false-pass is worse "
-        "than false-fail. If hair color, hairstyle, or face structure diverges "
-        "from the turnaround, say so explicitly. If the manifest wardrobe is "
-        "violated, say so. But do NOT flag scene-appropriate clothing "
-        "(different from the turnaround but matching the manifest) as an "
-        "identity error - that is the most common false positive and is "
-        "now explicitly disallowed.\n"
+        "Be HONEST. This is a real production validator; a false pass is worse "
+        "than a false fail - a false pass puts off-model art in the finished "
+        "film. Do NOT flag scene-appropriate clothing (different from the "
+        "turnaround but matching the manifest) as a problem; per-shot wardrobe "
+        "is the manifest's job, not the turnaround's.\n"
         "\n"
         "OUTPUT LENGTH RULES (critical, to avoid truncation):\n"
         "  - Every 'notes' field must be a SINGLE sentence, max 200 characters.\n"
@@ -675,6 +1102,12 @@ def _build_prompt(
         "paragraphs.\n"
         "  - Do not repeat the same reason verbatim."
     )
+    parts.append("")
+    parts.append(
+        "IDENTITY is not part of this call at all. It is graded separately, "
+        "from a description of the frame taken with no reference images "
+        "present, diffed in code against the locked turnaround sheet. Do not "
+        "comment on whether characters look like themselves.")
     return "\n".join(parts)
 
 
@@ -693,14 +1126,11 @@ def _build_labeled_images(
     scene established a canonical look for that character + outfit.
     """
     out: list[tuple[str, Path]] = []
-    for name, path in char_refs.items():
-        out.append((
-            f"REFERENCE - {name} TURNAROUND (IDENTITY ONLY - face, hair, "
-            f"skin tone, build). Clothing in this turnaround does NOT define "
-            f"what {name} should be wearing in any specific shot; the manifest "
-            f"wardrobe spec does.",
-            path,
-        ))
+    # Character turnarounds are DELIBERATELY NOT SENT. Attaching them measurably
+    # contaminates the frame observation: with Gabe's turnaround in context the
+    # model reported him wearing his turnaround's glasses and stubble in a clip
+    # where he plainly has neither. Identity is graded against the locked
+    # attribute sheet instead - see load_identity_sheets().
     if wardrobe_refs:
         for name, (path, desc, src_shot) in wardrobe_refs.items():
             out.append((
@@ -763,7 +1193,10 @@ def _validate_keyframe_claude(
     prior_keyframe: Optional[Path],
     prior_shot: Optional[dict] = None,
     wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
+    sheets: Optional[dict[str, dict]] = None,
+    frame_obs: Optional[dict[str, dict]] = None,
 ) -> tuple[dict, dict]:
+    sheets = sheets or {}
     content: list[dict] = []
     for caption, path in _build_labeled_images(
         char_refs, location_ref, prior_keyframe, keyframe, wardrobe_refs=wardrobe_refs,
@@ -785,7 +1218,7 @@ def _validate_keyframe_claude(
     def _do_call():
         return client.messages.create(
             model=model,
-            max_tokens=2048,
+            max_tokens=8192,
             tools=[VALIDATION_TOOL],
             tool_choice={"type": "tool", "name": "report_validation"},
             messages=[{"role": "user", "content": content}],
@@ -804,8 +1237,7 @@ def _validate_keyframe_claude(
             raise RuntimeError(f"Claude did not emit tool call; text was: {text!r}")
         tool_input = json.loads(m.group())
 
-    tool_input["character_identity"] = _normalize_identity(tool_input.get("character_identity"))
-    tool_input["character_wardrobe"] = _normalize_wardrobe(tool_input.get("character_wardrobe"))
+    tool_input = _postprocess_keyframe(tool_input, shot.get("characters") or [], sheets, frame_obs)
     usage = {
         "input_tokens": response.usage.input_tokens,
         "output_tokens": response.usage.output_tokens,
@@ -901,13 +1333,14 @@ def _try_repair_json(text: str) -> Optional[dict]:
             "score": 0.0, "expected": [], "observed": [],
             "missing": [], "unexpected": [],
         },
-        "character_identity": [],
+        "frame_observations": [],
+        "reference_observations": [],
         "character_wardrobe": [],
-        "location_match": {"score": 0.0, "notes": "(missing from truncated output)"},
+        "location_match": {"score": 0.0, "notes": "(missing from truncated output)",
+                            "no_reference": False},
         "continuity": {"score": 0.0, "notes": "(missing from truncated output)",
                         "no_prior_shot": False, "same_location_as_prior": False},
         "artifacts": {"score": 0.0, "notes": "(missing from truncated output)", "detected": []},
-        "overall_pass": False,
         "reasons": ["Model output was truncated; structured fields are incomplete."],
     }
     for k, v in defaults.items():
@@ -940,7 +1373,10 @@ def _validate_keyframe_gemini(
     prior_keyframe: Optional[Path],
     prior_shot: Optional[dict] = None,
     wardrobe_refs: Optional[dict[str, tuple[Path, str, str]]] = None,
+    sheets: Optional[dict[str, dict]] = None,
+    frame_obs: Optional[dict[str, dict]] = None,
 ) -> tuple[dict, dict]:
+    sheets = sheets or {}
     from google.genai import types
 
     parts: list = []
@@ -965,16 +1401,22 @@ def _validate_keyframe_gemini(
     parts.append(prompt)
 
     schema = _strip_gemini_unsupported(VALIDATION_SCHEMA)
-    # Disable thinking on 2.5 models so the entire output budget goes to JSON.
     config_kwargs = dict(
         response_mime_type="application/json",
         response_schema=schema,
         temperature=0.0,
-        max_output_tokens=16384,
+        max_output_tokens=32768,
     )
+    # Thinking: the observation tables are a recall task, not a reasoning one,
+    # and letting a 3.x model think freely cost up to 38k thought tokens on a
+    # single keyframe without improving the answer. Cap it low; on 2.5 models,
+    # which have no thinking_level, disable it outright.
     try:
-        config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
-    except AttributeError:
+        if model.startswith("gemini-3"):
+            config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_level="low")
+        else:
+            config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
+    except (AttributeError, TypeError):
         pass
     config = types.GenerateContentConfig(**config_kwargs)
 
@@ -1012,14 +1454,136 @@ def _validate_keyframe_gemini(
     pair = _call_with_retry(_do_call, label=f"gemini:{shot['shot_id']}")
     response, data = pair
 
-    data["character_identity"] = _normalize_identity(data.get("character_identity"))
-    data["character_wardrobe"] = _normalize_wardrobe(data.get("character_wardrobe"))
+    data = _postprocess_keyframe(data, shot.get("characters") or [], sheets, frame_obs)
     usage_meta = getattr(response, "usage_metadata", None)
     usage = {
         "input_tokens": getattr(usage_meta, "prompt_token_count", 0) or 0,
-        "output_tokens": getattr(usage_meta, "candidates_token_count", 0) or 0,
+        # Thinking tokens are billed as output; count them or the cost estimate
+        # understates by whatever the model spent reasoning.
+        "output_tokens": (getattr(usage_meta, "candidates_token_count", 0) or 0)
+                         + (getattr(usage_meta, "thoughts_token_count", 0) or 0),
     }
     return data, usage
+
+
+
+# The identity observation is a SEPARATE call whose only image is the keyframe.
+# It is kept separate because every reference image we have tried to put in
+# front of the grader has anchored the answer: with Gabe's turnaround in
+# context the model reported his glasses and stubble in a clip where he has
+# neither, and with a prior shot's keyframe in context as a wardrobe reference
+# it read Leo as blonde in a panel where he is brown-haired. The observation
+# call sees the frame and nothing else, so there is nothing to agree with.
+FRAME_OBSERVATION_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "frame_observations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": dict(
+                    {
+                        "name": {"type": "string"},
+                        "visible": {"type": "boolean"},
+                        "where_in_frame": {"type": "string", "maxLength": 120},
+                    },
+                    **_identity_attr_schema(with_hints=True),
+                ),
+                "required": ["name", "visible", "where_in_frame"]
+                + [a["key"] for a in IDENTITY_ATTRIBUTES],
+            },
+        },
+    },
+    "required": ["frame_observations"],
+}
+
+
+def _observe_frame_gemini(client, model: str, keyframe: Path, shot: dict) -> tuple[dict, dict]:
+    from google.genai import types
+
+    block = _encode_image(keyframe)
+    img = types.Part.from_bytes(
+        data=base64.b64decode(block["source"]["data"]),
+        mime_type=block["source"]["media_type"])
+    hints = {}
+    for name in shot.get("characters") or []:
+        wd = (shot.get("wardrobe") or {}).get(name)
+        hints[name] = wd if wd else "(no manifest description; use position and context)"
+    parts = ["KEYFRAME UNDER TEST:", img, _identity_prompt_block(hints)]
+
+    config_kwargs = dict(
+        response_mime_type="application/json",
+        response_schema=_strip_gemini_unsupported(FRAME_OBSERVATION_SCHEMA),
+        temperature=0.0,
+        max_output_tokens=16384,
+    )
+    try:
+        if model.startswith("gemini-3"):
+            config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_level="low")
+        else:
+            config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
+    except (AttributeError, TypeError):
+        pass
+
+    def _do_call():
+        resp = client.models.generate_content(
+            model=model, contents=parts,
+            config=types.GenerateContentConfig(**config_kwargs))
+        text = resp.text or ""
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            data = _try_repair_json(text) or {}
+        return resp, data
+    resp, data = _call_with_retry(_do_call, label=f"observe:{shot.get('shot_id')}")
+    um = getattr(resp, "usage_metadata", None)
+    usage = {
+        "input_tokens": getattr(um, "prompt_token_count", 0) or 0,
+        "output_tokens": ((getattr(um, "candidates_token_count", 0) or 0)
+                          + (getattr(um, "thoughts_token_count", 0) or 0)),
+    }
+    return _obs_table(data.get("frame_observations")), usage
+
+
+def _observe_frame_claude(client, model: str, keyframe: Path, shot: dict) -> tuple[dict, dict]:
+    hints = {}
+    for name in shot.get("characters") or []:
+        wd = (shot.get("wardrobe") or {}).get(name)
+        hints[name] = wd if wd else "(no manifest description; use position and context)"
+    tool = {
+        "name": "report_frame_observations",
+        "description": "Record what each character actually looks like in this keyframe.",
+        "input_schema": FRAME_OBSERVATION_SCHEMA,
+    }
+    content = [
+        {"type": "text", "text": "KEYFRAME UNDER TEST:"},
+        _encode_image(keyframe),
+        {"type": "text", "text": _identity_prompt_block(hints)},
+    ]
+
+    def _do_call():
+        return client.messages.create(
+            model=model, max_tokens=4096, tools=[tool],
+            tool_choice={"type": "tool", "name": "report_frame_observations"},
+            messages=[{"role": "user", "content": content}])
+    resp = _call_with_retry(_do_call, label=f"observe:{shot.get('shot_id')}")
+    payload = {}
+    for b in resp.content:
+        if getattr(b, "type", None) == "tool_use":
+            payload = b.input
+            break
+    return _obs_table(payload.get("frame_observations")), {
+        "input_tokens": resp.usage.input_tokens,
+        "output_tokens": resp.usage.output_tokens,
+    }
+
+
+def observe_frame(backend: str, client, model: str, keyframe: Path, shot: dict):
+    if backend == "claude":
+        return _observe_frame_claude(client, model, keyframe, shot)
+    if backend == "gemini":
+        return _observe_frame_gemini(client, model, keyframe, shot)
+    raise ValueError(f"Unknown backend: {backend}")
 
 
 def _validate_keyframe(
@@ -1078,7 +1642,15 @@ class ShotValidationResult:
 
 
 def _aggregate(per_keyframe: list[dict]) -> tuple[dict, bool, list[str]]:
-    """Average the rubric scores across keyframes; fail if any keyframe fails."""
+    """Aggregate the rubric across keyframes.
+
+    Every headline score is the WORST keyframe, not the mean. A shot in which
+    a character is off-model for one of three keyframes is an off-model shot;
+    averaging 0.10 with two 1.00s produced 0.70 and cleared the 0.60 gate,
+    which is how a real per-keyframe failure used to vanish. Means are still
+    reported alongside, under ``*_mean``, because the spread is informative -
+    but the gate reads the minimum.
+    """
     def avg(key_path: list[str]) -> float:
         vals = []
         for kf in per_keyframe:
@@ -1091,11 +1663,30 @@ def _aggregate(per_keyframe: list[dict]) -> tuple[dict, bool, list[str]]:
                 vals.append(float(cur))
         return sum(vals) / len(vals) if vals else 0.0
 
+    def worst(key_path: list[str]) -> float:
+        vals = []
+        for kf in per_keyframe:
+            cur: Any = kf
+            for k in key_path:
+                cur = cur.get(k) if isinstance(cur, dict) else None
+                if cur is None:
+                    break
+            if isinstance(cur, (int, float)):
+                vals.append(float(cur))
+        return min(vals) if vals else 0.0
+
     aggregate = {
-        "character_presence": round(avg(["character_presence", "score"]), 3),
-        "location_match": round(avg(["location_match", "score"]), 3),
-        "continuity": round(avg(["continuity", "score"]), 3),
-        "artifacts": round(avg(["artifacts", "score"]), 3),
+        "character_presence": round(worst(["character_presence", "score"]), 3),
+        "location_match": round(worst(["location_match", "score"]), 3),
+        "continuity": round(worst(["continuity", "score"]), 3),
+        "artifacts": round(worst(["artifacts", "score"]), 3),
+        "character_presence_mean": round(avg(["character_presence", "score"]), 3),
+        "location_match_mean": round(avg(["location_match", "score"]), 3),
+        "continuity_mean": round(avg(["continuity", "score"]), 3),
+        "artifacts_mean": round(avg(["artifacts", "score"]), 3),
+        "location_no_reference": all(
+            (kf.get("location_match") or {}).get("no_reference") for kf in per_keyframe
+        ) if per_keyframe else True,
     }
 
     # Per-character identity: average across keyframes that scored that character.
@@ -1109,10 +1700,29 @@ def _aggregate(per_keyframe: list[dict]) -> tuple[dict, bool, list[str]]:
             sc = info.get("score")
             if isinstance(sc, (int, float)):
                 id_acc.setdefault(ch, []).append(float(sc))
-    aggregate["character_identity"] = {
+    aggregate["character_identity"] = {ch: round(min(vs), 3) for ch, vs in id_acc.items()}
+    aggregate["character_identity_mean"] = {
         ch: round(sum(vs) / len(vs), 3) for ch, vs in id_acc.items()
     }
     aggregate["character_identity_no_reference"] = sorted(id_no_ref)
+    # The evidence behind the worst keyframe's verdict, so a report can quote it.
+    worst_ev: dict[str, dict] = {}
+    for kf in per_keyframe:
+        for ch, info in (kf.get("character_identity") or {}).items():
+            if info.get("no_reference"):
+                continue
+            sc = float(info.get("score", 0.0))
+            if ch not in worst_ev or sc < worst_ev[ch]["score"]:
+                worst_ev[ch] = {
+                    "score": sc,
+                    "verdict": info.get("verdict"),
+                    "defining_mismatches": info.get("defining_mismatches", []),
+                    "soft_mismatches": info.get("soft_mismatches", []),
+                    "frame_attributes": info.get("frame_attributes", {}),
+                    "reference_attributes": info.get("reference_attributes", {}),
+                    "notes": info.get("notes", ""),
+                }
+    aggregate["character_identity_evidence"] = worst_ev
 
     # Per-character wardrobe: same pattern as identity.
     wd_acc: dict[str, list[float]] = {}
@@ -1129,7 +1739,8 @@ def _aggregate(per_keyframe: list[dict]) -> tuple[dict, bool, list[str]]:
             exp = info.get("expected")
             if exp and ch not in wd_expected:
                 wd_expected[ch] = exp
-    aggregate["character_wardrobe"] = {
+    aggregate["character_wardrobe"] = {ch: round(min(vs), 3) for ch, vs in wd_acc.items()}
+    aggregate["character_wardrobe_mean"] = {
         ch: round(sum(vs) / len(vs), 3) for ch, vs in wd_acc.items()
     }
     aggregate["character_wardrobe_no_reference"] = sorted(wd_no_ref)
@@ -1177,6 +1788,8 @@ def validate_panel(
     backend: str = DEFAULT_BACKEND,
     model: Optional[str] = None,
     client=None,
+    identity_sheet: Optional[Path] = None,
+    sheets: Optional[dict[str, dict]] = None,
 ) -> ShotValidationResult:
     """Validate a STILL PANEL image (storyboard panel) against the bible.
 
@@ -1203,6 +1816,8 @@ def validate_panel(
         backend=backend,
         model=model,
         client=client,
+        identity_sheet=identity_sheet,
+        sheets=sheets,
     )
 
 
@@ -1218,6 +1833,8 @@ def validate_shot(
     backend: str = DEFAULT_BACKEND,
     model: Optional[str] = None,
     client=None,
+    identity_sheet: Optional[Path] = None,
+    sheets: Optional[dict[str, dict]] = None,
 ) -> ShotValidationResult:
     """Validate a single shot. media_path may be a video or a still image.
 
@@ -1242,9 +1859,25 @@ def validate_shot(
     char_refs, missing = resolve_character_refs(shot["characters"], characters_dir)
     location_ref = resolve_location_ref(shot, locations_dir)
 
+    if sheets is None:
+        sheets = load_identity_sheets(identity_sheet)
+    problems = validate_identity_sheet(sheets)
+    if problems:
+        raise ValueError(
+            "Identity sheet is malformed, refusing to validate against it:\n  "
+            + "\n  ".join(problems))
+    # A character with no sheet row cannot have their identity verified. Say so
+    # rather than letting them quietly not appear in the identity scores.
+    unsheeted = [c for c in shot["characters"] if c not in sheets]
+
     per_keyframe: list[dict] = []
     total_usage = {"input_tokens": 0, "output_tokens": 0}
     for kf in keyframes:
+        # Identity observation first, in its own call, with the keyframe as the
+        # only image in context.
+        frame_obs, obs_usage = observe_frame(backend, client, model, kf, shot)
+        total_usage["input_tokens"] += obs_usage["input_tokens"]
+        total_usage["output_tokens"] += obs_usage["output_tokens"]
         out, usage = _validate_keyframe(
             backend=backend,
             client=client,
@@ -1257,6 +1890,8 @@ def validate_shot(
             prior_keyframe=prior_keyframe,
             prior_shot=prior_shot,
             wardrobe_refs=wardrobe_refs,
+            sheets=sheets,
+            frame_obs=frame_obs,
         )
         out["_keyframe_path"] = str(kf)
         per_keyframe.append(out)
@@ -1276,6 +1911,8 @@ def validate_shot(
             "media": str(media_path),
             "character_refs": {k: str(v) for k, v in char_refs.items()},
             "missing_refs": missing,
+            "identity_sheet": _repo_relative(identity_sheet or DEFAULT_IDENTITY_SHEET),
+            "characters_without_identity_sheet": unsheeted,
             "location_ref": str(location_ref) if location_ref else None,
             "prior_keyframe": str(prior_keyframe) if prior_keyframe else None,
             "prior_shot_id": prior_shot["shot_id"] if prior_shot else None,
@@ -1361,25 +1998,31 @@ def render_markdown_report(
     lines.append("")
     lines.append(f"Backend: `{backend}`  |  Model: `{model}`  |  Validator: `scripts/validate/shot_validator.py`")
     lines.append("")
-    refs_listed = sorted({
-        Path(p).stem.replace("_turnaround_APPROVED", "").replace("_turnaround", "").title()
-        for r in results
-        for p in r.media_paths.get("character_refs", {}).values()
-    })
-    refs_str = ", ".join(refs_listed) if refs_listed else "(none)"
+    sheet_path = next((r.media_paths.get("identity_sheet") for r in results
+                       if r.media_paths.get("identity_sheet")), str(DEFAULT_IDENTITY_SHEET))
+    unsheeted = sorted({c for r in results
+                        for c in r.media_paths.get("characters_without_identity_sheet", [])})
     lines.append(
-        "Each shot's first/middle/last keyframe was scored by the vision model "
-        f"against the locked character turnarounds ({refs_str}) and a "
-        "provisional living-room plate (shot 1A storyboard panel). "
-        "Continuity uses the previous shot's last keyframe as the comparison "
-        "frame.\n\n"
-        "Note: when a manifest character is **not visible** in a keyframe, "
-        "the model reports them as `no_reference` for identity (it can't "
-        "compare a face that isn't there). The fact that they are missing "
-        "is still flagged separately in `character_presence.missing` and "
-        "drives the presence-score failure - that is the real signal for "
-        "missing/swapped characters."
+        "Each keyframe was described by the vision model in a fixed attribute "
+        "vocabulary - hair colour, length, texture, build, eyewear, facial "
+        "hair, age, skin tone, styling, face shape - and that description was "
+        "diffed **in code** against the locked identity sheet "
+        f"(`{sheet_path}`). The model is not shown the turnarounds and never "
+        "emits an identity score; the score and the pass/fail gate are both "
+        "computed by the validator. Every identity number below is traceable "
+        "to the two attribute rows it came from.\n\n"
+        "Headline scores are the WORST keyframe, not the mean - a character "
+        "off-model in one keyframe of three makes an off-model shot. Means are "
+        "in the JSON under `*_mean`.\n\n"
+        "`no_reference` means identity was NOT VERIFIED - the character was not "
+        "visible, or has no row in the identity sheet. It is not a pass."
     )
+    if unsheeted:
+        lines.append("")
+        lines.append(
+            f"**Unverified characters** (no identity sheet row): "
+            f"{', '.join(unsheeted)}. Their identity was not checked at all."
+        )
     lines.append("")
 
     # Executive summary - validator's flagged issues per shot
@@ -1469,9 +2112,20 @@ def render_markdown_report(
             ci = kf.get("character_identity", {})
             for ch, info in ci.items():
                 if info.get("no_reference"):
-                    lines.append(f"- identity[{ch}]: not visible - {info.get('notes','')}")
-                else:
-                    lines.append(f"- identity[{ch}]: {info.get('score',0):.2f} - {info.get('notes','')}")
+                    lines.append(f"- identity[{ch}]: NOT VERIFIED - {info.get('notes','')}")
+                    continue
+                lines.append(
+                    f"- identity[{ch}]: {info.get('score',0):.2f} "
+                    f"({info.get('verdict','?')}) - {info.get('notes','')}")
+                fa = info.get("frame_attributes") or {}
+                ra = info.get("reference_attributes") or {}
+                diffs = [k for k in ra if fa.get(k) != ra.get(k)]
+                if diffs:
+                    lines.append("  | attribute | turnaround sheet | this frame |")
+                    lines.append("  |---|---|---|")
+                    for k in diffs:
+                        flag = " **(defining)**" if k in (info.get("defining_mismatches") or []) else ""
+                        lines.append(f"  | {k}{flag} | {ra.get(k)} | {fa.get(k)} |")
             cw = kf.get("character_wardrobe", {})
             for ch, info in cw.items():
                 if info.get("no_reference"):
@@ -1494,6 +2148,8 @@ def render_markdown_report(
             art = kf.get("artifacts", {})
             det = ", ".join(art.get("detected", [])) or "none"
             lines.append(f"- artifacts: {art.get('score',0):.2f} - detected: {det} - {art.get('notes','')}")
+            if kf.get("model_notes"):
+                lines.append("- model commentary: " + " | ".join(kf["model_notes"]))
             lines.append(f"- keyframe overall_pass: {kf.get('overall_pass')}")
             if kf.get("reasons"):
                 for reason in kf["reasons"]:
@@ -1548,6 +2204,7 @@ def cmd_validate_shot(args: argparse.Namespace) -> int:
         prior_keyframe=prior,
         backend=backend,
         model=model,
+        identity_sheet=Path(args.identity_sheet) if args.identity_sheet else None,
     )
 
     out_dict = result.to_dict()
@@ -1591,6 +2248,7 @@ def cmd_validate_panel(args: argparse.Namespace) -> int:
         keyframes_dir=keyframes_dir,
         backend=backend,
         model=model,
+        identity_sheet=Path(args.identity_sheet) if args.identity_sheet else None,
     )
     out_dict = result.to_dict()
     out_dict["backend"] = backend
@@ -1620,6 +2278,18 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
     model = args.model or _default_model_for_backend(backend)
 
     client = _make_client(backend)
+    sheets = load_identity_sheets(
+        Path(args.identity_sheet) if args.identity_sheet else None)
+    problems = validate_identity_sheet(sheets)
+    if problems:
+        for pr in problems:
+            print(f"  [problem] {pr}", file=sys.stderr)
+        print("Refusing to run against a malformed identity sheet.", file=sys.stderr)
+        return 2
+    if not sheets:
+        print("WARNING: no identity sheet found - identity will be reported as "
+              "UNVERIFIED for every character. Run `build-sheets` first.",
+              file=sys.stderr)
     results: list[ShotValidationResult] = []
     last_keyframe: Optional[Path] = None
     last_shot: Optional[dict] = None
@@ -1656,6 +2326,7 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
             backend=backend,
             model=model,
             client=client,
+            sheets=sheets,
         )
         results.append(result)
         kf_paths = result.media_paths.get("keyframes", [])
@@ -1731,6 +2402,119 @@ def cmd_render_report(args: argparse.Namespace) -> int:
     return 0
 
 
+
+def build_identity_sheet(
+    characters_dir: Path,
+    *,
+    backend: str = DEFAULT_BACKEND,
+    model: Optional[str] = None,
+    client=None,
+) -> tuple[dict, dict]:
+    """Derive a first-draft identity sheet from the locked turnarounds.
+
+    One call per character, with that character's turnaround as the ONLY image
+    in context - nothing to anchor to and nothing to agree with. The output is
+    a DRAFT: read it against the turnarounds and correct it before committing.
+    """
+    if model is None:
+        model = _default_model_for_backend(backend)
+    if client is None:
+        client = _make_client(backend)
+    if backend != "gemini":
+        raise NotImplementedError("build-sheets currently supports the gemini backend")
+
+    from google.genai import types
+
+    row_schema = {
+        "type": "object",
+        "properties": _identity_attr_schema(with_hints=True),
+        "required": [a["key"] for a in IDENTITY_ATTRIBUTES],
+    }
+    prompt_lines = [
+        "This is a locked character turnaround sheet from an animated film's "
+        "asset bible. Describe the character as drawn, filling in every "
+        "attribute from the fixed vocabularies below.",
+        "",
+        "Judge build from the body as drawn, not from what the clothes flatter. "
+        "Judge hair length as worn down. Ignore the sheet's background, labels "
+        "and height ruler.",
+        "",
+    ]
+    for attr in IDENTITY_ATTRIBUTES:
+        prompt_lines.append(f"  {attr['key']}: {' | '.join(attr['values'])}")
+        if attr.get("hint"):
+            prompt_lines.append(f"    {attr['hint']}")
+    prompt = "\n".join(prompt_lines)
+
+    sheets: dict[str, dict] = {}
+    usage = {"input_tokens": 0, "output_tokens": 0}
+    for f in sorted(characters_dir.iterdir()):
+        if not f.is_file() or f.suffix.lower() not in _IMAGE_SUFFIXES:
+            continue
+        name = f.stem.split("_")[0].split("-")[0].title()
+        block = _encode_image(f)
+        img = types.Part.from_bytes(
+            data=base64.b64decode(block["source"]["data"]),
+            mime_type=block["source"]["media_type"])
+
+        def _do_call():
+            return client.models.generate_content(
+                model=model,
+                contents=[f"Character turnaround sheet - {name}:", img, prompt],
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    response_schema=row_schema,
+                    temperature=0.0,
+                    max_output_tokens=4096,
+                ),
+            )
+        resp = _call_with_retry(_do_call, label=f"sheet:{name}")
+        sheets[name] = json.loads(resp.text)
+        um = getattr(resp, "usage_metadata", None)
+        usage["input_tokens"] += getattr(um, "prompt_token_count", 0) or 0
+        usage["output_tokens"] += ((getattr(um, "candidates_token_count", 0) or 0)
+                                   + (getattr(um, "thoughts_token_count", 0) or 0))
+        print(f"[sheet] {name}: " + ", ".join(
+            f"{k}={sheets[name].get(k)}" for k in
+            ("hair_colour", "hair_length", "hair_texture", "build", "eyewear", "facial_hair")),
+            flush=True)
+    return sheets, usage
+
+
+def cmd_build_sheets(args: argparse.Namespace) -> int:
+    sheets, usage = build_identity_sheet(
+        Path(args.characters_dir), backend=args.backend, model=args.model)
+    model = args.model or _default_model_for_backend(args.backend)
+    out = Path(args.out)
+    existing = {}
+    if out.exists() and not args.overwrite:
+        existing = json.loads(out.read_text()).get("characters", {})
+        print(f"{out} exists; merging only characters not already in it "
+              f"(pass --overwrite to replace). Existing: {sorted(existing)}")
+    merged = dict(sheets)
+    merged.update(existing)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps({
+        "_comment": (
+            "Locked identity attribute sheet: each character's turnaround "
+            "expressed in the validator's fixed vocabularies. DRAFTED by "
+            "`shot_validator.py build-sheets` and then CORRECTED BY A HUMAN "
+            "against the turnarounds. Treat it as a bible artifact - changing "
+            "a row changes what the validator considers on-model."),
+        "_vocabularies": {a["key"]: a["values"] for a in IDENTITY_ATTRIBUTES},
+        "characters": merged,
+    }, indent=2) + "\n")
+    problems = validate_identity_sheet(
+        {k: v for k, v in merged.items() if isinstance(v, dict)})
+    for p in problems:
+        print(f"  [problem] {p}")
+    cost = estimate_cost(model, usage["input_tokens"], usage["output_tokens"])
+    print(f"Wrote {out} ({len(merged)} characters). Cost ${cost:.4f}.")
+    print("NOW READ IT AGAINST THE TURNAROUNDS AND CORRECT IT before trusting "
+          "any validation run.")
+    return 1 if problems else 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -1744,6 +2528,8 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--keyframes-dir", default=None)
     a.add_argument("--prior-keyframe", default=None)
     a.add_argument("--out", default=None)
+    a.add_argument("--identity-sheet", default=None,
+                   help="Locked identity attribute sheet (default: scripts/validate/identity-sheets.json).")
     a.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
     a.add_argument("--model", default=None,
                    help="Override the per-backend default model.")
@@ -1758,6 +2544,8 @@ def build_parser() -> argparse.ArgumentParser:
     pa.add_argument("--locations-dir", default="asset-bible/locations")
     pa.add_argument("--keyframes-dir", default=None)
     pa.add_argument("--out", default=None)
+    pa.add_argument("--identity-sheet", default=None,
+                   help="Locked identity attribute sheet (default: scripts/validate/identity-sheets.json).")
     pa.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
     pa.add_argument("--model", default=None,
                     help="Override the per-backend default model.")
@@ -1771,10 +2559,22 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--keyframes-dir", default=None)
     b.add_argument("--report", required=True)
     b.add_argument("--scene-label", default="Scene")
+    b.add_argument("--identity-sheet", default=None,
+                   help="Locked identity attribute sheet (default: scripts/validate/identity-sheets.json).")
     b.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
     b.add_argument("--model", default=None,
                    help="Override the per-backend default model.")
     b.set_defaults(func=cmd_validate_scene)
+
+    s = sub.add_parser("build-sheets",
+                       help="Draft the locked identity attribute sheet from the turnarounds.")
+    s.add_argument("--characters-dir", default="asset-bible/characters")
+    s.add_argument("--out", default=str(DEFAULT_IDENTITY_SHEET))
+    s.add_argument("--overwrite", action="store_true",
+                   help="Replace rows that already exist in --out.")
+    s.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
+    s.add_argument("--model", default=None)
+    s.set_defaults(func=cmd_build_sheets)
 
     c = sub.add_parser("render-report",
                        help="Re-render the markdown report from a saved JSON blob (no API calls).")

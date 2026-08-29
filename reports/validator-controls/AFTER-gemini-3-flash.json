@@ -1,0 +1,1937 @@
+{
+  "backend": "gemini",
+  "model": "gemini-3-flash-preview",
+  "usage": {
+    "input_tokens": 54729,
+    "output_tokens": 11863
+  },
+  "estimated_cost_usd": 0.0461,
+  "cost_per_image_usd": 0.0042,
+  "cases_ok": 11,
+  "cases_total": 11,
+  "rubber_stamp": false,
+  "fails_everything": false,
+  "clean_cases": [
+    "tp-1B-panel"
+  ],
+  "results": [
+    {
+      "id": "adv-1D-real",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "heavy_dark_rectangular",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "long_and_narrow"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular; facial_hair: turnaround stubble / frame clean_shaven"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame oval"
+        },
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_length",
+            "skin_tone",
+            "hair_styling"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "medium_brown",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_length: turnaround mid_back / frame shoulder; skin_tone: turnaround tan / frame medium_brown; hair_styling: turnaround ponytail / frame worn_loose"
+        },
+        "Leo": {
+          "score": 0.4,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "hair_colour"
+          ],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on hair_colour - hair_colour: turnaround blonde / frame dark_brown"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Gabe": 0.1,
+        "Nina": 0.75,
+        "Mia": 0.75,
+        "Leo": 0.4,
+        "Jenny": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo identity 0.40 (significant_drift): off-model on hair_colour - hair_colour: turnaround blonde / frame dark_brown",
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)"
+      ],
+      "notes": {
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular; facial_hair: turnaround stubble / frame clean_shaven",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_length: turnaround mid_back / frame shoulder; skin_tone: turnaround tan / frame medium_brown; hair_styling: turnaround ponytail / frame worn_loose",
+        "Leo": "off-model on hair_colour - hair_colour: turnaround blonde / frame dark_brown",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 4987,
+        "output_tokens": 1106
+      }
+    },
+    {
+      "id": "adv-1D-mislabel-sheet-nina-is-jenny",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Nina": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "apparent_age",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "hair_styling",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on apparent_age, skin_tone - apparent_age: turnaround teenager / frame adult; skin_tone: turnaround medium_brown / frame light"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Nina": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "character_presence 0.40 (missing: none; unexpected: Gabe, Jenny, Boy, Girl)",
+        "Nina identity 0.10 (different_person): off-model on apparent_age, skin_tone - apparent_age: turnaround teenager / frame adult; skin_tone: turnaround medium_brown / frame light",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (unexpected background characters, minor hand distortion)"
+      ],
+      "notes": {
+        "Nina": "off-model on apparent_age, skin_tone - apparent_age: turnaround teenager / frame adult; skin_tone: turnaround medium_brown / frame light"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 4852,
+        "output_tokens": 502
+      }
+    },
+    {
+      "id": "tp-1B-panel",
+      "kind": "true-positive",
+      "expect_overall": null,
+      "identity_evidence": {
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone",
+            "hair_styling",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light; hair_styling: turnaround ponytail / frame worn_loose; face_shape: turnaround round / frame oval"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Leo": 1.0,
+        "Mia": 0.75
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.50 (damaged couch texture, lightning overlap, blurry hand anatomy)"
+      ],
+      "notes": {
+        "Leo": "every compared attribute matches the turnaround",
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light; hair_styling: turnaround ponytail / frame worn_loose; face_shape: turnaround round / frame oval"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 4909,
+        "output_tokens": 674
+      }
+    },
+    {
+      "id": "known-weakness-1D-single-character-manifest",
+      "kind": "known-weakness",
+      "expect_overall": null,
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "apparent_age"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "build",
+            "skin_tone",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "off-model on hair_texture, apparent_age - hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "character_presence 0.30 (missing: none; unexpected: Gabe, Nina, Jenny, Boy)",
+        "Mia identity 0.10 (different_person): off-model on hair_texture, apparent_age - hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.50 (unexpected background characters, blended limbs, lighting inconsistencies)"
+      ],
+      "notes": {
+        "Mia": "off-model on hair_texture, apparent_age - hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 4862,
+        "output_tokens": 493
+      }
+    },
+    {
+      "id": "adv-veo2-v1",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light"
+        },
+        "Leo": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame oval"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 0.75,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a plain green t-shirt and shorts rather than dinosaur-patterned pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (garbled hands, lighting anomalies)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+        "Leo": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1134
+      }
+    },
+    {
+      "id": "adv-veo2-v2",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a green shirt and shorts, but they lack the specified dinosaur pattern.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)"
+      ],
+      "notes": {
+        "Mia": "every compared attribute matches the turnaround",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1396
+      }
+    },
+    {
+      "id": "adv-veo3-v1",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light"
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Wearing a plain green shirt and shorts rather than the specified dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.50 (indoor lightning, extra background figure, garbled hands, floating toys)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1445
+      }
+    },
+    {
+      "id": "adv-veo3-v2-stable",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light"
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.50 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a green shirt and shorts, but they lack the specific dinosaur pattern.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (indoor lightning, hand anatomy issues, floating toys)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1426
+      }
+    },
+    {
+      "id": "adv-veo3-v3-ultrastable",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; skin_tone: turnaround tan / frame light"
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a plain green t-shirt and shorts rather than dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (indoor lightning artifact, hand anatomy issues, floating prop)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; skin_tone: turnaround tan / frame light",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1427
+      }
+    },
+    {
+      "id": "adv-veo3-v4-anchored",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_length",
+            "hair_texture",
+            "skin_tone",
+            "hair_styling"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_length: turnaround mid_back / frame shoulder; hair_texture: turnaround curly / frame wavy; skin_tone: turnaround tan / frame light; hair_styling: turnaround ponytail / frame worn_loose"
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_length"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame oval"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Mia wardrobe 0.50 vs manifest 'casual home wear, legs tucked under on couch': Character is wearing a pink polka dot shirt and jeans, which is casual, but she is not the teen character described.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_length: turnaround mid_back / frame shoulder; hair_texture: turnaround curly / frame wavy; skin_tone: turnaround tan / frame light; hair_styling: turnaround ponytail / frame worn_loose",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1126
+      }
+    },
+    {
+      "id": "adv-veo31-v1",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "apparent_age"
+          ],
+          "soft_mismatches": [
+            "hair_length",
+            "build",
+            "skin_tone",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "longer",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "off-model on hair_colour, hair_texture, apparent_age - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager"
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround"
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "apparent_age",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, apparent_age, skin_tone - hair_texture: turnaround curly / frame straight; apparent_age: turnaround teenager / frame child; skin_tone: turnaround medium_brown / frame light"
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.1,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Mia identity 0.10 (different_person): off-model on hair_colour, hair_texture, apparent_age - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager",
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, apparent_age, skin_tone - hair_texture: turnaround curly / frame straight; apparent_age: turnaround teenager / frame child; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a plain green t-shirt and shorts rather than dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (indoor lightning, hand distortion, floating toys)"
+      ],
+      "notes": {
+        "Mia": "off-model on hair_colour, hair_texture, apparent_age - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_texture, apparent_age, skin_tone - hair_texture: turnaround curly / frame straight; apparent_age: turnaround teenager / frame child; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 5017,
+        "output_tokens": 1134
+      }
+    }
+  ]
+}

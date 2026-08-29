@@ -1,0 +1,346 @@
+{
+  "backend": "gemini",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "input_tokens": 41270,
+    "output_tokens": 8455
+  },
+  "estimated_cost_usd": 0.0335,
+  "cost_per_image_usd": 0.003,
+  "cases_ok": 1,
+  "cases_total": 11,
+  "rubber_stamp": false,
+  "results": [
+    {
+      "id": "adv-1D-real",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Gabe": 1.0,
+        "Nina": 1.0,
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Gabe]=1.00, expected < 0.6",
+        "identity[Nina]=1.00, expected < 0.6",
+        "identity[Jenny]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4062,
+        "output_tokens": 901
+      }
+    },
+    {
+      "id": "adv-1D-mislabel-nina-is-jenny",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "FAIL",
+      "identity": {
+        "Nina": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Unexpected characters are present in the shot: Gabe, Jenny, and a boy are visible but not listed in the expected characters."
+      ],
+      "notes": {
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "identity[Nina]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 2592,
+        "output_tokens": 413
+      }
+    },
+    {
+      "id": "tp-1B-panel",
+      "kind": "true-positive",
+      "expect_overall": "PASS",
+      "got_overall": "PASS",
+      "identity": {
+        "Leo": 1.0,
+        "Mia": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Mia": "Mia's visible hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 2979,
+        "output_tokens": 516
+      }
+    },
+    {
+      "id": "tp-1D-onmodel-subset",
+      "kind": "true-positive",
+      "expect_overall": "PASS",
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Unexpected characters Gabe, Nina, and Jenny are present in the shot.",
+        "The character presence score is 0.0 due to unexpected characters."
+      ],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall FAIL, expected PASS"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 2965,
+        "output_tokens": 568
+      }
+    },
+    {
+      "id": "adv-veo2-v1",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 889
+      }
+    },
+    {
+      "id": "adv-veo2-v2",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 891
+      }
+    },
+    {
+      "id": "adv-veo3-v1",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 896
+      }
+    },
+    {
+      "id": "adv-veo3-v2-stable",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Mia": "Mia's identity matches the turnaround reference perfectly.",
+        "Leo": "Leo's identity matches the turnaround reference perfectly.",
+        "Jenny": "Jenny's identity matches the turnaround reference perfectly.",
+        "Nina": "Nina's identity matches the turnaround reference perfectly.",
+        "Gabe": "Gabe's identity matches the turnaround reference perfectly."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 651
+      }
+    },
+    {
+      "id": "adv-veo3-v3-ultrastable",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 885
+      }
+    },
+    {
+      "id": "adv-veo3-v4-anchored",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "PASS",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "overall PASS, expected FAIL",
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 899
+      }
+    },
+    {
+      "id": "adv-veo31-v1",
+      "kind": "adversarial",
+      "expect_overall": "FAIL",
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 1.0,
+        "Nina": 1.0,
+        "Gabe": 1.0
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Leo's wardrobe does not match the manifest; he is not wearing green dinosaur-pattern pajamas."
+      ],
+      "notes": {
+        "Mia": "Mia's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Leo": "Leo's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Jenny": "Jenny's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Nina": "Nina's face, hair, skin tone, and build perfectly match the turnaround reference.",
+        "Gabe": "Gabe's face, hair, skin tone, and build perfectly match the turnaround reference."
+      },
+      "problems": [
+        "identity[Jenny]=1.00, expected < 0.6",
+        "identity[Gabe]=1.00, expected < 0.6"
+      ],
+      "ok": false,
+      "usage": {
+        "input_tokens": 4096,
+        "output_tokens": 946
+      }
+    }
+  ]
+}

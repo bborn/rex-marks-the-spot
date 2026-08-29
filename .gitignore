@@ -60,3 +60,7 @@ asset-bible/**/*.webp
 # and live in R2. The validator code + the markdown/JSON reports it produces
 # stay in git so the report itself is reviewable.
 footage/
+
+# Identity-validator control fixtures (pulled from R2 on demand by
+# scripts/validate/controls/run_controls.py --fetch)
+.validator-controls/
