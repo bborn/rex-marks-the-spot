@@ -269,6 +269,8 @@ blocked.
 - Parameters exactly as specified and as confirmed in Phase 0 §8: 360p, `"3s"`
   as a string on `response_format`, `video_config` carrying only `task`.
 - Ran on `google-genai` 2.20.0 in a throwaway venv, since the repo pins 1.61.0
+  (resolved 2026-08-29: 2.20.0 is now the repo pin - see
+  `docs/research/sdk-migration-decision.md`)
   and Omni requires >= 2.0.0. Phase 0 follow-up #2 — decide the SDK story — is
   still open and still costs every Omni task a venv.
 - Driver: `scripts/video/run_omni_phase06.py`, one run per invocation so spend

@@ -256,6 +256,26 @@ This keeps the PR history clean and avoids duplicate/conflicting PRs.
 
 ---
 
+## Python Environment
+
+**Use `.venv`, not the system Python.** The system `python3` on the task server
+still has `google-genai` 1.61.0, on which every Gemini Omni call fails.
+
+```bash
+./scripts/setup_python_env.sh          # create/refresh .venv from requirements.txt
+source .venv/bin/activate              # then run scripts normally
+# or: .venv/bin/python scripts/video/run_omni_phase06.py ...
+```
+
+`requirements.txt` pins `google-genai==2.20.0` exactly. Do not loosen it to a
+range - see `docs/research/sdk-migration-decision.md` for why, and re-run
+`scripts/test_sdk_compat.py` (offline, $0) after any SDK change.
+
+`client.models.generate_images()` (Imagen) does **not** work on 2.x in Developer
+API mode. Use `scripts/genai_compat.py`'s `generate_image()` instead.
+
+---
+
 ## Asset Storage (Cloudflare R2)
 
 **DO NOT commit large files (images, video, audio) to git.**
