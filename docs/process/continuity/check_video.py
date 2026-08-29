@@ -11,10 +11,13 @@ exactly the failure a first-frame-only check misses.
 
 Policy
 ------
-Three verdicts:  PASS, FAIL, INCONCLUSIVE.  INCONCLUSIVE means no check could be
-applied to any sampled frame - typically a close-up scored against the wide 1A
-plate - and it exits 1, because a clip nobody measured has not been cleared.
-`--allow-inconclusive` flips that to 0 if your pipeline accepts it.
+Three verdicts:  PASS, FAIL, INCONCLUSIVE.  INCONCLUSIVE means not enough could
+be measured on any sampled frame - either nothing at all (a shot with no plate
+of its own) or fewer checks than the shot's `min_applied_checks` (a plate too
+thin to clear a shot on).  It exits 1, because a clip nobody measured has not
+been cleared.  `--allow-inconclusive` flips that to 0 if your pipeline accepts
+it.  The text output names which checks ran and which did not, every time, so a
+thin pass is never silent.
 
 By default every sampled frame must pass.  `--tolerate N` allows N failing
 frames, for the case where one sample lands on a lightning flash or a whip pan
@@ -151,14 +154,22 @@ class ClipResult:
 
     @property
     def conclusive(self) -> bool:
-        """Did any check actually run on any frame?
+        """Did enough actually get measured on any frame?
 
-        A close-up scored against the wide plate skips every geometry check, so
-        it can come back with nothing measured. Calling that PASS would clear a
-        shot nobody looked at, which is the exact failure the Validation Gates
-        rule exists to prevent.
+        A shot whose plate supports only one check comes back thin, and a shot
+        with no plate of its own comes back with nothing measured at all.
+        Calling either PASS would clear a shot nobody really looked at, which is
+        the exact failure the Validation Gates rule exists to prevent.
         """
         return any(frame.conclusive for _, frame in self.frames)
+
+    @property
+    def inconclusive_reason(self) -> str | None:
+        """Why the clip was not cleared, taken from its best-measured frame."""
+        if self.conclusive or not self.frames:
+            return None
+        best = max((f for _, f in self.frames), key=lambda f: len(f.applied))
+        return best.inconclusive_reason
 
     @property
     def verdict(self) -> str:
@@ -177,6 +188,13 @@ class ClipResult:
         skipped = {c.name for _, frame in self.frames for c in frame.checks if c.status == "n/a"}
         applied = {c.name for _, frame in self.frames for c in frame.applied}
         return [n for n in dict.fromkeys(names) if n in skipped - applied]
+
+    @property
+    def applied_checks(self) -> list[str]:
+        """Check names that actually ran on at least one frame."""
+        names = [c.name for _, frame in self.frames for c in frame.checks]
+        applied = {c.name for _, frame in self.frames for c in frame.applied}
+        return [n for n in dict.fromkeys(names) if n in applied]
 
     @property
     def failing_checks(self) -> list[str]:
@@ -201,6 +219,8 @@ class ClipResult:
             "tolerate": self.tolerate,
             "failing_checks": self.failing_checks,
             "skipped_checks": self.skipped_checks,
+            "applied_checks": self.applied_checks,
+            "inconclusive_reason": self.inconclusive_reason,
             "frames": [
                 dict(timestamp=round(t, 3), **result.to_dict()) for t, result in self.frames
             ],
@@ -264,15 +284,14 @@ def format_clip(result: ClipResult, verbose: bool = False) -> str:
     lines = [head]
     if result.failing_checks:
         lines.append("    failing checks: " + ", ".join(result.failing_checks))
+    if result.applied_checks:
+        lines.append("    measured:       " + ", ".join(result.applied_checks))
     if result.skipped_checks:
         lines.append("    not measured:   " + ", ".join(result.skipped_checks))
     if result.verdict == "INCONCLUSIVE":
-        lines.append(
-            "    nothing was measured on any frame - this clip is NOT cleared. "
-            "It needs a plate for its own framing."
-        )
+        lines.append("    NOT cleared: " + (result.inconclusive_reason or ""))
     for t, frame in result.frames:
-        if not verbose and frame.passed:
+        if not verbose and frame.passed and frame.conclusive:
             continue
         lines.append("  " + format_frame(frame, verbose).replace("\n", "\n  "))
     return "\n".join(lines)
