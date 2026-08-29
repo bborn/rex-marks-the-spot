@@ -150,6 +150,35 @@
 
 <div class="dl-rule">What it actually blocks: kids alone and confined in a police <em>vehicle</em>. A police <em>building</em> is fine. Danger is fine.</div>
 
+<h2>What was blocking us in May</h2>
+
+<p>In May I evaluated mitte.ai and Google Flow on a whole scene. The clips held up. Three things about the tooling did not.</p>
+
+<p>No API:</p>
+
+<blockquote>
+    <p>The tooling is a website. There's no API, so "rendering a scene" means me clicking through a browser, uploading the same reference images over and over, one shot at a time.</p>
+</blockquote>
+
+<p>And, in the same post's closing assessment: "They still can't be scripted, everything is a person clicking."</p>
+
+<p>The watermark:</p>
+
+<blockquote>
+    <p>The trade: the expensive Veo models stamp a "Veo" watermark into the corner of every frame. Omni Flash only leaves a small sparkle. Neither is something I want in a finished film.</p>
+</blockquote>
+
+<p>And the kids:</p>
+
+<blockquote>
+    <p>They still flinch at the kids: Veo's safety filter rejected my first prompt outright for describing children too specifically, and I had to launder the language to get a frame out of it.</p>
+</blockquote>
+
+<p>That last one is not a cosmetic problem. Veo 3.1 returned <code>no_media_generated</code> on prompts that described Mia and Leo as children, so I adopted a workaround: describe the environment, describe "figures" and "characters," and let the input image carry the fact that there are two kids on the couch. It works, in the sense that you get a frame out. It also means the prompt cannot say what the shot is about, which is a bad place to be when the film is largely about two kids.</p>
+
+<p>Omni 1.1 Flash removes all three. The API is real, a single <code>client.interactions.create</code> call. There is no visible watermark: I cropped the bottom-right corner of all four frame grabs and upscaled 3&times;, and found no mark, logo or text overlay in any clip. (SynthID is imperceptible by design and would not show up this way; this finding is only about a <em>visible</em> mark.) And the third one turned out to be the interesting one.</p>
+
+
 <dl class="dl-stats">
     <div class="dl-stat"><dt>Clips generated</dt><dd>12<small>Across three probes, all 360p</small></dd></div>
     <div class="dl-stat"><dt>Blocked</dt><dd>1<small>Scenario A, child-explicit wording</small></dd></div>
@@ -343,6 +372,50 @@
 
 </div>
 
+<h2>What broke</h2>
+
+<p>Four things, one of which cost real money.</p>
+
+<h3>The $0.35 duration lesson</h3>
+
+<p><code>duration</code> lives on <code>response_format</code>, as a <em>string</em>:</p>
+
+<pre><code>response_format={
+    "type": "video",
+    "aspect_ratio": "16:9",   # only "16:9" | "9:16"
+    "resolution": "360p",     # "360p" | "720p" | "1080p" | "4k"
+    "duration": "5s",         # STRING, 3s-10s, defaults to 10s if omitted
+},
+generation_config={"video_config": {"task": "image_to_video"}},</code></pre>
+
+<p>I went looking for the duration parameter by putting a speculative <code>duration_seconds</code> int under <code>generation_config.video_config</code>. Unknown keys in <code>video_config</code> do not raise. The API accepted it, silently ignored it, generated a full-length 10s clip, and billed for it. What I expected was a free 400. What I got was $0.3521 and a clip I never saw and never saved.</p>
+
+<h3>The wrong conclusion I drew from it</h3>
+
+<p>Worse than the money: from that silent ignore I concluded the model had no duration control, and that went into a status report before it got caught. It was wrong. Valid values work fine. The bounds are confirmed by the errors they produce. <code>"999s"</code> returns <em>Requested video duration 999s 0ns exceeds the maximum allowed 10s 0ns</em>, and <code>"0.5s"</code>, <code>"1s"</code> and <code>"2s"</code> all return <em>is less than the minimum allowed 3s 0ns</em>. The range is continuous rather than an enum of 4/6/8/10. And end to end, <code>duration="5s"</code> produces a clip that ffprobe reports as 5.013s.</p>
+
+<p>An API that silently ignores an unknown key looks identical to an API that lacks the feature. The only difference is the bill.</p>
+
+<h3>A probe that was never going to work</h3>
+
+<p>The plan for finding the reference-image cap was to send N corrupt images and read the rejection, on the theory that rejected requests are free. That does not work here. Sending N corrupt images returns <em>Unable to process input image</em> for every N up to 12, because image decode runs <em>before</em> any count validation. The decode error masks the count check permanently, at every N.</p>
+
+<p>Which means establishing the real limit requires valid images, and a valid within-limit request generates video. That is where <code>PROBE_12refs.mp4</code> came from, and it cost an unplanned $0.3808. The free-rejection technique is genuinely useful for enumerating accepted values, and most of the API surface in this run was mapped that way, because an invalid value makes the server echo the supported set back in the 400 message. It just cannot reach a check that sits behind a decode step.</p>
+
+<h3>The SDK trap</h3>
+
+<p>Before any of that, nothing worked at all. The repo pins <code>google-genai==1.61.0</code>, which sends the legacy Interactions wire format that the May 2026 breaking change retired. Every call fails with:</p>
+
+<pre><code>The legacy Interactions API schema is no longer supported.
+Please upgrade your google-genai Python SDK to version >= 2.0.0</code></pre>
+
+<p>This run went against 2.20.0 in a throwaway venv, because bumping the pin repo-wide would touch every image-generation script in the project. That is a decision I still have to make: upgrade globally and regression-test the image scripts, or keep Omni on its own venv.</p>
+
+<h3>Two clips I did not mean to buy</h3>
+
+<p>Six clips generated, four planned. The duration probe and the twelve-reference probe were both unplanned, and together they are $0.7329 of a $1.8097 run, a bit over 40% of the spend. The original cap on this task was $1.50. At that cap those two clips would have squeezed out G4, which is the one that told me references carry identity but not wardrobe. The cap got raised to $2.50 mid-run instead.</p>
+
+
 <h2>What it cost</h2>
 
 <div class="dl-scroll">
@@ -367,7 +440,7 @@
 
 <p>And the audio problem is real. There is no parameter for it. Shots with people in them come back loud no matter what the prompt says, so everything gets an unconditional strip on the way in.</p>
 
-<p>I wrote up the first probe at length, including the two clips I paid for by accident, in <a href="the-filter-that-didnt-fire-aug-28.html">The Filter That Didn't Fire</a>.</p>
+
 
                     </div>
                 </div>
