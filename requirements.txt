@@ -41,3 +41,7 @@ numpy>=1.26.0
 
 # Test runner for the offline suites under scripts/.
 pytest>=8.0.0
+
+# Continuity gate (docs/process/continuity/check.py, check_video.py).  Headless
+# build: the gate never opens a window, and the task server has no display.
+opencv-python-headless>=4.9.0
