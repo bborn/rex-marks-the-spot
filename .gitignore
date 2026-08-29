@@ -63,3 +63,6 @@ footage/
 
 # pytest
 .pytest_cache/
+
+# Scratch working dir for render/gate tasks (clips live on R2)
+work/
