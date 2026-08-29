@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
 """Scene 1 continuity gate for STILL frames.
 
-Scores one image against the locked Scene 1 living-room plate and the locked
-Scene 1 manifest from the Asset Bible.  OpenCV only - no vision API, no network,
-$0.00 per call.  This is the gate CLAUDE.md's "Validation Gates" rule asks for
-before anything is generated from an artifact.
+Scores one image against the locked plate for its shot and the locked Scene 1
+manifest from the Asset Bible.  OpenCV only - no vision API, no network, $0.00
+per call.  This is the gate CLAUDE.md's "Validation Gates" rule asks for before
+anything is generated from an artifact.
+
+One plate per shot
+------------------
+Every Scene 1 shot has a validated v4 storyboard panel in the 9/9 PASS set on
+R2, and those panels are locked, approved artifacts.  So a shot's plate is its
+OWN panel: `scene-01-plate.json` carries one entry per shot id, each naming its
+panel and the regions, bands and swatches that are actually measurable in THAT
+framing.  Nothing was drawn or generated for the gate.
+
+A check runs only when the shot's entry gives it the inputs it needs - a
+close-up has no couch band, so it gets no couch check rather than a bogus one.
 
 What it actually measures
 -------------------------
@@ -26,10 +37,19 @@ Four checks, each PASS / FAIL / n/a:
                        shot.  Characters with no swatch in the plate spec are
                        reported n/a, never silently passed.
 
-Scope: the plate is a WIDE establishing frame, so the three geometry checks only
-apply to a wide shot.  When --shot names a manifest entry whose camera line is a
-close-up or a medium, they report n/a - and if NOTHING was measured the verdict
-is INCONCLUSIVE, not PASS, because a clip nobody looked at is not a cleared clip.
+Scope: with a plate per shot, a close-up is scored on its own close-up plate,
+not on the 1A wide.  When --shot names a shot the plate spec has no entry for,
+the gate falls back to the default (1A) plate and reverts to the old rule: the
+geometry checks apply only if the manifest calls that shot a wide.
+
+INCONCLUSIVE, and why a thin plate cannot buy a pass
+----------------------------------------------------
+A frame on which fewer than `min_applied_checks` checks could be applied is
+INCONCLUSIVE, not PASS.  The default is 2.  This is not pedantry: VIDEO-GATE.md
+records `02-shot-1B` passing the old gate on one colour measurement (Leo's
+green) while the room behind him was the wrong room.  One measurement is an
+anecdote, not a clearance, and the output names how many checks actually ran so
+a thin plate is visible rather than silent.
 
 What it does NOT measure: character identity.  A colour histogram cannot tell
 Mia from another dark-haired girl in a magenta top.  Identity is the paid vision
@@ -89,8 +109,14 @@ PASS, FAIL, NA = "PASS", "FAIL", "n/a"
 # ---------------------------------------------------------------------------
 
 
-def resolve_path(cli: str | None, env_var: str, default: Path) -> Path:
-    """First of: CLI flag, environment variable, repo default."""
+def resolve_path(cli: str | None, env_var: str, default: Path | None) -> Path | None:
+    """First of: CLI flag, environment variable, repo default.
+
+    `default` may be None, meaning "there is no fixed default - the caller will
+    work one out". That is how the plate is resolved now: an explicit --plate or
+    $CONTINUITY_PLATE still wins, but with neither the plate comes from the
+    shot's own entry in the plate spec.
+    """
     for candidate in (cli, os.environ.get(env_var)):
         if candidate:
             return Path(candidate).expanduser()
@@ -133,6 +159,17 @@ class FrameResult:
     source: str
     shot: str | None
     checks: list[Check] = field(default_factory=list)
+    #: How many checks must actually have run before a PASS means anything.
+    #: The gate passes the shot's configured value; 1 is the bare "something
+    #: was measured" floor, kept as the default for hand-built results.
+    min_applied: int = 1
+    #: False when this shot's plate is measurably not distinguishable from
+    #: another Scene 1 shot's panel - see `can_clear` in the plate spec. Such a
+    #: plate can still FAIL a frame (a failure is evidence of a real break) but
+    #: it cannot clear one, because a clip of the wrong shot would clear it too.
+    can_clear: bool = True
+    #: Why not, in words, straight from the plate spec.
+    cannot_clear_reason: str = ""
 
     @property
     def failures(self) -> list[Check]:
@@ -145,8 +182,42 @@ class FrameResult:
 
     @property
     def conclusive(self) -> bool:
-        """False when every check was n/a - a verdict of PASS would be vacuous."""
-        return bool(self.applied)
+        """Did enough run for a PASS to mean anything?
+
+        False when every check was n/a - a PASS would be vacuous - and also
+        false when fewer than `min_applied` ran. A single colour measurement is
+        how `02-shot-1B` cleared the old gate with the wrong room behind Leo.
+        And false, whatever ran, for a plate that another Scene 1 panel would
+        also clear: it can convict, it cannot acquit.
+        """
+        return self.can_clear and len(self.applied) >= max(1, self.min_applied)
+
+    @property
+    def thin(self) -> bool:
+        """Something was measured, but not enough of it to clear the frame."""
+        return bool(self.applied) and not self.conclusive
+
+    @property
+    def inconclusive_reason(self) -> str | None:
+        """Why a PASS was withheld, in words, or None if the frame is conclusive."""
+        if self.conclusive:
+            return None
+        applied = [c.name for c in self.applied]
+        if not self.can_clear:
+            return self.cannot_clear_reason or (
+                "this shot's plate cannot clear a clip - another Scene 1 panel "
+                "passes the same gate. It can only fail one."
+            )
+        if not applied:
+            return (
+                "no check could be applied to this frame - it is NOT cleared. "
+                "Its shot needs a plate for its own framing."
+            )
+        return (
+            f"only {len(applied)} of {len(self.checks)} checks could be applied "
+            f"({', '.join(applied)}); this shot's plate needs at least "
+            f"{self.min_applied}. Too thin to clear."
+        )
 
     @property
     def passed(self) -> bool:
@@ -158,6 +229,9 @@ class FrameResult:
             "shot": self.shot,
             "passed": self.passed,
             "conclusive": self.conclusive,
+            "applied_checks": [c.name for c in self.applied],
+            "min_applied_checks": self.min_applied,
+            "can_clear": self.can_clear,
             "failed_checks": [c.name for c in self.failures],
             "skipped_checks": [c.name for c in self.checks if c.status == NA],
             "checks": [c.to_dict() for c in self.checks],
@@ -237,10 +311,10 @@ def lab_coverage(img: np.ndarray, reference: np.ndarray, delta_e: float) -> floa
 
 
 class ContinuityGate:
-    """Scores frames against one locked plate.
+    """Scores frames against one shot's locked plate.
 
-    Construct once and reuse - the plate signatures are computed in __init__, so
-    scoring N video frames costs one plate decode, not N.
+    Construct one per shot and reuse it - the plate signatures are computed in
+    __init__, so scoring N video frames costs one plate decode, not N.
     """
 
     def __init__(
@@ -250,38 +324,44 @@ class ContinuityGate:
         bible: str | Path | None = None,
         shot: str | None = None,
     ) -> None:
-        self.plate_path = resolve_path(plate, "CONTINUITY_PLATE", DEFAULT_PLATE)
         self.spec_path = resolve_path(spec, "CONTINUITY_PLATE_SPEC", DEFAULT_PLATE_SPEC)
         self.bible_path = resolve_path(bible, "CONTINUITY_BIBLE", DEFAULT_BIBLE)
         self.shot = shot
+
+        self.document = json.loads(self.spec_path.read_text())
+        self.spec, self.plate_id, self.plate_is_borrowed = self._select_shot_spec()
+        self.thresholds = self._merged_thresholds()
+
+        plate_override = resolve_path(plate, "CONTINUITY_PLATE", None)
+        self.plate_path = plate_override if plate_override else self._plate_from_spec()
 
         if not self.plate_path.exists():
             raise OSError(
                 f"locked plate not found: {self.plate_path}\n"
                 "Fetch it with:  rclone copy "
-                "r2:rex-assets/storyboards/v4/scene-01/scene-01-1A-start.png <dir>/\n"
+                f"r2:rex-assets/storyboards/v4/scene-01/scene-01-{self.plate_id}-start.png <dir>/\n"
                 "or point --plate / $CONTINUITY_PLATE at your own copy."
             )
-        self.spec = json.loads(self.spec_path.read_text())
-        self.thresholds = self.spec["thresholds"]
 
         self.plate = to_working_size(load_bgr(self.plate_path))
         self.plate_mirrored = cv2.flip(self.plate, 1)
 
+        self.regions = self.spec.get("regions", {})
+        self.bands = self.spec.get("bands", {})
+        self.swatches = self.spec.get("swatches", {})
+
         self._region_sig = {
-            name: hs_histogram(crop(self.plate, box))
-            for name, box in self.spec["regions"].items()
+            name: hs_histogram(crop(self.plate, box)) for name, box in self.regions.items()
         }
         self._mirror_sig = {
             name: hs_histogram(crop(self.plate_mirrored, box))
-            for name, box in self.spec["regions"].items()
+            for name, box in self.regions.items()
         }
         self._band_sig = {
-            name: hs_histogram(crop(self.plate, box)) for name, box in self.spec["bands"].items()
+            name: hs_histogram(crop(self.plate, box)) for name, box in self.bands.items()
         }
         self._swatch_lab = {
-            name: mean_lab(crop(self.plate, box))
-            for name, box in self.spec["swatches"].items()
+            name: mean_lab(crop(self.plate, box)) for name, box in self.swatches.items()
         }
         self._plate_couch_occupancy = self._couch_occupancy(self.plate)
         self._plate_wardrobe = {
@@ -290,17 +370,71 @@ class ContinuityGate:
         # A costume colour that already covers most of the plate is measuring the
         # room's lighting, not the costume, so it cannot tell us the character is
         # there. Disqualify those swatches up front rather than reporting a
-        # confident ratio built on nothing.
+        # confident ratio built on nothing. The floor at the other end catches a
+        # swatch so small on the plate that its ratio would be noise.
         cap = self.thresholds["swatch_max_plate_coverage"]
+        floor = self.thresholds.get("swatch_min_plate_coverage", 0.0)
         self.degenerate_swatches = {
-            name for name, coverage in self._plate_wardrobe.items() if coverage > cap
+            name for name, coverage in self._plate_wardrobe.items()
+            if coverage > cap or coverage < floor
         }
+        self.min_applied_checks = int(self.thresholds.get("min_applied_checks", 1))
+        # Measured, not assumed: score_corpus.py --cross-shot runs every shot's
+        # gate over every other shot's panel. Where another Scene 1 panel walks
+        # through this shot's gate, the plate is recorded here as unable to
+        # clear a clip. It can still fail one.
+        self.can_clear = bool(self.spec.get("can_clear", True))
+        self.cannot_clear_reason = str(self.spec.get("cannot_clear_reason", ""))
+        # With its own plate, a shot's background characters sit at the scale the
+        # plate itself records, so they are measurable. Only a borrowed plate
+        # needs the manifest's background/OTS notes to suppress them.
+        self.measure_background = self.spec.get("background_characters") == "measure"
 
         self.manifest = self._load_manifest()
         self.framing = (self.manifest or {}).get("camera", "")
-        # With no --shot we cannot know the framing, so assume the frame is
-        # meant to hold the plate and run every check.
-        self.covers_plate = self.manifest is None or "wide" in self.framing.lower()
+        # A borrowed plate is the 1A wide, so it is only in frame for a wide
+        # shot - the pre-per-shot-plate rule. A shot scored on its own plate
+        # always holds it by construction.
+        self.covers_plate = (
+            not self.plate_is_borrowed
+            or self.manifest is None
+            or "wide" in self.framing.lower()
+        )
+
+    # -- plate spec -------------------------------------------------------
+
+    def _select_shot_spec(self) -> tuple[dict[str, Any], str, bool]:
+        """The plate entry for --shot: (entry, plate id, was it borrowed?).
+
+        A spec with no `shots` key is a flat single-plate spec - the shape this
+        file had before per-shot plates, and the shape an ad-hoc `--plate-spec`
+        override is most likely to have. It is used as-is for every shot.
+        """
+        shots = self.document.get("shots")
+        if not shots:
+            return self.document, self.shot or "1A", False
+        default = self.document.get("default_shot") or next(iter(shots))
+        wanted = self.shot or default
+        if wanted in shots:
+            return shots[wanted], wanted, False
+        # No entry for this shot: fall back to the scene's default plate and
+        # remember that it is not this shot's own framing.
+        return shots[default], default, True
+
+    def _merged_thresholds(self) -> dict[str, Any]:
+        """Scene-wide thresholds, overridden by the shot's own."""
+        merged = dict(self.document.get("thresholds", {}))
+        if self.spec is not self.document:
+            merged.update(self.spec.get("thresholds", {}))
+        return merged
+
+    def _plate_from_spec(self) -> Path:
+        """The plate image this shot's entry names, resolved next to the spec."""
+        named = self.spec.get("plate")
+        if not named:
+            return DEFAULT_PLATE
+        path = Path(named).expanduser()
+        return path if path.is_absolute() else (self.spec_path.parent / path)
 
     # -- bible ------------------------------------------------------------
 
@@ -325,11 +459,17 @@ class ContinuityGate:
     # -- measurements -----------------------------------------------------
 
     def _couch_occupancy(self, img: np.ndarray) -> float:
-        """Share of the couch band that is not bare upholstery."""
-        patch = crop(img, self.spec["regions"]["couch"])
+        """Share of the couch band that is not bare upholstery.
+
+        NaN when this shot's plate has no couch band or no upholstery swatch -
+        a close-up on Mia has neither, and inventing one would be measuring her
+        hair against a sofa.
+        """
+        box = self.regions.get("couch")
         reference = self._swatch_lab.get("couch_upholstery")
-        if reference is None:  # spec without a couch swatch: nothing to measure
+        if box is None or reference is None:
             return float("nan")
+        patch = crop(img, box)
         bare = lab_coverage(patch, reference, self.thresholds["couch_delta_e"])
         return 1.0 - bare
 
@@ -362,6 +502,15 @@ class ContinuityGate:
         a failed layout downgrades this to n/a rather than stacking a second,
         bogus reason onto one real break.
         """
+        if not self.bands:
+            return Check(
+                name="staging_orientation",
+                status=NA,
+                score=None,
+                threshold=None,
+                detail=f"shot {self.plate_id}'s plate defines no left/right bands - "
+                "this framing has no staging asymmetry to mirror",
+            )
         if layout.failed:
             return Check(
                 name="staging_orientation",
@@ -371,8 +520,8 @@ class ContinuityGate:
                 detail="layout_match failed - not the plate's room, so left/right "
                 "band comparison carries no signal",
             )
-        left = hs_histogram(crop(frame, self.spec["bands"]["left"]))
-        right = hs_histogram(crop(frame, self.spec["bands"]["right"]))
+        left = hs_histogram(crop(frame, self.bands["left"]))
+        right = hs_histogram(crop(frame, self.bands["right"]))
         straight = (
             hist_similarity(left, self._band_sig["left"])
             + hist_similarity(right, self._band_sig["right"])
@@ -401,9 +550,14 @@ class ContinuityGate:
         )
 
     def _check_layout(self, frame: np.ndarray) -> Check:
+        if not self.regions:
+            return Check(
+                "layout_match", NA, None, None,
+                f"shot {self.plate_id}'s plate entry defines no regions",
+            )
         per_region = {
             name: hist_similarity(hs_histogram(crop(frame, box)), self._region_sig[name])
-            for name, box in self.spec["regions"].items()
+            for name, box in self.regions.items()
         }
         score = float(np.mean(list(per_region.values())))
         limit = self.thresholds["layout_match"]
@@ -420,7 +574,11 @@ class ContinuityGate:
     def _check_couch(self, frame: np.ndarray) -> Check:
         plate_value = self._plate_couch_occupancy
         if not np.isfinite(plate_value) or plate_value <= 0:
-            return Check("couch_occupancy", NA, None, None, "no couch swatch in plate spec")
+            return Check(
+                "couch_occupancy", NA, None, None,
+                f"shot {self.plate_id}'s plate has no couch band and upholstery "
+                "swatch - nothing to count occupants against",
+            )
         value = self._couch_occupancy(frame)
         ratio = value / plate_value
         lo = self.thresholds["couch_occupancy_min_ratio"]
@@ -464,13 +622,23 @@ class ContinuityGate:
                 continue
             plate_value = self._plate_wardrobe[swatch]
             if plate_value <= 0 or swatch in self.degenerate_swatches:
-                unchecked.append(character)
+                cap = self.thresholds["swatch_max_plate_coverage"]
+                why = (
+                    "colour is most of the plate"
+                    if plate_value > cap
+                    else "too little of it on the plate to measure"
+                )
+                unchecked.append(f"{character} ({why}: {plate_value:.4f} of plate)")
                 continue
-            # Coverage ratios are calibrated against the plate, where everyone
-            # is at wide-establishing scale. The manifest flags characters the
-            # shot deliberately pushes to the background or the frame edge;
-            # holding those to plate-scale coverage just invents failures.
-            if self._is_minor(wardrobe_notes.get(character, "")):
+            # Coverage ratios are calibrated against the plate. On a borrowed
+            # plate that is wide-establishing scale, so holding a character the
+            # manifest deliberately pushes to the background or the frame edge
+            # to it just invents failures. On the shot's own plate that scale IS
+            # the background scale, and the entry can opt in with
+            # background_characters: measure.
+            if not self.measure_background and self._is_minor(
+                wardrobe_notes.get(character, "")
+            ):
                 unchecked.append(f"{character} (background per manifest)")
                 continue
             ratio = self._swatch_coverage(frame, swatch) / plate_value
@@ -511,14 +679,17 @@ class ContinuityGate:
         if isinstance(src, np.ndarray) and label is None:
             source = "<array>"
 
-        # The plate is a WIDE establishing frame. A close-up or a medium simply
-        # does not contain the TV, the armchair or the couch band, so scoring it
-        # on plate geometry manufactures failures that say nothing about the
-        # shot. The bible already records the intended framing, so use it.
+        # Only reachable on a BORROWED plate - a shot the spec has no entry for,
+        # scored on the scene's 1A wide. A close-up or a medium does not contain
+        # the TV, the armchair or the couch band, so scoring it on that geometry
+        # manufactures failures that say nothing about the shot. The bible
+        # records the intended framing, so use it. A shot with its own plate
+        # always holds that plate and never lands here.
         if not self.covers_plate:
             reason = (
                 f"shot {self.shot} is not a wide: manifest camera reads "
-                f"{self.framing!r} - the locked plate is not in frame"
+                f"{self.framing!r} - and the plate spec has no entry for it, so it "
+                f"is being scored on the {self.plate_id} wide, which is not in frame"
             )
             geometry = [
                 Check(name, NA, None, None, reason)
@@ -532,6 +703,9 @@ class ContinuityGate:
             source=str(source),
             shot=self.shot,
             checks=[*geometry, self._check_wardrobe(frame)],
+            min_applied=self.min_applied_checks,
+            can_clear=self.can_clear,
+            cannot_clear_reason=self.cannot_clear_reason,
         )
 
 
@@ -542,10 +716,20 @@ class ContinuityGate:
 
 def add_gate_arguments(parser: argparse.ArgumentParser) -> None:
     """Flags shared with check_video.py, so both tools resolve paths identically."""
-    parser.add_argument("--plate", help=f"locked plate image (default: {DEFAULT_PLATE})")
-    parser.add_argument("--plate-spec", help=f"plate regions/thresholds JSON (default: {DEFAULT_PLATE_SPEC})")
+    parser.add_argument(
+        "--plate",
+        help="locked plate image. Overrides the plate the shot's own spec entry names.",
+    )
+    parser.add_argument(
+        "--plate-spec",
+        help=f"per-shot plates, regions and thresholds (default: {DEFAULT_PLATE_SPEC})",
+    )
     parser.add_argument("--bible", help=f"Scene 1 manifest JSON (default: {DEFAULT_BIBLE})")
-    parser.add_argument("--shot", help="manifest shot id, e.g. 1A. Enables the wardrobe check.")
+    parser.add_argument(
+        "--shot",
+        help="manifest shot id, e.g. 1A. SELECTS THAT SHOT'S PLATE and its checks. "
+        "Without it the spec's default_shot is used.",
+    )
     parser.add_argument("--json", action="store_true", help="emit JSON instead of text")
 
 
@@ -557,6 +741,9 @@ def frame_verdict(result: FrameResult) -> str:
 
 def format_frame(result: FrameResult, verbose: bool = False) -> str:
     lines = [f"{frame_verdict(result)}  {result.source}"]
+    reason = result.inconclusive_reason
+    if reason:
+        lines.append(f"    {reason}")
     for check in result.checks:
         if not verbose and check.status == PASS:
             continue
