@@ -302,9 +302,12 @@ Recommend proceeding to a costed bake-off against the current pipeline.
 1. **Probe the tense beats.** One calm panel is not proof the safety filter is
    clear. Run the same G2/G3 A/B on 2–3 of the highest-jeopardy Act 2 panels
    before dropping depersonalization pipeline-wide.
-2. **Decide the SDK story.** `google-genai>=2.0.0` is required for Omni, but the
-   repo pins 1.61.0 and many image scripts depend on it. Either upgrade globally
-   and regression-test the image scripts, or keep Omni in its own venv.
+2. ~~**Decide the SDK story.**~~ **RESOLVED (2026-08-29, task #337):** upgraded
+   repo-wide to `google-genai==2.20.0`, now pinned in `requirements.txt` and
+   installed by `./scripts/setup_python_env.sh`. The image scripts were
+   regression-tested offline against both versions; only the four Imagen
+   `generate_images()` call sites broke and they were migrated to
+   `generate_content`. See `docs/research/sdk-migration-decision.md`.
 3. **Make audio stripping mandatory** (`ffmpeg -an`) in whatever ingests video.
 4. **Test `extend`** for shots longer than 10s, and `edit` for fix-ups.
 5. **Check 720p pricing empirically** before the bake-off — $0.10/s is 3× the

@@ -307,6 +307,8 @@ as the string `"3s"` on `response_format`, and `video_config` carried only
   `storyboards/act3/scene-33-trex-climax.md` and used as written. No peril was
   invented.
 - Ran on `google-genai` 2.20.0 in a throwaway venv, since the repo pins 1.61.0
+  (resolved 2026-08-29: 2.20.0 is now the repo pin - see
+  `docs/research/sdk-migration-decision.md`)
   and Omni requires >= 2.0.0 (Phase 0 §1). Phase 0 follow-up #2 — decide the SDK
   story — is still open and still costs every Omni task a venv.
 - Driver: `scripts/video/run_omni_phase05.py`, one run per invocation so spend
