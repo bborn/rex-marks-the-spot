@@ -13,9 +13,13 @@ This directory exists so that cannot happen quietly again.
 # unit tests: the arithmetic half. $0.00, no network.
 python -m pytest scripts/validate/controls/test_identity_scoring.py -q
 
-# control set: the vision half. ~$0.05, needs GEMINI_API_KEY + rclone + ffmpeg.
+# control set: the vision half. ~$0.11, needs GEMINI_API_KEY + rclone + ffmpeg.
 python scripts/validate/controls/run_controls.py --fetch
 echo $?    # 0 = every case matched its ground truth
+
+# the same cases with identity graded on the whole frame (the pre-346
+# behaviour), for a before/after table. ~$0.06.
+python scripts/validate/controls/run_controls.py --no-identity-crop
 ```
 
 `--fetch` pulls ~10 MB of fixtures from R2 into `.validator-controls/`
@@ -26,10 +30,10 @@ for a machine-readable result, `--only <ids>` to run a subset.
 
 | File | What it is |
 |---|---|
-| `control-set.json` | The eleven cases, each with **written ground truth** — what a human saw when they looked at the image. |
+| `control-set.json` | The thirteen cases, each with **written ground truth** — what a human saw when they looked at the image. |
 | `control-manifest.json` | Shot entries the cases validate against, derived from `asset-bible/manifests/scene-01.json`. |
 | `run_controls.py` | Fetches fixtures, runs the validator, checks the results against the ground truth. |
-| `test_identity_scoring.py` | 20 unit tests over the scorer, the gate, the aggregation and the shipped identity sheet. |
+| `test_identity_scoring.py` | 34 unit tests over the scorer, the crop geometry, the gate, the aggregation and the shipped identity sheet. |
 
 ## The two guards
 
@@ -56,6 +60,21 @@ Then set the expectation you actually want pinned:
 - `expect_overall` — `"PASS"`, `"FAIL"`, or `null` for "not asserted". Use
   `null` when the case is about identity and the shot's other rubrics (artifacts,
   presence) would otherwise hold the assertion hostage.
+- `expect_frame_attribute` — per character, what the validator must have READ
+  off the frame (`{"Gabe": {"eyewear": "thin_wire_rectangular"}}`). Use it when
+  the case is about a specific attribute: a score can come out right for the
+  wrong reason, an attribute cannot.
 - `kind: "known-weakness"` — a characterization test. Pins behaviour we are not
   happy with, so a change in either direction is noticed. Not a place to file
   failures you would rather not fix; each one is written up in the repair note.
+
+## The scale pair (task 346)
+
+`scale-1A-a1-gabe-small-correct` and `scale-veo3-v1-gabe-small-wrong` are a
+matched pair and only mean anything together. Both are Gabe at a head height of
+a fourteenth of the frame or less. In the first he is right and must pass; in
+the second he is genuinely the wrong man and must fail. Identity is graded on a
+per-character crop (`docs/research/identity-validator-scale-fix.md`) — the
+first case proves that stopped over-calling small faces, the second proves it
+was not bought by making small faces easier to pass. Removing either one leaves
+the other unable to tell a fix from a softening.

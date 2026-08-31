@@ -1,0 +1,46 @@
+{
+  "task": 346,
+  "cap_usd": 4.0,
+  "model": "gemini-3-flash-preview",
+  "pricing_note": "Gemini 3 Flash preview had no citable rate card at the time of writing; priced at the 2.5 Flash rate ($0.30/$2.50 per 1M in/out). Token counts are exact.",
+  "entries": [
+    {
+      "what": "baseline control run, 11 cases, unmodified validator",
+      "input_tokens": 54729,
+      "output_tokens": 12007,
+      "usd": 0.0464
+    },
+    {
+      "what": "one-off probes: 1A a1 through the crop path, plus 4 crop-mode observation calls on the Gabe turnaround and panel crops",
+      "input_tokens": null,
+      "output_tokens": null,
+      "usd": 0.0165
+    },
+    {
+      "what": "before: 13 cases, --no-identity-crop",
+      "input_tokens": 66563,
+      "output_tokens": 15901,
+      "usd": 0.0597
+    },
+    {
+      "what": "after: 13 cases, per-character crop",
+      "input_tokens": 169775,
+      "output_tokens": 21936,
+      "usd": 0.1058
+    },
+    {
+      "what": "repeatability: 1A attempt 1, 3 runs each way",
+      "input_tokens": null,
+      "output_tokens": null,
+      "usd": 0.0462
+    },
+    {
+      "what": "confirmation re-run of the 13 cases on the final code",
+      "input_tokens": 169787,
+      "output_tokens": 22446,
+      "usd": 0.1071
+    }
+  ],
+  "total_usd": 0.3817,
+  "remaining_usd": 3.6183
+}

@@ -373,6 +373,14 @@ whole, four times, for $0.18.
 
 ### A validator issue this leaves open, and it is not 1I's
 
+> **Fixed by task 346.** The identity pass now crops to each character and
+> grades the crop. See
+> [`identity-validator-scale-fix.md`](identity-validator-scale-fix.md): 1A
+> attempt 1's Gabe goes 0.10 → 0.75 with the rims read correctly, three runs
+> out of three, and the control set goes 11/13 → 13/13. The advice below to
+> light the rims is still good practice; it is no longer a requirement for
+> passing the gate.
+
 The gate reads `heavy_dark_rectangular` off pixels it reads as
 `thin_wire_rectangular` when the same character is larger in the frame. 1I
 worked around it by lighting the rims. That works, but it means the eyewear

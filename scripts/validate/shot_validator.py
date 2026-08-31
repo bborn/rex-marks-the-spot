@@ -11,6 +11,14 @@ For a video, three keyframes are extracted (first / middle / last) with
 ffmpeg, then each is graded by Claude vision against all reference images.
 Returns structured JSON per keyframe and an aggregated pass/fail.
 
+Identity is graded on a per-character CROP of each keyframe, not on the whole
+frame: each character is localised, cropped to head and upper body, enlarged,
+and re-described. Grading the whole frame made the small attributes a function
+of how big the character happened to be in shot - the same thin wire rims read
+as heavy dark frames in a wide shot and correctly in a close-up. Pass
+``--no-identity-crop`` to reproduce the old behaviour. See
+docs/research/identity-validator-scale-fix.md.
+
 Usage:
   # validate a single shot
   python scripts/validate/shot_validator.py validate-shot \\
@@ -543,7 +551,7 @@ def score_identity(
         else:
             notes = "every compared attribute matches the turnaround"
 
-        out[name] = {
+        rec = {
             "score": IDENTITY_VERDICT_SCORES[verdict],
             "notes": notes[:400],
             "no_reference": False,
@@ -552,7 +560,16 @@ def score_identity(
             "soft_mismatches": soft,
             "frame_attributes": {a["key"]: fr.get(a["key"]) for a in IDENTITY_ATTRIBUTES},
             "reference_attributes": {a["key"]: rf.get(a["key"]) for a in IDENTITY_ATTRIBUTES},
+            # Where the frame side of the comparison was read from: the whole
+            # keyframe, or an enlarged crop of just this character.
+            "graded_on": fr.get("_identity_source", "whole_frame"),
         }
+        if fr.get("_crop"):
+            rec["crop"] = fr["_crop"]
+        if fr.get("_wholeframe_attributes"):
+            rec["wholeframe_attributes"] = fr["_wholeframe_attributes"]
+            rec["crop_changed"] = fr.get("_crop_changed", [])
+        out[name] = rec
     return out
 
 
@@ -566,7 +583,8 @@ def _identity_attr_schema(with_hints: bool) -> dict:
     return props
 
 
-def _identity_prompt_block(char_hints: dict[str, str]) -> str:
+def _identity_prompt_block(char_hints: dict[str, str],
+                           crop_for: Optional[str] = None) -> str:
     lines = [
         "IDENTITY - how it is graded (read this before you fill anything in):",
         "",
@@ -583,6 +601,25 @@ def _identity_prompt_block(char_hints: dict[str, str]) -> str:
         "  supposed to look like. If a manifest character is not in the frame,",
         "  set visible=false; the attributes are then ignored.",
         "",
+    ]
+    if crop_for:
+        lines += [
+            f"  THIS IMAGE IS A CROP, enlarged from a larger frame and centred",
+            f"  on {crop_for}. Grade the person in the MIDDLE of this crop and",
+            "  ignore anyone clipped at its edges. The crop was enlarged from a",
+            "  small region, so it is soft and the compression is visible: that",
+            "  is expected, it is not a property of the artwork, and it is not a",
+            "  reason to change what you report. Small high-contrast details -",
+            "  spectacle rims in particular - are the reason this crop exists:",
+            "  look at them here rather than inferring them. A thin metal or",
+            "  wire rim seen close up shows lit skin or background THROUGH the",
+            "  frame and a specular highlight along the top; a heavy plastic rim",
+            "  is a solid opaque band several times thicker than the temple arm.",
+            f"  If there is no person in the middle of this crop, set",
+            "  visible=false rather than describing someone at the edge.",
+            "",
+        ]
+    lines += [
         "  Who is who in this frame:",
     ]
     for name, hint in char_hints.items():
@@ -600,6 +637,20 @@ def _identity_prompt_block(char_hints: dict[str, str]) -> str:
         "  CLOTHING IS NOT AN IDENTITY ATTRIBUTE and is not in this table. It",
         "  is scored separately against the manifest, above.",
         "",
+    ]
+    if not crop_for:
+        lines += [
+            "  head_box_2d / figure_box_2d: where each visible character is, as",
+            "  [ymin, xmin, ymax, xmax] with every number 0-1000 normalised to",
+            "  the image height and width (y first). head_box_2d is the HEAD",
+            "  ONLY - hair to chin, ear to ear. figure_box_2d is the whole",
+            "  visible body. These are used to crop in on each character and",
+            "  re-read the small details, so a loose or swapped box costs",
+            "  accuracy: be precise about which figure belongs to which name.",
+            "  Omit both if the character is not visible.",
+            "",
+        ]
+    lines += [
         "  These are generated images and characters DO drift off-model - that",
         "  is the entire reason this check exists. An earlier version of this",
         "  validator was shown the turnarounds and asked for a score; it",
@@ -783,8 +834,30 @@ def _obs_table(raw: Any) -> dict[str, dict]:
         row = {a["key"]: entry.get(a["key"]) for a in IDENTITY_ATTRIBUTES}
         row["_visible"] = bool(entry.get("visible", True))
         row["_where"] = entry.get("where_in_frame", "")
+        row["_head_box"] = _clean_box(entry.get("head_box_2d"))
+        row["_figure_box"] = _clean_box(entry.get("figure_box_2d"))
         out[name] = row
     return out
+
+
+def _clean_box(raw: Any) -> Optional[list[int]]:
+    """Coerce a model-supplied [ymin,xmin,ymax,xmax] 0-1000 box, or None.
+
+    Rejects anything degenerate rather than trying to repair it: a bad box
+    means "no crop for this character", which falls back to the whole frame.
+    """
+    if not isinstance(raw, (list, tuple)) or len(raw) != 4:
+        return None
+    try:
+        vals = [int(round(float(v))) for v in raw]
+    except (TypeError, ValueError):
+        return None
+    y0, x0, y1, x1 = vals
+    if y1 <= y0 or x1 <= x0:
+        return None
+    if min(vals) < 0 or max(vals) > 1000:
+        return None
+    return [y0, x0, y1, x1]
 
 
 # Gate thresholds. These are the ONLY place pass/fail is decided.
@@ -1474,31 +1547,54 @@ def _validate_keyframe_gemini(
 # neither, and with a prior shot's keyframe in context as a wardrobe reference
 # it read Leo as blonde in a panel where he is brown-haired. The observation
 # call sees the frame and nothing else, so there is nothing to agree with.
-FRAME_OBSERVATION_SCHEMA = {
-    "type": "object",
-    "properties": {
-        "frame_observations": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": dict(
-                    {
-                        "name": {"type": "string"},
-                        "visible": {"type": "boolean"},
-                        "where_in_frame": {"type": "string", "maxLength": 120},
-                    },
-                    **_identity_attr_schema(with_hints=True),
-                ),
-                "required": ["name", "visible", "where_in_frame"]
-                + [a["key"] for a in IDENTITY_ATTRIBUTES],
-            },
-        },
-    },
-    "required": ["frame_observations"],
+_BOX_SCHEMA = {
+    "type": "array",
+    "items": {"type": "integer"},
+    "minItems": 4,
+    "maxItems": 4,
+    "description": ("[ymin, xmin, ymax, xmax], each 0-1000 normalised to the "
+                    "image height and width. Omit when not visible."),
 }
 
 
-def _observe_frame_gemini(client, model: str, keyframe: Path, shot: dict) -> tuple[dict, dict]:
+def _frame_observation_schema(with_boxes: bool) -> dict:
+    props: dict = dict(
+        {
+            "name": {"type": "string"},
+            "visible": {"type": "boolean"},
+            "where_in_frame": {"type": "string", "maxLength": 120},
+        },
+        **_identity_attr_schema(with_hints=True),
+    )
+    if with_boxes:
+        props["head_box_2d"] = dict(_BOX_SCHEMA)
+        props["figure_box_2d"] = dict(_BOX_SCHEMA)
+    return {
+        "type": "object",
+        "properties": {
+            "frame_observations": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": props,
+                    # Boxes stay OPTIONAL on purpose: a model that cannot
+                    # localise must still be able to return the attribute
+                    # table, and the crop pass degrades to the whole frame.
+                    "required": ["name", "visible", "where_in_frame"]
+                    + [a["key"] for a in IDENTITY_ATTRIBUTES],
+                },
+            },
+        },
+        "required": ["frame_observations"],
+    }
+
+
+FRAME_OBSERVATION_SCHEMA = _frame_observation_schema(with_boxes=True)
+CROP_OBSERVATION_SCHEMA = _frame_observation_schema(with_boxes=False)
+
+
+def _observe_frame_gemini(client, model: str, keyframe: Path, shot: dict,
+                          crop_for: Optional[str] = None) -> tuple[dict, dict]:
     from google.genai import types
 
     block = _encode_image(keyframe)
@@ -1509,11 +1605,14 @@ def _observe_frame_gemini(client, model: str, keyframe: Path, shot: dict) -> tup
     for name in shot.get("characters") or []:
         wd = (shot.get("wardrobe") or {}).get(name)
         hints[name] = wd if wd else "(no manifest description; use position and context)"
-    parts = ["KEYFRAME UNDER TEST:", img, _identity_prompt_block(hints)]
+    header = (f"CROP UNDER TEST - enlarged from the keyframe, centred on {crop_for}:"
+              if crop_for else "KEYFRAME UNDER TEST:")
+    parts = [header, img, _identity_prompt_block(hints, crop_for=crop_for)]
 
     config_kwargs = dict(
         response_mime_type="application/json",
-        response_schema=_strip_gemini_unsupported(FRAME_OBSERVATION_SCHEMA),
+        response_schema=_strip_gemini_unsupported(
+            CROP_OBSERVATION_SCHEMA if crop_for else FRAME_OBSERVATION_SCHEMA),
         temperature=0.0,
         max_output_tokens=16384,
     )
@@ -1535,7 +1634,8 @@ def _observe_frame_gemini(client, model: str, keyframe: Path, shot: dict) -> tup
         except json.JSONDecodeError:
             data = _try_repair_json(text) or {}
         return resp, data
-    resp, data = _call_with_retry(_do_call, label=f"observe:{shot.get('shot_id')}")
+    label = f"observe:{shot.get('shot_id')}" + (f":crop:{crop_for}" if crop_for else "")
+    resp, data = _call_with_retry(_do_call, label=label)
     um = getattr(resp, "usage_metadata", None)
     usage = {
         "input_tokens": getattr(um, "prompt_token_count", 0) or 0,
@@ -1545,7 +1645,8 @@ def _observe_frame_gemini(client, model: str, keyframe: Path, shot: dict) -> tup
     return _obs_table(data.get("frame_observations")), usage
 
 
-def _observe_frame_claude(client, model: str, keyframe: Path, shot: dict) -> tuple[dict, dict]:
+def _observe_frame_claude(client, model: str, keyframe: Path, shot: dict,
+                          crop_for: Optional[str] = None) -> tuple[dict, dict]:
     hints = {}
     for name in shot.get("characters") or []:
         wd = (shot.get("wardrobe") or {}).get(name)
@@ -1553,12 +1654,14 @@ def _observe_frame_claude(client, model: str, keyframe: Path, shot: dict) -> tup
     tool = {
         "name": "report_frame_observations",
         "description": "Record what each character actually looks like in this keyframe.",
-        "input_schema": FRAME_OBSERVATION_SCHEMA,
+        "input_schema": CROP_OBSERVATION_SCHEMA if crop_for else FRAME_OBSERVATION_SCHEMA,
     }
+    header = (f"CROP UNDER TEST - enlarged from the keyframe, centred on {crop_for}:"
+              if crop_for else "KEYFRAME UNDER TEST:")
     content = [
-        {"type": "text", "text": "KEYFRAME UNDER TEST:"},
+        {"type": "text", "text": header},
         _encode_image(keyframe),
-        {"type": "text", "text": _identity_prompt_block(hints)},
+        {"type": "text", "text": _identity_prompt_block(hints, crop_for=crop_for)},
     ]
 
     def _do_call():
@@ -1566,7 +1669,8 @@ def _observe_frame_claude(client, model: str, keyframe: Path, shot: dict) -> tup
             model=model, max_tokens=4096, tools=[tool],
             tool_choice={"type": "tool", "name": "report_frame_observations"},
             messages=[{"role": "user", "content": content}])
-    resp = _call_with_retry(_do_call, label=f"observe:{shot.get('shot_id')}")
+    label = f"observe:{shot.get('shot_id')}" + (f":crop:{crop_for}" if crop_for else "")
+    resp = _call_with_retry(_do_call, label=label)
     payload = {}
     for b in resp.content:
         if getattr(b, "type", None) == "tool_use":
@@ -1578,12 +1682,245 @@ def _observe_frame_claude(client, model: str, keyframe: Path, shot: dict) -> tup
     }
 
 
-def observe_frame(backend: str, client, model: str, keyframe: Path, shot: dict):
+def observe_frame(backend: str, client, model: str, keyframe: Path, shot: dict,
+                  crop_for: Optional[str] = None):
     if backend == "claude":
-        return _observe_frame_claude(client, model, keyframe, shot)
+        return _observe_frame_claude(client, model, keyframe, shot, crop_for=crop_for)
     if backend == "gemini":
-        return _observe_frame_gemini(client, model, keyframe, shot)
+        return _observe_frame_gemini(client, model, keyframe, shot, crop_for=crop_for)
     raise ValueError(f"Unknown backend: {backend}")
+
+
+# ---------------------------------------------------------------------------
+# Per-character crop, then grade the crop
+#
+# The whole-frame observation call grades everyone at once, so a character who
+# is small in frame is read off very few pixels and the small, high-contrast
+# attributes go wrong first. Tasks 344 and 345 both hit it on the same one:
+# Gabe's thin wire rims read as `heavy_dark_rectangular` at panel scale and as
+# `thin_wire_rectangular` when the identical pixels were cropped out and shown
+# to the same model (docs/research/scene01-v5-panels.md section 8). That makes
+# the eyewear score partly a function of head size in frame, which is a
+# property of the shot, not of the character.
+#
+# So: localise each character in the whole-frame call (it now returns a head
+# box and a figure box alongside the attribute table, at no extra cost), crop
+# to head-and-upper-body, enlarge, and re-read the attributes off the crop.
+# The crop reading is what gets graded.
+#
+# This is not a softening. The crop is the same pixels, larger; it makes a
+# blonde Jenny more obviously blonde and a bare-faced Gabe more obviously
+# bare-faced just as readily as it makes thin rims legible. Every fallback
+# below lands on the whole-frame reading - the pre-existing behaviour - never
+# on "pass".
+# ---------------------------------------------------------------------------
+
+# Long edge the crop is enlarged to before encoding. Deliberately equal to
+# _MAX_IMAGE_EDGE: the encoder would shrink anything larger straight back down.
+_CROP_TARGET_EDGE = _MAX_IMAGE_EDGE
+# Never enlarge more than this. Past it there is no signal left to recover and
+# the upscaler is inventing edges, which is its own way of being wrong.
+_CROP_MAX_UPSCALE = 8.0
+# Skip the extra call when it would not materially enlarge the head. Below this
+# the crop is the whole frame again and the second call is a duplicate.
+_MIN_CROP_GAIN = 1.15
+# A head smaller than this many pixels in the source has nothing to recover.
+_MIN_HEAD_PX = 6
+
+
+def _box_to_px(box: Optional[list[int]], w: int, h: int) -> Optional[tuple[float, float, float, float]]:
+    """[ymin,xmin,ymax,xmax] in 0-1000 -> (x0, y0, x1, y1) in pixels."""
+    if not box:
+        return None
+    y0, x0, y1, x1 = box
+    return (x0 / 1000.0 * w, y0 / 1000.0 * h, x1 / 1000.0 * w, y1 / 1000.0 * h)
+
+
+def character_crop_rect(head_box: Optional[list[int]],
+                        figure_box: Optional[list[int]],
+                        w: int, h: int) -> Optional[tuple[int, int, int, int]]:
+    """Head-and-upper-body rectangle in pixels, or None if unlocatable.
+
+    Built from the head box, because head height is the scale that matters and
+    because it is the box a model gets right most often. The figure box is used
+    only to stop the torso extension running off the end of a seated or
+    half-occluded figure. Pure geometry - unit-tested, no network.
+    """
+    head = _box_to_px(head_box, w, h)
+    fig = _box_to_px(figure_box, w, h)
+    if head is None:
+        if fig is None:
+            return None
+        # No head box: take the top 45% of the figure, which is head+torso for
+        # any upright pose, and let the caller's gain check decide if it helps.
+        fx0, fy0, fx1, fy1 = fig
+        head = (fx0, fy0, fx1, fy0 + 0.28 * (fy1 - fy0))
+    hx0, hy0, hx1, hy1 = head
+    hh = hy1 - hy0
+    hw = hx1 - hx0
+    if hh < _MIN_HEAD_PX or hw <= 0:
+        return None
+
+    # Framing is a trade-off: `build` needs some torso, everything else wants
+    # the face as large as possible. Head plus ~2.6 head-heights of body puts
+    # the chest in frame and still leaves the head about a quarter of the crop.
+    cx = (hx0 + hx1) / 2.0
+    pad = 0.5 * hh
+    half_w = max(1.45 * hh, hw / 2.0 + pad)
+    x0, x1 = cx - half_w, cx + half_w
+    y0 = hy0 - pad
+    y1 = hy1 + 2.6 * hh
+    if fig is not None and fig[3] > hy1:
+        y1 = min(y1, fig[3])     # do not extend past where the figure ends
+
+    x0 = max(0, int(round(x0)))
+    y0 = max(0, int(round(y0)))
+    x1 = min(w, int(round(x1)))
+    y1 = min(h, int(round(y1)))
+    if x1 - x0 < 8 or y1 - y0 < 8:
+        return None
+    return (x0, y0, x1, y1)
+
+
+def _crop_gain(rect: tuple[int, int, int, int], w: int, h: int) -> tuple[float, float]:
+    """(gain, upscale) - how much bigger the head gets by cropping.
+
+    ``upscale`` is the factor the crop is enlarged by; ``gain`` is that
+    relative to the scale the whole frame is already encoded at, so gain is
+    literally "pixels on the face after, divided by pixels on the face before".
+    """
+    cw, ch = rect[2] - rect[0], rect[3] - rect[1]
+    upscale = min(_CROP_TARGET_EDGE / float(max(cw, ch)), _CROP_MAX_UPSCALE)
+    upscale = max(upscale, 1.0)
+    frame_scale = min(1.0, _MAX_IMAGE_EDGE / float(max(w, h)))
+    return upscale / frame_scale, upscale
+
+
+def make_character_crop(keyframe: Path, row: dict, out_dir: Path,
+                        name: str) -> tuple[Optional[Path], dict]:
+    """Write an enlarged head/upper-body crop for one character.
+
+    Returns (path, meta). ``path`` is None when the character cannot be
+    localised or when cropping would not enlarge the head materially; ``meta``
+    always explains which of those it was, so the report can say so.
+    """
+    from PIL import Image
+
+    with Image.open(keyframe) as im:
+        im = im.convert("RGB")
+        w, h = im.size
+        rect = character_crop_rect(row.get("_head_box"), row.get("_figure_box"), w, h)
+        if rect is None:
+            return None, {"cropped": False,
+                          "reason": "no usable head or figure box for this character"}
+        gain, upscale = _crop_gain(rect, w, h)
+        head_px = _box_to_px(row.get("_head_box"), w, h)
+        head_frac = ((head_px[3] - head_px[1]) / float(h)) if head_px else None
+        meta = {
+            "cropped": False,
+            "rect_px": list(rect),
+            "frame_size": [w, h],
+            "head_height_frac": round(head_frac, 4) if head_frac is not None else None,
+            "upscale": round(upscale, 2),
+            "gain": round(gain, 2),
+        }
+        if gain < _MIN_CROP_GAIN:
+            meta["reason"] = (f"crop would enlarge the head only {gain:.2f}x "
+                              f"(< {_MIN_CROP_GAIN}); the whole-frame read already "
+                              f"has these pixels")
+            return None, meta
+        crop = im.crop(rect)
+        cw, ch = crop.size
+        if upscale > 1.0:
+            crop = crop.resize((max(1, int(cw * upscale)), max(1, int(ch * upscale))),
+                               Image.LANCZOS)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        # _slug is for looking up reference files; a manifest name can hold
+        # spaces or punctuation, so sanitise separately for a filename.
+        safe = re.sub(r"[^a-z0-9]+", "-", _slug(name)).strip("-") or "character"
+        out = out_dir / f"{Path(keyframe).stem}-crop-{safe}.jpg"
+        crop.save(out, format="JPEG", quality=92)
+        meta["cropped"] = True
+        meta["crop_size"] = list(crop.size)
+        meta["path"] = str(out)
+        return out, meta
+
+
+def _diff_rows(a: dict, b: dict) -> list[str]:
+    """Which graded attributes two observation rows disagree on.
+
+    Every attribute is re-read from the crop; this exists only so the report
+    can say WHICH readings the crop overturned.
+    """
+    return [attr["key"] for attr in IDENTITY_ATTRIBUTES
+            if a.get(attr["key"]) != b.get(attr["key"])]
+
+
+def observe_frame_per_character(
+    backend: str, client, model: str, keyframe: Path, shot: dict,
+    crops_dir: Path, *, enabled: bool = True,
+) -> tuple[dict, dict, list[dict]]:
+    """Whole-frame observation, then a crop re-read per visible character.
+
+    Returns (observations, usage, crop_log). The observations table has the
+    same shape ``score_identity`` already consumes; rows re-read from a crop
+    carry ``_identity_source == "crop"`` and keep the whole-frame reading under
+    ``_wholeframe_attributes`` so nothing is lost.
+    """
+    obs, usage = observe_frame(backend, client, model, keyframe, shot)
+    total = {"input_tokens": usage["input_tokens"], "output_tokens": usage["output_tokens"]}
+    log: list[dict] = []
+
+    for name, row in obs.items():
+        row.setdefault("_identity_source", "whole_frame")
+        if not enabled:
+            row["_crop"] = {"cropped": False, "reason": "per-character cropping disabled"}
+            continue
+        if not row.get("_visible", True):
+            row["_crop"] = {"cropped": False, "reason": "not visible in this keyframe"}
+            continue
+
+        try:
+            crop_path, meta = make_character_crop(keyframe, row, crops_dir, name)
+        except Exception as exc:  # noqa: BLE001 - never fail the gate on a crop
+            crop_path, meta = None, {
+                "cropped": False,
+                "reason": f"could not build a crop ({type(exc).__name__}: {exc}) - "
+                          f"keeping the whole-frame reading",
+            }
+        row["_crop"] = meta
+        if crop_path is None:
+            log.append({"character": name, **meta})
+            continue
+
+        sub_shot = dict(shot)
+        sub_shot["characters"] = [name]
+        sub_shot["wardrobe"] = {name: (shot.get("wardrobe") or {}).get(name, "")}
+        crop_obs, crop_usage = observe_frame(
+            backend, client, model, crop_path, sub_shot, crop_for=name)
+        total["input_tokens"] += crop_usage["input_tokens"]
+        total["output_tokens"] += crop_usage["output_tokens"]
+
+        got = crop_obs.get(name)
+        if not got or not got.get("_visible", True):
+            # The box was wrong, or the crop landed on nothing. Keep the
+            # whole-frame reading; never treat an empty crop as a pass.
+            meta["cropped"] = False
+            meta["reason"] = ("the crop did not contain the character - keeping "
+                              "the whole-frame reading")
+            log.append({"character": name, **meta})
+            continue
+
+        before = {a["key"]: row.get(a["key"]) for a in IDENTITY_ATTRIBUTES}
+        changed = _diff_rows(before, got)
+        row["_wholeframe_attributes"] = before
+        row["_identity_source"] = "crop"
+        row["_crop_changed"] = changed
+        for attr in IDENTITY_ATTRIBUTES:
+            row[attr["key"]] = got.get(attr["key"])
+        log.append({"character": name, **meta, "changed": changed})
+
+    return obs, total, log
 
 
 def _validate_keyframe(
@@ -1721,6 +2058,10 @@ def _aggregate(per_keyframe: list[dict]) -> tuple[dict, bool, list[str]]:
                     "frame_attributes": info.get("frame_attributes", {}),
                     "reference_attributes": info.get("reference_attributes", {}),
                     "notes": info.get("notes", ""),
+                    "graded_on": info.get("graded_on", "whole_frame"),
+                    "crop": info.get("crop"),
+                    "wholeframe_attributes": info.get("wholeframe_attributes"),
+                    "crop_changed": info.get("crop_changed"),
                 }
     aggregate["character_identity_evidence"] = worst_ev
 
@@ -1790,6 +2131,7 @@ def validate_panel(
     client=None,
     identity_sheet: Optional[Path] = None,
     sheets: Optional[dict[str, dict]] = None,
+    identity_crop: bool = True,
 ) -> ShotValidationResult:
     """Validate a STILL PANEL image (storyboard panel) against the bible.
 
@@ -1818,6 +2160,7 @@ def validate_panel(
         client=client,
         identity_sheet=identity_sheet,
         sheets=sheets,
+        identity_crop=identity_crop,
     )
 
 
@@ -1835,6 +2178,7 @@ def validate_shot(
     client=None,
     identity_sheet: Optional[Path] = None,
     sheets: Optional[dict[str, dict]] = None,
+    identity_crop: bool = True,
 ) -> ShotValidationResult:
     """Validate a single shot. media_path may be a video or a still image.
 
@@ -1872,10 +2216,17 @@ def validate_shot(
 
     per_keyframe: list[dict] = []
     total_usage = {"input_tokens": 0, "output_tokens": 0}
+    crop_log: list[dict] = []
     for kf in keyframes:
         # Identity observation first, in its own call, with the keyframe as the
-        # only image in context.
-        frame_obs, obs_usage = observe_frame(backend, client, model, kf, shot)
+        # only image in context. That call also localises each character, and
+        # each one is then re-read off an enlarged crop of themselves so the
+        # reading does not depend on how big they happen to be in the frame.
+        frame_obs, obs_usage, kf_crops = observe_frame_per_character(
+            backend, client, model, kf, shot,
+            crops_dir=Path(keyframes_dir) / "identity-crops",
+            enabled=identity_crop)
+        crop_log.extend({"keyframe": str(kf), **c} for c in kf_crops)
         total_usage["input_tokens"] += obs_usage["input_tokens"]
         total_usage["output_tokens"] += obs_usage["output_tokens"]
         out, usage = _validate_keyframe(
@@ -1921,6 +2272,8 @@ def validate_shot(
                 for name, (p, desc, src) in (wardrobe_refs or {}).items()
             },
             "keyframes": [str(p) for p in keyframes],
+            "identity_crop": identity_crop,
+            "identity_crops": crop_log,
         },
     )
 
@@ -2017,6 +2370,28 @@ def render_markdown_report(
         "`no_reference` means identity was NOT VERIFIED - the character was not "
         "visible, or has no row in the identity sheet. It is not a pass."
     )
+    cropped = sum(1 for r in results
+                  for c in r.media_paths.get("identity_crops", []) if c.get("cropped"))
+    if any(r.media_paths.get("identity_crop") for r in results):
+        lines.append("")
+        lines.append(
+            "Identity was read off a **per-character crop**, not off the whole "
+            "frame: each character is localised in the frame, cropped to head "
+            "and upper body, enlarged, and re-described. Grading the whole "
+            "frame made small attributes a function of how big the character "
+            "was in shot - the same thin wire rims read as heavy dark frames in "
+            "a wide shot and correctly in a close-up. "
+            f"{cropped} crop(s) were graded in this run; the JSON records the "
+            "crop rectangle, the magnification and which readings it changed "
+            "under `identity_crops` and `character_identity[*].crop`."
+        )
+    elif results:
+        lines.append("")
+        lines.append(
+            "Identity was graded on the WHOLE FRAME (`--no-identity-crop`). "
+            "Small-in-frame characters are read off very few pixels this way; "
+            "expect over-called eyewear, hair colour and facial hair."
+        )
     if unsheeted:
         lines.append("")
         lines.append(
@@ -2205,6 +2580,7 @@ def cmd_validate_shot(args: argparse.Namespace) -> int:
         backend=backend,
         model=model,
         identity_sheet=Path(args.identity_sheet) if args.identity_sheet else None,
+        identity_crop=args.identity_crop,
     )
 
     out_dict = result.to_dict()
@@ -2249,6 +2625,7 @@ def cmd_validate_panel(args: argparse.Namespace) -> int:
         backend=backend,
         model=model,
         identity_sheet=Path(args.identity_sheet) if args.identity_sheet else None,
+        identity_crop=args.identity_crop,
     )
     out_dict = result.to_dict()
     out_dict["backend"] = backend
@@ -2327,6 +2704,7 @@ def cmd_validate_scene(args: argparse.Namespace) -> int:
             model=model,
             client=client,
             sheets=sheets,
+            identity_crop=args.identity_crop,
         )
         results.append(result)
         kf_paths = result.media_paths.get("keyframes", [])
@@ -2530,6 +2908,9 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--out", default=None)
     a.add_argument("--identity-sheet", default=None,
                    help="Locked identity attribute sheet (default: scripts/validate/identity-sheets.json).")
+    a.add_argument("--no-identity-crop", dest="identity_crop",
+                   action="store_false", default=True,
+                   help="Grade identity on the WHOLE frame instead of on a per-character crop. The crop pass is on by default because a character who is small in frame is otherwise read off too few pixels; this flag exists to reproduce the old behaviour and to measure the difference.")
     a.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
     a.add_argument("--model", default=None,
                    help="Override the per-backend default model.")
@@ -2546,6 +2927,9 @@ def build_parser() -> argparse.ArgumentParser:
     pa.add_argument("--out", default=None)
     pa.add_argument("--identity-sheet", default=None,
                    help="Locked identity attribute sheet (default: scripts/validate/identity-sheets.json).")
+    pa.add_argument("--no-identity-crop", dest="identity_crop",
+                   action="store_false", default=True,
+                   help="Grade identity on the WHOLE frame instead of on a per-character crop. The crop pass is on by default because a character who is small in frame is otherwise read off too few pixels; this flag exists to reproduce the old behaviour and to measure the difference.")
     pa.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
     pa.add_argument("--model", default=None,
                     help="Override the per-backend default model.")
@@ -2561,6 +2945,9 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--scene-label", default="Scene")
     b.add_argument("--identity-sheet", default=None,
                    help="Locked identity attribute sheet (default: scripts/validate/identity-sheets.json).")
+    b.add_argument("--no-identity-crop", dest="identity_crop",
+                   action="store_false", default=True,
+                   help="Grade identity on the WHOLE frame instead of on a per-character crop. The crop pass is on by default because a character who is small in frame is otherwise read off too few pixels; this flag exists to reproduce the old behaviour and to measure the difference.")
     b.add_argument("--backend", default=DEFAULT_BACKEND, choices=["claude", "gemini"])
     b.add_argument("--model", default=None,
                    help="Override the per-backend default model.")

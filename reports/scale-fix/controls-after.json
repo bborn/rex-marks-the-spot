@@ -1,0 +1,4993 @@
+{
+  "backend": "gemini",
+  "model": "gemini-3-flash-preview",
+  "identity_crop": true,
+  "usage": {
+    "input_tokens": 169787,
+    "output_tokens": 22446
+  },
+  "estimated_cost_usd": 0.1071,
+  "cost_per_image_usd": 0.0082,
+  "cases_ok": 13,
+  "cases_total": 13,
+  "rubber_stamp": false,
+  "fails_everything": false,
+  "clean_cases": [
+    "tp-1B-panel"
+  ],
+  "results": [
+    {
+      "id": "adv-1D-real",
+      "kind": "adversarial",
+      "graded_on": {
+        "Gabe": "crop",
+        "Nina": "crop",
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop"
+      },
+      "crop_gain": {
+        "Gabe": 4.0,
+        "Nina": 3.63,
+        "Mia": 4.82,
+        "Leo": 6.3,
+        "Jenny": 4.06
+      },
+      "crop_changed": {
+        "Gabe": [
+          "facial_hair",
+          "face_shape"
+        ],
+        "Mia": [
+          "face_shape"
+        ],
+        "Leo": [
+          "hair_colour"
+        ],
+        "Jenny": [
+          "hair_colour",
+          "hair_length"
+        ]
+      },
+      "frame_attributes": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "heavy_dark_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "shoulder",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "medium_brown",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Leo": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "dark_brown",
+          "hair_length": "shoulder",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "heart"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Gabe": {
+          "score": 0.4,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "eyewear"
+          ],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "heavy_dark_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              565,
+              11,
+              848,
+              411
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.127,
+            "upscale": 4.0,
+            "gain": 4.0,
+            "crop_size": [
+              1132,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "heavy_dark_rectangular",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "long_and_narrow"
+          },
+          "crop_changed": [
+            "facial_hair",
+            "face_shape"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              770,
+              52,
+              1082,
+              493
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.14,
+            "upscale": 3.63,
+            "gain": 3.63,
+            "crop_size": [
+              1131,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "crop_changed": []
+        },
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_length",
+            "skin_tone",
+            "hair_styling",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "medium_brown",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_length: turnaround mid_back / frame shoulder; skin_tone: turnaround tan / frame medium_brown; hair_styling: turnaround ponytail / frame worn_loose; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              97,
+              299,
+              415,
+              631
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.143,
+            "upscale": 4.82,
+            "gain": 4.82,
+            "crop_size": [
+              1532,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "medium_brown",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "face_shape"
+          ]
+        },
+        "Leo": {
+          "score": 0.4,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "hair_colour"
+          ],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on hair_colour - hair_colour: turnaround blonde / frame dark_brown",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              275,
+              366,
+              529,
+              608
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.114,
+            "upscale": 6.3,
+            "gain": 6.3,
+            "crop_size": [
+              1600,
+              1524
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_colour"
+          ]
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_length",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              1010,
+              321,
+              1289,
+              715
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.125,
+            "upscale": 4.06,
+            "gain": 4.06,
+            "crop_size": [
+              1132,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "hair_length"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Gabe": 0.4,
+        "Nina": 0.75,
+        "Mia": 0.75,
+        "Leo": 0.4,
+        "Jenny": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+        "Leo identity 0.40 (significant_drift): off-model on hair_colour - hair_colour: turnaround blonde / frame dark_brown",
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)"
+      ],
+      "notes": {
+        "Gabe": "off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_length: turnaround mid_back / frame shoulder; skin_tone: turnaround tan / frame medium_brown; hair_styling: turnaround ponytail / frame worn_loose; face_shape: turnaround round / frame oval",
+        "Leo": "off-model on hair_colour - hair_colour: turnaround blonde / frame dark_brown",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15480,
+        "output_tokens": 2377
+      }
+    },
+    {
+      "id": "adv-1D-mislabel-sheet-nina-is-jenny",
+      "kind": "adversarial",
+      "graded_on": {
+        "Nina": "crop"
+      },
+      "crop_gain": {
+        "Nina": 2.14
+      },
+      "crop_changed": {
+        "Nina": [
+          "face_shape"
+        ]
+      },
+      "frame_attributes": {
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Nina": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "apparent_age",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "hair_styling"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on apparent_age, skin_tone - apparent_age: turnaround teenager / frame adult; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              665,
+              13,
+              1195,
+              762
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.238,
+            "upscale": 2.14,
+            "gain": 2.14,
+            "crop_size": [
+              1132,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "face_shape"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Nina": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "character_presence 0.40 (missing: none; unexpected: Gabe, Jenny, Boy, Girl)",
+        "Nina identity 0.10 (different_person): off-model on apparent_age, skin_tone - apparent_age: turnaround teenager / frame adult; skin_tone: turnaround medium_brown / frame light",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (unexpected background characters, minor hand distortion)"
+      ],
+      "notes": {
+        "Nina": "off-model on apparent_age, skin_tone - apparent_age: turnaround teenager / frame adult; skin_tone: turnaround medium_brown / frame light"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 7064,
+        "output_tokens": 642
+      }
+    },
+    {
+      "id": "tp-1B-panel",
+      "kind": "true-positive",
+      "graded_on": {
+        "Leo": "crop",
+        "Mia": "crop"
+      },
+      "crop_gain": {
+        "Leo": 2.22,
+        "Mia": 2.09
+      },
+      "crop_changed": {
+        "Leo": [
+          "hair_texture"
+        ]
+      },
+      "frame_attributes": {
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "expect_overall": null,
+      "identity_evidence": {
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              398,
+              0,
+              1118,
+              633
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.323,
+            "upscale": 2.22,
+            "gain": 2.22,
+            "crop_size": [
+              1600,
+              1406
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1B-start-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_texture"
+          ]
+        },
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone",
+            "hair_styling"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light; hair_styling: turnaround ponytail / frame worn_loose",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              0,
+              0,
+              643,
+              766
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.493,
+            "upscale": 2.09,
+            "gain": 2.09,
+            "crop_size": [
+              1343,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1B-start-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Leo": 1.0,
+        "Mia": 0.75
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.50 (damaged couch texture, lightning overlap, blurry hand anatomy)"
+      ],
+      "notes": {
+        "Leo": "every compared attribute matches the turnaround",
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light; hair_styling: turnaround ponytail / frame worn_loose"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 9178,
+        "output_tokens": 949
+      }
+    },
+    {
+      "id": "known-weakness-1D-single-character-manifest",
+      "kind": "known-weakness",
+      "graded_on": {
+        "Mia": "crop"
+      },
+      "crop_gain": {
+        "Mia": 7.48
+      },
+      "crop_changed": {
+        "Mia": [
+          "hair_colour",
+          "hair_length"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "shoulder",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        }
+      },
+      "expect_overall": null,
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "apparent_age"
+          ],
+          "soft_mismatches": [
+            "hair_length",
+            "build",
+            "skin_tone",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "off-model on hair_texture, apparent_age - hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              1069,
+              345,
+              1221,
+              559
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.068,
+            "upscale": 7.48,
+            "gain": 7.48,
+            "crop_size": [
+              1136,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1D-start-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "hair_length"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "character_presence 0.30 (missing: none; unexpected: Gabe, Nina, Jenny, Boy)",
+        "Mia identity 0.10 (different_person): off-model on hair_texture, apparent_age - hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.50 (unexpected background characters, blended limbs, lighting inconsistencies)"
+      ],
+      "notes": {
+        "Mia": "off-model on hair_texture, apparent_age - hair_texture: turnaround curly / frame straight; apparent_age: turnaround child / frame teenager"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 7079,
+        "output_tokens": 634
+      }
+    },
+    {
+      "id": "adv-veo2-v1",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.23,
+        "Leo": 4.95,
+        "Jenny": 3.86,
+        "Nina": 6.45,
+        "Gabe": 6.18
+      },
+      "crop_changed": {
+        "Mia": [
+          "hair_colour",
+          "skin_tone"
+        ],
+        "Jenny": [
+          "hair_colour"
+        ],
+        "Nina": [
+          "hair_colour",
+          "hair_length"
+        ],
+        "Gabe": [
+          "hair_colour",
+          "hair_length"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "black",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "light_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "light_brown",
+          "hair_length": "chin",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              555,
+              215,
+              860,
+              521
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.146,
+            "upscale": 5.23,
+            "gain": 5.23,
+            "crop_size": [
+              1594,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v1-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "skin_tone"
+          ]
+        },
+        "Leo": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              655,
+              227,
+              978,
+              495
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.155,
+            "upscale": 4.95,
+            "gain": 4.95,
+            "crop_size": [
+              1600,
+              1327
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v1-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              940,
+              143,
+              1280,
+              557
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.22,
+            "upscale": 3.86,
+            "gain": 3.86,
+            "crop_size": [
+              1314,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v1-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              239,
+              166,
+              415,
+              414
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.084,
+            "upscale": 6.45,
+            "gain": 6.45,
+            "crop_size": [
+              1135,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v1-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "hair_length"
+          ]
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              351,
+              163,
+              535,
+              422
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.088,
+            "upscale": 6.18,
+            "gain": 6.18,
+            "crop_size": [
+              1136,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v1-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "cropped",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "hair_length"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 0.75,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a plain green shirt and khaki shorts rather than dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (garbled hands, floating toys, lighting inconsistencies)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black",
+        "Leo": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15487,
+        "output_tokens": 1901
+      }
+    },
+    {
+      "id": "adv-veo2-v2",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.52,
+        "Leo": 4.98,
+        "Jenny": 3.95,
+        "Nina": 6.04,
+        "Gabe": 6.23
+      },
+      "crop_changed": {
+        "Mia": [
+          "skin_tone"
+        ],
+        "Jenny": [
+          "hair_colour",
+          "face_shape"
+        ],
+        "Nina": [
+          "hair_texture",
+          "face_shape"
+        ],
+        "Gabe": [
+          "hair_length"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "light_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Nina": {
+          "hair_colour": "light_brown",
+          "hair_length": "chin",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              553,
+              233,
+              824,
+              523
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.13,
+            "upscale": 5.52,
+            "gain": 5.52,
+            "crop_size": [
+              1495,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v2-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "skin_tone"
+          ]
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              654,
+              230,
+              975,
+              492
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.154,
+            "upscale": 4.98,
+            "gain": 4.98,
+            "crop_size": [
+              1600,
+              1305
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v2-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              964,
+              182,
+              1280,
+              587
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.17,
+            "upscale": 3.95,
+            "gain": 3.95,
+            "crop_size": [
+              1248,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v2-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "face_shape"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "chin",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              255,
+              163,
+              443,
+              428
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.09,
+            "upscale": 6.04,
+            "gain": 6.04,
+            "crop_size": [
+              1135,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v2-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "hair_texture",
+            "face_shape"
+          ]
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              351,
+              164,
+              532,
+              421
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.087,
+            "upscale": 6.23,
+            "gain": 6.23,
+            "crop_size": [
+              1126,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo2-v2-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "cropped",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "crop_changed": [
+            "hair_length"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 1.0,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a green shirt and shorts, but they lack the specified dinosaur pattern.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)"
+      ],
+      "notes": {
+        "Mia": "every compared attribute matches the turnaround",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame light_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15509,
+        "output_tokens": 1882
+      }
+    },
+    {
+      "id": "adv-veo3-v1",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.76,
+        "Leo": 4.95,
+        "Jenny": 4.19,
+        "Nina": 5.76,
+        "Gabe": 6.04
+      },
+      "crop_changed": {
+        "Mia": [
+          "hair_colour",
+          "hair_length",
+          "hair_texture"
+        ],
+        "Nina": [
+          "hair_texture",
+          "face_shape"
+        ],
+        "Gabe": [
+          "face_shape"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "black",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "blonde",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "dark_brown",
+          "hair_length": "chin",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "heart"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; skin_tone: turnaround tan / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              587,
+              246,
+              823,
+              524
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.113,
+            "upscale": 5.76,
+            "gain": 5.76,
+            "crop_size": [
+              1358,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v1-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture"
+          ]
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              657,
+              226,
+              980,
+              495
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.155,
+            "upscale": 4.95,
+            "gain": 4.95,
+            "crop_size": [
+              1600,
+              1332
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v1-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              964,
+              175,
+              1280,
+              557
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.19,
+            "upscale": 4.19,
+            "gain": 4.19,
+            "crop_size": [
+              1323,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v1-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": []
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              247,
+              159,
+              443,
+              437
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.094,
+            "upscale": 5.76,
+            "gain": 5.76,
+            "crop_size": [
+              1128,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v1-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_texture",
+            "face_shape"
+          ]
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              332,
+              163,
+              520,
+              428
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.09,
+            "upscale": 6.04,
+            "gain": 6.04,
+            "crop_size": [
+              1135,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v1-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "crop_changed": [
+            "face_shape"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': The character is wearing a plain green shirt and shorts rather than dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.50 (extra background figure, garbled hands, indoor lightning, leg anatomy issues)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; skin_tone: turnaround tan / frame light",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15478,
+        "output_tokens": 2367
+      }
+    },
+    {
+      "id": "adv-veo3-v2-stable",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.59,
+        "Leo": 5.06,
+        "Jenny": 3.34,
+        "Nina": 6.08,
+        "Gabe": 6.3
+      },
+      "crop_changed": {
+        "Leo": [
+          "hair_texture"
+        ],
+        "Jenny": [
+          "hair_colour"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "light_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "dark_brown",
+          "hair_length": "chin",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              563,
+              234,
+              827,
+              520
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.126,
+            "upscale": 5.59,
+            "gain": 5.59,
+            "crop_size": [
+              1476,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v2-stable-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Leo": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              660,
+              229,
+              976,
+              492
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.151,
+            "upscale": 5.06,
+            "gain": 5.06,
+            "crop_size": [
+              1600,
+              1331
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v2-stable-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_texture"
+          ]
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              945,
+              182,
+              1280,
+              661
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.184,
+            "upscale": 3.34,
+            "gain": 3.34,
+            "crop_size": [
+              1118,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v2-stable-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              264,
+              164,
+              449,
+              427
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.089,
+            "upscale": 6.08,
+            "gain": 6.08,
+            "crop_size": [
+              1125,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v2-stable-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "crop_changed": []
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              347,
+              165,
+              526,
+              419
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.086,
+            "upscale": 6.3,
+            "gain": 6.3,
+            "crop_size": [
+              1127,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v2-stable-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "crop_changed": []
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 0.75,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.50 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a green shirt and shorts, but they lack the specific dinosaur pattern.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (indoor lightning, hand anatomy issues, floating toys)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+        "Leo": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15486,
+        "output_tokens": 1931
+      }
+    },
+    {
+      "id": "adv-veo3-v3-ultrastable",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.52,
+        "Leo": 5.18,
+        "Jenny": 4.29,
+        "Nina": 6.15,
+        "Gabe": 6.15
+      },
+      "crop_changed": {
+        "Mia": [
+          "hair_colour"
+        ],
+        "Leo": [
+          "hair_texture"
+        ],
+        "Jenny": [
+          "hair_colour"
+        ],
+        "Nina": [
+          "hair_length",
+          "hair_texture",
+          "face_shape"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "pale",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "light_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "dark_brown",
+          "hair_length": "chin",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              562,
+              234,
+              828,
+              524
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.127,
+            "upscale": 5.52,
+            "gain": 5.52,
+            "crop_size": [
+              1467,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v3-ultrastable-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_colour"
+          ]
+        },
+        "Leo": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "pale",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround light / frame pale",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              664,
+              231,
+              973,
+              492
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.148,
+            "upscale": 5.18,
+            "gain": 5.18,
+            "crop_size": [
+              1600,
+              1351
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v3-ultrastable-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "pale",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_texture"
+          ]
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              945,
+              182,
+              1280,
+              555
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.185,
+            "upscale": 4.29,
+            "gain": 4.29,
+            "crop_size": [
+              1436,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v3-ultrastable-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              258,
+              166,
+              442,
+              426
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.088,
+            "upscale": 6.15,
+            "gain": 6.15,
+            "crop_size": [
+              1132,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v3-ultrastable-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "hair_length",
+            "hair_texture",
+            "face_shape"
+          ]
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              345,
+              165,
+              528,
+              425
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.088,
+            "upscale": 6.15,
+            "gain": 6.15,
+            "crop_size": [
+              1126,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v3-ultrastable-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "crop_changed": []
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 0.75,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a plain green t-shirt and shorts rather than dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (indoor lightning artifact, hand anatomy issues, floating prop)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+        "Leo": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround light / frame pale",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15491,
+        "output_tokens": 2341
+      }
+    },
+    {
+      "id": "adv-veo3-v4-anchored",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.19,
+        "Leo": 4.79,
+        "Jenny": 4.0,
+        "Nina": 5.54,
+        "Gabe": 5.71
+      },
+      "crop_changed": {
+        "Mia": [
+          "hair_length",
+          "hair_styling"
+        ],
+        "Jenny": [
+          "hair_colour",
+          "hair_styling",
+          "face_shape"
+        ],
+        "Nina": [
+          "face_shape"
+        ],
+        "Gabe": [
+          "hair_length",
+          "face_shape"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "light_brown",
+          "hair_length": "shoulder",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Nina": {
+          "hair_colour": "dark_brown",
+          "hair_length": "chin",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround curly / frame wavy; skin_tone: turnaround tan / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              544,
+              219,
+              843,
+              527
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.143,
+            "upscale": 5.19,
+            "gain": 5.19,
+            "crop_size": [
+              1553,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v4-anchored-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_length",
+            "hair_styling"
+          ]
+        },
+        "Leo": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              671,
+              223,
+              1005,
+              500
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.16,
+            "upscale": 4.79,
+            "gain": 4.79,
+            "crop_size": [
+              1599,
+              1326
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v4-anchored-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "light_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              1021,
+              172,
+              1280,
+              572
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.177,
+            "upscale": 4.0,
+            "gain": 4.0,
+            "crop_size": [
+              1036,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v4-anchored-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "bun_or_updo",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "hair_styling",
+            "face_shape"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              241,
+              156,
+              446,
+              445
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.098,
+            "upscale": 5.54,
+            "gain": 5.54,
+            "crop_size": [
+              1134,
+              1599
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v4-anchored-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "face_shape"
+          ]
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              323,
+              157,
+              522,
+              437
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.095,
+            "upscale": 5.71,
+            "gain": 5.71,
+            "crop_size": [
+              1137,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v4-anchored-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "cropped",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "long_and_narrow"
+          },
+          "crop_changed": [
+            "hair_length",
+            "face_shape"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 0.75,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Jenny identity 0.10 (different_person): off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Mia wardrobe 0.50 vs manifest 'casual home wear, legs tucked under on couch': Character is wearing a pink polka dot shirt and jeans, which is casual, but she is not the teen character described.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround curly / frame wavy; skin_tone: turnaround tan / frame light",
+        "Leo": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+        "Jenny": "off-model on hair_texture, skin_tone - hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15440,
+        "output_tokens": 2347
+      }
+    },
+    {
+      "id": "adv-veo31-v1",
+      "kind": "adversarial",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.13,
+        "Leo": 3.97,
+        "Jenny": 3.13,
+        "Nina": 5.42,
+        "Gabe": 5.32
+      },
+      "crop_changed": {
+        "Nina": [
+          "hair_length",
+          "hair_texture"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "blonde",
+          "hair_length": "mid_back",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "dark_brown",
+          "hair_length": "chin",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "heart"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.4,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "hair_texture"
+          ],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "off-model on hair_texture - hair_texture: turnaround curly / frame straight",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              427,
+              249,
+              728,
+              561
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.144,
+            "upscale": 5.13,
+            "gain": 5.13,
+            "crop_size": [
+              1543,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo31-v1-mid-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Leo": {
+          "score": 1.0,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "every compared attribute matches the turnaround",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              491,
+              233,
+              894,
+              549
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.193,
+            "upscale": 3.97,
+            "gain": 3.97,
+            "crop_size": [
+              1600,
+              1254
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo31-v1-mid-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": []
+        },
+        "Jenny": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              926,
+              140,
+              1280,
+              651
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.246,
+            "upscale": 3.13,
+            "gain": 3.13,
+            "crop_size": [
+              1108,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo31-v1-mid-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "mid_back",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": []
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "chin",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              102,
+              151,
+              311,
+              446
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.1,
+            "upscale": 5.42,
+            "gain": 5.42,
+            "crop_size": [
+              1133,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo31-v1-mid-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "hair_length",
+            "hair_texture"
+          ]
+        },
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              198,
+              148,
+              411,
+              449
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.102,
+            "upscale": 5.32,
+            "gain": 5.32,
+            "crop_size": [
+              1132,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo31-v1-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "crop_changed": []
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.4,
+        "Leo": 1.0,
+        "Jenny": 0.1,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Mia identity 0.40 (significant_drift): off-model on hair_texture - hair_texture: turnaround curly / frame straight",
+        "Jenny identity 0.10 (different_person): off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "Leo wardrobe 0.40 vs manifest 'green dinosaur-pattern pajamas': Leo is wearing a plain green t-shirt and shorts rather than dinosaur-pattern pajamas.",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (indoor lightning, hand distortion, floating toys)"
+      ],
+      "notes": {
+        "Mia": "off-model on hair_texture - hair_texture: turnaround curly / frame straight",
+        "Leo": "every compared attribute matches the turnaround",
+        "Jenny": "off-model on hair_colour, hair_texture, skin_tone - hair_colour: turnaround dark_brown / frame blonde; hair_texture: turnaround curly / frame straight; skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround red_auburn / frame dark_brown; hair_length: turnaround shoulder / frame chin; hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15479,
+        "output_tokens": 2349
+      }
+    },
+    {
+      "id": "scale-1A-a1-gabe-small-correct",
+      "kind": "true-positive",
+      "graded_on": {
+        "Mia": "crop",
+        "Leo": "crop",
+        "Jenny": "crop",
+        "Nina": "crop",
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Mia": 5.13,
+        "Leo": 5.37,
+        "Jenny": 4.19,
+        "Nina": 5.13,
+        "Gabe": 4.53
+      },
+      "crop_changed": {
+        "Mia": [
+          "skin_tone"
+        ],
+        "Leo": [
+          "hair_texture",
+          "apparent_age"
+        ],
+        "Jenny": [
+          "skin_tone"
+        ],
+        "Nina": [
+          "face_shape"
+        ],
+        "Gabe": [
+          "hair_colour",
+          "eyewear",
+          "facial_hair",
+          "face_shape"
+        ]
+      },
+      "frame_attributes": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "toddler",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        }
+      },
+      "expect_overall": null,
+      "identity_evidence": {
+        "Mia": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              339,
+              244,
+              651,
+              533
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.14,
+            "upscale": 5.13,
+            "gain": 5.13,
+            "crop_size": [
+              1600,
+              1482
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1A-start-a1-crop-mia.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "skin_tone"
+          ]
+        },
+        "Leo": {
+          "score": 0.4,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "apparent_age"
+          ],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "toddler",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on apparent_age - apparent_age: turnaround child / frame toddler",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              490,
+              274,
+              788,
+              537
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.134,
+            "upscale": 5.37,
+            "gain": 5.37,
+            "crop_size": [
+              1600,
+              1412
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1A-start-a1-crop-leo.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "crop_changed": [
+            "hair_texture",
+            "apparent_age"
+          ]
+        },
+        "Jenny": {
+          "score": 0.4,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "skin_tone"
+          ],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "light",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "notes": "off-model on skin_tone - skin_tone: turnaround medium_brown / frame light",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              1053,
+              220,
+              1376,
+              602
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.17,
+            "upscale": 4.19,
+            "gain": 4.19,
+            "crop_size": [
+              1352,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1A-start-a1-crop-jenny.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          },
+          "crop_changed": [
+            "skin_tone"
+          ]
+        },
+        "Nina": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              748,
+              167,
+              968,
+              479
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.099,
+            "upscale": 5.13,
+            "gain": 5.13,
+            "crop_size": [
+              1128,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1A-start-a1-crop-nina.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "crop_changed": [
+            "face_shape"
+          ]
+        },
+        "Gabe": {
+          "score": 0.75,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround heavy_set / frame average; face_shape: turnaround round / frame oval",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              937,
+              138,
+              1186,
+              491
+            ],
+            "frame_size": [
+              1376,
+              768
+            ],
+            "head_height_frac": 0.112,
+            "upscale": 4.53,
+            "gain": 4.53,
+            "crop_size": [
+              1128,
+              1600
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene-01-1A-start-a1-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "heavy_dark_rectangular",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "long_and_narrow"
+          },
+          "crop_changed": [
+            "hair_colour",
+            "eyewear",
+            "facial_hair",
+            "face_shape"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Mia": 0.75,
+        "Leo": 0.4,
+        "Jenny": 0.4,
+        "Nina": 0.75,
+        "Gabe": 0.75
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "Leo identity 0.40 (significant_drift): off-model on apparent_age - apparent_age: turnaround child / frame toddler",
+        "Jenny identity 0.40 (significant_drift): off-model on skin_tone - skin_tone: turnaround medium_brown / frame light",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.60 (extra character, blurry hands, lighting inconsistencies)"
+      ],
+      "notes": {
+        "Mia": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround tan / frame light",
+        "Leo": "off-model on apparent_age - apparent_age: turnaround child / frame toddler",
+        "Jenny": "off-model on skin_tone - skin_tone: turnaround medium_brown / frame light",
+        "Nina": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame oval",
+        "Gabe": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround heavy_set / frame average; face_shape: turnaround round / frame oval"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 15491,
+        "output_tokens": 1902
+      }
+    },
+    {
+      "id": "scale-veo3-v1-gabe-small-wrong",
+      "kind": "adversarial",
+      "graded_on": {
+        "Gabe": "crop"
+      },
+      "crop_gain": {
+        "Gabe": 8.0
+      },
+      "crop_changed": {
+        "Gabe": [
+          "face_shape"
+        ]
+      },
+      "frame_attributes": {
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        }
+      },
+      "expect_overall": "FAIL",
+      "identity_evidence": {
+        "Gabe": {
+          "score": 0.1,
+          "verdict": "different_person",
+          "defining_mismatches": [
+            "eyewear",
+            "facial_hair"
+          ],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "notes": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+          "graded_on": "crop",
+          "crop": {
+            "cropped": true,
+            "rect_px": [
+              359,
+              172,
+              493,
+              361
+            ],
+            "frame_size": [
+              1280,
+              720
+            ],
+            "head_height_frac": 0.064,
+            "upscale": 8.0,
+            "gain": 8.0,
+            "crop_size": [
+              1072,
+              1512
+            ],
+            "path": ".validator-controls/keyframes/identity-crops/scene01-panel01-veo3-v1-mid-crop-gabe.jpg"
+          },
+          "wholeframe_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "long_and_narrow"
+          },
+          "crop_changed": [
+            "face_shape"
+          ]
+        }
+      },
+      "got_overall": "FAIL",
+      "identity": {
+        "Gabe": 0.1
+      },
+      "identity_no_reference": [],
+      "reasons": [
+        "character_presence 0.20 (missing: none; unexpected: Woman, Girl, Boy, Teen girl)",
+        "Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven",
+        "location not verified: no location plate was supplied for this shot (this is a gap in the bible, not a pass)",
+        "artifacts 0.40 (unexpected background character, indoor lightning, garbled hands)"
+      ],
+      "notes": {
+        "Gabe": "off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven"
+      },
+      "problems": [],
+      "ok": true,
+      "usage": {
+        "input_tokens": 7125,
+        "output_tokens": 824
+      }
+    }
+  ]
+}

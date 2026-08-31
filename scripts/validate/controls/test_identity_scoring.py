@@ -217,5 +217,136 @@ def test_control_set_still_contains_a_true_positive():
     assert "adversarial" in kinds
 
 
+# --- per-character crop (task 346) -----------------------------------------
+#
+# The geometry half of the scale fix: pure arithmetic over boxes, so it is
+# tested here rather than at a few cents a run in the control set.
+
+W, H = 1376, 768
+
+
+def test_crop_rect_is_head_and_upper_body():
+    # A head 55px tall near the right edge, roughly Gabe in 1A attempt 1.
+    head = [254, 741, 326, 781]
+    rect = sv.character_crop_rect(head, [250, 720, 760, 830], W, H)
+    x0, y0, x1, y1 = rect
+    hy0, hy1 = 254 / 1000 * H, 326 / 1000 * H
+    hh = hy1 - hy0
+    assert y0 < hy0, "crop must include headroom above the hair"
+    assert y1 > hy1 + 2 * hh, "crop must include the chest, not just the head"
+    assert x0 < 741 / 1000 * W and x1 > 781 / 1000 * W
+    assert 0 <= x0 < x1 <= W and 0 <= y0 < y1 <= H
+
+
+def test_crop_rect_is_clamped_to_the_frame():
+    # Head jammed into the top-left corner: the padded rect would go negative.
+    rect = sv.character_crop_rect([0, 0, 60, 40], None, W, H)
+    assert rect[0] >= 0 and rect[1] >= 0
+    assert rect[2] <= W and rect[3] <= H
+
+
+def test_crop_rect_needs_a_box():
+    assert sv.character_crop_rect(None, None, W, H) is None
+
+
+def test_crop_rect_rejects_a_head_too_small_to_recover():
+    # A 2px head has nothing in it to enlarge.
+    assert sv.character_crop_rect([500, 500, 502, 503], None, W, H) is None
+
+
+def test_crop_rect_falls_back_to_the_figure_box():
+    rect = sv.character_crop_rect(None, [200, 300, 800, 420], W, H)
+    assert rect is not None
+    # Upper body only: the crop must stop well above the bottom of the figure.
+    assert rect[3] < 800 / 1000 * H
+
+
+def test_crop_rect_does_not_run_past_the_end_of_the_figure():
+    # A head-and-shoulders figure (bust): the torso extension must be clipped.
+    rect = sv.character_crop_rect([100, 400, 200, 500], [100, 380, 260, 520], W, H)
+    assert rect[3] <= int(round(260 / 1000 * H)) + 1
+
+
+def test_small_head_gains_a_lot_from_cropping():
+    rect = sv.character_crop_rect([254, 741, 326, 781], None, W, H)
+    gain, upscale = sv._crop_gain(rect, W, H)
+    assert gain > 3.0, f"a 1/14-of-frame head should magnify hard, got {gain}"
+    assert upscale <= sv._CROP_MAX_UPSCALE
+
+
+def test_a_head_that_fills_the_frame_gains_little():
+    """The guard that stops the crop pass paying for a duplicate call."""
+    rect = sv.character_crop_rect([0, 200, 950, 800], None, 1600, 1600)
+    gain, _ = sv._crop_gain(rect, 1600, 1600)
+    assert gain < sv._MIN_CROP_GAIN
+
+
+def test_bad_boxes_are_rejected_not_repaired():
+    for bad in (None, [], [1, 2, 3], "0,0,10,10", [10, 10, 5, 20],
+                [0, 0, 10, 1200], [-5, 0, 10, 20]):
+        assert sv._clean_box(bad) is None
+    assert sv._clean_box([10, 20, 30, 40]) == [10, 20, 30, 40]
+    assert sv._clean_box(["10", 20.4, 30, 40]) == [10, 20, 30, 40]
+
+
+def test_observation_table_carries_the_boxes():
+    obs = sv._obs_table([{
+        "name": "Gabe", "visible": True, "where_in_frame": "right",
+        "head_box_2d": [254, 741, 326, 781],
+        "figure_box_2d": [250, 720, 760, 830],
+        "eyewear": "thin_wire_rectangular",
+    }])
+    assert obs["Gabe"]["_head_box"] == [254, 741, 326, 781]
+    assert obs["Gabe"]["_figure_box"] == [250, 720, 760, 830]
+
+
+def test_score_records_where_the_frame_side_was_read_from():
+    """A crop-graded score must say so, or a report cannot be audited."""
+    fr = dict(row(), _visible=True, _identity_source="crop",
+              _crop={"cropped": True, "gain": 4.2},
+              _wholeframe_attributes=row(eyewear="heavy_dark_rectangular"),
+              _crop_changed=["eyewear"])
+    out = sv.score_identity({"X": fr}, {"X": row()}, ["X"])["X"]
+    assert out["score"] == 1.0
+    assert out["graded_on"] == "crop"
+    assert out["crop_changed"] == ["eyewear"]
+    assert out["wholeframe_attributes"]["eyewear"] == "heavy_dark_rectangular"
+
+
+def test_default_source_is_the_whole_frame():
+    out = sv.score_identity({"X": dict(row(), _visible=True)}, {"X": row()}, ["X"])["X"]
+    assert out["graded_on"] == "whole_frame"
+
+
+def test_crop_pass_does_not_change_the_gate():
+    """The fix is about what the model is shown, not about what fails.
+
+    A crop-sourced reading with a defining mismatch must still fail exactly as
+    a whole-frame one does. If this test ever passes trivially, the crop pass
+    has become a way of not failing.
+    """
+    for source in ("whole_frame", "crop"):
+        fr = dict(row(eyewear="none"), _visible=True, _identity_source=source)
+        out = sv.score_identity({"X": fr}, {"X": row()}, ["X"])["X"]
+        assert out["score"] < sv.GATE["character_identity"], source
+        assert "eyewear" in out["defining_mismatches"]
+
+
+def test_control_set_covers_both_ends_of_the_scale_bug():
+    """A small-in-frame character that is right, and one that is wrong.
+
+    Only the first proves the false FAIL is gone; only the second proves the
+    fix did not buy it by softening.
+    """
+    spec = json.loads((Path(__file__).parent / "control-set.json").read_text())
+    by_id = {c["id"]: c for c in spec["cases"]}
+    good = by_id["scale-1A-a1-gabe-small-correct"]
+    bad = by_id["scale-veo3-v1-gabe-small-wrong"]
+    assert good["expect_identity_at_or_above"]["Gabe"] >= sv.GATE["character_identity"]
+    assert good["expect_frame_attribute"]["Gabe"]["eyewear"] == "thin_wire_rectangular"
+    assert bad["expect_identity_below"]["Gabe"] <= sv.GATE["character_identity"]
+    assert bad["expect_overall"] == "FAIL"
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__, "-q"]))

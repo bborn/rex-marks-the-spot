@@ -213,6 +213,15 @@ manifests list their whole cast), and it is pinned as a characterization test �
 `known-weakness-1D-single-character-manifest` — so a change in either direction
 is noticed.
 
+**Identity was graded on the whole frame, so a small character was read off
+very few pixels.** *(Fixed by task 346 —
+[`identity-validator-scale-fix.md`](identity-validator-scale-fix.md).)* Small
+high-contrast attributes went first: the very failure line quoted below turned
+out to be a false FAIL on a panel where Gabe's rims were correct but his head
+was a fourteenth of the frame tall. The identity pass now localises each
+character, crops to head and upper body, enlarges, and grades that. The gate,
+the ladders and the thresholds are unchanged.
+
 **A single wrong attribute read fails a shot.** Min-across-keyframes plus a
 one-defining-mismatch gate is deliberately jumpy: for a gate, a false pass is
 worse than a false fail. The mitigation is that every failure now prints the two
@@ -236,13 +245,14 @@ budget.
 
 ## 8. Regression protection
 
-- `scripts/validate/controls/control-set.json` — 11 cases with written ground
-  truth, fixtures pulled from R2 on demand.
+- `scripts/validate/controls/control-set.json` — 13 cases with written ground
+  truth, fixtures pulled from R2 on demand. (11 here; task 346 added the
+  small-in-frame pair.)
 - `scripts/validate/controls/run_controls.py` — exits non-zero on any deviation,
   **and** guards both degenerate ends: it fails if every case returns PASS
   (rubber-stamping) and it fails if no case scores every character above the
   gate (failing everything).
-- `scripts/validate/controls/test_identity_scoring.py` — 20 unit tests, $0.00,
+- `scripts/validate/controls/test_identity_scoring.py` — 34 unit tests, $0.00,
   no network. Covers the ladders, the colour adjacency graph, the gate, the
   min-aggregation fix, and the shipped sheet's internal consistency.
 

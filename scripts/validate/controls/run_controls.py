@@ -45,6 +45,9 @@ def fetch_fixtures(cache: Path) -> None:
         (f["panels"]["r2_prefix"], cache / "panels", f["panels"]["files"]),
         (f["clips"]["r2_prefix"], cache / "clips", f["clips"]["files"]),
     ]
+    if "panels_v5_attempts" in f:
+        jobs.append((f["panels_v5_attempts"]["r2_prefix"], cache / "panels-v5",
+                     f["panels_v5_attempts"]["files"]))
     for prefix, dest, files in jobs:
         dest.mkdir(parents=True, exist_ok=True)
         missing = [n for n in files if not (dest / n).exists()]
@@ -114,6 +117,7 @@ def run(args: argparse.Namespace) -> int:
 
         sheet = case.get("identity_sheet")
         res = sv.validate_panel(
+            identity_crop=args.identity_crop,
             identity_sheet=(cache / sheet) if sheet else None,
             shot=shot,
             panel_path=img,
@@ -146,9 +150,26 @@ def run(args: argparse.Namespace) -> int:
             elif sc < floor:
                 problems.append(f"identity[{name}]={sc:.2f}, expected >= {floor}")
 
+        # What the validator actually READ off the frame, per character. This is
+        # the assertion that matters for the scale cases: a score can come out
+        # right for the wrong reason, an attribute cannot.
+        ev = res.aggregate_scores.get("character_identity_evidence", {})
+        for name, wanted in (case.get("expect_frame_attribute") or {}).items():
+            got_attrs = (ev.get(name) or {}).get("frame_attributes") or {}
+            for attr, want_val in wanted.items():
+                got_val = got_attrs.get(attr)
+                if got_val != want_val:
+                    problems.append(
+                        f"{name}.{attr} read as {got_val!r}, expected {want_val!r}")
+
         rows.append({
             "id": case["id"],
             "kind": case["kind"],
+            "graded_on": {n: (e or {}).get("graded_on") for n, e in ev.items()},
+            "crop_gain": {n: ((e or {}).get("crop") or {}).get("gain") for n, e in ev.items()},
+            "crop_changed": {n: (e or {}).get("crop_changed") for n, e in ev.items()
+                             if (e or {}).get("crop_changed")},
+            "frame_attributes": {n: (e or {}).get("frame_attributes") for n, e in ev.items()},
             "expect_overall": want,
             "identity_evidence": res.aggregate_scores.get("character_identity_evidence", {}),
             "got_overall": got,
@@ -176,6 +197,10 @@ def run(args: argparse.Namespace) -> int:
         print(f"{r['id']:<32} {r['kind']:<14} {str(r['expect_overall'] or 'n/a'):<5} "
               f"{r['got_overall']:<5} {'ok' if r['ok'] else 'REGRESSION'}")
     print()
+    n_cropped = sum(1 for r in rows for v in r["graded_on"].values() if v == "crop")
+    n_graded = sum(1 for r in rows for v in r["graded_on"].values() if v)
+    print(f"identity graded on a per-character crop for {n_cropped}/{n_graded} "
+          f"character readings ({'crop pass ON' if args.identity_crop else 'crop pass OFF'})")
     print(f"{n_ok}/{len(rows)} cases match ground truth. "
           f"backend={backend} model={model} "
           f"tokens={in_tok}/{out_tok} cost=${cost:.4f} "
@@ -208,6 +233,7 @@ def run(args: argparse.Namespace) -> int:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)
         Path(args.json).write_text(json.dumps({
             "backend": backend, "model": model,
+            "identity_crop": args.identity_crop,
             "usage": {"input_tokens": in_tok, "output_tokens": out_tok},
             "estimated_cost_usd": round(cost, 4),
             "cost_per_image_usd": round(cost / max(len(rows), 1), 4),
@@ -231,6 +257,11 @@ def main() -> int:
     p.add_argument("--fetch", action="store_true",
                    help="Pull any missing fixtures from R2 before running.")
     p.add_argument("--backend", default=sv.DEFAULT_BACKEND, choices=["claude", "gemini"])
+    p.add_argument("--no-identity-crop", dest="identity_crop", action="store_false",
+                   default=True,
+                   help="Grade identity on the whole frame (the pre-346 behaviour) "
+                        "instead of on a per-character crop. Use it to reproduce a "
+                        "before/after table on the same cases.")
     p.add_argument("--model", default=None)
     p.add_argument("--only", default=None, help="Comma-separated case ids.")
     p.add_argument("--json", default=None)
