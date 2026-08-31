@@ -1,0 +1,208 @@
+{
+  "shot_id": "1E",
+  "overall_pass": true,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 1.0,
+    "continuity": 1.0,
+    "artifacts": 1.0,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 1.0,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 1.0,
+    "location_no_reference": false,
+    "character_identity": {
+      "Jenny": 0.75
+    },
+    "character_identity_mean": {
+      "Jenny": 0.75
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Jenny": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_texture",
+          "skin_tone",
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "heart"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround curly / frame wavy; skin_tone: turnaround medium_brown / frame tan; face_shape: turnaround oval / frame heart"
+      }
+    },
+    "character_wardrobe": {
+      "Jenny": 1.0
+    },
+    "character_wardrobe_mean": {
+      "Jenny": 1.0
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Jenny": "casual teen, dark brown hair in ponytail, head tilted down at phone"
+    }
+  },
+  "reasons": [],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Jenny"
+        ],
+        "observed": [
+          "Jenny"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Jenny": {
+          "score": 1.0,
+          "expected": "casual teen, dark brown hair in ponytail, head tilted down at phone",
+          "notes": "Jenny is wearing a casual orange hoodie and has her hair in a ponytail as described.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 1.0,
+        "notes": "The blurred background correctly shows the living room couch, window with storm, and bookshelf from the plate.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "The storm lighting and room layout are consistent with the location plate.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 1.0,
+        "notes": "No significant artifacts detected; the phone glow and depth of field are well-executed.",
+        "detected": []
+      },
+      "reasons": [],
+      "character_identity": {
+        "Jenny": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround curly / frame wavy; skin_tone: turnaround medium_brown / frame tan; face_shape: turnaround oval / frame heart",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture",
+            "skin_tone",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Jenny": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "heart",
+          "_visible": true,
+          "_where": "center of the frame, seated and looking down at a phone"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Jenny": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        }
+      },
+      "model_notes": [
+        "The character wardrobe and presence perfectly match the manifest requirements.",
+        "The location landmarks like the window storm and couch are consistent with the reference plate.",
+        "The lighting from the phone glow is physically plausible and matches the camera description."
+      ],
+      "overall_pass": true,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1E-end-plate-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5955,
+    "output_tokens": 467
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1E-end-plate-a1.png",
+    "character_refs": {
+      "Jenny": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/asset-bible/characters/jenny_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1E-end-plate-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.003,
+  "attempt": 1,
+  "panel": "work/v5-end/scene-01-1E-end-plate-a1.png"
+}

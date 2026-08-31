@@ -1,0 +1,318 @@
+{
+  "shot_id": "1B",
+  "overall_pass": true,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.9,
+    "continuity": 1.0,
+    "artifacts": 0.9,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.9,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 0.9,
+    "location_no_reference": false,
+    "character_identity": {
+      "Leo": 1.0,
+      "Mia": 0.75
+    },
+    "character_identity_mean": {
+      "Leo": 1.0,
+      "Mia": 0.75
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Leo": {
+        "score": 1.0,
+        "verdict": "same_character",
+        "defining_mismatches": [],
+        "soft_mismatches": [],
+        "frame_attributes": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "every compared attribute matches the turnaround"
+      },
+      "Mia": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_colour",
+          "hair_length",
+          "hair_texture",
+          "skin_tone",
+          "hair_styling"
+        ],
+        "frame_attributes": {
+          "hair_colour": "black",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "medium_brown",
+          "hair_styling": "not_visible",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; hair_length: turnaround mid_back / frame shoulder; hair_texture: turnaround curly / frame wavy; skin_tone: turnaround tan / frame medium_brown; hair_styling: turnaround ponytail / frame not_visible"
+      }
+    },
+    "character_wardrobe": {
+      "Leo": 1.0,
+      "Mia": 1.0
+    },
+    "character_wardrobe_mean": {
+      "Leo": 1.0,
+      "Mia": 1.0
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Leo": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+      "Mia": "casual home wear (partial frame edge)"
+    }
+  },
+  "reasons": [],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Leo",
+          "Mia"
+        ],
+        "observed": [
+          "Leo",
+          "Mia"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Leo": {
+          "score": 1.0,
+          "expected": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+          "notes": "Leo is wearing the correct green dinosaur pajamas and is hugging the plush T-Rex as specified.",
+          "no_reference": false
+        },
+        "Mia": {
+          "score": 1.0,
+          "expected": "casual home wear (partial frame edge)",
+          "notes": "Mia is visible at the edge of the frame wearing a purple shirt with white stars, which fits casual home wear.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.9,
+        "notes": "The living room matches the plate well, including the couch, lamp, and window with a storm, though the bookshelf is slightly different.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "This is the first shot provided in this sequence.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.9,
+        "notes": "The image is very clean, with only minor blending issues where the plush T-Rex meets Leo's arms.",
+        "detected": [
+          "minor blending anomaly"
+        ]
+      },
+      "reasons": [],
+      "character_identity": {
+        "Leo": {
+          "score": 1.0,
+          "notes": "every compared attribute matches the turnaround",
+          "no_reference": false,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Mia": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; hair_length: turnaround mid_back / frame shoulder; hair_texture: turnaround curly / frame wavy; skin_tone: turnaround tan / frame medium_brown; hair_styling: turnaround ponytail / frame not_visible",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "skin_tone",
+            "hair_styling"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "medium_brown",
+            "hair_styling": "not_visible",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "center of the frame sitting on a grey sofa"
+        },
+        "Mia": {
+          "hair_colour": "black",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "medium_brown",
+          "hair_styling": "not_visible",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "far left edge of the frame in the foreground"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "Character presence and wardrobe perfectly match the manifest requirements.",
+        "The location is highly consistent with the provided location plate.",
+        "All required key props (plush T-Rex, plastic dinosaurs) are present and correctly placed.",
+        "Lighting from the window and lamp is consistent with the scene's atmosphere."
+      ],
+      "overall_pass": true,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1B-end-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 6010,
+    "output_tokens": 661
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1B-end-a1.png",
+    "character_refs": {
+      "Leo": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/asset-bible/characters/leo_turnaround_APPROVED.png",
+      "Mia": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/asset-bible/characters/mia_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1B-end-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0035,
+  "attempt": 1,
+  "panel": "work/v5-end/scene-01-1B-end-a1.png"
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "shot_id": "1A",
+    "attempt_tag": "a1",
+    "panel": "scene-01-1A-end-a1.png",
+    "plated": true,
+    "identity_gate": "PASS",
+    "identity": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Jenny": 1.0,
+      "Nina": 0.75,
+      "Gabe": 0.75
+    },
+    "wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Jenny": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "presence": 1.0,
+    "location_match": 0.6,
+    "artifacts": 0.8,
+    "overall_pass": true,
+    "reasons": []
+  },
+  {
+    "shot_id": "1B",
+    "attempt_tag": "a1",
+    "panel": "scene-01-1B-end-a1.png",
+    "plated": false,
+    "identity_gate": "PASS",
+    "identity": {
+      "Leo": 1.0,
+      "Mia": 0.75
+    },
+    "wardrobe": {
+      "Leo": 1.0,
+      "Mia": 1.0
+    },
+    "presence": 1.0,
+    "location_match": 0.9,
+    "artifacts": 0.9,
+    "overall_pass": true,
+    "reasons": []
+  },
+  {
+    "shot_id": "1C",
+    "attempt_tag": "f-a2",
+    "panel": "scene-01-1C-end-f-a2.png",
+    "plated": true,
+    "identity_gate": "PASS",
+    "identity": {
+      "Nina": 0.75,
+      "Gabe": 0.75,
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Nina": 0.7,
+      "Gabe": 0.7,
+      "Jenny": 0.7
+    },
+    "presence": 0.7,
+    "location_match": 0.5,
+    "artifacts": 0.7,
+    "overall_pass": false,
+    "reasons": [
+      "location_match 0.50: The keyframe shows a foyer/front door area not seen in the living room plate, though the window and lighting style are similar."
+    ]
+  },
+  {
+    "shot_id": "1D",
+    "attempt_tag": "d-a1",
+    "panel": "scene-01-1D-end-d-a1.png",
+    "plated": false,
+    "identity_gate": "PASS",
+    "identity": {
+      "Gabe": 0.75,
+      "Nina": 0.75,
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0,
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Jenny": 1.0
+    },
+    "presence": 1.0,
+    "location_match": 0.9,
+    "artifacts": 0.9,
+    "overall_pass": true,
+    "reasons": []
+  },
+  {
+    "shot_id": "1E",
+    "attempt_tag": "plate-a1",
+    "panel": "scene-01-1E-end-plate-a1.png",
+    "plated": true,
+    "identity_gate": "PASS",
+    "identity": {
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Jenny": 1.0
+    },
+    "presence": 1.0,
+    "location_match": 1.0,
+    "artifacts": 1.0,
+    "overall_pass": true,
+    "reasons": []
+  },
+  {
+    "shot_id": "1F",
+    "attempt_tag": "a1",
+    "panel": "scene-01-1F-end-a1.png",
+    "plated": true,
+    "identity_gate": "PASS",
+    "identity": {},
+    "wardrobe": {},
+    "presence": 1.0,
+    "location_match": 0.8,
+    "artifacts": 0.7,
+    "overall_pass": true,
+    "reasons": []
+  },
+  {
+    "shot_id": "1G",
+    "attempt_tag": "d-a2",
+    "panel": "scene-01-1G-end-d-a2.png",
+    "plated": true,
+    "identity_gate": "PASS",
+    "identity": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.75
+    },
+    "wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "presence": 1.0,
+    "location_match": 0.6,
+    "artifacts": 0.8,
+    "overall_pass": true,
+    "reasons": []
+  },
+  {
+    "shot_id": "1H",
+    "attempt_tag": "d-a1",
+    "panel": "scene-01-1H-end-d-a1.png",
+    "plated": false,
+    "identity_gate": "PASS",
+    "identity": {
+      "Mia": 0.75
+    },
+    "wardrobe": {
+      "Mia": 0.8
+    },
+    "presence": 0.6,
+    "location_match": 0.8,
+    "artifacts": 0.7,
+    "overall_pass": false,
+    "reasons": [
+      "character_presence 0.60 (missing: none; unexpected: Adult Male, Adult Female)"
+    ]
+  },
+  {
+    "shot_id": "1I",
+    "attempt_tag": "a2",
+    "panel": "scene-01-1I-end-a2.png",
+    "plated": false,
+    "identity_gate": "PASS",
+    "identity": {
+      "Gabe": 0.75,
+      "Nina": 0.75
+    },
+    "wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0
+    },
+    "presence": 1.0,
+    "location_match": 0.5,
+    "artifacts": 0.9,
+    "overall_pass": false,
+    "reasons": [
+      "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room/kitchen shown in the location plate."
+    ]
+  }
+]

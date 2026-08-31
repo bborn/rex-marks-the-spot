@@ -1,0 +1,377 @@
+{
+  "cap_usd": 8.0,
+  "image_calls": 31,
+  "image_cost": 1.2400000000000004,
+  "validation_calls": 30,
+  "validation_cost": 0.11959999999999998,
+  "video_calls": 0,
+  "video_cost": 0.0,
+  "entries": [
+    {
+      "kind": "image",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.0029
+    },
+    {
+      "kind": "image",
+      "shot": "1A",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1A",
+      "attempt": 1,
+      "usd": 0.0054
+    },
+    {
+      "kind": "image",
+      "shot": "1B",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1B",
+      "attempt": 1,
+      "usd": 0.0035
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.0053
+    },
+    {
+      "kind": "image",
+      "shot": "1F",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1F",
+      "attempt": 1,
+      "usd": 0.0027
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0048
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0048
+    },
+    {
+      "kind": "image",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1I",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1I",
+      "attempt": 1,
+      "usd": 0.0037
+    },
+    {
+      "kind": "image",
+      "shot": "1I",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1I",
+      "attempt": 2,
+      "usd": 0.0034
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0037
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0048
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0041
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0042
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0049
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.0046
+    },
+    {
+      "kind": "image",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0042
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0049
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.0053
+    },
+    {
+      "kind": "image",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.04
+    }
+  ]
+}
