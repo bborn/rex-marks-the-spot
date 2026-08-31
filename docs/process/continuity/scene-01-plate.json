@@ -1,0 +1,71 @@
+{
+  "_comment": [
+    "Plate spec for the locked Scene 1 living-room plate.",
+    "Boxes are normalised [x0, y0, x1, y1] against the plate's own frame, so a",
+    "candidate frame of any resolution or aspect can be compared to it.",
+    "Everything here is measured off the plate itself - the plate is the source",
+    "of truth, this file only says WHERE to look and HOW CLOSE is close enough.",
+    "Re-derive with:  python check.py --plate <plate.jpg> --dump-spec"
+  ],
+
+  "plate_id": "scene-01-1A-start",
+  "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1A-start.png",
+  "audit": "reports/audit-v4/scene-01-audit.md (9/9 PASS)",
+
+  "regions": {
+    "tv": [0.00, 0.35, 0.18, 0.85],
+    "lamp": [0.11, 0.28, 0.28, 0.65],
+    "couch": [0.19, 0.50, 0.65, 0.82],
+    "window": [0.28, 0.05, 0.65, 0.45],
+    "kitchen": [0.63, 0.10, 0.95, 0.55],
+    "chair": [0.72, 0.60, 1.00, 1.00],
+    "jenny": [0.82, 0.35, 1.00, 0.78],
+    "floor": [0.15, 0.78, 0.75, 1.00]
+  },
+
+  "_bands_comment": "Left/right bands for the mirror test. The locked staging puts the TV in the left band and Jenny's armchair in the right band; a flipped room scores better crossed than straight.",
+  "bands": {
+    "left": [0.00, 0.30, 0.25, 1.00],
+    "right": [0.75, 0.30, 1.00, 1.00]
+  },
+
+  "_swatches_comment": "Small patches sampled off the plate. Used for wardrobe presence and for the couch upholstery reference that couch occupancy subtracts.",
+  "swatches": {
+    "mia_top": [0.325, 0.53, 0.385, 0.60],
+    "leo_pajamas": [0.425, 0.57, 0.475, 0.66],
+    "jenny_hoodie": [0.875, 0.50, 0.925, 0.62],
+    "nina_dress": [0.620, 0.42, 0.660, 0.58],
+    "gabe_tux": [0.715, 0.38, 0.750, 0.55],
+    "couch_upholstery": [0.220, 0.62, 0.300, 0.72],
+    "chair_upholstery": [0.770, 0.74, 0.850, 0.86]
+  },
+
+  "_wardrobe_comment": [
+    "Which manifest character each swatch stands for. Only characters with a",
+    "swatch are checkable; the rest are reported n/a rather than silently passed.",
+    "A swatch is ALSO rejected at load time if its colour covers more than",
+    "swatch_max_plate_coverage of the plate - see that threshold. In practice",
+    "that disqualifies Nina's black dress, Gabe's black tux and Jenny's grey-blue",
+    "hoodie: in a dim room those colours are most of the frame, so their",
+    "'coverage' measures the lighting, not the costume. They stay listed here so",
+    "the reason they are skipped is visible, not silently absent."
+  ],
+  "wardrobe": {
+    "Mia": "mia_top",
+    "Leo": "leo_pajamas",
+    "Jenny": "jenny_hoodie",
+    "Nina": "nina_dress",
+    "Gabe": "gabe_tux"
+  },
+
+  "thresholds": {
+    "layout_match": 0.55,
+    "staging_margin": 0.02,
+    "couch_occupancy_min_ratio": 0.45,
+    "couch_occupancy_max_ratio": 2.20,
+    "wardrobe_min_ratio": 0.35,
+    "swatch_max_plate_coverage": 0.05,
+    "swatch_delta_e": 22.0,
+    "couch_delta_e": 32.0
+  }
+}
