@@ -30,6 +30,13 @@
         "scene01-panel01-veo3-v4-anchored.mp4",
         "scene01-panel01-veo31-v1.mp4"
       ]
+    },
+    "panels_v5_attempts": {
+      "r2_prefix": "storyboards/v5/scene-01/attempts/",
+      "note": "Rejected/intermediate attempts from task 344's v5 regeneration. 1A attempt 1 is the scale case: Gabe is correct but tiny.",
+      "files": [
+        "scene-01-1A-start-a1.png"
+      ]
     }
   },
   "cases": [
@@ -178,6 +185,41 @@
         "Gabe": 0.6
       },
       "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    },
+    {
+      "id": "scale-1A-a1-gabe-small-correct",
+      "kind": "true-positive",
+      "image": "panels-v5/scene-01-1A-start-a1.png",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": null,
+      "expect_identity_at_or_above": {
+        "Gabe": 0.6
+      },
+      "expect_frame_attribute": {
+        "Gabe": {
+          "eyewear": "thin_wire_rectangular"
+        }
+      },
+      "ground_truth": "Task 344's 1A attempt 1: a five-person wide shot, 1376x768, in which Gabe stands in the kitchen doorway at the right. His head is about 55 pixels tall - roughly a fourteenth of the frame height. Cropped out and enlarged six times (which is how this ground truth was written) he is wearing THIN dark wire rims: lit skin and eyebrow are visible through the frame, and the rim is a hairline next to the width of his brow. That is the locked `thin_wire_rectangular`, not `heavy_dark_rectangular`. He also has visible stubble and dark brown - not black - hair, both of which the whole-frame read got wrong at this scale.\n\nThis is THE case this control exists for. The panel was never a defect; it was thrown away because the validator could not read it. The assertion is on the ATTRIBUTE, not just the score, because the score could come out right for the wrong reason.\n\noverall_pass is not asserted: this is an intermediate attempt from a real production run and its other rubrics (artifacts, presence, the missing location plate) have their own opinions, which are not what this case is testing.",
+      "known_miss": "Gabe's build reads `average` here against a locked `heavy_set`. That is one step on the build ladder, so it scores as soft drift and he lands on 0.75 rather than 1.00 - it is a fair reading of a man in a tailored tux at this size, and it is not tuned away."
+    },
+    {
+      "id": "scale-veo3-v1-gabe-small-wrong",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo3-v1-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A-gabe-only",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Gabe": 0.6
+      },
+      "expect_frame_attribute": {
+        "Gabe": {
+          "eyewear": "none"
+        }
+      },
+      "ground_truth": "The mirror of scale-1A-a1-gabe-small-correct, and the reason the crop pass cannot be a way of passing small faces. Same problem shape - Gabe in the far background of a 1280x720 frame, head about 40 pixels, even smaller than in the 1A case - but here he is genuinely the wrong man: slim, clean-shaven, and wearing NO GLASSES AT ALL. Enlarging those pixels makes that more obvious, not less.\n\nThe manifest is cut down to Gabe alone so nothing else can carry the FAIL: if the crop pass ever softened a small face into a pass, this case would flip and nothing else in the set would notice."
     }
   ]
 }

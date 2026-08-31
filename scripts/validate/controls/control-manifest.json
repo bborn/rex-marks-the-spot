@@ -105,5 +105,25 @@
     ],
     "camera": "Two-shot Gabe/Nina, STATIC with occasional REFRAMES, 45s. Medium shot from waist up.",
     "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1D-start.png"
+  },
+  {
+    "shot_id": "1A-gabe-only",
+    "location": "living_room",
+    "characters": [
+      "Gabe"
+    ],
+    "wardrobe": {
+      "Gabe": "black tuxedo (date-night, slightly rumpled)"
+    },
+    "key_props": [
+      "TV (flickering, showing colorful cartoon)",
+      "couch",
+      "armchair",
+      "scattered dinosaur toys (plush T-Rex, plastic Triceratops, pterodactyl)",
+      "windows showing dark stormy sky",
+      "Leo's plush T-Rex"
+    ],
+    "camera": "Wide establishing shot, STATIC, 8s. Full view of living room; TV left, couch center-left, kitchen background right.",
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1A-start.png"
   }
 ]

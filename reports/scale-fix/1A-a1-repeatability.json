@@ -1,0 +1,268 @@
+{
+  "image": ".validator-controls/panels-v5/scene-01-1A-start-a1.png",
+  "runs": [
+    {
+      "crop": true,
+      "run": 0,
+      "scores": {
+        "Mia": 0.75,
+        "Leo": 0.4,
+        "Jenny": 0.4,
+        "Nina": 0.75,
+        "Gabe": 0.75
+      },
+      "attrs": {
+        "Mia": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Leo": {
+          "eyewear": "none",
+          "apparent_age": "toddler",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Jenny": {
+          "eyewear": "none",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Nina": {
+          "eyewear": "none",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Gabe": {
+          "eyewear": "thin_wire_rectangular",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "average"
+        }
+      }
+    },
+    {
+      "crop": true,
+      "run": 1,
+      "scores": {
+        "Mia": 0.75,
+        "Leo": 1.0,
+        "Jenny": 0.4,
+        "Nina": 0.75,
+        "Gabe": 0.75
+      },
+      "attrs": {
+        "Mia": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Leo": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Jenny": {
+          "eyewear": "none",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Nina": {
+          "eyewear": "none",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Gabe": {
+          "eyewear": "thin_wire_rectangular",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "average"
+        }
+      }
+    },
+    {
+      "crop": true,
+      "run": 2,
+      "scores": {
+        "Mia": 0.75,
+        "Leo": 0.4,
+        "Jenny": 0.4,
+        "Nina": 0.75,
+        "Gabe": 0.75
+      },
+      "attrs": {
+        "Mia": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Leo": {
+          "eyewear": "none",
+          "apparent_age": "toddler",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Jenny": {
+          "eyewear": "none",
+          "apparent_age": "teenager",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Nina": {
+          "eyewear": "none",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Gabe": {
+          "eyewear": "thin_wire_rectangular",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "average"
+        }
+      }
+    },
+    {
+      "crop": false,
+      "run": 0,
+      "scores": {
+        "Mia": 1.0,
+        "Leo": 0.75,
+        "Jenny": 0.75,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "attrs": {
+        "Mia": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "build": "child"
+        },
+        "Leo": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Jenny": {
+          "eyewear": "none",
+          "apparent_age": "teenager",
+          "skin_tone": "tan",
+          "build": "slim"
+        },
+        "Nina": {
+          "eyewear": "none",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Gabe": {
+          "eyewear": "heavy_dark_rectangular",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "average"
+        }
+      }
+    },
+    {
+      "crop": false,
+      "run": 1,
+      "scores": {
+        "Mia": 1.0,
+        "Leo": 0.75,
+        "Jenny": 0.75,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "attrs": {
+        "Mia": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "build": "child"
+        },
+        "Leo": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Jenny": {
+          "eyewear": "none",
+          "apparent_age": "teenager",
+          "skin_tone": "tan",
+          "build": "slim"
+        },
+        "Nina": {
+          "eyewear": "none",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Gabe": {
+          "eyewear": "heavy_dark_rectangular",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "average"
+        }
+      }
+    },
+    {
+      "crop": false,
+      "run": 2,
+      "scores": {
+        "Mia": 1.0,
+        "Leo": 0.75,
+        "Jenny": 0.75,
+        "Nina": 0.75,
+        "Gabe": 0.1
+      },
+      "attrs": {
+        "Mia": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "build": "child"
+        },
+        "Leo": {
+          "eyewear": "none",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "build": "child"
+        },
+        "Jenny": {
+          "eyewear": "none",
+          "apparent_age": "teenager",
+          "skin_tone": "tan",
+          "build": "slim"
+        },
+        "Nina": {
+          "eyewear": "none",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "slim"
+        },
+        "Gabe": {
+          "eyewear": "heavy_dark_rectangular",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "build": "average"
+        }
+      }
+    }
+  ],
+  "usage": {
+    "input_tokens": 61965,
+    "output_tokens": 11044
+  },
+  "estimated_cost_usd": 0.0462
+}
