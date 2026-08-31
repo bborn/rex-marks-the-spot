@@ -1,0 +1,106 @@
+{
+  "shot_id": "1F",
+  "overall_pass": false,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.7,
+    "continuity": 1.0,
+    "artifacts": 0.6,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.7,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 0.6,
+    "location_no_reference": false,
+    "character_identity": {},
+    "character_identity_mean": {},
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {},
+    "character_wardrobe": {},
+    "character_wardrobe_mean": {},
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {}
+  },
+  "reasons": [
+    "artifacts 0.60 (indoor lightning, distorted screen graphics)"
+  ],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [],
+        "observed": [],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {},
+      "location_match": {
+        "score": 0.7,
+        "notes": "The TV model has changed from a modern flat screen to a vintage CRT style, though the surrounding room elements like the lamp and window match.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "This is the first shot provided in the sequence.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.6,
+        "notes": "A lightning bolt is rendered inside the room, overlapping the TV screen and interior space rather than being confined to the window.",
+        "detected": [
+          "indoor lightning",
+          "distorted screen graphics"
+        ]
+      },
+      "reasons": [
+        "artifacts 0.60 (indoor lightning, distorted screen graphics)"
+      ],
+      "character_identity": {},
+      "_frame_observations": {
+        "character_one": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "not_visible",
+          "face_shape": "oval",
+          "_visible": false,
+          "_where": "not_applicable"
+        }
+      },
+      "_identity_sheet_rows": {},
+      "model_notes": [
+        "The TV prop changed from a modern flat screen in the plate to a vintage wood-grain CRT.",
+        "Lightning is incorrectly rendered in front of the TV instead of outside the window.",
+        "The cartoon imagery on the screen is highly abstract and lacks clear character definition."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1F-start-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5957,
+    "output_tokens": 408
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1F-start-a1.png",
+    "character_refs": {},
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1F-start-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0028,
+  "attempt": 1,
+  "panel": "work/v5/scene-01-1F-start-a1.png"
+}

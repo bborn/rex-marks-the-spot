@@ -1,0 +1,429 @@
+{
+  "shot_id": "1C",
+  "overall_pass": true,
+  "aggregate_scores": {
+    "character_presence": 0.8,
+    "location_match": 0.6,
+    "continuity": 0.8,
+    "artifacts": 0.7,
+    "character_presence_mean": 0.8,
+    "location_match_mean": 0.6,
+    "continuity_mean": 0.8,
+    "artifacts_mean": 0.7,
+    "location_no_reference": false,
+    "character_identity": {
+      "Nina": 0.75,
+      "Gabe": 0.75,
+      "Jenny": 0.75
+    },
+    "character_identity_mean": {
+      "Nina": 0.75,
+      "Gabe": 0.75,
+      "Jenny": 0.75
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Nina": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "build",
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "heart"
+        },
+        "reference_attributes": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+      },
+      "Gabe": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_colour",
+          "hair_texture",
+          "build",
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; hair_texture: turnaround wavy / frame straight; build: turnaround heavy_set / frame average; face_shape: turnaround round / frame square"
+      },
+      "Jenny": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: face_shape: turnaround oval / frame round"
+      }
+    },
+    "character_wardrobe": {
+      "Nina": 0.8,
+      "Gabe": 0.8,
+      "Jenny": 0.8
+    },
+    "character_wardrobe_mean": {
+      "Nina": 0.8,
+      "Gabe": 0.8,
+      "Jenny": 0.8
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Nina": "elegant black formal dress, putting on earrings",
+      "Gabe": "black tuxedo (background)",
+      "Jenny": "casual teen, dark brown hair in ponytail (background, on phone)"
+    }
+  },
+  "reasons": [],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 0.8,
+        "expected": [
+          "Nina",
+          "Gabe",
+          "Jenny"
+        ],
+        "observed": [
+          "Nina",
+          "Gabe",
+          "Jenny"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Nina": {
+          "score": 0.8,
+          "expected": "elegant black formal dress, putting on earrings",
+          "notes": "The character is wearing a black formal dress and interacting with her earrings as described.",
+          "no_reference": false
+        },
+        "Gabe": {
+          "score": 0.8,
+          "expected": "black tuxedo (background)",
+          "notes": "The character is visible in the background wearing a black tuxedo with a bowtie.",
+          "no_reference": false
+        },
+        "Jenny": {
+          "score": 0.8,
+          "expected": "casual teen, dark brown hair in ponytail (background, on phone)",
+          "notes": "The character is in the background with a ponytail, wearing casual clothes and using a phone.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.6,
+        "notes": "The room layout is significantly altered from the plate, showing a front door and different furniture arrangement.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 0.8,
+        "notes": "The storm lighting and general color palette remain consistent with the established environment.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.7,
+        "notes": "There are minor anatomical issues with the hands and some lighting inconsistencies on the background characters.",
+        "detected": [
+          "hand distortion",
+          "lighting anomalies"
+        ]
+      },
+      "reasons": [],
+      "character_identity": {
+        "Nina": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Gabe": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; hair_texture: turnaround wavy / frame straight; build: turnaround heavy_set / frame average; face_shape: turnaround round / frame square",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Jenny": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: face_shape: turnaround oval / frame round",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "teenager",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "oval"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "heart",
+          "_visible": true,
+          "_where": "center foreground"
+        },
+        "Gabe": {
+          "hair_colour": "black",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square",
+          "_visible": true,
+          "_where": "left background"
+        },
+        "Jenny": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "right background sitting in armchair"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Jenny": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "teenager",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "oval"
+        }
+      },
+      "model_notes": [
+        "The location layout differs from the plate, introducing a front door not seen in the reference.",
+        "Nina is holding a purse which was not explicitly mentioned as being held in the wardrobe spec.",
+        "Minor artifacts are present in the rendering of the hands and hair edges."
+      ],
+      "overall_pass": true,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1C-start-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5977,
+    "output_tokens": 790
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1C-start-a1.png",
+    "character_refs": {
+      "Nina": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/nina_turnaround_APPROVED.png",
+      "Gabe": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/gabe_turnaround_APPROVED.png",
+      "Jenny": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/jenny_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1C-start-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0038,
+  "attempt": 1,
+  "panel": "work/v5/scene-01-1C-start-a1.png"
+}
