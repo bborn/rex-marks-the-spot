@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-31T06:41:13.082495Z",
-  "totalAssets": 1645,
+  "generated": "2026-08-31T12:28:13.381541Z",
+  "totalAssets": 1647,
   "categories": {
     "Characters": 388,
-    "Other": 133,
+    "Other": 135,
     "Animatics": 205,
     "Storyboards": 823,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-08-31T06:41:13.061889482Z",
+      "modTime": "2026-08-31T12:28:13.367719703Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-08-31T06:41:13.061889482Z",
+      "modTime": "2026-08-31T12:28:13.367719703Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-08-31T06:41:13.061889482Z",
+      "modTime": "2026-08-31T12:28:13.367719703Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,27 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-08-31T06:41:13.061889482Z",
+      "modTime": "2026-08-31T12:28:13.367719703Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "video/fal-verify/fal_verify_B.mp4",
+      "name": "fal_verify_B.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/video/fal-verify/fal_verify_B.mp4",
+      "size": 689598,
+      "modTime": "2026-08-31T11:46:23.546995933Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "video/fal-verify/fal_verify_A.mp4",
+      "name": "fal_verify_A.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/video/fal-verify/fal_verify_A.mp4",
+      "size": 1643733,
+      "modTime": "2026-08-31T11:42:50.570590883Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-720p/sheets/1B-ab.png",
