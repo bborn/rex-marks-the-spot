@@ -1,0 +1,396 @@
+{
+  "_comment": [
+    "Plate spec for Scene 1. One entry per manifest shot, under 'shots'.",
+    "",
+    "A shot's plate is its OWN validated v4 storyboard panel from the 9/9 PASS",
+    "set (r2:rex-assets/storyboards/v4/scene-01/). Those panels are locked,",
+    "approved artifacts, so for gating purposes the panel IS the plate. Nothing",
+    "here was drawn or generated for the gate.",
+    "",
+    "Boxes are normalised [x0, y0, x1, y1] against that shot's own plate, so a",
+    "candidate frame of any resolution or aspect can be compared to it.",
+    "Everything is measured off the plate itself - the plate is the source of",
+    "truth, this file only says WHERE to look and HOW CLOSE is close enough.",
+    "",
+    "A check only runs when this file gives that shot the inputs it needs:",
+    "  layout_match         needs 'regions'",
+    "  staging_orientation  needs 'bands'",
+    "  couch_occupancy      needs regions.couch AND swatches.couch_upholstery",
+    "  wardrobe             needs 'swatches' + 'wardrobe' + manifest characters",
+    "A close-up has no couch band, so it gets no couch check - rather than a",
+    "bogus one. Fewer honest checks beat many invented ones.",
+    "",
+    "Regenerate a plate jpg (byte-identical to the ones committed here):",
+    "  rclone copy r2:rex-assets/storyboards/v4/scene-01/scene-01-1A-start.png /tmp/",
+    "  ffmpeg -i /tmp/scene-01-1A-start.png -vf scale=512:-2 -q:v 3 plate/scene-01-1A-plate.jpg"
+  ],
+
+  "scene": "scene-01",
+  "audit": "reports/audit-v4/scene-01-audit.md (9/9 PASS)",
+  "panel_dir": "r2:rex-assets/storyboards/v4/scene-01/",
+  "default_shot": "1A",
+
+  "_thresholds_comment": [
+    "Scene-wide defaults. A shot entry may override any of them under its own",
+    "'thresholds' key; the merged result is what that shot is scored on.",
+    "",
+    "min_applied_checks is the anti-thin-plate rule. A frame on which fewer than",
+    "this many checks could actually be applied is INCONCLUSIVE, not PASS. It is",
+    "here because VIDEO-GATE.md records 02-shot-1B passing on a single colour",
+    "check (Leo's green) while the room behind him was the wrong room. One",
+    "measurement is an anecdote, not a clearance."
+  ],
+  "thresholds": {
+    "layout_match": 0.55,
+    "staging_margin": 0.02,
+    "couch_occupancy_min_ratio": 0.45,
+    "couch_occupancy_max_ratio": 2.20,
+    "wardrobe_min_ratio": 0.35,
+    "swatch_max_plate_coverage": 0.05,
+    "swatch_min_plate_coverage": 0.001,
+    "swatch_delta_e": 22.0,
+    "couch_delta_e": 32.0,
+    "min_applied_checks": 2
+  },
+
+  "shots": {
+    "1A": {
+      "_comment": [
+        "The original plate, unchanged. Regions, bands, swatches, wardrobe map",
+        "and thresholds are exactly what shipped in task #336 - every 1A number",
+        "in VIDEO-GATE.md's corpus table still reproduces."
+      ],
+      "plate": "plate/scene-01-1A-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1A-start.png",
+      "framing": "wide establishing, static",
+      "regions": {
+        "tv": [0.00, 0.35, 0.18, 0.85],
+        "lamp": [0.11, 0.28, 0.28, 0.65],
+        "couch": [0.19, 0.50, 0.65, 0.82],
+        "window": [0.28, 0.05, 0.65, 0.45],
+        "kitchen": [0.63, 0.10, 0.95, 0.55],
+        "chair": [0.72, 0.60, 1.00, 1.00],
+        "jenny": [0.82, 0.35, 1.00, 0.78],
+        "floor": [0.15, 0.78, 0.75, 1.00]
+      },
+      "_bands_comment": "The locked staging puts the TV in the left band and Jenny's armchair in the right band; a flipped room scores better crossed than straight.",
+      "bands": {
+        "left": [0.00, 0.30, 0.25, 1.00],
+        "right": [0.75, 0.30, 1.00, 1.00]
+      },
+      "swatches": {
+        "mia_top": [0.325, 0.53, 0.385, 0.60],
+        "leo_pajamas": [0.425, 0.57, 0.475, 0.66],
+        "jenny_hoodie": [0.875, 0.50, 0.925, 0.62],
+        "nina_dress": [0.620, 0.42, 0.660, 0.58],
+        "gabe_tux": [0.715, 0.38, 0.750, 0.55],
+        "couch_upholstery": [0.220, 0.62, 0.300, 0.72],
+        "chair_upholstery": [0.770, 0.74, 0.850, 0.86]
+      },
+      "wardrobe": {
+        "Mia": "mia_top",
+        "Leo": "leo_pajamas",
+        "Jenny": "jenny_hoodie",
+        "Nina": "nina_dress",
+        "Gabe": "gabe_tux"
+      }
+    },
+
+    "1B": {
+      "_comment": [
+        "Medium on Leo, static with a slight push. No TV and no armchair in",
+        "frame, but the couch fills the lower two thirds and the left/right",
+        "asymmetry is real: warm lamp and bookshelf screen-left, cold stormy",
+        "window screen-right. Mia is at the extreme frame edge and the manifest",
+        "says so, so she stays unmeasured."
+      ],
+      "plate": "plate/scene-01-1B-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1B-start.png",
+      "framing": "medium on Leo, static with slight push",
+      "regions": {
+        "leo": [0.42, 0.12, 0.66, 0.82],
+        "couch_back": [0.62, 0.33, 1.00, 0.62],
+        "couch_seat": [0.15, 0.72, 1.00, 0.98],
+        "lamp": [0.20, 0.02, 0.42, 0.34],
+        "window": [0.60, 0.00, 0.99, 0.32],
+        "bookshelf": [0.09, 0.03, 0.22, 0.46],
+        "couch_arm_left": [0.10, 0.46, 0.30, 0.78],
+        "mia_edge": [0.00, 0.02, 0.10, 1.00],
+        "couch": [0.15, 0.35, 1.00, 0.95]
+      },
+      "bands": {
+        "left": [0.00, 0.00, 0.25, 1.00],
+        "right": [0.75, 0.00, 1.00, 1.00]
+      },
+      "swatches": {
+        "leo_pajamas": [0.460, 0.70, 0.530, 0.76],
+        "mia_top": [0.005, 0.58, 0.040, 0.68],
+        "couch_upholstery": [0.840, 0.62, 0.940, 0.72]
+      },
+      "wardrobe": {
+        "Leo": "leo_pajamas",
+        "Mia": "mia_top"
+      }
+    },
+
+    "1C": {
+      "_comment": [
+        "Medium TRACKING shot, 15s left to right. The regions below are real -",
+        "front door and Gabe screen-left, stormy window and Jenny's chair",
+        "screen-right - but they only hold near the head of the track. See the",
+        "camera-move note in VIDEO-GATE.md; this shot's layout threshold is",
+        "deliberately not tuned down to make a moving camera pass."
+      ],
+      "plate": "plate/scene-01-1C-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1C-start.png",
+      "framing": "medium tracking, camera moves left to right",
+      "camera_move": "track",
+      "can_clear": false,
+      "cannot_clear_reason": "1C can only FAIL a clip, never clear one: the 1B, 1D and 1I panels all walk straight through this gate (measured by score_corpus.py --cross-shot). Its layout, staging and wardrobe cannot separate this medium from its neighbours in the same warm dim room.",
+      "regions": {
+        "nina": [0.41, 0.05, 0.62, 1.00],
+        "door": [0.29, 0.10, 0.46, 0.95],
+        "gabe_bg": [0.25, 0.22, 0.40, 0.95],
+        "coat_rack": [0.14, 0.24, 0.27, 0.95],
+        "lamp_left": [0.00, 0.33, 0.11, 0.80],
+        "lamp_mid": [0.58, 0.28, 0.71, 0.56],
+        "window": [0.63, 0.12, 0.95, 0.62],
+        "jenny_chair": [0.68, 0.45, 1.00, 1.00]
+      },
+      "bands": {
+        "left": [0.00, 0.10, 0.25, 1.00],
+        "right": [0.75, 0.10, 1.00, 1.00]
+      },
+      "swatches": {
+        "nina_dress": [0.470, 0.55, 0.530, 0.75],
+        "gabe_tux": [0.290, 0.35, 0.330, 0.50],
+        "jenny_hoodie": [0.775, 0.55, 0.815, 0.65]
+      },
+      "wardrobe": {
+        "Nina": "nina_dress",
+        "Gabe": "gabe_tux",
+        "Jenny": "jenny_hoodie"
+      }
+    },
+
+    "1D": {
+      "_comment": [
+        "Two-shot, static with occasional reframes. Both parents are in black,",
+        "so their swatches disqualify themselves the same way they do on 1A -",
+        "but Mia's magenta, Leo's green and Jenny's grey-blue are all present at",
+        "background scale in this plate, and because the plate IS this framing",
+        "that scale is the right reference. Hence background_characters:",
+        "measure."
+      ],
+      "plate": "plate/scene-01-1D-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1D-start.png",
+      "framing": "two-shot Gabe/Nina, static with reframes",
+      "background_characters": "measure",
+      "regions": {
+        "window": [0.02, 0.05, 0.36, 0.55],
+        "kids_couch": [0.10, 0.48, 0.38, 0.85],
+        "gabe": [0.36, 0.03, 0.60, 1.00],
+        "nina": [0.60, 0.10, 0.80, 1.00],
+        "jenny_chair": [0.78, 0.45, 0.97, 0.92],
+        "lamp": [0.90, 0.25, 1.00, 0.58],
+        "couch_front": [0.02, 0.72, 0.36, 1.00],
+        "wall_bg": [0.60, 0.02, 0.90, 0.30],
+        "couch": [0.03, 0.45, 0.38, 0.88]
+      },
+      "bands": {
+        "left": [0.00, 0.05, 0.25, 1.00],
+        "right": [0.75, 0.05, 1.00, 1.00]
+      },
+      "swatches": {
+        "mia_top": [0.175, 0.630, 0.205, 0.675],
+        "leo_pajamas": [0.270, 0.655, 0.300, 0.700],
+        "jenny_hoodie": [0.815, 0.58, 0.850, 0.66],
+        "gabe_tux": [0.420, 0.45, 0.460, 0.62],
+        "nina_dress": [0.660, 0.50, 0.700, 0.70],
+        "couch_upholstery": [0.090, 0.72, 0.150, 0.80]
+      },
+      "wardrobe": {
+        "Mia": "mia_top",
+        "Leo": "leo_pajamas",
+        "Jenny": "jenny_hoodie",
+        "Nina": "nina_dress",
+        "Gabe": "gabe_tux"
+      }
+    },
+
+    "1E": {
+      "_comment": [
+        "Close-up insert on Jenny, static, 5s. Shallow depth of field: the",
+        "background is deliberately blurred, so there is no couch band worth",
+        "measuring and no second costume. Jenny fills the middle third."
+      ],
+      "plate": "plate/scene-01-1E-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1E-start.png",
+      "framing": "close-up insert on Jenny, static",
+      "can_clear": false,
+      "cannot_clear_reason": "1E can only FAIL a clip, never clear one: the 1D panel passes this gate (measured by score_corpus.py --cross-shot). Jenny's grey-olive hoodie is unmeasurable in this light, so layout is doing all the work and it cannot tell this close-up from the two-shot.",
+      "regions": {
+        "jenny": [0.33, 0.06, 0.75, 1.00],
+        "window_left": [0.04, 0.10, 0.32, 0.60],
+        "window_right": [0.70, 0.10, 0.90, 0.55],
+        "couch_bg": [0.05, 0.62, 0.35, 0.92],
+        "shelf_right": [0.90, 0.18, 1.00, 0.95],
+        "lamp_left": [0.00, 0.25, 0.06, 0.62]
+      },
+      "bands": {
+        "left": [0.00, 0.05, 0.25, 1.00],
+        "right": [0.75, 0.05, 1.00, 1.00]
+      },
+      "swatches": {
+        "jenny_hoodie": [0.550, 0.55, 0.640, 0.70]
+      },
+      "wardrobe": {
+        "Jenny": "jenny_hoodie"
+      }
+    },
+
+    "1F": {
+      "_comment": [
+        "Close-up insert on the TV, static, 4s. The manifest lists no characters",
+        "at all, so wardrobe is n/a by definition and this shot is carried by",
+        "geometry alone. The screen region is the least stable thing in the",
+        "scene - the cartoon on it is meant to move and to flare with static -",
+        "so the bezel, the window and the armchair do most of the work."
+      ],
+      "plate": "plate/scene-01-1F-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1F-start.png",
+      "framing": "close-up insert on TV, static",
+      "regions": {
+        "tv_screen": [0.22, 0.06, 0.66, 0.94],
+        "tv_bezel_right": [0.68, 0.02, 0.81, 0.98],
+        "window": [0.81, 0.02, 0.98, 0.60],
+        "armchair": [0.83, 0.62, 1.00, 1.00],
+        "lamp_left": [0.00, 0.00, 0.09, 0.36],
+        "wall_left": [0.00, 0.38, 0.08, 1.00]
+      },
+      "bands": {
+        "left": [0.00, 0.00, 0.20, 1.00],
+        "right": [0.80, 0.00, 1.00, 1.00]
+      }
+    },
+
+    "1G": {
+      "_comment": [
+        "OTS from behind the kids, static, 30s. Mia's silhouette screen-left,",
+        "Leo's screen-right, the TV between them and the parents in the warm",
+        "middle distance. The manifest marks all four characters OTS or",
+        "background, but this plate is that framing, so their scale here is the",
+        "correct reference - background_characters: measure. Mia's magenta back",
+        "and Leo's green pyjama sleeve are both large and unambiguous."
+      ],
+      "plate": "plate/scene-01-1G-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1G-start.png",
+      "framing": "OTS from behind the kids, static",
+      "can_clear": false,
+      "cannot_clear_reason": "1G can only FAIL a clip, never clear one: the 1A wide passes this gate (measured by score_corpus.py --cross-shot). Every costume colour here is too dark to measure, so layout is alone and an OTS of this room reads much like a wide of it.",
+      "background_characters": "measure",
+      "regions": {
+        "mia_ots": [0.10, 0.14, 0.42, 1.00],
+        "tv": [0.34, 0.41, 0.48, 0.72],
+        "window_left": [0.00, 0.00, 0.34, 0.45],
+        "nina": [0.51, 0.27, 0.66, 0.92],
+        "gabe": [0.65, 0.14, 0.79, 0.90],
+        "leo_ots": [0.73, 0.28, 1.00, 1.00],
+        "lamp_right": [0.93, 0.33, 1.00, 0.62],
+        "floor": [0.42, 0.86, 0.72, 1.00]
+      },
+      "bands": {
+        "left": [0.00, 0.00, 0.25, 1.00],
+        "right": [0.75, 0.00, 1.00, 1.00]
+      },
+      "swatches": {
+        "mia_top": [0.170, 0.66, 0.250, 0.76],
+        "leo_pajamas": [0.790, 0.70, 0.880, 0.82],
+        "nina_dress": [0.550, 0.55, 0.600, 0.75],
+        "gabe_tux": [0.680, 0.45, 0.730, 0.65]
+      },
+      "wardrobe": {
+        "Mia": "mia_top",
+        "Leo": "leo_pajamas",
+        "Nina": "nina_dress",
+        "Gabe": "gabe_tux"
+      }
+    },
+
+    "1H": {
+      "_comment": [
+        "Close-up on Mia, slow push, 20s. Only one character, and her magenta",
+        "top is the one costume colour in Scene 1 that is unambiguous. The",
+        "parents are out-of-focus silhouettes at both edges; the stormy window",
+        "screen-right against the warm lamp screen-left is the framing's real",
+        "left/right signature.",
+        "",
+        "background_characters: measure because the manifest note for Mia here",
+        "is 'looking up at off-screen parents' - the substring 'off-screen'",
+        "describes where she is LOOKING, not where she is. She fills the frame."
+      ],
+      "plate": "plate/scene-01-1H-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1H-start.png",
+      "framing": "close-up on Mia, slow push",
+      "camera_move": "push",
+      "background_characters": "measure",
+      "regions": {
+        "mia_hair": [0.26, 0.02, 0.68, 0.72],
+        "mia_top": [0.38, 0.68, 0.66, 1.00],
+        "window": [0.63, 0.02, 0.88, 0.78],
+        "lamp": [0.11, 0.26, 0.29, 0.64],
+        "gabe_edge": [0.88, 0.00, 1.00, 1.00],
+        "nina_edge": [0.00, 0.00, 0.12, 1.00],
+        "couch_bg": [0.13, 0.62, 0.28, 1.00]
+      },
+      "bands": {
+        "left": [0.00, 0.00, 0.22, 1.00],
+        "right": [0.78, 0.00, 1.00, 1.00]
+      },
+      "swatches": {
+        "mia_top": [0.450, 0.76, 0.550, 0.86]
+      },
+      "wardrobe": {
+        "Mia": "mia_top"
+      }
+    },
+
+    "1I": {
+      "_comment": [
+        "Close-up to two-shot, static then a 77s pull. Both costumes are black",
+        "formalwear, so wardrobe disqualifies itself here exactly as it does on",
+        "1A - this shot is carried by geometry. The hallway is strongly",
+        "asymmetric (coat rack and flowers screen-left, stormy window",
+        "screen-right), which is what makes the mirror test worth running."
+      ],
+      "plate": "plate/scene-01-1I-plate.jpg",
+      "plate_source": "r2:rex-assets/storyboards/v4/scene-01/scene-01-1I-start.png",
+      "framing": "close-up to two-shot, static then pull",
+      "camera_move": "pull",
+      "can_clear": false,
+      "cannot_clear_reason": "1I can only FAIL a clip, never clear one: the 1C panel passes this gate (measured by score_corpus.py --cross-shot, layout 0.764 against a 0.55 threshold). Both costumes are black formalwear and both shots are the same hallway, so nothing here separates them.",
+      "regions": {
+        "nina": [0.22, 0.18, 0.44, 1.00],
+        "gabe": [0.48, 0.03, 0.74, 1.00],
+        "door": [0.25, 0.10, 0.47, 0.85],
+        "window": [0.68, 0.13, 0.97, 0.72],
+        "coat_rack": [0.13, 0.25, 0.24, 0.85],
+        "floor": [0.35, 0.86, 0.75, 1.00],
+        "flowers": [0.00, 0.52, 0.10, 0.76],
+        "wall_mid": [0.45, 0.03, 0.68, 0.28]
+      },
+      "bands": {
+        "left": [0.00, 0.05, 0.25, 1.00],
+        "right": [0.75, 0.05, 1.00, 1.00]
+      },
+      "swatches": {
+        "nina_dress": [0.300, 0.62, 0.360, 0.80],
+        "gabe_tux": [0.560, 0.55, 0.620, 0.75]
+      },
+      "wardrobe": {
+        "Nina": "nina_dress",
+        "Gabe": "gabe_tux"
+      }
+    }
+  }
+}

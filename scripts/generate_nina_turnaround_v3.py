@@ -19,6 +19,9 @@ from pathlib import Path
 from google import genai
 from google.genai import types
 
+sys.path.insert(0, str(Path(__file__).parent))
+from genai_compat import generate_image  # noqa: E402
+
 # Configuration
 OUTPUT_DIR = Path(__file__).parent.parent / "assets" / "characters" / "nina"
 MODEL = "gemini-2.5-flash-image"
@@ -117,37 +120,38 @@ def generate_nina_v3():
         return try_imagen_fallback(client, output_path)
 
 
-def try_imagen_fallback(client, output_path):
-    """Fallback to Imagen 4 model."""
-    try:
-        imagen_model = "imagen-4.0-generate-001"
-        print(f"\nUsing fallback model: {imagen_model}")
+FALLBACK_MODEL = "gemini-3-pro-image-preview"
 
-        response = client.models.generate_images(
-            model=imagen_model,
-            prompt=NINA_V3_PROMPT,
-            config=types.GenerateImagesConfig(
-                number_of_images=1,
-                aspect_ratio="16:9",
-                safety_filter_level="BLOCK_LOW_AND_ABOVE",
-                person_generation="ALLOW_ADULT",
-            ),
+
+def try_imagen_fallback(client, output_path):
+    """Fallback to a second image model.
+
+    Was Imagen 4 via client.models.generate_images(); google-genai 2.x removed
+    that method from the Gemini Developer API surface, so this now retries on a
+    different Gemini image model through generate_content().
+    See docs/research/sdk-migration-decision.md.
+    """
+    try:
+        print(f"\nUsing fallback model: {FALLBACK_MODEL}")
+
+        image_bytes, text = generate_image(
+            client, NINA_V3_PROMPT, model=FALLBACK_MODEL, aspect_ratio="16:9"
         )
 
-        if response.generated_images:
-            image = response.generated_images[0]
-            if hasattr(image, 'image') and hasattr(image.image, 'image_bytes'):
-                with open(output_path, 'wb') as f:
-                    f.write(image.image.image_bytes)
-                print(f"SUCCESS (imagen fallback): Saved to {output_path}")
-                print(f"File size: {os.path.getsize(output_path) / 1024:.1f} KB")
-                return True
+        if image_bytes:
+            with open(output_path, 'wb') as f:
+                f.write(image_bytes)
+            print(f"SUCCESS (fallback model): Saved to {output_path}")
+            print(f"File size: {os.path.getsize(output_path) / 1024:.1f} KB")
+            return True
 
-        print("ERROR: No images generated with imagen fallback either")
+        print("ERROR: No images generated with the fallback model either")
+        if text:
+            print(f"Model said: {text[:200]}")
         return False
 
     except Exception as e:
-        print(f"ERROR with imagen fallback: {e}")
+        print(f"ERROR with fallback model: {e}")
         return False
 
 

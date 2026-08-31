@@ -21,10 +21,16 @@ from datetime import datetime
 
 try:
     from google import genai
-    from google.genai import types
 except ImportError:
     print("ERROR: google-genai package not installed. Run: pip install google-genai")
     sys.exit(1)
+
+sys.path.insert(0, str(Path(__file__).parent))
+# Imagen's client.models.generate_images() was removed from the Gemini
+# Developer API surface in google-genai 2.x; this helper routes the same
+# request through generate_content(), which works on 1.x and 2.x alike.
+# See docs/research/sdk-migration-decision.md.
+from genai_compat import DEFAULT_IMAGE_MODEL, generate_image  # noqa: E402
 
 
 # Environment prompts - Pixar-style concept art for each key location
@@ -358,18 +364,12 @@ class EnvironmentArtGenerator:
         try:
             print(f"  Generating image...")
 
-            response = self.client.models.generate_images(
-                model="imagen-4.0-generate-001",
-                prompt=prompt,
-                config=types.GenerateImagesConfig(
-                    number_of_images=1,
-                    aspect_ratio="16:9",
-                )
+            image_data, text = generate_image(
+                self.client, prompt, model=DEFAULT_IMAGE_MODEL, aspect_ratio="16:9"
             )
 
-            if response.generated_images:
+            if image_data:
                 output_path.parent.mkdir(parents=True, exist_ok=True)
-                image_data = response.generated_images[0].image.image_bytes
 
                 with open(output_path, "wb") as f:
                     f.write(image_data)
@@ -378,6 +378,8 @@ class EnvironmentArtGenerator:
                 return True
             else:
                 print(f"  ERROR: No images generated")
+                if text:
+                    print(f"  Model said: {text[:200]}")
                 return False
 
         except Exception as e:

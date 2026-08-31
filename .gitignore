@@ -65,5 +65,8 @@ footage/
 # scripts/validate/controls/run_controls.py --fetch)
 .validator-controls/
 
-# Scene 1 v5 regeneration working dir (large PNGs go to R2, not git)
+# pytest
+.pytest_cache/
+
+# Scratch working dir for render/gate tasks (large PNGs and clips go to R2)
 work/

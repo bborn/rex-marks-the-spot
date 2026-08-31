@@ -22,11 +22,16 @@ import time
 import base64
 
 from google import genai
-from google.genai import types
+
+sys.path.insert(0, str(Path(__file__).parent))
+from genai_compat import DEFAULT_IMAGE_MODEL, generate_image  # noqa: E402
 
 # Configuration
 OUTPUT_DIR = Path(__file__).parent.parent / "assets" / "characters" / "turnarounds"
-MODEL = "imagen-4.0-generate-001"  # Use Imagen 4 for best quality
+# Was imagen-4.0-generate-001 via client.models.generate_images(), which
+# google-genai 2.x removed from the Gemini Developer API surface.
+# See docs/research/sdk-migration-decision.md.
+MODEL = DEFAULT_IMAGE_MODEL
 
 
 # Character turnaround prompts
@@ -183,34 +188,23 @@ def generate_turnaround(client, character_id: str, character_info: dict) -> bool
         print(f"  Using model: {MODEL}")
         print(f"  Generating image...")
 
-        response = client.models.generate_images(
+        image_bytes, text = generate_image(
+            client,
+            character_info["prompt"],
             model=MODEL,
-            prompt=character_info["prompt"],
-            config=types.GenerateImagesConfig(
-                number_of_images=1,
-                aspect_ratio="16:9",  # Wide format for turnaround
-                safety_filter_level="BLOCK_LOW_AND_ABOVE",
-                person_generation="ALLOW_ADULT",
-            ),
+            aspect_ratio="16:9",  # Wide format for turnaround
         )
 
-        if response.generated_images:
-            image = response.generated_images[0]
-
-            # Save the image
+        if image_bytes:
             OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-            # The image data is in image.image.image_bytes
-            if hasattr(image, 'image') and hasattr(image.image, 'image_bytes'):
-                with open(output_path, 'wb') as f:
-                    f.write(image.image.image_bytes)
-                print(f"  SUCCESS: Saved to {output_path}")
-                return True
-            else:
-                print(f"  ERROR: Unexpected image format: {type(image)}")
-                return False
+            with open(output_path, 'wb') as f:
+                f.write(image_bytes)
+            print(f"  SUCCESS: Saved to {output_path}")
+            return True
         else:
             print(f"  ERROR: No images generated")
+            if text:
+                print(f"  Model said: {text[:200]}")
             return False
 
     except Exception as e:
