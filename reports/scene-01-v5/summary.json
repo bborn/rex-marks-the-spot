@@ -141,12 +141,12 @@
   },
   {
     "shot_id": "1I",
-    "status": "IDENTITY_FAIL",
-    "attempts_used": 1,
-    "chosen_attempt": 1,
+    "status": "IDENTITY_PASS",
+    "attempts_used": 4,
+    "chosen_attempt": 4,
     "overall_pass": false,
     "identity": {
-      "Gabe": 0.4,
+      "Gabe": 1.0,
       "Nina": 0.75
     },
     "wardrobe": {
@@ -154,8 +154,8 @@
       "Nina": 1.0
     },
     "reasons": [
-      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
-      "location_match 0.50: The keyframe shows a front entryway which is a different sub-location than the living room plate provided."
-    ]
+      "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room shown in the location plate."
+    ],
+    "note": "Rebuilt in task 345 without the v4 staging plate; see docs/research/scene01-v5-panels.md section 8."
   }
 ]

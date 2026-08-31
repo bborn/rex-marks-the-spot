@@ -1,0 +1,204 @@
+{
+  "shot_id": "CONTROL-GABE",
+  "overall_pass": false,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.4,
+    "continuity": 1.0,
+    "artifacts": 1.0,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.4,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 1.0,
+    "location_no_reference": false,
+    "character_identity": {
+      "Gabe": 1.0
+    },
+    "character_identity_mean": {
+      "Gabe": 1.0
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Gabe": {
+        "score": 1.0,
+        "verdict": "same_character",
+        "defining_mismatches": [],
+        "soft_mismatches": [],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "every compared attribute matches the turnaround"
+      }
+    },
+    "character_wardrobe": {
+      "Gabe": 0.0
+    },
+    "character_wardrobe_mean": {
+      "Gabe": 0.0
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Gabe": "green and navy plaid flannel shirt, khaki trousers"
+    }
+  },
+  "reasons": [
+    "Gabe wardrobe 0.00 vs manifest 'green and navy plaid flannel shirt, khaki trousers': The character is wearing a black tuxedo with a white shirt and black bow tie instead of the expected plaid flannel shirt and khaki trousers.",
+    "location_match 0.40: The keyframe shows a generic wall and floor that do not match the specific living room/kitchen layout or the distinctive furniture and lighting of the location plate."
+  ],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Gabe"
+        ],
+        "observed": [
+          "Gabe"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Gabe": {
+          "score": 0.0,
+          "expected": "green and navy plaid flannel shirt, khaki trousers",
+          "notes": "The character is wearing a black tuxedo with a white shirt and black bow tie instead of the expected plaid flannel shirt and khaki trousers.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.4,
+        "notes": "The keyframe shows a generic wall and floor that do not match the specific living room/kitchen layout or the distinctive furniture and lighting of the location plate.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "No prior shot provided for comparison.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 1.0,
+        "notes": "No visible generation artifacts or physics violations detected.",
+        "detected": []
+      },
+      "reasons": [
+        "Gabe wardrobe 0.00 vs manifest 'green and navy plaid flannel shirt, khaki trousers': The character is wearing a black tuxedo with a white shirt and black bow tie instead of the expected plaid flannel shirt and khaki trousers.",
+        "location_match 0.40: The keyframe shows a generic wall and floor that do not match the specific living room/kitchen layout or the distinctive furniture and lighting of the location plate."
+      ],
+      "character_identity": {
+        "Gabe": {
+          "score": 1.0,
+          "notes": "every compared attribute matches the turnaround",
+          "no_reference": false,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "The character occupies the central portion of the frame, standing full-length."
+        }
+      },
+      "_identity_sheet_rows": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "Wardrobe is a complete mismatch; character is in a tuxedo instead of a plaid shirt and khakis.",
+        "The background is a plain wall and does not match the detailed living room environment in the location plate."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "work/control/gabe_from_p1_crop.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5872,
+    "output_tokens": 472
+  },
+  "media_paths": {
+    "media": "work/control/gabe_from_p1_crop.png",
+    "character_refs": {
+      "Gabe": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/asset-bible/characters/gabe_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "work/control/gabe_from_p1_crop.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0029,
+  "control_panel": "work/control/gabe_from_p1_crop.png"
+}

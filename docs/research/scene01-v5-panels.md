@@ -104,11 +104,13 @@ task-342 re-audit, not the voided original.
 | 1G | 1 | 0.10 | **0.75** | Mia 0.75 · Leo 0.75 · Nina 0.75 · Gabe 0.75 | all 1.00 | PASS | PASS |
 | 1H | 1 | 0.75 | **1.00** | Mia 1.00 | 0.80 | PASS | FAIL - presence 0.50 |
 | 1I | 3 | 0.10 | 0.40 | Gabe **0.40** · Nina 0.75 | all 1.00 | **FAIL** | FAIL |
+| 1I *(rebuilt, §8)* | 4 | 0.10 | **1.00** | Gabe 1.00 · Nina 0.75 | all 1.00 | **PASS** | FAIL - location 0.50 |
 
-**Identity gate: 8 of 9 pass.** Six v4 panels failed on identity (1A, 1C, 1D,
-1E, 1G, 1I); **five of those six now pass**, and no panel regressed. Every character that was scoring 0.10 or 0.40 in v4 —
-Gabe in 1A/1C/1D/1G, Jenny in 1A/1C/1D/1E, Leo in 1D — is now at or above 0.75,
-except Gabe in 1I.
+**Identity gate: 8 of 9 pass in this run; 9 of 9 after the §8 rebuild of 1I.** Six v4 panels failed on identity (1A, 1C, 1D,
+1E, 1G, 1I); **five of those six pass in this run and the sixth passes after
+the §8 rebuild**, and no panel regressed. Every character that was scoring 0.10
+or 0.40 in v4 — Gabe in 1A/1C/1D/1G, Jenny in 1A/1C/1D/1E, Leo in 1D — is now
+at or above 0.75.
 
 Wardrobe holds at 0.70-1.00 across the set. Jenny is in her coral hoodie with
 her phone in every panel she appears in, which is the standing do-not-invent
@@ -139,6 +141,10 @@ start an attempt that would cross the cap; it never fired.
 ---
 
 ## 4. The one panel that would not come good: Gabe's glasses in 1I
+
+> **Superseded by §8.** Task 345 rebuilt 1I without the staging plate and it
+> now passes the identity gate at Gabe 1.00. The diagnosis below was right
+> about the plate; its recommended inpaint fix turned out not to be needed.
 
 **1I used all three attempts and failed all three, identically:**
 
@@ -242,6 +248,9 @@ python3 scripts/make_scene01_contact_sheet.py --out work/scene-01-v4-vs-v5.png
 | `scripts/regen_scene01_v5.py` | Builds the prompt from `identity-sheets.json` + the manifest, attaches the downscaled v4 staging plate and the turnarounds, generates one panel. |
 | `scripts/run_scene01_v5_gate.py` | The gate loop: generate, validate, feed failures back, cap at 3, stop at the budget. Keeps a spend ledger. |
 | `scripts/make_scene01_contact_sheet.py` | The v4-vs-v5 sheet, with both versions' scores printed on it. |
+| `scripts/regen_scene01_v5.py --no-staging-plate` | Plateless build (§8): no v4 panel attached, staging carried as prose from `PLATELESS_STAGING`. |
+| `scripts/run_1I_plateless.py` | The §8 gate loop for 1I: 4 attempts, $1.00 cap, `--start-attempt` to stop and look at the pixels mid-run. |
+| `scripts/eyewear_control.py` | Validates an arbitrary image as if it were a panel. Used in §8 to prove the eyewear over-call by re-scoring a crop of the same panel. |
 
 Two notes for the next agent. `docs/process/do-not-invent.md` and
 `docs/process/scene-01-manifest.json`, both named in the task, **do not exist in
@@ -250,3 +259,126 @@ this repo on any branch** — the manifest lives at
 `asset-bible/BIBLE.md` "How to use" plus the task text (Jenny is hoodie +
 phone). And this branch merges `task/342-fix-the-identity-validator-cap-6`,
 because the repaired validator this work is gated on had not landed on `main`.
+
+---
+
+## 8. 1I, rebuilt without the staging plate (task 345)
+
+**Task 345 · 2026-08-31 · spend $0.180 against a $1.00 cap · 4 attempts**
+
+Section 4 above stopped 1I at 0.40 on Gabe's eyewear and blamed the v4 staging
+plate: heavy black frames at large scale in a close two-shot, where the
+downscale that defeats that anchor in a wide shot does not. That diagnosis was
+right, and dropping the plate fixed it.
+
+**1I now passes the identity gate at Gabe 1.00, Nina 0.75.** Every one of
+Gabe's ten graded attributes matches the locked turnaround, eyewear included:
+
+> `"notes": "every compared attribute matches the turnaround"`
+
+| | v4 | v5 (§4, with plate) | v5.1 (this run, plateless) |
+|---|---|---|---|
+| Gabe identity | 0.10 | 0.40 | **1.00** |
+| Nina identity | 0.40 | 0.75 | 0.75 |
+| Gabe / Nina wardrobe | - | 1.00 / 1.00 | 1.00 / 1.00 |
+| presence · continuity · artifacts | - | 1.00 · 1.00 · 1.00 | 1.00 · 1.00 · 0.90 |
+| location_match | - | 0.50 | 0.50 |
+| **Identity gate** | FAIL | **FAIL** | **PASS** |
+| Full gate | FAIL | FAIL | FAIL - location only |
+
+The one remaining full-gate failure is `location_match 0.50`, which is §5's
+missing entryway plate, not a defect in the art: the validator says so in as
+many words — *"the keyframe shows a foyer/entryway which is a different
+sub-location than the living room shown in the location plate."* Nothing in
+this panel will move that number until an entryway plate is locked in the
+bible.
+
+- Panel: `r2:rex-assets/storyboards/v5/scene-01/scene-01-1I-start.png`
+- Rejected attempts: `.../attempts/scene-01-1I-start-plateless-p{1,2,3}.png`
+  (the three plated attempts from §4 stay at `...-a{1,2,3}.png`)
+- Validator JSON, controls and ledger: `reports/scene-01-1I-plateless/`
+
+### What changed
+
+`scripts/regen_scene01_v5.py` gains a plateless path (`--no-staging-plate`).
+With it, the v4 panel is not attached at any resolution — **the only images the
+generator sees are the locked turnarounds** — and the staging travels as prose
+in `PLATELESS_STAGING`, written by reading the v4 frame: camera height and
+distance, figure scale, both poses, the set left to right, the floor, and the
+direction and colour of the light. Everything else is unchanged from §2, so 1I
+is built from the same identity sheet, the same wardrobe block and the same
+style block as the other eight. `scripts/run_1I_plateless.py` is the gate loop,
+capped at 4 attempts and $1.00.
+
+### Is it the technique, or was it the fourth roll of the dice?
+
+Both, and the split matters, because §6 already warns that a single attempt is
+not evidence about a prompt.
+
+**What the plate removal bought on its own** is the *body*, immediately and on
+every attempt. Gabe comes back genuinely heavy-set — the paunch, the wide
+chest, the round full face — from attempt 1, where three plated attempts had
+all read `build: average` with `face_shape` soft-mismatched. That is the plate's
+grip being gone, and it is not luck: it held across all four plateless rolls.
+
+**The glasses took one more thing.** Plateless attempts 1-3 scored an identical
+Gabe 0.40 on `eyewear: heavy_dark_rectangular`, exactly as the plated ones had.
+So before spending the last attempt, both controls in
+`reports/scene-01-1I-plateless/` were run — `scripts/eyewear_control.py`, which
+feeds the validator an image as if it were a panel:
+
+| Control panel | Gabe score | Frame eyewear read |
+|---|---|---|
+| The locked Gabe turnaround, front view, cropped | 0.75 | `thin_wire_rectangular` |
+| **The same Gabe pixels cropped out of plateless attempt 1** | **1.00** | `thin_wire_rectangular` |
+| Plateless attempt 1, whole panel | 0.40 | `heavy_dark_rectangular` |
+
+The second row is the finding. Attempt 1's Gabe scores a perfect 1.00 with the
+eyewear read correctly when he is cropped out of his own panel and shown to the
+same validator — the identical pixels, only larger in frame. **The glasses were
+already right and the validator was over-calling at panel scale**, which is
+§4's wide-shot behaviour appearing in a two-shot as well, at a head height of
+about a sixth of the frame.
+
+Knowing that, attempt 4 was aimed at the readout rather than at the drawing: it
+asked for the rims as brushed silver wire with a specular highlight along the
+top, a clear gap of lit skin between rim and brow, and more warm key on Gabe's
+face. That is not a departure from the sheet — `thin_wire_rectangular` already
+says "catching a small metallic highlight" — it is the same frames drawn so
+they survive being small. It scored 1.00 first time.
+
+### Is this worth reusing?
+
+**Yes, for close shots, and it is worth doing before the first attempt rather
+than after three failures.** Two separate reusable lessons:
+
+1. **Drop the staging plate on any shot where a face is large in frame.** The
+   plate is a good lever on a wide shot (§2) and a bad one here: what it
+   contributes — camera, blocking, set dressing, light — is exactly the part
+   that survives being written down, while what it costs is the part that gets
+   copied off an off-model face. Writing the staging as prose took one careful
+   look at the v4 frame and cost nothing per attempt. Every close-up and
+   two-shot in the film should be built this way; 1A-1H, all wider, are fine as
+   they are and were not touched.
+2. **Light the graded detail, don't just draw it.** A hairline rim drawn
+   correctly and then lost in a dim warm key reads to the validator as a solid
+   dark frame. Asking for the specular highlight and the gap of lit skin is
+   what moved 0.40 to 1.00 on pixels that were already correct. This applies to
+   any small high-contrast graded attribute — rims, earrings, freckles — and it
+   is a cheaper fix than another whole-frame regeneration.
+
+Section 4's recommended next step was a targeted inpaint of the glasses region.
+That was not needed and is not the general answer; the panel was regenerated
+whole, four times, for $0.18.
+
+### A validator issue this leaves open, and it is not 1I's
+
+The gate reads `heavy_dark_rectangular` off pixels it reads as
+`thin_wire_rectangular` when the same character is larger in the frame. 1I
+worked around it by lighting the rims. That works, but it means the eyewear
+score is partly a function of how big the head is, and §4 already recorded the
+same over-call on the wide shots. **Worth a task of its own:** either the
+identity pass should crop to each detected character before grading them, or
+`eyewear` should be scored as a soft rather than a defining attribute below
+some head-height threshold. Until then, expect small-in-frame Gabe to cost
+extra attempts, and check a crop before believing an eyewear failure.

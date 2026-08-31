@@ -1,0 +1,48 @@
+{
+  "image_calls": 4,
+  "image_cost": 0.16,
+  "validation_calls": 4,
+  "validation_cost": 0.0143,
+  "attempts": [
+    {
+      "attempt": 1,
+      "identity": {
+        "Gabe": 0.4,
+        "Nina": 0.75
+      },
+      "identity_pass": false,
+      "overall_pass": false
+    },
+    {
+      "attempt": 2,
+      "identity": {
+        "Gabe": 0.4,
+        "Nina": 0.75
+      },
+      "identity_pass": false,
+      "overall_pass": false
+    },
+    {
+      "attempt": 3,
+      "identity": {
+        "Gabe": 0.4,
+        "Nina": 0.75
+      },
+      "identity_pass": false,
+      "overall_pass": false
+    },
+    {
+      "attempt": 4,
+      "identity": {
+        "Gabe": 1.0,
+        "Nina": 0.75
+      },
+      "identity_pass": true,
+      "overall_pass": false
+    }
+  ],
+  "control_validation_calls": 2,
+  "control_validation_cost": 0.0058,
+  "note": "The two control calls are scripts/eyewear_control.py: the locked Gabe turnaround, and a tight crop of Gabe out of plateless attempt 1, each validated as if it were a panel. They are what settled whether the rendered glasses were wrong or the validator was over-calling.",
+  "total_cost": 0.1801
+}

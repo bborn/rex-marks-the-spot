@@ -258,6 +258,67 @@ STAGING_ERRORS = {
            "tousled, blue-eyed, in green dino pajamas.",
 }
 
+# ---------------------------------------------------------------------------
+# Plateless staging (task 345).
+#
+# The staging plate is a good lever on a wide shot and a bad one on a close
+# shot. In 1I - a two-shot where Gabe's head fills about a sixth of the frame -
+# the v4 plate's heavy black glasses survived every downscale and the panel
+# failed the identity gate three times on `eyewear`, identically. So for these
+# shots the plate is not attached at all: the staging is carried as prose,
+# written by reading the v4 panel, and the ONLY images the model sees are the
+# locked turnarounds.
+#
+# Write these descriptions from the actual v4 frame, left to right, and include
+# camera height, figure scale, poses, set dressing and light direction - all the
+# things the plate was carrying. Do NOT describe how the characters look here;
+# that comes from the identity block, rendered from the locked sheet.
+PLATELESS_STAGING = {
+    "1I": (
+        "FRAMING AND CAMERA. Eye-level, static, a medium-wide two-shot in the "
+        "front entryway of the family home at night. Both adults are seen "
+        "full-length, standing on the floor with their feet just above the "
+        "bottom edge of the frame and a hand's width of wall above their heads. "
+        "Normal lens, no distortion, camera roughly ten feet back. Each head is "
+        "about one sixth of the frame's height. EXACTLY two people in frame and "
+        "nobody else.\n"
+        "    BLOCKING. NINA stands left of centre, her body in three-quarter "
+        "view turned toward screen-right, weight forward, shoulders squared at "
+        "him, chin dropped and brows down in a hard sideways don't-you-dare "
+        "glare up at Gabe. Her arms hang straight down with her hands loosely "
+        "curled into fists. A single drop earring catches the lamplight; a thin "
+        "gold bracelet on her wrist.\n"
+        "    GABE stands right of centre, a little further from camera than "
+        "Nina and a head taller, his body squared to camera and his face turned "
+        "down and to screen-left toward her. He is caught mid-hesitation: brows "
+        "pulled up in the middle, eyes down and away from hers, mouth pressed "
+        "into a guilty, wincing line. His arms hang at his sides, hands open "
+        "and slack. He is not speaking.\n"
+        "    SET, LEFT TO RIGHT. Far left: a small dark-wood console table "
+        "against the wall with a white ceramic vase of white roses on it, a "
+        "framed picture on the wall above, a wicker basket and a pair of shoes "
+        "tucked underneath. Left of centre, behind Nina: a dark wooden "
+        "coat-tree with a grey overcoat and a dark jacket hanging from it. "
+        "Centre, between the two figures: the closed wooden FRONT DOOR with a "
+        "brass knob, set in a white-painted frame in the warm beige wall. "
+        "Centre-right, behind Gabe: a dark-wood entryway console table carrying "
+        "a lit table lamp with a cream drum shade and a small framed photo, "
+        "with a white light-switch plate on the wall above it. Right third: a "
+        "large white-framed sash WINDOW with a muntin grid, looking out on a "
+        "dark storm - rain streaking the glass, wet dark-green shrubs, a "
+        "distant house light, and a bright blue-white LIGHTNING BOLT in the "
+        "clouds OUTSIDE the glass. Far right edge, cropped: the corner of a "
+        "wooden table with a small stack of books on it.\n"
+        "    FLOOR AND LIGHT. Warm honey-toned hardwood planks running toward "
+        "camera, a pale runner rug in front of the door and a beige rug at "
+        "right. The key light is the warm amber table lamp at centre-right, "
+        "pooling on the wall behind Gabe and rimming both figures; cool blue "
+        "spill from the stormy window fills the right side. Warm, lived-in, and "
+        "tense - a domestic hallway on a bad night, not a stage."
+    ),
+}
+
+
 STYLE = (
     "Render as a single 16:9 widescreen storyboard frame in a premium 3D-animated "
     "feature-film look (Pixar / DreamWorks style) - the SAME stylized 3D-character "
@@ -390,7 +451,8 @@ def _img_to_part(path: Path, max_edge: int = 1600) -> types.Part:
     return types.Part.from_bytes(data=buf.getvalue(), mime_type="image/png")
 
 
-def _build_prompt(shot: dict, identity_lines: dict[str, str], notes: str = "") -> str:
+def _build_prompt(shot: dict, identity_lines: dict[str, str], notes: str = "",
+                  use_staging_plate: bool = True) -> str:
     chars = shot.get("characters", []) or []
     wardrobe = shot.get("wardrobe", {}) or {}
     props = shot.get("key_props", []) or []
@@ -403,39 +465,57 @@ def _build_prompt(shot: dict, identity_lines: dict[str, str], notes: str = "") -
         "of an animated feature film."
     )
     L.append("")
-    L.append(
-        "TWO KINDS OF REFERENCE ARE ATTACHED, AND THEY ARE USED DIFFERENTLY."
-    )
-    L.append("")
-    L.append(
-        "  1. The STAGING REFERENCE (attached first) is an EARLIER, REJECTED "
-        "version of this very shot. Its STAGING is approved and must be kept "
-        "exactly: same camera angle and lens, same room layout, same furniture "
-        "and prop placement, same person standing in the same spot in the same "
-        "pose, same lighting and colour. It was rejected because THE PEOPLE IN "
-        "IT ARE DRAWN AS THE WRONG PEOPLE - a different cast wearing the right "
-        "clothes. Every human figure in it must be REDRAWN FROM SCRATCH as the "
-        "correct character. Keep the blocking, replace the people."
-    )
-    L.append("")
-    L.append(
-        "  2. The CHARACTER TURNAROUNDS (attached after it) ARE the locked "
-        "character designs and they WIN over the staging reference on every "
-        "question of who a person is - face, hair, skin tone, build, age, "
-        "glasses, facial hair. Where a turnaround and the staging frame "
-        "disagree about a person's appearance, the TURNAROUND IS RIGHT and the "
-        "staging frame is the error you are fixing."
-    )
-    L.append("")
-    fixes = [STAGING_ERRORS[n] for n in chars if n in STAGING_ERRORS]
-    if fixes:
+    if not use_staging_plate:
+        # Plateless: the only images attached are the locked turnarounds, so
+        # they are unambiguously the authority, and the staging arrives as
+        # prose instead of as a picture with the wrong faces in it.
         L.append(
-            "SPECIFIC ERRORS IN THE STAGING REFERENCE THAT THIS REGENERATION "
-            "EXISTS TO FIX - work through them one by one:"
+            "THE ONLY IMAGES ATTACHED ARE THE LOCKED CHARACTER TURNAROUNDS. "
+            "They are the character designs for this film. Every person you "
+            "draw must be the person on their turnaround - face, hair, skin "
+            "tone, build, age, glasses, facial hair - rendered in a new pose "
+            "and a new setting. There is no other picture of this shot; the "
+            "staging below is written out for you and you are composing the "
+            "frame from that description."
         )
-        for f in fixes:
-            L.append(f"  - {f}")
         L.append("")
+        L.append("STAGING - build the frame exactly as described:")
+        L.append(PLATELESS_STAGING[shot["shot_id"]])
+        L.append("")
+    else:
+        L.append(
+            "TWO KINDS OF REFERENCE ARE ATTACHED, AND THEY ARE USED DIFFERENTLY."
+        )
+        L.append("")
+        L.append(
+            "  1. The STAGING REFERENCE (attached first) is an EARLIER, REJECTED "
+            "version of this very shot. Its STAGING is approved and must be kept "
+            "exactly: same camera angle and lens, same room layout, same furniture "
+            "and prop placement, same person standing in the same spot in the same "
+            "pose, same lighting and colour. It was rejected because THE PEOPLE IN "
+            "IT ARE DRAWN AS THE WRONG PEOPLE - a different cast wearing the right "
+            "clothes. Every human figure in it must be REDRAWN FROM SCRATCH as the "
+            "correct character. Keep the blocking, replace the people."
+        )
+        L.append("")
+        L.append(
+            "  2. The CHARACTER TURNAROUNDS (attached after it) ARE the locked "
+            "character designs and they WIN over the staging reference on every "
+            "question of who a person is - face, hair, skin tone, build, age, "
+            "glasses, facial hair. Where a turnaround and the staging frame "
+            "disagree about a person's appearance, the TURNAROUND IS RIGHT and the "
+            "staging frame is the error you are fixing."
+        )
+        L.append("")
+        fixes = [STAGING_ERRORS[n] for n in chars if n in STAGING_ERRORS]
+        if fixes:
+            L.append(
+                "SPECIFIC ERRORS IN THE STAGING REFERENCE THAT THIS REGENERATION "
+                "EXISTS TO FIX - work through them one by one:"
+            )
+            for f in fixes:
+                L.append(f"  - {f}")
+            L.append("")
     if chars:
         L.append(
             "CHARACTER IDENTITY - MANDATORY, non-negotiable. Every clause below "
@@ -467,24 +547,44 @@ def _build_prompt(shot: dict, identity_lines: dict[str, str], notes: str = "") -
         L.append("")
     L.append(f"CAMERA / FRAMING: {camera}")
     L.append("")
-    L.append(f"COMPOSITION (must match the staging reference): {composition}")
-    L.append("")
-    L.append(
-        "STAGING FIDELITY TEST: if your frame were laid side by side with the "
-        "staging reference, the ONLY visible differences should be the people. "
-        "Camera position, focal length, distance to subject, wall and window "
-        "positions, furniture, background rooms, prop placement, lamp positions "
-        "and the colour of the light must all read as the same frame. Do not "
-        "push in, do not widen, do not swap the background."
-    )
-    L.append("")
-    L.append(
-        "SETTING: the family living room in the evening - warm interior lamp "
-        "light, large windows onto a dark stormy night. Any lightning is visible "
-        "OUTSIDE through a window only; never draw a bolt over interior walls, "
-        "furniture or a person."
-    )
-    L.append("")
+    if use_staging_plate:
+        L.append(f"COMPOSITION (must match the staging reference): {composition}")
+        L.append("")
+        L.append(
+            "STAGING FIDELITY TEST: if your frame were laid side by side with the "
+            "staging reference, the ONLY visible differences should be the people. "
+            "Camera position, focal length, distance to subject, wall and window "
+            "positions, furniture, background rooms, prop placement, lamp positions "
+            "and the colour of the light must all read as the same frame. Do not "
+            "push in, do not widen, do not swap the background."
+        )
+        L.append("")
+        L.append(
+            "SETTING: the family living room in the evening - warm interior lamp "
+            "light, large windows onto a dark stormy night. Any lightning is visible "
+            "OUTSIDE through a window only; never draw a bolt over interior walls, "
+            "furniture or a person."
+        )
+        L.append("")
+    else:
+        # The manifest's camera note describes the shot's MOVE (close on Gabe,
+        # pulling back to a two-shot). The approved panel is the two-shot, so
+        # say which end of the move this frame is - with the plate gone there is
+        # no picture to settle it.
+        L.append(
+            "The camera note above describes a move across the whole shot. This "
+            "panel is the approved framing described in STAGING - the settled "
+            "two-shot with both people full-length in frame. Do not render the "
+            "opening close-up on Gabe's face."
+        )
+        L.append("")
+        L.append(
+            "SETTING: the family home in the evening - warm interior lamp light, "
+            "a window onto a dark stormy night. Any lightning is visible OUTSIDE "
+            "through a window only; never draw a bolt over interior walls, "
+            "furniture or a person."
+        )
+        L.append("")
     L.append(STYLE)
     risks = [HIGH_RISK[n] for n in chars if n in HIGH_RISK]
     if risks:
@@ -509,10 +609,19 @@ STAGING_MAX_EDGE = 640
 
 def generate_panel(client, shot: dict, out_path: Path, identity_lines,
                    model: str, notes: str = "",
-                   staging_max_edge: int = STAGING_MAX_EDGE) -> bool:
+                   staging_max_edge: int = STAGING_MAX_EDGE,
+                   use_staging_plate: bool = True) -> bool:
     parts: list = []
+    if not use_staging_plate and shot["shot_id"] not in PLATELESS_STAGING:
+        raise KeyError(
+            f"No PLATELESS_STAGING description for {shot['shot_id']}; write one "
+            "from the v4 panel before running plateless."
+        )
     staging = STAGING_DIR / f"scene-01-{shot['shot_id']}-start.png"
-    if staging.exists():
+    if not use_staging_plate:
+        print(f"  [{shot['shot_id']}] plateless: no staging image attached, "
+              "staging carried as text", flush=True)
+    elif staging.exists():
         parts.append(types.Part.from_text(
             text=("STAGING REFERENCE (rejected earlier version of this shot), "
                   "attached at deliberately LOW RESOLUTION. Use it for "
@@ -530,13 +639,23 @@ def generate_panel(client, shot: dict, out_path: Path, identity_lines,
     # holding when it starts drawing faces.
     for name in shot.get("characters", []) or []:
         ref_path = _resolve_char_ref(name)
-        parts.append(types.Part.from_text(
-            text=(f"CHARACTER TURNAROUND - this is the REAL {name}. This is the "
-                  f"locked design. It overrides the staging frame on every "
-                  f"question of what {name} looks like:")))
+        if use_staging_plate:
+            caption = (f"CHARACTER TURNAROUND - this is the REAL {name}. This is "
+                       f"the locked design. It overrides the staging frame on "
+                       f"every question of what {name} looks like:")
+        else:
+            caption = (f"CHARACTER TURNAROUND - this is the REAL {name}, the "
+                       f"locked design for this film, front / three-quarter / "
+                       f"side / back. It is the ONLY authority on what {name} "
+                       f"looks like. Read the face and the glasses off this "
+                       f"sheet, at this level of detail, and carry them into "
+                       f"the frame:")
+        parts.append(types.Part.from_text(text=caption))
         parts.append(_img_to_part(ref_path))
 
-    parts.append(types.Part.from_text(text=_build_prompt(shot, identity_lines, notes)))
+    parts.append(types.Part.from_text(
+        text=_build_prompt(shot, identity_lines, notes,
+                           use_staging_plate=use_staging_plate)))
 
     print(f"[{shot['shot_id']}] generating with {model} "
           f"({len(shot.get('characters', []) or [])} char refs)...", flush=True)
@@ -580,6 +699,9 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--model", default=MODEL)
     ap.add_argument("--suffix", default="", help="filename suffix, e.g. -a2")
     ap.add_argument("--notes", default="", help="corrections to feed the retry")
+    ap.add_argument("--no-staging-plate", action="store_true",
+                    help="do not attach the v4 panel; carry the staging as text "
+                         "from PLATELESS_STAGING (see task 345)")
     args = ap.parse_args(argv)
 
     if not os.environ.get("GEMINI_API_KEY"):
@@ -600,7 +722,8 @@ def main(argv: list[str]) -> int:
     ok, bad = [], []
     for i, shot in enumerate(shots):
         out = out_dir / f"scene-01-{shot['shot_id']}-start{args.suffix}.png"
-        if generate_panel(client, shot, out, identity_lines, args.model, args.notes):
+        if generate_panel(client, shot, out, identity_lines, args.model, args.notes,
+                          use_staging_plate=not args.no_staging_plate):
             ok.append(shot["shot_id"])
         else:
             bad.append(shot["shot_id"])

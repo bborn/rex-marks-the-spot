@@ -5,33 +5,35 @@
     "character_presence": 1.0,
     "location_match": 0.5,
     "continuity": 1.0,
-    "artifacts": 0.9,
+    "artifacts": 1.0,
     "character_presence_mean": 1.0,
     "location_match_mean": 0.5,
     "continuity_mean": 1.0,
-    "artifacts_mean": 0.9,
+    "artifacts_mean": 1.0,
     "location_no_reference": false,
     "character_identity": {
-      "Gabe": 1.0,
+      "Gabe": 0.4,
       "Nina": 0.75
     },
     "character_identity_mean": {
-      "Gabe": 1.0,
+      "Gabe": 0.4,
       "Nina": 0.75
     },
     "character_identity_no_reference": [],
     "character_identity_evidence": {
       "Gabe": {
-        "score": 1.0,
-        "verdict": "same_character",
-        "defining_mismatches": [],
+        "score": 0.4,
+        "verdict": "significant_drift",
+        "defining_mismatches": [
+          "eyewear"
+        ],
         "soft_mismatches": [],
         "frame_attributes": {
           "hair_colour": "dark_brown",
           "hair_length": "short",
           "hair_texture": "wavy",
           "build": "heavy_set",
-          "eyewear": "thin_wire_rectangular",
+          "eyewear": "heavy_dark_rectangular",
           "facial_hair": "stubble",
           "apparent_age": "adult",
           "skin_tone": "light",
@@ -50,21 +52,20 @@
           "hair_styling": "worn_loose",
           "face_shape": "round"
         },
-        "notes": "every compared attribute matches the turnaround"
+        "notes": "off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular"
       },
       "Nina": {
         "score": 0.75,
         "verdict": "minor_drift",
         "defining_mismatches": [],
         "soft_mismatches": [
-          "hair_texture",
           "build",
           "face_shape"
         ],
         "frame_attributes": {
           "hair_colour": "red_auburn",
           "hair_length": "shoulder",
-          "hair_texture": "straight",
+          "hair_texture": "wavy",
           "build": "slim",
           "eyewear": "none",
           "facial_hair": "clean_shaven",
@@ -85,7 +86,7 @@
           "hair_styling": "worn_loose",
           "face_shape": "round"
         },
-        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame heart"
       }
     },
     "character_wardrobe": {
@@ -103,7 +104,8 @@
     }
   },
   "reasons": [
-    "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room shown in the location plate."
+    "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+    "location_match 0.50: The keyframe shows a front entryway while the location plate shows a living room/kitchen; they share a color palette and storm theme but are different sub-locations."
   ],
   "keyframes": [
     {
@@ -124,7 +126,7 @@
         "Gabe": {
           "score": 1.0,
           "expected": "black tuxedo (conflicted expression)",
-          "notes": "Gabe is wearing a black tuxedo with a white shirt and black bow tie as specified.",
+          "notes": "Gabe is wearing a standard black tuxedo with a bow tie as specified.",
           "no_reference": false
         },
         "Nina": {
@@ -136,39 +138,40 @@
       },
       "location_match": {
         "score": 0.5,
-        "notes": "The keyframe shows a foyer/entryway which is a different sub-location than the living room shown in the location plate.",
+        "notes": "The keyframe shows a front entryway while the location plate shows a living room/kitchen; they share a color palette and storm theme but are different sub-locations.",
         "no_reference": false
       },
       "continuity": {
         "score": 1.0,
-        "notes": "The storm and lighting are consistent with the previous location plate.",
+        "notes": "This is the first shot provided in this sequence.",
         "no_prior_shot": true,
         "same_location_as_prior": false
       },
       "artifacts": {
-        "score": 0.9,
-        "notes": "Minor anatomical oddity on Nina's clenched fist, but otherwise clean.",
-        "detected": [
-          "minor hand distortion"
-        ]
+        "score": 1.0,
+        "notes": "The image is clean with no visible generation artifacts or physics violations.",
+        "detected": []
       },
       "reasons": [
-        "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room shown in the location plate."
+        "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+        "location_match 0.50: The keyframe shows a front entryway while the location plate shows a living room/kitchen; they share a color palette and storm theme but are different sub-locations."
       ],
       "character_identity": {
         "Gabe": {
-          "score": 1.0,
-          "notes": "every compared attribute matches the turnaround",
+          "score": 0.4,
+          "notes": "off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
           "no_reference": false,
-          "verdict": "same_character",
-          "defining_mismatches": [],
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "eyewear"
+          ],
           "soft_mismatches": [],
           "frame_attributes": {
             "hair_colour": "dark_brown",
             "hair_length": "short",
             "hair_texture": "wavy",
             "build": "heavy_set",
-            "eyewear": "thin_wire_rectangular",
+            "eyewear": "heavy_dark_rectangular",
             "facial_hair": "stubble",
             "apparent_age": "adult",
             "skin_tone": "light",
@@ -190,19 +193,18 @@
         },
         "Nina": {
           "score": 0.75,
-          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
           "no_reference": false,
           "verdict": "minor_drift",
           "defining_mismatches": [],
           "soft_mismatches": [
-            "hair_texture",
             "build",
             "face_shape"
           ],
           "frame_attributes": {
             "hair_colour": "red_auburn",
             "hair_length": "shoulder",
-            "hair_texture": "straight",
+            "hair_texture": "wavy",
             "build": "slim",
             "eyewear": "none",
             "facial_hair": "clean_shaven",
@@ -231,19 +233,19 @@
           "hair_length": "short",
           "hair_texture": "wavy",
           "build": "heavy_set",
-          "eyewear": "thin_wire_rectangular",
+          "eyewear": "heavy_dark_rectangular",
           "facial_hair": "stubble",
           "apparent_age": "adult",
           "skin_tone": "light",
           "hair_styling": "worn_loose",
           "face_shape": "round",
           "_visible": true,
-          "_where": "right side of the frame, standing and facing left"
+          "_where": "standing on the right side of the frame, facing left"
         },
         "Nina": {
           "hair_colour": "red_auburn",
           "hair_length": "shoulder",
-          "hair_texture": "straight",
+          "hair_texture": "wavy",
           "build": "slim",
           "eyewear": "none",
           "facial_hair": "clean_shaven",
@@ -252,7 +254,7 @@
           "hair_styling": "worn_loose",
           "face_shape": "heart",
           "_visible": true,
-          "_where": "left side of the frame, leaning forward and facing right"
+          "_where": "standing on the left side of the frame, facing right"
         }
       },
       "_identity_sheet_rows": {
@@ -282,20 +284,20 @@
         }
       },
       "model_notes": [
-        "The location is a foyer while the reference plate is a living room, though they share the same house style.",
-        "Character wardrobe perfectly matches the per-shot manifest requirements.",
-        "The stormy window in the background maintains environmental consistency with the location plate."
+        "The location in the keyframe is a foyer/entryway, whereas the location plate provided is of the living room.",
+        "Character wardrobe perfectly matches the per-shot manifest descriptions.",
+        "The storm visible through the window is consistent with the atmosphere in the location plate."
       ],
       "overall_pass": false,
-      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/v5-1I/scene-01-1I-start-p4.png"
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/v5-1I/scene-01-1I-start-p1.png"
     }
   ],
   "usage": {
     "input_tokens": 6041,
-    "output_tokens": 761
+    "output_tokens": 641
   },
   "media_paths": {
-    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/v5-1I/scene-01-1I-start-p4.png",
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/v5-1I/scene-01-1I-start-p1.png",
     "character_refs": {
       "Gabe": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/asset-bible/characters/gabe_turnaround_APPROVED.png",
       "Nina": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/asset-bible/characters/nina_turnaround_APPROVED.png"
@@ -308,11 +310,11 @@
     "prior_shot_id": null,
     "wardrobe_refs": {},
     "keyframes": [
-      "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/v5-1I/scene-01-1I-start-p4.png"
+      "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/v5-1I/scene-01-1I-start-p1.png"
     ]
   },
-  "estimated_cost_usd": 0.0037,
-  "attempt": 4,
+  "estimated_cost_usd": 0.0034,
+  "attempt": 1,
   "staging_plate": false,
-  "panel": "work/v5-1I/scene-01-1I-start-p4.png"
+  "panel": "work/v5-1I/scene-01-1I-start-p1.png"
 }

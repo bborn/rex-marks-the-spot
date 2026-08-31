@@ -1,0 +1,210 @@
+{
+  "shot_id": "CONTROL-GABE",
+  "overall_pass": false,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.0,
+    "continuity": 1.0,
+    "artifacts": 1.0,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.0,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 1.0,
+    "location_no_reference": false,
+    "character_identity": {
+      "Gabe": 0.75
+    },
+    "character_identity_mean": {
+      "Gabe": 0.75
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Gabe": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_texture",
+          "build",
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround heavy_set / frame average; face_shape: turnaround round / frame oval"
+      }
+    },
+    "character_wardrobe": {
+      "Gabe": 1.0
+    },
+    "character_wardrobe_mean": {
+      "Gabe": 1.0
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Gabe": "green and navy plaid flannel shirt, khaki trousers"
+    }
+  },
+  "reasons": [
+    "location_match 0.00: The keyframe shows a plain white background instead of the living room/entryway shown in the location plate."
+  ],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Gabe"
+        ],
+        "observed": [
+          "Gabe"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Gabe": {
+          "score": 1.0,
+          "expected": "green and navy plaid flannel shirt, khaki trousers",
+          "notes": "The character is wearing the specified green and navy plaid flannel shirt and khaki trousers.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.0,
+        "notes": "The keyframe shows a plain white background instead of the living room/entryway shown in the location plate.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "No prior shot is provided for comparison.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 1.0,
+        "notes": "No visible generation artifacts or physics violations are present.",
+        "detected": []
+      },
+      "reasons": [
+        "location_match 0.00: The keyframe shows a plain white background instead of the living room/entryway shown in the location plate."
+      ],
+      "character_identity": {
+        "Gabe": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround heavy_set / frame average; face_shape: turnaround round / frame oval",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "average",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval",
+          "_visible": true,
+          "_where": "centered, full body view"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "The background is a plain white studio setting rather than the expected front entryway location.",
+        "The location match score is zero because the set from the location plate is entirely missing."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/control/gabe_front_from_turnaround.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5890,
+    "output_tokens": 446
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/control/gabe_front_from_turnaround.png",
+    "character_refs": {
+      "Gabe": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/asset-bible/characters/gabe_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/control/gabe_front_from_turnaround.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0029,
+  "control_panel": "/home/rex/rex-marks-the-spot/.task-worktrees/345-rebuild-panel-1i-without-the-v4-referenc/work/control/gabe_front_from_turnaround.png"
+}
