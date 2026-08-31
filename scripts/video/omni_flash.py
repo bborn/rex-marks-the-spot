@@ -41,7 +41,13 @@ import time
 from pathlib import Path
 from typing import Iterable, Optional, Sequence
 
-from video.base import VideoGenerator, VideoResult
+from video.base import (
+    FIRST_FRAME,
+    FIRST_LAST_FRAME,
+    REFERENCE_IMAGES,
+    VideoGenerator,
+    VideoResult,
+)
 
 
 # Task modes accepted by generation_config.video_config.task.  Confirmed
@@ -122,6 +128,8 @@ class OmniFlashGenerator(VideoGenerator):
         api_key: API key; falls back to ``GEMINI_API_KEY``.
         cost_per_second: Optional ``{resolution: usd_per_second}`` override.
     """
+
+    capabilities = frozenset({FIRST_FRAME, FIRST_LAST_FRAME, REFERENCE_IMAGES})
 
     def __init__(
         self,
