@@ -1,0 +1,697 @@
+{
+  "shot_id": "1I",
+  "overall_pass": false,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.5,
+    "continuity": 1.0,
+    "artifacts": 0.9,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.5,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 0.933,
+    "location_no_reference": false,
+    "character_identity": {
+      "Gabe": 0.4,
+      "Nina": 0.75
+    },
+    "character_identity_mean": {
+      "Gabe": 0.717,
+      "Nina": 0.75
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Gabe": {
+        "score": 0.4,
+        "verdict": "significant_drift",
+        "defining_mismatches": [
+          "eyewear"
+        ],
+        "soft_mismatches": [
+          "build",
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "heavy_dark_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular"
+      },
+      "Nina": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_texture",
+          "build",
+          "skin_tone",
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "pale",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval"
+        },
+        "reference_attributes": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; skin_tone: turnaround light / frame pale; face_shape: turnaround round / frame oval"
+      }
+    },
+    "character_wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0
+    },
+    "character_wardrobe_mean": {
+      "Gabe": 1.0,
+      "Nina": 1.0
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Gabe": "black tuxedo (conflicted expression)",
+      "Nina": "elegant black formal dress (sharp glare)"
+    }
+  },
+  "reasons": [
+    "location_match 0.50: The keyframe shows a front entryway while the location plate shows a living room; they share a storm theme but are different sub-locations.",
+    "location_match 0.50: The keyframe shows a foyer/entryway while the location plate shows a living room/kitchen area, though the lighting and window style are consistent.",
+    "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+    "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room/kitchen shown in the location plate."
+  ],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Gabe",
+          "Nina"
+        ],
+        "observed": [
+          "Gabe",
+          "Nina"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Gabe": {
+          "score": 1.0,
+          "expected": "black tuxedo (conflicted expression)",
+          "notes": "Gabe is wearing a standard black tuxedo with a white shirt and black bow tie as specified.",
+          "no_reference": false
+        },
+        "Nina": {
+          "score": 1.0,
+          "expected": "elegant black formal dress (sharp glare)",
+          "notes": "Nina is wearing an elegant black formal dress that matches the manifest description.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.5,
+        "notes": "The keyframe shows a front entryway while the location plate shows a living room; they share a storm theme but are different sub-locations.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "No prior shot was provided for comparison.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 1.0,
+        "notes": "The image is clean with no visible generation artifacts or physics violations.",
+        "detected": []
+      },
+      "reasons": [
+        "location_match 0.50: The keyframe shows a front entryway while the location plate shows a living room; they share a storm theme but are different sub-locations."
+      ],
+      "character_identity": {
+        "Gabe": {
+          "score": 1.0,
+          "notes": "every compared attribute matches the turnaround",
+          "no_reference": false,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Nina": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight; build: turnaround average / frame slim; skin_tone: turnaround light / frame pale; face_shape: turnaround round / frame oval",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture",
+            "build",
+            "skin_tone",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "straight",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "pale",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "right side of the frame, standing near a window"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "straight",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "pale",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval",
+          "_visible": true,
+          "_where": "left side of the frame, leaning forward in front of a door"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "The location is a foyer/entryway, which is a different sub-location than the living room shown in the location plate.",
+        "Lighting and storm effects through the window are consistent with the established environment."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/keyframes/1I/scene-01-1I-first.jpg"
+    },
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Gabe",
+          "Nina"
+        ],
+        "observed": [
+          "Gabe",
+          "Nina"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Gabe": {
+          "score": 1.0,
+          "expected": "black tuxedo (conflicted expression)",
+          "notes": "Gabe is wearing a standard black tuxedo with a bow tie as specified.",
+          "no_reference": false
+        },
+        "Nina": {
+          "score": 1.0,
+          "expected": "elegant black formal dress (sharp glare)",
+          "notes": "Nina is wearing an elegant black formal dress as described in the manifest.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.5,
+        "notes": "The keyframe shows a foyer/entryway while the location plate shows a living room/kitchen area, though the lighting and window style are consistent.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "This is a new sub-location within the same house; lighting and storm conditions remain consistent with the previous scene.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.9,
+        "notes": "The image is clean with only minor anatomical stiffness in the hands.",
+        "detected": [
+          "minor hand stiffness"
+        ]
+      },
+      "reasons": [
+        "location_match 0.50: The keyframe shows a foyer/entryway while the location plate shows a living room/kitchen area, though the lighting and window style are consistent."
+      ],
+      "character_identity": {
+        "Gabe": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround heavy_set / frame average; face_shape: turnaround round / frame oval",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Nina": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval",
+          "_visible": true,
+          "_where": "Standing on the right side of the frame, facing left towards Nina."
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "heart",
+          "_visible": true,
+          "_where": "Standing on the left side of the frame, facing right towards Gabe."
+        }
+      },
+      "_identity_sheet_rows": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "The location is a foyer which is a different sub-location than the living room plate provided.",
+        "Character wardrobe perfectly matches the per-shot manifest descriptions.",
+        "Lighting and environmental effects like the rain outside the window are consistent with the established setting."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/keyframes/1I/scene-01-1I-mid.jpg"
+    },
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Gabe",
+          "Nina"
+        ],
+        "observed": [
+          "Gabe",
+          "Nina"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Gabe": {
+          "score": 1.0,
+          "expected": "black tuxedo (conflicted expression)",
+          "notes": "Gabe is wearing a black tuxedo with a white shirt and black bow tie as specified.",
+          "no_reference": false
+        },
+        "Nina": {
+          "score": 1.0,
+          "expected": "elegant black formal dress (sharp glare)",
+          "notes": "Nina is wearing an elegant black formal dress as described in the manifest.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.5,
+        "notes": "The keyframe shows a foyer/entryway which is a different sub-location than the living room/kitchen shown in the location plate.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "This is the first shot provided in this sequence.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.9,
+        "notes": "Minor anatomical oddity with Nina's hand on the doorknob, but otherwise clean.",
+        "detected": [
+          "minor hand anomaly"
+        ]
+      },
+      "reasons": [
+        "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+        "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room/kitchen shown in the location plate."
+      ],
+      "character_identity": {
+        "Gabe": {
+          "score": 0.4,
+          "notes": "off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+          "no_reference": false,
+          "verdict": "significant_drift",
+          "defining_mismatches": [
+            "eyewear"
+          ],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "heavy_dark_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "oval"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Nina": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: build: turnaround average / frame slim; face_shape: turnaround round / frame heart",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "build",
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "slim",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "heart"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "heavy_dark_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "oval",
+          "_visible": true,
+          "_where": "standing on the right side of the frame, facing left"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "slim",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "heart",
+          "_visible": true,
+          "_where": "standing on the left side of the frame, facing right"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "The location is a foyer while the reference plate shows the living room and kitchen area.",
+        "Nina's hand placement on the doorknob is slightly garbled.",
+        "The stormy window and lightning are consistent with the environment established in the location plate."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/keyframes/1I/scene-01-1I-last.jpg"
+    }
+  ],
+  "usage": {
+    "input_tokens": 18123,
+    "output_tokens": 2167
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/scene-01-1I.mp4",
+    "character_refs": {
+      "Gabe": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/asset-bible/characters/gabe_turnaround_APPROVED.png",
+      "Nina": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/asset-bible/characters/nina_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/keyframes/1I/scene-01-1I-first.jpg",
+      "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/keyframes/1I/scene-01-1I-mid.jpg",
+      "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/fal/keyframes/1I/scene-01-1I-last.jpg"
+    ]
+  },
+  "estimated_cost_usd": 0.0109
+}

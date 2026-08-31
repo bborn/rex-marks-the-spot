@@ -2,10 +2,10 @@
   "cap_usd": 8.0,
   "image_calls": 31,
   "image_cost": 1.2400000000000004,
-  "validation_calls": 30,
-  "validation_cost": 0.11959999999999998,
-  "video_calls": 0,
-  "video_cost": 0.0,
+  "validation_calls": 39,
+  "validation_cost": 0.22369999999999998,
+  "video_calls": 10,
+  "video_cost": 2.9999999999999996,
   "entries": [
     {
       "kind": "image",
@@ -372,6 +372,101 @@
       "shot": "1H",
       "attempt": 1,
       "usd": 0.04
+    },
+    {
+      "kind": "video",
+      "shot": "1E",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1A",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1B",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1C",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1D",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1F",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1G",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1H",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1I",
+      "usd": 0.3
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1A",
+      "usd": 0.016
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1B",
+      "usd": 0.0105
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1C",
+      "usd": 0.0119
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1D",
+      "usd": 0.0145
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1E",
+      "usd": 0.0089
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1F",
+      "usd": 0.0083
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1G",
+      "usd": 0.0139
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1H",
+      "usd": 0.0092
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1I",
+      "usd": 0.0109
+    },
+    {
+      "kind": "video",
+      "shot": "1A-r2",
+      "usd": 0.3
     }
   ]
 }

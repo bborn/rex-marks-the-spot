@@ -1,0 +1,398 @@
+[
+  {
+    "shot_id": "1A",
+    "suffix": "",
+    "clip": "scene-01-1A.mp4",
+    "identity_gate": "FAIL",
+    "identity": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Jenny": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.4
+    },
+    "wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Jenny": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "presence": 1.0,
+    "continuity": 1.0,
+    "location_match": 0.6,
+    "artifacts": 0.8,
+    "overall_pass": false,
+    "identity_failures": [
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular"
+    ],
+    "reasons": [
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular"
+    ],
+    "staging_gate": "PASS",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 0,
+    "staging_failing_checks": [],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match",
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_skipped_checks": [],
+    "staging_layout": [
+      0.571,
+      0.648
+    ],
+    "staging_inconclusive_reason": null,
+    "validation_cost_usd": 0.016
+  },
+  {
+    "shot_id": "1B",
+    "suffix": "",
+    "clip": "scene-01-1B.mp4",
+    "identity_gate": "FAIL",
+    "identity": {
+      "Leo": 1.0,
+      "Mia": 0.4
+    },
+    "wardrobe": {
+      "Leo": 1.0,
+      "Mia": 1.0
+    },
+    "presence": 1.0,
+    "continuity": 1.0,
+    "location_match": 0.8,
+    "artifacts": 0.8,
+    "overall_pass": false,
+    "identity_failures": [
+      "Mia identity 0.40 (significant_drift): off-model on hair_length - hair_length: turnaround mid_back / frame short"
+    ],
+    "reasons": [
+      "Mia identity 0.40 (significant_drift): off-model on hair_length - hair_length: turnaround mid_back / frame short"
+    ],
+    "staging_gate": "PASS",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 0,
+    "staging_failing_checks": [],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match",
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_skipped_checks": [],
+    "staging_layout": [
+      0.579,
+      0.964
+    ],
+    "staging_inconclusive_reason": null,
+    "validation_cost_usd": 0.0105
+  },
+  {
+    "shot_id": "1C",
+    "suffix": "",
+    "clip": "scene-01-1C.mp4",
+    "identity_gate": "FAIL",
+    "identity": {
+      "Nina": 0.75,
+      "Gabe": 0.1,
+      "Jenny": 0.4
+    },
+    "wardrobe": {
+      "Nina": 0.7,
+      "Gabe": 0.7,
+      "Jenny": 0.7
+    },
+    "presence": 0.7,
+    "continuity": 0.7,
+    "location_match": 0.5,
+    "artifacts": 0.5,
+    "overall_pass": false,
+    "identity_failures": [
+      "Jenny identity 0.40 (significant_drift): off-model on hair_texture - hair_texture: turnaround curly / frame straight",
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+      "Gabe identity 0.10 (different_person): off-model on build, eyewear - build: turnaround heavy_set / frame slim; eyewear: turnaround thin_wire_rectangular / frame thin_wire_round"
+    ],
+    "reasons": [
+      "Jenny identity 0.40 (significant_drift): off-model on hair_texture - hair_texture: turnaround curly / frame straight",
+      "location_match 0.50: The room layout differs significantly from the plate, showing a front door and different furniture arrangement.",
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+      "location_match 0.50: The room layout is significantly altered, showing a front door and different furniture arrangement compared to the plate.",
+      "artifacts 0.50 (double exposure, phantom figure, indoor lightning)",
+      "Gabe identity 0.10 (different_person): off-model on build, eyewear - build: turnaround heavy_set / frame slim; eyewear: turnaround thin_wire_rectangular / frame thin_wire_round"
+    ],
+    "staging_gate": "FAIL",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 3,
+    "staging_failing_checks": [
+      "layout_match"
+    ],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match"
+    ],
+    "staging_skipped_checks": [
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_layout": [
+      0.518,
+      0.917
+    ],
+    "staging_inconclusive_reason": "1C can only FAIL a clip, never clear one: the 1B, 1D and 1I panels all walk straight through this gate (measured by score_corpus.py --cross-shot). Its layout, staging and wardrobe cannot separate this medium from its neighbours in the same warm dim room.",
+    "validation_cost_usd": 0.0119
+  },
+  {
+    "shot_id": "1D",
+    "suffix": "",
+    "clip": "scene-01-1D.mp4",
+    "identity_gate": "PASS",
+    "identity": {
+      "Gabe": 0.75,
+      "Nina": 0.75,
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0,
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Jenny": 1.0
+    },
+    "presence": 1.0,
+    "continuity": 1.0,
+    "location_match": 0.8,
+    "artifacts": 0.8,
+    "overall_pass": true,
+    "identity_failures": [],
+    "reasons": [],
+    "staging_gate": "PASS",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 0,
+    "staging_failing_checks": [],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match",
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_skipped_checks": [],
+    "staging_layout": [
+      0.875,
+      0.935
+    ],
+    "staging_inconclusive_reason": null,
+    "validation_cost_usd": 0.0145
+  },
+  {
+    "shot_id": "1E",
+    "suffix": "",
+    "clip": "scene-01-1E.mp4",
+    "identity_gate": "PASS",
+    "identity": {
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Jenny": 0.8
+    },
+    "presence": 0.8,
+    "continuity": 0.8,
+    "location_match": 0.7,
+    "artifacts": 0.7,
+    "overall_pass": true,
+    "identity_failures": [],
+    "reasons": [],
+    "staging_gate": "INCONCLUSIVE",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 0,
+    "staging_failing_checks": [],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match"
+    ],
+    "staging_skipped_checks": [
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_layout": [
+      0.86,
+      0.868
+    ],
+    "staging_inconclusive_reason": "1E can only FAIL a clip, never clear one: the 1D panel passes this gate (measured by score_corpus.py --cross-shot). Jenny's grey-olive hoodie is unmeasurable in this light, so layout is doing all the work and it cannot tell this close-up from the two-shot.",
+    "validation_cost_usd": 0.0089
+  },
+  {
+    "shot_id": "1F",
+    "suffix": "",
+    "clip": "scene-01-1F.mp4",
+    "identity_gate": "PASS",
+    "identity": {},
+    "wardrobe": {},
+    "presence": 1.0,
+    "continuity": 1.0,
+    "location_match": 0.8,
+    "artifacts": 0.7,
+    "overall_pass": true,
+    "identity_failures": [],
+    "reasons": [],
+    "staging_gate": "PASS",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 0,
+    "staging_failing_checks": [],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match"
+    ],
+    "staging_skipped_checks": [
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_layout": [
+      0.603,
+      0.904
+    ],
+    "staging_inconclusive_reason": null,
+    "validation_cost_usd": 0.0083
+  },
+  {
+    "shot_id": "1G",
+    "suffix": "",
+    "clip": "scene-01-1G.mp4",
+    "identity_gate": "FAIL",
+    "identity": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.4
+    },
+    "wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "presence": 1.0,
+    "continuity": 1.0,
+    "location_match": 0.8,
+    "artifacts": 0.5,
+    "overall_pass": false,
+    "identity_failures": [
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular"
+    ],
+    "reasons": [
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+      "artifacts 0.50 (indoor lightning, lightning overlapping wall)"
+    ],
+    "staging_gate": "INCONCLUSIVE",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 0,
+    "staging_failing_checks": [],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match"
+    ],
+    "staging_skipped_checks": [
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_layout": [
+      0.583,
+      0.625
+    ],
+    "staging_inconclusive_reason": "1G can only FAIL a clip, never clear one: the 1A wide passes this gate (measured by score_corpus.py --cross-shot). Every costume colour here is too dark to measure, so layout is alone and an OTS of this room reads much like a wide of it.",
+    "validation_cost_usd": 0.0139
+  },
+  {
+    "shot_id": "1H",
+    "suffix": "",
+    "clip": "scene-01-1H.mp4",
+    "identity_gate": "PASS",
+    "identity": {
+      "Mia": 0.75
+    },
+    "wardrobe": {
+      "Mia": 0.8
+    },
+    "presence": 0.6,
+    "continuity": 1.0,
+    "location_match": 0.7,
+    "artifacts": 0.7,
+    "overall_pass": false,
+    "identity_failures": [],
+    "reasons": [
+      "character_presence 0.60 (missing: none; unexpected: Adult Male, Adult Female)"
+    ],
+    "staging_gate": "FAIL",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 2,
+    "staging_failing_checks": [
+      "layout_match",
+      "wardrobe"
+    ],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match",
+      "wardrobe"
+    ],
+    "staging_skipped_checks": [
+      "couch_occupancy"
+    ],
+    "staging_layout": [
+      0.478,
+      0.776
+    ],
+    "staging_inconclusive_reason": null,
+    "validation_cost_usd": 0.0092
+  },
+  {
+    "shot_id": "1I",
+    "suffix": "",
+    "clip": "scene-01-1I.mp4",
+    "identity_gate": "FAIL",
+    "identity": {
+      "Gabe": 0.4,
+      "Nina": 0.75
+    },
+    "wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0
+    },
+    "presence": 1.0,
+    "continuity": 1.0,
+    "location_match": 0.5,
+    "artifacts": 0.9,
+    "overall_pass": false,
+    "identity_failures": [
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular"
+    ],
+    "reasons": [
+      "location_match 0.50: The keyframe shows a front entryway while the location plate shows a living room; they share a storm theme but are different sub-locations.",
+      "location_match 0.50: The keyframe shows a foyer/entryway while the location plate shows a living room/kitchen area, though the lighting and window style are consistent.",
+      "Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular",
+      "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room/kitchen shown in the location plate."
+    ],
+    "staging_gate": "FAIL",
+    "staging_frames_scored": 5,
+    "staging_frames_failed": 1,
+    "staging_failing_checks": [
+      "layout_match"
+    ],
+    "staging_applied_checks": [
+      "staging_orientation",
+      "layout_match"
+    ],
+    "staging_skipped_checks": [
+      "couch_occupancy",
+      "wardrobe"
+    ],
+    "staging_layout": [
+      0.502,
+      0.639
+    ],
+    "staging_inconclusive_reason": "1I can only FAIL a clip, never clear one: the 1C panel passes this gate (measured by score_corpus.py --cross-shot, layout 0.764 against a 0.55 threshold). Both costumes are black formalwear and both shots are the same hallway, so nothing here separates them.",
+    "validation_cost_usd": 0.0109
+  }
+]
