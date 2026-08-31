@@ -2,10 +2,10 @@
   "cap_usd": 8.0,
   "image_calls": 31,
   "image_cost": 1.2400000000000004,
-  "validation_calls": 39,
-  "validation_cost": 0.22369999999999998,
-  "video_calls": 10,
-  "video_cost": 2.9999999999999996,
+  "validation_calls": 44,
+  "validation_cost": 0.28439999999999993,
+  "video_calls": 14,
+  "video_cost": 4.199999999999999,
   "entries": [
     {
       "kind": "image",
@@ -467,6 +467,51 @@
       "kind": "video",
       "shot": "1A-r2",
       "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1G-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1I-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1B-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1C-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1A-r2",
+      "usd": 0.0163
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1B-r2",
+      "usd": 0.0102
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1C-r2",
+      "usd": 0.0113
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1G-r2",
+      "usd": 0.0126
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1I-r2",
+      "usd": 0.0103
     }
   ]
 }

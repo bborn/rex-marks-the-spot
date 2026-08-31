@@ -1,0 +1,21 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+1A: identity FAIL {"Mia": 1.0, "Leo": 0.75, "Jenny": 0.75, "Nina": 0.75, "Gabe": 0.4}  overall=FAIL  staging=PASS
+    identity: Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular
+1B: identity PASS {"Leo": 0.75, "Mia": 0.75}  overall=PASS  staging=PASS
+1C: identity FAIL {"Nina": 0.75, "Gabe": 0.4, "Jenny": 0.4}  overall=FAIL  staging=INCONCLUSIVE
+    identity: Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular
+    identity: Jenny identity 0.40 (significant_drift): off-model on hair_texture - hair_texture: turnaround curly / frame straight
+    location_match 0.50: The room layout is significantly altered from the plate, featuring a front door and different furniture arrangement.
+    location_match 0.50: The room layout differs significantly from the plate, showing a front door and different furniture arrangement.
+    artifacts 0.60 (light beam artifact, distorted glasses)
+1G: identity FAIL {"Mia": 0.75, "Leo": 0.75, "Nina": 0.75, "Gabe": 0.1}  overall=FAIL  staging=INCONCLUSIVE
+    identity: Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular
+    identity: Gabe identity 0.10 (different_person): off-model on eyewear, facial_hair - eyewear: turnaround thin_wire_rectangular / frame none; facial_hair: turnaround stubble / frame clean_shaven
+    artifacts 0.50 (indoor lightning, blurry background characters)
+1I: identity FAIL {"Gabe": 0.4, "Nina": 0.75}  overall=FAIL  staging=INCONCLUSIVE
+    identity: Gabe identity 0.40 (significant_drift): off-model on eyewear - eyewear: turnaround thin_wire_rectangular / frame heavy_dark_rectangular
+    location_match 0.50: The keyframe shows a front entryway while the location plate shows a living room; they share a storm window and warm lighting but different furniture.
+    location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room shown in the location plate.
+    location_match 0.50: The keyframe shows a front entryway which is a different sub-location than the living room shown in the location plate.
+
+wrote /home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/reports/scene-01-v5-render/shot-gate.json
