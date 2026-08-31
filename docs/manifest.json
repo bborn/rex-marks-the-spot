@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-31T18:22:36.166903Z",
-  "totalAssets": 1674,
+  "generated": "2026-08-31T19:28:25.183375Z",
+  "totalAssets": 1787,
   "categories": {
     "Characters": 388,
     "Other": 135,
-    "Storyboards": 850,
-    "Animatics": 205,
+    "Animatics": 278,
+    "Storyboards": 890,
     "Props": 20,
     "Branding": 10,
     "Environments": 51,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-08-31T18:22:36.146460617Z",
+      "modTime": "2026-08-31T19:28:25.161741768Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-08-31T18:22:36.146460617Z",
+      "modTime": "2026-08-31T19:28:25.161741768Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-08-31T18:22:36.146460617Z",
+      "modTime": "2026-08-31T19:28:25.161741768Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,1026 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-08-31T18:22:36.146460617Z",
+      "modTime": "2026-08-31T19:28:25.161741768Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/omni-vs-h3.jpg",
+      "name": "omni-vs-h3.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/omni-vs-h3.jpg",
+      "size": 369047,
+      "modTime": "2026-08-31T19:02:33.438217488Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1C-r2-last.jpg",
+      "name": "1C-r2-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-r2-last.jpg",
+      "size": 72632,
+      "modTime": "2026-08-31T18:59:16.945065088Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1C-r2-mid.jpg",
+      "name": "1C-r2-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-r2-mid.jpg",
+      "size": 71508,
+      "modTime": "2026-08-31T18:59:16.782063297Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1C-r2-first.jpg",
+      "name": "1C-r2-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-r2-first.jpg",
+      "size": 72863,
+      "modTime": "2026-08-31T18:59:16.645061792Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1C-r2.mp4",
+      "name": "scene-01-1C-r2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1C-r2.mp4",
+      "size": 4492919,
+      "modTime": "2026-08-31T18:59:15.567049948Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1C-r2-raw.mp4",
+      "name": "scene-01-1C-r2-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1C-r2-raw.mp4",
+      "size": 4636743,
+      "modTime": "2026-08-31T18:59:14.662040005Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1B-r2-last.jpg",
+      "name": "1B-r2-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-r2-last.jpg",
+      "size": 124347,
+      "modTime": "2026-08-31T18:58:58.650864047Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1B-r2-mid.jpg",
+      "name": "1B-r2-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-r2-mid.jpg",
+      "size": 115607,
+      "modTime": "2026-08-31T18:58:58.451861859Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1B-r2-first.jpg",
+      "name": "1B-r2-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-r2-first.jpg",
+      "size": 112242,
+      "modTime": "2026-08-31T18:58:58.246859606Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1B-r2.mp4",
+      "name": "scene-01-1B-r2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1B-r2.mp4",
+      "size": 7671744,
+      "modTime": "2026-08-31T18:58:57.200848107Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1B-r2-raw.mp4",
+      "name": "scene-01-1B-r2-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1B-r2-raw.mp4",
+      "size": 7813197,
+      "modTime": "2026-08-31T18:58:56.003834947Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1I-r2-last.jpg",
+      "name": "1I-r2-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-r2-last.jpg",
+      "size": 119441,
+      "modTime": "2026-08-31T18:58:39.763656357Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1I-r2-mid.jpg",
+      "name": "1I-r2-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-r2-mid.jpg",
+      "size": 118299,
+      "modTime": "2026-08-31T18:58:39.588654432Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1I-r2-first.jpg",
+      "name": "1I-r2-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-r2-first.jpg",
+      "size": 110933,
+      "modTime": "2026-08-31T18:58:39.400652364Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1I-r2.mp4",
+      "name": "scene-01-1I-r2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1I-r2.mp4",
+      "size": 4452360,
+      "modTime": "2026-08-31T18:58:38.377641111Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1I-r2-raw.mp4",
+      "name": "scene-01-1I-r2-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1I-r2-raw.mp4",
+      "size": 4586814,
+      "modTime": "2026-08-31T18:58:37.433630726Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1G-r2-last.jpg",
+      "name": "1G-r2-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-r2-last.jpg",
+      "size": 90862,
+      "modTime": "2026-08-31T18:58:21.797458664Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1G-r2-mid.jpg",
+      "name": "1G-r2-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-r2-mid.jpg",
+      "size": 93584,
+      "modTime": "2026-08-31T18:58:21.630456826Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1G-r2-first.jpg",
+      "name": "1G-r2-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-r2-first.jpg",
+      "size": 100033,
+      "modTime": "2026-08-31T18:58:21.455454900Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1G-r2.mp4",
+      "name": "scene-01-1G-r2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1G-r2.mp4",
+      "size": 1584337,
+      "modTime": "2026-08-31T18:58:20.478444145Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1G-r2-raw.mp4",
+      "name": "scene-01-1G-r2-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1G-r2-raw.mp4",
+      "size": 1724890,
+      "modTime": "2026-08-31T18:58:19.866437408Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1A-r2-last.jpg",
+      "name": "1A-r2-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-r2-last.jpg",
+      "size": 150756,
+      "modTime": "2026-08-31T18:54:28.568878489Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1A-r2-mid.jpg",
+      "name": "1A-r2-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-r2-mid.jpg",
+      "size": 152609,
+      "modTime": "2026-08-31T18:54:28.414876775Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1A-r2-first.jpg",
+      "name": "1A-r2-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-r2-first.jpg",
+      "size": 157459,
+      "modTime": "2026-08-31T18:54:28.262875084Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-v5-start-end.jpg",
+      "name": "scene-01-v5-start-end.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-v5-start-end.jpg",
+      "size": 647148,
+      "modTime": "2026-08-31T18:54:27.195863210Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-v5-start-end.jpg",
+      "name": "scene-01-v5-start-end.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-v5-start-end.jpg",
+      "size": 647148,
+      "modTime": "2026-08-31T18:54:27.195863210Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1A-r2.mp4",
+      "name": "scene-01-1A-r2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1A-r2.mp4",
+      "size": 7758899,
+      "modTime": "2026-08-31T18:54:27.111862275Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1A-r2-raw.mp4",
+      "name": "scene-01-1A-r2-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1A-r2-raw.mp4",
+      "size": 7907559,
+      "modTime": "2026-08-31T18:54:26.304853293Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/controls/1I-mid-gabe-crop.png",
+      "name": "1I-mid-gabe-crop.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/controls/1I-mid-gabe-crop.png",
+      "size": 477123,
+      "modTime": "2026-08-31T18:53:06.854966939Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1I-last.jpg",
+      "name": "1I-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-last.jpg",
+      "size": 118622,
+      "modTime": "2026-08-31T18:48:32.176860424Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1I-mid.jpg",
+      "name": "1I-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-mid.jpg",
+      "size": 116360,
+      "modTime": "2026-08-31T18:48:32.040858866Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1I-first.jpg",
+      "name": "1I-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-first.jpg",
+      "size": 110363,
+      "modTime": "2026-08-31T18:48:31.882857055Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1I.mp4",
+      "name": "scene-01-1I.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1I.mp4",
+      "size": 4552709,
+      "modTime": "2026-08-31T18:48:30.911845927Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1I-raw.mp4",
+      "name": "scene-01-1I-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1I-raw.mp4",
+      "size": 4696413,
+      "modTime": "2026-08-31T18:48:30.212837916Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1H-last.jpg",
+      "name": "1H-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1H-last.jpg",
+      "size": 83932,
+      "modTime": "2026-08-31T18:47:25.417092413Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1H-mid.jpg",
+      "name": "1H-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1H-mid.jpg",
+      "size": 83481,
+      "modTime": "2026-08-31T18:47:25.262090623Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1H-first.jpg",
+      "name": "1H-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1H-first.jpg",
+      "size": 90443,
+      "modTime": "2026-08-31T18:47:25.125089040Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1H.mp4",
+      "name": "scene-01-1H.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1H.mp4",
+      "size": 1697555,
+      "modTime": "2026-08-31T18:47:24.320079740Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1H-raw.mp4",
+      "name": "scene-01-1H-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1H-raw.mp4",
+      "size": 1837270,
+      "modTime": "2026-08-31T18:47:23.449069677Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1G-last.jpg",
+      "name": "1G-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-last.jpg",
+      "size": 90535,
+      "modTime": "2026-08-31T18:44:28.529023242Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1G-mid.jpg",
+      "name": "1G-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-mid.jpg",
+      "size": 92413,
+      "modTime": "2026-08-31T18:44:28.391021605Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1G-first.jpg",
+      "name": "1G-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-first.jpg",
+      "size": 98465,
+      "modTime": "2026-08-31T18:44:28.221019589Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1G.mp4",
+      "name": "scene-01-1G.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1G.mp4",
+      "size": 1595016,
+      "modTime": "2026-08-31T18:44:26.911004048Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1G-raw.mp4",
+      "name": "scene-01-1G-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1G-raw.mp4",
+      "size": 1737572,
+      "modTime": "2026-08-31T18:44:26.153995064Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1F-last.jpg",
+      "name": "1F-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1F-last.jpg",
+      "size": 85394,
+      "modTime": "2026-08-31T18:42:12.374510250Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1F-mid.jpg",
+      "name": "1F-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1F-mid.jpg",
+      "size": 108861,
+      "modTime": "2026-08-31T18:42:12.230508728Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1F-first.jpg",
+      "name": "1F-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1F-first.jpg",
+      "size": 106011,
+      "modTime": "2026-08-31T18:42:12.073507068Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1F.mp4",
+      "name": "scene-01-1F.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1F.mp4",
+      "size": 6564396,
+      "modTime": "2026-08-31T18:42:10.999495717Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1F-raw.mp4",
+      "name": "scene-01-1F-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1F-raw.mp4",
+      "size": 6705558,
+      "modTime": "2026-08-31T18:42:10.212487399Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1D-last.jpg",
+      "name": "1D-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1D-last.jpg",
+      "size": 109894,
+      "modTime": "2026-08-31T18:41:49.451267972Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1D-mid.jpg",
+      "name": "1D-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1D-mid.jpg",
+      "size": 106156,
+      "modTime": "2026-08-31T18:41:49.307266451Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1D-first.jpg",
+      "name": "1D-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1D-first.jpg",
+      "size": 89361,
+      "modTime": "2026-08-31T18:41:49.151264802Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1D.mp4",
+      "name": "scene-01-1D.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1D.mp4",
+      "size": 1659850,
+      "modTime": "2026-08-31T18:41:48.153254254Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1D-raw.mp4",
+      "name": "scene-01-1D-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1D-raw.mp4",
+      "size": 1799366,
+      "modTime": "2026-08-31T18:41:47.383246116Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1C-last.jpg",
+      "name": "1C-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-last.jpg",
+      "size": 94641,
+      "modTime": "2026-08-31T18:39:13.003614700Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1C-mid.jpg",
+      "name": "1C-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-mid.jpg",
+      "size": 75127,
+      "modTime": "2026-08-31T18:39:12.870613295Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1C-first.jpg",
+      "name": "1C-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-first.jpg",
+      "size": 71945,
+      "modTime": "2026-08-31T18:39:12.735611868Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1C.mp4",
+      "name": "scene-01-1C.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1C.mp4",
+      "size": 5049551,
+      "modTime": "2026-08-31T18:39:11.816602159Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1C-raw.mp4",
+      "name": "scene-01-1C-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1C-raw.mp4",
+      "size": 5190812,
+      "modTime": "2026-08-31T18:39:11.051594075Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1B-last.jpg",
+      "name": "1B-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-last.jpg",
+      "size": 122198,
+      "modTime": "2026-08-31T18:38:50.186373620Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1B-mid.jpg",
+      "name": "1B-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-mid.jpg",
+      "size": 112387,
+      "modTime": "2026-08-31T18:38:50.042372099Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1B-first.jpg",
+      "name": "1B-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-first.jpg",
+      "size": 113162,
+      "modTime": "2026-08-31T18:38:49.871370292Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1B.mp4",
+      "name": "scene-01-1B.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1B.mp4",
+      "size": 7801728,
+      "modTime": "2026-08-31T18:38:47.719347555Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1B-raw.mp4",
+      "name": "scene-01-1B-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1B-raw.mp4",
+      "size": 7943178,
+      "modTime": "2026-08-31T18:38:46.800337846Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1A-last.jpg",
+      "name": "1A-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-last.jpg",
+      "size": 153060,
+      "modTime": "2026-08-31T18:38:25.668114578Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1A-mid.jpg",
+      "name": "1A-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-mid.jpg",
+      "size": 154747,
+      "modTime": "2026-08-31T18:38:25.475112539Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1A-first.jpg",
+      "name": "1A-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-first.jpg",
+      "size": 159016,
+      "modTime": "2026-08-31T18:38:25.313110827Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1A.mp4",
+      "name": "scene-01-1A.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1A.mp4",
+      "size": 7946822,
+      "modTime": "2026-08-31T18:38:24.185098910Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1A-raw.mp4",
+      "name": "scene-01-1A-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1A-raw.mp4",
+      "size": 8088150,
+      "modTime": "2026-08-31T18:38:23.011086507Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1E-last.jpg",
+      "name": "1E-last.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1E-last.jpg",
+      "size": 58447,
+      "modTime": "2026-08-31T18:37:42.442657925Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1E-mid.jpg",
+      "name": "1E-mid.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1E-mid.jpg",
+      "size": 58047,
+      "modTime": "2026-08-31T18:37:42.280656214Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/frames/1E-first.jpg",
+      "name": "1E-first.jpg",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1E-first.jpg",
+      "size": 56415,
+      "modTime": "2026-08-31T18:37:42.090654207Z",
+      "category": "Animatics",
+      "type": "image"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-1E.mp4",
+      "name": "scene-01-1E.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1E.mp4",
+      "size": 695241,
+      "modTime": "2026-08-31T18:37:41.267645513Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/raw/scene-01-1E-raw.mp4",
+      "name": "scene-01-1E-raw.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1E-raw.mp4",
+      "size": 836207,
+      "modTime": "2026-08-31T18:37:40.618638657Z",
+      "category": "Animatics",
+      "type": "video"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1I-end.png",
+      "name": "scene-01-1I-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1I-end.png",
+      "size": 646708,
+      "modTime": "2026-08-31T18:31:42.238854927Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1H-end.png",
+      "name": "scene-01-1H-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1H-end.png",
+      "size": 572218,
+      "modTime": "2026-08-31T18:31:42.236854906Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1G-end.png",
+      "name": "scene-01-1G-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1G-end.png",
+      "size": 598479,
+      "modTime": "2026-08-31T18:31:42.234854885Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1F-end.png",
+      "name": "scene-01-1F-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1F-end.png",
+      "size": 567724,
+      "modTime": "2026-08-31T18:31:42.231854853Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1E-end.png",
+      "name": "scene-01-1E-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1E-end.png",
+      "size": 534011,
+      "modTime": "2026-08-31T18:31:42.230854842Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1D-end.png",
+      "name": "scene-01-1D-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1D-end.png",
+      "size": 648077,
+      "modTime": "2026-08-31T18:31:42.228854821Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1C-end.png",
+      "name": "scene-01-1C-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1C-end.png",
+      "size": 602249,
+      "modTime": "2026-08-31T18:31:42.227854811Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1B-end.png",
+      "name": "scene-01-1B-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1B-end.png",
+      "size": 670094,
+      "modTime": "2026-08-31T18:31:42.225854790Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/scene-01-1A-end.png",
+      "name": "scene-01-1A-end.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1A-end.png",
+      "size": 677821,
+      "modTime": "2026-08-31T18:31:42.224854779Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1D-end-g-a1.png",
+      "name": "scene-01-1D-end-g-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1D-end-g-a1.png",
+      "size": 586178,
+      "modTime": "2026-08-31T18:29:59.395770191Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1E-end-plate-a1.png",
+      "name": "scene-01-1E-end-plate-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1E-end-plate-a1.png",
+      "size": 534011,
+      "modTime": "2026-08-31T18:28:37.477906645Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-f-a2.png",
+      "name": "scene-01-1C-end-f-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-f-a2.png",
+      "size": 602249,
+      "modTime": "2026-08-31T18:27:49.532401448Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-f-a1.png",
+      "name": "scene-01-1C-end-f-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-f-a1.png",
+      "size": 527391,
+      "modTime": "2026-08-31T18:27:03.048911844Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-e-a2.png",
+      "name": "scene-01-1C-end-e-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-e-a2.png",
+      "size": 506191,
+      "modTime": "2026-08-31T18:24:52.956542693Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-e-a1.png",
+      "name": "scene-01-1C-end-e-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-e-a1.png",
+      "size": 532106,
+      "modTime": "2026-08-31T18:24:08.688077214Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-d-a2.png",
+      "name": "scene-01-1G-end-d-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-d-a2.png",
+      "size": 598479,
+      "modTime": "2026-08-31T18:22:24.522982957Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-d-a1.png",
+      "name": "scene-01-1G-end-d-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-d-a1.png",
+      "size": 614326,
+      "modTime": "2026-08-31T18:21:38.972504962Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1H-end-d-a1.png",
+      "name": "scene-01-1H-end-d-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1H-end-d-a1.png",
+      "size": 572218,
+      "modTime": "2026-08-31T18:20:49.281983929Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1E-end-d-a1.png",
+      "name": "scene-01-1E-end-d-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1E-end-d-a1.png",
+      "size": 528449,
+      "modTime": "2026-08-31T18:20:14.169616031Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1D-end-d-a1.png",
+      "name": "scene-01-1D-end-d-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1D-end-d-a1.png",
+      "size": 648077,
+      "modTime": "2026-08-31T18:19:35.305209124Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-d-a1.png",
+      "name": "scene-01-1C-end-d-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-d-a1.png",
+      "size": 869201,
+      "modTime": "2026-08-31T18:18:42.118652791Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-c-a2.png",
+      "name": "scene-01-1G-end-c-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-c-a2.png",
+      "size": 581815,
+      "modTime": "2026-08-31T18:16:10.631072215Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-c-a1.png",
+      "name": "scene-01-1G-end-c-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-c-a1.png",
+      "size": 596374,
+      "modTime": "2026-08-31T18:15:21.335559375Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-b-a2.png",
+      "name": "scene-01-1G-end-b-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-b-a2.png",
+      "size": 611971,
+      "modTime": "2026-08-31T18:14:05.013767104Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-b-a1.png",
+      "name": "scene-01-1G-end-b-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-b-a1.png",
+      "size": 640688,
+      "modTime": "2026-08-31T18:13:22.931331278Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-b-a2.png",
+      "name": "scene-01-1C-end-b-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-b-a2.png",
+      "size": 595151,
+      "modTime": "2026-08-31T18:12:39.502882356Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-b-a1.png",
+      "name": "scene-01-1C-end-b-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-b-a1.png",
+      "size": 532651,
+      "modTime": "2026-08-31T18:11:57.762451734Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1I-end-a2.png",
+      "name": "scene-01-1I-end-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1I-end-a2.png",
+      "size": 646708,
+      "modTime": "2026-08-31T18:10:27.058519280Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1I-end-a1.png",
+      "name": "scene-01-1I-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1I-end-a1.png",
+      "size": 599356,
+      "modTime": "2026-08-31T18:09:45.682095608Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1H-end-a1.png",
+      "name": "scene-01-1H-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1H-end-a1.png",
+      "size": 547733,
+      "modTime": "2026-08-31T18:09:00.282623197Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-a2.png",
+      "name": "scene-01-1G-end-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-a2.png",
+      "size": 738633,
+      "modTime": "2026-08-31T18:08:10.521097827Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1G-end-a1.png",
+      "name": "scene-01-1G-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1G-end-a1.png",
+      "size": 560525,
+      "modTime": "2026-08-31T18:07:27.947648614Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1F-end-a1.png",
+      "name": "scene-01-1F-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1F-end-a1.png",
+      "size": 567724,
+      "modTime": "2026-08-31T18:06:48.483232439Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1D-end-a1.png",
+      "name": "scene-01-1D-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1D-end-a1.png",
+      "size": 696294,
+      "modTime": "2026-08-31T18:06:09.196818381Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-a2.png",
+      "name": "scene-01-1C-end-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-a2.png",
+      "size": 480767,
+      "modTime": "2026-08-31T18:05:14.148238637Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1C-end-a1.png",
+      "name": "scene-01-1C-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1C-end-a1.png",
+      "size": 566340,
+      "modTime": "2026-08-31T18:04:24.116712233Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1B-end-a1.png",
+      "name": "scene-01-1B-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1B-end-a1.png",
+      "size": 670094,
+      "modTime": "2026-08-31T18:03:48.449337275Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1A-end-a1.png",
+      "name": "scene-01-1A-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1A-end-a1.png",
+      "size": 677821,
+      "modTime": "2026-08-31T18:02:55.928785671Z",
+      "category": "Storyboards",
+      "type": "image"
+    },
+    {
+      "path": "storyboards/v5/scene-01/end-attempts/scene-01-1E-end-a1.png",
+      "name": "scene-01-1E-end-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/end-attempts/scene-01-1E-end-a1.png",
+      "size": 534587,
+      "modTime": "2026-08-31T18:01:10.610681684Z",
+      "category": "Storyboards",
+      "type": "image"
     },
     {
       "path": "storyboards/v5/scene-01/scene-01-v4-vs-v5.png",
