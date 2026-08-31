@@ -1,0 +1,43 @@
+# Python dependencies for the "Rex Marks the Spot" generation pipeline.
+#
+# Install with:  ./scripts/setup_python_env.sh
+# Requires Python >= 3.10 (google-genai 2.x).
+#
+# ---------------------------------------------------------------------------
+# google-genai is pinned EXACTLY, not with a >= range.
+#
+# 2.x is required: Gemini Omni video (scripts/video/omni_flash.py) goes through
+# client.interactions.create(), and 1.x emits the legacy Interactions wire
+# format that Google retired in May 2026 - the server rejects every call.  1.x's
+# Interaction response model also has no output_video field, so it would drop
+# the video even on a 200.
+#
+# The pin is exact rather than ">=2.0.0" because 2.20.0 already warns that
+# generate_videos(prompt=..., image=...) - the form scripts/video/veo_generator.py
+# uses - is deprecated and slated for removal in a future release.  Upgrades get
+# re-verified deliberately by scripts/test_sdk_compat.py, not picked up silently.
+#
+# Full reasoning and test evidence: docs/research/sdk-migration-decision.md
+# ---------------------------------------------------------------------------
+google-genai==2.20.0
+
+# LEGACY.  A different, Google-deprecated package (not google-genai).  Nine
+# one-shot scripts from Feb-May 2026 still import it - see the inventory in
+# docs/research/sdk-migration-decision.md.  Kept only so those scripts still
+# import; new work must use google-genai.  Verified to coexist with 2.20.0
+# (`pip check` clean).
+google-generativeai==0.8.6
+
+# Vision-based shot/panel validation (scripts/validate/).
+anthropic>=0.104.1
+
+# Replicate-hosted video models (scripts/video/pvideo_generator.py).
+replicate>=1.0.7
+
+# Image handling and HTTP used across scripts/.
+pillow>=10.0.0
+requests>=2.31.0
+numpy>=1.26.0
+
+# Test runner for the offline suites under scripts/.
+pytest>=8.0.0
