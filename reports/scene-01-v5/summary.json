@@ -1,0 +1,161 @@
+[
+  {
+    "shot_id": "1A",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 3,
+    "chosen_attempt": 3,
+    "overall_pass": true,
+    "identity": {
+      "Mia": 1.0,
+      "Leo": 0.75,
+      "Jenny": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.75
+    },
+    "wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Jenny": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "reasons": []
+  },
+  {
+    "shot_id": "1B",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 1,
+    "chosen_attempt": 1,
+    "overall_pass": true,
+    "identity": {
+      "Leo": 1.0,
+      "Mia": 0.75
+    },
+    "wardrobe": {
+      "Leo": 1.0,
+      "Mia": 1.0
+    },
+    "reasons": []
+  },
+  {
+    "shot_id": "1C",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 1,
+    "chosen_attempt": 1,
+    "overall_pass": true,
+    "identity": {
+      "Nina": 0.75,
+      "Gabe": 0.75,
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Nina": 0.8,
+      "Gabe": 0.8,
+      "Jenny": 0.8
+    },
+    "reasons": []
+  },
+  {
+    "shot_id": "1D",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 2,
+    "chosen_attempt": 2,
+    "overall_pass": true,
+    "identity": {
+      "Gabe": 0.75,
+      "Nina": 0.75,
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0,
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Jenny": 1.0
+    },
+    "reasons": []
+  },
+  {
+    "shot_id": "1E",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 1,
+    "chosen_attempt": 1,
+    "overall_pass": true,
+    "identity": {
+      "Jenny": 0.75
+    },
+    "wardrobe": {
+      "Jenny": 0.7
+    },
+    "reasons": []
+  },
+  {
+    "shot_id": "1F",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 1,
+    "chosen_attempt": 1,
+    "overall_pass": false,
+    "identity": {},
+    "wardrobe": {},
+    "reasons": [
+      "artifacts 0.60 (indoor lightning, distorted screen graphics)"
+    ]
+  },
+  {
+    "shot_id": "1G",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 1,
+    "chosen_attempt": 1,
+    "overall_pass": true,
+    "identity": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.75
+    },
+    "wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "reasons": []
+  },
+  {
+    "shot_id": "1H",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 1,
+    "chosen_attempt": 1,
+    "overall_pass": false,
+    "identity": {
+      "Mia": 1.0
+    },
+    "wardrobe": {
+      "Mia": 0.8
+    },
+    "reasons": [
+      "character_presence 0.50 (missing: none; unexpected: Adult Male, Adult Female)"
+    ]
+  },
+  {
+    "shot_id": "1I",
+    "status": "IDENTITY_PASS",
+    "attempts_used": 4,
+    "chosen_attempt": 4,
+    "overall_pass": false,
+    "identity": {
+      "Gabe": 1.0,
+      "Nina": 0.75
+    },
+    "wardrobe": {
+      "Gabe": 1.0,
+      "Nina": 1.0
+    },
+    "reasons": [
+      "location_match 0.50: The keyframe shows a foyer/entryway which is a different sub-location than the living room shown in the location plate."
+    ],
+    "note": "Rebuilt in task 345 without the v4 staging plate; see docs/research/scene01-v5-panels.md section 8."
+  }
+]

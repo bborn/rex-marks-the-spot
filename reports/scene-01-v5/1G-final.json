@@ -1,0 +1,533 @@
+{
+  "shot_id": "1G",
+  "overall_pass": true,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.6,
+    "continuity": 1.0,
+    "artifacts": 0.8,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.6,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 0.8,
+    "location_no_reference": false,
+    "character_identity": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.75
+    },
+    "character_identity_mean": {
+      "Mia": 0.75,
+      "Leo": 0.75,
+      "Nina": 0.75,
+      "Gabe": 0.75
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Mia": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_colour",
+          "hair_length",
+          "hair_texture",
+          "skin_tone"
+        ],
+        "frame_attributes": {
+          "hair_colour": "black",
+          "hair_length": "shoulder",
+          "hair_texture": "tightly_curled",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; hair_length: turnaround mid_back / frame shoulder; hair_texture: turnaround curly / frame tightly_curled; skin_tone: turnaround tan / frame medium_brown"
+      },
+      "Leo": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "hair_texture"
+        ],
+        "frame_attributes": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight"
+      },
+      "Nina": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "skin_tone"
+        ],
+        "frame_attributes": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "pale",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround light / frame pale"
+      },
+      "Gabe": {
+        "score": 0.75,
+        "verdict": "minor_drift",
+        "defining_mismatches": [],
+        "soft_mismatches": [
+          "face_shape"
+        ],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "notes": "on-model; differs only on pose/lighting-sensitive attributes: face_shape: turnaround round / frame square"
+      }
+    },
+    "character_wardrobe": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "character_wardrobe_mean": {
+      "Mia": 1.0,
+      "Leo": 1.0,
+      "Nina": 1.0,
+      "Gabe": 1.0
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Mia": "casual home wear (OTS, back of head visible)",
+      "Leo": "green dinosaur-pattern pajamas (OTS, PJs visible)",
+      "Nina": "elegant black formal dress (background, preparing)",
+      "Gabe": "black tuxedo (background, preparing)"
+    }
+  },
+  "reasons": [],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [
+          "Mia",
+          "Leo",
+          "Nina",
+          "Gabe"
+        ],
+        "observed": [
+          "Mia",
+          "Leo",
+          "Nina",
+          "Gabe"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {
+        "Mia": {
+          "score": 1.0,
+          "expected": "casual home wear (OTS, back of head visible)",
+          "notes": "Mia is wearing a purple t-shirt with stars, which fits the casual home wear description.",
+          "no_reference": false
+        },
+        "Leo": {
+          "score": 1.0,
+          "expected": "green dinosaur-pattern pajamas (OTS, PJs visible)",
+          "notes": "Leo is wearing green pajamas with a clear dinosaur pattern as specified.",
+          "no_reference": false
+        },
+        "Nina": {
+          "score": 1.0,
+          "expected": "elegant black formal dress (background, preparing)",
+          "notes": "Nina is wearing an elegant black sleeveless formal dress.",
+          "no_reference": false
+        },
+        "Gabe": {
+          "score": 1.0,
+          "expected": "black tuxedo (background, preparing)",
+          "notes": "Gabe is wearing a black tuxedo with a white shirt and black bow tie.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.6,
+        "notes": "The room is a living room with a storm outside, but the layout is mirrored or significantly altered compared to the plate.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "No prior shot was provided for comparison.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.8,
+        "notes": "The lightning bolts are correctly positioned outside the windows, but the TV content is inconsistent with the plate.",
+        "detected": [
+          "TV content mismatch"
+        ]
+      },
+      "reasons": [],
+      "character_identity": {
+        "Mia": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_colour: turnaround dark_brown / frame black; hair_length: turnaround mid_back / frame shoulder; hair_texture: turnaround curly / frame tightly_curled; skin_tone: turnaround tan / frame medium_brown",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_colour",
+            "hair_length",
+            "hair_texture",
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "black",
+            "hair_length": "shoulder",
+            "hair_texture": "tightly_curled",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "medium_brown",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          }
+        },
+        "Leo": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: hair_texture: turnaround wavy / frame straight",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "hair_texture"
+          ],
+          "frame_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "straight",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "blonde",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Nina": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: skin_tone: turnaround light / frame pale",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "skin_tone"
+          ],
+          "frame_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "pale",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "red_auburn",
+            "hair_length": "shoulder",
+            "hair_texture": "wavy",
+            "build": "average",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        },
+        "Gabe": {
+          "score": 0.75,
+          "notes": "on-model; differs only on pose/lighting-sensitive attributes: face_shape: turnaround round / frame square",
+          "no_reference": false,
+          "verdict": "minor_drift",
+          "defining_mismatches": [],
+          "soft_mismatches": [
+            "face_shape"
+          ],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "square"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "short",
+            "hair_texture": "wavy",
+            "build": "heavy_set",
+            "eyewear": "thin_wire_rectangular",
+            "facial_hair": "stubble",
+            "apparent_age": "adult",
+            "skin_tone": "light",
+            "hair_styling": "worn_loose",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Mia": {
+          "hair_colour": "black",
+          "hair_length": "shoulder",
+          "hair_texture": "tightly_curled",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "medium_brown",
+          "hair_styling": "ponytail",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "Left foreground, back to camera, watching television."
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "Center foreground, back to camera, sitting on the floor."
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "pale",
+          "hair_styling": "worn_loose",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "Right background, standing next to Gabe."
+        },
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "square",
+          "_visible": true,
+          "_where": "Center background, standing next to Nina."
+        }
+      },
+      "_identity_sheet_rows": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "Leo": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Nina": {
+          "hair_colour": "red_auburn",
+          "hair_length": "shoulder",
+          "hair_texture": "wavy",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        },
+        "Gabe": {
+          "hair_colour": "dark_brown",
+          "hair_length": "short",
+          "hair_texture": "wavy",
+          "build": "heavy_set",
+          "eyewear": "thin_wire_rectangular",
+          "facial_hair": "stubble",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "worn_loose",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "The living room layout is significantly different from the location plate, with the TV and windows swapped.",
+        "The TV content shows a cartoon instead of the storm warning graphic seen in the location plate.",
+        "The lighting and furniture placement do not align with the provided location reference."
+      ],
+      "overall_pass": true,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1G-start-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 6058,
+    "output_tokens": 1233
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1G-start-a1.png",
+    "character_refs": {
+      "Mia": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/mia_turnaround_APPROVED.png",
+      "Leo": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/leo_turnaround_APPROVED.png",
+      "Nina": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/nina_turnaround_APPROVED.png",
+      "Gabe": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/gabe_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1G-start-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0049,
+  "attempt": 1,
+  "panel": "work/v5/scene-01-1G-start-a1.png"
+}

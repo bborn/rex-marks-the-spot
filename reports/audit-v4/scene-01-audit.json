@@ -1,4 +1,8 @@
 {
+  "_VOID": true,
+  "_void_reason": "Produced by a validator that could not fail: identity 1.00 on every character of every shot, including a control where the wrong person's turnaround was supplied as the reference. location_match was 1.00 on all nine panels with location_ref=null. Do not cite.",
+  "_replaced_by": "reports/audit-v4/scene-01-audit-v2.json",
+  "_voided": "2026-08-29, task 342",
   "scene": "Scene 1 v4 audit",
   "backend": "gemini",
   "model": "gemini-2.5-flash",

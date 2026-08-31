@@ -1,0 +1,517 @@
+{
+  "cap_usd": 8.0,
+  "image_calls": 31,
+  "image_cost": 1.2400000000000004,
+  "validation_calls": 44,
+  "validation_cost": 0.28439999999999993,
+  "video_calls": 14,
+  "video_cost": 4.199999999999999,
+  "entries": [
+    {
+      "kind": "image",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.0029
+    },
+    {
+      "kind": "image",
+      "shot": "1A",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1A",
+      "attempt": 1,
+      "usd": 0.0054
+    },
+    {
+      "kind": "image",
+      "shot": "1B",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1B",
+      "attempt": 1,
+      "usd": 0.0035
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.0053
+    },
+    {
+      "kind": "image",
+      "shot": "1F",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1F",
+      "attempt": 1,
+      "usd": 0.0027
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0048
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0048
+    },
+    {
+      "kind": "image",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1I",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1I",
+      "attempt": 1,
+      "usd": 0.0037
+    },
+    {
+      "kind": "image",
+      "shot": "1I",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1I",
+      "attempt": 2,
+      "usd": 0.0034
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0037
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0048
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0041
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0042
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0049
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.0046
+    },
+    {
+      "kind": "image",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 1,
+      "usd": 0.0042
+    },
+    {
+      "kind": "image",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1G",
+      "attempt": 2,
+      "usd": 0.0049
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 1,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1C",
+      "attempt": 2,
+      "usd": 0.0038
+    },
+    {
+      "kind": "image",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1E",
+      "attempt": 1,
+      "usd": 0.003
+    },
+    {
+      "kind": "image",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "validate",
+      "shot": "1D",
+      "attempt": 1,
+      "usd": 0.0053
+    },
+    {
+      "kind": "image",
+      "shot": "1H",
+      "attempt": 1,
+      "usd": 0.04
+    },
+    {
+      "kind": "video",
+      "shot": "1E",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1A",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1B",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1C",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1D",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1F",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1G",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1H",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1I",
+      "usd": 0.3
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1A",
+      "usd": 0.016
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1B",
+      "usd": 0.0105
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1C",
+      "usd": 0.0119
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1D",
+      "usd": 0.0145
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1E",
+      "usd": 0.0089
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1F",
+      "usd": 0.0083
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1G",
+      "usd": 0.0139
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1H",
+      "usd": 0.0092
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1I",
+      "usd": 0.0109
+    },
+    {
+      "kind": "video",
+      "shot": "1A-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1G-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1I-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1B-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "video",
+      "shot": "1C-r2",
+      "usd": 0.3
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1A-r2",
+      "usd": 0.0163
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1B-r2",
+      "usd": 0.0102
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1C-r2",
+      "usd": 0.0113
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1G-r2",
+      "usd": 0.0126
+    },
+    {
+      "kind": "validate-shot",
+      "shot": "1I-r2",
+      "usd": 0.0103
+    }
+  ]
+}

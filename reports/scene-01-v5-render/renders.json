@@ -1,0 +1,245 @@
+[
+  {
+    "shot_id": "1A",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 20.9,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1A-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1A-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1A-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1A.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1A-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1A.mp4",
+    "prompt": "Static wide shot of the family living room in the evening. The camera does not move at all: no push, no pan, no zoom, no reframe. Inside the held frame, the storm outside the windows builds to a bright forked lightning flash and cold blue light washes through the room; the old television at screen left flickers and a band of static rolls through its picture; the small boy in dinosaur pajamas turns his head away from the television toward his parents; the older girl beside him glances toward the windows. The teenage babysitter in the armchair does not look up from her phone. Everyone stays seated and standing exactly where they are.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1B",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 15.6,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1B-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1B-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1B-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1B.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1B-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1B.mp4",
+    "prompt": "A slow, gentle push in on the small boy sitting cross-legged on the couch hugging his green plush dinosaur. The move is smooth, continuous and small - the framing tightens only slightly. He tips his head down toward the toy in his arms and breaks into a quick delighted grin. The toy dinosaurs on the cushions stay where they are. His sister stays cropped at the extreme left edge of frame.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1C",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 15.6,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1C-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1C-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1C-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1C.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1C-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1C.mp4",
+    "prompt": "A smooth, slow tracking move with the woman in the black evening gown in the front hall. She finishes fastening her earring, lowers both hands, settles the small black purse against her hip and turns her head back over her shoulder to call into the living room, her mouth moving as she talks. The man in the tuxedo waits by the front door. The teenage babysitter stays curled in the armchair on her phone. The camera move is gentle and continuous.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1D",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 149.4,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1D-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1D-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1D-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1D.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1D-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1D-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1D-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1D.mp4",
+    "prompt": "Static two-shot of the man in the tuxedo and the woman in the black gown standing in the living room. The camera holds - no push, no pan, no zoom. He lowers his wrist from checking his watch, lifts his head toward her and opens both hands away from his sides in an exasperated gesture, talking. She turns to face him, pats the side of her hip as if feeling for a pocket and holds one palm up, asking him something. Behind them the two children stay on the couch and the teenage babysitter stays in the armchair on her phone.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1E",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 231.8,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1E-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1E-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1E-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1E.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1E-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1E-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1E-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1E.mp4",
+    "prompt": "Static close-up on the teenage babysitter looking down at her phone, its screen lighting her face from below. The camera holds - no push, no pan, no zoom. Her thumb taps the screen and a small cheerful smile spreads across her face. She does NOT look up and she does not turn her head; her eyes stay on the phone the whole time. The blurred living room behind her is still.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1F",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 15.6,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1F-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1F-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1F-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1F.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1F-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1F-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1F-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1F.mp4",
+    "prompt": "Static close-up insert on the old television. The camera holds - no push, no pan, no zoom. There are no people in this shot. The cartoon picture jitters; horizontal scan lines roll down through it; grey static swells across the screen; and a bright blue-white flash blooms out of the middle of the picture, throwing blue light onto the wooden cabinet and the wall around it.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1G",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 128.7,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1G-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1G-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1G-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1G.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1G-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1G.mp4",
+    "prompt": "Static over-the-shoulder shot from behind two children sitting on the floor watching television, seen from behind. The camera holds - no push, no pan, no zoom. The children glance back over their shoulders toward their parents and then turn back to the cartoon, so they end the shot facing the television again with their backs to camera. Behind them the mother in the black gown turns toward them and lifts one hand in a small goodbye wave, and the father in the tuxedo half-turns toward the door. There are exactly two children in this shot.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1H",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 169.8,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1H-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1H-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1H-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1H.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1H-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1H-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1H-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1H.mp4",
+    "prompt": "A very slow, very small push in on the young girl's face as she looks up at her parents. The move is barely perceptible and completely smooth. She finishes speaking and closes her mouth, her eyebrows lift in the middle, and her eyes shine as she waits for an answer. The blurred foreground shapes at the extreme left and right edges of frame stay where they are. The lightning outside the window fades.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  },
+  {
+    "shot_id": "1I",
+    "suffix": "",
+    "resolution": "768P",
+    "requested_duration_seconds": 5,
+    "actual_duration_seconds": 5,
+    "estimated_cost_usd": 0.3,
+    "generation_time_seconds": 15.7,
+    "first_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1I-start.png",
+    "last_frame_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v5/scene-01/scene-01-1I-end.png",
+    "raw_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/raw/scene-01-1I-raw.mp4",
+    "clip_r2_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-1I.mp4",
+    "frames_r2": [
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-first.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-mid.jpg",
+      "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/frames/1I-last.jpg"
+    ],
+    "raw_streams": [
+      "video",
+      "audio"
+    ],
+    "stripped_streams": [
+      "video"
+    ],
+    "local_clip": "work/fal/scene-01-1I.mp4",
+    "prompt": "Static two-shot of the man in the tuxedo and the woman in the black gown facing each other in the front hall by the door. The camera holds. He lifts his chin to meet her eyes, opens one hand from his side in a small conceding gesture and speaks a single word; the hard set of her glare releases, her shoulders drop, a small satisfied smile appears and she turns toward the front door and reaches for the brass knob. Exactly two people are in this shot and nobody else.\n\nNo new characters enter the frame and nobody leaves it. Nobody changes clothes. Nobody stands up or sits down unless described above. Any lightning stays OUTSIDE the windows, never over an interior wall, over furniture or over a person. No text, no captions, no subtitles, no on-screen graphics, no watermark. One continuous take - no cuts, no dissolves, no shot changes.\n\nNo dialogue. No music. No sound effects. Silent."
+  }
+]

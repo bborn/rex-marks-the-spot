@@ -1,0 +1,103 @@
+{
+  "shot_id": "1F",
+  "overall_pass": true,
+  "aggregate_scores": {
+    "character_presence": 1.0,
+    "location_match": 0.8,
+    "continuity": 1.0,
+    "artifacts": 0.7,
+    "character_presence_mean": 1.0,
+    "location_match_mean": 0.8,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 0.7,
+    "location_no_reference": false,
+    "character_identity": {},
+    "character_identity_mean": {},
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {},
+    "character_wardrobe": {},
+    "character_wardrobe_mean": {},
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {}
+  },
+  "reasons": [],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 1.0,
+        "expected": [],
+        "observed": [],
+        "missing": [],
+        "unexpected": []
+      },
+      "character_wardrobe": {},
+      "location_match": {
+        "score": 0.8,
+        "notes": "The TV and background elements like the window and lamp align well with the location plate.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "This is the first shot provided in the sequence.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.7,
+        "notes": "There is a significant lens flare and some digital noise on the TV screen.",
+        "detected": [
+          "lens flare",
+          "digital noise",
+          "blurry edges"
+        ]
+      },
+      "reasons": [],
+      "character_identity": {},
+      "_frame_observations": {
+        "character_1": {
+          "hair_colour": "blonde",
+          "hair_length": "short",
+          "hair_texture": "straight",
+          "build": "average",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "adult",
+          "skin_tone": "light",
+          "hair_styling": "not_visible",
+          "face_shape": "oval",
+          "_visible": false,
+          "_where": "not applicable"
+        }
+      },
+      "_identity_sheet_rows": {},
+      "model_notes": [
+        "The TV model appears more retro than the modern flat screen in the location plate.",
+        "Heavy lens flare obscures some of the expected screen details.",
+        "The cartoon imagery is highly abstract and distorted."
+      ],
+      "overall_pass": true,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1F-end-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5957,
+    "output_tokens": 378
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1F-end-a1.png",
+    "character_refs": {},
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/347-render-scene-1-from-v5-panels-on-fal-fir/work/v5-end/scene-01-1F-end-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0027,
+  "attempt": 1,
+  "panel": "work/v5-end/scene-01-1F-end-a1.png"
+}

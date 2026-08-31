@@ -1,0 +1,183 @@
+{
+  "description": "Adversarial + true-positive control set for the identity validator. Every case has a KNOWN ground truth established by a human looking at the images. A validator that cannot reproduce this table is not measuring anything.",
+  "fixtures": {
+    "characters": {
+      "r2_prefix": "asset-bible/characters/",
+      "files": [
+        "gabe_turnaround_APPROVED.png",
+        "nina_turnaround_APPROVED.png",
+        "mia_turnaround_APPROVED.png",
+        "leo_turnaround_APPROVED.png",
+        "jenny_turnaround_APPROVED.png"
+      ]
+    },
+    "panels": {
+      "r2_prefix": "storyboards/v4/scene-01/",
+      "files": [
+        "scene-01-1B-start.png",
+        "scene-01-1D-start.png"
+      ]
+    },
+    "clips": {
+      "r2_prefix": "animation-tests/scene01-panel01-mvp/",
+      "note": "Mid-frame of each clip is extracted locally with ffmpeg; the extracted JPEG is the control image.",
+      "files": [
+        "scene01-panel01-veo2-v1.mp4",
+        "scene01-panel01-veo2-v2.mp4",
+        "scene01-panel01-veo3-v1.mp4",
+        "scene01-panel01-veo3-v2-stable.mp4",
+        "scene01-panel01-veo3-v3-ultrastable.mp4",
+        "scene01-panel01-veo3-v4-anchored.mp4",
+        "scene01-panel01-veo31-v1.mp4"
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "adv-1D-real",
+      "kind": "adversarial",
+      "image": "panels/scene-01-1D-start.png",
+      "characters_dir": "characters",
+      "shot": "1D",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Gabe": 0.6,
+        "Leo": 0.6
+      },
+      "expect_identity_at_or_above": {
+        "Mia": 0.6
+      },
+      "ground_truth": "Gabe: turnaround is heavy-set, stubbled, in thin rounded-rectangular wire frames; the panel is slim, clean-shaven, in heavy black rectangular frames. Leo: turnaround is a blonde, blue-eyed five-year-old; the panel boy is dark brown haired with brown eyes - visible only when you crop in, and missed on the first human read of this panel. Nina: the turnaround is a fuller build with a shoulder-length auburn bob; the panel is slender with mid-back waves - a real drift the validator does NOT catch, recorded as a known miss rather than tuned away. Jenny: turnaround is dark brown curls, coral hoodie, tan skin; the panel is a sleek straight ponytail and much paler skin. Mia IS on-model and must keep passing - a validator that fails her too is failing everything, not measuring.",
+      "known_miss": "Nina scores ~0.75 here and passes. Her two real drifts, build and hair length, are each one step on their ladders, and one step is the tolerance that keeps lighting and pose from failing on-model art. Documented, not tuned around."
+    },
+    {
+      "id": "adv-1D-mislabel-sheet-nina-is-jenny",
+      "kind": "adversarial",
+      "image": "panels/scene-01-1D-start.png",
+      "characters_dir": "characters",
+      "shot": "1D-nina-only",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Nina": 0.6
+      },
+      "ground_truth": "The identity sheet's row NAMED Nina holds Jenny's attributes: a teenager with mid-back dark brown curls and medium-brown skin. The figure in frame is an adult with shoulder-length auburn waves and light skin. No validator that reads the row it was given can call that a match.\n\nThis case originally supplied Jenny's turnaround IMAGE as the file named nina_turnaround_APPROVED.png, and the old validator scored it 1.00. That form of the test no longer probes anything: the fixed validator never sends turnaround images to the grader, so a mislabelled image file cannot reach the identity path. The mislabelling was moved to the surface that now carries the reference - the sheet row.",
+      "identity_sheet": "identity-sheets-mislabel.json"
+    },
+    {
+      "id": "tp-1B-panel",
+      "kind": "true-positive",
+      "image": "panels/scene-01-1B-start.png",
+      "characters_dir": "characters",
+      "shot": "1B",
+      "expect_overall": null,
+      "expect_identity_at_or_above": {
+        "Leo": 0.6,
+        "Mia": 0.6
+      },
+      "ground_truth": "Leo is on-model: the same blonde tousled hair, blue eyes, round rosy face and plush green T-Rex as the turnaround. Mia is at the frame edge with her back half-turned, showing the locked dark curls and magenta star tee. This case exists so a validator that has simply learned to say FAIL can be told apart from one that is looking.\n\noverall_pass is deliberately NOT asserted. This is a real production panel and the artifacts rubric has its own opinion of it (couch texture damage, a lightning overlap), which is a separate check from the identity grading this control set exists to pin down. Tying the true positive to overall_pass would make it hostage to a rubric it is not testing. The 'did not fail everything' guard is enforced directly by the harness instead: at least one case must come back with every visible character at or above the identity gate."
+    },
+    {
+      "id": "known-weakness-1D-single-character-manifest",
+      "kind": "known-weakness",
+      "image": "panels/scene-01-1D-start.png",
+      "characters_dir": "characters",
+      "shot": "1D-mia-only",
+      "expect_overall": null,
+      "ground_truth": "A CHARACTERIZATION TEST, not a target. The manifest for this case lists only Mia, but the frame holds five people. With no turnarounds in the observation call - they are withheld deliberately, because they anchor the answer - the model has only the manifest's wardrobe line to go on, and it picks the wrong figure: it describes Jenny (teenager, straight hair, light skin) and files her under Mia, so 'Mia' scores 0.10.\n\nThis is the real cost of withholding the references: figure-to-name assignment gets weaker as the manifest gets less constraining. It does not bite in the pipeline, where a shot's manifest lists its whole cast and the set of names constrains the assignment - in the full-cast adv-1D-real case over the SAME image, Mia is assigned correctly and scores 0.75. It is pinned here so that if the behaviour ever changes, in either direction, this harness says so.",
+      "expect_identity_below": {
+        "Mia": 0.6
+      }
+    },
+    {
+      "id": "adv-veo2-v1",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo2-v1-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Jenny is blonde with a sleek high ponytail; the locked turnaround is dark brown curls. Gabe has no glasses at all and a slim build; the turnaround is heavy-set with glasses. Wrong room too."
+    },
+    {
+      "id": "adv-veo2-v2",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo2-v2-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    },
+    {
+      "id": "adv-veo3-v1",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo3-v1-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    },
+    {
+      "id": "adv-veo3-v2-stable",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo3-v2-stable-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    },
+    {
+      "id": "adv-veo3-v3-ultrastable",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo3-v3-ultrastable-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    },
+    {
+      "id": "adv-veo3-v4-anchored",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo3-v4-anchored-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    },
+    {
+      "id": "adv-veo31-v1",
+      "kind": "adversarial",
+      "image": "clips/scene01-panel01-veo31-v1-mid.jpg",
+      "characters_dir": "characters",
+      "shot": "1A",
+      "expect_overall": "FAIL",
+      "expect_identity_below": {
+        "Jenny": 0.6,
+        "Gabe": 0.6
+      },
+      "ground_truth": "Same blonde Jenny / no-glasses Gabe as the rest of the panel-01 MVP family."
+    }
+  ]
+}

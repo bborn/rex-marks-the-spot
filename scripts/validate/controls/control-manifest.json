@@ -1,0 +1,109 @@
+[
+  {
+    "shot_id": "1A",
+    "location": "living_room",
+    "characters": [
+      "Mia",
+      "Leo",
+      "Jenny",
+      "Nina",
+      "Gabe"
+    ],
+    "wardrobe": {
+      "Mia": "casual home wear, legs tucked under on couch",
+      "Leo": "green dinosaur-pattern pajamas",
+      "Jenny": "casual teen, dark brown hair in ponytail, on phone",
+      "Nina": "elegant black formal dress (date-night)",
+      "Gabe": "black tuxedo (date-night, slightly rumpled)"
+    },
+    "key_props": [
+      "TV (flickering, showing colorful cartoon)",
+      "couch",
+      "armchair",
+      "scattered dinosaur toys (plush T-Rex, plastic Triceratops, pterodactyl)",
+      "windows showing dark stormy sky",
+      "Leo's plush T-Rex"
+    ],
+    "camera": "Wide establishing shot, STATIC, 8s. Full view of living room; TV left, couch center-left, kitchen background right.",
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1A-start.png"
+  },
+  {
+    "shot_id": "1B",
+    "location": "living_room",
+    "characters": [
+      "Leo",
+      "Mia"
+    ],
+    "wardrobe": {
+      "Leo": "green dinosaur-pattern pajamas, hugging plush T-Rex",
+      "Mia": "casual home wear (partial frame edge)"
+    },
+    "key_props": [
+      "plush T-Rex (Leo hugging)",
+      "scattered toy dinosaurs (plastic T-Rex, Triceratops, pterodactyl)",
+      "couch",
+      "TV glow on Leo's face"
+    ],
+    "camera": "Medium shot on Leo, STATIC with slight PUSH, 6s. Leo center, cross-legged on couch.",
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1B-start.png"
+  },
+  {
+    "shot_id": "1D",
+    "location": "living_room",
+    "characters": [
+      "Gabe",
+      "Nina",
+      "Mia",
+      "Leo",
+      "Jenny"
+    ],
+    "wardrobe": {
+      "Gabe": "black tuxedo (slightly rumpled), checking watch",
+      "Nina": "elegant black formal dress",
+      "Mia": "casual home wear (background, on couch)",
+      "Leo": "green dinosaur-pattern pajamas (background, on couch)",
+      "Jenny": "casual teen, dark brown hair in ponytail, on phone (background, oblivious)"
+    },
+    "key_props": [
+      "Gabe's wristwatch",
+      "couch (kids in background)",
+      "armchair (Jenny in background)"
+    ],
+    "camera": "Two-shot Gabe/Nina, STATIC with occasional REFRAMES, 45s. Medium shot from waist up.",
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1D-start.png"
+  },
+  {
+    "shot_id": "1D-nina-only",
+    "location": "living_room",
+    "characters": [
+      "Nina"
+    ],
+    "wardrobe": {
+      "Nina": "elegant black formal dress"
+    },
+    "key_props": [
+      "Gabe's wristwatch",
+      "couch (kids in background)",
+      "armchair (Jenny in background)"
+    ],
+    "camera": "Two-shot Gabe/Nina, STATIC with occasional REFRAMES, 45s. Medium shot from waist up.",
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1D-start.png"
+  },
+  {
+    "shot_id": "1D-mia-only",
+    "location": "living_room",
+    "characters": [
+      "Mia"
+    ],
+    "wardrobe": {
+      "Mia": "casual home wear (background, on couch)"
+    },
+    "key_props": [
+      "Gabe's wristwatch",
+      "couch (kids in background)",
+      "armchair (Jenny in background)"
+    ],
+    "camera": "Two-shot Gabe/Nina, STATIC with occasional REFRAMES, 45s. Medium shot from waist up.",
+    "panel_url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/storyboards/v4/scene-01/scene-01-1D-start.png"
+  }
+]

@@ -1,3 +1,27 @@
+> # ⛔ VOID — DO NOT CITE THIS REPORT
+>
+> **This audit is wrong and has been withdrawn.** It was produced by a validator
+> that could not fail. Every character, every shot, every metric came back 1.00
+> with zero reasons flagged, and the per-character notes below are boilerplate
+> with the name swapped — because the grader was agreeing with the manifest, not
+> looking at the images.
+>
+> Proof: the same validator scored identity **1.00 for Nina** on a control where
+> **Jenny's turnaround was deliberately supplied as Nina's reference**, and 1.00
+> for Jenny on seven Veo clips in which she is **blonde**, contradicting her
+> locked dark-brown turnaround. It also reported `location_match: 1.00` on all
+> nine panels while `location_ref` was `null` — it scored a comparison it had
+> been given nothing to compare against.
+>
+> **Replacement:** [`scene-01-audit-v2.md`](scene-01-audit-v2.md), which fails
+> 7 of these 9 panels. Gabe is off-model in every panel he appears in.
+>
+> **Repair write-up:** [`docs/research/identity-validator-repair.md`](../../docs/research/identity-validator-repair.md)
+>
+> Voided 2026-08-29 by task 342. The 9/9 PASS below is not evidence of anything.
+
+---
+
 # Scene 1 v4 audit - Reference-Aware Shot Validation Report
 
 Backend: `gemini`  |  Model: `gemini-2.5-flash`  |  Validator: `scripts/validate/shot_validator.py`

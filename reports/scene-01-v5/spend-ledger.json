@@ -1,0 +1,38 @@
+{
+  "image_calls": 26,
+  "image_cost": 1.0400000000000003,
+  "validation_cost": 0.1119,
+  "runs": [
+    {
+      "note": "smoke tests: 1A generated twice (once before the contrastive-correction patch, once after), validated once"
+    },
+    {
+      "shots": [
+        "1A"
+      ]
+    },
+    {
+      "shots": [
+        "1A"
+      ]
+    },
+    {
+      "shots": [
+        "1A"
+      ]
+    },
+    {
+      "shots": [
+        "1A"
+      ]
+    },
+    {
+      "shots": [
+        "1F",
+        "1G",
+        "1H",
+        "1I"
+      ]
+    }
+  ]
+}

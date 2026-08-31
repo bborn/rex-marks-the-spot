@@ -1,0 +1,212 @@
+{
+  "shot_id": "1H",
+  "overall_pass": false,
+  "aggregate_scores": {
+    "character_presence": 0.5,
+    "location_match": 0.7,
+    "continuity": 1.0,
+    "artifacts": 0.7,
+    "character_presence_mean": 0.5,
+    "location_match_mean": 0.7,
+    "continuity_mean": 1.0,
+    "artifacts_mean": 0.7,
+    "location_no_reference": false,
+    "character_identity": {
+      "Mia": 1.0
+    },
+    "character_identity_mean": {
+      "Mia": 1.0
+    },
+    "character_identity_no_reference": [],
+    "character_identity_evidence": {
+      "Mia": {
+        "score": 1.0,
+        "verdict": "same_character",
+        "defining_mismatches": [],
+        "soft_mismatches": [],
+        "frame_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "reference_attributes": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        },
+        "notes": "every compared attribute matches the turnaround"
+      }
+    },
+    "character_wardrobe": {
+      "Mia": 0.8
+    },
+    "character_wardrobe_mean": {
+      "Mia": 0.8
+    },
+    "character_wardrobe_no_reference": [],
+    "character_wardrobe_expected": {
+      "Mia": "casual home wear, looking up at off-screen parents"
+    }
+  },
+  "reasons": [
+    "character_presence 0.50 (missing: none; unexpected: Adult Male, Adult Female)"
+  ],
+  "keyframes": [
+    {
+      "character_presence": {
+        "score": 0.5,
+        "expected": [
+          "Mia"
+        ],
+        "observed": [
+          "Mia",
+          "Adult Male",
+          "Adult Female"
+        ],
+        "missing": [],
+        "unexpected": [
+          "Adult Male",
+          "Adult Female"
+        ]
+      },
+      "character_wardrobe": {
+        "Mia": {
+          "score": 0.8,
+          "expected": "casual home wear, looking up at off-screen parents",
+          "notes": "Mia is wearing a pink patterned t-shirt and jeans, which fits the casual home wear description.",
+          "no_reference": false
+        }
+      },
+      "location_match": {
+        "score": 0.7,
+        "notes": "The window with storm and the lamp match the plate, though the couch and wall art are slightly altered.",
+        "no_reference": false
+      },
+      "continuity": {
+        "score": 1.0,
+        "notes": "This is the first shot provided in this sequence.",
+        "no_prior_shot": true,
+        "same_location_as_prior": false
+      },
+      "artifacts": {
+        "score": 0.7,
+        "notes": "The lightning bolt appears to overlap the window frame slightly, and there are unexpected figures.",
+        "detected": [
+          "unexpected background characters",
+          "lighting clipping"
+        ]
+      },
+      "reasons": [
+        "character_presence 0.50 (missing: none; unexpected: Adult Male, Adult Female)"
+      ],
+      "character_identity": {
+        "Mia": {
+          "score": 1.0,
+          "notes": "every compared attribute matches the turnaround",
+          "no_reference": false,
+          "verdict": "same_character",
+          "defining_mismatches": [],
+          "soft_mismatches": [],
+          "frame_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          },
+          "reference_attributes": {
+            "hair_colour": "dark_brown",
+            "hair_length": "mid_back",
+            "hair_texture": "curly",
+            "build": "child",
+            "eyewear": "none",
+            "facial_hair": "clean_shaven",
+            "apparent_age": "child",
+            "skin_tone": "tan",
+            "hair_styling": "ponytail",
+            "face_shape": "round"
+          }
+        }
+      },
+      "_frame_observations": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round",
+          "_visible": true,
+          "_where": "center of the frame, looking up and slightly to the right"
+        }
+      },
+      "_identity_sheet_rows": {
+        "Mia": {
+          "hair_colour": "dark_brown",
+          "hair_length": "mid_back",
+          "hair_texture": "curly",
+          "build": "child",
+          "eyewear": "none",
+          "facial_hair": "clean_shaven",
+          "apparent_age": "child",
+          "skin_tone": "tan",
+          "hair_styling": "ponytail",
+          "face_shape": "round"
+        }
+      },
+      "model_notes": [
+        "Two unexpected adult characters are visible in the frame despite not being in the manifest.",
+        "The lightning effect slightly overlaps the interior window frame.",
+        "The couch design and wall art differ from the provided location plate."
+      ],
+      "overall_pass": false,
+      "_keyframe_path": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1H-start-a1.png"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5968,
+    "output_tokens": 515
+  },
+  "media_paths": {
+    "media": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1H-start-a1.png",
+    "character_refs": {
+      "Mia": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/asset-bible/characters/mia_turnaround_APPROVED.png"
+    },
+    "missing_refs": [],
+    "identity_sheet": "scripts/validate/identity-sheets.json",
+    "characters_without_identity_sheet": [],
+    "location_ref": "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/locations/storyboard-1A.png",
+    "prior_keyframe": null,
+    "prior_shot_id": null,
+    "wardrobe_refs": {},
+    "keyframes": [
+      "/home/rex/rex-marks-the-spot/.task-worktrees/344-regenerate-all-9-scene-1-panels-on-model/work/v5/scene-01-1H-start-a1.png"
+    ]
+  },
+  "estimated_cost_usd": 0.0031,
+  "attempt": 1,
+  "panel": "work/v5/scene-01-1H-start-a1.png"
+}
