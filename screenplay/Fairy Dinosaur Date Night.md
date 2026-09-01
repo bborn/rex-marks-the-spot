@@ -15,7 +15,7 @@ Two siblings are orphaned when their parents' car disappears through a time-warp
 
 MIA & LEO BORNSZTEIN are watching cartoons. Leo wears dinosaur pajamas, and there are dino-toys everywhere.
 
-A storm is brewing. The TV is jittering. The babysitter, JENNY, is lost in her mobile phone. Jenny is about 15, blonde, with her hair back in a ponytail. GABE & NINA BORNSZTEIN, dressed in black-tie attire, are frantically moving around the house, getting ready to leave.
+A storm is brewing. The TV is jittering. The babysitter, JENNY, is lost in her mobile phone. Jenny is about 15, with dark brown curly hair pulled back in a messy ponytail. GABE & NINA BORNSZTEIN, dressed in black-tie attire, are frantically moving around the house, getting ready to leave.
 
 **NINA**
 *(puts on earrings as she walks)*
