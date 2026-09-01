@@ -64,7 +64,7 @@ PANELS = [
             "sitting cross-legged on the right side of a large couch. "
             "An 8-year-old girl with dark curly hair in a high ponytail sits on the left side of the couch, "
             "legs tucked under, looking slightly concerned. "
-            "A 15-year-old babysitter with a blonde ponytail sits in an armchair to the far right, "
+            "A 15-year-old babysitter with dark brown curly hair in a messy ponytail, brown skin, coral pink hoodie, sits in an armchair to the far right, "
             "head down, completely absorbed in her phone. "
             "A TV glows on the left side of the room. Dinosaur toys are scattered on the floor. "
             "Through the windows, a dark stormy sky with lightning is visible outside. "
@@ -93,7 +93,7 @@ PANELS = [
         "name": "Panel 1E: Close-up Jenny",
         "chars": [],  # No Jenny turnaround available
         "prompt": (
-            "Close-up insert shot of a 15-year-old babysitter with a blonde ponytail. "
+            "Close-up insert shot of a 15-year-old babysitter with dark brown curly hair in a messy ponytail, brown skin, coral pink hoodie. "
             "She sits in an armchair, head tilted down, completely absorbed in her phone screen. "
             "The phone's glow illuminates her face with a soft blue-white light. "
             "She has a cheerful but totally disconnected expression - oblivious to everything around her. "

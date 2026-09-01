@@ -10,7 +10,7 @@ Bornsztein family living room/kitchen area. Warm domestic lighting with occasion
 - **Nina** (Mother): Black-tie attire, putting on earrings, multitasking
 - **Mia** (~8): On couch, watching TV, concerned about parents leaving
 - **Leo** (~5): Dinosaur pajamas, surrounded by dino toys, on couch
-- **Jenny** (Babysitter, ~15): Blonde ponytail, absorbed in phone
+- **Jenny** (Babysitter, ~15): Dark brown curly hair in messy ponytail, brown skin, coral pink hoodie, absorbed in phone
 
 ---
 

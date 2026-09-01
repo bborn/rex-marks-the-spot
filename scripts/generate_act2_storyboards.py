@@ -28,7 +28,7 @@ CHARACTERS = {
     "leo": "5-year-old boy, blonde/light brown hair, dinosaur pajamas, round face, innocent, carrying snack backpack",
     "ruben": "Fairy godfather, wild gray Einstein-like hair, tired baggy blue-gray eyes, janitor coveralls, droopy iridescent purple-blue wings, uses mop as magic wand",
     "mcnattin": "Middle-aged detective, rumpled suit, tired weathered face, professional demeanor",
-    "jenny": "15-year-old babysitter, blonde ponytail, nervous teen"
+    "jenny": "15-year-old babysitter, dark brown curly hair in messy ponytail, brown skin, coral pink hoodie, gray leggings, nervous teen"
 }
 
 # All Act 2 panels organized by scene
