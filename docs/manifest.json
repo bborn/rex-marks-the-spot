@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-01T00:57:06.832585Z",
-  "totalAssets": 1788,
+  "generated": "2026-09-01T06:31:20.916257Z",
+  "totalAssets": 1791,
   "categories": {
     "Characters": 388,
-    "Other": 135,
+    "Other": 138,
     "Animatics": 279,
     "Storyboards": 890,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-09-01T00:57:06.810985279Z",
+      "modTime": "2026-09-01T06:31:20.903098035Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-09-01T00:57:06.810985279Z",
+      "modTime": "2026-09-01T06:31:20.903098035Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-09-01T00:57:06.810985279Z",
+      "modTime": "2026-09-01T06:31:20.903098035Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,36 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-09-01T00:57:06.810985279Z",
+      "modTime": "2026-09-01T06:31:20.903098035Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "factory/s1/scene-01-reel-mute.mp4",
+      "name": "scene-01-reel-mute.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s1/scene-01-reel-mute.mp4",
+      "size": 1851486,
+      "modTime": "2026-09-01T03:11:09.838274661Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "factory/s3/s3-car-reel.mp4",
+      "name": "s3-car-reel.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s3/s3-car-reel.mp4",
+      "size": 2380328,
+      "modTime": "2026-09-01T03:11:08.624260881Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "factory/s2/omni-s2-t2.mp4",
+      "name": "omni-s2-t2.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/omni-s2-t2.mp4",
+      "size": 1215915,
+      "modTime": "2026-09-01T03:11:07.262245421Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-v5-fal/scene-01-cut.mp4",
