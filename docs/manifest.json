@@ -1,10 +1,10 @@
 {
-  "generated": "2026-08-31T19:28:25.183375Z",
-  "totalAssets": 1787,
+  "generated": "2026-09-01T00:57:06.832585Z",
+  "totalAssets": 1788,
   "categories": {
     "Characters": 388,
     "Other": 135,
-    "Animatics": 278,
+    "Animatics": 279,
     "Storyboards": 890,
     "Props": 20,
     "Branding": 10,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-08-31T19:28:25.161741768Z",
+      "modTime": "2026-09-01T00:57:06.810985279Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-08-31T19:28:25.161741768Z",
+      "modTime": "2026-09-01T00:57:06.810985279Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-08-31T19:28:25.161741768Z",
+      "modTime": "2026-09-01T00:57:06.810985279Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,18 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-08-31T19:28:25.161741768Z",
+      "modTime": "2026-09-01T00:57:06.810985279Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "animation-tests/scene01-v5-fal/scene-01-cut.mp4",
+      "name": "scene-01-cut.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/animation-tests/scene01-v5-fal/scene-01-cut.mp4",
+      "size": 13756546,
+      "modTime": "2026-08-31T19:25:16.525366128Z",
+      "category": "Animatics",
+      "type": "video"
     },
     {
       "path": "animation-tests/scene01-v5-fal/omni-vs-h3.jpg",
