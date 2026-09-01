@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-01T12:27:26.006855Z",
-  "totalAssets": 1791,
+  "generated": "2026-09-01T18:23:20.537757Z",
+  "totalAssets": 1808,
   "categories": {
     "Characters": 388,
-    "Other": 138,
+    "Other": 155,
     "Animatics": 279,
     "Storyboards": 890,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-09-01T12:27:25.985365030Z",
+      "modTime": "2026-09-01T18:23:20.521441851Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-09-01T12:27:25.985365030Z",
+      "modTime": "2026-09-01T18:23:20.521441851Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-09-01T12:27:25.985365030Z",
+      "modTime": "2026-09-01T18:23:20.521441851Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,162 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-09-01T12:27:25.985365030Z",
+      "modTime": "2026-09-01T18:23:20.521441851Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-v4-compare.png",
+      "name": "s2-restage-v4-compare.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-v4-compare.png",
+      "size": 3179824,
+      "modTime": "2026-09-01T14:43:51.994312728Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-highwide-a3.png",
+      "name": "s2-restage-highwide-a3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-highwide-a3.png",
+      "size": 848794,
+      "modTime": "2026-09-01T14:42:49.459542474Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-overthenose-a2.png",
+      "name": "s2-restage-overthenose-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-overthenose-a2.png",
+      "size": 842789,
+      "modTime": "2026-09-01T14:40:46.709009772Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-noseleft-a2.png",
+      "name": "s2-restage-noseleft-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-noseleft-a2.png",
+      "size": 844419,
+      "modTime": "2026-09-01T14:40:14.863606970Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-highwide-a2.png",
+      "name": "s2-restage-highwide-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-highwide-a2.png",
+      "size": 843371,
+      "modTime": "2026-09-01T14:39:46.973252227Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-overthenose-a1.png",
+      "name": "s2-restage-overthenose-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-overthenose-a1.png",
+      "size": 922895,
+      "modTime": "2026-09-01T14:38:22.858170122Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-noseleft-a1.png",
+      "name": "s2-restage-noseleft-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-noseleft-a1.png",
+      "size": 846461,
+      "modTime": "2026-09-01T14:37:42.202710261Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v4/s2-restage-highwide-a1.png",
+      "name": "s2-restage-highwide-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v4/s2-restage-highwide-a1.png",
+      "size": 842582,
+      "modTime": "2026-09-01T14:36:59.296226546Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/omni-s2-t3.mp4",
+      "name": "omni-s2-t3.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/omni-s2-t3.mp4",
+      "size": 1176283,
+      "modTime": "2026-09-01T14:26:11.814935987Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-v3-compare.png",
+      "name": "s2-restage-v3-compare.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-v3-compare.png",
+      "size": 2578442,
+      "modTime": "2026-09-01T13:22:08.592622022Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-nosein.png",
+      "name": "s2-restage-nosein.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-nosein.png",
+      "size": 804465,
+      "modTime": "2026-09-01T13:22:07.643610506Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-broadside.png",
+      "name": "s2-restage-broadside.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-broadside.png",
+      "size": 779377,
+      "modTime": "2026-09-01T13:22:07.642610494Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-broadside-a3.png",
+      "name": "s2-restage-broadside-a3.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-broadside-a3.png",
+      "size": 779377,
+      "modTime": "2026-09-01T13:21:13.889957628Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-nosein-a2.png",
+      "name": "s2-restage-nosein-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-nosein-a2.png",
+      "size": 785785,
+      "modTime": "2026-09-01T13:20:07.352147706Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-broadside-a2.png",
+      "name": "s2-restage-broadside-a2.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-broadside-a2.png",
+      "size": 786050,
+      "modTime": "2026-09-01T13:19:38.150791584Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-nosein-a1.png",
+      "name": "s2-restage-nosein-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-nosein-a1.png",
+      "size": 804465,
+      "modTime": "2026-09-01T13:18:33.092996530Z",
+      "category": "Other",
+      "type": "image"
+    },
+    {
+      "path": "factory/s2/restage-v3/s2-restage-broadside-a1.png",
+      "name": "s2-restage-broadside-a1.png",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/factory/s2/restage-v3/s2-restage-broadside-a1.png",
+      "size": 786451,
+      "modTime": "2026-09-01T13:18:04.251643274Z",
+      "category": "Other",
+      "type": "image"
     },
     {
       "path": "factory/s1/scene-01-reel-mute.mp4",
