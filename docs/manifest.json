@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-04T19:08:25.012559Z",
-  "totalAssets": 1808,
+  "generated": "2026-10-05T00:53:44.894992Z",
+  "totalAssets": 1810,
   "categories": {
     "Characters": 388,
-    "Other": 155,
+    "Other": 157,
     "Animatics": 279,
     "Storyboards": 890,
     "Props": 20,
@@ -18,7 +18,7 @@
       "name": "ruben_turnaround_APPROVED.png",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/ruben/ruben_turnaround_APPROVED.png",
       "size": -1,
-      "modTime": "2026-10-04T19:08:24.990330743Z",
+      "modTime": "2026-10-05T00:53:44.872920420Z",
       "category": "Characters",
       "type": "image"
     },
@@ -27,7 +27,7 @@
       "name": "family-portrait.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/family-portrait.jpg",
       "size": -1,
-      "modTime": "2026-10-04T19:08:24.990330743Z",
+      "modTime": "2026-10-05T00:53:44.872920420Z",
       "category": "Other",
       "type": "image"
     },
@@ -36,7 +36,7 @@
       "name": "ruben-jetplane.jpg",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/promo/ruben-jetplane.jpg",
       "size": -1,
-      "modTime": "2026-10-04T19:08:24.990330743Z",
+      "modTime": "2026-10-05T00:53:44.872920420Z",
       "category": "Other",
       "type": "image"
     },
@@ -45,9 +45,27 @@
       "name": "trailer-music-suno.mp3",
       "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/youtube/trailer-music-suno.mp3",
       "size": -1,
-      "modTime": "2026-10-04T19:08:24.990330743Z",
+      "modTime": "2026-10-05T00:53:44.872920420Z",
       "category": "Other",
       "type": "audio"
+    },
+    {
+      "path": "production/scene-01/scene-01-proof.mp4",
+      "name": "scene-01-proof.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/production/scene-01/scene-01-proof.mp4",
+      "size": 15929544,
+      "modTime": "2026-10-04T21:31:57.941695086Z",
+      "category": "Other",
+      "type": "video"
+    },
+    {
+      "path": "production/scene-01/scene-01-motion-excerpt.mp4",
+      "name": "scene-01-motion-excerpt.mp4",
+      "url": "https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/production/scene-01/scene-01-motion-excerpt.mp4",
+      "size": 9805409,
+      "modTime": "2026-10-04T21:31:49.757663724Z",
+      "category": "Other",
+      "type": "video"
     },
     {
       "path": "factory/s2/restage-v4/s2-restage-v4-compare.png",
