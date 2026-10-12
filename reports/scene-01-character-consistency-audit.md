@@ -14,7 +14,7 @@
 | **Nina** | Auburn/reddish-brown, shoulder-length wavy | Hazel-green | Natural mom body | Freckles, warm expression, smile lines | **Elegant black cocktail dress** |
 | **Mia** (~8) | Dark brown, simple wavy ponytail | Brown, large/expressive | Petite child | Olive/tan skin tone, pink top with white polka dots | Pajamas/casual (pink star top) |
 | **Leo** (~5) | Sandy blonde/golden, curly | Blue | Small, round face | Fair skin, rosy cheeks, gap teeth | **Green dinosaur pajamas** |
-| **Jenny** (~15) | Blonde, ponytail | - | Teen | Phone-absorbed, cheerful | Casual teen clothes |
+| **Jenny** (~15) | Dark brown curly, messy ponytail | Brown | Teen | Brown skin, phone-absorbed, cheerful | Coral/salmon hoodie, gray leggings |
 
 **Turnaround URLs (for regeneration prompts):**
 - Gabe: `https://pub-97d84d215bf5412b8f7d32e7b9047c54.r2.dev/characters/gabe/gabe_turnaround_APPROVED.png`
@@ -44,7 +44,7 @@ Excellent establishing shot. All five characters are visible and correctly place
 - **Nina (background left, next to Gabe):** Dark formal attire - CORRECT. Auburn hair visible.
 - **Mia (couch):** Dark curly hair, pink top - CORRECT match to ALT turnaround.
 - **Leo (couch):** Smaller figure in green - CORRECT (dino pajamas).
-- **Jenny (far right):** Blonde teen, sitting in armchair, looking at phone - CORRECT.
+- **Jenny (far right):** Dark brown curly hair teen, sitting in armchair, looking at phone - CORRECT.
 - **Setting:** Dino toys on floor, lightning through windows, warm interior - all CORRECT.
 
 | Issue | Severity | Detail |
