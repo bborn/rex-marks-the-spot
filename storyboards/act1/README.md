@@ -109,8 +109,8 @@ cinematic composition, professional storyboard panel, [shot type]
 - Surrounded by dino toys
 
 **Jenny (Babysitter, ~15):**
-- Blonde, ponytail
-- Casual teen clothes
+- Dark brown curly hair, messy ponytail
+- Brown skin, coral pink hoodie, gray leggings, white sneakers
 - Always looking at phone
 - Oblivious expression
 
